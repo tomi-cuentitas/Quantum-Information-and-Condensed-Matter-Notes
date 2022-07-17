@@ -46,7 +46,7 @@ This is still a highly-non trivial problem to solve. Indeed, solving said proble
 where 
 
 \begin{itemize}
-    \item $\tilde{x}_i = ({\bf x}_i, \sigma_i)$, is a coordinate system accounting for both the $i$-th electron's position and spin,
+    \item $\tilde{x}_i = ({\bf x}_i, \sigma_i)$, is an atlas on a Riemannian manifold $V = \R^{3N} \otimes (\mathds{C}^2)^{\otimes N}$, accounting for both the $i$-th electron's position and spin,
     \item and where $\Psi_\lambda$, describing the wavefunction of the $N$-body system, is a function in a Hilbert space given by $\mathds{H} \approx L^2(\R^{3N}) \otimes \bigotimes_{j=1}^{N} \mathds{C}^2 \approx L^2(\R^{3N}) \otimes (\mathds{C}^{2})^{\otimes N}$\footnote{Remember that the Hilbert space for a particle in $\R^3$ with spin is the tensor product of $L^2(\R^3)$ with a finite-dimensional vector space $V$, where $V$ carries and irreducible action of the group rotation $SO(3)$. In this context, the proper notion of "action" is the projective representation of $SO(3)$, meaning a family of operators satisfying the SO(3)-Lie algebra, $\mathfrak{so}(3)$. In our context, the full Hilbert space of a system of $N$ spin-$s$ particles is isomorphic to the tensor product of $N$-Hilbert spaces $\mathds{C}^2$. This may be written in short as $(\mathds{C}^{2s+1})^{\otimes N}$}. Even if we ignore the spatial degrees of freedom, the spin-Hilbert space's dimension scales up as $2^N$. Thus, this problem becomes an NP-hard problem. This is even worse given that we cannot decouple the coordinates of the $i$-th electron from the $j$-th electron. \\ 
 \end{itemize}
 
@@ -81,9 +81,194 @@ In other words, \eqref{grand canonical}, the operator $\hat{\bf O}$ stands for t
 At $N$ fixed and a zero temperature, \eqref{grand canonical} means:
 
 \begin{equation}
-     \langle \hat{\bf O} \rangle = \int_{\mathds{R}^{3N}} \prod_{i=1}^N d{\bf x}_i \prod_{j=1}^{N} \sum_{\sigma_j \in \mathds{C}^2} \Psi^{*}(\tilde{x}_1, \cdots, \tilde{x}_N) \sum_{a,b,\cdots} O(x_a, x_b, \cdots) \Psi_\lambda(\tilde{x}_1, \cdots, \tilde{x}_N),
+     \langle \hat{\bf O} \rangle = \int_{\mathds{R}^{3N}} \prod_{i=1}^N d{\bf x}_i \prod_{j=1}^{N} \sum_{\sigma_j \in \mathds{C}^2} \Psi^{*}(\tilde{x}_1, \cdots, \tilde{x}_N) \sum_{a,b,\cdots} O(x_a, x_b, \cdots) \Psi(\tilde{x}_1, \cdots, \tilde{x}_N),
+\label{ensemble avg}
 \end{equation}
 
-which can be thought as a functional of the many-body wave function, $\langle \hat{\bf O} \rangle = \langle \hat{\bf O} \rangle[\Psi]: \mathds{H}^{V} \rightarrow \R$, with $V = \R^{3N} \times \mathds {C}^{2N}$.
+which can be thought as a functional of the many-body wave function, $\langle \hat{\bf O} \rangle = \langle \hat{\bf O} \rangle[\Psi]: {V}^{\mathds{H}} \rightarrow \R$, with $V = \R^{3N} \times \mathds {C}^{2N}$. Now, note that many details of the many-body wavefunction are integrated out. \\
+
+One way to resolve the many-body problem consists in using an approximate wave-function. For example, Hartree-Fock, configuration interaction and Quantum Monte-Carlo are based in this approach. Another, more radical approach, consists in asking ourselves if we really need to work with all possible many-body wave-functions. \\
+
+Note that \eqref{ensemble avg} depends, at most, with the form of the Hamiltonian, which in our case is given by 
+ 
+\begin{equation}
+    \hat{\bf H} = -\frac{\hbar^2}{2m_e} \sum_i \nabla^2_i + \sum_{i} {\bf V}_{\textnormal{ext}} ({\bf x}_i) + \frac{1}{2} \sum_{i \neq j} \frac{e^2}{|{\bf x}_i-{\bf x}_j|}.
+\label{hamiltonian 3}
+\end{equation}
+
+We consider that the kinetic energy operator and the Coulomb interaction contain enough information to completely determine the value of an observable. Therefore, we can consider the expectation value to be a functional on the external potential, instead of a functional of the many-body wave-function:
+
+$$
+\langle \hat{\bf O} \rangle = \langle \hat{\bf O}  \rangle[\Psi] \Rightarrow
+\langle \hat{\bf O}  \rangle[V_{\textnormal{ext}}]
+: {V}^{\mathds{H}} \rightarrow \R.
+$$
+
+Thinking this in terms of functionals, eliminate the explicit dependence on the coordinates $(\tilde{x}_1, \cdots, \tilde{x}_n)$. In order to understand this new functional we note, that in the grand canonical ensemble, the sum of states is actually a trace over the Hilbert space's states, and since the trace is invariant, we can re-write \eqref{ensemble avg} as 
+
+\begin{equation}
+    \langle \hat{\bf O} \rangle = \frac{1}{\mathcal{Z}} \Tr_{\mathds{H}} \bigg(e^{-\beta(\hat{\bf H}-\mu\hat{\bf N})} \hat{\bf O} \bigg),
+\label{trace gce}
+\end{equation}
+
+with the Hamiltonian given by \eqref{hamiltonian 3}. Therefore \eqref{trace gce} depends only on the external potential. Thus, we have expressed a rather complicated functional in terms of a simple function, which we can then try to approximate.
+
+\section{Subsets of interesting observables}
+
+Consider an electronic structure, what are the typical observables of interest? \\
+
+A first example could be the equilibrium distance between two atoms in a molecule, which is the result of an energy-minimization problem. The energy minimization can also give the full geometry of a molecule. 
+For example, 
+
+\begin{itemize}
+    \item consider a carbon dioxide molecule, the energy minimization problem predicts a linear structure with a flat angle between the two oxygens. Likewise, for the water molecule, the energy minimization problem predicts a specific angle between the hydrogens in said molecule. The same can be said about the ammonia, which is not a planar molecule. 
+    \item The crystal structure can also be predicted in this way, by evaluating the forces acting on each atom of the system.
+    \item In particular, this method can also compute the lattice vibrations that give rise to phonons or the bulk modulus, the ability of a certain material to resist to a certain external pressure. \\
+\end{itemize}
+
+These are very specific examples in which the core of problem is to evaluate the ground-state energy. In DFT, even the excited states of a system are observables as well as some response functions, such as optical absorption or electron energy loss. \\
+
+\section{Observables in terms of Compact Quantities}
+
+This section's aim is to find a simple quantity, in terms of which we can express the observables. Let $(\mathcal{B}(\mathds{H}), ||\cdot||)$ denote the space of all linear operators acting on the Hilbert space, noting that the sub-space of all linear bounded operators is a Banach space. Let $\mathcal{B}_1(\mathds{H})=\{\hat{\bf O}| \hat{\bf O}:\mathds{H}_k \rightarrow \mathds{H}_k \}$ ie. the space of all one-body operators, then we define the space of $k$-body operators as 
+
+$$
+\mathcal{B}_k(\mathds{H}) = \{\otimes_{i=1}^{k} {\bf O}_i | {\bf O}_i \in \mathcal{B}_1(\mathds{H}) \},
+$$
+
+where, obviously,
+
+$$
+\mathcal{B}(\mathds{H}) = \bigsqcup_{i=1}^{N} \mathcal{B}_i(\mathds{H}).
+$$
+
+Now, consider a one-body operator $\hat{\bf Q}_i \in \mathcal{B}_{1}(\mathds{H})$, which acts on the $i$-th electron's Hilbert space $\mathds{H}_i$, which we desire to calculate its expected value following equation \eqref{ensemble avg}. Therefore, we can construct a new operator 
+$$
+\hat{\bf Q} = \bigoplus_{i=1}^{N} \hat{\bf Q}_i = \sum_{i=1}^{N} \tilde{\bf Q}_i
+$$
+
+where now both $\hat{\bf Q}$ and $\tilde{\bf Q}_i$ act on the full Hilbert space. Note that $\tilde{\bf Q}_i$ acts trivially on all but one of the individual Hilbert spaces:
+
+\begin{align}
+     \langle \hat{\bf Q} \rangle &= \int_{\mathds{R}^{3N}} \prod_{i=1}^N d{\bf x}_i \prod_{j=1}^{N} \sum_{\sigma_j \in \mathds{C}^2} \Psi^{*}(\tilde{x}_1, \cdots, \tilde{x}_N)
+     \sum_{i}
+     \tilde{\bf Q}_i(\tilde{x_i})
+     \Psi(\tilde{x}_1, \cdots, \tilde{x}_N) \\
+     &= N \int_{\mathds{R}^{3N}} \prod_{i=1}^N d{\bf x}_i \sum_{\sigma_1 \in \mathds{C}^2} \Psi^{*}(\tilde{x}_1, \cdots, \tilde{x}_N)
+     \tilde{\bf Q}_1(\tilde{x}_1)
+     \Psi(\tilde{x}_1, \cdots, \tilde{x}_N) \\
+     &= \int_{\mathds{R}^{3}} d{\bf x}_1 \sum_{\sigma_1 \in \mathds{C}^2} \tilde{\bf Q}_1(\tilde{x}_1) N \int_{\mathds{R}^{3(N-1)}} \prod_{i=2}^N d{\bf x}_i \prod_{j=2}^{N} \sum_{\sigma_j \in \mathds{C}^2} \Psi^{*}(\tilde{x}_1, \cdots, \tilde{x}_N)
+     \Psi(\tilde{x}_1, \cdots, \tilde{x}_N) \\
+     &= \int_{\mathds{R}^{3}} d{\bf x}_1 \sum_{\sigma_1 \in \mathds{C}^2} \tilde{\bf Q}_1(\tilde{x}_1) {\bf n}(\tilde{x}_1),
+\label{one-body ensemble avg}
+\end{align}
+
+where 
+ 
+\begin{equation}
+{\bf n}(\tilde{x}_1) = N \int_{\mathds{R}^{3(N-1)}} \prod_{i=2}^N d{\bf x}_i \prod_{j=2}^{N} \sum_{\sigma_j \in \mathds{C}^2} \Psi^{*}(\tilde{x}_1, \cdots, \tilde{x}_N)
+     \Psi(\tilde{x}_1, \cdots, \tilde{x}_N),
+\label{one-body density}
+\end{equation}
+
+is the one-body density. Thus, in order to calculate the expectation value of a one-body operator, we need only the one-body density. Similarly, if we want to compute the expectation value of a general two-body operator, the same steps can be repeated. Consider, for example, the Coulomb interaction. Then it's expectation value is 
+
+\begin{align}
+     V_{ee} &= \int_{\mathds{R}^{3N}} \prod_{i=1}^N d{\bf x}_i \prod_{j=1}^{N} \sum_{\sigma_j \in \mathds{C}^2} \Psi^{*}(\tilde{x}_1, \cdots, \tilde{x}_N)
+     \sum_{\substack{i,j\\
+          j > i}} 
+     \frac{e^2}{|{\bf x}_i-{\bf x}_j|}
+     \Psi(\tilde{x}_1, \cdots, \tilde{x}_N) \\
+     &= \int_{\mathds{R}^{6}} d{\bf x}_1 d{\bf x}_2 \sum_{\sigma_1 \in \mathds{C}^2} \sum_{\sigma_2 \in \mathds{C}^2} \frac{1}{2} \frac{e^2}{|{\bf x}_1-{\bf x}_2|} N(N-1) \int_{\mathds{R}^{3(N-2)}} \prod_{i=3}^N d{\bf x}_i \prod_{j=3}^{N} \sum_{\sigma_j \in \mathds{C}^2} \Psi^{*}(\tilde{x}_1, \cdots, \tilde{x}_N)
+     \Psi(\tilde{x}_1, \cdots, \tilde{x}_N) \\
+     &=\int_{\mathds{R}^{6}} d{\bf x}_1 d{\bf x}_2 \sum_{\sigma_1 \in \mathds{C}^2} \sum_{\sigma_2 \in \mathds{C}^2} \frac{1}{2} \frac{e^2}{|{\bf x}_1-{\bf x}_2|} {\bf n}^{(2)}(\tilde{x}_1, \tilde{x}_2),
+\label{two-body ensemble avg}
+\end{align}
+
+where
+
+$$
+{\bf n}^{(2)}(\tilde{x}_1, \tilde{x}_2) = N(N-1) \int_{\mathds{R}^{3(N-2)}} \prod_{i=3}^N d{\bf x}_i \prod_{j=3}^{N} \sum_{\sigma_j \in \mathds{C}^2} \Psi^{*}(\tilde{x}_1, \cdots, \tilde{x}_N)
+     \Psi(\tilde{x}_1, \cdots, \tilde{x}_N),
+$$
+
+is the two-body density.  \\
+
+One interesting observable may be the kinetic  energy, which can readily be written as 
+
+\begin{align}
+     T &= -\int_{\mathds{R}^{3N}} \prod_{i=1}^N d{\bf x}_i \prod_{j=1}^{N} \sum_{\sigma_j \in \mathds{C}^2} \Psi^{*}(\tilde{x}_1, \cdots, \tilde{x}_N)
+     \sum_{i}\frac{\nabla^{2}_{i}}{2}
+     \Psi(\tilde{x}_1, \cdots, \tilde{x}_N) \\
+     &= - \int_{\mathds{R}^{3}} d{\bf x}_1 \sum_{\sigma_1 \in \mathds{C}^2} \bigg[\frac{\nabla^{'2}_1}{2} N \int_{\mathds{R}^{3(N-1)}} \prod_{i=2}^N d{\bf x}_i \prod_{j=2}^{N} \sum_{\sigma_j \in \mathds{C}^2} \Psi^{*}(\tilde{x}_1, \cdots, \tilde{x}_N) \Psi(\tilde{x}'_1, \cdots, \tilde{x}_N)\bigg]_{{x'_1 \rightarrow x_1}} \\
+     &= \int_{\mathds{R}^{3}} d{\bf x}_1 \sum_{\sigma_1 \in \mathds{C}^2} \frac{\nabla^{'2}_1}{2} {\rho}(\tilde{x}_1, \tilde{x}'_1)_{{x'_1 \rightarrow x_1}},
+\end{align}
+
+where, once again, $\rho$ is the one-density matrix 
+
+$$
+{\rho}(\tilde{x}_1, \tilde{x}'_1) =  N \int_{\mathds{R}^{3(N-1)}} \prod_{i=2}^N d{\bf x}_i \prod_{j=2}^{N} \sum_{\sigma_j \in \mathds{C}^2} \Psi^{*}(\tilde{x}_1, \cdots, \tilde{x}_N) \Psi(\tilde{x}'_1, \cdots, \tilde{x}_N).
+$$
+
+For example, in outlook spectroscopy, other useful ingredients may be the observables associated with transitions to excited states, ie.
+
+\begin{align}
+f_{s}^{eh}(\tilde{x}_1, t) &= \int_{\mathds{R}^{3(N-1)}} \prod_{i=2}^N d{\bf x}_i \prod_{j=2}^{N} \sum_{\sigma_j \in \mathds{C}^2} \Psi^{*}(\tilde{x}_1, \cdots, \tilde{x}_N; t) \Psi_{s}(\tilde{x}_1, \cdots, \tilde{x}_N; t) \\
+&= e^{-i(E_s-E_0)t} \int_{\mathds{R}^{3(N-1)}} \prod_{i=2}^N d{\bf x}_i \prod_{j=2}^{N} \sum_{\sigma_j \in \mathds{C}^2} \Psi^{*}(\tilde{x}_1, \cdots, \tilde{x}_N) \Psi_{s}(\tilde{x}_1, \cdots, \tilde{x}_N) 
+\end{align}
+
+said transition depending on a given number $s$, which indexes the excited state to which the electron has transitioned and where a phase factor has appeared on the second line, an oscillation on the excitation energy. \\
+
+Up to now, in order to calculate the expected value of different $k$-body operators, we need different $N-k$-body kernels, to which integrate them with. Therefore, we first need to calculate said $N-k$-body kernels. However, we insist on finding only one kernel for all different $K-$body operators. \\
+
+%Consider first one-body operators, then the expected values are only functionals of the one-body density given by \eqref{one-body density}.
+
+\section{Calculus of Variations}
+
+A functional is a mapping $F[\cdot]: C^{\infty}(\mathds{R})\rightarrow\mathds{R}$. Integrals, for example, can be thought as functionals, values of a function at a certain point $x_0 \in \mathds{R}$ can also be thought as a functional, with a weight function $W(x) = \delta(x-x_0)$. Some other interesting functionals are, for example, 
+
+\begin{itemize}
+    \item Local functional: $F[f] = \int_{\mathds{R}} dx g(f(x))$,
+    \item Non-local functionals: 
+    $F[f_1, f_2] =\int_{\mathds{R}^2} dx dx' W(x,x') f_1(x) f_2(x')$, 
+    \item the total energy of a many-body system 
+    $$
+    E = F[\Psi] = \int_{\mathds{R}^{3N}} \prod_{i=1}^{N} d{\bf x}_1 \Psi^{*}({\bf x}_1, \cdots, {\bf x}_N) {\bf H} \Psi({\bf x}_1, \cdots, {\bf x}_N) = \bra{\Psi}{\bf H}\ket{\Psi}.
+    $$
+    \item The Lagrangian action:
+    $$
+    S[{\bf q}] = \int dt \mathcal{L}({\bf q}(t), \dot{\bf q}(t), t).
+    $$
+\end{itemize}
+
+In the context of the many-body problem, some interesting functionals of the electron density, could be 
+
+\begin{itemize}
+    \item The contribution of the external energy given by an external potential
+    
+    $$
+    E_{\textnormal{ext}}[n] = \int_{\mathds{R}^3} d{\bf x} n({\bf x}) V_{\textnormal{ext}}({\bf x}),
+    $$
+    
+    which is a local functional.
+    \item The classical electrostatic term, also called the Hartree energy, is a non-local functional:
+    
+    $$
+    E_{\textnormal{H}}[n] = \frac{1}{2} \int_{\mathds{R}^6} d{\bf x} d{\bf x}' \frac{n({\bf x})n({\bf x'})}{|{\bf x}-{\bf x}'|}.
+    $$
+    
+    \item Another interesting functional is the Thomas-Fermi approximation, in which the kinetic energy is a $5/3$-power of the electron density
+    
+    $$
+    T^{TF}[n] = C \int_{\mathds{R}^3} d{\bf x} n^{\frac{5}{3}}({\bf x}),
+    $$
+    
+    \item or the von-Weizs\"acker functional:
+    
+    $$
+    T^{vW}[n] = \frac{1}{8} \int_{\mathds{R}^3} d{\bf x} \frac{\nabla n({\bf x}) \cdot \nabla n({\bf x})}{n({\bf x})}.
+    $$
+    
+\end{itemize}
 
 \end{document}
