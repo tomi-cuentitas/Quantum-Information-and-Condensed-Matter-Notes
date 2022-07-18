@@ -223,22 +223,22 @@ Up to now, in order to calculate the expected value of different $k$-body operat
 
 %Consider first one-body operators, then the expected values are only functionals of the one-body density given by \eqref{one-body density}.
 
-\section{Calculus of Variations}
+\section{The Hohenberg-Kohn Theorem}
+
+\subsection{Calculus of Variations}
 
 A functional is a mapping $F[\cdot]: C^{\infty}(\mathds{R})\rightarrow\mathds{R}$. Integrals, for example, can be thought as functionals, values of a function at a certain point $x_0 \in \mathds{R}$ can also be thought as a functional, with a weight function $W(x) = \delta(x-x_0)$. Some other interesting functionals are, for example, 
 
 \begin{itemize}
-    \item Local functional: $F[f] = \int_{\mathds{R}} dx g(f(x))$,
+    \item Local functional: $F[f] = \int_{\mathds{R}} dx \blanky g(f(x))$,
     \item Non-local functionals: 
-    $F[f_1, f_2] =\int_{\mathds{R}^2} dx dx' W(x,x') f_1(x) f_2(x')$, 
+    $F[f_1, f_2] =\int_{\mathds{R}^2} dx dx' \blanky W(x,x') f_1(x) f_2(x')$, 
     \item the total energy of a many-body system 
     $$
-    E = F[\Psi] = \int_{\mathds{R}^{3N}} \prod_{i=1}^{N} d{\bf x}_1 \Psi^{*}({\bf x}_1, \cdots, {\bf x}_N) {\bf H} \Psi({\bf x}_1, \cdots, {\bf x}_N) = \bra{\Psi}{\bf H}\ket{\Psi}.
+    E = F[\Psi] = \int_{\mathds{R}^{3N}} \prod_{i=1}^{N} d{\bf x}_i \blanky \Psi^{*}({\bf x}_1, \cdots, {\bf x}_N) {\bf H} \Psi({\bf x}_1, \cdots, {\bf x}_N) = \bra{\Psi}{\bf H}\ket{\Psi}.
     $$
-    \item The Lagrangian action:
-    $$
-    S[{\bf q}] = \int dt \mathcal{L}({\bf q}(t), \dot{\bf q}(t), t).
-    $$
+    \item The Lagrangian action: $
+    S[{\bf q}] = \int dt \blanky \mathcal{L}({\bf q}(t), \dot{\bf q}(t), t).$
 \end{itemize}
 
 In the context of the many-body problem, some interesting functionals of the electron density, could be 
@@ -247,28 +247,83 @@ In the context of the many-body problem, some interesting functionals of the ele
     \item The contribution of the external energy given by an external potential
     
     $$
-    E_{\textnormal{ext}}[n] = \int_{\mathds{R}^3} d{\bf x} n({\bf x}) V_{\textnormal{ext}}({\bf x}),
+    E_{\textnormal{ext}}[n] = \int_{\mathds{R}^3} d{\bf x}  \blanky n({\bf x}) V_{\textnormal{ext}}({\bf x}),
     $$
     
     which is a local functional.
     \item The classical electrostatic term, also called the Hartree energy, is a non-local functional:
     
     $$
-    E_{\textnormal{H}}[n] = \frac{1}{2} \int_{\mathds{R}^6} d{\bf x} d{\bf x}' \frac{n({\bf x})n({\bf x'})}{|{\bf x}-{\bf x}'|}.
+    E_{\textnormal{H}}[n] = \frac{1}{2} \int_{\mathds{R}^6} d{\bf x} d{\bf x}' \blanky \frac{n({\bf x})n({\bf x'})}{|{\bf x}-{\bf x}'|}.
     $$
     
     \item Another interesting functional is the Thomas-Fermi approximation, in which the kinetic energy is a $5/3$-power of the electron density
     
     $$
-    T^{TF}[n] = C \int_{\mathds{R}^3} d{\bf x} n^{\frac{5}{3}}({\bf x}),
+    T^{TF}[n] = C \int_{\mathds{R}^3} d{\bf x} \blanky n^{\frac{5}{3}}({\bf x}),
     $$
     
-    \item or the von-Weizs\"acker functional:
+    \item or the von Weizs\"acker functional:
     
     $$
-    T^{vW}[n] = \frac{1}{8} \int_{\mathds{R}^3} d{\bf x} \frac{\nabla n({\bf x}) \cdot \nabla n({\bf x})}{n({\bf x})}.
+    T^{vW}[n] = \frac{1}{8} \int_{\mathds{R}^3} d{\bf x} \blanky \frac{\nabla n({\bf x}) \cdot \nabla n({\bf x})}{n({\bf x})}. 
     $$
-    
 \end{itemize}
+
+\blanky \\
+
+\subsection{Functional Derivatives}
+
+In order to construct a functional derivative, we need to consider a generic function $f \in C^{\infty}(\R)$ and a perturbation $\eta(x)$:
+
+\begin{align*}
+    F[f(x) + \epsilon \eta(x)] = F[f] + \frac{dF}{d\epsilon}[f+\epsilon \eta]\bigg|_{\epsilon = 0} \epsilon + \frac{1}{2} \frac{d^2 F}{d\epsilon^2}[f+\epsilon \eta]\bigg|_{\epsilon = 0} \epsilon^2 + \mathcal{O}(\epsilon^3).
+\end{align*}
+
+Therefore, we can define 
+
+$$
+\frac{dF}{d\epsilon}[f+\epsilon \eta]\bigg|_{\epsilon = 0} = \frac{ F[f(x) + \epsilon \eta(x)]  - F[f]}{\epsilon}.
+$$
+
+We then define the first and second order functional derivatives as 
+
+\begin{align}
+\frac{dF}{d\epsilon}[f+\epsilon \eta]\bigg|_{\epsilon = 0} &= \int_{\R} dx \blanky \frac{\delta F[f]}{\delta f(x)} \eta(x),
+& \frac{d^2 F}{d\epsilon^2}[f+\epsilon \eta]\bigg|_{\epsilon = 0} &= \int_{\R^2} dx dx' \blanky \frac{\delta^2 F[f]}{\delta f(x) \delta f(x')} \eta(x) \eta(x').
+\end{align}
+
+and so on. Consider now, for example, a local functional of the form
+
+$$
+F[f] = \int_{\R_{[a,b]}} dx \blanky g(x, f(x), f'(x)),
+$$
+
+which we'd like to calculate its functional derivative. In order to do exactly that, we Taylor-expand the functional in terms of the incremented function 
+
+\begin{align*}
+    F[f+\epsilon \eta] = F[f] + \frac{d}{d\epsilon} \int_{\R_{[a,b]}} dx \blanky g(x, f+\epsilon \eta, f'+\epsilon \eta')\bigg|_{\epsilon = 0} \epsilon, \\
+    \Rightarrow \frac{d}{d\epsilon} \int_{\R_{[a,b]}} dx \blanky g(x, f+\epsilon \eta, f'+\epsilon \eta')\bigg|_{\epsilon = 0} \epsilon &= \frac{d}{d\epsilon} \int_{\R_{[a,b]}} dx \blanky\bigg[ g(x,f,f') + \epsilon \eta \frac{\partial g}{\partial f}  + \epsilon \eta' \frac{\partial g}{\partial f'} \bigg]\bigg|_{\epsilon = 0} \epsilon \\
+    &= \int_{\R_{[a,b]}} dx \blanky\bigg[\eta \frac{\partial g}{\partial f}  + \eta' \frac{\partial g}{\partial f'} \bigg] \epsilon \\
+    &= \cancel{\eta \frac{\partial g}{\partial f'}\bigg|_{a}^{b}} \epsilon + \int_{\R_{[a,b]}} dx \blanky\bigg[ \frac{\partial g}{\partial f}  - \frac{d}{dx}\frac{\partial g}{\partial f'} \bigg] \eta (x) \epsilon \\
+    &= \int_{\R} dx \blanky \frac{\delta F[f]}{\delta f(x)} \eta(x),\\
+\Rightarrow \frac{\delta F[f]}{\delta f(x)} = \frac{\partial g}{\partial f}  - \frac{d}{dx}\frac{\partial g}{\partial f'}, \textnormal{ the Euler-Lagrange equations.} 
+ \end{align*}
+ 
+\clearpage
+
+\subsection{Defining the system via an external potential}
+
+Using the previous section's techniques, we'd like to inquire if we can consider a functional of the density as the unique functional of a quantum mechanical observation. Indeed, it's possible to demonstrate that every observable in the ground state is a unique functional of the electron density. This is the main outcome of the Hohenberg-Kohn theorem. \\
+
+We start by saying that every observable is a functional on the many-body wave-function: $\mathcal{O} = \bra{\Psi}\hat{\bf O}\ket{\Psi} = \mathcal{O}[\Psi]$. Now, consider a non-relativistic many-body Hamiltonian in the Born-Oppenheimer, which is given by \eqref{hamiltonian 3}. Note that the most important term in said expression, the operator which distinguishes a many-body problem from another, is the external potential\footnote{For example an atom of nickel contains 28 electrons, the same as the bulk silicon. The structural differences of said many-body systems lie on the different strength and position of the external (nuclei) potentials.}. Since the external potential defines the many-body system, once it's specified, it gives a unique Hamiltonian, which can then be diagonalized to find its eigenvectors and eigenfunctions. \\
+
+Then, if the expectation value of an operator depends on the wave-function, eg. the ground state function, which in turns depends on the Hamiltonian and hence on the external potential, can we say that each observable is uniquely determined by the external potential? In other words, can we say that each observable is a unique functional of the external potential? \\
+
+If that's the case, then there has to be an isomorphism from the space of all external potentials (which can be thought as $C^\infty(\R)$) to the space of all distinct many-body system's wave-functions. This is there has to be a bijection, two different potentials lead to two different wave-functions and vice-versa. Is this the case? At the moment, we cannot say, but if, from a given potential, we obtain a single ground state wave function, thus this mapping is surjection and is then a function. This isn't the case for many-body systems with a degenerate ground state. Then, we can modify our statement as follows: \textit{there is an isomorphism from the space of all external potentials to the space of all wave-functions abiding the same ground state energy}. For all practical purposes, there is a function, an surjective mapping, from the space of all external potentials to the space of all distinct many-body system's wave-functions. \\
+
+It begs the question if this mapping is an injective mapping, should this be the case, there'd be a one-to-one correspondence between the external potential and the wave-function. It would then mean that any observable is a unique functional of the external potential. Another interesting question is if the same argument is valid, not for the wave-functions, but with the one-body densities. The answer to these questions constitute the Hohenberg-Kohn theorem. \\
+
+\subsection{Proof of the Hohenberg-Kohn Theorem}
 
 \end{document}
