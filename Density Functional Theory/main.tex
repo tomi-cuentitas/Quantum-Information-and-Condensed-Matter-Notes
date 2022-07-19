@@ -326,4 +326,36 @@ It begs the question if this mapping is an injective mapping, should this be the
 
 \subsection{Proof of the Hohenberg-Kohn Theorem}
 
+There are actually two theorems attributed to Hohenberg and Kohn, which relate to any system consisting of electrons moving under the influence of an external potential $v_{\textnormal{ext}}({\bf x})$. 
+
+\begin{theo}
+The external potential $v_{\textnormal{ext}}({\bf x})$, and hence the total energy, is a unique functional of the electron density $n({\bf x})$.
+\end{theo}
+
+\begin{proof}
+The energy functional $E[n({\bf x})]$ alluded to in the first Hohenberg-Kohn theorem can be written in terms of the external potential $v_{\textnormal{ext}}({\bf x})$ in the following way 
+\begin{equation}
+    E_{\textnormal{ext}}[n] = \int_{\mathds{R}^3} d{\bf x}  \blanky n({\bf x}) V_{\textnormal{ext}}({\bf x}) + F[n({\bf x})],
+\end{equation}
+
+where $F[n({\bf x})]$ is an unknown, but otherwise universal functional of the electron density $n({\bf x})$ only. Correspondingly, a Hamiltonian for the system can be written in such a way that the electron wave-function, $\Psi$, which minimises the expectation value gives the ground state energy, assuming a non-degenerate groundstate: $E_{\textnormal{ext}}[n] = \bra{\Psi}\hat{\bf H}\ket{\Psi}$.
+
+The Hamiltonian can then be written as 
+
+$$
+\hat{\bf H} = \hat{\bf F} + \hat{V}_{\textnormal{ext}},
+$$
+
+where $\hat{\bf F}$ is the electronic Hamiltonian consisting of a kinetic energy operator and an interaction operator. The electron operator $\hat{\bf F}$ is the same for all $N$-electron systems. Therefore, the Hamiltonian ${\bf H}$ is completely defined by the number of electrons $N$ and the external potential $\hat{V}_{\textnormal{ext}}$. The proof of the first theorem lies on considering two different external potentials, say $\hat{V}^{(1)}_{\textnormal{ext}}$ and $\hat{V}^{(2)}_{\textnormal{ext}}$, which we assume to give rise to the same density $n_{0}({\bf x})$. The associated Hamiltonians, labelled $\hat{\bf H}^{(1)}$ and $\hat{\bf H}^{(2)}$, will therefore have different groundstate wave-functions ${\Psi}^{(1)}$ and ${\Psi}^{(2)}$, which yield the same density $n_{0}({\bf x})$. Using the variational principle, we have 
+
+\begin{align}
+    E_{0}^{(1)} &< \bra{\Psi_2} \hat{\bf H}_1 \ket{\Psi_2} = \bra{\Psi_2} \hat{\bf H}_2 \ket{\Psi_2} + \bra{\Psi_2} \hat{\bf H}_1-\hat{\bf H}_2 \ket{\Psi_2} \\
+    &=  E_{0}^{(2)} + \int_{\R^3} d{\bf x} \blanky n_{0}({\bf x}) [\hat{V}^{(1)}_{\textnormal{ext}}({\bf x})-\hat{V}^{(2)}_{\textnormal{ext}}({\bf x})]
+\end{align}
+
+where $E_{0}^{(1)}$ and $E_{0}^{(2)}$ are the groundstates energies of $\hat{\bf H}^{(1)}$ and $\hat{\bf H}^{(2)}$ respectively. It's at this point that the Hohenberg-Kohn theorems, and therefore DFT, apply rigorously to the groundstate only. Note that the previous expression holds as well when the subscripts are interchanged. Thus leading to $ E_{0}^{(1)} +  E_{0}^{(2)} <  E_{0}^{(2)} +  E_{0}^{(1)}$, which is a contradiction, and as a result the groundstate density uniquely determines the external potential (upto an additive constant). \\
+\end{proof}
+
+Stated simply, the electrons determine the positions of the nuclei in a system, and also all groundstate electronic properties. Therefore, the external potential and $N$ completely determine the Hamiltonian. 
+
 \end{document}
