@@ -326,7 +326,7 @@ It begs the question if this mapping is an injective mapping, should this be the
 
 \subsection{Proof of the Hohenberg-Kohn Theorem}
 
-There are actually two theorems attributed to Hohenberg and Kohn, which relate to any system consisting of electrons moving under the influence of an external potential $v_{\textnormal{ext}}({\bf x})$. 
+There are actually two theorems attributed to Hohenberg and Kohn, which relate to any system consisting of electrons moving under the influence of an external potential $v_{\textnormal{ext}}({\bf x})$. In the following discussion, we'll consider only the cases where the mapping, from the space of external potentials to the space of all distinct $N$-electrons many-body groundstate wave-functions, is a function, ie. we exclude the cases of obtaining a degenerate groundstate wave-function. \\
 
 \begin{theo}
 The external potential $v_{\textnormal{ext}}({\bf x})$, and hence the total energy, is a unique functional of the electron density $n({\bf x})$.
@@ -338,8 +338,7 @@ The energy functional $E[n({\bf x})]$ alluded to in the first Hohenberg-Kohn the
     E_{\textnormal{ext}}[n] = \int_{\mathds{R}^3} d{\bf x}  \blanky n({\bf x}) V_{\textnormal{ext}}({\bf x}) + F[n({\bf x})],
 \end{equation}
 
-where $F[n({\bf x})]$ is an unknown, but otherwise universal functional of the electron density $n({\bf x})$ only. Correspondingly, a Hamiltonian for the system can be written in such a way that the electron wave-function, $\Psi$, which minimises the expectation value gives the ground state energy, assuming a non-degenerate groundstate: $E_{\textnormal{ext}}[n] = \bra{\Psi}\hat{\bf H}\ket{\Psi}$.
-
+where $F[n({\bf x})]$ is an unknown, but otherwise universal functional of the electron density $n({\bf x})$ only. Correspondingly, a Hamiltonian for the system can be written in such a way that the electron wave-function, $\Psi$, which minimises the expectation value gives the ground state energy, assuming a non-degenerate groundstate: $E_{\textnormal{ext}}[n] = \bra{\Psi}\hat{\bf H}\ket{\Psi}$. 
 The Hamiltonian can then be written as 
 
 $$
@@ -356,6 +355,87 @@ where $\hat{\bf F}$ is the electronic Hamiltonian consisting of a kinetic energy
 where $E_{0}^{(1)}$ and $E_{0}^{(2)}$ are the groundstates energies of $\hat{\bf H}^{(1)}$ and $\hat{\bf H}^{(2)}$ respectively. It's at this point that the Hohenberg-Kohn theorems, and therefore DFT, apply rigorously to the groundstate only. Note that the previous expression holds as well when the subscripts are interchanged. Thus leading to $ E_{0}^{(1)} +  E_{0}^{(2)} <  E_{0}^{(2)} +  E_{0}^{(1)}$, which is a contradiction, and as a result the groundstate density uniquely determines the external potential (upto an additive constant). \\
 \end{proof}
 
-Stated simply, the electrons determine the positions of the nuclei in a system, and also all groundstate electronic properties. Therefore, the external potential and $N$ completely determine the Hamiltonian. 
+Stated simply, the electrons determine the positions of the nuclei in a system, and also all groundstate electronic properties. Therefore, the external potential and $N$ completely determine the Hamiltonian. \\
+
+The second Hohenberg-Kohn theorem states 
+
+\begin{theo}
+\end{theo}
+The groundstate energy can be obtained variationally: the density that minimises the total energy is the exact groundstate density. 
+
+\begin{proof}
+
+According to the first Hohenberg-Kohn theorem, $n({\bf x})$ determines $\hat{V}_{\textnormal{ext}}$. $N$ and $\hat{V}_{\textnormal{ext}}$ completely determine $\hat{\bf H}$ and therefore $\Psi$. Therefore, $\Psi$ is a functional of the density, which implies that the expectation value of the electronic Hamiltonian, $\hat{\bf F}$, is a functional of the density as well: $\hat{\bf F} [n({\bf x})] = \bra{\Psi}\hat{\bf F}\ket{\Psi}$. \\
+
+A density that is the groundstate of some external potential is known as $v$-representable. Then, a $v-$representable energy functional $E_{v}[n({\bf x})]$ can be defined in which the external potential $v({\bf x})$ is unrelated to another density $n'({\bf x})$,
+
+
+\begin{align*}
+    E_{v}[n'({\bf x})] = \int_{\R^3} d{\bf x} \blanky n'({\bf x}) v({\bf x}) + \hat{\bf F} [n'({\bf x})],
+\end{align*}
+
+then the variational principle asserts,
+
+\begin{equation*}
+    \bra{\psi'}\hat{\bf F}\ket{\psi'} + \bra{\psi'}\hat{V}_{\textnormal{ext}}\ket{\psi'} >  \bra{\psi}\hat{\bf F}\ket{\psi} + \bra{\psi}\hat{V}_{\textnormal{ext}}\ket{\psi},
+\end{equation*}
+
+where $\psi$ is the wave-function associated with the correct groundstate $n({\bf x})$. This leads to, 
+
+\begin{align*}
+     \int_{\R^3} d{\bf x} \blanky n'({\bf x})\hat{V}_{\textnormal{ext}} + \hat{\bf F} [n'({\bf x})] > \int_{\R^3} d{\bf x} \blanky n({\bf x})\hat{V}_{\textnormal{ext}} + \hat{\bf F} [n({\bf x})] \\
+     \Rightarrow  E_{v}[n'({\bf x})] >  E_{v}[n({\bf x})],
+\end{align*}
+
+which proves the second Hohenberg-Kohn theorem. 
+
+\end{proof}
+
+These two theorems are extremely powerful, though by themselves, do not offer a way of computing the groundstate density in practice. \\
+
+\subsection{Insights into the Hohenberg-Kohn theorems}
+
+Every observable in the groundstate is a unique functional of the electron density. In this section, we'll explore some of the immediate consequences of the previous theorems. \\
+
+Consider the total energy, a measurable quantity with the associated observable being the Hamiltonian ie. 
+
+\begin{equation}
+    E[n] = \bra{\Psi} \hat{\bf T}+\hat{\bf V}_{ee}+\hat{V}_{\textnormal{ext}}\ket{\Psi} \rightarrow  E[n] = \bra{\Psi} \hat{\bf H}\ket{\Psi}.
+    \label{total energy functional}
+\end{equation}
+
+In particular, for the groundstate state total energy, the variational theorem holds, stating that 
+
+\begin{equation}
+    \min_{\Psi \in \mathds{H}} \bra{\Psi} \hat{\bf H}\ket{\Psi} =  \bra{\Psi_0} \hat{\bf H}\ket{\Psi_0} = E_0.
+\end{equation}
+
+And, given that there is a one-to-one correspondence between a wave-function and a density, the groundstate density corresponds to the groundstate wave-function. Therefore, this minimization can be done directly on the density itself 
+
+\begin{equation}
+\min_{n({\bf x})} E[n] = E_0,
+\label{variational dft}    
+\end{equation}
+
+which is a direct consequence of the second Hohenberg-Kohn theorem. \eqref{variational dft} shows a practical way, via a variational procedure, to find an observable as a density functional. Indeed, rather than using the variational theorem in the realm of all the possible wave functions that live in a $3N$-dimensional space for which the energy surface can be enormously complicated, we can restrict our search to the realm of the densities that live in a smaller-dimensional space, thanks to the Hohenberg-Kohn theorems. \\
+
+For a given density profile, call it $n_1$, there's a unique certain total energy $E[n_1]$. For another density, $n_2$, there's a different total energy $E[n_2]$, which is also unique. This is true in general: $\{n_\lambda\}_{\lambda \in \Lambda} \rightarrow \{E[n_\lambda]\}_{\lambda \in \Lambda}$. Therefore, we can find the minimum of the total energy, which constitutes the groundstate total energy, in correspondence with the groundstate density $n_0$. In practice, this is not the way in which most DFT calculations are performed, but it gives, in principle, a methodology for numerically calculating it. However, there's an unknown relationship between the density and the total energy since we don't know the functional. Formally, the total energy can be written as \eqref{total energy functional}, which can be re-written as 
+
+\begin{align}
+    E[n] = \bra{\Psi} \hat{\bf T}+\hat{\bf V}_{ee}\ket{\Psi} + \int_{\R^3} d{\bf x} \blanky \hat{V}_{\textnormal{ext}}({\bf x}) n({\bf x}) \\
+    = \hat{\bf T}[n] + \hat{\bf V}_{ee}[n] + \int_{\R^3} d{\bf x} \blanky \hat{V}_{\textnormal{ext}}({\bf x}) n({\bf x}) \\
+    = F_{HK}[n] + + \int_{\R^3} d{\bf x} \blanky \hat{V}_{\textnormal{ext}}({\bf x}) n({\bf x})
+\end{align}
+
+where, in the second line, the first and second terms are both unknown and are independent of the external potential (its sum yields the so-called Hohenberg-Kohn functional), while the third term gives an explicit functional of the density related to the external potential, since it's a one-body operator. Note that the Hohenberg-Kohn functional is universal for all $N$-electrons systems. It's important to note that the Hohenberg-Kohn's theorems are, in essence, uniqueness theorems: the functional of the density, if it exists, then it's unique. The existence of this functional is related to the idea of $v$-representability. \\
+
+A heuristic idea for $v$-representability can be given as follows: consider a "reasonable" density $n$, reasonable in this context meaning: a positively defined density, normalized to the number of electrons present in the system. Then, this begs the question if it is possible to find an external potential that leads to this density, or in other words, given a density profile, is there a system which has this density?
+This question was answered by the works of Levy (1982), Lieb (1982) and Englisch \& Englisch (1983), leading to some novel ideas like 
+
+\begin{itemize}
+    \item ensemble-$v$-representable, 
+    \item a generalization of the Hohenberg-Kohn theorem, which accounts for degenerate groundstates,
+    \item and to generalize $v$-representability to $N$-representability. \\
+\end{itemize}
 
 \end{document}
