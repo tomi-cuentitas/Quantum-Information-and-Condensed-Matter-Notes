@@ -438,4 +438,112 @@ This question was answered by the works of Levy (1982), Lieb (1982) and Englisch
     \item and to generalize $v$-representability to $N$-representability. \\
 \end{itemize}
 
+\section{Thomas-Fermi Approach}
+
+\section{Auxiliary Systems}
+
+In density functional theory in particular, and in many-body physics, the motivation to consider auxiliary systems is to construct a superset model, which includes the system of interest, without interactions, by adjusting some parameters and obtaining reasonable estimates of physical quantities in a cost-effective way. One way in which to do this is to adjust the external potential, in such a way that the density is easy to calculate. The question is then, for a given material of interacting electrons, is it possible to find an auxiliary system with a modified potential such that they have exactly same density? \\
+
+Consider the interacting Schr\"odinger equation for a many-body system, 
+
+\begin{equation}
+    \bigg(-\sum_{i} \frac{\nabla_i^2}{2} + \sum_{i}\hat{V}_{\textnormal{ext}}({\bf x}_i)  + \frac{1}{2} \sum_{i\neq j} \frac{1}{|{\bf x}_i - {\bf x}_j|}\bigg) \Psi({\bf x}_1, \cdots, {\bf x}_n) = E \Psi({\bf x}_1, \cdots, {\bf x}_n),
+\end{equation}
+
+which we desire to replace by a non-interacting Schr\"odinger equation for an auxiliary system 
+
+\begin{equation}
+    \bigg(-\sum_{i} \frac{\nabla_i^2}{2} + \sum_{i}\hat{V}_{\textnormal{aux}}({\bf x}_i)  \bigg) \Psi_{\textnormal{aux}}({\bf x}_1, \cdots, {\bf x}_n) = E_{\textnormal{aux}} \Psi_{\textnormal{aux}}({\bf x}_1, \cdots, {\bf x}_n),
+\end{equation}
+
+with the aim of reproducing the density, given by \eqref{one-body density}
+
+\begin{equation}
+{\bf n}({\bf x}) = N \int_{\mathds{R}^{3(N-1)}} \prod_{i=2}^N d{\bf x}_i \prod_{j=2}^{N} \sum_{\sigma_j \in \mathds{C}^2} |\Psi_{\textnormal{aux}}(\tilde{x}_1, \cdots, \tilde{x}_N) |^{2}.
+\end{equation}
+
+The auxiliary system's density is easy to calculate, since it is constructed without electron-electron interactions, it is given by 
+
+\begin{align*}
+    n({\bf x}) = \sum_{\lambda \in \Lambda}^{\textnormal{occ}} |\phi_{\textnormal{aux}}^{\lambda}({\bf x}) |^2 \textnormal{ with } & \phi_{\textnormal{aux}}^{\lambda} \blanky | \blanky \bigg(- \frac{\nabla^2}{2} + \hat{V}_{\textnormal{aux}}({\bf x}) \bigg) \phi_{\textnormal{aux}}^{\lambda}({\bf x}) = \varepsilon_{\textnormal{aux}}^{\lambda}\phi_{\textnormal{aux}}^{\lambda}({\bf x}) \\
+&\Rightarrow \sum_{\lambda \in \Lambda}^{\textnormal{occ}} \bigg[\phi_{\textnormal{aux}}^{\lambda*}({\bf x}) \bigg(-\frac{\nabla^2}{2}\bigg)\phi_{\textnormal{aux}}^{\lambda}({\bf x}) + \hat{V}_{\textnormal{aux}}({\bf x}) |\phi_{\textnormal{aux}}^{\lambda}({\bf x})|^2\bigg] = \sum_{\lambda \in \Lambda}^{\textnormal{occ}} \varepsilon_{\textnormal{aux}}^{\lambda}|\phi_{\textnormal{aux}}^{\lambda}({\bf x})|^2 \\
+&\Rightarrow \hat{V}_{\textnormal{aux}}({\bf x}) = \frac{1}{ n({\bf x})} \sum_{\lambda \in \Lambda}^{\textnormal{occ}} \bigg(\varepsilon_{\textnormal{aux}}^{\lambda}|\phi_{\textnormal{aux}}^{\lambda}({\bf x})|^2 + \phi_{\textnormal{aux}}^{\lambda*}({\bf x}) \frac{\nabla^2}{2}\phi_{\textnormal{aux}}^{\lambda}({\bf x}) \bigg),
+\end{align*}
+
+note that the problem is self-consistent, since both the eigenvalues and eigenfunctions depend on the external potential. It's not obvious, then, that a solution exists and can be found analytically. Note that this is related to the previous $v-$representability question. 
+
+\section{The Kohn-Sham equations}
+
+The Kohn-Sham equations are based on the idea of auxiliary systems and provide a useful tool to calculate observables in Density Functional Theory. 
+
+\subsection{The exchange correlation term}
+
+Consider the problem of minimizing the density functional to find the groundstate total energy. The total energy functional is given by 
+
+\begin{equation}
+ E[n] = \hat{\bf T}[n] + \hat{\bf V}_{ee}[n] + \int_{\R^3} d{\bf x} \blanky \hat{V}_{\textnormal{ext}}({\bf x}) n({\bf x}).
+ \label{Hohenberg-Kohn functional}
+\end{equation}
+
+Should the functional exist, it is unique. However, the first two terms are unknown. The idea is to combine the use of an auxiliary system to help calculate these two functionals of the density, with a variational approach (eg. Thomas-Fermi, Hartree, etc.) \\
+
+In order to do this, consider equation \eqref{Hohenberg-Kohn functional} and let $T_s[n]$ be the kinetic energy functional of an independent particle system of density $n$. 
+
+\begin{align*}
+     E[n] &= \hat{\bf T}[n] + \hat{\bf V}_{ee}[n] + \int_{\R^3} d{\bf x} \blanky \hat{V}_{\textnormal{ext}}({\bf x}) n({\bf x}) \\
+     &= \hat{\bf T}[n] + \hat{\bf V}_{ee}[n] + \int_{\R^3} d{\bf x} \blanky \hat{V}_{\textnormal{ext}}({\bf x}) n({\bf x}) + T_s[n]-T_s[n] \\
+     &= \hat{\bf T}[n] + \hat{\bf V}_{ee}[n] + \int_{\R^3} d{\bf x} \blanky \hat{V}_{\textnormal{ext}}({\bf x}) n({\bf x}) + T_s[n]-T_s[n] + \frac{1}{2} \int_{\R^6} d{\bf x} d{\bf x'} \blanky \frac{n({\bf x})n({\bf x})}{|{\bf x}-{\bf x'}|} - \frac{1}{2} \int_{\R^6} d{\bf x} d{\bf x'} \blanky \frac{n({\bf x})n({\bf x})}{|{\bf x}-{\bf x'}|} \\
+     &= T_s[n] + \int_{\R^3} d{\bf x} \blanky \hat{V}_{\textnormal{ext}}({\bf x}) n({\bf x}) + \frac{1}{2} \int_{\R^6} d{\bf x} d{\bf x'} \blanky \frac{n({\bf x})n({\bf x})}{|{\bf x}-{\bf x'}|} + \underbrace{\hat{\bf T}[n] + \hat{\bf V}_{ee}[n] - T_s[n] - \frac{1}{2} \int_{\R^6} d{\bf x} d{\bf x'} \blanky \frac{n({\bf x})n({\bf x})}{|{\bf x}-{\bf x'}|}}_{\text{$=E_{xc}[n]$}} \\
+     &= E^H [n] + E_{xc}[n],
+\end{align*}
+
+where on the third line, we added and subtracted the electron-electron energy term in the Hartree approximation, where $E^H[n]$ is the total energy within the Hartree approximation and where $ E_{xc}[n]$ is the exchange-correlation term, which is given by
+
+$$
+ E_{xc}[n] = T[n] - T_s[n] + E_{ee}[n] - E^H_{ee} [n].
+$$
+
+The exchange-correlation functional is, in essence, a difference between the kinetic energy functional for the real system and the kinetic energy functional for the system of non-interacting particles and the difference between the exact electron-electron interaction functional and its counterpart in the Hartree approximation. \\
+
+\subsection{Derivation of the Kohn-Sham equations}
+
+Now, we will write down one-particle equations using the idea of auxiliary systems. \\
+
+Consider a system of $N$ non-interacting electrons (ie. no electron-electron interaction). Then Schr\"odinger's equation for this system reads
+
+$$
+\Psi = \prod_{i=1}^{N} \psi_{i}({\bf x}_i), \blanky \bigg[-\frac{1}{2} \nabla^2 + \hat{V}_{\textnormal{eff}}({\bf x}_i) \bigg] \psi_{i} ({\bf x}) = \lambda_i \psi_{i}({\bf x}_i) \Rightarrow n(\x) = \sum_{i=1}^{N} |\psi_i(\x)|^2.
+$$
+
+From the Hohenberg-Kohn theorem we know there is a unique correspondence between the density and the external potential of the system. We also know the total energy as a functional of the density. Now, given a real system with interacting electrons and density $n$, can we find an auxiliary system with non-interacting electrons which the same density? This question is answered by the Kohn-Sham theorem. \\
+
+Consider first the procedure for which we'd find the effective potential, which is unknown at the moment. 
+Since densities and external potentials are in unique correspondence, the one-particle wave functions are also unique functionals of the density $\psi_i (\x) = \psi_i ([n], \x)$. To find these functionals, we will use the variational theorem which, in essence, states that the energy functional of the density is stationary around the groundstate density. Then, the best one-particles wave-functions of the auxiliary system which minimize the energy functional can be obtained via a functional derivative, ie.
+
+$$
+\frac{\delta(E[n])}{\delta \psi_i} = 0, \textnormal{ under the constraint } \int_{\R^3} d\x \blanky \psi_{i}^{*}(\x) \psi_i(\x) = 1.
+$$
+
+with some additional constraints. Therefore we define a set $\{\lambda_i\}_{i=1}^{n}$ of real numbers, the Lagrange multipliers, so as to take into account the normalization constraint. 
+
+\begin{align}
+    \frac{\delta}{\delta \psi_{i}^{*}} \bigg[T_s[n] + \int_{\R^3} d{\bf x} \blanky \hat{V}_{\textnormal{ext}}({\bf x}) n({\bf x}) &+ \frac{1}{2} \int_{\R^6} d{\bf x} d{\bf x'} \blanky \frac{n({\bf x})n({\bf x'})}{|{\bf x}-{\bf x'}|} + E_{xc}[n] - \lambda_i \int_{\R^3} d\x \blanky \psi_{i}^{*}(\x) \psi_i(\x)\bigg] = 0 \\
+&\Rightarrow \bigg[-\frac{\nabla^2}{2} + \hat{V}_{\textnormal{ext}}({\bf x}) + \underbrace{\int_{\R^3}d\x' \blanky \frac{n({\bf x})}{|{\bf x}-{\bf x'}|}}_{V^H[n]} + \frac{\delta E_{xc}[n]}{\delta n(\x)}\bigg] \psi_i(\x) = \lambda_i \psi_i(\x),
+\label{Kohn-Sham equations}
+\end{align}
+
+where equation \eqref{Kohn-Sham equations} is called the Kohn-Sham equations, a set of one-particles equations for non-interacting electrons which give the exact electron density $n(\x)$ of the real system. Note that \eqref{Kohn-Sham equations}'s second, third and fourth term on the left hand side, imply that the electrons are submitted to an effective potential given by the sum of said terms. Note that the Kohn-Sham equations are exact, so we can obtain -in principle- the exact density by solving them. However, in practice, this can seldom be performed, since the exchange-correlation term is not known a priori and must be approximated. \\
+
+\subsection{Consequences of the Kohn-Sham equation}
+
+As stated previously, the Kohn-Sham equations are a set of one-particle equations, where the wave-function acts on only one space variable. All independent particles are submitted to an effective potential. By diagonalizing the Kohn-Sham Hamiltonian we obtain the eigenvectors and eigenvalues. \\
+
+Suppose we can solve the Kohn-Sham equations, we have the eigenvectors $\{\psi_{i}(\x)\}_{i=1}^{n}$, from which we can calculate the electron density. Then, using this electron density, we can, in principle, construct any observable, such as the total energy. And via the total energy, a large number of physical observables can be calculated, from equilibrium distances to stability, phonons to defect formation energies and many others. \\
+
+However, how can the Kohn-Sham equations be solved? In principle, by diagonalizing the Kohn-Sham Hamiltonian. This cannot be done unless we specify the exchange-correlation potential and the Hartree potentials, which themselves depend on the electron density. The most common solution is to implement an iterative procedure, in which an output, the density, can be used as an input in the next iteration. This is called the \textbf{self-consistent scheme}. \\
+
+Another very important question concers the interpretation of the Kohn-Sham's eigenvalues. In particular, if they can be interpreted as the energies of the electrons. The electron's energy is defined as the energy to extract the electron from the system and put it infinitely far away. Should this be the case, we could then model the energy levels of the system, if it has a discrete structure, like an atom or a molecule, or, for the case of a solid, build the entire band structure. Unfortunately, this is not the case, since there's no counterpart to the (Hartree-Fock-) Koopmans' theorem for the Kohn-Sham formulation. This is so since the auxiliary system bears no resemblance to the real system, the electronic density notwithstanding. Thus, the eigenvalues are not removal or addition energies. In practice, however, this may not be the case. For the specific case of finite systems, the last occupied eigenvalue has a physical meaning, it is the ionization energy HOMO. \\
+
+The last concern at the moment is, what is the Kohn-Sham potential? It's the sum of the external potential, a known quantity, of the Hartree potential, another known quantity, and of the exchange-correlation potential which, though unknown, is a local, static quantity. 
+
 \end{document}
