@@ -546,4 +546,112 @@ Another very important question concers the interpretation of the Kohn-Sham's ei
 
 The last concern at the moment is, what is the Kohn-Sham potential? It's the sum of the external potential, a known quantity, of the Hartree potential, another known quantity, and of the exchange-correlation potential which, though unknown, is a local, static quantity. 
 
+\section{Local Density Approximation (LDA)}
+
+\subsubsection{The Universal Functional}
+
+The total energy is a functional of the density, which can be written as the sum of a universal functional of the density -which is the same for all systems with the same number of electrons and the same interaction- and a local functional of the density, which depends on the external potential. Due to the Hohenberg-Kohn theorems, the universal functional exists and is unique. \\
+
+The universal functional is given by 
+
+\begin{equation}
+    F[n] = T_s[n] + E_{\textnormal{Hartree}}[n] + E_{xc}[n], 
+\end{equation}
+
+where the exchange-correlation functional is much smaller than the first two terms though it is vital to explain molecular bonding. There are two main strategies to find approximate exchange-correlation functionals, empirical and non-empirical methodologies. In the empirical approach, a certain functional form is chose, which contains some free parameters, to be adjusted with experimental data-sets. This idea was first introduced by Axel Becke in 1997 (JCP 107, 8554). The first step is to choose variables based on physically relevant ingredients, such as the spin density $n^{\sigma}(\x)$. A simple example is the so-called X$\alpha$-method (Slater 1972) 
+
+$$
+V_{xc}^{\sigma}(r) = -6\alpha \bigg[\frac{3}{4\pi} n^{\sigma}(r)\bigg]^{\frac{1}{3}},
+$$
+
+where the spin density $n^{\sigma}(\x)$ is thought as the contribution of electrons of spin $\sigma$ to the total electron density, as a function of the position. Other common building blocks include the gradient density $|\nabla n^{\sigma}(\x)|$ and the kinetic-energy density $\tau^{\sigma}(\x) = \sum_{i}^{N_\sigma} |\nabla \psi_i^\sigma(\x)|^2$, which is the sum over the gradient squares of the occupied Kohn-Sham orbitals. The next step is to define the exchange-correlation functional as some power series in the chosen series, 
+
+$$
+f[x,y] = \sum_{ij}^{MM'} c_{ij} x^i y^i,
+$$
+
+which introduces a set of expansion parameters, $c_ij$, which can then be fitted by least-squares on empirical datasets. The most famous empirical dataset is the G2 data set (John Pople et. al, 1991-1998), which has 148 formation enthalpies, 88 ionization potentials, 58 electron affinities and 8 proton affinities of different molecules. Another methodology includes using Machine Learning techniques to bypass the Kohn-Sham equations entirely, and directly approximate the potential density map and the map from density to total energy (F. Brockherde, L. Vogt, L. Li, Me. Tuckerman, K. Burke, and K.-R M\"uller, Nature Comm. 8, 872 (2017)). \\
+
+A non-empirical approximation of the exchange-correlation functional is constructed from exact constraints or from a derivation, which doesn't contain any fitting parameters. \\
+
+\subsection{Local Density Approximations and Jacob's Ladder of Approximations}
+
+It turns out that there is a systematic way of designing exchange-correlation functionals, but improving performance requires increasingly complexity. The Jacob's Ladder (formulated by John Perdew, 2001) is a classification scheme of various approximations for the exchange-correlation functional. On the other hand, the local density approximation (LDA) is the basis and point of departure for constructing many modern functionals. The zero-order approximation consists of neglecting the exchange-correlation term in its entirety. The first-order approximation are the LDA, the second order are the GGA, followed by the meta-GGA, Hybrid and, finally, RPA-like models, with each step increasing the calculations' computational cost but with better performing results. \\
+
+\paragraph{\textbf{Local density Approximations}}
+
+The Local Density Approximation is the lowest rung of Jacob's ladder, which is an example of a non-empirical exchange-correlation functional and uses a reference system, which provides the constraint to construct the functional. \\
+
+To define the reference system, consider an array of ionic cores in a solid, embedded in a uniform sea of delocalized valence electrons. An even simpler picture of a solid consists of positive cores uniformly smeared out on a surface (sometimes called a jellium) and a homogeneous electron gas of the same density $\Bar{n}$ as the jellium, such that the system has neutral charge. In this case, our reference system is the homogeneous electron gas and the only variable of interest is the uniform density, $\Bar{n}$, with the energy per volume being
+
+$$
+\epsilon^{\textnormal{hom}}(\Bar{n}) = \frac{E^{\textnormal{hom}}}{V},
+$$
+
+ie. only being a function, not a functional, of the uniform density. The energy density can then be written as a sum of the kinetic energy density and the exchange-correlation density, ie. 
+
+$$
+\epsilon^{\textnormal{hom}} = \epsilon_{\textnormal{kin}}^{\textnormal{hom}} + \epsilon_{\textnormal{xc}}^{\textnormal{hom}}, \textnormal{ where } \begin{array}{c}
+     \epsilon_{\textnormal{kin}}^{\textnormal{hom}} = \frac{(3\pi^2 \Bar{n})^{\frac{5}{3}}}{10\pi^2}, \\
+     \\
+     \epsilon_{\textnormal{xc}}^{\textnormal{hom}} = \frac{(3\pi^2 \Bar{n})^{\frac{4}{3}}}{4\pi^3} + \epsilon_{c}^{\textnormal{hom}}.
+\end{array}
+$$
+
+note that in the homogeneous electron gas, the exchange term is known but there is no known analytic formula for the correlation term (though there are well known formulas based on Quantum Monte-Carlo). \\
+
+Then, in the LDA approximation, the exchange-correlation energy functional is given as an integral over the exchange-correlation energy density of the homogeneous electron gas, evaluated at the density at each point $\x$, ie. 
+
+\begin{equation}
+E_{xc}^{\textnormal{LDA}} [n] = \int_{\R^3} d^3 \x \blanky \epsilon_{\textnormal{xc}}^{\textnormal{hom}}(n(\x)).
+\label{LDA exchange correlation}
+\end{equation}
+
+\blanky \\
+
+\subsection{Exact Constraints and GGAs}
+
+Physically, consider a very strongly inhomogeneous system with an electron cloud resembling spherical shells. A small volume element at position $\x_i$ as a small piece of a homogeneous electron gas with the same density as in the real system at that point and at a different position, there will be a different density. Therefore, the LDA consists in locally treating the real system as a homogeneous electron gas, with the exchange correlation energy given by equation \eqref{LDA exchange correlation}. \\
+
+LDA is a very useful techniques, giving, for example, total energies of molecules within $1\% - 5\%$ of the exact results and gives lattice constants of solids within $1\% - 2\%$ of the exact results. However, the LDA produces atomization energies too big (overbinding), there are no bounded negative ions and not accurate enough for chemical applications. \\
+
+Consider an electron in a many-body interacting electron system. There are three mechanisms whereby electron "avoid" each other:
+
+\begin{itemize}
+    \item classical Coulomb interaction, 
+    \item the Pauli principle, 
+    \item non-classical correlation effects, which can occur between parallel and anti-parallel spins. 
+\end{itemize}
+
+Then, the \textit{exchange-correlation hole} is the region around each electron where it's less likely to find another electron due to exchange-correlation effects. In mathematical terms, we define a pair density as 
+
+\begin{equation}
+    P(\x, \x') = N(N-1) \int_{\Omega \subset \R^{3N}} \prod_{i=3}^{N} d^{3}\x_i \prod_{j=3}^{N} \sum_{\sigma_j \in \mathds{C}^2} |\Psi(\x, \x', \tilde{x}^{(3)}\cdots, \tilde{x}^{(N)})|^2,
+    \label{Pair density}
+\end{equation}
+
+ie. the probability of finding any pair of electrons in the volume elements $d\x$ and $d\x'$. Note that equation \eqref{Pair density} includes a summation over the spins of all other electrons. If the electrons were classical particles, then the pair density would simply be the product of the one-particle densities,
+
+$$
+P(\x, \x')_{\textnormal{cl}} = n(\x)n(\x').
+$$
+
+But for real, interacting, quantum electrons we have that 
+
+$$
+P(\x, \x')_{\textnormal{cl}} = n(\x)n(\x') + n(\x) n_{xc}(\x, \x'),
+$$
+
+where $n_{xc}(\x, \x')$ is the exchange-correlation hole density. This term accounts for the exchange and correlation quantum effects whereby electrons avoid one another. Now, it's possible to write the exchange correlation hole as the sum of an exchange hole and a correlation hole 
+
+$$
+n_{xc}(\x, \x') = n_{x}(\x, \x') + n_{c}(\x, \x'), \textnormal{ which } \begin{array}{c}
+     n_{x}(\x, \x') \leq 0  \\
+     \blanky \\
+     \int_{\R^{3}} d\x' \blanky n_{x}(\x, \x') = -1\\
+     \blanky \\
+     \int_{\R^{3}} d\x' \blanky n_{c}(\x, \x') = 0.
+\end{array}
+$$
+
 \end{document}
