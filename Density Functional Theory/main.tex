@@ -546,6 +546,10 @@ Another very important question concers the interpretation of the Kohn-Sham's ei
 
 The last concern at the moment is, what is the Kohn-Sham potential? It's the sum of the external potential, a known quantity, of the Hartree potential, another known quantity, and of the exchange-correlation potential which, though unknown, is a local, static quantity. 
 
+\subsection{The Kohn-Sham potential}
+
+The Kohn-Sham potential is an effective potential, felt by the non-interacting electrons of the auxiliary system, whose density is the same as that of the real interacting system. This potential is local, it doesn't depend on any particular electron and, in principle, only depends on the electron density 
+
 \section{Local Density Approximation (LDA)}
 
 \subsubsection{The Universal Functional}
@@ -626,7 +630,7 @@ Consider an electron in a many-body interacting electron system. There are three
 Then, the \textit{exchange-correlation hole} is the region around each electron where it's less likely to find another electron due to exchange-correlation effects. In mathematical terms, we define a pair density as 
 
 \begin{equation}
-    P(\x, \x') = N(N-1) \int_{\Omega \subset \R^{3N}} \prod_{i=3}^{N} d^{3}\x_i \prod_{j=3}^{N} \sum_{\sigma_j \in \mathds{C}^2} |\Psi(\x, \x', \tilde{x}^{(3)}\cdots, \tilde{x}^{(N)})|^2,
+    P(\x, \x') = N(N-1) \int_{\Omega \subset \R^{3(N-2)}} \prod_{i=3}^{N} d^{3}\x_i \prod_{j=3}^{N} \sum_{\sigma_j \in \mathds{C}^2} |\Psi(\x, \x', \tilde{x}^{(3)}\cdots, \tilde{x}^{(N)})|^2,
     \label{Pair density}
 \end{equation}
 
@@ -645,7 +649,7 @@ $$
 where $n_{xc}(\x, \x')$ is the exchange-correlation hole density. This term accounts for the exchange and correlation quantum effects whereby electrons avoid one another. Now, it's possible to write the exchange correlation hole as the sum of an exchange hole and a correlation hole 
 
 $$
-n_{xc}(\x, \x') = n_{x}(\x, \x') + n_{c}(\x, \x'), \textnormal{ which } \begin{array}{c}
+n_{xc}(\x, \x') = n_{x}(\x, \x') + n_{c}(\x, \x'), \textnormal{ which satisfy} \begin{array}{c}
      n_{x}(\x, \x') \leq 0  \\
      \blanky \\
      \int_{\R^{3}} d\x' \blanky n_{x}(\x, \x') = -1\\
@@ -653,5 +657,49 @@ n_{xc}(\x, \x') = n_{x}(\x, \x') + n_{c}(\x, \x'), \textnormal{ which } \begin{a
      \int_{\R^{3}} d\x' \blanky n_{c}(\x, \x') = 0.
 \end{array}
 $$
+
+The LDA exchange-correlation hole $n_{xc}^{\textnormal{LDA}}(\x,\x')$ satisfies these constraints, ie.
+
+$$
+\begin{array}{c}
+     n_{xc}^{\textnormal{LDA}}(\x,\x') \leq 0  \\
+     \blanky \\
+     \int_{\R^{3}} d\x' \blanky n_{xc}^{\textnormal{LDA}}(\x,\x') = -1\\
+     \blanky \\
+     \int_{\R^{3}} d\x' \blanky n_{xc}^{\textnormal{LDA}}(\x,\x') = 0.
+\end{array}
+$$
+
+The physical reason to impose such constraint is that our reference system, the homogeneous electron gas, satisfies these constraints as well. Following this line of thought, the exchange-correlation energy functional can be written as 
+
+\begin{equation}
+    E_{xc} [n] = \int_{\R^6} d\x d\x' \blanky \frac{n(\x) \bar{n}_{xc}(\x, \x')}{|\x - \x'|},
+\end{equation}
+
+which resembles the Hartree energy but including the averaged exchange-correlation hole coupling constant, $\bar n_{xc}$. It turns out that the LDA exchange-correlation hole itself is not a good approximation of the exact exchange-correlation hole density, but the theory's overall accuracy improves since many imperfections are integrated out. \\
+
+
+In order to improve, one needs to find better approximations for the exchange-correlation hole, which means going beyond the local density as the main quantity. Eg., consider a strongly inhomogeneouss density distribution. Kohn's concept of nearsightedness postulates that $n_{xc}(\x, \x')$ is mostly determined by $n(\x)$, thus only needing input information on the density, within a small neighbourhood of the reference position (the semi-local approximation). The idea is then, to construct an exchange-correlation functional in terms of the local density and its gradient. This is the main idea behind the \textbf{Generalized Gradient Approximation (GGA)}, where the exchange correlation energy functional can then be written as 
+
+
+\begin{equation}
+    E_{xc}^{\textnormal{GGA}}[n] = \int_{\R^3} \blanky \epsilon_{xc}^{\textnormal{hom}}(n(\x)) F_{xc} (n^{\sigma}(\x), \nabla n^{\sigma}(\x)),
+\end{equation}
+
+where $F_{xc}(\cdot)$ is a generic functional, the enhancement factor, which can then be determined by exact constraints. Therefore, GGAs can then be used to determine the exchange-correlation energy functional without empirical parameters, eg. the PBE-functional (J.P. Perdew, K. Burke, and M. Ernzerhof, PRL 79, 3865, (1996)) or the BLYP-functional (Becke-Lee-Yang-Parr 1988). GGAs significantly improve accuracy without a significant increase in computational complexity. \\
+
+\subsection{Meta-GGAs, Hybrids and RPA-Like}
+
+There are approximations which go beyond the LDA and GGAs, the so-called Meta-GGAs, pioneered by J. Purdew. Consider some unknown electronic density distribution, for which we desire to write approximations in order to calculate the exchange correlation energy. As we've seen, LDA deals with local functionals, which only depends on the density and/or orbitals and their gradients at the reference position; needing only local information to construct the density. In the local and semilocal functionals, on the other hand, the exchange-correlation energy density depends on the density. In non-local functionals, the exchange-correlation energy density at point $\x$, depends on the density and/or the orbitals everywhere throughout the system. \\
+
+Meta-GGAs consider semi-local functionals, Hybrid and RPA-like models consider fully non-local functionals. In the Meta-GGAs' case, the exchange-correlation energy is written as 
+
+\begin{equation}
+    E_{xc}^{\textnormal{MGGA}}[n^\sigma] = \int_{\R^3} d\x \blanky f(n^\sigma, \nabla n^\sigma, \tau^\sigma),
+\end{equation}
+
+where $\tau^\sigma[n][n](\x)$ is the kinetic energy density, an implicit semi-local functional, given by $\tau^\sigma(\x) = \frac{1}{2} \sum_{j}^{\textnormal{occ}} |\nabla\psi_j^\sigma (\x)|, \blanky \sigma \in \mathds{C}^2$. Well known examples of Meta-GGAs are the TPSS-method (Tao-Perdew-Staroveov-Scuseria 2003) and the SCAN-functional ("Strongly Constrained and Appropriatley Normed", Sun-Ruszinsky, Perdew 2016). The physical reason to include the kinetic energy density is because said density is highly sensitive to the electron's degree of localization, helping the functional to better model covalent single bonds and metallic bonds. Furthermore, this density incorporates exact constraints of one and two-electron densities. Since the kinetic energy density is an implicit functional, there is no analytic expression for it in terms of the density. Naturally, the Hohenberg-Kohn theorem establishes that this must be a functional of the density, since the Kohn-Sham orbitals depend on the density. \\
+
+In Y. Zhang et al., (NPJ Comput. Mater. 4, 9 (2018)), experimental enthalpies of solids (main group binary compounds) are compared with PBE-based and SCAN-based theoretical results. The SCAN-Meta-GGA approach yields a mean absolute error (MEA) close to chemical accuracy (0.038 eV per atom) while the PBE's MEA is close to 0.293 eV per atom. The study found that the results were less accurate for transition metal compounds but still very good. In J. Sun et al., Nature Chem. 8, 831, (2016), structures formed by six water molecules, SCAN outperformed both the hybrid PBE mode, PBE0, as well as the computationally-expensive CCSDT, a high-level Quantum Chemistry, and predicted the correct energetic ordering of four water hexagrems. It turns out that Meta-GGAs method do not offer significantly more accurate results that LDAs when the exchange-correlation hole is sufficiently localized. Meta-GGAs method tend to fail when studying weakly bonded systems, where long-range van der Waals forces are important, as well for strongly-correlated systems, and for the band-gap calculations.
 
 \end{document}
