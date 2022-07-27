@@ -674,6 +674,7 @@ The physical reason to impose such constraint is that our reference system, the 
 
 \begin{equation}
     E_{xc} [n] = \int_{\R^6} d\x d\x' \blanky \frac{n(\x) \bar{n}_{xc}(\x, \x')}{|\x - \x'|},
+    \label{exchange-correlation energy}
 \end{equation}
 
 which resembles the Hartree energy but including the averaged exchange-correlation hole coupling constant, $\bar n_{xc}$. It turns out that the LDA exchange-correlation hole itself is not a good approximation of the exact exchange-correlation hole density, but the theory's overall accuracy improves since many imperfections are integrated out. \\
@@ -688,7 +689,7 @@ In order to improve, one needs to find better approximations for the exchange-co
 
 where $F_{xc}(\cdot)$ is a generic functional, the enhancement factor, which can then be determined by exact constraints. Therefore, GGAs can then be used to determine the exchange-correlation energy functional without empirical parameters, eg. the PBE-functional (J.P. Perdew, K. Burke, and M. Ernzerhof, PRL 79, 3865, (1996)) or the BLYP-functional (Becke-Lee-Yang-Parr 1988). GGAs significantly improve accuracy without a significant increase in computational complexity. \\
 
-\subsection{Meta-GGAs, Hybrids and RPA-Like}
+\subsection{Meta-GGAs}
 
 There are approximations which go beyond the LDA and GGAs, the so-called Meta-GGAs, pioneered by J. Purdew. Consider some unknown electronic density distribution, for which we desire to write approximations in order to calculate the exchange correlation energy. As we've seen, LDA deals with local functionals, which only depends on the density and/or orbitals and their gradients at the reference position; needing only local information to construct the density. In the local and semilocal functionals, on the other hand, the exchange-correlation energy density depends on the density. In non-local functionals, the exchange-correlation energy density at point $\x$, depends on the density and/or the orbitals everywhere throughout the system. \\
 
@@ -698,8 +699,92 @@ Meta-GGAs consider semi-local functionals, Hybrid and RPA-like models consider f
     E_{xc}^{\textnormal{MGGA}}[n^\sigma] = \int_{\R^3} d\x \blanky f(n^\sigma, \nabla n^\sigma, \tau^\sigma),
 \end{equation}
 
-where $\tau^\sigma[n][n](\x)$ is the kinetic energy density, an implicit semi-local functional, given by $\tau^\sigma(\x) = \frac{1}{2} \sum_{j}^{\textnormal{occ}} |\nabla\psi_j^\sigma (\x)|, \blanky \sigma \in \mathds{C}^2$. Well known examples of Meta-GGAs are the TPSS-method (Tao-Perdew-Staroveov-Scuseria 2003) and the SCAN-functional ("Strongly Constrained and Appropriatley Normed", Sun-Ruszinsky, Perdew 2016). The physical reason to include the kinetic energy density is because said density is highly sensitive to the electron's degree of localization, helping the functional to better model covalent single bonds and metallic bonds. Furthermore, this density incorporates exact constraints of one and two-electron densities. Since the kinetic energy density is an implicit functional, there is no analytic expression for it in terms of the density. Naturally, the Hohenberg-Kohn theorem establishes that this must be a functional of the density, since the Kohn-Sham orbitals depend on the density. \\
+where
 
-In Y. Zhang et al., (NPJ Comput. Mater. 4, 9 (2018)), experimental enthalpies of solids (main group binary compounds) are compared with PBE-based and SCAN-based theoretical results. The SCAN-Meta-GGA approach yields a mean absolute error (MEA) close to chemical accuracy (0.038 eV per atom) while the PBE's MEA is close to 0.293 eV per atom. The study found that the results were less accurate for transition metal compounds but still very good. In J. Sun et al., Nature Chem. 8, 831, (2016), structures formed by six water molecules, SCAN outperformed both the hybrid PBE mode, PBE0, as well as the computationally-expensive CCSDT, a high-level Quantum Chemistry, and predicted the correct energetic ordering of four water hexagrems. It turns out that Meta-GGAs method do not offer significantly more accurate results that LDAs when the exchange-correlation hole is sufficiently localized. Meta-GGAs method tend to fail when studying weakly bonded systems, where long-range van der Waals forces are important, as well for strongly-correlated systems, and for the band-gap calculations.
+$$\tau^\sigma(\x) = \frac{1}{2} \sum_{j}^{\textnormal{occ}} |\nabla\psi_j^\sigma (\x)|, \blanky \sigma \in \mathds{C}^2,$$
+
+is the kinetic energy density, an implicit semi-local functional. Well known examples of Meta-GGAs are the TPSS-method (Tao-Perdew-Staroveov-Scuseria 2003) and the SCAN-functional ("Strongly Constrained and Appropriatley Normed", Sun-Ruszinsky, Perdew 2016). The physical reason to include the kinetic energy density is because said density is highly sensitive to the electron's degree of localization, helping the functional to better model covalent single bonds and metallic bonds. Furthermore, this density incorporates exact constraints of one and two-electron densities. Since the kinetic energy density is an implicit functional, there is no analytic expression for it in terms of the density. Naturally, the Hohenberg-Kohn theorem establishes that this must be a functional of the density, since the Kohn-Sham orbitals depend on the density. \\
+
+In Y. Zhang et al., (NPJ Comput. Mater. 4, 9 (2018)), experimental enthalpies of solids (main group binary compounds) are compared with PBE-based and SCAN-based theoretical results. The SCAN-Meta-GGA approach yields a mean absolute error (MEA) close to chemical accuracy (0.038 eV per atom) while the PBE's MEA is close to 0.293 eV per atom. The study found that the results were less accurate for transition metal compounds but still very good. In J. Sun et al., Nature Chem. 8, 831, (2016), structures formed by six water molecules, SCAN outperformed both the hybrid PBE mode, PBE0, as well as the computationally-expensive CCSDT, a high-level Quantum Chemistry, and predicted the correct energetic ordering of four water hexagrems. It turns out that Meta-GGAs method do not offer significantly more accurate results that LDAs when the exchange-correlation hole is sufficiently localized. Meta-GGAs method tend to fail when studying weakly bonded systems, where long-range van der Waals forces are important, as well for strongly-correlated systems, and for the band-gap calculations. \\
+
+\subsection{Hybrids and RPA-Like}
+
+Hybrid models are based on a mixture of a semi-local exchange correlation functional and a non-local exact exchange functional and were first proposed by Axel Becke (1993). In this approach, the exchange-correlation energy is written as \eqref{exchange-correlation energy} where 
+
+\begin{equation}
+    \bar{n}_{xc}(\x, \x') = \int_{\R_{[0,1]}} d\lambda \blanky n_{xc}^\lambda(\x, \x'), 
+    \label{coupling constant}
+\end{equation}
+
+is the coupling constant averaged exchange correlation hole density. The most natural approach is to consider \eqref{coupling constant} as a linear interpolation, where
+
+\begin{equation}
+    \bar{n}_{xc} \approx \frac{1}{2} n_{xc}^{\lambda = 0} + \frac{1}{2} n_{xc}^{\lambda = 1}.
+\end{equation}
+
+Physically, $\lambda$ is a coupling constant ie. a measure of the correlation strength: $\lambda = 0$ there's no correlation and describes exact exchange
+
+$$
+n_{xc}^{\lambda = 0}(\x, \x') = n_{x}(\x, \x').
+$$
+
+The exact exchange energy is given by a Fock-exchange expression
+
+\begin{equation}
+    E_x^{\textnormal{exact}}[n] = -\frac{1}{2} \sum_{\sigma \in \mathds{C}^2} \sum_{ij}^{\textnormal{occ}} \int_{\R^6} d\x d\x' \blanky \frac{\psi_{i}^{\sigma {*}} (\x) \psi_{i}^{\sigma} (\x') \psi_{j}^{\sigma} (\x) \psi_{j}^{\sigma {*}} (\x')}{|\x - \x'|}.
+    \label{exact exchange}
+\end{equation}
+
+Note that \eqref{exact exchange} formally resembles the Hartree-Fock exchange energy but in \eqref{exact exchange}, the sum is evaluated at the Kohn-Sham orbitals, which themselves depend on the density. Thus, the exact exchange energy is an implicit density functional. The dependence of said exact exchange energy on the orbital is explicit and non-local. Therefore, a first guess for a hybrid functional consists on mixing the exact exchange with the exchange correlation energy at the LDA level, as an approximation for the contribution at $(\lambda=1)$-order,
+
+\begin{equation}
+    E_{xc}^{\textnormal{hybrid}} = \frac{1}{2}    E_{x}^{\textnormal{exact}} + \frac{1}{2}    E_{xc}^{\textnormal{LDA}}.
+    \label{naive hybrid}
+\end{equation}
+
+Unfortunately, this n\"aive hybrid approximation is not useful in practice and doesn't improve accuracy. However, there are several techniques to improve the interpolation schemes or the coupling constant integration. One such successful workaround is PBE0 (1999) where the exchange-correlation energy is approximated as 
+
+$$
+    E_{xc}^{\textnormal{hybrid}} = \frac{1}{4}    E_{x}^{\textnormal{exact}} + \frac{3}{4}    E_{x}^{\textnormal{GGA}} + E_{c}^{\textnormal{GGA}}.
+$$
+
+Another such example is BELYP (1994), where now the approximation contains three parameters, $a, b, c$, and mixes LDA and GGA exchange and correlation with exact exchange, 
+
+$$
+    E_{xc}^{\textnormal{hybrid}} = (1-a)    E_{x}^{\textnormal{LDA}} + aE_{x}^{\textnormal{exact}} + bE_{x}^{\textnormal{BB8}} + cE_{c}^{\textnormal{LYP}} + (1-c)E_{c}^{\textnormal{LDA}},
+$$
+
+where the values of $a,b,c$ can then be fitted with experimental datasets. \\
+
+The main problem with hybrid and subsequent approximations is their increased computational complexity, compared to the LDA and GGAs counterparts. In the LDA and GGA, the density functionals are explicit, thus the exchange-correlation potential is 
+
+$$
+V_{xc}(\x) = \frac{\delta E_{xc}[n]}{\delta n(\x)}.
+$$
+
+The same cannot be said for the Meta-GGAs and Hybrid functionals. Said functionals depend on the orbitals, and thus are implicit. The functional derivative is now much more difficult to obtain directly, thus increasing the problem's computational complexity. Note that the exchange correlation potential can be re-written as 
+
+\begin{align}
+V_{xc}(\x) = \frac{\delta E_{xc}[n]}{\delta n(\x)} = \sum_{i} \int_{\R^3} d\x' \frac{\delta E_{xc}[n]}{\delta \psi_i (\x')}\frac{\delta \psi_i (\x')}{\delta n(\x)}.
+\label{Generalized Kohn-Sham}
+\end{align}
+
+\eqref{Generalized Kohn-Sham}'s first multiplicative term, $ \frac{\delta E_{xc}[n]}{\delta \psi_i (\x')}$, can be obtained since we know $E_{xc}[n]$ explicitly. In respect to the second functional derivative, we can calculate functional derivative, $\frac{\delta n(\x)}{\delta \psi_i (\x')}$ though not the one which appears in \eqref{Generalized Kohn-Sham} since the orbitals, $\psi_i(\x)$, implicitly depend on the density via the self-consistent Kohn-Sham equation. Therefore, in many cases, the Generalized Kohn-Sham approach is implemented, where one simply computes the variation of the energy with respect to the orbitals ie. 
+
+$$
+V_{xc, i}^{\textnormal{non-local}} (\x) = \frac{\delta E_{xc}[n]}{\delta \psi_i (\x')},
+$$
+
+which gives a non-local exchange correlation potential and therefore, said potential, can be used in the traditional Kohn-Sham equation. This gives the Generalized Kohn-Sham equations, which are now non-local. For the hybrid functionals with exact exchange, this is similar to the Hartree-Fock approach. \\
+
+Some of the main takeaways are: 
+
+\begin{itemize}
+    \item Hybrid functionals perform very well for reproducing molecules' energetics, good band-gaps and give good geometries \& lattice constants, 
+    \item but GGAs and Meta-GGAs often perform better
+    \item Hartree-Fock exchange can be expensive for solids, depending on the implementation. Thus Hybrid functionals are not widely applicable for the study of solids. 
+\end{itemize}
+
+\subsection{Band-gaps of solids}
 
 \end{document}
