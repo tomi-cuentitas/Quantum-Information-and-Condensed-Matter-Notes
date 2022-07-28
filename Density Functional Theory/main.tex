@@ -58,22 +58,49 @@ $$
 
 This problem, while tractable, is unphysical since it implies that all electrons move independently in the external potential, allowing for multiple electrons to be in the fundamental state (or any other state for that matter), which goes against the Pauli principle. One way in which we can take into account the Pauli Principle is by taking the Slater determinant of the $N$ single-electron wave functions. Even so, the electrons would still be independent. \\
 
+\section{The Hartree-Fock formalism}
+
+Consider the non-relativistic Hamiltonian given by 
+
+\begin{equation}
+    \hat{\bf H} = -\frac{\hbar^2}{2m_e} \sum_i \nabla^2_i + \sum_{i} {\bf V}_{\textnormal{ext}} ({\bf x}_i) + \frac{1}{2} \sum_{i \neq j} \frac{e^2}{|{\bf x}_i-{\bf x}_j|},
+\label{hamiltonian HF}
+\end{equation}
+
+which contains the kinetic energy of the $i$-th electron, the external potential, which acts as a one-body operator, and the Coulomb interaction. Hartree-Fock's approach consists on initially considering a system of almost independent particles, in which each electron moves in the electrostatic potential of all other electrons. This is, the $n$-body normalized wave-function is factorized in a product in a product of normalized, independent particle wavefunctions, ie.
+
+\begin{align*}
+     & \Psi^{HF} (\x_1, \cdots, \x_n) = \prod_{\bm{\alpha} \in \Lambda} \psi_{\bm{\alpha}}(\x, {\bm \sigma}) =  \prod_{j \in \Lambda}\psi_{\alpha_j, s_j}(\x_j, \sigma_j),
+\end{align*}
+
+where $\bm{\alpha} \in \Lambda$ indexed all non-spin quantum numbers (eg. $nlm$ for an atom or $n{\bf k}$ for a crystal). Further conditions are imposed on the one-body wavefunctions,
+
+\begin{align*}
+     \psi_{\alpha_j, s_j}(\x_j, \sigma_j) =  \left\{ \begin{array}{lcc}
+         \psi_{\alpha_j}(\x_j) \chi_{\frac{1}{2}} & \textnormal{ for } \sigma_j = +1 \\
+         \psi_{\alpha_j}(\x_j) \chi_{-\frac{1}{2}} & \textnormal{ for } \sigma_j = -1   
+     \end{array} \right. \textnormal{ and }
+     \xmeasure \spinmeasure \psi_{\alpha_j, s_j}^{*}(\x_j, \sigma_j) \psi_{\alpha_j, s_j}(\x_j, \sigma_j) = 1,
+\end{align*}
+
+ Note that this ansatz cares not for wavefunction's antisymmetry, though it can still abide by Pauli's principle if no more than two electron are assigned for each wavefunction $\psi_{\alpha_j}(\x_j)$.
+
 \section{Observables}
 
 The general purpose for solving the eigenvalue equation \eqref{ev equation} is to then use said wave-function to calculate observables. Consider the grand canonical ensemble and a given operator $\hat{\bf O} : \mathds{H} \rightarrow \mathds{H}$, then 
 
 \begin{equation}
-\langle \hat{\bf O} \rangle = \frac{1}{\mathcal{Z}} \sum_{\alpha \in \Lambda} e^{-\beta(E_\alpha - \mu N_\alpha)} \bra{\Psi_\alpha}\hat{\bf O}\ket{\Psi_\alpha},
+\langle \hat{\bf O} \rangle = \frac{1}{\mathcal{Z}} \sum_{\bm{\alpha }\in \Lambda} e^{-\beta(E_{\bm{\alpha} }- \mu N_{\bm{\alpha})}} \bra{\Psi_{\bm{\alpha}}}\hat{\bf O}\ket{\Psi_{\bm{\alpha}}},
 \label{grand canonical}
 \end{equation}
 
 where 
 
 \begin{itemize}
-    \item $\Lambda$ indexes the different states,
+    \item $\bm \alpha \in {\Lambda}$ indexes the different states, 
     \item where $\beta = \frac{1}{kT}$ and $\mu$ is the chemical potential,
-    \item $E_\alpha$ and $N_\alpha$ are the energy and particle number in state $\ket{\Psi_\alpha}$ respectively,
-    \item and where $\mathcal{Z} =  \sum_{\alpha \in \Lambda} e^{-\beta(E_{\alpha} - \mu N_{\alpha})}$ is the partition function. 
+    \item $E_{\bm{\alpha}}$ and $N_{\bm{\alpha}}$ are the energy and particle number in state $\ket{\Psi_\alpha}$ respectively,
+    \item and where $\mathcal{Z} =  \sum_{\alpha \in \Lambda} e^{-\beta(E_{\bm \alpha} - \mu N_{\bm \alpha})}$ is the partition function. 
 \end{itemize}
 
 In other words, \eqref{grand canonical}, the operator $\hat{\bf O}$ stands for the measurement and is integrated with all the many-body states $\ket{\Psi_\alpha} \in \mathds{H} \approx L^2(\R^{3N}) \otimes (\mathds{C}^{2})^{\otimes N}$ which describe the system. \\
@@ -111,7 +138,7 @@ Thinking this in terms of functionals, eliminate the explicit dependence on the 
 \label{trace gce}
 \end{equation}
 
-with the Hamiltonian given by \eqref{hamiltonian 3}. Therefore \eqref{trace gce} depends only on the external potential. Thus, we have expressed a rather complicated functional in terms of a simple function, which we can then try to approximate.
+with the Hamiltonian given by \eqref{hamiltonian 3}. Therefore \eqref{trace gce} depends only on the external potential. Thus, we have expressed a rather complicated functional in terms of a simple function, which we can then try to approximate. \\
 
 \section{Subsets of interesting observables}
 
