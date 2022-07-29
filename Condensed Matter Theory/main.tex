@@ -1,1 +1,121 @@
+\documentclass{homework}
+\author{Tomás Pérez}
+\class{Condensed Matter Theory - Lecture Notes}
+\date{\today}
+\title{Theory \& Notes}
+
+\graphicspath{{./media/}}
+
+\begin{document} \maketitle
+
+\section{Numerical solution to Fermionic models}
+
+Consider a Hamiltonian describing a fermionic system, given by 
+
+\begin{equation}
+    {\bf H} = J \summation (f_{j}^{\dagger}f_{j+1} + f_{j+1}^{\dagger}f_{j}) + \sum_{j=1} \lambda_j f_{j}^{\dagger} f_j, \begin{array}{c}
+         \textnormal{with the usual } \\
+         \textnormal{ conmutation rules} 
+    \end{array}
+    \begin{array}{c}
+         \{f_j, f_k\} = \{f_j^\dagger, f_k^\dagger\} = 0  \\
+         \{f_j, f_k^\dagger\} = \delta_{jk}
+    \end{array}
+    \label{fermionic hamiltonian}
+\end{equation}
+
+where $L$ indicates the number of lattice sites, $J$ is the hopping strength, which could be either positive or negative, and where $\lambda_j$ is the on-site potential strength\footnote{The $\lambda_j$-term frequently appears in many condensed matter models, with different numerical values and interpretations, eg.
+
+\begin{itemize}
+    \item In the XX model, $\lambda_j = \lambda \blanky \forall j$. 
+    \item While for the Anderson model $\lambda_j \in \mathcal{U}_{\R_{[-W, W]}}$, a uniform random variable, with $W$ being the disorder strength. 
+    \item In the Aubry-André model, $\lambda_j = \lambda \cos(2\pi\sigma j)$, with $\sigma \in \mathds{I}$ and $\lambda$ quantifying the disorder strength. 
+\end{itemize}}. Said Hamiltonian has open boundaries conditions since there is no hopping term across the boundary. Note that we can rewrite \eqref{fermionic hamiltonian} as 
+
+\begin{equation}
+    {\bf H} = \sum_{i, j = 1}^{L} \M_{ij} f_i^{\dagger} f_j \textnormal{ with } \begin{array}{c}
+         \M \in \textnormal{GL}(L, \R), \\
+         \M_{ij} = \left\{\begin{array}{cc}
+             \lambda_i & \textnormal{ if } i=j  \\
+              J & \textnormal{ if } j=i+1 \textnormal{ or } i = j + 1 \\
+              0 & \textnormal{ otherwise}
+         \end{array} \right.
+    \end{array},
+\end{equation}
+
+which is a positive-defined tri-diagonal matrix.
+Let ${\bf f} = (f_1 \blanky f_2 \blanky \cdots f_L)\transpose$ be a vector of the $L$ fermionic operators. Then, \eqref{fermionic hamiltonian} can be rewritten as 
+
+\begin{align}
+    {\bf H} = {\bf f}^\dagger \M {\bf f}.
+\end{align}
+
+Since $\M$ is symmetric, then it can be diagonalized  $\M = A \mathcal{D} A\transpose$, where $A \in \mathds{R}^{L \times L}$ is a real orthogonal matrix and with $\mathcal{D}_{ij} \in \mathds{R}^{L \times L} \blanky | \blanky \mathcal{D}_{ij}  = \epsilon_i \delta_{ij}$. In this context, the $A$-matrix acts on the fermionic operator as a Bogoliubov transformation, allowing for \eqref{fermionic hamiltonian} to be rewritten as 
+
+\begin{equation}
+     {\bf H} = {\bf f}^\dagger A \mathcal{D} A\transpose {\bf f} = {\bf d}^\dagger \mathcal{D} {\bf d}
+     \label{fermionic matrix hamiltonian}
+\end{equation}
+
+where ${\bf d} = A\transpose {\bf f}$. Since the $A$-matrix is orthogonal, the new $d_k$-operators are fermionic operators as well, satisfying \eqref{fermionic hamiltonian}'s anti-commutation rules. Then, the new fermionic operators are 
+
+\begin{equation*}
+    \begin{array}{c}
+         d_k = \sum_{j=1}^{L} A_{jk} f_j  \\ 
+         \\
+         f_j = \sum_{k=1}^{L} A_{jk} d_k 
+    \end{array} \textnormal{ since } A\transpose A = \sum_{j,k = 1}^{L} A_{jk} A_{kj} = \mathds{1}_{L}.
+\end{equation*}
+
+Then, we can expand \eqref{fermionic matrix hamiltonian} in terms of the lattices, as follows 
+
+\begin{equation}
+    {\bf H} = \sum_{k = 1}^{L} \epsilon_k d_k^\dagger d_k,
+\end{equation}
+
+which is a sum of number operators with potentials. The eigenstates can then be constructed from the the theory's vacuum state, by applying the $d_k^{\dagger}$-fermionic operators. In the Heisenberg-picture, the $d_k$-operators can be evolved via the Heisenberg equation of motion
+
+\begin{equation}
+\frac{d}{dt} d_k = i [{\bf H}, d_k],
+\label{H eom}
+\end{equation}
+
+and using that $d_k^2 = 0$, it turns out that \eqref{H eom}'s solution is simply $d_k(t) = e^{-i\epsilon_k t} d_k$. The system's correlation can be easily found by analyzing the following matrix. Let $\mathcal{N}_{jk} = \langle d_j^\dagger d_k \rangle$, where the expectation value is taken via calculating the operator's trace along the Fock space, which takes the following values 
+
+\begin{equation}
+    \mathcal{N}_{jk} = \langle d_j^\dagger d_k \rangle = \left\{\begin{array}{c}
+        0 \textnormal{ or } 1 \textnormal{ if } j=k  \\
+        0 \textnormal{ if } j \neq k 
+    \end{array} \right.,
+\end{equation}
+
+ie. different lattice-sites are not correlated and there can only be a single fermion at most per lattice site, in accordance with Pauli's principle. A ground state, for example, would choose to turn on all fermions in the eigenmode $d$-space such that $\epsilon_k < 0$. If instead, the expectation value is taken with thermal states, the Fermi-Dirac distribution is returned, 
+
+\begin{equation}
+    \mathcal{N}_{jk} = \langle d_j^\dagger d_k \rangle_{\textnormal{th}} =  \frac{1}{1+e^{\beta \epsilon_k + \mu}} \delta_{jk}.
+\end{equation}
+
+Another interesting quality is a system with an initial configuration where the system's initial state, in real space, is known. In this setting, $\mathcal{N}_{jk}$ is known for all lattices. Consider for example the Anderson model, where the system's initial state is given by a single tensor product of $n$-fermionic states in real space, with $n<L$. Then, for all lattice sites, we have that $\N_{jj}$ is either zero or one. The $\N_{jk}$-matrix entries can then be evaluated as 
+
+\begin{align*}
+    \langle d_j^\dagger d_k \rangle = \sum_{i,j = 1}^{n < L} A_{ik} A_{jl} \langle f_i^\dagger f_j \rangle = \sum_{j=1} A_{jk} A_{jl} \langle f_j^\dagger f_j \rangle,
+    \label{real system correlations}
+\end{align*}
+
+which can then be numerically computed to obtain the LHS expectation value. In general, this $\N_{jk}$-matrix will not be diagonal, which is reasonable since the system's real configuration is not an eigenstate. In principle and in practice, by inverting \eqref{real system correlations}, we can evolve any number operator or two-body correlation operator, ie.
+
+\begin{align}
+    \langle f_j^\dagger f_k \rangle = \sum_{k,l =1}^{n} A_{jk} A_{jl} \langle d_k^\dagger d_l \rangle.
+\end{align}
+
+This quantities' time evolution can then be found out to be 
+
+\begin{equation}
+    \langle f_j^\dagger(t) f_k(t) \rangle = \sum_{k,l =1}^{L} e^{i(\epsilon_k - \epsilon_l)t}A_{jk} A_{jl} \langle d_k^\dagger d_l \rangle,
+\end{equation}
+
+which can then be numerically solved. 
+
+\end{document}
+
 
