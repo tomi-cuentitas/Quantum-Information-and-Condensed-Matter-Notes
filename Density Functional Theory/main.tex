@@ -69,21 +69,128 @@ Consider the non-relativistic Hamiltonian given by
 
 which contains the kinetic energy of the $i$-th electron, the external potential, which acts as a one-body operator, and the Coulomb interaction. Hartree-Fock's approach consists on initially considering a system of almost independent particles, in which each electron moves in the electrostatic potential of all other electrons. This is, the $n$-body normalized wave-function is factorized in a product in a product of normalized, independent particle wavefunctions, ie.
 
-\begin{align*}
+\begin{align}
      & \Psi^{HF} (\x_1, \cdots, \x_n) = \prod_{\bm{\alpha} \in \Lambda} \psi_{\bm{\alpha}}(\x, {\bm \sigma}) =  \prod_{j \in \Lambda}\psi_{\alpha_j, s_j}(\x_j, \sigma_j),
-\end{align*}
+     \label{Hartree's ansatz}
+\end{align}
 
-where $\bm{\alpha} \in \Lambda$ indexed all non-spin quantum numbers (eg. $nlm$ for an atom or $n{\bf k}$ for a crystal). Further conditions are imposed on the one-body wavefunctions,
+where $\bm{\alpha} \in \Lambda$ indexed all quantum numbers (eg. $nlms$ for an atom or $n{\bf k}s$ for a crystal). Further conditions are imposed on the one-body wavefunctions,
 
-\begin{align*}
+\begin{align}
      \psi_{\alpha_j, s_j}(\x_j, \sigma_j) =  \left\{ \begin{array}{lcc}
          \psi_{\alpha_j}(\x_j) \chi_{\frac{1}{2}} & \textnormal{ for } \sigma_j = +1 \\
          \psi_{\alpha_j}(\x_j) \chi_{-\frac{1}{2}} & \textnormal{ for } \sigma_j = -1   
      \end{array} \right. \textnormal{ and }
      \xmeasure \spinmeasure \psi_{\alpha_j, s_j}^{*}(\x_j, \sigma_j) \psi_{\alpha_j, s_j}(\x_j, \sigma_j) = 1,
+     \label{HF normalization}
+\end{align}
+
+ Note that this ansatz cares not for wavefunction's antisymmetry, though it can still abide by Pauli's principle if no more than two electron are assigned for each wavefunction $\psi_{\alpha_j}(\x_j)$. \\
+ 
+Then, a natural approximation to the $i$-th electron's dynamics, is to consider it under the influence of the average potential produced by the other $N-1$ electrons, so that the Schr\"odinger-like equation for the $i$-th electron reads as 
+
+\begin{align}
+    \bigg[-\frac{1}{2} \nabla^2 + {\bf V}_{\textnormal{ext}}(\x_i) + \sum_{\bm{\lambda} \in \Lambda, \blanky \bm{\lambda} \neq \bm{\alpha}} \int_{\R^3} d\x \frac{n_{\bm{\lambda}}(\x)}{|\x_i - \x|} \bigg] \psi_{\bm{\alpha}}(\x) = E_{\alpha_i}  \psi_{\bm{\alpha}}(\x), \\
+    \begin{array}{c}
+         \textnormal{which, can be }  \\
+         \textnormal{rewritten as}
+    \end{array}
+    \bigg[-\frac{1}{2} \nabla^2 + {\bf V}_{\textnormal{ext}}(\x_i) + {\bf V}_{\textnormal{HF}}(\x_i) \bigg] \psi_{\bm{\alpha}}(\x) = E_{\bm{\alpha}} \psi_{\bm{\alpha}}(\x),
+    \label{Hartree-Fock's equation}
+\end{align}
+
+where $n_{\bm{\alpha}} = |\psi_{\bm{\alpha}}(\x)|^2$, is the $\bm{\alpha}$-th electron's charge density. Said prescription thus yields \eqref{Hartree-Fock's equation}, Hartree-Fock's equations. These equations are to be solved in an iterative way, since the determination of the Hartree potential implies the knowledge of the very same wavefunctions of interest. A good starting point for the wavefunctions is represented by the atomic wavefunctions. The physical meaning of the eigenvalues, the eigenenergies, is given by the variational principle and by Koopmans' theorem. \\
+
+It's also possible to derive Hartree-Fock's equations in a more systematic way, by the means of the variational principle and the Lagrange's multiplier method. \\
+
+Consider the ansatz given by \eqref{Hartree's ansatz}, which is only correct for the case of independent particles. Here, the objective is not to describe independent particles, but rather interacting particles, within one \textit{best single-particle} independent particle Hamiltonian, to which the single particle wavefunctions obey. Then, a possible trial wavefunction would be that which minimizes the total energy, considering the single.particle wavefunctions as parameters. Furthermore, the normalization constraint must be imposed via a Lagrange multiplier. Then, the question is to find \eqref{hamiltonian HF}'s minimum expectation value with respect to the ansatz given by \eqref{Hartree's ansatz}, with the normalization condition given by \eqref{HF normalization}, ie. 
+
+\begin{align*}
+    \bra{\Psi^{HF}}\hat{\bf H}\ket{\Psi^{HF}} &= \bra{ \prod_{j =1}^{n}\psi_{\alpha_j, s_j}(\x_j, \sigma_j)} \sum_i H^{(0)}(\x_i) + \sum_{i<j} v(r_{ij}) \ket{\prod_{j=1}^{n}\psi_{\alpha_j, s_j}(\x_j, \sigma_j) } \\
+    &= \bra{\psi_{\bm{\alpha}_{1}}(\tilde{x}_1)} {H}^{(0)}(\x_1) \ket{\psi_{\bm{\alpha}_{1}}(\tilde{x}_1)} \cancelto{1}{\prod_{j=2}^{n} \bra{\psi_{\bm{\alpha}_{j}} (\tilde{x}_j)}\ket{\psi_{\bm{\alpha}_{j}}(\tilde{x}_j)}} \\
+    %& + \bra{\psi_{\bm{\alpha}_{1}}(\tilde{x}_1)}\ket{\psi_{\bm{\alpha}_{1}}(\tilde{x}_1)} \bra{\psi_{\bm{\alpha}_{2}}(\tilde{x}_2)} {H}^{(0)}(\x_2) \ket{\psi_{\bm{\alpha}_{2}}(\tilde{x}_2)}\prod_{j=3}^{n} \bra{\psi_{\bm{\alpha}_{j}} (\tilde{x}_j)}\ket{\psi_{\bm{\alpha}_{j}}(\tilde{x}_j)} \\
+    & + \cdots + \cancelto{1}{\prod_{j=1}^{L-1} \bra{\psi_{\bm{\alpha}_{j}} (\tilde{x}_j)}\ket{\psi_{\bm{\alpha}_{j}}(\tilde{x}_j)} }\bra{\psi_{\bm{\alpha}_{L}}(\tilde{x}_L)} {H}^{(L)}(\x_L) \ket{\psi_{\bm{\alpha}_{L}}(\tilde{x}_L)} \cancelto{1}{\prod_{k = L+1}^{n} \bra{\psi_{\bm{\alpha}_{k}} (\tilde{x}_j)}\ket{\psi_{\bm{\alpha}_{k}}(\tilde{x}_k)}} \\
+    & + \cdots + \cancelto{1}{\prod_{j=1}^{n-1} \bra{\psi_{\bm{\alpha}_{j}} (\tilde{x}_j)}\ket{\psi_{\bm{\alpha}_{j}}(\tilde{x}_j)}} \bra{\psi_{\bm{\alpha}_{n}}(\tilde{x}_n)} {H}^{(n)}(\x_n) \ket{\psi_{\bm{\alpha}_{n}}(\tilde{x}_n)} \\
+    &+ \bra{\psi_{\bm{\alpha}_{1}}(\tilde{x}_1) \psi_{\bm{\alpha}_{2}}(\tilde{x}_2)} v(r_{12}) \ket{\psi_{\bm{\alpha}_{1}}(\tilde{x}_1 \psi_{\bm{\alpha}_{2}}(\tilde{x}_2)} \cancelto{1}{\prod_{j=3}^{n} \bra{\psi_{\bm{\alpha}_{j}} (\tilde{x}_j)}\ket{\psi_{\bm{\alpha}_{j}}(\tilde{x}_j)}}  \\
+    &+ \bra{\psi_{\bm{\alpha}_{1}}(\tilde{x}_1) \psi_{\bm{\alpha}_{3}}(\tilde{x}_3)} v(r_{13}) \ket{\psi_{\bm{\alpha}_{1}}(\tilde{x}_1) \psi_{\bm{\alpha}_{3}}(\tilde{x}_3)} \cancelto{1}{\bra{\psi_{\bm{\alpha}_{2}} (\tilde{x}_2)}\ket{\psi_{\bm{\alpha}_{2}} (\tilde{x}_2)}} \blanky \blanky \blanky \cancelto{1}{\prod_{j=4}^{n} \bra{\psi_{\bm{\alpha}_{j}} (\tilde{x}_j)}\ket{\psi_{\bm{\alpha}_{j}}(\tilde{x}_j)}} \\
+    & + \cdots + \cancelto{1}{\prod_{j=1}^{L-2} \bra{\psi_{\bm{\alpha}_{j}} (\tilde{x}_j)}\ket{\psi_{\bm{\alpha}_{j}}(\tilde{x}_j)}} \bra{\psi_{\bm{\alpha}_{L-1}}(\tilde{x}_{L-1})\psi_{\bm{\alpha}_{L}}(\tilde{x}_{L})} v(r_{(L-1) \blanky L}) \ket{\psi_{\bm{\alpha}_{L-1}}(\tilde{x}_{L-1})\psi_{\bm{\alpha}_{L}}(\tilde{x}_{L})} \\
+    & \times \cancelto{1}{\prod_{j=L}^{n} \bra{\psi_{\bm{\alpha}_{j}} (\tilde{x}_j)}\ket{\psi_{\bm{\alpha}_{j}}(\tilde{x}_j)}} + \cdots \\
+    & \cdots + \cancelto{1}{\prod_{j=1}^{n-2} \bra{\psi_{\bm{\alpha}_{j}} (\tilde{x}_j)}\ket{\psi_{\bm{\alpha}_{j}}(\tilde{x}_j)}} \bra{\psi_{\bm{\alpha}_{n-1}}(\tilde{x}_{n-1})\psi_{\bm{\alpha}_{n}}(\tilde{x}_{n})} v(r_{(n-1) \blanky n}) \ket{\psi_{\bm{\alpha}_{L-1}}(\tilde{x}_{L-1})\psi_{\bm{\alpha}_{L}}(\tilde{x}_{L})} \\
 \end{align*}
 
- Note that this ansatz cares not for wavefunction's antisymmetry, though it can still abide by Pauli's principle if no more than two electron are assigned for each wavefunction $\psi_{\alpha_j}(\x_j)$.
+which then yields
+
+\begin{align}
+\blanky & \blanky & \blanky & \blanky & \blanky & \blanky & \blanky & \blanky & 
+    \alignedbox{\bra{\Psi^{HF}}\hat{\bf H}\ket{\Psi^{HF}}=}{ \sum_{i=1}^{n} \bra{\psi_{\bm{\alpha}_{i}}(\tilde{x}_i)} {H}^{(0)}(\x_i) \ket{\psi_{\bm{\alpha}_{i}}(\tilde{x}_i)} + \sum_{i<j} \bra{\psi_{\bm{\alpha}_{i}}(\tilde{x}_{i})\psi_{\bm{\alpha}_{j}}(\tilde{x}_{j})} v(r_{ij})\ket{\psi_{\bm{\alpha}_{i}}(\tilde{x}_{i})\psi_{\bm{\alpha}_{j}}(\tilde{x}_{j})}}
+    \label{pain}
+\end{align}
+
+In order to find \eqref{pain}'s minimum value, under certain conditions, the use of the Lagrange multipliers method is required. Consider a variation of \eqref{pain}, with respect to $\psi_{\bm{\alpha}_{j}}(\tilde{x}_{j})$, under the normalization condition \eqref{HF normalization} introduced via a Lagrange multiplier $\lambda$, given by
+
+\begin{equation}
+    \delta {\bra{\Psi^{HF}}\hat{\bf H}\ket{\Psi^{HF}}} - \sum_{i=1}^{n} \bigg[ \delta \bigg(\bra{\psi_{\bm{\alpha}_{i}}(\tilde{x}_{i})}\ket{\psi_{\bm{\alpha}_{i}}(\tilde{x}_{i}) - 1}\bigg) \bigg] = 0,
+    \label{HF variation}
+\end{equation}
+
+for which, we first must calculate the variation.
+
+\begin{align*}
+    \delta {\bra{\Psi^{HF}}\hat{\bf H}\ket{\Psi^{HF}}} = \sum_{i=1}^{n} & \bra{ \delta \psi_{\bm{\alpha}_{i}}(\tilde{x}_i)} {H}^{(0)}(\x_i) \ket{\psi_{\bm{\alpha}_{i}}(\tilde{x}_i)} + \bra{  \psi_{\bm{\alpha}_{i}}(\tilde{x}_i)} {H}^{(0)}(\x_i) \ket{\delta \psi_{\bm{\alpha}_{i}}(\tilde{x}_i)} \\
+    &+ \sum_{i<j} \bra{\delta \psi_{\bm{\alpha}_{i}}(\tilde{x}_{i})\psi_{\bm{\alpha}_{j}}(\tilde{x}_{j})} v(r_{ij})\ket{\psi_{\bm{\alpha}_{i}}(\tilde{x}_{i})\psi_{\bm{\alpha}_{j}}(\tilde{x}_{j})} \\
+    &+ \sum_{i<j} \bra{ \psi_{\bm{\alpha}_{i}}(\tilde{x}_{i})\delta \psi_{\bm{\alpha}_{j}}(\tilde{x}_{j})} v(r_{ij})\ket{\psi_{\bm{\alpha}_{i}}(\tilde{x}_{i})\psi_{\bm{\alpha}_{j}}(\tilde{x}_{j})} \\
+    &+ \sum_{i<j} \bra{ \psi_{\bm{\alpha}_{i}}(\tilde{x}_{i}) \psi_{\bm{\alpha}_{j}}(\tilde{x}_{j})} v(r_{ij})\ket{\delta \psi_{\bm{\alpha}_{i}}(\tilde{x}_{i})\psi_{\bm{\alpha}_{j}}(\tilde{x}_{j})} \\
+    &+\sum_{i<j} \bra{ \psi_{\bm{\alpha}_{i}}(\tilde{x}_{i}) \psi_{\bm{\alpha}_{j}}(\tilde{x}_{j})} v(r_{ij})\ket{ \psi_{\bm{\alpha}_{i}}(\tilde{x}_{i}) \delta\psi_{\bm{\alpha}_{j}}(\tilde{x}_{j})} \\
+    &= \sum_{i=1}^{n} \bigg[ \bra{\delta \psi_{\bm{\alpha}_{i}}(\tilde{x}_{i})} \bigg( H^{(0)}(\x_i) + \sum_{\substack{j = 1 \\
+    j \neq i}}^{n} \bra{\psi_{\bm{\alpha}_{j}}(\tilde{x}_j)}
+    v(r_{ij})
+    \ket{\psi_{\bm{\alpha}_{j}}(\tilde{x}_j)} \bigg) \ket{\psi_{\bm{\alpha}_{i}}(\tilde{x}_{i})} \bigg] \\
+    &  + \sum_{i=1}^{n} \bigg[ \bra{ \psi_{\bm{\alpha}_{i}}(\tilde{x}_{i})} \bigg( H^{(0)}(\x_i) + \sum_{\substack{j = 1 \\
+    j \neq i}}^{n} \bra{\psi_{\bm{\alpha}_{j}}(\tilde{x}_j)}
+    v(r_{ij})
+    \ket{\psi_{\bm{\alpha}_{j}}(\tilde{x}_j)} \bigg) \ket{ \delta \psi_{\bm{\alpha}_{i}}(\tilde{x}_{i})} \bigg].
+\end{align*}
+
+Note that the sum over $i < j$ is now a sum over $i \neq j$. Combining the previous results with \eqref{HF variation} yields
+
+\begin{equation}
+    \begin{array}{c}
+        \sum_{i=1}^{n} \bigg[ \bra{\delta \psi_{\bm{\alpha}_{i}}(\tilde{x}_{i})} \bigg( H^{(0)}(\x_i) + \sum_{\substack{j = 1 \\
+    j \neq i}}^{n} \bra{\psi_{\bm{\alpha}_{j}}(\tilde{x}_j)}
+    v(r_{ij})
+    \ket{\psi_{\bm{\alpha}_{j}}(\tilde{x}_j)} - \lambda_i \bigg) \ket{\psi_{\bm{\alpha}_{i}}(\tilde{x}_{i})}  \bigg]  \\
+    \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky + \sum_{i=1}^{n} \bigg[ \bra{ \psi_{\bm{\alpha}_{i}}(\tilde{x}_{i})} \bigg( H^{(0)}(\x_i) + \sum_{\substack{j = 1 \\
+    j \neq i}}^{n} \bra{\psi_{\bm{\alpha}_{j}}(\tilde{x}_j)}
+    v(r_{ij}) 
+    \ket{\psi_{\bm{\alpha}_{j}}(\tilde{x}_j)} - \lambda_i \bigg) \ket{ \delta \psi_{\bm{\alpha}_{i}}(\tilde{x}_{i})} \bigg] = 0
+    \end{array},
+\end{equation}
+
+which must be true for all variations. Therefore, 
+
+\begin{equation}
+    \bigg[H^{(0)}(\x_i) +  \sum_{\substack{j = 1 \\
+    j \neq i}}^{n} \bra{\psi_{\bm{\alpha}_{j}}(\tilde{x}_j)}
+    v(r_{ij}) 
+    \ket{\psi_{\bm{\alpha}_{j}}(\tilde{x}_j)} \bigg] \ket{\psi_{\bm{\alpha}_{j}}(\tilde{x}_j)} = \lambda_i \ket{\psi_{\bm{\alpha}_{j}}(\tilde{x}_j)},
+\end{equation}
+
+and considering that $\x_j$ is an auxiliary variable, an integrand variable, this can be rewritten as 
+
+\begin{equation*}
+    \bigg[H^{(0)}(\x_i) +  \sum_{\substack{j = 1 \\
+    j \neq i}}^{n} \int_{\R^3} d\x \frac{n_{\alpha_j}(\x)}{|\x_i - \x|} \bigg] \ket{\psi_{\bm{\alpha}}(\x)} = \lambda_i \ket{\psi_{\bm{\alpha}_{j}}(\tilde{x}_j)},
+\end{equation*}
+
+or more generally, 
+
+\begin{align} 
+    & \bigblanky & \bigblanky & \alignedbox{\bigg[-\frac{1}{2} \nabla^2 + {\bf V}_{\textnormal{ext}}(\x_i) + \sum_{\bm{\lambda} \in \Lambda, \blanky \bm{\lambda} \neq \bm{\alpha}} \int_{\R^3} d\x \frac{n_{\bm{\lambda}}(\x)}{|\x_i - \x|} \bigg] \psi_{\bm{\alpha}}(\x)}{ = \lambda_{\bm{\alpha}}  \psi_{\bm{\alpha}}(\x)},
+\end{align} 
+
+ie. the Hartree-Fock equations, written in terms of a set of $n$ Lagrange multipliers, $\{\lambda_i\}_{i=1}^{n}$. These Lagrange multipliers, though having dimensions of energy, a priori, bear no connection with the electron's energies. It turns out they have a precise physical meaning, which is established by Koopman's theorem.
+
+\clearpage
 
 \section{Observables}
 
