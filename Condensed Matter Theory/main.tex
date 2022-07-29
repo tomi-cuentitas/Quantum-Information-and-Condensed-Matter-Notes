@@ -8,6 +8,162 @@
 
 \begin{document} \maketitle
 
+\section{XX-model}
+
+Consider the XX-Heisenberg model, with its Hamiltonian given in terms of the traditional $\frac{1}{2}$-spin operators ie. 
+
+\begin{equation}
+    {\bf H} = J \sum_{i=1}^{L} ({\bf S}_{j}^{x} {\bf S}_{j+1}^{x} + {\bf S}_{j}^{y} {\bf S}_{j+1}^{y}) - \lambda \sum_{j=1}^{L} {\bf S}_{j}^{z},
+    \label{XX hamiltonian}
+\end{equation}
+
+which describes interacting spins in a one-dimensional chain, with periodic boundary conditions. \eqref{XX hamiltonian}'s first terms represents nearest neighbour interactions in the $x$ and $y-$directions  interactions, with $J$ being either positive or negative and quantifying the strength and type of interactions, while the second term represents a magnetic field of strength $\lambda$, applied in the $z$-direction of the spins. \\
+
+In order to solve this problem, it is necessary to rewrite \eqref{XX hamiltonian} and apply a Jordan-Wigner transformation, mapping the spin problem into a fermionic problem. But first, it is convenient to write the spin-operators in terms of the raising and lowering $\mathfrak{su}(2)$-operators, ie.
+
+$$
+    \spin_j^{\pm} = \spin_j^{x} \pm i \spin_j^{y} \blanky \Rightarrow \blanky \begin{array}{c}
+         \spin_{j}^x = \frac{1}{2} (\spin_j^+ + \spin_j^-), \\
+          \\
+         \spin_{j}^y = \frac{1}{2i} (\spin_j^+ - \spin_j^-). 
+    \end{array}
+$$
+
+Then, the XX-Hamiltonian can be re-written as 
+
+\begin{equation}
+     {\bf H} = \frac{J}{2} \sum_{i=1}^{L} ({\bf S}_{j}^{+} {\bf S}_{j+1}^{-} + {\bf S}_{j}^{-} {\bf S}_{j+1}^{+}) - \lambda \sum_{j=1}^{L} {\bf S}_{j}^{z}
+     \label{raising Hamiltonian}
+\end{equation}
+
+where the interacting terms in the first summation, flip neighboring spins if said spins are anti-aligned\footnote{In effect, consider for example, a two-spin problem. Then, the interaction term is given by 
+
+$$
+\spin_1^+ \spin_2^- + \spin_1^- \spin_2^+,
+$$
+
+and consider an anti-aligned state $\ket{\downarrow\uparrow}$. Then, the action of the previous two-spin operator over this state yields
+
+$$
+(\spin_1^+ \spin_2^- + \spin_1^- \spin_2^+) \ket{\downarrow\uparrow} = \ket{\uparrow\downarrow} + 0,
+$$
+
+since $\spin_1^- \spin_2^+$ destroys the state. Similarly, $(\spin_1^+ \spin_2^- + \spin_1^- \spin_2^+)\ket{\uparrow\downarrow} = \ket{\downarrow\uparrow}$. However, note that, should both spins be either up or down, the state remain invariant under the action of the two-spin operator. 
+
+\begin{align}
+    (\spin_1^+ \spin_2^- + \spin_1^- \spin_2^+) \ket{\downarrow\downarrow} = \ket{\downarrow\downarrow} \textnormal{ and } (\spin_1^+ \spin_2^- + \spin_1^- \spin_2^+) \ket{\uparrow\uparrow} = \ket{\uparrow\uparrow} 
+\end{align}}. In addition, the XX-Hamiltonian has a total magnetization symmetry, since the Hamiltonian given by \eqref{raising Hamiltonian} conmutes with the magnetization operator. \\
+
+Now, we use a Jordan-Wigner transformation whereby the spin operators are mapped to fermionic operators, as follows 
+
+\begin{equation}
+    \begin{array}{c}
+         \spin_j^z = f_j^\dagger f_j - \frac{1}{2}  \\
+         \\
+         \spin_j^- = \exp\bigg(i\pi \sum_{\ell = 1}^{L-1} f_\ell^\dagger f_\ell \bigg) \\
+         \\
+         \spin_j^+ = \exp\bigg(-i\pi \sum_{\ell = 1}^{L-1} f_\ell^\dagger f_\ell \bigg) 
+    \end{array}
+    \label{JW tr}
+\end{equation}
+
+Under the Jordan-Wigner map, nearest-neighbours spin flipping is translated into to nearest-neighbours fermionic hopping, ie. $\spin_{j}^{+} \spin_{j+1}^{-} = f_{j}^{\dagger} f_{j+1}$ and $\spin_{j}^{-} \spin_{j+1}^{+} = f_{j+1}^{\dagger} f_{j}$. However, due to the boundary conditions' periodicity, the XX-Hamiltonian cannot be rewritten as a fermionic model yet since (it will contain an additional boundary term), for example, the fermionic counterparts to the $\spin_{L}^{+} \spin_{1}^{-}$ interaction are highly non-local operators and are not desirable. Indeed, under the Jordan-Wigner mapping 
+
+\begin{equation*}
+    \spin_{L}^{+} \spin_{1}^{-} = f_L^\dagger \exp\bigg(-i\pi \sum_{\ell = 1}^{L-1} f_\ell^\dagger f_\ell \bigg) f_1,
+\end{equation*}
+
+which is not problematic, since it accounts for all $L$-lattice sites. Let
+
+\begin{equation}
+    \begin{array}{c}
+       \spin_{L}^{+} \spin_{1}^{-} = \mathcal{Q} f_L^\dagger f_1, \\
+       \spin_{L}^{-} \spin_{1}^{+} = \mathcal{Q} f_1^\dagger f_L,
+    \end{array}
+\end{equation}
+
+then \eqref{raising Hamiltonian} can be rewritten as 
+
+\begin{equation}
+    {\bf H} = \frac{J}{2} \sum_{i=1}^{L-1} \bigg(f_{j}^{\dagger} f_{j+1} + f_{j+1}^{\dagger} f_j\bigg) - \lambda \sum_{j=1}^{L} \bigg(f_{j}^{\dagger} f_{j} - \frac{1}{2}\bigg) + \frac{J}{2} \mathcal{Q} (f_L^\dagger f_1 + f_1^\dagger f_L),
+    \label{fermionic no boundary}
+\end{equation}
+
+where the first term accounts for fermionic nearest-neighbour hopping, the second term accounts for the magnetic field, and the third term being the non-local boundary term. Note that this fermionic Hamiltonian hasn't got any type of boundary conditions, since the $L$-lattice site is disconnected in any way whatsoever from the first lattice site. Then, the standard procedure is to add and subtract terms from the Hamiltonian, so that the nearest-neighbour hopping term in \eqref{fermionic no boundary} can also have periodic boundary conditions, thus yielding 
+
+\begin{equation}
+    {\bf H} = \frac{J}{2} \sum_{i=1}^{L} \bigg(f_{j}^{\dagger} f_{j+1} + f_{j+1}^{\dagger} f_j\bigg) - \lambda \sum_{j=1}^{L} \bigg(f_{j}^{\dagger} f_{j} - \frac{1}{2}\bigg) + \frac{J}{2} (\mathcal{Q}-1) (f_L^\dagger f_1 + f_1^\dagger f_L),
+    \label{true fermionic hamiltonian}
+\end{equation}
+
+where now the fermionic hopping term has the standard boundary conditions. The third term, since it does not involve any type of summation over lattice sites, only contributes at $\mathcal{O}\bigg(\frac{1}{L}\bigg)$-order to any microscopic quantity. In the thermodynamic limit, this non-local term can be dropped, thus yielding an $\mathcal{O}(L)$-Hamiltonian given by 
+
+\begin{equation}
+    {\bf H} = \frac{J}{2} \sum_{i=1}^{L} \bigg(f_{j}^{\dagger} f_{j+1} + f_{j+1}^{\dagger} f_j - \lambda f_{j}^{\dagger} f_{j}\bigg) + \frac{\lambda L}{2},
+    \label{L-order fermionic hamiltonian}
+\end{equation}
+
+which is now fully cyclic and where its operators obey fermionic algebras. This Hamiltonian can then be diagonalized via a discrete Fourier transform on the fermionic operators 
+
+\begin{align}
+    f_j &= \frac{1}{\sqrt{L}} \sum_{\substack{k = {2\pi m/L}\\
+    m \in \mathds{Z}_{[1, L]} }}
+                  e^{ijk} d_k, & f_j^{\dagger} &=\frac{1}{\sqrt{L}}  \sum_{\substack{k = {2\pi m/L}\\
+    m \in \mathds{Z}_{[1, L]}}} e^{-ijk} d_k^{\dagger},
+\end{align}
+
+with the inverse transformation given by 
+
+\begin{align}
+    d_k &= \frac{1}{\sqrt{L}} \sum_{j=1}^{L}
+                  e^{-ikj} f_j &  d_k^{\dagger} &= \frac{1}{\sqrt{L}} \sum_{j=1}^{L}
+                  e^{ikj} f_j^{\dagger}.
+\end{align}
+
+Note that the $d_k$-operators follow the standard fermionic anticonmutation algebra. Note as well, that the $f_j$-vacuum state, defined such that $f_j \ket{0}_f = 0, \blanky \forall j$, is the same as the $d_k$-vacuum state, defined such that $d_j \ket{0}_d = 0, \blanky \forall k$, ie. $\ket{0}_f = \ket{0}_d$. Another important relationship is the Fourier transform's consistency condition, ie. 
+
+$$
+\sum_{j=1}^{L} e^{i(k-q)j} = L \delta_{kq}.
+$$
+
+Under the Fourier transform, \eqref{L-order fermionic hamiltonian}'s terms are mapped as follows 
+
+\begin{align*} 
+    \sum_{j=1}^{L} f_j^\dagger f_{j+1} &= \sum_{j=1}^{L} \frac{1}{L} \sum_{k, \blanky q} e^{-ikj} e^{iq(j+1)} d_k^\dagger d_q = \sum_{j=1}^{L} \frac{1}{L} \sum_{k, \blanky q} e^{i(q-k)j} e^{iq} d_k^\dagger d_q \\
+    &= \sum_{k, \blanky q} \frac{1}{L} e^{iq} \delta_{qk} d_k^\dagger d_q = \sum_{k} e^{ik} d_k^\dagger d_k \\
+    \sum_{j=1}^{L} f_{j+1}^\dagger f_{j} &=  \sum_{j=1}^{L} \frac{1}{L} \sum_{k, \blanky q} e^{-ik(j+1)} e^{iqj} d_k^\dagger d_q = \sum_{j=1}^{L} \frac{1}{L} \sum_{k, \blanky q} e^{i(q-k)j} e^{-ik} d_k^\dagger d_q \\
+    &= \sum_{k, \blanky q} \frac{1}{L} e^{-ik} \delta_{qk} d_k^\dagger d_q = \sum_{k} e^{-ik} d_k^\dagger d_k \\
+    \sum_{j=1}^{L} f_{j}^\dagger f_{j} &=  \sum_{j=1}^{L} \frac{1}{L} \sum_{k, \blanky q} e^{-ikj} e^{iqj} d_k^\dagger d_q = \sum_{j=1}^{L} \frac{1}{L} \sum_{k, \blanky q} e^{i(q-k)j}  d_k^\dagger d_q \\
+    &= \sum_{k, \blanky q} \frac{1}{L} \delta_{qk} d_k^\dagger d_q = \sum_{k} d_k^\dagger d_k \\
+\end{align*} 
+
+Therefore, using these identities, the new Hamiltonian is given by 
+
+\begin{align}
+    {\bf H} &= \frac{J}{2} \sum_{k} \bigg(e^{ik} d_{k}^{\dagger} d_{k} + e^{-ik} d_{k}^{\dagger} d_k - \lambda d_{k}^{\dagger} d_{k}\bigg) + \frac{\lambda L}{2} \\
+    &= \sum_{k} \bigg(J \cos k - \lambda \bigg)d_{k}^{\dagger} d_{k} + \frac{\lambda L}{2},
+\end{align}
+
+which can be rewritten as 
+
+\begin{align}
+    \alignedbox{{\bf H} }{= \sum_{k} \epsilon_k d_k^\dagger d_{k} + \frac{\lambda L}{2} \begin{array}{c}
+         \textnormal{ with the eigenvalues being given by } \epsilon_k = J \ cos k - \lambda + \frac{\lambda L}{2} \\
+         \textnormal{ and the eigenvectors being given by } \ket{E_n} = \prod_{n} (d_k^\dagger)^n,
+         \textnormal{                    with eigenvalue $E_n = \sum_{n} \epsilon_n $}  
+    \end{array}},
+\end{align}
+
+thus the problem has been solved. \\
+
+As for its thermal properties, since this is a fermionic model, the fermions will obey the Fermi-Dirac distribution, ie. 
+
+\begin{equation}
+    \mathcal{N}_{jk} = \langle d_j^\dagger d_k \rangle_{\textnormal{th}} =  \frac{1}{1+e^{\beta \epsilon_k + \mu}} \delta_{jk}.
+\end{equation}
+
+\clearpage
+
 \section{Numerical solution to Fermionic models}
 
 Consider a Hamiltonian describing a fermionic system, given by 
