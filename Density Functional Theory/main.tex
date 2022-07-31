@@ -10,7 +10,7 @@
 
 \section{Quantum Many-Body Problem}
 
-In this section, we're interested in the non-relativistic quantum many body problem, where the system of study is made up of electrons and nuclei. The theory's Hamiltonian is given by
+Consider a non-relativistic quantum many-body problem, where the system of study is made up of electrons and nuclei. The theory's Hamiltonian is given by
 
 \begin{align}
     \hat{\bf H} = -\frac{\hbar^2}{2m_e} \sum_i \nabla^2_i - \sum_{i, I} \frac{Z_I e^2}{|{\bf x}_i - {\bf R}_I|} + \frac{1}{2} \sum_{i \neq j} \frac{e^2}{|{\bf x}_i-{\bf x}_j|} - \sum_{I} \frac{\hbar^2}{2M_I} \nabla^2_I + \frac{1}{2} \sum_{I \neq J} \frac{Z_I Z_J e^2}{|{\bf R}_I - {\bf R}_J|},
@@ -20,26 +20,25 @@ In this section, we're interested in the non-relativistic quantum many body prob
 where 
 
 \begin{itemize}
-    \item the first corresponds to the sum of the kinetic energy of each one of the electrons,
-    \item the second term correspond to the Coulomb interaction created by the nuclei, where the position of $i$-th electron is ${\bf x}_i$ and the nuclei's position is ${\bf R}_I$,
-    \item the third term is the Coulomb interaction between the electrons, where we exclude any auto-interaction of an electron with itself. Note that this term forces to consider more than one electron at a time. 
-    \item The fourth term is the kinetic energy of the nuclei,
+    \item the first term corresponds to the sum of the kinetic energy of each one of the electrons,
+    \item the second term correspond to the Coulomb interaction between the $I$-th nuclei, located at ${\bf R}_I$, with the $i$-th electron, located at ${\x_i}$,
+    \item the third term is the Coulomb interaction between the electrons, where any self interaction is excluded. Note that this term forces to consider more than one electron at a time. 
+    \item The fourth term is the kinetic energy of the nuclei, 
     \item and where the last term accounts for the nucleus-nucleus interaction. \\
 \end{itemize}
 
-Solving the general $n$-body problem consists then in finding the eigenfunctions and eigenvalues of the coupled, second order, differential equation given by the action of \eqref{many-body Hamiltonian} on the $n$-body wave function. However, by inspecting the terms of the Hamiltonian we can simplify the problem. Note that the mass of the nuclei is much larger than the mass of the electrons, therefore we can neglect their kinetic energy given by \eqref{many-body Hamiltonian}'s fourth term. Likewise, if we consider the position of the nuclei as parameters, the fifth term adds just a constant. Taking the previous points into consideration, yields a more simplified Hamiltonian:
+Solving the general $n$-body problem consists then, in finding the Hamiltonian's eigenfunctions and eigenvalues, which in turn, means solving a second order, linear, differential equation given by the action of \eqref{many-body Hamiltonian} on the $n$-body wave function. The problem can be simplified by careful inspection of the Hamiltonian. Note that the nuclei's mass is much larger than the electron mass, therefore \eqref{many-body Hamiltonian}'s fourth term, the nuclei kinetic energy, can be neglected. Likewise, since the nuclei's position can be understood as parameter, the fifth term adds just a constant. Taking the previous points into consideration, yields a more simplified Hamiltonian, which reads as
 
 \begin{equation}
-    \hat{\bf H} = -\frac{\hbar^2}{2m_e} \sum_i \nabla^2_i - \sum_{i, I} \frac{Z_I e^2}{|{\bf x}_i - {\bf R}_I|} + \frac{1}{2} \sum_{i \neq j} \frac{e^2}{|{\bf x}_i-{\bf x}_j|} + \sum_{i} {\bf V}_i ({\bf x}_i).
+    \hat{\bf H} = -\frac{\hbar^2}{2m_e} \sum_i \nabla^2_i - \sum_{i, I} \frac{Z_I e^2}{|{\bf x}_i - {\bf R}_I|} + \frac{1}{2} \sum_{i \neq j} \frac{e^2}{|{\bf x}_i-{\bf x}_j|} + \sum_{i} {\bf V}_i ({\bf x}_i),
 \label{simplified many-body Hamiltonian}
 \end{equation}
 
-Note that in said equation, in the second term, we considered only the Coulomb interaction between the electrons and the nuclei. We might as well add any other external potentials acting on the electrons, including the ones stemming from the nuclei, which are accounted for in the fourth term. \\
-
+where, the second term considers only the Coulomb interaction between the electrons and the nuclei. Any other external potentials acting on the electrons might as well be included, including the ones stemming from the nuclei, all of which are accounted for in the fourth term. 
 This is still a highly-non trivial problem to solve. Indeed, solving said problem consists of solving the eigenvalue equation:
 
 \begin{equation}
-\hat{\bf H}({\bf x}_1, \cdots, {\bf x}_N) \Psi_\lambda(\tilde{x}_1, \cdots, \tilde{x}_N) = E_\lambda \Psi_\lambda(\tilde{x}_1, \cdots, \tilde{x}_N),
+\hat{\bf H}(\{{\bf x}_i\}_{i=1}^{N}) \Psi_\lambda(\{{\tilde x}_i\}_{i=1}^{N}) = E_\lambda \Psi_\lambda(\{{\tilde x}_i\}_{i=1}^{N}),
 \label{ev equation}
 \end{equation}
 
@@ -47,13 +46,13 @@ where
 
 \begin{itemize}
     \item $\tilde{x}_i = ({\bf x}_i, \sigma_i)$, is an atlas on a Riemannian manifold $V = \R^{3N} \otimes (\mathds{C}^2)^{\otimes N}$, accounting for both the $i$-th electron's position and spin,
-    \item and where $\Psi_\lambda$, describing the wavefunction of the $N$-body system, is a function in a Hilbert space given by $\mathds{H} \approx L^2(\R^{3N}) \otimes \bigotimes_{j=1}^{N} \mathds{C}^2 \approx L^2(\R^{3N}) \otimes (\mathds{C}^{2})^{\otimes N}$\footnote{Remember that the Hilbert space for a particle in $\R^3$ with spin is the tensor product of $L^2(\R^3)$ with a finite-dimensional vector space $V$, where $V$ carries and irreducible action of the group rotation $SO(3)$. In this context, the proper notion of "action" is the projective representation of $SO(3)$, meaning a family of operators satisfying the SO(3)-Lie algebra, $\mathfrak{so}(3)$. In our context, the full Hilbert space of a system of $N$ spin-$s$ particles is isomorphic to the tensor product of $N$-Hilbert spaces $\mathds{C}^2$. This may be written in short as $(\mathds{C}^{2s+1})^{\otimes N}$}. Even if we ignore the spatial degrees of freedom, the spin-Hilbert space's dimension scales up as $2^N$. Thus, this problem becomes an NP-hard problem. This is even worse given that we cannot decouple the coordinates of the $i$-th electron from the $j$-th electron. \\ 
+    \item and where $\Psi_\lambda$, which describes the wavefunction of the $N$-body system, is an element of a Hilbert space given by $\mathds{H} \approx L^2(\R^{3N}) \otimes \bigotimes_{j=1}^{N} \mathds{C}^2 \approx L^2(\R^{3N}) \otimes (\mathds{C}^{2})^{\otimes N}$\footnote{Remember that the Hilbert space for a particle in $\R^3$ with spin is the tensor product of $L^2(\R^3)$ with a finite-dimensional vector space $V$, where $V$ carries and irreducible action of the group rotation $SO(3)$. In this context, the proper notion of "action" is the projective representation of $SO(3)$, meaning a family of operators satisfying the SO(3)-Lie algebra, $\mathfrak{so}(3)$. In our context, the full Hilbert space of a system of $N$ spin-$s$ particles is isomorphic to the tensor product of $N$-Hilbert spaces $\mathds{C}^2$. This may be written in short as $(\mathds{C}^{2s+1})^{\otimes N}$}. Even if we ignore the spatial degrees of freedom, the spin-Hilbert space's dimension scales up as $2^N$. Thus, this problem becomes an \textbf{NP-hard} problem. This is even worse given that we cannot decouple the coordinates of the $i$-th electron from the $j$-th electron. \\ 
 \end{itemize}
 
 One way to simplify \eqref{ev equation} is by disregarding the Coulomb interaction and the Pauli principle, considering a system of non-interacting particles. This turns said eigenvalue equation into, a priori, $N$-single electron uncoupled problems, ie.
 
 $$
-\Psi_\lambda(\tilde{x}_1, \cdots, \tilde{x}_N) = \prod_{i=1}^{N} \psi_{n_i}(\tilde{x}_i), \textnormal{with } \psi_{n_i}(\tilde{x}) \in L^2(\R^{3}) \otimes \mathds{C}^2 \textnormal{ and } \lambda = \{n_i\}_{i=1}^{N}.
+\Psi_\lambda(\{{\bf x}_i\}_{i=1}^{N}) = \prod_{i=1}^{N} \psi_{n_i}(\tilde{x}_i), \textnormal{with } \psi_{n_i}(\tilde{x}) \in L^2(\R^{3}) \otimes \mathds{C}^2 \textnormal{ and } \lambda = \{n_i\}_{i=1}^{N}.
 $$
 
 This problem, while tractable, is unphysical since it implies that all electrons move independently in the external potential, allowing for multiple electrons to be in the fundamental state (or any other state for that matter), which goes against the Pauli principle. One way in which we can take into account the Pauli Principle is by taking the Slater determinant of the $N$ single-electron wave functions. Even so, the electrons would still be independent. \\
@@ -188,7 +187,31 @@ or more generally,
     & \bigblanky & \bigblanky & \alignedbox{\bigg[-\frac{1}{2} \nabla^2 + {\bf V}_{\textnormal{ext}}(\x_i) + \sum_{\bm{\lambda} \in \Lambda, \blanky \bm{\lambda} \neq \bm{\alpha}} \int_{\R^3} d\x \frac{n_{\bm{\lambda}}(\x)}{|\x_i - \x|} \bigg] \psi_{\bm{\alpha}}(\x)}{ = \lambda_{\bm{\alpha}}  \psi_{\bm{\alpha}}(\x)},
 \end{align} 
 
-ie. the Hartree-Fock equations, written in terms of a set of $n$ Lagrange multipliers, $\{\lambda_i\}_{i=1}^{n}$. These Lagrange multipliers, though having dimensions of energy, a priori, bear no connection with the electron's energies. It turns out they have a precise physical meaning, which is established by Koopman's theorem.
+ie. the Hartree-Fock equations, written in terms of a set of $n$ Lagrange multipliers, $\{\lambda_i\}_{i=1}^{n}$. These Lagrange multipliers, though having dimensions of energy, a priori, bear no connection with the electron's energies. It turns out they have a precise physical meaning, which is established by Koopmans' theorem.
+
+\paragraph{\textbf{Koopmans' theorem}}
+
+In order to gain a physical interpretation for the Hartree eigenvalues, a definition for the electron's energy is needed. THe energy of an electron is the energy difference between the system of $N$ electrons and the total energy of the ionized system ie. the system in which there are $N-1$ electrons. In mathematical terms, 
+
+$$
+\textnormal{removal energy of } k\textnormal{-th electron } = \bra{\Psi} {{\bf H}} \ket{\Psi} - \bra{\Psi^{\textnormal{ion}}_k} {{\bf H}^{\textnormal{ion}}_k} \ket{\Psi^{\textnormal{ion}}_k},
+$$
+
+which provides an experimental mechanism to measure electron's energies and which can be evaluated within the Hartree-Fock formalism. Let 
+
+\begin{align*}
+    {{\bf H}^{\textnormal{ion}}_k} = \sum_{i \neq k} {\bf H}^{(0)}(\x_i) + \sum_{\substack{i < j \\
+                            i, j \neq k}} v(r_{ij}) \textnormal{ with the ansatz } \Psi^{\textnormal{ion}}_k(\{\x_i\}_{\substack{i = 1 \\
+                            i \neq k}}^{n}) =  \prod_{i=1}^{k-1}\tilde{\psi}_{{\bm \alpha}_i} (\tilde{x}_i) \prod_{j=k+1}^{n} \tilde{\psi}_{{\bm \alpha}_j} (\tilde{x}_j),
+\end{align*}
+
+where, in principle, the ionized electrons wavefunctions of $N-1$-system are not the same as the electronic wavefunctions for the $N$-electron system since the orbitals have changed, ie. $\tilde{\psi}_{{\bm \alpha}_i} (\tilde{x}_i) \neq {\psi}_{{\bm \alpha}_i} (\tilde{x}_i)$. However, the difference is assumed to be negligible in some limit, and then the ionized electrons wavefunction are the same as in the unperturbed system. With this in mid, 
+
+$$
+\epsilon_{{\bm \alpha}_k}= \bra{\Psi} {{\bf H}} \ket{\Psi} - \bra{\Psi^{\textnormal{ion}}_k} {{\bf H}^{\textnormal{ion}}_k} \ket{\Psi^{\textnormal{ion}}_k},
+$$
+
+which is called the Koopmans' theorem: the Hartree equations' eigenvalues are the removal energies of the system, if the occupation number is non-zero, or, if instead the corresponding orbital is empty, $\epsilon_{{\bm \alpha}_k}$, corresponds to the addition energy. \\ 
 
 \clearpage
 
@@ -197,7 +220,7 @@ ie. the Hartree-Fock equations, written in terms of a set of $n$ Lagrange multip
 The general purpose for solving the eigenvalue equation \eqref{ev equation} is to then use said wave-function to calculate observables. Consider the grand canonical ensemble and a given operator $\hat{\bf O} : \mathds{H} \rightarrow \mathds{H}$, then 
 
 \begin{equation}
-\langle \hat{\bf O} \rangle = \frac{1}{\mathcal{Z}} \sum_{\bm{\alpha }\in \Lambda} e^{-\beta(E_{\bm{\alpha} }- \mu N_{\bm{\alpha})}} \bra{\Psi_{\bm{\alpha}}}\hat{\bf O}\ket{\Psi_{\bm{\alpha}}},
+\mathcal{O} = \langle \hat{\bf O} \rangle = \frac{1}{\mathcal{Z}} \sum_{\bm{\alpha }\in \Lambda} e^{-\beta(E_{\bm{\alpha} }- \mu N_{\bm{\alpha})}} \bra{\Psi_{\bm{\alpha}}}\hat{\bf O}\ket{\Psi_{\bm{\alpha}}},
 \label{grand canonical}
 \end{equation}
 
@@ -207,15 +230,15 @@ where
     \item $\bm \alpha \in {\Lambda}$ indexes the different states, 
     \item where $\beta = \frac{1}{kT}$ and $\mu$ is the chemical potential,
     \item $E_{\bm{\alpha}}$ and $N_{\bm{\alpha}}$ are the energy and particle number in state $\ket{\Psi_\alpha}$ respectively,
-    \item and where $\mathcal{Z} =  \sum_{\alpha \in \Lambda} e^{-\beta(E_{\bm \alpha} - \mu N_{\bm \alpha})}$ is the partition function. 
+    \item and where $\mathcal{Z} =  \sum_{\alpha \in \Lambda} e^{-\beta(E_{\bm \alpha} - \mu N_{\bm \alpha})}$ is the partition function in the grand canonical ensemble. 
 \end{itemize}
 
-In other words, \eqref{grand canonical}, the operator $\hat{\bf O}$ stands for the measurement and is integrated with all the many-body states $\ket{\Psi_\alpha} \in \mathds{H} \approx L^2(\R^{3N}) \otimes (\mathds{C}^{2})^{\otimes N}$ which describe the system. \\
+%In other words, in \eqref{grand canonical}, the operator $\hat{\bf O}$ stands for the measurement and is integrated with all the many-body states $\ket{\Psi_\alpha} \in \mathds{H} \approx L^2(\R^{3N}) \otimes (\mathds{C}^{2})^{\otimes N}$ which describe the system. \\
 
 At $N$ fixed and a zero temperature, \eqref{grand canonical} means:
 
 \begin{equation}
-     \langle \hat{\bf O} \rangle = \int_{\mathds{R}^{3N}} \prod_{i=1}^N d{\bf x}_i \prod_{j=1}^{N} \sum_{\sigma_j \in \mathds{C}^2} \Psi^{*}(\tilde{x}_1, \cdots, \tilde{x}_N) \sum_{a,b,\cdots} O(x_a, x_b, \cdots) \Psi(\tilde{x}_1, \cdots, \tilde{x}_N),
+     \langle \hat{\bf O} \rangle = \int_{\mathds{R}^{3N}} \prod_{i=1}^N d{\bf x}_i \prod_{j=1}^{N} \sum_{\sigma_j \in \mathds{C}^2} \Psi^{*}(\{{\bf x}_i\}_{i=1}^{N}) \sum_{a,b,\cdots} O(x_a, x_b, \cdots) \Psi(\{{\bf x}_i\}_{i=1}^{N}),
 \label{ensemble avg}
 \end{equation}
 
@@ -245,7 +268,7 @@ Thinking this in terms of functionals, eliminate the explicit dependence on the 
 \label{trace gce}
 \end{equation}
 
-with the Hamiltonian given by \eqref{hamiltonian 3}. Therefore \eqref{trace gce} depends only on the external potential. Thus, we have expressed a rather complicated functional in terms of a simple function, which we can then try to approximate. \\
+with the Hamiltonian given by \eqref{hamiltonian 3}. Therefore \eqref{trace gce} depends only on the external potential. Thus, we have expressed a rather complicated functional in terms of a simple function, which we can then try to approximate.
 
 \section{Subsets of interesting observables}
 
