@@ -148,21 +148,110 @@ which can be rewritten as
 
 \begin{align}
     \alignedbox{{\bf H} }{= \sum_{k} \epsilon_k d_k^\dagger d_{k} + \frac{\lambda L}{2} \begin{array}{c}
-         \textnormal{ with the eigenvalues being given by } \epsilon_k = J \ cos k - \lambda + \frac{\lambda L}{2} \\
+         \textnormal{ with the eigenvalues being given by } \epsilon_k = J \cos k - \lambda + \frac{\lambda L}{2} \\
          \textnormal{ and the eigenvectors being given by } \ket{E_n} = \prod_{n} (d_k^\dagger)^n,
          \textnormal{                    with eigenvalue $E_n = \sum_{n} \epsilon_n $}  
     \end{array}},
 \end{align}
 
-thus the problem has been solved. \\
+where, $k = \frac{2\pi m}{L}, \blanky m = -\frac{L}{2} + 1, \cdots \frac{L}{2}, $ ie. $k \in (-\pi, \pi]$, this is called the first Brillouin zone. Thus the problem has been solved \\
 
 As for its thermal properties, since this is a fermionic model, the fermions will obey the Fermi-Dirac distribution, ie. 
 
 \begin{equation}
-    \mathcal{N}_{jk} = \langle d_j^\dagger d_k \rangle_{\textnormal{th}} =  \frac{1}{1+e^{\beta \epsilon_k + \mu}} \delta_{jk}.
+    \mathcal{N}_{jk} = \langle d_j^\dagger d_k \rangle_{\textnormal{th}} =  \frac{1}{1+e^{\beta \epsilon_k + \mu}} \delta_{jk} 
 \end{equation}
 
 \clearpage
+
+\subsection{Quantum Phase Transition}
+
+The system's groundstate is defined such that 
+
+\begin{equation}
+    \bra{E_G} d_k^\dagger d_k \ket{E_G} = 1 \textnormal{ if } \epsilon_k \leq 0 \textnormal{ and } \bra{E_G} d_k^\dagger d_k \ket{E_G} = 0 \textnormal{ if } \epsilon_k > 0.
+\end{equation}
+
+Then the groundstate energy is given by 
+
+\begin{equation}
+    E_G = \sum_{k} \epsilon_k \bra{E_G} d_k^\dagger d_k \ket{E_G}.
+\end{equation}
+
+Now, there exists a momenta $k_F$ such that $\epsilon_{k_F} = 0$, with $k_F$ being the Fermi momentum, ie. $\epsilon_{k_f} = J \cos k_f - \lambda$. The previous equation depends both on the coupling strength $J$ and the magnetic field strength $\lambda$. From the previous equation some special cases arise, namely 
+
+\begin{itemize}
+    \item when $\lambda < -J$, which yields a Fermi momentum $k_F = \pi$,
+    \item when $|\lambda| \leq J$, which yields a Fermi momentum $k_F = \arccos \bigg(\frac{\lambda}{J}\bigg)$,
+    \item when $\lambda > J$ which yields $k_F = 0$.
+\end{itemize}
+
+Therefore, the system groundstate will be defined by the following relations, 
+
+\begin{equation}
+    \begin{array}{c}
+         \bra{E_G} d_k^\dagger d_k \ket{E_G} = 1  \\
+         \\
+         \textnormal{ if } k \in [-\pi, -k_F] \cup [k_F, \pi],
+    \end{array} \textnormal{ and }  \begin{array}{c}
+         \bra{E_G} d_k^\dagger d_k \ket{E_G} = 0  \\
+         \\
+         \textnormal{ if } k \in [-k_F, k_F].
+    \end{array}
+\end{equation}
+
+\blanky \\
+
+The total magnetization operator is defined as the sum of the $\spin_z$ operators, along the entire chain ie. ${\bf M}^z = \sum_{j=1} \spin^z_j$. Under the Jordan-Wigner transformation, $\spin^z_j = f_j^\dagger f_j - \frac{1}{2}$. In turn, these fermionic number operators can be mapped to fermionic number operators acting on momentum space, ie. $\sum_{j=1}^{L} f_j^\dagger f_j = \sum_k d_k^\dagger d_k$. This entails
+
+\begin{equation}
+    {\bf M}^z = \sum_{k} \bigg(d_k^\dagger d_k - \frac{1}{2}\bigg).
+\end{equation}
+
+Then the total magnetization operator's expectation value for the groundstate can be calculated. Given the system's fermionic nature, momentum eigenmodes are either occupied or unoccupied, contributing only one or zeros respectively. Then, this expectation value yields
+
+\begin{equation}
+    \bra{E_G} {{\bf M}^z} \ket{E_G} = \sum_{k=-\pi}^{-k_F} 1 + \sum_{k=k_F}^{\pi} 1 - \frac{1}{2} \sum_{k=-\pi}^{\pi} 1 \\
+    = \frac{1}{2} \bigg( \sum_{k=-\pi}^{-k_F} 1 + \sum_{k=k_F}^{\pi} 1 - \sum_{k = -k_F}^{k_F} 1  \bigg), \label{total magnetization ev}
+\end{equation}
+
+where the total magnetization expectation value is just half the difference of two competing summations, related to the negative and positive eigenmodes. Defining the total magnetization per site operator, ${{\bf m}}^z = \frac{1}{L} {\bf M}^z$. Now, as the chain gets progressively bigger, with more and more lattice sites, the summations in \eqref{total magnetization ev} can be approximated by Riemannian integrals, ie.
+
+\begin{equation*}
+    \sum_{k} f(k) = \frac{1}{\Delta k} \sum_{k} f(k) \Delta k \overset{L \rightarrow \infty}{\rightarrow} \frac{L}{2\pi}\int_{k \in \mathds{B}\mathds{Z}} dk f(k) \textnormal{ where } \Delta k = \frac{2\pi}{L}.
+\end{equation*}
+
+Using this trick, \eqref{total magnetization ev} can be rewritten as 
+
+\begin{align}
+    \langle {{\bf m}}^{z} \rangle_{G} &= \frac{1}{4\pi} \bigg(\int_{-\pi}^{-k_F} dk + \int_{k_F}^{\pi} dk - \int_{-k_F}^{k_F} dk \bigg) = \frac{1}{4\pi} \bigg(-k_F + \pi + \pi - k_F - k_F + k_F\bigg) \\
+    &= \frac{1}{2} - \frac{k_F}{\pi},
+\end{align}
+
+which yields the total magnetization per lattice site. Note that at $\lambda < J$, $k_F = \pi$ whereby there is total polarization ie. $\langle {{\bf m}}^{z} \rangle_{G} = -\frac{1}{2}$. Similarly, for $\lambda > J$, $k_F = 0$ and then $\langle {{\bf m}}^{z} \rangle_{G} = \frac{1}{2}$. However, if $|\lambda| \leq J$, then $k_F = \arccos\bigg(\frac{\lambda}{J}\bigg)$, which then yields a total magnetization per lattice site given by 
+\begin{equation} \langle {{\bf m}}^{z} \rangle_{G}  = \left\{
+    \begin{array}{cc}
+          \frac{1}{2} - \frac{1}{\pi}\arccos\bigg(\frac{\lambda}{J}\bigg)&  \textnormal{ if } |\lambda| \leq J  \\
+          \\
+          -\frac{1}{2} & \textnormal{ if } \lambda < J  \\
+          \\
+          \frac{1}{2} & \textnormal{ if } \lambda > J  \\
+    \end{array} \right.
+\end{equation}
+
+Another interesting quantity is the total magnetic susceptibility, which can be written in terms of the total magnetization per lattice site as follows 
+
+\begin{align}
+    \chi = \bigg(\frac{\partial \langle {{\bf m}}^{z} \rangle_{G}}{\partial \lambda}\bigg) \Rightarrow \chi = \left\{ \begin{array}{cc} 
+         \frac{1}{J \pi \sqrt{1- \frac{\lambda^2}{J^2}}} \textnormal{ if } |\lambda| \leq J  \\
+         \\
+          0 \textnormal{ if } \lambda < J \\ 
+         \\
+          0 \textnormal{ if } \lambda > J  \\
+              \end{array} \right., \label{}
+\end{align}
+
+which is divergent if $\lambda = J$. This shows that the XX-Heisenberg model has a second order (since there is no latent heat involved it can't be a first order phase transition) quantum phase transition, with an associated power law with a critical exponent.  \\
 
 \section{Numerical solution to Fermionic models}
 
@@ -272,6 +361,169 @@ This quantities' time evolution can then be found out to be
 
 which can then be numerically solved. 
 
+\clearpage 
+
+\section{Independent Electrons and Static Crystals}
+
+\subsection{Crystal lattices} 
+
+The mathematical concept which best describes an actual crystal lattice is that of a Bravais lattice, defined as a set of mathematical points corresponding to the discrete positions in space given by 
+
+\begin{equation}
+    \{\Rb \in \R^{3} \blanky | \blanky \R = \sum_{i=1}^{3} n_i {\bf a}_i \textnormal{ with } n_i \in \mathds{Z}\},
+\end{equation}
+    
+
+where the $\{a_i\}$-vector are the so-called primitive vector. The Bravais lattice is invariant under the operation 
+
+$$
+\Rb \rightarrow \Rb + {\bf T} \textnormal{ where } {\bf T} = \sum_{i=1}^{3} L_i {\bf a}_i \blanky | \blanky L_i \in \mathds{Z}
+$$
+
+\clearpage
+
+\section{Heisenberg XYZ-chain}
+
+\section{Bethe ansatz}
+
+The Hamiltonian matrix which defines the Heisenberg XYZ-chain can be experessed in terms of an $R$-matrix which is a solution of the Yang-Baxter equation, which leads to the model's integrability. The most convenient approach is to construct a transfer matrix -a one parameter commutative family of operators acting on the full state space of the Heisenberg spin chain. \\
+
+\paragraph{\textbf{The Lax operator}}
+
+The algebraic Bethe ansatz' basic tool is the lax operator $\bm{\mathcal{L}}$. Consider a chain with $N$ sites and a corresponding Hilbert space given by 
+
+\begin{equation}
+    \mathds{H} \sim \bigotimes_{n=1}^{N} {\mathds{V}_n} \textnormal{ where } {\mathds{V}_n} \sim \ctwo
+\end{equation}
+
+To these spaces, an additional auxiliary space $\mathds{V}_a \sim \ctwo$ can be added. Then, the lax operator $\bm{\mathcal{L}}$ can be defined as an operator which involves the local quantum space $\mathds{V}_n$ and the auxiliary space $\mathds{V}_a$, as follows 
+
+\begin{equation}
+    \begin{array}{c}
+         \bm{\mathcal{L}} : \mathds{V}_n \otimes \mathds{V}_a \rightarrow \mathds{V}_n \otimes \mathds{V}_a \\
+         \\
+         \bm{\mathcal{L}}_{n, a} = u(\mathds{1}_n \otimes \mathds{1}_a) + i \sum_{\alpha} \spin_n^\alpha \otimes \sigma_{a}^\alpha.
+    \end{array}
+    \label{lax operator}
+\end{equation}
+
+
+where $\mathds{1}_n$ and $\spin_n^\alpha$ act on $\mathds{V}_n $ while $\mathds{1}_a$ and $\spin_a^\alpha$ act upon $\mathds{V}_a$. The $u$-parameter is the spectral parameter, a complex number. \eqref{lax operator} can be rewritten as 
+
+
+\begin{align}
+    \bm{\mathcal{L}}_{n, a} &= u(\mathds{1}_n \otimes \mathds{1}_a) + i \sum_{\alpha} \spin_n^\alpha \otimes \sigma_{a}^\alpha \\
+    &= u \left(\begin{array}{cc}
+        \mathds{1}_n & 0  \\
+        0 & \mathds{1}_a 
+    \end{array}\right) + i \spin^{x}_{n} \otimes \left(\begin{array}{cc}
+        0 & 1 \\
+        1 & 0
+    \end{array}\right)_a + i \spin^{y}_{n} \otimes \left(\begin{array}{cc}
+        0 & -i \\
+        i & 0 
+    \end{array}\right)_a + i \spin^{z}_{n} \otimes \left(\begin{array}{cc}
+        1 & 0  \\
+        0 & -1
+    \end{array}\right)_a \\
+    &= \left(\begin{array}{cc}
+       u \mathds{1}_n + i \spin^{z}_{n} & i \spin^{x}_{n} + \spin^{y}_{n} \\
+       i \spin^{x}_{n} - \spin^{y}_{n}  & u \mathds{1}_n - i \spin^{z}_{n}
+    \end{array}\right)_a \\
+    &= \left(\begin{array}{cc}
+       u \mathds{1}_n + i \spin^{z}_{n} & i \spin^{-}_{n} \\
+       i \spin^{+}_{n} & u \mathds{1}_n - i \spin^{z}_{n}
+    \end{array}\right)_a,
+\end{align}
+    
+which is a $2 \times 2$-matrix in the auxiliary space $\mathds{V}_a$ and the matrix entries are operators acting on the physical Hilbert space $\mathds{V}_n$. \\
+
+Consider the permutation operator
+
+\begin{equation}
+    \bm{\mathcal P}_{n,a} = \frac{1}{2} \bigg(\mathds{1}_n \otimes \mathds{1}_a + \sum_{\alpha}\sigma_n^{\alpha}  \otimes \sigma_n^{\alpha} \bigg),
+\end{equation}
+
+which can then be written as a $2 \times 2$-matrix in the auxiliary space $\mathds{V}_a$, 
+\begin{align}
+    \bm{\mathcal P}_{n,a} &= \frac{1}{2} \bigg(\mathds{1}_n \otimes \mathds{1}_a + \sum_{\alpha}\sigma_n^{\alpha}  \otimes \sigma_n^{\alpha} \bigg)  \\
+    &= \frac{1}{2} \left[ \left(\begin{array}{cc}
+        \mathds{1}_n & 0  \\
+        0 & \mathds{1}_a 
+    \end{array}\right) + \sigma^{x}_{n} \otimes \left(\begin{array}{cc}
+        0 & 1 \\
+        1 & 0
+    \end{array}\right)_a + \sigma^{y}_{n} \otimes \left(\begin{array}{cc}
+        0 & -i \\
+        i & 0 
+    \end{array}\right)_a + \sigma^{z}_{n} \otimes \left(\begin{array}{cc}
+        1 & 0  \\
+        0 & -1
+    \end{array}\right)_a \right] \\
+    &= \left(\begin{array}{cc}
+       \mathds{1}_n + \sigma^{z}_{n} &  \sigma^{x}_{n} - i\sigma^{y}_{n} \\
+       \sigma^{x}_{n} + i\sigma^{y}_{n}  & u \mathds{1}_n - \sigma^{z}_{n}
+    \end{array}\right)_a. \\
+\end{align}
+
+Using this definition for the permutation operator, the lax operator can then be rewritten as
+
+\begin{align}
+       \bm{\mathcal{L}}_{n, a} &= u(\mathds{1}_n \otimes \mathds{1}_a) + i \sum_{\alpha} \spin_n^\alpha \otimes \sigma_{a}^\alpha. \\
+       &= u(\mathds{1}_n \otimes \mathds{1}_a) + \frac{i}{2} \sum_{\alpha} \sigma_n^\alpha \otimes \sigma_{a}^\alpha \\
+       &= u(\mathds{1}_n \otimes \mathds{1}_a) - \frac{i}{2} (\mathds{1}_n \otimes \mathds{1}_a) + \frac{i}{2} (\mathds{1}_n \otimes \mathds{1}_a) + \frac{i}{2} \sum_{\alpha} \sigma_n^\alpha \otimes \sigma_{a}^\alpha \\
+       &= \bigg(u-\frac{i}{2}\bigg) (\mathds{1}_n \otimes \mathds{1}_a) + \frac{i}{2} \bigg( \mathds{1}_n \otimes \mathds{1}_a + \sum_{\alpha}\sigma_n^{\alpha}  \otimes \sigma_n^{\alpha} \bigg) \\
+       &= \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, \alpha} + i \bm{\mathcal{P}}_{n, a}.
+\end{align}
+
+The permutation operator indeed permutes the factors in the tensor product the factors in the tensor product by calculating the sum of tensor product of the Pauli matrices with respect to the standard four-dimensional basis, ie. if $\x = \left(\begin{array}{c}
+     a \\
+     b 
+\end{array}\right)$ and ${\bf y} = \left(\begin{array}{c}
+     c \\
+     d 
+\end{array}\right)$n then $\x \otimes {\bf y} = \left( \begin{array}{cc}
+    ac & ad  \\
+    bc & bd 
+\end{array} \right)$ and  ${\bf y} \otimes \x = \left( \begin{array}{cc}
+    ac & bc  \\
+    ad & bd 
+\end{array} \right)$. Therefore,
+
+\begin{equation}
+    \bm{\mathcal{P}}_{n, a} (\x \otimes {\bf y} ) = {\bf y} \otimes \x \textnormal{ and } \bm{\mathcal{P}}_{n, a} ( {\bf y} \otimes \x) = \x \otimes {\bf y}.
+\end{equation}
+
+\blanky \\
+
+\subsection{Fundamental commutation Relations and Monodromy Matrix}
+
+Consider two distinct lax operators, say $\bm{\mathcal{L}}_{n, a_1}(u_1)$ and $\bm{\mathcal{L}}_{n, a_2}(u_2)$, acting on two different auxiliary spaces, $\mathds{V}_{a_1}$
+and $\mathds{V}_{a_2}$, which are defined to act on the same local quantum state space  $\mathds{V}_{n}$. The product of these two operator is then a triple tensor product in $\mathds{V}_{n} \otimes \mathds{V}_{a_1} \otimes \mathds{V}_{a_2}$. The relation between these two lax operators can then be written as the fundamental commutation relation
+
+\begin{equation}
+    \bm{\mathcal{R}}_{a_1, a_2}(u_1-u_2) \bm{\mathcal{L}}_{n, a_1} (u_1) \bm{\mathcal{L}}_{n, a_2} (u_2) = \bm{\mathcal{L}}_{n, a_1} (u_2) \bm{\mathcal{L}}_{n, a_1} (u_1) \bm{\mathcal{R}}_{a_1, a_2}(u_1-u_2),
+    \label{fundamental commutation relation}
+\end{equation}
+
+where the quantum $\bm{\mathcal{R}}$-matrix relates the permutation and spectral parameters of two auxiliary spaces and is given by 
+
+\begin{equation}
+    \bm{\mathcal{R}}_{a_1, a_2}(u_1-u_2) = (u_1-u_2) \mathds{1}_{a_1, a_2} + i \bm{\mathcal{P}}_{a_1, a_2},
+\end{equation}
+
+where $\bm{\mathcal{R}}$ acts in $\mathds{V}_{a_1} \otimes \mathds{V}_{a_2}$, which can be rewritten as a $\twobytwo$-matrix in either of the auxiliary spaces 
+
+\begin{equation}
+    \bm{\mathcal{R}}_{a1, a2} = \left(\begin{array}{cc}
+        \bigg(u + \frac{i}{2}\bigg) \mathds{1}_{a_2} + i \spin_{a_2}^z & i \spin_{a_2}^{-} \\
+        i \spin_{a_2}^{+}  & \bigg(u + \frac{i}{2}\bigg) \mathds{1}_{a_2} - i \spin_{a_2}^z 
+    \end{array} \right)_{a_1} = \left(\begin{array}{cc}
+        \bigg(u + \frac{i}{2}\bigg) \mathds{1}_{a_1} + i \spin_{a_1}^z & i \spin_{a_1}^{-} \\
+        i \spin_{a_1}^{+}  & \bigg(u + \frac{i}{2}\bigg) \mathds{1}_{a_1} - i \spin_{a_2}^z 
+    \end{array} \right)_{a_2}.
+\end{equation}
+
+The fundamental commutation relation 
+
 \end{document}
-
-
