@@ -9,8 +9,6 @@
 \usepackage{multirow}
 \usepackage{ulem}
 \usepackage{cancel}
-\usepackage{calc}
-\usepackage{amsmath}
 \usepackage{xcolor}
 \usepackage{relsize}
 \newlength\dlf
@@ -43,14 +41,21 @@
 \newcommand{\bN}{\bb{N}\PackageWarning{hwsymb}{\noexpand\bN is deprecated, use \noexpand\N instead}}
 
 % Symbols
+\newcommand{\bl}{\bm{\mathcal{L}}}
+\newcommand{\vds}{\mathds{V}}
+
+\newcommand{\summation}{\sum_{j=1}^{L-1}}
+
 \newcommand{\ctwo}{\mathds{C}^2}
 \newcommand{\xmeasure}{\int_{\R^3} d\x}
 \newcommand{\spinmeasure}{\sum_{\sigma_j \in \ctwo}}
-
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\transpose}{^{\textnormal{T}}}
+\newcommand{\Rb}{{\bf R}}
+\newcommand{\spin}{{\bf S}}
 \newcommand{\X}{{\bf X}}
 \newcommand{\x}{{\bf x}}
 \newcommand{\blanky}{\textnormal{ }}
-\newcommand{\bigblanky}{\textnormal{                                                   }}
 \newcommand{\seq}{\{{\bf X}_n\}_{n=1}^{\infty}}
 \newcommand{\seqY}{\{{\bf Y}_j\}_{j=1}^{n}}
 \newcommand{\variance}{\mathds{V}\textnormal{ar}}
@@ -61,6 +66,7 @@
 \newcommand{\R}{\mathds{R}}
 \newcommand{\prob}{\mathds{P}}
 \newcommand{\E}{\mathds{E}}
+\newcommand{\twobytwo}{2 \times 2}
 
 \newcommand{\tdis}{$t$-distribution }
 \newcommand{\chidis}{$\chi^2$-distribution }
