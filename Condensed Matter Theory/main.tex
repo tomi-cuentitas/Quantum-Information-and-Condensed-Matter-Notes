@@ -429,8 +429,7 @@ where $\mathds{1}_n$ and $\spin_n^\alpha$ act on $\mathds{V}_n $ while $\mathds{
     &= \left(\begin{array}{cc}
        u \mathds{1}_n + i \spin^{z}_{n} & i \spin^{x}_{n} + \spin^{y}_{n} \\
        i \spin^{x}_{n} - \spin^{y}_{n}  & u \mathds{1}_n - i \spin^{z}_{n}
-    \end{array}\right)_a \\
-    &= \left(\begin{array}{cc}
+    \end{array}\right)_a = \left(\begin{array}{cc}
        u \mathds{1}_n + i \spin^{z}_{n} & i \spin^{-}_{n} \\
        i \spin^{+}_{n} & u \mathds{1}_n - i \spin^{z}_{n}
     \end{array}\right)_a,
@@ -463,18 +462,18 @@ which can then be written as a $2 \times 2$-matrix in the auxiliary space $\math
     &= \left(\begin{array}{cc}
        \mathds{1}_n + \sigma^{z}_{n} &  \sigma^{x}_{n} - i\sigma^{y}_{n} \\
        \sigma^{x}_{n} + i\sigma^{y}_{n}  & u \mathds{1}_n - \sigma^{z}_{n}
-    \end{array}\right)_a. \\
+    \end{array}\right)_a. 
 \end{align}
 
 Using this definition for the permutation operator, the lax operator can then be rewritten as
 
-\begin{align}
+\begin{align*}
        \bm{\mathcal{L}}_{n, a} &= u(\mathds{1}_n \otimes \mathds{1}_a) + i \sum_{\alpha} \spin_n^\alpha \otimes \sigma_{a}^\alpha. \\
        &= u(\mathds{1}_n \otimes \mathds{1}_a) + \frac{i}{2} \sum_{\alpha} \sigma_n^\alpha \otimes \sigma_{a}^\alpha \\
        &= u(\mathds{1}_n \otimes \mathds{1}_a) - \frac{i}{2} (\mathds{1}_n \otimes \mathds{1}_a) + \frac{i}{2} (\mathds{1}_n \otimes \mathds{1}_a) + \frac{i}{2} \sum_{\alpha} \sigma_n^\alpha \otimes \sigma_{a}^\alpha \\
        &= \bigg(u-\frac{i}{2}\bigg) (\mathds{1}_n \otimes \mathds{1}_a) + \frac{i}{2} \bigg( \mathds{1}_n \otimes \mathds{1}_a + \sum_{\alpha}\sigma_n^{\alpha}  \otimes \sigma_n^{\alpha} \bigg) \\
-       &= \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, \alpha} + i \bm{\mathcal{P}}_{n, a}.
-\end{align}
+       &= \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a} + i \bm{\mathcal{P}}_{n, a}.
+\end{align*}
 
 The permutation operator indeed permutes the factors in the tensor product the factors in the tensor product by calculating the sum of tensor product of the Pauli matrices with respect to the standard four-dimensional basis, ie. if $\x = \left(\begin{array}{c}
      a \\
@@ -498,21 +497,27 @@ The permutation operator indeed permutes the factors in the tensor product the f
 
 \subsection{Fundamental commutation Relations and Monodromy Matrix}
 
-Consider two distinct lax operators, say $\bm{\mathcal{L}}_{n, a_1}(u_1)$ and $\bm{\mathcal{L}}_{n, a_2}(u_2)$, acting on two different auxiliary spaces, $\mathds{V}_{a_1}$
-and $\mathds{V}_{a_2}$, which are defined to act on the same local quantum state space  $\mathds{V}_{n}$. The product of these two operator is then a triple tensor product in $\mathds{V}_{n} \otimes \mathds{V}_{a_1} \otimes \mathds{V}_{a_2}$. The relation between these two lax operators can then be written as the fundamental commutation relation
+Consider two distinct lax operators,
+
+\begin{equation*}
+    \begin{array}{c}
+        \bl_{n, a_1}(u_1): \blanky \vds_n \otimes \vds_{a_1} \rightarrow \vds_n \otimes \vds_{a_1}  \\
+        \\
+        \bl_{n, a_2}(u_2): \blanky \vds_n \otimes \vds_{a_2} \rightarrow \vds_n \otimes \vds_{a_2} 
+    \end{array},
+\end{equation*}
+
+both of which act on the physical local quantum state and on two different auxiliary spaces as well. The product of these two operator is then a triple tensor product in $\mathds{V}_{n} \otimes \mathds{V}_{a_1} \otimes \mathds{V}_{a_2}$. Consider an $\bm{\mathcal{R}}$-matrix which relates the permutation and spectral parameters of two auxiliary spaces, which is given by  
 
 \begin{equation}
-    \bm{\mathcal{R}}_{a_1, a_2}(u_1-u_2) \bm{\mathcal{L}}_{n, a_1} (u_1) \bm{\mathcal{L}}_{n, a_2} (u_2) = \bm{\mathcal{L}}_{n, a_1} (u_2) \bm{\mathcal{L}}_{n, a_1} (u_1) \bm{\mathcal{R}}_{a_1, a_2}(u_1-u_2),
-    \label{fundamental commutation relation}
+\begin{array}{c}
+     \bm{\mathcal{R}}: \blanky \mathds{V}_{a_1} \otimes \mathds{V}_{a_2} \otimes \mathds{V}_{a_1} \otimes \mathds{V}_{a_2} \\ 
+     \\
+     \bm{\mathcal{R}}_{a_1, a_2}(u_1-u_2) = (u_1-u_2) \mathds{1}_{a_1, a_2} + i \bm{\mathcal{P}}_{a_1, a_2}, \\
+\end{array}
 \end{equation}
 
-where the quantum $\bm{\mathcal{R}}$-matrix relates the permutation and spectral parameters of two auxiliary spaces and is given by 
-
-\begin{equation}
-    \bm{\mathcal{R}}_{a_1, a_2}(u_1-u_2) = (u_1-u_2) \mathds{1}_{a_1, a_2} + i \bm{\mathcal{P}}_{a_1, a_2},
-\end{equation}
-
-where $\bm{\mathcal{R}}$ acts in $\mathds{V}_{a_1} \otimes \mathds{V}_{a_2}$, which can be rewritten as a $\twobytwo$-matrix in either of the auxiliary spaces 
+note that $\bm{\mathcal{R}}$ can be rewritten as a $\twobytwo$-matrix in either of the auxiliary spaces, as follows
 
 \begin{equation}
     \bm{\mathcal{R}}_{a1, a2} = \left(\begin{array}{cc}
@@ -524,6 +529,49 @@ where $\bm{\mathcal{R}}$ acts in $\mathds{V}_{a_1} \otimes \mathds{V}_{a_2}$, wh
     \end{array} \right)_{a_2}.
 \end{equation}
 
-The fundamental commutation relation 
+\blanky \\
+
+An interesting relationship between the products of the two lax operators and the $\bm{\mathcal{R}}$-matrix can then be found\footnote{Note that the following permutation properties hold 
+
+\begin{equation}
+\bm{\mathcal{P}}_{n, a_1}\bm{\mathcal{P}}_{n, a_2} = \bm{\mathcal{P}}_{a_1, a_2}\bm{\mathcal{P}}_{n, a_1} = \bm{\mathcal{P}}_{n, a_2}\bm{\mathcal{P}}_{a_2, a_1} \textnormal{ and } \bm{\mathcal{P}}_{a, b} = \bm{\mathcal{P}}_{b, a}
+\end{equation}
+
+}, consider 
+
+\begin{align*}
+    \bm{\mathcal{R}}_{a_1, a_2}(u_1-u_2) & \bm{\mathcal{L}}_{n, a_1} (u_1) \bm{\mathcal{L}}_{n, a_2} (u_2) \\ 
+    &= {\bigg((u_1-u_2) \mathds{1}_{a_1, a_2} 
+    + i \bm{\mathcal{P}}_{a_1, a_2}\bigg)}   \left(\bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_1} + i \bm{\mathcal{P}}_{n, a_1}\right) \left(\bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} + i \bm{\mathcal{P}}_{n, a_2}\right) \\
+    &= \left({(u_1-u_2) \mathds{1}_{a_1, a_2} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_1}} + {(u_1-u_2) \mathds{1}_{a_1, a_2} i \bm{\mathcal{P}}_{n, a_1}} + i \bm{\mathcal{P}}_{a_1, a_2} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_1} + i^2 \bm{\mathcal{P}}_{a_1, a_2}  \bm{\mathcal{P}}_{n, a_1} \right) \\
+    & \times \left(\bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} + i \bm{\mathcal{P}}_{n, a_2}\right) \\
+    &= {(u_1-u_2) \mathds{1}_{a_1, a_2} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_1}} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} + {(u_1-u_2) \mathds{1}_{a_1, a_2} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_1}} i \bm{\mathcal{P}}_{n, a_2} \\
+    &+ {(u_1-u_2) \mathds{1}_{a_1, a_2} i \bm{\mathcal{P}}_{n, a_1}} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} + {(u_1-u_2) \mathds{1}_{a_1, a_2} i \bm{\mathcal{P}}_{n, a_1}} i \bm{\mathcal{P}}_{n, a_2} \\ 
+    &+ . i \bm{\mathcal{P}}_{a_1, a_2} \bigg(u-\frac{i}{2}\bigg)\mathds{1}_{n, a_1}  \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} + i \bm{\mathcal{P}}_{a_1, a_2} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_1} i \bm{\mathcal{P}}_{n, a_2} \\
+    & - \bm{\mathcal{P}}_{a_1, a_2}  \bm{\mathcal{P}}_{n, a_1}  \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} - \bm{\mathcal{P}}_{a_1, a_2}  \bm{\mathcal{P}}_{n, a_1} i \bm{\mathcal{P}}_{n, a_2} \\
+    & = \alpha {(u_1-u_2) \mathds{1}_{a_1, a_2}  \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2}} \times \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_1} + {(u_1-u_2) \mathds{1}_{a_1, a_2} i \bm{\mathcal{P}}_{n, a_2}} \times \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_1} \\
+    &+ {(u_1-u_2) \mathds{1}_{a_1, a_2} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2}} \times  i \bm{\mathcal{P}}_{n, a_1} + {(u_1-u_2) \mathds{1}_{a_1, a_2} i \bm{\mathcal{P}}_{n, a_2}} \times i \bm{\mathcal{P}}_{n, a_1} \\
+    &+ i \bm{\mathcal{P}}_{a_1, a_2} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_1}  \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} + i \bm{\mathcal{P}}_{a_1, a_2} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_1} i \bm{\mathcal{P}}_{n, a_2} \\
+    & - \bm{\mathcal{P}}_{a_1, a_2}  \bm{\mathcal{P}}_{n, a_1}  \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} - \bm{\mathcal{P}}_{a_1, a_2}  \bm{\mathcal{P}}_{n, a_1} i \bm{\mathcal{P}}_{n, a_2} \\
+    &= \left({(u_1-u_2) \mathds{1}_{a_1, a_2}  \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2}} + {(u_1-u_2) \mathds{1}_{a_1, a_2} i \bm{\mathcal{P}}_{n, a_2}}\right) \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_1} \\ 
+    &+ \left({(u_1-u_2) \mathds{1}_{a_1, a_2} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2}} + {(u_1-u_2) \mathds{1}_{a_1, a_2} i \bm{\mathcal{P}}_{n, a_2}} \right) \times  i \bm{\mathcal{P}}_{n, a_1} \\
+    &+ i \bm{\mathcal{P}}_{a_1, a_2} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_1} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} + i \bm{\mathcal{P}}_{a_1, a_2} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_1} i \bm{\mathcal{P}}_{n, a_2} \\
+    & - \bm{\mathcal{P}}_{a_1, a_2}  \bm{\mathcal{P}}_{n, a_1}  \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} - \bm{\mathcal{P}}_{a_1, a_2}  \bm{\mathcal{P}}_{n, a_1} i \bm{\mathcal{P}}_{n, a_2} \\
+    &= \bigg((u_1-u_2) \mathds{1}_{a_1, a_2} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} + {(u_1-u_2) \mathds{1}_{a_1, a_2} i \bm{\mathcal{P}}_{n, a_2}} \bigg) \left( \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} + i \bm{\mathcal{P}}_{n, a_1} \right) \\
+    &+ . i \bm{\mathcal{P}}_{a_1, a_2} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_1} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} + i \bm{\mathcal{P}}_{a_1, a_2} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_1} i \bm{\mathcal{P}}_{n, a_2} \\
+    & - \bm{\mathcal{P}}_{a_1, a_2}  \bm{\mathcal{P}}_{n, a_1}  \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} - \bm{\mathcal{P}}_{a_1, a_2}  \bm{\mathcal{P}}_{n, a_1} i \bm{\mathcal{P}}_{n, a_2} \\
+    &= \bigg( \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2}  + { i \bm{\mathcal{P}}_{n, a_2}} \bigg) \left( \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} + i \bm{\mathcal{P}}_{n, a_1} \right) (u_1-u_2) \mathds{1}_{a_1, a_2}  \\
+    &+ \bigg( \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2}  + { i \bm{\mathcal{P}}_{n, a_2}} \bigg) \left( \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} + i \bm{\mathcal{P}}_{n, a_1} \right)  i \bm{\mathcal{P}}_{n, a_2}  \\
+    &= \bigg( \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2}  + { i \bm{\mathcal{P}}_{n, a_2}} \bigg) \left( \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} + i \bm{\mathcal{P}}_{n, a_1} \right) \bigg(\bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} + i \bm{\mathcal{P}}_{n, a_2} \bigg), 
+\end{align*}
+
+which proves that 
+
+\begin{align*}
+ & & \alignedbox{ \bm{\mathcal{R}}_{a_1, a_2}(u_1-u_2) \bm{\mathcal{L}}_{n, a_1} (u_1) \bm{\mathcal{L}}_{n, a_2} (u_2)}{= \bm{\mathcal{L}}_{n, a_1} (u_2) \bm{\mathcal{L}}_{n, a_1} (u_1) \bm{\mathcal{R}}_{a_1, a_2}(u_1-u_2)}.   
+\label{fundamental commutation relation}
+\end{align*}
+
+From the fundamental commutation relation it can then be shown that the $\bm{\mathcal{R}}$-matrix follows the quantum Yang-Baxter equation. 
 
 \end{document}
