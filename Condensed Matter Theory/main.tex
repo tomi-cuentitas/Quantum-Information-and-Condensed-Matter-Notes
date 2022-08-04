@@ -495,7 +495,7 @@ The permutation operator indeed permutes the factors in the tensor product the f
 
 \blanky \\
 
-\subsection{Fundamental commutation Relations and Monodromy Matrix}
+\paragraph{Fundamental commutation Relations and Monodromy Matrix}
 
 Consider two distinct lax operators,
 
@@ -634,20 +634,69 @@ which obeys the fundamental relation as well\footnote{ For example, consider $N=
 
 where the fundamental commutation relation given by \eqref{fundamental commutation relation} was used. Note as well that $\bl$-operators acting on different spaces commute as well, eg. $[\bl_{n_1, a_1}, \bl_{n_2, a_2}] \propto \delta_{n_1, n_2}$. The general fundamental relation can then be proved via mathematical induction for the general case.}, ie.
 
-\begin{align*}
- & & {\br_{a_1, a_2}(u_1-u_2) \bm{\mathcal{T}}_{N, a_1} (u_1) \bm{\mathcal{T}}_{N, a_2} (u_2)}{= \bm{\mathcal{T}}_{n, a_1} (u_2) \bm{\mathcal{T}}_{n, a_1} (u_1) \bm{\mathcal{R}}_{a_1, a_2}(u_1-u_2)}.   
-\label{fundamental commutation relation}
-\end{align*}
+\begin{align}
+ & & {\br_{a_1, a_2}(u_1-u_2) \bm{\mathcal{T}}_{N, a_1} (u_1) \bm{\mathcal{T}}_{N, a_2} (u_2)}{= \bm{\mathcal{T}}_{N, a_2} (u_2) \bm{\mathcal{T}}_{N, a_1} (u_1) \bm{\mathcal{R}}_{a_1, a_2}(u_1-u_2)}.   
+\label{fundamental commutation relation on R}
+\end{align}
 
  \blanky \\
 
-Now, let the transfer $\mathfrak{t}$-matrix be defined as the $\bm{\mathcal{T}}$-matrix's partial trace over the axuliary space $\vds_{a}$, ie.
+Now, let the transfer $\mathfrak{t}$-matrix be defined as the $\bm{\mathcal{T}}$-matrix's partial trace over the auxiliary space $\vds_{a}$, ie.
 
 \begin{equation}
     \mathfrak{t}(u) = \Tr_{\vds_{a}} \bm{\mathcal{T}}_{N, a} (u) = \Tr_{\vds_{a}} \left(\begin{array}{cc}
             A(u) & B(u) \\
             C(u) & D(u)
-         \end{array}\right)  = A(u) + D(u)
+         \end{array}\right)  = A(u) + D(u).
+\end{equation}
+ 
+\eqref{fundamental commutation relation on R}'s double trace can then be written i nterms of the transfer matrix, as follows 
+
+\begin{align*}
+    \Tr_{\vds_{a_1}} \Tr_{\vds_{a_2}} \bigg[\br_{a_1, a_2}(u_1-u_2) \bm{\mathcal{T}}_{N, a_1} (u_1) \bm{\mathcal{T}}_{N, a_2} (u_2)\bigg] = \Tr_{\vds_{a_1}} \Tr_{\vds_{a_2}} \bigg[{\bm{\mathcal{T}}_{N, a_1} (u_2) \bm{\mathcal{T}}_{N, a_1} (u_1) \bm{\mathcal{R}}_{a_1, a_2}(u_1-u_2)}\bigg] \\
+    \Rightarrow \Tr_{\vds_{a_1}} \Tr_{\vds_{a_2}} \bigg[\br_{a_1, a_2}(u_1-u_2) \bm{\mathcal{T}}_{N, a_1} (u_1) \bm{\mathcal{T}}_{N, a_2} (u_2) - {\bm{\mathcal{T}}_{N, a_1} (u_2) \bm{\mathcal{T}}_{N, a_1} (u_1) \bm{\mathcal{R}}_{a_1, a_2}(u_1-u_2)} \bigg] = 0 \\ 
+    \Rightarrow \Tr_{\vds_{a_1}} \Tr_{\vds_{a_2}} \bigg[\br_{a_1, a_2}(u_1-u_2) \bigg(\bm{\mathcal{T}}_{N, a_1} (u_1) \bm{\mathcal{T}}_{N, a_2} (u_2) - {\bm{\mathcal{T}}_{N, a_2} (u_2) \bm{\mathcal{T}}_{N, a_1} (u_1)\bigg)} \bigg] = 0 \\ 
+    \textnormal{ which implies }
+    \Rightarrow \mathfrak{t}(u_1)\mathfrak{t}(u_2) = \mathfrak{t}(u_2)\mathfrak{t}(u_1).
+\end{align*}
+
+Therefore the transfer matrix commutes with itself for different values of the spectral parameter. It turns out that the monodromy matrix can be expanded in a power series around any point $z_0 \in \mathds{C}$, generating an infinite set of linearly independent commuting operators acting on the full quantum space. This formally leads to the model's integrability. \\
+
+\paragraph{\textbf{Monodromy matrix and the Hamiltonian}}
+
+The Hamiltonian operator belongs to the family of transfer matrices. Let $z_0 = \frac{i}{2}$, then the monodromy matrix can be expanded around said complex point yielding (up to first order)
+
+\begin{equation} 
+    \begin{split}
+         \bmt_{N,a}(z_0) &= \prod_1^{j=N} \bigg[ \cancel{\bigg(z_0-\frac{i}{2}\bigg) \mathds{1}_{j, a}} + i \bm{\mathcal{P}}_{j, a}\bigg] = i^N \bm{\mathcal{P}}_{N, a} \bm{\mathcal{P}}_{N-1, a} \cdots \bm{\mathcal{P}}_{1, a} = \\
+         &= i^N \bm{\mathcal{P}}_{1, 2} \bm{\mathcal{P}}_{2, 3} \cdots \bm{\mathcal{P}}_{N-1, N} \bm{\mathcal{P}}_{N, a}\\
+         &= i^N \prod_{j=1}^{N-1} \bm{\mathcal{P}}_{j, \blanky j+1} \bm{\mathcal{P}}_{N, a}
+    \end{split}
+\end{equation}
+
+where the second line holds given the properties of the permutation operators. Taking the partial trace over the auxiliary space yields the transfer matrix, as follows 
+
+\begin{equation}
+    \begin{split}
+        \mathfrak{t}(z_0) &= \Tr_{\vds_a}  \bmt_{N,a}(z_0) = \Tr_{\vds_a} i^N \bm{\mathcal{P}}_{1, 2} i^N \prod_{j=1}^{N-1} \bm{\mathcal{P}}_{j, \blanky j+1} \bm{\mathcal{P}}_{N, a} \\
+        &= i^N \prod_{j=1}^{N-1} \bm{\mathcal{P}}_{j, \blanky j+1}
+        \Tr_{\vds_a} \bm{\mathcal{P}}_{N, a}    = i^N \prod_{j=1}^{N-1} \bm{\mathcal{P}}_{j, \blanky j+1} \Tr_{\vds_a} \frac{1}{2}\left(\begin{array}{cc}
+       \mathds{1}_n + \sigma^{z}_{n} &  \sigma^{x}_{n} - i\sigma^{y}_{n} \\
+       \sigma^{x}_{n} + i\sigma^{y}_{n}  & \mathds{1}_n - \sigma^{z}_{n} \\
+        \end{array}\right)_a. \\
+        &= i^N \prod_{j=1}^{N-1} \bm{\mathcal{P}}_{j, \blanky j+1} \mathds{1}_N.
+    \end{split}
+\end{equation}
+
+Then $\mathcal{U} = i^{-N} \mathfrak{t}(z_0) = \prod_{j=1}^{N-1} \bm{\mathcal{P}}_{j, \blanky j+1}$ is a shift operator in the full quantum Hilbert space $\mathds{H}$. In effect, note that 
+$$
+ \bm{\mathcal{P}}_{n_1, \blanky n_2} {\bf X}_{n_2} \bm{\mathcal{P}}_{n_1, \blanky n_2} = {\bf X}_{n_1},
+$$
+
+ie. this permutation moves ${\bf X}$ one step back. Furthermore, this operator is unitary (given that the permutations are, by definition, unitary operators). Then, according to Stone's theorem on one-parameter unitary groups, the shift operator is related to the momentum operator 
+
+\begin{equation}
+    \mathcal{U} = e^{iP}
 \end{equation}
  
 \end{document}
