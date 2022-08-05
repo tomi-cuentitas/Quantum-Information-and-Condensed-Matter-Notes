@@ -382,8 +382,6 @@ $$
 
 \clearpage
 
-\section{Heisenberg XYZ-chain}
-
 \section{Bethe ansatz}
 
 The Hamiltonian matrix which defines the Heisenberg XYZ-chain can be experessed in terms of an $R$-matrix which is a solution of the Yang-Baxter equation, which leads to the model's integrability. The most convenient approach is to construct a transfer matrix -a one parameter commutative family of operators acting on the full state space of the Heisenberg spin chain. \\
@@ -441,6 +439,7 @@ Consider the permutation operator
 
 \begin{equation}
     \bm{\mathcal P}_{n,a} = \frac{1}{2} \bigg(\mathds{1}_n \otimes \mathds{1}_a + \sum_{\alpha}\sigma_n^{\alpha}  \otimes \sigma_n^{\alpha} \bigg),
+    \label{permutation op}
 \end{equation}
 
 which can then be written as a $2 \times 2$-matrix in the auxiliary space $\mathds{V}_a$, 
@@ -461,7 +460,7 @@ which can then be written as a $2 \times 2$-matrix in the auxiliary space $\math
     \end{array}\right)_a \right] \\
     &= \left(\begin{array}{cc}
        \mathds{1}_n + \sigma^{z}_{n} &  \sigma^{x}_{n} - i\sigma^{y}_{n} \\
-       \sigma^{x}_{n} + i\sigma^{y}_{n}  & u \mathds{1}_n - \sigma^{z}_{n}
+       \sigma^{x}_{n} + i\sigma^{y}_{n}  & \mathds{1}_n - \sigma^{z}_{n}
     \end{array}\right)_a. 
 \end{align}
 
@@ -609,9 +608,9 @@ Let the monodromy matrix $\bm{\mathcal{T}}_{N,a}$ be defined as a product of sub
          \bmt_{N,a} = \prod^{j=N}_{1} \bl_{j,a} \\
          \\
          \bmt_{N,a} = \prod^{j=N}_{1} \left(\begin{array}{cc}
-            u \mathds{1}_j + i \spin_N^z & i \spin_j^-  \\
-            i \spin_j^+ & u \mathds{1}_j - i \spin_N^z
-         \end{array}\right) \equiv \left(\begin{array}{cc}
+            u \mathds{1}_j + i \spin_j^z & i \spin_j^-  \\
+            i \spin_j^+ & u \mathds{1}_j - i \spin_j^z
+         \end{array}\right)) \equiv \left(\begin{array}{cc}
             A(u) & B(u) \\
             C(u) & D(u)
          \end{array}\right) 
@@ -698,5 +697,118 @@ ie. this permutation moves ${\bf X}$ one step back. Furthermore, this operator i
 \begin{equation}
     \mathcal{U} = e^{iP}
 \end{equation}
+
+\blanky \\
+
+The next order in the expansion of the transfer matrix can then be found via the derivative of the monodromy matrix at $z_0 = \frac{i}{2}$, 
+
+\begin{equation}
+    \begin{split}
+    \frac{d \bmt_{N,a}(u)}{du}\bigg|_{u = z_0} &= \frac{d}{du} \prod_{1}^{j=N} \left(\begin{array}{cc}
+            u \mathds{1}_j + i \spin_j^z & i \spin_j^-  \\
+            i \spin_j^+ & u \mathds{1}_j - i \spin_j^z
+         \end{array}\right)\bigg|_{u = z_0} \\
+        &=  \frac{d}{du} \left[\left(\begin{array}{cc}
+            u \mathds{1}_N + i \spin_N^z & i \spin_N^-  \\
+            i \spin_N^+ & u \mathds{1}_N - i \spin_N^z
+         \end{array}\right)\right]\bigg|_{u = z_0} \prod_{1}^{j=N-1} \left(\begin{array}{cc}
+            u \mathds{1}_j + i \spin_j^z & i \spin_j^-  \\
+            i \spin_j^+ & u \mathds{1}_j - i \spin_j^z
+         \end{array}\right) \\
+         &+ \left(\begin{array}{cc}
+            u \mathds{1}_N + i \spin_N^z & i \spin_N^-  \\
+            i \spin_N^+ & u \mathds{1}_N - i \spin_N^z
+         \end{array}\right) \frac{d}{du} \left[\left(\begin{array}{cc}
+            u \mathds{1}_{N-1} + i \spin_{N-1}^z & i \spin_{N-1}^-  \\
+            i \spin_{N-1}^+ & u \mathds{1}_{N-1} - i \spin_{N-1}^z
+         \end{array}\right)\right]\bigg|_{u = z_0} \\
+         &\times \prod_{1}^{j=N-2} \left(\begin{array}{cc}
+            u \mathds{1}_j + i \spin_j^z & i \spin_j^-  \\
+            i \spin_j^+ & u \mathds{1}_j - i \spin_j^z
+         \end{array}\right) \\
+         &+ \cdots +  \prod^{j=N}_{3}\left(\begin{array}{cc}
+            u \mathds{1}_j + i \spin_j^z & i \spin_j^-  \\
+            i \spin_j^+ & u \mathds{1}_j - i \spin_j^z
+         \end{array}\right) \frac{d}{du} \left[\left(\begin{array}{cc}
+            u \mathds{1}_{2} + i \spin_{2}^z & i \spin_{2}^-  \\
+            i \spin_{2}^+ & u \mathds{1}_{2} - i \spin_{2}^z
+         \end{array}\right)\right]\bigg|_{u = z_0} \\
+         & \times \left(\begin{array}{cc}
+            u \mathds{1}_{1} + i \spin_{1}^z & i \spin_{1}^-  \\
+            i \spin_{1}^+ & u \mathds{1}_{1} - i \spin_{1}^z
+         \end{array}\right)
+         \\
+         &+ \prod^{j=N}_{2}\left(\begin{array}{cc}
+            u \mathds{1}_j + i \spin_j^z & i \spin_j^-  \\
+            i \spin_j^+ & u \mathds{1}_j - i \spin_j^z
+         \end{array}\right) \frac{d}{du} \left[\left(\begin{array}{cc}
+            u \mathds{1}_{1} + i \spin_{1}^z & i \spin_{1}^-  \\
+            i \spin_{1}^+ & u \mathds{1}_{1} - i \spin_{1}^z
+         \end{array}\right)\right]\bigg|_{u = z_0} \\
+         &= i^{N-1} \bigg[ \prod_{1}^{j=N-1} \bm{\mathcal{P}}_{j} + \prod^{j=N}_{N} \bm{\mathcal{P}}_{j}\times  \prod_{1}^{j=N-2} \bm{\mathcal{P}}_{j} + \cdots + \prod^{j=N}_{k} \bm{\mathcal{P}}_{j}\times  \prod^{k+2}_{1} \bm{\mathcal{P}}_{j} \\
+         &+ \cdots + \prod^{j=N}_{3} \bm{\mathcal{P}}_{j} \times \prod^{j=1}_{1} \bm{\mathcal{P}}_{j} + \prod^{j=N}_{2} \bm{\mathcal{P}}_{j} \bigg] \\
+         &= i^{N-1} \sum_{n \in \mathds{N}} \bm{\mathcal{P}}_{N, a} \cdots \bm{\mathcal{P}}_{n-1, a} \bm{\mathcal{P}}_{n+1, a} \cdots \bm{\mathcal{P}}_{1, a} \\
+         &= i^{N-1} \sum_{n \in \mathds{N}} \bm{\mathcal{P}}_{1, 2} \bm{\mathcal{P}}_{2, 3}\cdots \bm{\mathcal{P}}_{n-1, n+1}
+         \cdots \bm{\mathcal{P}}_{N-1, N} \bm{\mathcal{P}}_{N, a} \\
+         &= i^{N-1} \sum_{n \in \mathds{N}} \prod_{j=1}^{n-2} \bm{\mathcal{P}}_{j, \blanky j+1}  \times \bm{\mathcal{P}}_{n-1, \blanky n+1} \times \prod_{j=n+2}^{N-1}  \bm{\mathcal{P}}_{j, \blanky j+1} \bm{\mathcal{P}}_{N, a}.
+    \end{split} 
+\end{equation}
+
+Therefore,
+
+\begin{equation}
+    \begin{split}
+        \frac{d \mathfrak{t}(u)}{du}\bigg|_{u = z_0} &= \frac{d \Tr_{\vds_{a}} \bmt_{N,a}(u)}{du}\bigg|_{u = z_0} \\
+        &= i^{N-1} \sum_{n \in \mathds{N}} \prod_{j=1}^{n-2} \bm{\mathcal{P}}_{j, \blanky j+1} 
+        \times \bm{\mathcal{P}}_{n-1, \blanky n+1} \times \prod_{j=n+2}^{N-1}  \bm{\mathcal{P}}_{j, \blanky j+1} \times \Tr_{\vds_{a}} \bm{\mathcal{P}}_{N, a} \\
+        &= i^{N-1} \sum_{n \in \mathds{N}} \prod_{j=1}^{n-2} \bm{\mathcal{P}}_{j, \blanky j+1} 
+        \times \bm{\mathcal{P}}_{n-1, \blanky n+1} \times \prod_{j=n+2}^{N-1}  \bm{\mathcal{P}}_{j, \blanky j+1}.
+    \end{split}
+\end{equation}
+
+Now, note that 
+
+\begin{equation}
+    \begin{split}
+        \frac{d}{du} \log(\mathfrak{t}(u))\bigg|_{u = z_0} &= \frac{d}{du} \log \Tr_{\vds_{a}} \bm{\mathcal{T}}(u) \bigg|_{u=z_0} \\
+        &= \frac{d}{du}\bigg(\mathfrak{t}(u)\bigg) \mathfrak{t}(u)^{-1}\bigg|_{u = z_0} \\
+        &= i^{N-1} \sum_{n \in \mathds{N}} \bigg( \prod_{j=1}^{n-2} \bm{\mathcal{P}}_{j, \blanky j+1} 
+        \times \bm{\mathcal{P}}_{n-1, \blanky n+1} \times \prod_{j=n+2}^{N-1}  \bm{\mathcal{P}}_{j, \blanky j+1} \bigg) \times \bigg(i^N \prod_{j=1}^{N-1} \bm{\mathcal{P}}_{j, \blanky j+1} \mathds{1}_N\bigg)^{-1} \\
+        &= \frac{1}{i} \sum_{n \in \mathds{N}} \bigg(\prod_{j=1}^{n-2} \bm{\mathcal{P}}_{j, \blanky j+1} 
+        \times \bm{\mathcal{P}}_{n-1, \blanky n+1} \times \prod_{j=n+2}^{N-1}  \bm{\mathcal{P}}_{j, \blanky j+1} \bigg) \times \prod_{j=1}^{N-1} \bm{\mathcal{P}}_{N-1-j, N-j}^{-1} \\
+        &= \frac{1}{i} \sum_{n \in \mathds{N}} \bigg(\prod_{j=1}^{n-2} \bm{\mathcal{P}}_{j, \blanky j+1} 
+        \times \bm{\mathcal{P}}_{n-1, \blanky n+1} \times \prod_{j=n+2}^{N-1}  \bm{\mathcal{P}}_{j, \blanky j+1} \bigg) \times \prod_{1}^{j = N-1} \bm{\mathcal{P}}_{j, j+1}  \\
+        &= \frac{1}{i} \sum_{n \in \mathds{N}} \bigg(\cancel{\bm{\mathcal{P}}_{1,2}} \cancel{\bm{\mathcal{P}}_{2,3}} \cdots \bm{\mathcal{P}}_{n-1, \blanky n+1} \cdots \cancel{\bm{\mathcal{P}}_{N-1,N} \times \bm{\mathcal{P}}_{N-1, \blanky N}} \cdots \bm{\mathcal{P}}_{n,\blanky n+1} \cdots \cancel{\bm{\mathcal{P}}_{2,3}} \cancel{\bm{\mathcal{P}}_{1,2}}\bigg) \\
+        &= \frac{1}{i}  \sum_{n \in \mathds{N}} \bm{\mathcal{P}}_{N-1, \blanky N}
+    \end{split}
+\end{equation}
+
+Note that \eqref{XXX model} can be rewritten in terms of the permutation operator as 
+
+\begin{equation}
+    {\bf H} = \frac{J}{2} \sum_{n}\bigg( \bm{\mathcal{P}}_{n, \blanky n+1} - \mathds{1}^{\otimes N}\bigg),
+\end{equation}
+
+which in turn can be rewritten as 
+
+\begin{equation}
+    {\bf H} = \frac{J}{2} \bigg(i \frac{d}{du} \log(\mathfrak{t}(u))\bigg|_{u=z_0} - N \mathds{1}^{\otimes N}\bigg),
+\end{equation}
+
+which shows that the XXX Hamiltonian belongs to the family of $N-1$ commuting operators generated by the trace of the monodromy matrix $\bmt$. As a result, the Hamiltonian commutes with the transfer matrix 
+
+\begin{equation}
+    [{\bf H}, \mathfrak{t}(u)] = 0.
+\end{equation}
+
+\blanky \\
+
+\paragraph{\textbf{Diagonalizing the Hamiltonian}}
+
+The only task left is to diagonalize the Hamiltonian, by diagonalizing the transfer matrix. The monodromy matrix $\bm{\mathcal{t}}_{N, \blanky a}$ is a $\twobytwo$-matrix in the auxiliary space $\vds_{a}$ whose entries are operators in the full quantum space. 
+
+\clearpage 
+
+\section{.}
  
 \end{document}
