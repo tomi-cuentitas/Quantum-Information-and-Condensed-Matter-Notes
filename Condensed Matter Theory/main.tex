@@ -382,6 +382,20 @@ $$
 
 \clearpage
 
+\section{Heisenberg XXX-chain}
+
+Consider a one-dimensional lattice with $N$ lattice sites and a $\frac{1}{2}$-spin particle positioned at every lattice site, which have a nearest neighbour spin-spin interaction. Each particles either has spin up or spin down, generating a two-dimensional local Hilbert space $\vds_n$. Strictly speaking there are two possible topologies for a one-dimensional chain, open or closed. Consider the XXX-Hamiltonian with closed topology, given by 
+
+\begin{equation}
+\begin{split}
+    {\bf H} &= J \sum_{n=1}^{N} \bigg(\vec{\spin}_n \cdot \vec{\spin}_{n+1} - \frac{1}{4} \mathds{1}^{\otimes N} \bigg) \\
+    &= \frac{J}{4}\sum_{n=1}^{N} \bigg(\vec{\sigma}_n \cdot \vec{\sigma}_{n+1} - \frac{1}{4} \mathds{1}^{\otimes N} \bigg).
+    \label{XXX model}
+\end{split}
+\end{equation}
+
+Note that $J < 0$ models a ferromagnetic state while $J > 0$ models an anti-ferromagnetic state. A ferromagnetic state refers to a state where all the spins are aligned parallel while an anti-ferromagnetic state refers to a state where adjacent spins are anti-aligned within the domain. 
+
 \section{Bethe ansatz}
 
 The Hamiltonian matrix which defines the Heisenberg XYZ-chain can be experessed in terms of an $R$-matrix which is a solution of the Yang-Baxter equation, which leads to the model's integrability. The most convenient approach is to construct a transfer matrix -a one parameter commutative family of operators acting on the full state space of the Heisenberg spin chain. \\
@@ -408,8 +422,8 @@ To these spaces, an additional auxiliary space $\mathds{V}_a \sim \ctwo$ can be 
 
 where $\mathds{1}_n$ and $\spin_n^\alpha$ act on $\mathds{V}_n $ while $\mathds{1}_a$ and $\spin_a^\alpha$ act upon $\mathds{V}_a$. The $u$-parameter is the spectral parameter, a complex number. \eqref{lax operator} can be rewritten as 
 
-
-\begin{align}
+\begin{equation}
+    \begin{split}
     \bm{\mathcal{L}}_{n, a} &= u(\mathds{1}_n \otimes \mathds{1}_a) + i \sum_{\alpha} \spin_n^\alpha \otimes \sigma_{a}^\alpha \\
     &= u \left(\begin{array}{cc}
         \mathds{1}_n & 0  \\
@@ -431,7 +445,8 @@ where $\mathds{1}_n$ and $\spin_n^\alpha$ act on $\mathds{V}_n $ while $\mathds{
        u \mathds{1}_n + i \spin^{z}_{n} & i \spin^{-}_{n} \\
        i \spin^{+}_{n} & u \mathds{1}_n - i \spin^{z}_{n}
     \end{array}\right)_a,
-\end{align}
+    \end{split}
+\end{equation}
     
 which is a $2 \times 2$-matrix in the auxiliary space $\mathds{V}_a$ and the matrix entries are operators acting on the physical Hilbert space $\mathds{V}_n$. \\
 
@@ -443,9 +458,9 @@ Consider the permutation operator
 \end{equation}
 
 which can then be written as a $2 \times 2$-matrix in the auxiliary space $\mathds{V}_a$, 
-\begin{align}
-    \bm{\mathcal P}_{n,a} &= \frac{1}{2} \bigg(\mathds{1}_n \otimes \mathds{1}_a + \sum_{\alpha}\sigma_n^{\alpha}  \otimes \sigma_n^{\alpha} \bigg)  \\
-    &= \frac{1}{2} \left[ \left(\begin{array}{cc}
+\begin{equation} 
+\begin{split}
+    \bm{\mathcal P}_{n,a} &= \frac{1}{2} \left[ \left(\begin{array}{cc}
         \mathds{1}_n & 0  \\
         0 & \mathds{1}_a 
     \end{array}\right) + \sigma^{x}_{n} \otimes \left(\begin{array}{cc}
@@ -461,18 +476,21 @@ which can then be written as a $2 \times 2$-matrix in the auxiliary space $\math
     &= \left(\begin{array}{cc}
        \mathds{1}_n + \sigma^{z}_{n} &  \sigma^{x}_{n} - i\sigma^{y}_{n} \\
        \sigma^{x}_{n} + i\sigma^{y}_{n}  & \mathds{1}_n - \sigma^{z}_{n}
-    \end{array}\right)_a. 
-\end{align}
+    \end{array}\right)_a.
+    \end{split}
+\end{equation}
 
 Using this definition for the permutation operator, the lax operator can then be rewritten as
 
-\begin{align*}
-       \bm{\mathcal{L}}_{n, a} &= u(\mathds{1}_n \otimes \mathds{1}_a) + i \sum_{\alpha} \spin_n^\alpha \otimes \sigma_{a}^\alpha. \\
-       &= u(\mathds{1}_n \otimes \mathds{1}_a) + \frac{i}{2} \sum_{\alpha} \sigma_n^\alpha \otimes \sigma_{a}^\alpha \\
+\begin{equation}
+    \begin{split}
+       \bm{\mathcal{L}}_{n, a} &= u(\mathds{1}_n \otimes \mathds{1}_a) + i \sum_{\alpha} \spin_n^\alpha \otimes \sigma_{a}^\alpha = u(\mathds{1}_n \otimes \mathds{1}_a) + \frac{i}{2} \sum_{\alpha} \sigma_n^\alpha \otimes \sigma_{a}^\alpha \\
        &= u(\mathds{1}_n \otimes \mathds{1}_a) - \frac{i}{2} (\mathds{1}_n \otimes \mathds{1}_a) + \frac{i}{2} (\mathds{1}_n \otimes \mathds{1}_a) + \frac{i}{2} \sum_{\alpha} \sigma_n^\alpha \otimes \sigma_{a}^\alpha \\
        &= \bigg(u-\frac{i}{2}\bigg) (\mathds{1}_n \otimes \mathds{1}_a) + \frac{i}{2} \bigg( \mathds{1}_n \otimes \mathds{1}_a + \sum_{\alpha}\sigma_n^{\alpha}  \otimes \sigma_n^{\alpha} \bigg) \\
        &= \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a} + i \bm{\mathcal{P}}_{n, a}.
-\end{align*}
+       \end{split}
+       \label{l-matrix def}
+\end{equation}
 
 The permutation operator indeed permutes the factors in the tensor product the factors in the tensor product by calculating the sum of tensor product of the Pauli matrices with respect to the standard four-dimensional basis, ie. if $\x = \left(\begin{array}{c}
      a \\
@@ -492,9 +510,7 @@ The permutation operator indeed permutes the factors in the tensor product the f
     \bm{\mathcal{P}}_{n, a} (\x \otimes {\bf y} ) = {\bf y} \otimes \x \textnormal{ and } \bm{\mathcal{P}}_{n, a} ( {\bf y} \otimes \x) = \x \otimes {\bf y}.
 \end{equation}
 
-\blanky \\
-
-\paragraph{Fundamental commutation Relations and Monodromy Matrix}
+\paragraph{\textbf{Fundamental commutation Relations and Monodromy Matrix}}
 
 Consider two distinct lax operators,
 
@@ -513,6 +529,7 @@ both of which act on the physical local quantum state and on two different auxil
      \bm{\mathcal{R}}: \blanky \mathds{V}_{a_1} \otimes \mathds{V}_{a_2} \otimes \mathds{V}_{a_1} \otimes \mathds{V}_{a_2} \\ 
      \\
      \bm{\mathcal{R}}_{a_1, a_2}(u_1-u_2) = (u_1-u_2) \mathds{1}_{a_1, a_2} + i \bm{\mathcal{P}}_{a_1, a_2}, \\
+     \label{R-matrix def}
 \end{array}
 \end{equation}
 
@@ -527,8 +544,6 @@ note that $\bm{\mathcal{R}}$ can be rewritten as a $\twobytwo$-matrix in either 
         i \spin_{a_1}^{+}  & \bigg(u + \frac{i}{2}\bigg) \mathds{1}_{a_1} - i \spin_{a_2}^z 
     \end{array} \right)_{a_2}.
 \end{equation}
-
-\blanky \\
 
 An interesting relationship between the products of the two lax operators and the $\bm{\mathcal{R}}$-matrix can then be found\footnote{Note that the following permutation properties hold 
 
@@ -610,7 +625,7 @@ Let the monodromy matrix $\bm{\mathcal{T}}_{N,a}$ be defined as a product of sub
          \bmt_{N,a} = \prod^{j=N}_{1} \left(\begin{array}{cc}
             u \mathds{1}_j + i \spin_j^z & i \spin_j^-  \\
             i \spin_j^+ & u \mathds{1}_j - i \spin_j^z
-         \end{array}\right)) \equiv \left(\begin{array}{cc}
+         \end{array}\right) \equiv \left(\begin{array}{cc}
             A(u) & B(u) \\
             C(u) & D(u)
          \end{array}\right) 
@@ -634,7 +649,7 @@ which obeys the fundamental relation as well\footnote{ For example, consider $N=
 where the fundamental commutation relation given by \eqref{fundamental commutation relation} was used. Note as well that $\bl$-operators acting on different spaces commute as well, eg. $[\bl_{n_1, a_1}, \bl_{n_2, a_2}] \propto \delta_{n_1, n_2}$. The general fundamental relation can then be proved via mathematical induction for the general case.}, ie.
 
 \begin{align}
- & & {\br_{a_1, a_2}(u_1-u_2) \bm{\mathcal{T}}_{N, a_1} (u_1) \bm{\mathcal{T}}_{N, a_2} (u_2)}{= \bm{\mathcal{T}}_{N, a_2} (u_2) \bm{\mathcal{T}}_{N, a_1} (u_1) \bm{\mathcal{R}}_{a_1, a_2}(u_1-u_2)}.   
+ & & \alignedbox{\br_{a_1, a_2}(u_1-u_2) \bm{\mathcal{T}}_{N, a_1} (u_1) \bm{\mathcal{T}}_{N, a_2} (u_2)}{= \bm{\mathcal{T}}_{N, a_2} (u_2) \bm{\mathcal{T}}_{N, a_1} (u_1) \bm{\mathcal{R}}_{a_1, a_2}(u_1-u_2)}.   
 \label{fundamental commutation relation on R}
 \end{align}
 
@@ -791,21 +806,176 @@ Note that \eqref{XXX model} can be rewritten in terms of the permutation operato
 
 which in turn can be rewritten as 
 
-\begin{equation}
-    {\bf H} = \frac{J}{2} \bigg(i \frac{d}{du} \log(\mathfrak{t}(u))\bigg|_{u=z_0} - N \mathds{1}^{\otimes N}\bigg),
-\end{equation}
+\begin{align}
+    \alignedbox{{\bf H}}{ = \frac{J}{2} \bigg(i \frac{d}{du} \log(\mathfrak{t}(u))\bigg|_{u=z_0} - N \mathds{1}^{\otimes N}\bigg)},
+\end{align}
 
-which shows that the XXX Hamiltonian belongs to the family of $N-1$ commuting operators generated by the trace of the monodromy matrix $\bmt$. As a result, the Hamiltonian commutes with the transfer matrix 
-
-\begin{equation}
-    [{\bf H}, \mathfrak{t}(u)] = 0.
-\end{equation}
+which shows that the XXX Hamiltonian belongs to the family of $N-1$ commuting operators generated by the trace of the monodromy matrix $\bmt$. As a result, the Hamiltonian commutes with the transfer matrix $ [{\bf H}, \mathfrak{t}(u)] = 0.$ 
 
 \blanky \\
 
 \paragraph{\textbf{Diagonalizing the Hamiltonian}}
 
-The only task left is to diagonalize the Hamiltonian, by diagonalizing the transfer matrix. The monodromy matrix $\bm{\mathcal{t}}_{N, \blanky a}$ is a $\twobytwo$-matrix in the auxiliary space $\vds_{a}$ whose entries are operators in the full quantum space. 
+The only task left is to diagonalize the Hamiltonian, by diagonalizing the transfer matrix. The monodromy matrix ${\mathfrak{t}}_{N,a}$ is a $\twobytwo$-matrix in the auxiliary space $\vds_{a}$ whose entries are operators in the full quantum space. Recalling the fundamental commutation relation between the $\bm{\mathcal{R}}$ and $\bm{\mathcal{T}}$-matrices, then the following theorem holds,
+
+\begin{theo} \label{theo monodromy}
+Let $\bm{\mathcal{T}}$ be the monodromy matrix for the Heisenberg model. Then, $\forall u_1, u_2 \in \mathds{C}$ then \\
+
+\begin{itemize}
+    \item $[\bm{\mathcal{T}}_{ij}(u_1), \bm{\mathcal{T}}_{ij}(u_2)] = 0, \blanky i,j = 1, 2$, which entails that $[B(u_1), B(u_2)] = \cdots = [D(u_1), D(u_2)] = 0$ \\
+    \item $A(u_1) B(u_2) = f(u_1-u_2) B(u_2) A(u_1) + g(u_1-u_2) B(u_1)A(u_2)$\\
+    \item $D(u_1) B(u_2) = h(u_1-_2) B(u_2) D(u_1) + k(u_1-u_2) B(u_1)D(u_2)$,
+\end{itemize}
+
+where $f,g,h,$ and $k$ are given by 
+
+\begin{align*}
+    f(u) &= \frac{u-i}{u}, & g(u) &= \frac{i}{u}, & h(u) &= \frac{u + i}{u}, & k(u) &= -\frac{i}{u}.
+\end{align*}
+\end{theo}
+
+\begin{proof}
+Consider two different monodromy matrices, labelled $\bm{\mathcal{T}}_{N, a_1} (u_1)$ and  $\bm{\mathcal{T}}_{N, a_2} (u_2)$, acting on two different auxiliary spaces, labelled $\vds_1$ and $\vds_2$ respectively. Then, these $\bmt$-matrices can be written as 
+
+\begin{equation} \begin{array}{cc}
+   \bm{\mathcal{T}}_{N, a_1} (u_1) = \left( \begin{array}{cc}
+        A(u_1) & B(u_1)  \\
+        C(u_1) & D(u_1) 
+    \end{array} \right) \otimes \mathds{1}_{\vds_2}, & \bm{\mathcal{T}}_{N, a_2} (u_2) = \mathds{1}_{\vds_1} \otimes \left( \begin{array}{cc}
+        A(u_2) & B(u_2)  \\
+        C(u_2) & D(u_2) 
+    \end{array} \right) \\
+    = \left( \begin{array}{cccc}
+        A(u_1) & 0 & B(u_1) & 0  \\
+        0 & A(u_1) & 0 & B(u_1) \\
+        C(u_1) & 0 & D(u_1) & 0  \\
+        0 & C(u_1) & 0 & D(u_1) \\
+    \end{array} \right), & \left( \begin{array}{cccc}
+        A(u_2) & B(u_2) & 0 & 0  \\
+        C(u_2) & D(u_2) & 0 & 0 \\
+        0 & 0 & A(u_2) & B(u_2) \\
+        0 & 0 & C(u_2) & D(u_2) \\
+    \end{array} \right)
+\end{array}
+\end{equation}
+
+ Recall that the $\bm{\mathcal{R}}$-matrix is given by \eqref{R-matrix def}, which can be rewritten as 
+
+$$
+\bm{\mathcal{R}}_{a_1, a_2}(u_1-u_2) = 
+\left(\begin{array}{cccc}
+        a (u_1-u_2) & 0 & 0 & 0  \\
+        0 & b(u_1-u_2) & c(u_1-u_2) & 0  \\
+        0 & c(u_1-u_2) & b(u_1-u_2) & 0 ) \\
+        0 & 0 & 0 & a (u_1-u_2) \\
+    \end{array} \right) \textnormal{ where } \begin{array}{c}
+         a(\lambda) = \lambda + i  \\
+         b(\lambda) = \lambda \\
+         c(\lambda) = i 
+    \end{array}, 
+$$
+
+Then the fundamental commutation relation \eqref{fundamental commutation relation on R} establishes a relationship between the monodromy $\bmt$-matrices and the $\bm{\mathcal{R}}$-matrix. Then, plugging in the previous results yields
+
+\begin{equation*}
+    \Rightarrow \begin{split}
+    \left(\begin{array}{cccc}
+        a_{12} & 0 & 0 & 0  \\
+        0 & b_{12} & c_{12} & 0  \\
+        0 & c_{12} & b_{12} & 0  \\
+        0 & 0 & 0 & a_{12} \\
+    \end{array} \right) \left( \begin{array}{cccc}
+        A(u_1) A(u_2) & A(u_1) B(u_2) & B(u_1) A(u_2) & B(u_1) B(u_2)  \\
+        A(u_1) C(u_2) & A(u_1) D(u_2) & B(u_1) C(u_2) & B(u_1) D(u_2) \\
+        C(u_1) A(u_2) & C(u_1) B(u_2) & D(u_1) A(u_2) & D(u_1) B(u_2) \\
+        C(u_1) C(u_2) & C(u_1) D(u_2) & D(u_1) C(u_2) & D(u_1) D(u_2) \\
+    \end{array} \right) \\ = \left( \begin{array}{cccc}
+        A(u_2) A(u_1) & B(u_2)A(u_1) & A(u_2) B(u_1) & B(u_2) B(u_1)  \\
+        C(u_2) A(u_1) & D(u_2) A(u_1) & C(u_2) B(u_1) & D(u_2) B(u_1) \\ 
+        A(u_2) C(u_1) & B(u_2) C(u_1) & A(u_2) D(u_1) & B(u_2) D(u_1) \\ 
+        C(u_2) C(u_1) & D(u_2) C(u_1) & C(u_2) D(u_1) & D(u_2) D(u_1) 
+    \end{array} \right) \left(\begin{array}{cccc}
+        a_{12} & 0 & 0 & 0  \\
+        0 & b_{12} & c_{12} & 0  \\
+        0 & c_{12} & b_{12} & 0  \\
+        0 & 0 & 0 & a_{12} \\
+    \end{array} \right) \\
+   \Rightarrow 
+   \left(\begin{array}{cccc}
+        a_{12} A_1 A_2 & a_{12} A_1 B_2 & a_{12} B_1 A_2 & a_{12} B_1 B_2 \\
+        b_{12} A_1 C_2 + c_{12} C_1 A_2 & b_{12} A_1 D_2 + c_{12} C_1 B_2 & b_{12} B_1 C_2 + c_{12} D_1 A_2 & b_{12} B_1 D_2 + c_{12} D_1 B_2 \\
+        c_{12} A_1 C_2 + b_{12} C_1 A_2 & b_{12} A_1 D_2 + c_{12} C_1 B_2 & c_{12} B_1 C_2 + b_{12} D_1 A_2 & c_{12} B_1 D_2 + b_{12} D_1 B_2 \\
+        a_{12} C_1 C_2 & a_{12} C_1 D_2 & a_{12} D_1 C_2 & a_{12} D_1 D_2
+    \end{array} \right) \\
+    = \left(\begin{array}{cccc}
+        a_{12} A_2 A_1 & b_{12} B_2 A_1 + c_{12} A_2 B_1 & c_{12} B_2 A_1 + b_{12} A_2 B_1 & a_{12} B_2 B_1\\ 
+        a_{12} C_2 A_1 & b_{12} D_2 A_1 + c_{12} C_2 B_1 & c_{12} D_2 A_1 + b_{12} C_2 B_1 & a_{12} D_2 B_1\\
+        a_{12} A_2 C_1 & b_{12} B_2 C_1 + c_{12} A_2 D_1 & c_{12} B_2 C_1 + b_{12} A_2 D_1 & a_{12} B_2 D_1\\
+        a_{12} C_2 C_1 & b_{12} D_2 C_1 + c_{12} C_2 D_1 & c_{12} D_2 C_1 + b_{12} C_2 D_1 & a_{12} D_2 D_1
+    \end{array} \right)
+    \end{split}
+\end{equation*}
+
+\[
+    \Rightarrow \text{\small $ \left(  \scalemath{0.7}{\begin{array}{cccc}
+    a_{12} [A_1, A_2] & a_{12} A_1 B_2 - (b_{12} B_2 A_1 + c_{12} A_2 B_1) & a_{12} B_1 A_2 - (c_{12} B_2 A_1 + c_{12} A_2 B_1) & a_{12} [B_1, B_2]  \\
+    (b_{12} A_1 C_2 + c_{12} C_1 A_2) - a_{12} C_2 A_1 & b_{12} [A_1, D_2] + c_{12} [C_1 B_2] & (b_{12} [B_1, C_2] + c_{12} [D_1, A_2] & b_{12} B_1 D_2 + c_{12} D_1 B_2 - a_{12} D_2 B_1 \\
+    c_{12} A_1 C_2 + b_{12} C_1 A_2 - a_{12} A_2 C_1 & (b_{12} A_1 D_2 + c_{12} C_1 B_2) - b_{12} B_2 C_1 + c_{12} A_2 D_1) & c_{12} [B_1, C_2] + b_{12} [D_1, A_2] & c_{12} B_1 D_2 + b_{12} D_1 B_2 - a_{12} B_2 D_1 \\
+    a_{12} [C_1, C_2] & a_{12} C_1 D_2 - (b_{12} D_2 C_1 + c_{12} C_2 D_1) & a_{12} D_1 C_2 - (c_{12} D_2 C_1 + b_{12} C_2 D_1) & a_{12} [D_1, D_2]
+    \end{array}} \right) = {\bf 0} $},
+\]
+
+from which, it's been proven that $[\bm{\mathcal{T}}_{ij}(u_1), \bm{\mathcal{T}}_{ij}(u_2)] = 0, \blanky i,j = 1, 2$ as long as $a (u_1 - u_2) \neq 0$. From the other matrix-entries, it's immediately seen that 
+
+$$
+a(u_1-u_2) B(u_1) A(u_2) = c(u_1-u_2) B(u_2) A(u_1) + b(u_1-u_2) A(u_2) B(u_1).  
+$$
+
+Swapping $u_1 \rightarrow u_2$ implies $u_1 - u_2 \rightarrow -(u_1 - u_2)$. Now, note that $c(u_1)/b(u_1) = g(u_1) = g(-u_1)$ and similarly $a(-u_1)/b(-u_1) = h(-u_1) \equiv f(u_1)$, which yields the second line of theorem \ref{theo monodromy}. The third claim can then be similarly derived. 
+
+\end{proof} 
+
+\blanky \\
+
+Theorem \ref{theo monodromy}'s relations shows the model's inner structure, identifying an underlying algebraic structure somewhat similar to that of the Harmonic oscillator, where $A+D$ are associated with the eigenenergies, and where $B$ and $C$ can be interpreted as ladder operators. \\
+
+Then, a Fock-like state space can be constructed for the $N$-body system, with its ground state satisfying $C \Omega^{\otimes N} = 0$. Then, $\omega_+^{i} = \left( \begin{array}{cc}
+    1 & 0 
+\end{array}\right)_{i}^{\dagger}$ describes $i$-th spin's state, with up spin. Then, 
+
+$$
+\spin^{+} \omega_+^{i} = 0,
+$$
+
+Therefore, consider the $\bl$-matrix, defined by \eqref{l-matrix def}, its action on a tensor product of states can be written out as 
+
+\begin{equation}
+    \bl_{N, a} v \otimes \omega_+^{i} \left(\begin{array}{cc}
+        \lambda + \frac{i}{2} & \cdots \\
+        0 &  \lambda - \frac{i}{2}
+    \end{array}\right) v \otimes \omega_+^{i}, \blanky \forall v \in \mathds{V}_a,
+\end{equation}
+
+since $\spin^{+}$ annihilates $\omega_+^i$. Thus, the ground sate can be written as the physical ferromagnetic vacuum state with all its spins up
+
+\begin{equation}
+    \Omega^{\otimes N} = \bigotimes_{i=1}^{N} \left( \begin{array}{c} 
+         1 \\
+         0 
+    \end{array} \right),
+\end{equation}
+
+which is an eigenstate of $A(u)$ and $D(u)$ and is annihilated by $C(u)$, ie. 
+
+\begin{align}
+    A(u) \Omega^{\otimes N} &= \bigg(u + \frac{i}{2}\bigg)^{N} \Omega^{\otimes N}, & D(u) \Omega^{\otimes N} &= \bigg(u - \frac{i}{2}\bigg)^{N} \Omega^{\otimes N}, & C(u) \Omega^{\otimes N} &= 0.
+\end{align}
+
+The $B(u)$ operators can then be used to construct the Bethe state
+
+\begin{equation}
+    \ket{u_1, \cdots u_M} = \prod_{j=1}^{M < N} B(u_j) \Omega^{\otimes N}
+\end{equation}
 
 \clearpage 
 
