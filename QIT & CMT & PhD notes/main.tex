@@ -1,0 +1,149 @@
+\documentclass{homework}
+\author{Tomás Pérez}
+\class{Condensed Matter Theory - Lecture Notes}
+\date{\today}
+\title{Theory \& Notes}
+
+\graphicspath{{./media/}}
+
+\begin{document} \maketitle
+
+\section{Cuentitas}
+
+Given a physical system, a density operator for is a positive semi-definite, self-adjoint operator of trace one acting on the system's Hilbert space, denoted by $\mathds{H}$. The set of all density operators has the structure of a vector space $\mathcal{C}(\mathds{H})$,
+
+$$
+\mathcal{C}(\mathds{H}) = \{ \rho \in \textnormal{GL}(N, \mathds{C}) \blanky | \blanky \rho^\dagger = \rho, \blanky \rho \geq 0, \blanky \Tr \rho = 1 \},
+$$
+
+where $\textnormal{GL}(N, \mathds{C})$ is the general linear group over the complex number field, whose elements are squared matrices of $N \times N$-dimension. The following statements can then be proved:
+
+\begin{enumerate}
+    \item $\mathcal{C}(\mathds{H})$ is a topological space. This is, this space can be imbued with a topology $\mathcal{T}$ which satisfies a set of axioms. 
+    \begin{itemize}
+        \item In effect, the desired topology may be chosen to be the trivial topology $\mathcal{T} = \{\emptyset, \mathcal{C}(\mathds{H})\}$,
+        \item or it may be chosen out to be the discrete topology, ie. any collection of $\tau$-sets, subsets of $\mathcal{C}(\mathds{H})$, so that that $\mathcal{T} = \bigcup \tau$ adheres to the topological space's axioms. 
+        \item Another interesting election is to define a metric on this space, allowing for the construction of the metric topology. More on this later.   
+    \end{itemize}
+    \item $\topospace$ is a Hausdorff space, allowing for the distinction of elements via disjoint neighbourhoods, 
+    \item $\topospace$ is a topological manifold. \item $\topospace$ is a differentiable manifold,
+    \item and is a Riemannian non-convex manifold
+\end{enumerate}
+
+Density operators can either describe pure or mixed states, which are deffined as follows 
+
+\begin{itemize}
+    \item Pure states can be written as an outer product of a vector state with itself, this is 
+    
+    $$
+    \rho \textnormal{ is a pure state if } \exists \ket{\psi} \in \hilbert \blanky | \blanky \rho \propto \ket{\psi} \bra{\psi}. 
+    $$
+    
+    In other words, $\rho$ is a rank-one orthogonal projection. Equivalently, a density matrix is a pure state if there exists a unit vector in the Hilbert space such that $\rho$ is the orthogonal projection onto the span of $\psi$. \\
+    
+    Note as well that 
+    
+    $$
+       \ket{\psi} \bra{\psi} \in \hilbert \otimes \hilbert^{\star}, \textnormal{ but } \hilbert \otimes \hilbert^{\star} \sim \textnormal{End}(\hilbert)
+    $$
+    
+    ie. the tensor space $\hilbert \otimes \hilbert^{\star}$ is canonically isomorphic to the vector space of endormorphisms in $\hilbert$, ie. to the space of linear operators from $\mathds{H}$ to $\mathds{H}$.
+    It's important to note that this isomorphism is only strictly valid in finite-dimensional Hilbert spaces, wherein for infinite-dimensional Hilbert spaces, the isomorphism holds as well provided the density operators are redefined as being trace-class.
+    \item Mixed states do not adhere to the previous properties. 
+\end{itemize}
+
+Let $\mathcal{B}$ be the set of all operators which are endomorphisms on $\statespace$, ie. 
+
+$$
+\mathcal{B} = \{{\bf O} | \blanky {\bf O}: \statespace \rightarrow \statespace\}.
+$$
+
+Note that, by definition, $\statespace \subset \mathcal{B}$. Consider an $N$-partite physical system, then its associated Hilbert space will have $\mathcal{O}(2^N)$ dimension and its associated density operator space will have $\mathcal{O}(2^{2N})$ dimension. Then, all linear operators acting on $\statespace$ can be classified as $k$-body operators, with $k \leq N$. This is, in essence, operators whose action is non-trivial only for a total of $k$ particles. Therefore, the $N$-partite Hilbert space can be written as 
+
+$$
+    \hilbert = \bigotimes_{j=1}^{N} \mathfrak{H}_j,
+$$ 
+
+where $\mathfrak{H}_j$ is the $j$-th subsytem's Hilbert space. This definition thus allows for systems with different particles species (eg. fermions, bosons, spins etc.). Then, 
+
+$$
+\mathcal{B}_1(\mathds{H})=\{\hat{\bf O}| \hat{\bf O}:\mathfrak{H}_j \rightarrow \mathfrak{H}_j, \blanky \forall j \leq N \}
+$$ 
+
+is the space of all one-body operators. Then the
+space of $k$-body operators can be recursively defined in terms of this set, 
+
+\begin{align*}
+\mathcal{B}_k(\mathds{H}) = \{\otimes_{i=1}^{k} {\bf O}_i | {\bf O}_i \in \mathcal{B}_1(\mathds{H}) \}, \textnormal{ where } \mathcal{B}(\mathds{H}) = \bigsqcup_{i=1}^{N} \mathcal{B}_i(\mathds{H}).
+\end{align*}
+
+%Let $(\mathcal{B}(\mathds{H}), ||\cdot||)$ denote the space of all linear operators acting on the Hilbert space, noting that the sub-space of all linear bounded operators is a Banach space. 
+
+If $\hilbert$ is a Hilbert space and $A \in \mathcal{B}$ is a non-negative self-adjoint operator on $\hilbert$, then it can be shown that $A$ has a well-defined, but possible infinite, trace. Now, if ${\bf A}$ is a bounded operator, then ${\bf A}^\dagger {\bf A}$ is self-adjoint and non-negative. An operator ${\bf A}$ is said to be Hilbert-Schmidt if $\Tr \bf A^\dagger {\bf A} < \infty$. Naturally, the space of all Hilbert-Schmidt operators form a vector space, labelled by $\mathfrak{H}\mathfrak{s}(\hilbert)$. Then, the Hilbert Schmidt inner product can be defined as 
+
+\begin{align*}
+\langle \cdot , \cdot \rangle_{\textnormal{HS}}: \blanky \mathfrak{H}\mathfrak{s}(\hilbert) \times \mathfrak{H}\mathfrak{s}(\hilbert) \rightarrow \mathds{C}, & \textnormal{ where } &
+    \begin{array}{c} 
+         \langle {\bf A}, {\bf B} \rangle_{\textnormal{HS}} = \Tr \bf A^\dagger {\bf B} \\
+         ||{\bf A}||_{\textnormal{HS}} = \sqrt{\Tr \bf A^\dagger {\bf A}}.
+    \end{array}
+\end{align*}
+
+If the Hilbert space is finite-dimensional, the trace is well defined and if the Hilbert space is infinite-dimensional, then the trace can be proven to be absolutely convergent and independent of the orthonormal basis choice\footnote{In effect, given a non-negative, self-adjoint operator, its trace is always invariant under orthogonal change of basis. Should the trace be a finite number, then it is called a trace class. Any given operator ${\bf A} \in \mathcal{B}$ is trace-class if the non-negative self-adjoint operator $\sqrt{{\bf A^\dagger} {\bf A}}$ is trace class as well. Now, given two Hilbert-Schmidt operators ${\bf A}, {\bf B} \in \mathfrak{H}\mathfrak{s}(\hilbert)$, then the new operator $\bf A^\dagger{\bf B}$ is a trace-class operator, meaning that the sum 
+
+$$
+\Tr {\bf A^\dagger}{\bf B} = \sum_{\lambda \in \Lambda} \langle {\bf e}_{\lambda}, {\bf A^\dagger}{\bf B} {\bf e}_{\lambda} \rangle 
+$$
+
+is absolutely convergent and the value of the sum is independent of the choice of orthonormal basis $\{{\bf e}_{\lambda}\}_{\lambda \in \Lambda}$. 
+}. \\
+
+This inner product implies that $(\mathfrak{H}\mathfrak{s}(\hilbert), \langle \cdot , \cdot \rangle_{\textnormal{HS}})$ is a
+
+\begin{itemize}
+    \item inner product space since the norm is the square root of the inner product of a vector and itself ie.
+    
+    $$
+    ||{\bf A}||_{\textnormal{HS}} = \langle {\bf A} , {\bf A} \rangle_{\textnormal{HS}} = \sqrt{\Tr \bf A^\dagger {\bf A}}
+    $$
+    
+    \item and is a normed vector space since the norm is always well defined over $\mathfrak{h}\mathfrak{s}(\hilbert)$. 
+\end{itemize}
+
+\colorbox{red}{Acá va un comentario "importante": no tiene sentido que dos vectores estén infinitamente lejos, no?} 
+
+\colorbox{red}{entónces tengo que definir esto producto interno y métrico solo en HS(H) y no sobre B(H)} \\
+
+Now, every inner product space is a metric space. In effect, since the function 
+
+\begin{align*}
+    \begin{array}{c}
+         {\bf A} \rightarrow \sqrt{\Tr {\bf A^\dagger}{\bf A}}  \\
+         \textnormal{is a well-defined norm}  
+    \end{array} & \textnormal{ then }  \begin{array}{c}
+         {\bf A}, {\bf B} \overset{d}{\rightarrow} \sqrt{\Tr {\bf A^\dagger}{\bf B}}  \\
+         \textnormal{is a well-defined distance}
+    \end{array}
+\end{align*}
+
+\begin{equation*}
+\begin{split}
+   d_{\textnormal{HS}}(\cdot, \cdot): \blanky \mathfrak{H}\mathfrak{s}(\hilbert) \times \mathfrak{H}\mathfrak{s}(\hilbert) \rightarrow \mathds{R} \\
+   d_{\textnormal{HS}}({\bf A}, {\bf B}) = \sqrt{\Tr {\bf A^\dagger}{\bf B}}
+\end{split}
+\end{equation*}
+
+With this metric thus defined, then $(\mathfrak{H}\mathfrak{s}(\hilbert), d_{\textnormal{HS}})$ is a metric space. Every metric space can be modified, via the completions of its metric, in such a way that 
+$(\mathfrak{H}\mathfrak{s}(\hilbert)^{\star}, d_{\textnormal{HS}}^{\star})$ is a complete metric space, in the sense of the convergence of Cauchy series, where $\mathfrak{H}\mathfrak{s}(\hilbert) \subset \mathfrak{H}\mathfrak{s}(\hilbert)^{\star}$. In this particular case, given that the metric over $\mathfrak{H}\mathfrak{s}(\hilbert)$ is always a finite number -having removed those elements with infinite trace-, then it is already complete $\mathfrak{H}\mathfrak{s}(\hilbert) \sim \mathfrak{H}\mathfrak{s}(\hilbert)^{\star}$. Therefore, $\mathfrak{H}\mathfrak{s}(\hilbert)$ is a Hilbert space with respect to the Hilbert-Schmidt inner product $\langle \cdot , \cdot \rangle_{\textnormal{HS}}$ (or with respect to the Hilbert-Schmidt distance $d_{\textnormal{HS}}$). \\
+
+Thus defined, the Hilbert-Schmidt inner product is complex-valued, thus not immediately suited for our calculations. A straight-forward modification is to consider instead 
+
+\begin{align*}
+\langle \cdot , \cdot \rangle_{\textnormal{HS}}: \blanky \mathfrak{H}\mathfrak{s}(\hilbert) \times \mathfrak{H}\mathfrak{s}(\hilbert) \rightarrow \mathds{R} \\
+\langle {\bf A}, {\bf B} \rangle_{\textnormal{HS}} = \frac{1}{2}\Tr \bf \{A^\dagger {\bf B}\}
+\end{align*}
+
+
+
+\clearpage
+\end{document}
