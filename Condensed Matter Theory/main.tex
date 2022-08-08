@@ -937,6 +937,8 @@ Swapping $u_1 \rightarrow u_2$ implies $u_1 - u_2 \rightarrow -(u_1 - u_2)$. Now
 
 \blanky \\
 
+\paragraph{\textbf{Eigenvalues of the Bethe Ansatz}}
+
 Theorem \ref{theo monodromy}'s relations shows the model's inner structure, identifying an underlying algebraic structure somewhat similar to that of the Harmonic oscillator, where $A+D$ are associated with the eigenenergies, and where $B$ and $C$ can be interpreted as ladder operators. \\
 
 Then, a Fock-like state space can be constructed for the $N$-body system, with its ground state satisfying $C \Omega^{\otimes N} = 0$. Then, $\omega_+^{i} = \left( \begin{array}{cc}
@@ -956,25 +958,123 @@ Therefore, consider the $\bl$-matrix, defined by \eqref{l-matrix def}, its actio
     \end{array}\right) v \otimes \omega_+^{i}, \blanky \forall v \in \mathds{V}_a,
 \end{equation}
 
-since $\spin^{+}$ annihilates $\omega_+^i$. Thus, the ground sate can be written as the physical ferromagnetic vacuum state with all its spins up
+since $\spin^{+}$ annihilates $\omega_+^i$. Thus, the ground sate can be written as the physical ferromagnetic vacuum state with all its spins up. Said state is an eigenstate of $A(u)$ and $D(u)$ and is annihilated by $C(u)$, ie. 
 
-\begin{equation}
+\begin{align}
     \Omega^{\otimes N} = \bigotimes_{i=1}^{N} \left( \begin{array}{c} 
          1 \\
          0 
-    \end{array} \right),
-\end{equation}
-
-which is an eigenstate of $A(u)$ and $D(u)$ and is annihilated by $C(u)$, ie. 
-
-\begin{align}
-    A(u) \Omega^{\otimes N} &= \bigg(u + \frac{i}{2}\bigg)^{N} \Omega^{\otimes N}, & D(u) \Omega^{\otimes N} &= \bigg(u - \frac{i}{2}\bigg)^{N} \Omega^{\otimes N}, & C(u) \Omega^{\otimes N} &= 0.
+    \end{array} \right), \textnormal{ where } \begin{array}{c}
+    A(u) \Omega^{\otimes N} = \bigg(u + \frac{i}{2}\bigg)^{N} \Omega^{\otimes N}, \\
+    \\
+    D(u) \Omega^{\otimes N} = \bigg(u - \frac{i}{2}\bigg)^{N} \Omega^{\otimes N}, \\
+    \end{array}
+    C(u) \Omega^{\otimes N} = 0. 
 \end{align}
 
 The $B(u)$ operators can then be used to construct the Bethe state
 
 \begin{equation}
-    \ket{u_1, \cdots u_M} = \prod_{j=1}^{M < N} B(u_j) \Omega^{\otimes N}
+    \ket{u_1, \cdots u_M} = \prod_{j=1}^{M < N} B(u_j) \Omega^{\otimes N}, \textnormal{ for some set } \{u_j\}_{j=1}^{M < N} \subset \mathds{C}.
+    \label{bethe state}
+\end{equation}
+
+A priori, not all complex-valued sequences are allowed since the Bethe states must be eigenvectors of $A(u) + D(u)$, which yields some algebraic conditions. \\
+
+\paragraph{\textbf{Conditions on } $\{u_j\}_{j=1}^{M < N}$}
+
+Consider the Bethe state given by \cref{bethe state}. Then, 
+
+\begin{equation*}
+    A(v) \ket{u_1, \cdots u_M} = A(v) \prod_{j=1}^{M < N} B(u_j) \Omega^{\otimes N}.
+\end{equation*}
+
+Using the fundamental commutation relations given \cref{theo monodromy},
+
+$$
+    A(v) B(u) = f(v-u) B(u) A(v) + g(v-u) B(v) A(u).
+$$
+
+Therefore,
+
+\begin{equation}
+    \begin{split}
+        A(v) \ket{u_1, \cdots u_M} &= \bigg[f(v-u_1) B(u_1) A(v) + g(v-u_1) B(v) A(u_1)\bigg] \prod_{j=2}^{M < N} B(u_j) \Omega^{\otimes N} \\
+        &= \left[\prod_{k=1}^{\ell} f(v-u_k)\right] \alpha^N(v) \ket{u_1, \cdots u_M} + \mathcal{O}({A \times D}),
+    \end{split}
+\end{equation}
+
+wherein, the first term is an scalar times the Bethe state, said scalar being the eigenvalue if and only if the second term, the term with products of $A$ and $D$, cancels out. In that case, the Bethe state is an eigenvector of $A + D$. Then, continuing the previous calculation 
+
+\begin{equation}
+    \begin{split}
+         A(v) \ket{u_1, \cdots u_M} &=  \bigg[f(v-u_1) B(u_1) A(v) + g(v-u_1) B(v) A(u_1)\bigg] B(u_2) \prod_{j=3}^{M < N} B(u_j) \Omega^{\otimes N} \\
+         &= \bigg[f(v-u_1)f(v-u_2) B(u_1) B(u_2) A(v) + f(v-u_1)g(v-u_2) B(u_1) B(v) A(u_2) \\
+         & + g(v-u_1)f(u_1-u_2) B(v) B(u_2) A(u_1) + g(v-u_1)g(v-u_2) B(v) B(u_2)
+         \bigg] \prod_{j=3}^{M < N} B(u_j) \Omega^{\otimes N}. 
+    \end{split}
+\end{equation}
+
+Now, note that 
+
+\begin{align*}
+    %\begin{split}
+        \bigg(A(v) + D(v) \bigg)\ket{u_1, \cdots u_M} &= \\
+        &= \bigg[\bigg(\prod_{k=1}^{\ell} f(v-u_k)\bigg)\alpha^N(v) + \bigg(\prod_{k=1}^{\ell} h(v-u_k)\bigg) \delta^N(v) \bigg] \ket{u_1, \cdots u_M} \\
+        &+ \sum_{k=1}^{\ell} \bigg[\bigg(g(v-u_k) \bigg[ \prod_{j \neq k}^{\ell} f(u_k - u_j)\bigg] \alpha^N(u_k)\bigg) + h(v-u_k) \bigg(\prod_{j \neq k}^{\ell} h(u_k - u_j)\bigg) \delta^N(u_j) \\
+        &\times \prod_{\substack{j = 1 \\
+                                 j \neq k}}^{\ell} \Omega^{\otimes N} B(u_i)\bigg]\\
+    &\equiv \bigg[\bigg(\prod_{k=1}^{\ell} f(v-u_k)\bigg)\alpha^N(v) + \bigg(\prod_{k=1}^{\ell} h(v-u_k)\bigg) \delta^N(v) \bigg] \ket{u_1, \cdots u_M} + 0
+    %\end{split} 
+\end{align*}
+
+\begin{align*}
+    \Rightarrow \sum_{k=1}^{\ell} \bigg[\bigg(g(v-u_k) \bigg[ \prod_{j \neq k}^{\ell} f(u_k - u_j)\bigg] \alpha^N(u_k)\bigg) + h(v-u_k) \bigg(\prod_{j \neq k}^{\ell} h(u_k - u_j)\bigg)  \delta^N(u_j) \bigg] &= 0 \\
+    \sum_{k=1}^{\ell} \bigg[\bigg(g(v-u_k) \bigg[ \prod_{j \neq k}^{\ell} f(u_k - u_j)\bigg] \alpha^N(u_k)\bigg) - g(v-u_k) \bigg(\prod_{j \neq k}^{\ell} h(u_k - u_j)\bigg)  \delta^N(u_j) \bigg] &= 0 \\
+    \sum_{k=1}^{\ell} g(v-u_k) \bigg[ \prod_{j \neq k}^{\ell} f(u_k - u_j)\bigg] \alpha^N(u_k) + \prod_{j \neq k}^{\ell} h(u_k - u_j) \delta^N(u_j) \bigg] &= 0,
+\end{align*}
+
+which must be true for all $k$,
+
+\begin{align}
+    & & \bigg[\prod_{j \neq k}^{\ell} f(v- u_k)\bigg] \alpha^N(u_j) = \bigg[\prod_{j \neq k}^{\ell} h(v - u_k) \bigg]  \delta^N(u_j).
+\end{align}
+
+Now using \cref{theo monodromy} functions and the that $\alpha(u) = u + \frac{i}{2}$ and $\delta(u) = u - \frac{i}{2}$, the previous equation can be rewritten as 
+
+\begin{equation}
+    \begin{split}
+        \bigg[\prod_{j \neq k}^{\ell} &f(u_k - u_j)\bigg] \alpha^N(u_j) = \bigg[\prod_{j \neq k}^{\ell} h(u_k - u_j) \bigg]  \delta^N(u_j) \\
+        \prod_{j \neq k}^{\ell} &\frac{u_k - u_j - i}{u_k - u_j} \bigg(u_j + \frac{i}{2}\bigg) = \prod_{j \neq k}^{\ell} \frac{u_k - u_j + i}{u_k - u_j} \bigg(u_j - \frac{i}{2}\bigg)\\
+        0 &= \prod_{j \neq k}^{\ell} \frac{u_k - u_j - i}{u_k - u_j} \bigg(u_j + \frac{i}{2}\bigg) - \prod_{j \neq k}^{\ell} \frac{u_k - u_j + i}{u_k - u_j} \bigg(u_j - \frac{i}{2}\bigg),
+    \end{split}
+\end{equation}
+
+which can be rearranged to yield the Bethe ansatz equations, 
+
+\begin{align}
+    \alignedbox{\left(\frac{u_k+\frac{i}{2}}{u_k - \frac{i}{2}}\right)^N}{= \prod_{j\neq k}^{\ell} \frac{u_k - u_j + i}{ u_k - u_j -i}},
+    \label{Bethe coeff equations}
+\end{align}
+
+which is a set of $\ell$ non linear equations on the coefficients $u_k \in \mathds{C}$. \\
+
+\paragraph{\textbf{Momentum and Energy}}
+
+Let $\{u_k\}_{k=1}^{\ell < N} \subset \mathds{C}$ satisfy the Bethe equations. Then,  
+
+\begin{equation}
+\begin{split}
+    (A(v) + D(v)) \ket{u_1, \cdots u_M} &= \bigg[\bigg(\prod_{k=1}^{\ell} f(v-u_k)\bigg)\alpha^N(v) + \bigg(\prod_{k=1}^{\ell} h(v-u_k)\bigg) \delta^N(v) \bigg] \ket{u_1, \cdots u_M} \\
+    (A(v) + D(v)) \ket{u_1, \cdots u_M} &= \bigg[ \left(v + \frac{i}{2}\right)^N \prod_{k=1}^{\ell} \frac{v - u_k - i}{v-u_k} + \left(v - \frac{i}{2}\right)^N \prod_{k=1}^{\ell} \frac{v - u_k + i}{v-u_k} \bigg]\ket{u_1, \cdots u_M} \\
+    \left(A\left(\frac{i}{2}\right) + D\left(\frac{i}{2}\right)\right) \ket{u_1, \cdots u_M} &= i^N \prod_{k=1}^{\ell} \frac{u_k + \frac{i}{2}}{u_k - \frac{i}{2}} \ket{u_1, \cdots u_M} \equiv \lambda(\{u_k\}_{k=1}^{\ell < N})\ket{u_1, \cdots u_M}
+\end{split}
+\end{equation}
+
+Therefore, via the transfer matrix, it holds that $U = e^{iP} = i^{-N} \mathfrak{t}\left(\frac{i}{2}\right) = i^{-N} \left(A\left(\frac{i}{2}\right) + D\left(\frac{i}{2}\right) \right)$, from which 
+
+\begin{equation}
+    P \ket{u_1, \cdots u_\ell} = \sum_{k=1}^{\ell} p(u_k) \ket{u_1, \cdots u_\ell} \textnormal{ where } p(u_k) = \frac{1}{i} \log \frac{u_k + \frac{i}{2}}{u_k - \frac{i}{2}}
 \end{equation}
 
 \clearpage 
