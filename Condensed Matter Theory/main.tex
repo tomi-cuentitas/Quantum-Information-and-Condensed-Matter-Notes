@@ -382,45 +382,42 @@ $$
 
 \clearpage
 
-\section{Heisenberg XXX-chain}
-
-Consider a one-dimensional lattice with $N$ lattice sites and a $\frac{1}{2}$-spin particle positioned at every lattice site, which have a nearest neighbour spin-spin interaction. Each particles either has spin up or spin down, generating a two-dimensional local Hilbert space $\vds_n$. Strictly speaking there are two possible topologies for a one-dimensional chain, open or closed. Consider the XXX-Hamiltonian with closed topology, given by 
-
-\begin{equation}
-\begin{split}
-    {\bf H} &= J \sum_{n=1}^{N} \bigg(\vec{\spin}_n \cdot \vec{\spin}_{n+1} - \frac{1}{4} \mathds{1}^{\otimes N} \bigg) \\
-    &= \frac{J}{4}\sum_{n=1}^{N} \bigg(\vec{\sigma}_n \cdot \vec{\sigma}_{n+1} - \frac{1}{4} \mathds{1}^{\otimes N} \bigg).
-    \label{XXX model}
-\end{split}
-\end{equation}
-
-Note that $J < 0$ models a ferromagnetic state while $J > 0$ models an anti-ferromagnetic state. A ferromagnetic state refers to a state where all the spins are aligned parallel while an anti-ferromagnetic state refers to a state where adjacent spins are anti-aligned within the domain. 
-
 \section{Bethe ansatz}
 
-The Hamiltonian matrix which defines the Heisenberg XYZ-chain can be experessed in terms of an $R$-matrix which is a solution of the Yang-Baxter equation, which leads to the model's integrability. The most convenient approach is to construct a transfer matrix -a one parameter commutative family of operators acting on the full state space of the Heisenberg spin chain. \\
+The main point of the Bethe solution is that XXX Heisenberg Hamiltonian, which defines the model, can be expressed in terms of a complex-valued $\bm{\mathcal R}$-matrix which is a solution of the Yang-Baxter equation, thus leading to the model's integrability. The most convenient approach is to construct a transfer $\bm{\mathcal{T}}$-matrix -a one parameter commutative family of operators acting on the full state space of the Heisenberg spin chain. \\
 
-\paragraph{\textbf{The Lax operator}}
+\paragraph{\textbf{The Lax operator}} Consider an XXX spin chain with $N$ sites and a corresponding Hilbert space given by 
 
-The algebraic Bethe ansatz' basic tool is the lax operator $\bm{\mathcal{L}}$. Consider a chain with $N$ sites and a corresponding Hilbert space given by 
+\begin{align}
+    \mathds{H} \simeq \bigotimes_{n=1}^{N} {\mathds{V}_n} \textnormal{ where } {\mathds{V}_n} \simeq \ctwo \begin{array}{c}
+         \textnormal{To these individual Hilbert spaces, additional}  \\
+         \textnormal{auxiliary, non-physical, spaces $\mathds{V}_a \simeq \ctwo$, can be added. } \\
+    \end{array}
+\end{align}
 
-\begin{equation}
-    \mathds{H} \sim \bigotimes_{n=1}^{N} {\mathds{V}_n} \textnormal{ where } {\mathds{V}_n} \sim \ctwo
-\end{equation}
+The algebraic Bethe ansatz' basic tool is the lax operator $\bm{\mathcal{L}}$, whose definition is as follows. 
 
-To these spaces, an additional auxiliary space $\mathds{V}_a \sim \ctwo$ can be added. Then, the lax operator $\bm{\mathcal{L}}$ can be defined as an operator which involves the local quantum space $\mathds{V}_n$ and the auxiliary space $\mathds{V}_a$, as follows 
+\begin{df}
+   The lax operator $\bm{\mathcal{L}}$ can be defined as an operator which involves the local quantum space $\mathds{V}_n$ and the auxiliary space $\mathds{V}_a$, as follows 
 
 \begin{equation}
     \begin{array}{c}
          \bm{\mathcal{L}} : \mathds{V}_n \otimes \mathds{V}_a \rightarrow \mathds{V}_n \otimes \mathds{V}_a \\
          \\
-         \bm{\mathcal{L}}_{n, a} = u(\mathds{1}_n \otimes \mathds{1}_a) + i \sum_{\alpha} \spin_n^\alpha \otimes \sigma_{a}^\alpha.
+         \bm{\mathcal{L}}_{n, a} = u(\mathds{1}_n \otimes \mathds{1}_a) + i \sum_{\alpha} \spin_n^\alpha \otimes \sigma_{a}^\alpha, \blanky \forall n \leq N \\
+         %= u^{\mu} {S}_{\nu} \sigma^{\nu} \textnormal{ where $u^{\mu} = (u, i,i,i)$}
+    \end{array} \begin{array}{c}
+         \textnormal{ where $\mathds{1}_n$ and $\spin_n^\alpha$ act on $\mathds{V}_n $} \\
+         \\
+         \textnormal{ while $\mathds{1}_a$ and $\spin_a^\alpha$ act upon $\mathds{V}_a$ and where the}\\
+         \\
+         \textnormal{ complex-valued $u$-parameter is the spectral parameter.}
     \end{array}
     \label{lax operator}
 \end{equation}
+\end{df}
 
-
-where $\mathds{1}_n$ and $\spin_n^\alpha$ act on $\mathds{V}_n $ while $\mathds{1}_a$ and $\spin_a^\alpha$ act upon $\mathds{V}_a$. The $u$-parameter is the spectral parameter, a complex number. \eqref{lax operator} can be rewritten as 
+ Note that \cref{lax operator} can be rewritten as 
 
 \begin{equation}
     \begin{split}
@@ -450,14 +447,17 @@ where $\mathds{1}_n$ and $\spin_n^\alpha$ act on $\mathds{V}_n $ while $\mathds{
     
 which is a $2 \times 2$-matrix in the auxiliary space $\mathds{V}_a$ and the matrix entries are operators acting on the physical Hilbert space $\mathds{V}_n$. \\
 
-Consider the permutation operator
+Consider now the following mathematical object. 
 
-\begin{equation}
-    \bm{\mathcal P}_{n,a} = \frac{1}{2} \bigg(\mathds{1}_n \otimes \mathds{1}_a + \sum_{\alpha}\sigma_n^{\alpha}  \otimes \sigma_n^{\alpha} \bigg),
-    \label{permutation op}
-\end{equation}
-
-which can then be written as a $2 \times 2$-matrix in the auxiliary space $\mathds{V}_a$, 
+\begin{df}
+    Let the permutation operator be
+    
+    \begin{equation}
+        \bm{\mathcal P}_{n,a} = \frac{1}{2} \bigg(\mathds{1}_n \otimes \mathds{1}_a + \sum_{\alpha}\sigma_n^{\alpha}  \otimes \sigma_n^{\alpha} \bigg), = \frac{1}{2} \sigma^{\mu}\sigma_{\mu}
+        \label{permutation op}
+    \end{equation}
+    
+    which \footnote{Note that the permutation operator can be written as a $2 \times 2$-matrix in the auxiliary space $\mathds{V}_a$,
 \begin{equation} 
 \begin{split}
     \bm{\mathcal P}_{n,a} &= \frac{1}{2} \left[ \left(\begin{array}{cc}
@@ -476,9 +476,15 @@ which can then be written as a $2 \times 2$-matrix in the auxiliary space $\math
     &= \left(\begin{array}{cc}
        \mathds{1}_n + \sigma^{z}_{n} &  \sigma^{x}_{n} - i\sigma^{y}_{n} \\
        \sigma^{x}_{n} + i\sigma^{y}_{n}  & \mathds{1}_n - \sigma^{z}_{n}
-    \end{array}\right)_a.
+    \end{array}\right)_a = \left(\begin{array}{cccc}
+        1 & 0 & 0 & 0   \\
+        0 & 0 & 1 & 0   \\
+        0 & 1 & 0 & 0   \\
+        0 & 0 & 0 & 1
+    \end{array}\right)
     \end{split}
-\end{equation}
+\end{equation}} acts on both the physical and auxiliary systems.
+\end{df}
 
 Using this definition for the permutation operator, the lax operator can then be rewritten as
 
@@ -498,7 +504,7 @@ The permutation operator indeed permutes the factors in the tensor product the f
 \end{array}\right)$ and ${\bf y} = \left(\begin{array}{c}
      c \\
      d 
-\end{array}\right)$n then $\x \otimes {\bf y} = \left( \begin{array}{cc}
+\end{array}\right)$ then $\x \otimes {\bf y} = \left( \begin{array}{cc}
     ac & ad  \\
     bc & bd 
 \end{array} \right)$ and  ${\bf y} \otimes \x = \left( \begin{array}{cc}
@@ -510,19 +516,27 @@ The permutation operator indeed permutes the factors in the tensor product the f
     \bm{\mathcal{P}}_{n, a} (\x \otimes {\bf y} ) = {\bf y} \otimes \x \textnormal{ and } \bm{\mathcal{P}}_{n, a} ( {\bf y} \otimes \x) = \x \otimes {\bf y}.
 \end{equation}
 
+\blanky \\
+
 \paragraph{\textbf{Fundamental commutation Relations and Monodromy Matrix}}
 
-Consider two distinct lax operators,
+Consider the following two lax operators
 
 \begin{equation*}
     \begin{array}{c}
         \bl_{n, a_1}(u_1): \blanky \vds_n \otimes \vds_{a_1} \rightarrow \vds_n \otimes \vds_{a_1}  \\
         \\
         \bl_{n, a_2}(u_2): \blanky \vds_n \otimes \vds_{a_2} \rightarrow \vds_n \otimes \vds_{a_2} 
-    \end{array},
+    \end{array} \begin{array}{c}
+         \textnormal{both of which act on the physical quantum}\\
+         \textnormal{state and on two different auxiliary spaces as well.} 
+    \end{array}
 \end{equation*}
 
-both of which act on the physical local quantum state and on two different auxiliary spaces as well. The product of these two operator is then a triple tensor product in $\mathds{V}_{n} \otimes \mathds{V}_{a_1} \otimes \mathds{V}_{a_2}$. Consider an $\bm{\mathcal{R}}$-matrix which relates the permutation and spectral parameters of two auxiliary spaces, which is given by  
+The product of these two operator is then a triple tensor product in $\mathds{V}_{n} \otimes \mathds{V}_{a_1} \otimes \mathds{V}_{a_2}$. Now, the following matrix arises 
+
+\begin{df}
+Consider an $\bm{\mathcal{R}}$-matrix which relates the permutation and spectral parameters of two auxiliary spaces, which is given by  
 
 \begin{equation}
 \begin{array}{c}
@@ -532,8 +546,8 @@ both of which act on the physical local quantum state and on two different auxil
      \label{R-matrix def}
 \end{array}
 \end{equation}
-
-note that $\bm{\mathcal{R}}$ can be rewritten as a $\twobytwo$-matrix in either of the auxiliary spaces, as follows
+ 
+which\footnote{Note that $\bm{\mathcal{R}}$ can be rewritten as a $\twobytwo$-matrix in either of the auxiliary spaces, as follows
 
 \begin{equation}
     \bm{\mathcal{R}}_{a1, a2} = \left(\begin{array}{cc}
@@ -543,7 +557,9 @@ note that $\bm{\mathcal{R}}$ can be rewritten as a $\twobytwo$-matrix in either 
         \bigg(u + \frac{i}{2}\bigg) \mathds{1}_{a_1} + i \spin_{a_1}^z & i \spin_{a_1}^{-} \\
         i \spin_{a_1}^{+}  & \bigg(u + \frac{i}{2}\bigg) \mathds{1}_{a_1} - i \spin_{a_2}^z 
     \end{array} \right)_{a_2}.
-\end{equation}
+\end{equation}} doesn't act on the physical system at all, but on the auxiliary, phantom, systems.
+\end{df}
+
 
 An interesting relationship between the products of the two lax operators and the $\bm{\mathcal{R}}$-matrix can then be found\footnote{Note that the following permutation properties hold 
 
@@ -571,6 +587,8 @@ An interesting relationship between the products of the two lax operators and th
     &+ \left({(u_1-u_2) \mathds{1}_{a_1, a_2} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2}} + {(u_1-u_2) \mathds{1}_{a_1, a_2} i \bm{\mathcal{P}}_{n, a_2}} \right) \times  i \bm{\mathcal{P}}_{n, a_1} \\
     &+ i \bm{\mathcal{P}}_{a_1, a_2} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_1} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} + i \bm{\mathcal{P}}_{a_1, a_2} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_1} i \bm{\mathcal{P}}_{n, a_2} \\
     & - \bm{\mathcal{P}}_{a_1, a_2}  \bm{\mathcal{P}}_{n, a_1}  \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} - \bm{\mathcal{P}}_{a_1, a_2}  \bm{\mathcal{P}}_{n, a_1} i \bm{\mathcal{P}}_{n, a_2} \\
+\end{align*}
+\begin{align*}
     &= \bigg((u_1-u_2) \mathds{1}_{a_1, a_2} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} + {(u_1-u_2) \mathds{1}_{a_1, a_2} i \bm{\mathcal{P}}_{n, a_2}} \bigg) \left( \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} + i \bm{\mathcal{P}}_{n, a_1} \right) \\
     &+ i \bm{\mathcal{P}}_{a_1, a_2} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_1} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} + i \bm{\mathcal{P}}_{a_1, a_2} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_1} i \bm{\mathcal{P}}_{n, a_2} \\
     & - \bm{\mathcal{P}}_{a_1, a_2}  \bm{\mathcal{P}}_{n, a_1}  \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} - \bm{\mathcal{P}}_{a_1, a_2}  \bm{\mathcal{P}}_{n, a_1} i \bm{\mathcal{P}}_{n, a_2} \\
@@ -616,7 +634,8 @@ both of which then yield an important constraint on the $\br$-matrix, namely
 
 which is the quantum Yang-Baxter equation. \\
 
-Let the monodromy matrix $\bm{\mathcal{T}}_{N,a}$ be defined as a product of subsequent of $\bl$-operators, ie.
+\begin{df}
+    Let the monodromy matrix $\bm{\mathcal{T}}_{N,a}$ be defined as a product of subsequent of $\bl$-operators, ie.
 
 \begin{equation}
     \begin{array}{c}
@@ -631,8 +650,11 @@ Let the monodromy matrix $\bm{\mathcal{T}}_{N,a}$ be defined as a product of sub
          \end{array}\right) 
     \end{array},
 \end{equation}
+\end{df}
 
-which obeys the fundamental relation as well\footnote{ For example, consider $N=2$, then
+\clearpage
+
+This matrix obeys the fundamental relation as well\footnote{ For example, consider $N=2$, then
 
 \begin{equation}
     \begin{split}
@@ -655,23 +677,26 @@ where the fundamental commutation relation given by \eqref{fundamental commutati
 
  \blanky \\
 
-Now, let the transfer $\mathfrak{t}$-matrix be defined as the $\bm{\mathcal{T}}$-matrix's partial trace over the auxiliary space $\vds_{a}$, ie.
+\begin{df}
+    The transfer $\mathfrak{t}$-matrix is defined as the $\bm{\mathcal{T}}$-matrix's partial trace over the auxiliary space $\vds_{a}$, ie.
 
 \begin{equation}
     \mathfrak{t}(u) = \Tr_{\vds_{a}} \bm{\mathcal{T}}_{N, a} (u) = \Tr_{\vds_{a}} \left(\begin{array}{cc}
             A(u) & B(u) \\
             C(u) & D(u)
-         \end{array}\right)  = A(u) + D(u).
+         \end{array}\right)  = A(u) + D(u),
 \end{equation}
+    where $\mathfrak{t}, A, B, C, D$ all are $\twobytwo$-matrices in the physical system, the auxiliary systems being present no more. 
+\end{df}
  
-\eqref{fundamental commutation relation on R}'s double trace can then be written i nterms of the transfer matrix, as follows 
+With the previous definitions in mind, \cref{fundamental commutation relation on R}'s double trace can then be written in terms of the transfer matrix, as follows 
 
 \begin{align*}
-    \Tr_{\vds_{a_1}} \Tr_{\vds_{a_2}} \bigg[\br_{a_1, a_2}(u_1-u_2) \bm{\mathcal{T}}_{N, a_1} (u_1) \bm{\mathcal{T}}_{N, a_2} (u_2)\bigg] = \Tr_{\vds_{a_1}} \Tr_{\vds_{a_2}} \bigg[{\bm{\mathcal{T}}_{N, a_1} (u_2) \bm{\mathcal{T}}_{N, a_1} (u_1) \bm{\mathcal{R}}_{a_1, a_2}(u_1-u_2)}\bigg] \\
-    \Rightarrow \Tr_{\vds_{a_1}} \Tr_{\vds_{a_2}} \bigg[\br_{a_1, a_2}(u_1-u_2) \bm{\mathcal{T}}_{N, a_1} (u_1) \bm{\mathcal{T}}_{N, a_2} (u_2) - {\bm{\mathcal{T}}_{N, a_1} (u_2) \bm{\mathcal{T}}_{N, a_1} (u_1) \bm{\mathcal{R}}_{a_1, a_2}(u_1-u_2)} \bigg] = 0 \\ 
-    \Rightarrow \Tr_{\vds_{a_1}} \Tr_{\vds_{a_2}} \bigg[\br_{a_1, a_2}(u_1-u_2) \bigg(\bm{\mathcal{T}}_{N, a_1} (u_1) \bm{\mathcal{T}}_{N, a_2} (u_2) - {\bm{\mathcal{T}}_{N, a_2} (u_2) \bm{\mathcal{T}}_{N, a_1} (u_1)\bigg)} \bigg] = 0 \\ 
+    \Tr_{\vds_{a_1}} \Tr_{\vds_{a_2}} & \bigg[\br_{a_1, a_2}(u_1-u_2) \bm{\mathcal{T}}_{N, a_1} (u_1) \bm{\mathcal{T}}_{N, a_2} (u_2)\bigg] &= \Tr_{\vds_{a_1}} \Tr_{\vds_{a_2}} \bigg[{\bm{\mathcal{T}}_{N, a_1} (u_2) \bm{\mathcal{T}}_{N, a_1} (u_1) \bm{\mathcal{R}}_{a_1, a_2}(u_1-u_2)}\bigg] \\
+    &\Rightarrow \Tr_{\vds_{a_1}} \Tr_{\vds_{a_2}} \bigg[\br_{a_1, a_2}(u_1-u_2) \bm{\mathcal{T}}_{N, a_1} (u_1) \bm{\mathcal{T}}_{N, a_2} (u_2) - {\bm{\mathcal{T}}_{N, a_1} (u_2) \bm{\mathcal{T}}_{N, a_1} (u_1) \bm{\mathcal{R}}_{a_1, a_2}(u_1-u_2)} \bigg] = 0 \\ 
+    &\Rightarrow \Tr_{\vds_{a_1}} \Tr_{\vds_{a_2}} \bigg[\br_{a_1, a_2}(u_1-u_2) \bigg(\bm{\mathcal{T}}_{N, a_1} (u_1) \bm{\mathcal{T}}_{N, a_2} (u_2) - {\bm{\mathcal{T}}_{N, a_2} (u_2) \bm{\mathcal{T}}_{N, a_1} (u_1)\bigg)} \bigg] = 0 \\ 
     \textnormal{ which implies }
-    \Rightarrow \mathfrak{t}(u_1)\mathfrak{t}(u_2) = \mathfrak{t}(u_2)\mathfrak{t}(u_1).
+    & \mathfrak{t}(u_1)\mathfrak{t}(u_2) = \mathfrak{t}(u_2)\mathfrak{t}(u_1).
 \end{align*}
 
 Therefore the transfer matrix commutes with itself for different values of the spectral parameter. It turns out that the monodromy matrix can be expanded in a power series around any point $z_0 \in \mathds{C}$, generating an infinite set of linearly independent commuting operators acting on the full quantum space. This formally leads to the model's integrability. \\
@@ -717,7 +742,7 @@ ie. this permutation moves ${\bf X}$ one step back. Furthermore, this operator i
 
 The next order in the expansion of the transfer matrix can then be found via the derivative of the monodromy matrix at $z_0 = \frac{i}{2}$, 
 
-\begin{equation}
+\begin{equation*}
     \begin{split}
     \frac{d \bmt_{N,a}(u)}{du}\bigg|_{u = z_0} &= \frac{d}{du} \prod_{1}^{j=N} \left(\begin{array}{cc}
             u \mathds{1}_j + i \spin_j^z & i \spin_j^-  \\
@@ -763,11 +788,15 @@ The next order in the expansion of the transfer matrix can then be found via the
          &= i^{N-1} \bigg[ \prod_{1}^{j=N-1} \bm{\mathcal{P}}_{j} + \prod^{j=N}_{N} \bm{\mathcal{P}}_{j}\times  \prod_{1}^{j=N-2} \bm{\mathcal{P}}_{j} + \cdots + \prod^{j=N}_{k} \bm{\mathcal{P}}_{j}\times  \prod^{k+2}_{1} \bm{\mathcal{P}}_{j} \\
          &+ \cdots + \prod^{j=N}_{3} \bm{\mathcal{P}}_{j} \times \prod^{j=1}_{1} \bm{\mathcal{P}}_{j} + \prod^{j=N}_{2} \bm{\mathcal{P}}_{j} \bigg] \\
          &= i^{N-1} \sum_{n \in \mathds{N}} \bm{\mathcal{P}}_{N, a} \cdots \bm{\mathcal{P}}_{n-1, a} \bm{\mathcal{P}}_{n+1, a} \cdots \bm{\mathcal{P}}_{1, a} \\
-         &= i^{N-1} \sum_{n \in \mathds{N}} \bm{\mathcal{P}}_{1, 2} \bm{\mathcal{P}}_{2, 3}\cdots \bm{\mathcal{P}}_{n-1, n+1}
+    \end{split} 
+\end{equation*}
+\begin{equation*}
+    \begin{split} 
+        &= i^{N-1} \sum_{n \in \mathds{N}} \bm{\mathcal{P}}_{1, 2} \bm{\mathcal{P}}_{2, 3}\cdots \bm{\mathcal{P}}_{n-1, n+1}
          \cdots \bm{\mathcal{P}}_{N-1, N} \bm{\mathcal{P}}_{N, a} \\
          &= i^{N-1} \sum_{n \in \mathds{N}} \prod_{j=1}^{n-2} \bm{\mathcal{P}}_{j, \blanky j+1}  \times \bm{\mathcal{P}}_{n-1, \blanky n+1} \times \prod_{j=n+2}^{N-1}  \bm{\mathcal{P}}_{j, \blanky j+1} \bm{\mathcal{P}}_{N, a}.
     \end{split} 
-\end{equation}
+\end{equation*}
 
 Therefore,
 
@@ -808,15 +837,16 @@ which in turn can be rewritten as
 
 \begin{align}
     \alignedbox{{\bf H}}{ = \frac{J}{2} \bigg(i \frac{d}{du} \log(\mathfrak{t}(u))\bigg|_{u=z_0} - N \mathds{1}^{\otimes N}\bigg)},
+    \label{Hamiltonian monodromy}
 \end{align}
 
 which shows that the XXX Hamiltonian belongs to the family of $N-1$ commuting operators generated by the trace of the monodromy matrix $\bmt$. As a result, the Hamiltonian commutes with the transfer matrix $ [{\bf H}, \mathfrak{t}(u)] = 0.$ 
 
-\blanky \\
+\clearpage
 
 \paragraph{\textbf{Diagonalizing the Hamiltonian}}
 
-The only task left is to diagonalize the Hamiltonian, by diagonalizing the transfer matrix. The monodromy matrix ${\mathfrak{t}}_{N,a}$ is a $\twobytwo$-matrix in the auxiliary space $\vds_{a}$ whose entries are operators in the full quantum space. Recalling the fundamental commutation relation between the $\bm{\mathcal{R}}$ and $\bm{\mathcal{T}}$-matrices, then the following theorem holds,
+The only task left is to diagonalize the Hamiltonian, by diagonalizing the transfer matrix. The monodromy matrix ${\mathfrak{t}}_{N,a}$ is a $\twobytwo$-matrix in the physical space $\vds_{a}$. Recalling the fundamental commutation relation between the $\bm{\mathcal{R}}$ and $\bm{\mathcal{T}}$-matrices, then the following theorem holds,
 
 \begin{theo} \label{theo monodromy}
 Let $\bm{\mathcal{T}}$ be the monodromy matrix for the Heisenberg model. Then, $\forall u_1, u_2 \in \mathds{C}$ then \\
@@ -1019,8 +1049,7 @@ Now, note that
 
 \begin{align*}
     %\begin{split}
-        \bigg(A(v) + D(v) \bigg)\ket{u_1, \cdots u_M} &= \\
-        &= \bigg[\bigg(\prod_{k=1}^{\ell} f(v-u_k)\bigg)\alpha^N(v) + \bigg(\prod_{k=1}^{\ell} h(v-u_k)\bigg) \delta^N(v) \bigg] \ket{u_1, \cdots u_M} \\
+        \bigg(A(v) + D(v) \bigg)\ket{u_1, \cdots u_M} &= \bigg[\bigg(\prod_{k=1}^{\ell} f(v-u_k)\bigg)\alpha^N(v) + \bigg(\prod_{k=1}^{\ell} h(v-u_k)\bigg) \delta^N(v) \bigg] \ket{u_1, \cdots u_M} \\
         &+ \sum_{k=1}^{\ell} \bigg[\bigg(g(v-u_k) \bigg[ \prod_{j \neq k}^{\ell} f(u_k - u_j)\bigg] \alpha^N(u_k)\bigg) + h(v-u_k) \bigg(\prod_{j \neq k}^{\ell} h(u_k - u_j)\bigg) \delta^N(u_j) \\
         &\times \prod_{\substack{j = 1 \\
                                  j \neq k}}^{\ell} \Omega^{\otimes N} B(u_i)\bigg]\\
@@ -1074,8 +1103,37 @@ Let $\{u_k\}_{k=1}^{\ell < N} \subset \mathds{C}$ satisfy the Bethe equations. T
 Therefore, via the transfer matrix, it holds that $U = e^{iP} = i^{-N} \mathfrak{t}\left(\frac{i}{2}\right) = i^{-N} \left(A\left(\frac{i}{2}\right) + D\left(\frac{i}{2}\right) \right)$, from which 
 
 \begin{equation}
-    P \ket{u_1, \cdots u_\ell} = \sum_{k=1}^{\ell} p(u_k) \ket{u_1, \cdots u_\ell} \textnormal{ where } p(u_k) = \frac{1}{i} \log \frac{u_k + \frac{i}{2}}{u_k - \frac{i}{2}}
+    P \ket{u_1, \cdots u_\ell} = \sum_{k=1}^{\ell} p(u_k) \ket{u_1, \cdots u_\ell} \textnormal{ where } p(u_k) = \frac{1}{i} \log \frac{u_k + \frac{i}{2}}{u_k - \frac{i}{2}}.
 \end{equation}
+
+Now, \cref{Hamiltonian monodromy} establishes that the XXX Hamiltonian belongs to the monodromy matrices' family. Furthermore, it provides a link between the $A+D$'s eigenvalues and the eigenenergies. In effect, said eigenenergies may be found by differentiating the $A+D$'s eigenvalues over $u$ and setting $u = z_0 = \frac{i}{2}$. Let the former 
+
+$$
+\Lambda(v) = \left(v + \frac{i}{2}\right)^N \prod_{k=1}^{\ell} \frac{v - u_k - i}{v-u_k} + \left(v - \frac{i}{2}\right)^N \prod_{k=1}^{\ell} \frac{v - u_k + i}{v-u_k},
+$$
+
+then, 
+
+\begin{align*}
+    \frac{d \log \Lambda(v)}{dv} \bigg|_{v=z_0} &= \frac{1}{\Lambda(v)} \frac{d \Lambda(v)}{dv} \bigg|_{v=z_0} \\
+    &= \frac{1}{\Lambda(v)\bigg|_{v=z_0}} \bigg[N i^{N-1} \prod_{k=1}^{\ell} \frac{-u_k - \frac{i}{2}}{\frac{i}{2} - u_k} + i^N \sum_k \frac{i}{(\frac{i}{2} - u_k)^2} \prod_{\substack{j=1 \\
+                      j \neq k}}^{\ell} \frac{-u_j - \frac{i}{2}}{\frac{i}{2} - u} \bigg] \\
+    &= i \bigg(\sum_{k=1}^{\ell} \frac{1}{u_k^2 + \frac{1}{4}} - N\bigg).
+\end{align*}
+
+Then, using \cref{Hamiltonian monodromy}, yields the eigenenergies
+
+\begin{equation}
+    H \ket{u_1, \cdots u_M} = \left[ \frac{i}{2} i \bigg(\sum_{k=1}^{\ell} \frac{1}{u_k^2 + \frac{1}{4}} - N\bigg) - \frac{N}{2} \right] \ket{u_1, \cdots u_M} \\
+\end{equation}
+
+or, equivalently, 
+
+\begin{align}
+    \alignedbox{{\bf H} \ket{u_1, \cdots u_M}}{= \sum_{k =1}^{\ell} \epsilon(u_k) \ket{u_1, \cdots u_M} \textnormal{ where } \epsilon(u_k) = - \frac{1}{2} \frac{1}{u_k^2 + \frac{1}{4}}},
+\end{align}
+
+which concludes the Bethe solution for the XXX Heisenberg chain.
 
 \clearpage 
 
