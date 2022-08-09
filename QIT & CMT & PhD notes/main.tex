@@ -10,7 +10,7 @@
 
 \section{Cuentitas}
 
-Given a physical system, a density operator for is a positive semi-definite, self-adjoint operator of trace one acting on the system's Hilbert space, denoted by $\mathds{H}$. The set of all density operators has the structure of a vector space $\mathcal{C}(\mathds{H})$,
+Given a physical system, a density operator for it is a positive semi-definite, self-adjoint operator of trace one acting on the system's Hilbert space, denoted by $\mathds{H}$. The set of all density operators has the structure of a vector space $\mathcal{C}(\mathds{H})$,
 
 $$
 \mathcal{C}(\mathds{H}) = \{ \rho \in \textnormal{GL}(N, \mathds{C}) \blanky | \blanky \rho^\dagger = \rho, \blanky \rho \geq 0, \blanky \textnormal{Tr } \rho = 1 \},
@@ -294,12 +294,8 @@ However, unlike the previous case, we now allow for two-body operators to be inc
 where $\Gamma(n_a, n_b)$ counts all the possible, non-repeating, order notwithstanding, pair combinations of elements from a $n_a$-cardinality set with elements from a $n_b$-cardinality set. In other words, 
 
 \begin{equation}
-    \Gamma(n_a, n_b) = \left\{ \begin{array}{cc}
-        n_a^2 & \textnormal{ if } n_a = n_b  \\
-        \\
-        n_b + \frac{n_a(n_b-1)}{2} & \textnormal{ otherwise }
-    \end{array}
-    \right. 
+    \Gamma(n_a, n_b) = 
+        n_a + n_b + \frac{n_a(n_b-1)}{2}
 \end{equation} 
 
 Then, the two-body Max-Ent basis is 
@@ -320,6 +316,90 @@ Note that $\dim \mathfrak{B}_{ME_2} = \sum_{k=1}^N \dim(\mathfrak{b}_k) + \sum_{
 
 Both of these techniques require substantially fewer parameters than the exact dynamics, which requires $\mathcal{O}(2^{2N})$ complex-valued entries (or alternatively $\mathcal{O}(2^{2N + 1})$ real-valued parameters. 
 
-
 %which requires $2^{2n} - 1 $
+
+\clearpage
+
+Consider a closed quantum many-body system described by a Hamiltonian ${\bf H}$ and with its initial state, $\rho_0$, given by
+
+$$
+\rho_0 = e^{-{\bf K}} \begin{array}{c}
+     \textnormal{ where $\rho_0 \in \mathcal{C}(\hilbert^{\otimes N}))$ } \\
+     \\
+     \textnormal{ and with ${\bf K} \in \mathfrak{H}\mathfrak{s}(\hilbert^{\otimes N})$} \Longleftrightarrow {\bf K} = - \log \rho
+\end{array}
+$$
+
+The system's time evolution of course governed by the Schr\"odinger equation. 
+
+$$
+i \frac{d\rho(t)}{dt} =  [{\bf H}, \rho]
+$$
+
+For the time being, consider $\rho_0$ as a one-body Max-Ent state, with respect to some general Max-Ent 1 basis composed of a collection of one-body local operators
+
+\begin{equation}
+    \rho \in \bm{\mathcal{S}}_{ME,1}( \mathfrak{B}_{ME_1}) \begin{array}{c}
+         \textnormal{which in turn implies that the ${\bf K}$-operator } \\
+         \textnormal{ can be uniquely decomposed,} \\
+         \textnormal{upto phase factors, as } 
+    \end{array}
+    {\bf K} = \sum_{\mu}^{\ell} \phi^{\mu}(t) \bm{\mathcal{O}}_{\mu},
+\end{equation}
+
+where we have chosen the Schrodinger picture for the operators. Now we claim the following 
+
+\begin{theo}
+    Since $\rho = e^{-{\bf K}}$ is a well-defined density operator $\rho_0 \in \mathcal{C}(\hilbert^{\otimes N}))$, the ${\bf K}$-operator's time evolution is governed by a Schr\"odinger equation as well, this is 
+    
+    $$
+        i \frac{d{\bf K}}{dt} =  [{\bf K}, \rho].
+    $$
+\end{theo}
+
+\begin{proof}
+    If $\rho = e^{-{\bf K}}$ then, by definition 
+    
+    \begin{equation}
+    \begin{split}
+            &\rho = \mathds{1} - {\bf K} + \frac{1}{2}{\bf K}^2 - \frac{1}{3!} {\bf K}^3 + \cdots \\
+            &d\rho = 0 - d{\bf K} + \frac{1}{2} \bigg(d{\bf K} {\bf K} + {\bf K} d{\bf K} \bigg) - \frac{1}{3!} \bigg((d{\bf K}) {\bf K}^2 + {\bf K} (d{\bf K}) {\bf K} + {\bf K}^2 (d{\bf K}) \bigg) + \cdots 
+    \end{split}
+    \end{equation}
+    
+    which, if we are willing to assume that $[{\bf K},d{\bf K}] = 0$, yields 
+    
+    \begin{equation}
+    \begin{split}
+        d\rho &= 0 - d{\bf K} + \frac{1}{2} \bigg(d{\bf K} {\bf K} + {\bf K} d{\bf K} \bigg) - \frac{1}{3!} \bigg((d{\bf K}) {\bf K}^2 + {\bf K} (d{\bf K}) {\bf K} + {\bf K}^2 (d{\bf K}) \bigg) + \cdots \\
+        &= - d{\bf K} + {\bf K}d{\bf K} - \frac{1}{2} {\bf K}^2 d{\bf K} + \cdots \\
+        &= -\bigg( \mathds{1} - {\bf K} + \frac{1}{2} {\bf K}^2 + \cdots\bigg) d{\bf K} = -e^{-{\bf K}} d{\bf K} \\
+        &\Rightarrow \frac{d\rho}{dt} = -e^{-{\bf K}} \frac{d{\bf K}}{dt},
+    \end{split}
+    \end{equation}
+    
+    and given that $\rho$'s time evolution is governed by the Schr\"odinger equation, this yields
+    
+    \begin{equation}
+        \begin{split}
+            &i\frac{d\rho}{dt} = [{\bf H}, \rho] \\
+            & i e^{-{\bf K}} \frac{d{\bf K}}{dt}  = [{\bf H}, e^{-{\bf K}}]
+        \end{split}
+    \end{equation}
+    
+    \notaFTBP{Acá algunas cosas me hacen ruido. Primero, la identidad $\frac{d\rho}{dt} = -e^{-{\bf K}} \frac{d{\bf K}}{dt}$ se mantiene sí y solo sí asumo que $dK$ y $K$ conmutan, lo cual en general no es el caso. Por otro lado, si intento hacer la cuenta por el lado de la derivada del logaritmo tengo que $d \log \rho/dt = \rho^{-1} d\rho/dt $}
+    
+    \begin{align*}
+        \frac{d}{dt} \log \rho(t) &= \lim_{\Delta t \rightarrow 0 } \frac{\log [ \rho + \rho' \Delta t ] - \log \rho}{\Delta t} \\
+        &= \lim_{\Delta t \rightarrow 0 } \frac{\log [ \rho \rho^{-1} + \rho' \rho^{-1} \Delta t ]}{\Delta t} \\
+        &=  \lim_{\Delta t \rightarrow 0 } \frac{\log [ \mathds{1} + \rho' \rho^{-1} \Delta t ]}{\Delta t} \\
+        &= \lim_{\Delta t \rightarrow 0 } {\log \bigg([ \mathds{1} + \rho' \rho^{-1} \Delta t ]}\bigg)^{\frac{1}{\Delta t}} \\
+        &= \lim_{\sigma \rightarrow 0 } {\log \bigg([ \mathds{1} + \sigma ]}\bigg)^{\rho' \rho^{-1}\sigma^{-1}} \textnormal{ where $\sigma = \rho' \rho^{-1} \Delta t$ } \\
+        &= \rho' \rho^{-1} \lim_{\sigma \rightarrow 0 } {\log \bigg([ \mathds{1} + \sigma ]}\bigg)^{\sigma^{-1}} \\
+        &= \rho' \rho^{-1} \lim_{\sigma \rightarrow 0 } \log e \\
+        &=  \rho' \rho^{-1}
+    \end{align*}
+    \notaFTBP{ pero lo que no me gusta de acá es que es que usé que $\log AB^{-1} = \log A - \log B$, que vale solo si conmutan y si $\rho' \rho^{-1}$ conmutan dentro del límite. Me hace ruido}
+\end{proof}
+
 \end{document}
