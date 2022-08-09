@@ -382,6 +382,66 @@ $$
 
 \clearpage
 
+\section{Linear Response Theory}
+
+Linear response theory is an extremely widely used concept in physics, stating that the response to a weak external perturbation is proportional to the perturbation, and therefore the quantity of interest is the proportionality constant. The physical question to ask is thus: supposing some perturbation $H'$, what is the measured consequence for an observable quantity ${\bf A}$. In other words, what is $\langle {\bf A} \rangle$ to linear order in $H'$? 
+
+Among the numerous physical application of the linear response formalism, one can mention charge and spin susceptibilities of eg. electron systems due to external electric or magnetic fields. Responses to external mechanical forces or vibrations can also be calculated using the same formalism. \\
+
+\paragraph{\textbf{The general Kubo formula}}
+
+Consider a quantum system described by a time independent Hamiltonian ${\bf H}_0$ in thermodynamic equilibrium. This means that an expectation value of a physical quantity, described by the operator ${\bf A}$, which can be evaluated as 
+
+\begin{equation}
+    \begin{split}
+        \langle {\bf A} \rangle = \frac{1}{\mathcal{Z}_0} \textnormal{Tr }_{\mathds{H}} \rho_0 {\bf A}  = \frac{1}{\mathcal{Z}_0} \sum_{n \in \Lambda} \bra{n} {{\bf A}} \ket{n} e^{-\beta E_n} \\
+        \rho_0 = e^{-\beta {\bf H}_0} = \sum_{n \in \Lambda} \ket{n} \bra{n} e^{-\beta E_n},
+    \end{split} \begin{array}{c}
+         \textnormal{ where $\{\ket{n}\}_{n \in \Lambda}$ is a complete} \\
+         \\
+         \textnormal{set of eigenstates}.
+    \end{array}
+\end{equation}
+
+Suppose now that at some time, $t = t_0$, an external perturbation is applied to the system, driving it out of equilibrium. The perturbation is described by an additional time dependent term in the Hamiltonian 
+
+\begin{equation}
+    \Hamiltonian(t) = \Hamiltonian_0 + \Hamiltonian'(t) \theta(t-t_0)
+\end{equation}
+
+Now, the interest lies in finding the expectation value of the ${\bf A}$ operator at times $t$ greater that $t_0$-. In order to do so, the time evolution of the density matrix must be found, or equivalently the time evolution of the eigenstates of the unperturbed Hamiltonian. Once $\ket{n(t)}$ is found, the time-dependent expectation value can be found as 
+
+\begin{align}
+        \langle {\bf A}(t) \rangle = \frac{1}{\mathcal{Z}_0} \textnormal{Tr }_{\mathds{H}} \rho(t) {\bf A}  = \frac{1}{\mathcal{Z}_0} \sum_{n \in \Lambda} \bra{n(t)} {{\bf A}} \ket{n(t)} e^{-\beta E_n} \\
+        \rho_0 = e^{-\beta {\bf H}_0} = \sum_{n \in \Lambda} \ket{n(t)} \bra{n(t)} e^{-\beta E_n},
+\end{align}
+
+The physical idea behind this expression is as follows. The initial states of the system are distributed according to the usual Boltzmann distribution $\frac{e^{-\beta E_{0n}}}{\mathcal{Z_0}}$. At later times, the system is described by the same distribution of states but the states are now time-dependent and they have evolved according to the new Hamiltonian. The time dependence of the states $\ket{n(t)}$ is governed by the Schr\"odinger equation. Since $\Hamiltonian'$ is regarded to be a small perturbation, the interaction picture representation is suitable for this setting. In this representation, the time dependence is given by 
+
+\begin{equation}
+    \ket{n(t)} = e^{-i\Hamiltonian_0 t} \ket{n(t)}_I = e^{-i\Hamiltonian_0 t} \mathcal{U}(t, t_0) \ket{\hat{n}(t_0)},
+\end{equation}
+
+where by definition $\ket{\hat{n}(t_0)} = e^{i \Hamiltonian_0 t_0} \ket{n(t_0)} = \ket{n}$.
+
+Up to linear order in $\Hamiltonian'$, the time evolution operator $\mathcal{U}(t, t_0)$ can be written 
+
+$$
+    \mathcal{U}(t, t_0) = \mathds{1} - i \int_{t_0}^t dt' \Hamiltonian'(t') + \mathcal{O}(\Hamiltonian^{'2})
+$$
+
+Then, using this in the time-dependent expectation value yields 
+
+\begin{equation} \begin{split}
+    \langle {\bf A}(t) \rangle &= \frac{1}{\mathcal{Z}_0} \sum_{n \in \Lambda} \bra{n(t)} {{\bf A}} \ket{n(t)} e^{-\beta E_n} \\
+    &= \frac{1}{\mathcal{Z}_0} \sum_{n \in \Lambda} \bra{n(t_0)} \bigg(\mathds{1} - i \int_{t_0}^t dt' \Hamiltonian'(t')\bigg) e^{-i \Hamiltonian_0 t_0} {{\bf A}} e^{i \Hamiltonian_0 t_0} \bigg(\mathds{1} - i \int_{t_0}^t dt' \Hamiltonian'(t')\bigg) \ket{n(t_0)}  e^{-\beta E_n}+ \mathcal{O}(\Hamiltonian^{'2}) \\
+    &= \frac{1}{\mathcal{Z}_0} \sum_{n \in \Lambda} \bra{n(t_0)} {{\bf A}} \ket{n(t_0)} - \frac{i}{\mathcal{Z}_0} \int_{t_0}^{t} dt' \sum_{n \in \Lambda} e^{-\beta E_n} \bigg( e^{-i \Hamiltonian_0 t_0} {{\bf A}} e^{i \Hamiltonian_0 t_0} \Hamiltonian'(t') - \Hamiltonian'(t')e^{-i \Hamiltonian_0 t_0} {{\bf A}} e^{i \Hamiltonian_0 t_0} \ket{n(t_0)} \bigg) \\
+    &= \langle {{\bf A}} \rangle + \int_{t_0}^{t} \frac{dt'}{i} \langle[{{\bf A}}(t), \Hamiltonian'(t')]\rangle_{0}
+\end{split}
+\end{equation}
+
+\clearpage
+
 \section{Bethe ansatz}
 
 The main point of the Bethe solution is that XXX Heisenberg Hamiltonian, which defines the model, can be expressed in terms of a complex-valued $\bm{\mathcal R}$-matrix which is a solution of the Yang-Baxter equation, thus leading to the model's integrability. The most convenient approach is to construct a transfer $\bm{\mathcal{T}}$-matrix -a one parameter commutative family of operators acting on the full state space of the Heisenberg spin chain. \\
