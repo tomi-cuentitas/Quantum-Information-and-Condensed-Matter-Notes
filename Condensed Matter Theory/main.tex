@@ -8,7 +8,102 @@
 
 \begin{document} \maketitle
 
-\section{XX-model}
+\section{Spin Chain models}
+
+The Hilbert space of a quantum spin is defined by choosing a representation for the spin operators. A representation of a Lie algebra is a set of three matrices satisfying the commutation relations of the $\mathfrak{su}(2)$-algebra. An \textbf{irreducible representation} is a set of matrices such that no unitary transformation $\mathcal{U} {\bf S}^{a} \mathcal{U}^\dagger$ block-diagonalizes all three matrices. It is known that for the $\mathfrak{su}(2)$-Lie algebra there is exactly one set (up to unitary transformations) of irreducible complex $n\times n$-matrices, for each integer $n$. It is customary to write $n=2s+1$ for all integers and half-integers $s$. A sinsle spin-$s$ quantum particle at a fixed point in space therefore has a Hilbert space $\mathds{C}^{2s+1}$, so the matrices ${\bf S}^a$ are all $(2s+1)\times(2s+1)$. An orthonormal basis is given by the eigenstates of any one of the matrices. 
+
+\begin{itemize}
+    \item For $s=0$, the matrices all consist of the number zero, thus this is the trivial representation. 
+    \item For $s = \frac{1}{2}$, the chosen basis is ${\bf S}^a = \frac{\hbar}{2} \sigma^a$, this is the fundamental representation.
+    \item For $s=1$, the matrices can be written to have entries $({\bf S}^a)_{bc} = i \epsilon_{abc}$, yielding the adjoint representation.
+\end{itemize}
+
+In a given representation, an interesting invariant is given by the quadratic Casimir operator, 
+
+$$
+{\bf K} = {\bf S} \cdot {\bf S},
+$$
+
+which commutes with each of the representation's generators. As a result, it must be proportional to the identity in a given irreducible representation. This is a fundamental consequence of Schur's lemma on theory of representations 
+
+\begin{lemma}Schur's lemma. 
+    Let $\mathds{V}$ be a $\mathds{C}$-vector space, associated with a finite-dimensional irreducible representation of an algebra $\mathfrak{A}$ over $\mathds{C}$. Then, let $\phi : \mathds{V} \rightarrow \mathds{V}$ be a homorphism ie. $\phi(av) = a\phi(v), \forall a \in \mathfrak{A}, v \in \mathds{V}$. Then, $\phi = \lambda \mathds{1}_{\mathds{V}}.$ \\
+\end{lemma}
+
+\paragraph{\textbf{Spin chain types}}
+
+Some of the most common examples of spin chains are treated as follows, 
+
+\begin{itemize}
+    \item The simplest example of a $SU(2)$-symmetric spin Hamiltonian is therefore the nearest-neighbor Heisenberg model, where 
+
+\begin{equation}
+    \Hamiltonian_{\mathds{X}\mathds{X}\mathds{X}} = -J \sum_{\langle ij \rangle} {\spin}_i \cdot {\spin}_j = -J \sum_{i=1}^{N} \bigg(\frac{1}{2} (\sigma_i^+ \sigma_{i+1}^{-} + \sigma_i^- \sigma_{i+1}^+) + \frac{1}{4} \sigma_i^z \sigma_{i+1}^z\bigg),
+\end{equation}
+
+where in the ferromagnetic case the diagonal terms in the Hamiltonian favour aligned spins, while in the antiferromagnetic case, the diagonal terms favour antialignement. The XXX-Hamiltonian commutes with the magnetization operator by construction. Note that Schur's lemma does not immediately apply since the magnetization operator is reducible. \\
+
+\item The XXZ model is a deformation of the Heisenberg model, breaking the $SU(2)$-model symmetry down to a $U(1)$-subgroup. The XXZ-hamiltonian reads
+
+\begin{equation}
+    \Hamiltonian_{\mathds{X}\mathds{X}\mathds{Z}} = - \sum_{\langle jk \rangle} (J_\perp (\spin_j^x \spin_k^x + \spin_j^y \spin_k^y) + J_z \spin_j^z \spin_k^z) = - \sum_{j=1}^{N} \bigg( J_\perp (\sigma_{j}^+ \sigma_{j+1}^- + \sigma_{j}^- \sigma_{j+1}^+) + \frac{\Delta}{2} \sigma_j^z \sigma_{j+1}^z \bigg),
+    \label{XXZ hamiltonian}
+\end{equation}
+
+which is the most general $U(1)$-symmetric nearest-neighbor interaction for spin-$\frac{1}{2}$ particles. \\
+
+Although this model is no longer $SU(2)$-symmetric, the magnetization operator commutes with the hamiltonian, thus generating a $U(1)$-symmetry. Even though the full $SU(2)$-symmetry is broken, the degrees of freedom are still typically referred to as spins. The sign of $J_z$ alone determines whether the model is ferromagnetic, $J_z > 0$, or antiferromagnetic, $J_z < 0$, since the sign of $J_\perp$ is unimportant in any bipartite lattice, redefining the states by changing the overall sign of the $\spin^x$ and $\spin^y$-operators on half the lattice sites, leaves the algebra unchanged but flips the sign of $J_\perp$. Therefore, the physically meaningful coupling is $\Delta = \frac{J_z}{|J_\perp|}$, so that $\Delta = \pm 1$ for the ferromagnetic and antiferromagnetic spin models, respectively. In the $\Delta \rightarrow \pm \infty$-limit, only the $J_z$ remains, and the model is effectively classical. For the ferromagnetic case $J_z > 0$, all the spins simply line up with the maximum value of ${\bf M}^z$. In the antiferromagnetic case, $\Delta \rightarrow -\infty$ on a bipartite lattice, the spins take their maximum opposite values on every other site. \\
+
+It is easy to check that this Hamiltonian commutes with the magnetization operator, and so preserves a $U(1)\times \mathds{Z}_2$-symmetry. In a classical notion, the $U(1)$-symmetry corresponds to rotations around the $z$-axis, while the $\mathds{Z}_2$ corresponds to flipping all the spins ${\spin_j^a \rightarrow -\spin_j^a}$. \\
+
+\item A still more general Hamiltonian is given by the XYZ-model, which only preserves the spin-flip symmetry. 
+\end{itemize}
+
+None of these Hamiltonians correspond to a quantum version of the Ising model. \\
+
+\paragraph{\textbf{Ferromagnets and antiferromagnets}}
+
+Unless geometric frustration is present, in classical systems, there is no significant difference between ferromagnets and antiferromagnets. Eg, with NN-interaction, geometric frustration occurs for lattices that are not bipartite. In a bipartite lattice, the sites can be divided into two sub-lattices such that nearest neighbours always belong to different sub-lattices. A nearest-neighbour antiferromagnetic interaction in a classical model on a bipartite lattice can typically be changed into a ferromagnetic one, by redefining the spin via a flip on all sites on one of the sub-lattices but not on the other (eg. $\uparrow \rightarrow \downarrow$ in the Ising model). The physics of such classical antiferromagnets is therefore essentially equivalent to that of the ferromagnets. \\
+
+Antiferromagnetic quantum systems on non-bipartite lattices also exhibit interesting behaviour. But the interesting thing is that on bipartite lattices, there are a number of important differences between quantum ferromagnets and antiferromagnets. \\
+
+\paragraph{\textbf{Quantum Ferromagnets}}
+
+Consider the Heisenberg interaction $-J \vec{\spin}_1 \cdot \vec{\spin}_2$ across a single bond. For spin-$\frac{1}{2}$ particles, this is a simple $4 \times 4$-matrix acting on the computational basis $\mathcal{B} = \{\ket{\uparrow\uparrow}, \ket{\uparrow \downarrow}, \ket{\downarrow \uparrow}, \ket{\downarrow\downarrow}\}$, yielding 
+
+\begin{equation*} \vec{\spin}_1 \cdot \vec{\spin}_2 = \frac{1}{4} \left(\begin{array}{*{11}c}1 & 0 & 0 & 0 \\0 & -1 & 4 & 0 \\0 & 4 & -1 & 0\\0 & 0 & 0 & 1\\\end{array}\right)\end{equation*}
+
+Diagonalizing this matrix will yield its eigenvalues and its eigenvectors. Given the Clebsh-Gordan decomposition rule $\frac{1}{2} \otimes \frac{1}{2} = 0 \oplus 1$, these eigenvectors can be grouped into the $s=1$-triplet representation and the $s=0$-singlet representation. In effect,
+
+\begin{equation}
+    \begin{split}
+        \textnormal{triplet}: \ket{\uparrow \uparrow}, \frac{1}{\sqrt{2}} \bigg(\ket{\downarrow \uparrow} + \ket{\uparrow\downarrow}\bigg), \ket{\downarrow\downarrow}, \textnormal{ with } \lambda_i = -\frac{J}{4} \\
+        \textnormal{singlet}: \frac{1}{\sqrt{2}} \bigg(\ket{\downarrow \uparrow} - \ket{\uparrow\downarrow}\bigg), \textnormal{ with } \mu_i = +\frac{J}{4}
+    \end{split}
+\end{equation}
+
+It is simple to check that ${\bf K} = s(s+1)$ in both cases, and that while the singlet is annihilated by all three generators $\vec{\bf S}$, acting with ${\bf S}^+$ and ${\bf S}^-$ takes members of the triplet to each other. One important difference between the ferromagnetic ($J > 0$) and the antiferromagnetic ($J < 0$) models now arises,
+
+\begin{itemize}
+    \item if $J>0$, there are multiple ground states for the ferromagnet, each member of the triplet having minimum energy $-J$,
+    \item but if $J<0$, the antiferromagnetic ground state, the singlet, is unique. Moreover, the antiferromagnetic ground state is invariant under the $SU(2)$-symmetry, whereas the ferromagnetic ground states are not. \\
+\end{itemize}
+
+Additional insight comes from solving the Heisenberg model on a four-site chain, with its Hilbert space being 16-dimensional, by exploiting the model's inner symmetries. The magnetization operator ${\bf M}^z$ commutes with the Hamiltonian, which makes them simultaneously diagonalizable. For perioidic boundary conditions, the translational invariance plays a powerful role. The translation operator is defined by shifting the spins by one site modulo $N$, this is 
+\begin{equation}
+\begin{split}
+    \mathcal{T} : \mathfrak{A}_i \rightarrow \mathfrak{A}_j \\
+    \mathcal{T}^{-1} \vec{\bf S}_i \mathcal{T} = \vec{\spin}_{i+1} \textnormal{ with }
+\end{split}
+\end{equation}
+
+
+
+ . \\
+
+\clearpage
+
+\subsection{XX-model}
 
 Consider the XX-Heisenberg model, with its Hamiltonian given in terms of the traditional $\frac{1}{2}$-spin operators ie. 
 
@@ -18,6 +113,8 @@ Consider the XX-Heisenberg model, with its Hamiltonian given in terms of the tra
 \end{equation}
 
 which describes interacting spins in a one-dimensional chain, with periodic boundary conditions. \eqref{XX hamiltonian}'s first terms represents nearest neighbour interactions in the $x$ and $y-$directions  interactions, with $J$ being either positive or negative and quantifying the strength and type of interactions, while the second term represents a magnetic field of strength $\lambda$, applied in the $z$-direction of the spins. \\
+
+\paragraph{\textbf{Exact solution}}
 
 In order to solve this problem, it is necessary to rewrite \eqref{XX hamiltonian} and apply a Jordan-Wigner transformation, mapping the spin problem into a fermionic problem. But first, it is convenient to write the spin-operators in terms of the raising and lowering $\mathfrak{su}(2)$-operators, ie.
 
@@ -77,7 +174,7 @@ which is not problematic, since it accounts for all $L$-lattice sites. Let
 
 \begin{equation}
     \begin{array}{c}
-       \spin_{L}^{+} \spin_{1}^{-} = \mathcal{Q} f_L^\dagger f_1, \\
+       \spin_{L}^{+} \spin_{1}^{-} = \mathcal{Q} f_L^\dagger f_1 \textnormal{  and  }
        \spin_{L}^{-} \spin_{1}^{+} = \mathcal{Q} f_1^\dagger f_L,
     \end{array}
 \end{equation}
@@ -97,7 +194,6 @@ where the first term accounts for fermionic nearest-neighbour hopping, the secon
 \end{equation}
 
 where now the fermionic hopping term has the standard boundary conditions. The third term, since it does not involve any type of summation over lattice sites, only contributes at $\mathcal{O}\bigg(\frac{1}{L}\bigg)$-order to any microscopic quantity. In the thermodynamic limit, this non-local term can be dropped, thus yielding an $\mathcal{O}(L)$-Hamiltonian given by 
-
 \begin{equation}
     {\bf H} = \frac{J}{2} \sum_{i=1}^{L} \bigg(f_{j}^{\dagger} f_{j+1} + f_{j+1}^{\dagger} f_j - \lambda f_{j}^{\dagger} f_{j}\bigg) + \frac{\lambda L}{2},
     \label{L-order fermionic hamiltonian}
@@ -139,19 +235,21 @@ Under the Fourier transform, \eqref{L-order fermionic hamiltonian}'s terms are m
 
 Therefore, using these identities, the new Hamiltonian is given by 
 
-\begin{align}
+\begin{equation}
+\begin{split}
     {\bf H} &= \frac{J}{2} \sum_{k} \bigg(e^{ik} d_{k}^{\dagger} d_{k} + e^{-ik} d_{k}^{\dagger} d_k - \lambda d_{k}^{\dagger} d_{k}\bigg) + \frac{\lambda L}{2} \\
     &= \sum_{k} \bigg(J \cos k - \lambda \bigg)d_{k}^{\dagger} d_{k} + \frac{\lambda L}{2},
-\end{align}
+\end{split}
+\end{equation}
 
 which can be rewritten as 
 
 \begin{align}
     \alignedbox{{\bf H} }{= \sum_{k} \epsilon_k d_k^\dagger d_{k} + \frac{\lambda L}{2} \begin{array}{c}
          \textnormal{ with the eigenvalues being given by } \epsilon_k = J \cos k - \lambda + \frac{\lambda L}{2} \\
-         \textnormal{ and the eigenvectors being given by } \ket{E_n} = \prod_{n} (d_k^\dagger)^n,
+         \textnormal{ and the eigenvectors being given by } \ket{E_n} = \prod_{n}  (d_k^\dagger)^n, \\
          \textnormal{                    with eigenvalue $E_n = \sum_{n} \epsilon_n $}  
-    \end{array}},
+    \end{array}}
 \end{align}
 
 where, $k = \frac{2\pi m}{L}, \blanky m = -\frac{L}{2} + 1, \cdots \frac{L}{2}, $ ie. $k \in (-\pi, \pi]$, this is called the first Brillouin zone. Thus the problem has been solved \\
@@ -164,7 +262,7 @@ As for its thermal properties, since this is a fermionic model, the fermions wil
 
 \clearpage
 
-\subsection{Quantum Phase Transition}
+\subsubsection{Quantum Phase Transition}
 
 The system's groundstate is defined such that 
 
@@ -253,198 +351,75 @@ Another interesting quantity is the total magnetic susceptibility, which can be 
 
 which is divergent if $\lambda = J$. This shows that the XX-Heisenberg model has a second order (since there is no latent heat involved it can't be a first order phase transition) quantum phase transition, with an associated power law with a critical exponent.  \\
 
-\section{Numerical solution to Fermionic models}
-
-Consider a Hamiltonian describing a fermionic system, given by 
-
-\begin{equation}
-    {\bf H} = J \summation (f_{j}^{\dagger}f_{j+1} + f_{j+1}^{\dagger}f_{j}) + \sum_{j=1} \lambda_j f_{j}^{\dagger} f_j, \begin{array}{c}
-         \textnormal{with the usual } \\
-         \textnormal{ conmutation rules} 
-    \end{array}
-    \begin{array}{c}
-         \{f_j, f_k\} = \{f_j^\dagger, f_k^\dagger\} = 0  \\
-         \{f_j, f_k^\dagger\} = \delta_{jk}
-    \end{array}
-    \label{fermionic hamiltonian}
-\end{equation}
-
-where $L$ indicates the number of lattice sites, $J$ is the hopping strength, which could be either positive or negative, and where $\lambda_j$ is the on-site potential strength\footnote{The $\lambda_j$-term frequently appears in many condensed matter models, with different numerical values and interpretations, eg.
-
-\begin{itemize}
-    \item In the XX model, $\lambda_j = \lambda \blanky \forall j$. 
-    \item While for the Anderson model $\lambda_j \in \mathcal{U}_{\R_{[-W, W]}}$, a uniform random variable, with $W$ being the disorder strength. 
-    \item In the Aubry-André model, $\lambda_j = \lambda \cos(2\pi\sigma j)$, with $\sigma \in \mathds{I}$ and $\lambda$ quantifying the disorder strength. 
-\end{itemize}}. Said Hamiltonian has open boundaries conditions since there is no hopping term across the boundary. Note that we can rewrite \eqref{fermionic hamiltonian} as 
-
-\begin{equation}
-    {\bf H} = \sum_{i, j = 1}^{L} \M_{ij} f_i^{\dagger} f_j \textnormal{ with } \begin{array}{c}
-         \M \in \textnormal{GL}(L, \R), \\
-         \M_{ij} = \left\{\begin{array}{cc}
-             \lambda_i & \textnormal{ if } i=j  \\
-              J & \textnormal{ if } j=i+1 \textnormal{ or } i = j + 1 \\
-              0 & \textnormal{ otherwise}
-         \end{array} \right.
-    \end{array},
-\end{equation}
-
-which is a positive-defined tri-diagonal matrix.
-Let ${\bf f} = (f_1 \blanky f_2 \blanky \cdots f_L)\transpose$ be a vector of the $L$ fermionic operators. Then, \eqref{fermionic hamiltonian} can be rewritten as 
-
-\begin{align}
-    {\bf H} = {\bf f}^\dagger \M {\bf f}.
-\end{align}
-
-Since $\M$ is symmetric, then it can be diagonalized  $\M = A \mathcal{D} A\transpose$, where $A \in \mathds{R}^{L \times L}$ is a real orthogonal matrix and with $\mathcal{D}_{ij} \in \mathds{R}^{L \times L} \blanky | \blanky \mathcal{D}_{ij}  = \epsilon_i \delta_{ij}$. In this context, the $A$-matrix acts on the fermionic operator as a Bogoliubov transformation, allowing for \eqref{fermionic hamiltonian} to be rewritten as 
-
-\begin{equation}
-     {\bf H} = {\bf f}^\dagger A \mathcal{D} A\transpose {\bf f} = {\bf d}^\dagger \mathcal{D} {\bf d}
-     \label{fermionic matrix hamiltonian}
-\end{equation}
-
-where ${\bf d} = A\transpose {\bf f}$. Since the $A$-matrix is orthogonal, the new $d_k$-operators are fermionic operators as well, satisfying \eqref{fermionic hamiltonian}'s anti-commutation rules. Then, the new fermionic operators are 
-
-\begin{equation*}
-    \begin{array}{c}
-         d_k = \sum_{j=1}^{L} A_{jk} f_j  \\ 
-         \\
-         f_j = \sum_{k=1}^{L} A_{jk} d_k 
-    \end{array} \textnormal{ since } A\transpose A = \sum_{j,k = 1}^{L} A_{jk} A_{kj} = \mathds{1}_{L}.
-\end{equation*}
-
-Then, we can expand \eqref{fermionic matrix hamiltonian} in terms of the lattices, as follows 
-
-\begin{equation}
-    {\bf H} = \sum_{k = 1}^{L} \epsilon_k d_k^\dagger d_k,
-\end{equation}
-
-which is a sum of number operators with potentials. The eigenstates can then be constructed from the the theory's vacuum state, by applying the $d_k^{\dagger}$-fermionic operators. In the Heisenberg-picture, the $d_k$-operators can be evolved via the Heisenberg equation of motion
-
-\begin{equation}
-\frac{d}{dt} d_k = i [{\bf H}, d_k],
-\label{H eom}
-\end{equation}
-
-and using that $d_k^2 = 0$, it turns out that \eqref{H eom}'s solution is simply $d_k(t) = e^{-i\epsilon_k t} d_k$. The system's correlation can be easily found by analyzing the following matrix. Let $\mathcal{N}_{jk} = \langle d_j^\dagger d_k \rangle$, where the expectation value is taken via calculating the operator's trace along the Fock space, which takes the following values 
-
-\begin{equation}
-    \mathcal{N}_{jk} = \langle d_j^\dagger d_k \rangle = \left\{\begin{array}{c}
-        0 \textnormal{ or } 1 \textnormal{ if } j=k  \\
-        0 \textnormal{ if } j \neq k 
-    \end{array} \right.,
-\end{equation}
-
-ie. different lattice-sites are not correlated and there can only be a single fermion at most per lattice site, in accordance with Pauli's principle. A ground state, for example, would choose to turn on all fermions in the eigenmode $d$-space such that $\epsilon_k < 0$. If instead, the expectation value is taken with thermal states, the Fermi-Dirac distribution is returned, 
-
-\begin{equation}
-    \mathcal{N}_{jk} = \langle d_j^\dagger d_k \rangle_{\textnormal{th}} =  \frac{1}{1+e^{\beta \epsilon_k + \mu}} \delta_{jk}.
-\end{equation}
-
-Another interesting quality is a system with an initial configuration where the system's initial state, in real space, is known. In this setting, $\mathcal{N}_{jk}$ is known for all lattices. Consider for example the Anderson model, where the system's initial state is given by a single tensor product of $n$-fermionic states in real space, with $n<L$. Then, for all lattice sites, we have that $\N_{jj}$ is either zero or one. The $\N_{jk}$-matrix entries can then be evaluated as 
-
-\begin{align*}
-    \langle d_j^\dagger d_k \rangle = \sum_{i,j = 1}^{n < L} A_{ik} A_{jl} \langle f_i^\dagger f_j \rangle = \sum_{j=1} A_{jk} A_{jl} \langle f_j^\dagger f_j \rangle,
-    \label{real system correlations}
-\end{align*}
-
-which can then be numerically computed to obtain the LHS expectation value. In general, this $\N_{jk}$-matrix will not be diagonal, which is reasonable since the system's real configuration is not an eigenstate. In principle and in practice, by inverting \eqref{real system correlations}, we can evolve any number operator or two-body correlation operator, ie.
-
-\begin{align}
-    \langle f_j^\dagger f_k \rangle = \sum_{k,l =1}^{n} A_{jk} A_{jl} \langle d_k^\dagger d_l \rangle.
-\end{align}
-
-This quantities' time evolution can then be found out to be 
-
-\begin{equation}
-    \langle f_j^\dagger(t) f_k(t) \rangle = \sum_{k,l =1}^{L} e^{i(\epsilon_k - \epsilon_l)t}A_{jk} A_{jl} \langle d_k^\dagger d_l \rangle,
-\end{equation}
-
-which can then be numerically solved. 
-
-\clearpage 
-
-\section{Independent Electrons and Static Crystals}
-
-\subsection{Crystal lattices} 
-
-The mathematical concept which best describes an actual crystal lattice is that of a Bravais lattice, defined as a set of mathematical points corresponding to the discrete positions in space given by 
-
-\begin{equation}
-    \{\Rb \in \R^{3} \blanky | \blanky \R = \sum_{i=1}^{3} n_i {\bf a}_i \textnormal{ with } n_i \in \mathds{Z}\},
-\end{equation}
-    
-
-where the $\{a_i\}$-vector are the so-called primitive vector. The Bravais lattice is invariant under the operation 
-
-$$
-\Rb \rightarrow \Rb + {\bf T} \textnormal{ where } {\bf T} = \sum_{i=1}^{3} L_i {\bf a}_i \blanky | \blanky L_i \in \mathds{Z}
-$$
+%\subsection{XXZ-model}
 
 \clearpage
 
-\section{Linear Response Theory}
+\subsection{Bethe ansatz}
 
-Linear response theory is an extremely widely used concept in physics, stating that the response to a weak external perturbation is proportional to the perturbation, and therefore the quantity of interest is the proportionality constant. The physical question to ask is thus: supposing some perturbation $H'$, what is the measured consequence for an observable quantity ${\bf A}$. In other words, what is $\langle {\bf A} \rangle$ to linear order in $H'$? 
+\paragraph{\textbf{Heisenberg XXX-chain}}
 
-Among the numerous physical application of the linear response formalism, one can mention charge and spin susceptibilities of eg. electron systems due to external electric or magnetic fields. Responses to external mechanical forces or vibrations can also be calculated using the same formalism. \\
-
-\paragraph{\textbf{The general Kubo formula}}
-
-Consider a quantum system described by a time independent Hamiltonian ${\bf H}_0$ in thermodynamic equilibrium. This means that an expectation value of a physical quantity, described by the operator ${\bf A}$, which can be evaluated as 
+Consider a one-dimensional lattice with $N$ lattice sites and a $\frac{1}{2}$-spin particle positioned at every lattice site, which have a nearest neighbour spin-spin interaction. Each particles either has spin up or spin down, generating a two-dimensional local Hilbert space $\vds_n$. Strictly speaking there are two possible topologies for a one-dimensional chain, open or closed. Consider the XXX-Hamiltonian with closed topology, given by 
 
 \begin{equation}
-    \begin{split}
-        \langle {\bf A} \rangle = \frac{1}{\mathcal{Z}_0} \textnormal{Tr }_{\mathds{H}} \rho_0 {\bf A}  = \frac{1}{\mathcal{Z}_0} \sum_{n \in \Lambda} \bra{n} {{\bf A}} \ket{n} e^{-\beta E_n} \\
-        \rho_0 = e^{-\beta {\bf H}_0} = \sum_{n \in \Lambda} \ket{n} \bra{n} e^{-\beta E_n},
-    \end{split} \begin{array}{c}
-         \textnormal{ where $\{\ket{n}\}_{n \in \Lambda}$ is a complete} \\
-         \\
-         \textnormal{set of eigenstates}.
-    \end{array}
-\end{equation}
-
-Suppose now that at some time, $t = t_0$, an external perturbation is applied to the system, driving it out of equilibrium. The perturbation is described by an additional time dependent term in the Hamiltonian 
-
-\begin{equation}
-    \Hamiltonian(t) = \Hamiltonian_0 + \Hamiltonian'(t) \theta(t-t_0)
-\end{equation}
-
-Now, the interest lies in finding the expectation value of the ${\bf A}$ operator at times $t$ greater that $t_0$-. In order to do so, the time evolution of the density matrix must be found, or equivalently the time evolution of the eigenstates of the unperturbed Hamiltonian. Once $\ket{n(t)}$ is found, the time-dependent expectation value can be found as 
-
-\begin{align}
-        \langle {\bf A}(t) \rangle = \frac{1}{\mathcal{Z}_0} \textnormal{Tr }_{\mathds{H}} \rho(t) {\bf A}  = \frac{1}{\mathcal{Z}_0} \sum_{n \in \Lambda} \bra{n(t)} {{\bf A}} \ket{n(t)} e^{-\beta E_n} \\
-        \rho_0 = e^{-\beta {\bf H}_0} = \sum_{n \in \Lambda} \ket{n(t)} \bra{n(t)} e^{-\beta E_n},
-\end{align}
-
-The physical idea behind this expression is as follows. The initial states of the system are distributed according to the usual Boltzmann distribution $\frac{e^{-\beta E_{0n}}}{\mathcal{Z_0}}$. At later times, the system is described by the same distribution of states but the states are now time-dependent and they have evolved according to the new Hamiltonian. The time dependence of the states $\ket{n(t)}$ is governed by the Schr\"odinger equation. Since $\Hamiltonian'$ is regarded to be a small perturbation, the interaction picture representation is suitable for this setting. In this representation, the time dependence is given by 
-
-\begin{equation}
-    \ket{n(t)} = e^{-i\Hamiltonian_0 t} \ket{n(t)}_I = e^{-i\Hamiltonian_0 t} \mathcal{U}(t, t_0) \ket{\hat{n}(t_0)},
-\end{equation}
-
-where by definition $\ket{\hat{n}(t_0)} = e^{i \Hamiltonian_0 t_0} \ket{n(t_0)} = \ket{n}$.
-
-Up to linear order in $\Hamiltonian'$, the time evolution operator $\mathcal{U}(t, t_0)$ can be written 
-
-$$
-    \mathcal{U}(t, t_0) = \mathds{1} - i \int_{t_0}^t dt' \Hamiltonian'(t') + \mathcal{O}(\Hamiltonian^{'2})
-$$
-
-Then, using this in the time-dependent expectation value yields 
-
-\begin{equation} \begin{split}
-    \langle {\bf A}(t) \rangle &= \frac{1}{\mathcal{Z}_0} \sum_{n \in \Lambda} \bra{n(t)} {{\bf A}} \ket{n(t)} e^{-\beta E_n} \\
-    &= \frac{1}{\mathcal{Z}_0} \sum_{n \in \Lambda} \bra{n(t_0)} \bigg(\mathds{1} - i \int_{t_0}^t dt' \Hamiltonian'(t')\bigg) e^{-i \Hamiltonian_0 t_0} {{\bf A}} e^{i \Hamiltonian_0 t_0} \bigg(\mathds{1} - i \int_{t_0}^t dt' \Hamiltonian'(t')\bigg) \ket{n(t_0)}  e^{-\beta E_n}+ \mathcal{O}(\Hamiltonian^{'2}) \\
-    &= \frac{1}{\mathcal{Z}_0} \sum_{n \in \Lambda} \bra{n(t_0)} {{\bf A}} \ket{n(t_0)} - \frac{i}{\mathcal{Z}_0} \int_{t_0}^{t} dt' \sum_{n \in \Lambda} e^{-\beta E_n} \bigg( e^{-i \Hamiltonian_0 t_0} {{\bf A}} e^{i \Hamiltonian_0 t_0} \Hamiltonian'(t') - \Hamiltonian'(t')e^{-i \Hamiltonian_0 t_0} {{\bf A}} e^{i \Hamiltonian_0 t_0} \ket{n(t_0)} \bigg) \\
-    &= \langle {{\bf A}} \rangle + \int_{t_0}^{t} \frac{dt'}{i} \langle[{{\bf A}}(t), \Hamiltonian'(t')]\rangle_{0}
+\begin{split}
+    {\bf H} &= J \sum_{n=1}^{N} \bigg(\vec{\spin}_n \cdot \vec{\spin}_{n+1} - \frac{1}{4} \mathds{1}^{\otimes N} \bigg) \\
+    &= \frac{J}{4}\sum_{n=1}^{N} \bigg(\vec{\sigma}_n \cdot \vec{\sigma}_{n+1} - \frac{1}{4} \mathds{1}^{\otimes N} \bigg).
+    \label{XXX model}
 \end{split}
 \end{equation}
 
-\clearpage
+Note that $J < 0$ models a ferromagnetic state while $J > 0$ models an anti-ferromagnetic state. A ferromagnetic state refers to a state where all the spins are alligned while an anti-ferromagnetic state refers to a state where adjacent spins are anti-aligned within the domain. 
 
-\section{Bethe ansatz}
 
 The main point of the Bethe solution is that XXX Heisenberg Hamiltonian, which defines the model, can be expressed in terms of a complex-valued $\bm{\mathcal R}$-matrix which is a solution of the Yang-Baxter equation, thus leading to the model's integrability. The most convenient approach is to construct a transfer $\bm{\mathcal{T}}$-matrix -a one parameter commutative family of operators acting on the full state space of the Heisenberg spin chain. \\
+
+\paragraph{\textbf{Some fundamentals of Matrix Theory}}
+
+Let $\mathds{V}$ be an $n$-dimensional $\mathds{C}$-vector space and let $k \in \mathds{1}_n \textnormal{ such that } \in \mathds{N}_{[0, k]}$. Let $\mathfrak{J} = \mathds{1}_n / \mathds{1}_k = \{k+1,\cdots, n\}$. Let $A \in \textnormal{GL}(n, \mathds{C})$, which can be written in block notation as 
+\begin{equation}
+    A = \left(\begin{array}{cc}
+        A_{\mathcal{I}} & A_{\mathcal{I} \mathfrak{J}}  \\
+        A_{\mathfrak{J} \mathcal{I}} & A_{\mathfrak{J}}
+    \end{array}\right) \begin{array}{c}
+         \mathds{C}^k  \\
+         \mathds{C}^{n-k}
+    \end{array} \textnormal{ where } \begin{array}{cc}
+        A_{\mathcal{I}} \in \textnormal{GL}(k, \mathds{C}),  &  A_{\mathcal{I} \mathfrak{J}} \in \textnormal{GL}(k \rightarrow n-k, \mathds{C}), \\
+        A_{\mathfrak{J} \mathcal{I}} \in  \textnormal{GL}(n-k \rightarrow k, \mathds{C}), & A_{\mathfrak{J}}  \in \textnormal{GL}(n-k, \mathds{C}),
+    \end{array} 
+\end{equation}
+
+This notation is consistent with the common matrix operations. The same idea holds for writing down a  block matrix representation for a linear operator with respect to a given subspace. Let $\mathcal{S} \subset \mathds{C}^n$ be a $k$-dimensional vector subspace, such that $\mathds{C}^n = \mathcal{S} \oplus \mathcal{S}^{\perp}$. Then, every linear operator in $\textnormal{End}(\mathds{C}^n)$ can be rewritten as a $\twobytwo$-block-matrix, with its entries being matrices of a given dimension ie. \footnote{
+For example, consider the orthogonal projector over $\mathcal{S}$, labelled $P_{\mathcal{S}}$. In this notation, its matrix representation is given by 
+
+\begin{equation*}
+    P_{\mathcal{S}} = \left( \begin{array}{cc}
+       \mathcal{I} & 0 \\
+       0 & 0
+    \end{array} \right) \begin{array}{c}
+         \mathcal{S} \\
+         \mathcal{S}^\perp
+    \end{array} 
+\end{equation*}}
+
+\begin{equation*}
+\begin{split}
+    A \in \textnormal{End}(\mathds{C}^n) &\rightarrow \exists! \left\{\begin{array}{cc}
+        A_{\mathcal{S}} \in \textnormal{GL}(k, \mathds{C}),  &  A_{\mathcal{S}, \mathcal{S}^\perp} \in \textnormal{GL}(k \rightarrow n-k, \mathds{C}), \\
+        A_{\mathcal{S}^\perp, \mathcal{S}}  \in  \textnormal{GL}(n-k \rightarrow k, \mathds{C}), & A_{\mathcal{S}^\perp} \in \textnormal{GL}(n-k, \mathds{C}),
+    \end{array} \right\} / \\
+   &A = \left( \begin{array}{cc}
+       A_{\mathcal{S}} & A_{\mathcal{S}, \mathcal{S}^\perp}  \\
+       A_{\mathcal{S}^\perp, \mathcal{S}} & A_{\mathcal{S}^\perp} 
+    \end{array} \right) \begin{array}{c}
+         \mathcal{S} \\
+         \mathcal{S}^\perp
+    \end{array}
+    \end{split}
+\end{equation*}
+
+\textnormal{ } \\
 
 \paragraph{\textbf{The Lax operator}} Consider an XXX spin chain with $N$ sites and a corresponding Hilbert space given by 
 
@@ -482,19 +457,19 @@ The algebraic Bethe ansatz' basic tool is the lax operator $\bm{\mathcal{L}}$, w
 \begin{equation}
     \begin{split}
     \bm{\mathcal{L}}_{n, a} &= u(\mathds{1}_n \otimes \mathds{1}_a) + i \sum_{\alpha} \spin_n^\alpha \otimes \sigma_{a}^\alpha \\
-    &= u \left(\begin{array}{cc}
-        \mathds{1}_n & 0  \\
-        0 & \mathds{1}_a 
-    \end{array}\right) + i \spin^{x}_{n} \otimes \left(\begin{array}{cc}
-        0 & 1 \\
-        1 & 0
-    \end{array}\right)_a + i \spin^{y}_{n} \otimes \left(\begin{array}{cc}
-        0 & -i \\
-        i & 0 
-    \end{array}\right)_a + i \spin^{z}_{n} \otimes \left(\begin{array}{cc}
-        1 & 0  \\
-        0 & -1
-    \end{array}\right)_a \\
+    %&= u \left(\begin{array}{cc}
+    %    \mathds{1}_n & 0  \\
+    %    0 & \mathds{1}_a 
+    %\end{array}\right) + i \spin^{x}_{n} \otimes \left(\begin{array}{cc}
+    %    0 & 1 \\
+    %    1 & 0
+    %\end{array}\right)_a + i \spin^{y}_{n} \otimes \left(\begin{array}{cc}
+    %    0 & -i \\
+    %    i & 0 
+    %\end{array}\right)_a + i \spin^{z}_{n} \otimes \left(\begin{array}{cc}
+    %    1 & 0  \\
+    %    0 & -1
+    %\end{array}\right)_a \\
     &= \left(\begin{array}{cc}
        u \mathds{1}_n + i \spin^{z}_{n} & i \spin^{x}_{n} + \spin^{y}_{n} \\
        i \spin^{x}_{n} - \spin^{y}_{n}  & u \mathds{1}_n - i \spin^{z}_{n}
@@ -513,7 +488,7 @@ Consider now the following mathematical object.
     Let the permutation operator be
     
     \begin{equation}
-        \bm{\mathcal P}_{n,a} = \frac{1}{2} \bigg(\mathds{1}_n \otimes \mathds{1}_a + \sum_{\alpha}\sigma_n^{\alpha}  \otimes \sigma_n^{\alpha} \bigg), = \frac{1}{2} \sigma^{\mu}\sigma_{\mu}
+        \bm{\mathcal P}_{n,a} = \frac{1}{2} \bigg(\mathds{1}_n \otimes \mathds{1}_a + \sum_{\alpha}\sigma_n^{\alpha}  \otimes \sigma_n^{\alpha} \bigg) = \frac{1}{2} \sigma^{n \mu}\sigma^{\alpha}_{\mu}
         \label{permutation op}
     \end{equation}
     
@@ -558,6 +533,20 @@ Using this definition for the permutation operator, the lax operator can then be
        \label{l-matrix def}
 \end{equation}
 
+\blanky \\
+
+\paragraph{\textbf{Fundamental commutation Relations and Monodromy Matrix}}
+
+Consider the following two lax operators
+
+\begin{equation*}
+    \begin{array}{c}
+        \bl_{n, a_1}(u_1): \blanky \vds_n \otimes \vds_{a_1} \rightarrow \vds_n \otimes \vds_{a_1}  \\
+        \\
+        \bl_{n, a_2}(u_2): \blanky \vds_n \otimes \vds_{a_2} \rightarrow \vds_n \otimes \vds_{a_2} 
+    \end{array} \begin{array}{c}
+         \textnormal{both of which act on the physical quantum}\\
+         \textnormal{state and on two different auxiliary spaces as well}\footnote{
 The permutation operator indeed permutes the factors in the tensor product the factors in the tensor product by calculating the sum of tensor product of the Pauli matrices with respect to the standard four-dimensional basis, ie. if $\x = \left(\begin{array}{c}
      a \\
      b 
@@ -574,22 +563,8 @@ The permutation operator indeed permutes the factors in the tensor product the f
 
 \begin{equation}
     \bm{\mathcal{P}}_{n, a} (\x \otimes {\bf y} ) = {\bf y} \otimes \x \textnormal{ and } \bm{\mathcal{P}}_{n, a} ( {\bf y} \otimes \x) = \x \otimes {\bf y}.
-\end{equation}
-
-\blanky \\
-
-\paragraph{\textbf{Fundamental commutation Relations and Monodromy Matrix}}
-
-Consider the following two lax operators
-
-\begin{equation*}
-    \begin{array}{c}
-        \bl_{n, a_1}(u_1): \blanky \vds_n \otimes \vds_{a_1} \rightarrow \vds_n \otimes \vds_{a_1}  \\
-        \\
-        \bl_{n, a_2}(u_2): \blanky \vds_n \otimes \vds_{a_2} \rightarrow \vds_n \otimes \vds_{a_2} 
-    \end{array} \begin{array}{c}
-         \textnormal{both of which act on the physical quantum}\\
-         \textnormal{state and on two different auxiliary spaces as well.} 
+\end{equation}}
+. 
     \end{array}
 \end{equation*}
 
@@ -647,11 +622,10 @@ An interesting relationship between the products of the two lax operators and th
     &+ \left({(u_1-u_2) \mathds{1}_{a_1, a_2} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2}} + {(u_1-u_2) \mathds{1}_{a_1, a_2} i \bm{\mathcal{P}}_{n, a_2}} \right) \times  i \bm{\mathcal{P}}_{n, a_1} \\
     &+ i \bm{\mathcal{P}}_{a_1, a_2} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_1} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} + i \bm{\mathcal{P}}_{a_1, a_2} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_1} i \bm{\mathcal{P}}_{n, a_2} \\
     & - \bm{\mathcal{P}}_{a_1, a_2}  \bm{\mathcal{P}}_{n, a_1}  \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} - \bm{\mathcal{P}}_{a_1, a_2}  \bm{\mathcal{P}}_{n, a_1} i \bm{\mathcal{P}}_{n, a_2} \\
-\end{align*}
-\begin{align*}
     &= \bigg((u_1-u_2) \mathds{1}_{a_1, a_2} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} + {(u_1-u_2) \mathds{1}_{a_1, a_2} i \bm{\mathcal{P}}_{n, a_2}} \bigg) \left( \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} + i \bm{\mathcal{P}}_{n, a_1} \right) \\
     &+ i \bm{\mathcal{P}}_{a_1, a_2} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_1} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} + i \bm{\mathcal{P}}_{a_1, a_2} \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_1} i \bm{\mathcal{P}}_{n, a_2} \\
-    & - \bm{\mathcal{P}}_{a_1, a_2}  \bm{\mathcal{P}}_{n, a_1}  \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} - \bm{\mathcal{P}}_{a_1, a_2}  \bm{\mathcal{P}}_{n, a_1} i \bm{\mathcal{P}}_{n, a_2} \\
+    & - \bm{\mathcal{P}}_{a_1, a_2}  \bm{\mathcal{P}}_{n, a_1}  \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} - \bm{\mathcal{P}}_{a_1, a_2}  \bm{\mathcal{P}}_{n, a_1} i \bm{\mathcal{P}}_{n, a_2} \\\end{align*}
+\begin{align*}
     &= \bigg( \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2}  + { i \bm{\mathcal{P}}_{n, a_2}} \bigg) \left( \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} + i \bm{\mathcal{P}}_{n, a_1} \right) (u_1-u_2) \mathds{1}_{a_1, a_2}  \\
     &+ \bigg( \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2}  + { i \bm{\mathcal{P}}_{n, a_2}} \bigg) \left( \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} + i \bm{\mathcal{P}}_{n, a_1} \right)  i \bm{\mathcal{P}}_{n, a_2}  \\
     &= \bigg( \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2}  + { i \bm{\mathcal{P}}_{n, a_2}} \bigg) \left( \bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} + i \bm{\mathcal{P}}_{n, a_1} \right) \bigg(\bigg(u-\frac{i}{2}\bigg) \mathds{1}_{n, a_2} + i \bm{\mathcal{P}}_{n, a_2} \bigg), 
@@ -711,8 +685,6 @@ which is the quantum Yang-Baxter equation. \\
     \end{array},
 \end{equation}
 \end{df}
-
-\clearpage
 
 This matrix obeys the fundamental relation as well\footnote{ For example, consider $N=2$, then
 
@@ -844,14 +816,13 @@ The next order in the expansion of the transfer matrix can then be found via the
          \end{array}\right) \frac{d}{du} \left[\left(\begin{array}{cc}
             u \mathds{1}_{1} + i \spin_{1}^z & i \spin_{1}^-  \\
             i \spin_{1}^+ & u \mathds{1}_{1} - i \spin_{1}^z
-         \end{array}\right)\right]\bigg|_{u = z_0} \\
-         &= i^{N-1} \bigg[ \prod_{1}^{j=N-1} \bm{\mathcal{P}}_{j} + \prod^{j=N}_{N} \bm{\mathcal{P}}_{j}\times  \prod_{1}^{j=N-2} \bm{\mathcal{P}}_{j} + \cdots + \prod^{j=N}_{k} \bm{\mathcal{P}}_{j}\times  \prod^{k+2}_{1} \bm{\mathcal{P}}_{j} \\
-         &+ \cdots + \prod^{j=N}_{3} \bm{\mathcal{P}}_{j} \times \prod^{j=1}_{1} \bm{\mathcal{P}}_{j} + \prod^{j=N}_{2} \bm{\mathcal{P}}_{j} \bigg] \\
-         &= i^{N-1} \sum_{n \in \mathds{N}} \bm{\mathcal{P}}_{N, a} \cdots \bm{\mathcal{P}}_{n-1, a} \bm{\mathcal{P}}_{n+1, a} \cdots \bm{\mathcal{P}}_{1, a} \\
-    \end{split} 
+         \end{array}\right)\right]\bigg|_{u = z_0} s    \end{split} 
 \end{equation*}
 \begin{equation*}
-    \begin{split} 
+    \begin{split}
+         &= i^{N-1} \bigg[ \prod_{1}^{j=N-1} \bm{\mathcal{P}}_{j} + \prod^{j=N}_{N} \bm{\mathcal{P}}_{j}\times  \prod_{1}^{j=N-2} \bm{\mathcal{P}}_{j} + \cdots + \prod^{j=N}_{k} \bm{\mathcal{P}}_{j}\times  \prod^{k+2}_{1} \bm{\mathcal{P}}_{j} \\
+         &+ \cdots + \prod^{j=N}_{3} \bm{\mathcal{P}}_{j} \times \prod^{j=1}_{1} \bm{\mathcal{P}}_{j} + \prod^{j=N}_{2} \bm{\mathcal{P}}_{j} \bigg] \\
+         &= i^{N-1} \sum_{n \in \mathds{N}} \bm{\mathcal{P}}_{N, a} \cdots \bm{\mathcal{P}}_{n-1, a} \bm{\mathcal{P}}_{n+1, a} \cdots \bm{\mathcal{P}}_{1, a} \\ 
         &= i^{N-1} \sum_{n \in \mathds{N}} \bm{\mathcal{P}}_{1, 2} \bm{\mathcal{P}}_{2, 3}\cdots \bm{\mathcal{P}}_{n-1, n+1}
          \cdots \bm{\mathcal{P}}_{N-1, N} \bm{\mathcal{P}}_{N, a} \\
          &= i^{N-1} \sum_{n \in \mathds{N}} \prod_{j=1}^{n-2} \bm{\mathcal{P}}_{j, \blanky j+1}  \times \bm{\mathcal{P}}_{n-1, \blanky n+1} \times \prod_{j=n+2}^{N-1}  \bm{\mathcal{P}}_{j, \blanky j+1} \bm{\mathcal{P}}_{N, a}.
@@ -900,9 +871,7 @@ which in turn can be rewritten as
     \label{Hamiltonian monodromy}
 \end{align}
 
-which shows that the XXX Hamiltonian belongs to the family of $N-1$ commuting operators generated by the trace of the monodromy matrix $\bmt$. As a result, the Hamiltonian commutes with the transfer matrix $ [{\bf H}, \mathfrak{t}(u)] = 0.$ 
-
-\clearpage
+which shows that the XXX Hamiltonian belongs to the family of $N-1$ commuting operators generated by the trace of the monodromy matrix $\bmt$. As a result, the Hamiltonian commutes with the transfer matrix $ [{\bf H}, \mathfrak{t}(u)] = 0.$ \\
 
 \paragraph{\textbf{Diagonalizing the Hamiltonian}}
 
@@ -914,7 +883,7 @@ Let $\bm{\mathcal{T}}$ be the monodromy matrix for the Heisenberg model. Then, $
 \begin{itemize}
     \item $[\bm{\mathcal{T}}_{ij}(u_1), \bm{\mathcal{T}}_{ij}(u_2)] = 0, \blanky i,j = 1, 2$, which entails that $[B(u_1), B(u_2)] = \cdots = [D(u_1), D(u_2)] = 0$ \\
     \item $A(u_1) B(u_2) = f(u_1-u_2) B(u_2) A(u_1) + g(u_1-u_2) B(u_1)A(u_2)$\\
-    \item $D(u_1) B(u_2) = h(u_1-_2) B(u_2) D(u_1) + k(u_1-u_2) B(u_1)D(u_2)$,
+    \item $D(u_1) B(u_2) = h(u_1-u_2) B(u_2) D(u_1) + k(u_1-u_2) B(u_1)D(u_2)$,
 \end{itemize}
 
 where $f,g,h,$ and $k$ are given by 
@@ -1196,6 +1165,337 @@ or, equivalently,
 which concludes the Bethe solution for the XXX Heisenberg chain.
 
 \clearpage 
+
+
+\subsection{Numerical solution to Fermionic models}
+
+Consider a Hamiltonian describing a fermionic system, given by 
+
+\begin{equation}
+    {\bf H} = J \summation (f_{j}^{\dagger}f_{j+1} + f_{j+1}^{\dagger}f_{j}) + \sum_{j=1} \lambda_j f_{j}^{\dagger} f_j, \begin{array}{c}
+         \textnormal{with the usual } \\
+         \textnormal{ conmutation rules} 
+    \end{array}
+    \begin{array}{c}
+         \{f_j, f_k\} = \{f_j^\dagger, f_k^\dagger\} = 0  \\
+         \{f_j, f_k^\dagger\} = \delta_{jk}
+    \end{array}
+    \label{fermionic hamiltonian}
+\end{equation}
+
+where $L$ indicates the number of lattice sites, $J$ is the hopping strength, which could be either positive or negative, and where $\lambda_j$ is the on-site potential strength\footnote{The $\lambda_j$-term frequently appears in many condensed matter models, with different numerical values and interpretations, eg.
+
+\begin{itemize}
+    \item In the XX model, $\lambda_j = \lambda \blanky \forall j$. 
+    \item While for the Anderson model $\lambda_j \in \mathcal{U}_{\R_{[-W, W]}}$, a uniform random variable, with $W$ being the disorder strength. 
+    \item In the Aubry-André model, $\lambda_j = \lambda \cos(2\pi\sigma j)$, with $\sigma \in \mathds{I}$ and $\lambda$ quantifying the disorder strength. 
+\end{itemize}}. Said Hamiltonian has open boundaries conditions since there is no hopping term across the boundary. Note that we can rewrite \eqref{fermionic hamiltonian} as 
+
+\begin{equation}
+    {\bf H} = \sum_{i, j = 1}^{L} \M_{ij} f_i^{\dagger} f_j \textnormal{ with } \begin{array}{c}
+         \M \in \textnormal{GL}(L, \R), \\
+         \M_{ij} = \left\{\begin{array}{cc}
+             \lambda_i & \textnormal{ if } i=j  \\
+              J & \textnormal{ if } j=i+1 \textnormal{ or } i = j + 1 \\
+              0 & \textnormal{ otherwise}
+         \end{array} \right.
+    \end{array},
+\end{equation}
+
+which is a positive-defined tri-diagonal matrix.
+Let ${\bf f} = (f_1 \blanky f_2 \blanky \cdots f_L)\transpose$ be a vector of the $L$ fermionic operators. Then, \eqref{fermionic hamiltonian} can be rewritten as 
+
+\begin{align}
+    {\bf H} = {\bf f}^\dagger \M {\bf f}.
+\end{align}
+
+Since $\M$ is symmetric, then it can be diagonalized  $\M = A \mathcal{D} A\transpose$, where $A \in \mathds{R}^{L \times L}$ is a real orthogonal matrix and with $\mathcal{D}_{ij} \in \mathds{R}^{L \times L} \blanky | \blanky \mathcal{D}_{ij}  = \epsilon_i \delta_{ij}$. In this context, the $A$-matrix acts on the fermionic operator as a Bogoliubov transformation, allowing for \eqref{fermionic hamiltonian} to be rewritten as 
+
+\begin{equation}
+     {\bf H} = {\bf f}^\dagger A \mathcal{D} A\transpose {\bf f} = {\bf d}^\dagger \mathcal{D} {\bf d}
+     \label{fermionic matrix hamiltonian}
+\end{equation}
+
+where ${\bf d} = A\transpose {\bf f}$. Since the $A$-matrix is orthogonal, the new $d_k$-operators are fermionic operators as well, satisfying \eqref{fermionic hamiltonian}'s anti-commutation rules. Then, the new fermionic operators are 
+
+\begin{equation*}
+    \begin{array}{c}
+         d_k = \sum_{j=1}^{L} A_{jk} f_j  \\ 
+         \\
+         f_j = \sum_{k=1}^{L} A_{jk} d_k 
+    \end{array} \textnormal{ since } A\transpose A = \sum_{j,k = 1}^{L} A_{jk} A_{kj} = \mathds{1}_{L}.
+\end{equation*}
+
+Then, we can expand \eqref{fermionic matrix hamiltonian} in terms of the lattices, as follows 
+
+\begin{equation}
+    {\bf H} = \sum_{k = 1}^{L} \epsilon_k d_k^\dagger d_k,
+\end{equation}
+
+which is a sum of number operators with potentials. The eigenstates can then be constructed from the the theory's vacuum state, by applying the $d_k^{\dagger}$-fermionic operators. In the Heisenberg-picture, the $d_k$-operators can be evolved via the Heisenberg equation of motion
+
+\begin{equation}
+\frac{d}{dt} d_k = i [{\bf H}, d_k],
+\label{H eom}
+\end{equation}
+
+and using that $d_k^2 = 0$, it turns out that \eqref{H eom}'s solution is simply $d_k(t) = e^{-i\epsilon_k t} d_k$. The system's correlation can be easily found by analyzing the following matrix. Let $\mathcal{N}_{jk} = \langle d_j^\dagger d_k \rangle$, where the expectation value is taken via calculating the operator's trace along the Fock space, which takes the following values 
+
+\begin{equation}
+    \mathcal{N}_{jk} = \langle d_j^\dagger d_k \rangle = \left\{\begin{array}{c}
+        0 \textnormal{ or } 1 \textnormal{ if } j=k  \\
+        0 \textnormal{ if } j \neq k 
+    \end{array} \right.,
+\end{equation}
+
+ie. different lattice-sites are not correlated and there can only be a single fermion at most per lattice site, in accordance with Pauli's principle. A ground state, for example, would choose to turn on all fermions in the eigenmode $d$-space such that $\epsilon_k < 0$. If instead, the expectation value is taken with thermal states, the Fermi-Dirac distribution is returned, 
+
+\begin{equation}
+    \mathcal{N}_{jk} = \langle d_j^\dagger d_k \rangle_{\textnormal{th}} =  \frac{1}{1+e^{\beta \epsilon_k + \mu}} \delta_{jk}.
+\end{equation}
+
+Another interesting quality is a system with an initial configuration where the system's initial state, in real space, is known. In this setting, $\mathcal{N}_{jk}$ is known for all lattices. Consider for example the Anderson model, where the system's initial state is given by a single tensor product of $n$-fermionic states in real space, with $n<L$. Then, for all lattice sites, we have that $\N_{jj}$ is either zero or one. The $\N_{jk}$-matrix entries can then be evaluated as 
+
+\begin{align*}
+    \langle d_j^\dagger d_k \rangle = \sum_{i,j = 1}^{n < L} A_{ik} A_{jl} \langle f_i^\dagger f_j \rangle = \sum_{j=1} A_{jk} A_{jl} \langle f_j^\dagger f_j \rangle,
+    \label{real system correlations}
+\end{align*}
+
+which can then be numerically computed to obtain the LHS expectation value. In general, this $\N_{jk}$-matrix will not be diagonal, which is reasonable since the system's real configuration is not an eigenstate. In principle and in practice, by inverting \eqref{real system correlations}, we can evolve any number operator or two-body correlation operator, ie.
+
+\begin{align}
+    \langle f_j^\dagger f_k \rangle = \sum_{k,l =1}^{n} A_{jk} A_{jl} \langle d_k^\dagger d_l \rangle.
+\end{align}
+
+This quantities' time evolution can then be found out to be 
+
+\begin{equation}
+    \langle f_j^\dagger(t) f_k(t) \rangle = \sum_{k,l =1}^{L} e^{i(\epsilon_k - \epsilon_l)t}A_{jk} A_{jl} \langle d_k^\dagger d_l \rangle,
+\end{equation}
+
+which can then be numerically solved. 
+
+\clearpage 
+
+%\section{Independent Electrons and Static Crystals}
+
+%\subsection{Crystal lattices} 
+
+%The mathematical concept which best describes an actual crystal lattice is that of a Bravais lattice, defined as a set of mathematical points corresponding to the discrete positions in space given by 
+
+%\begin{equation}
+ %   \{\Rb \in \R^{3} \blanky | \blanky \R = \sum_{i=1}^{3} n_i {\bf a}_i \textnormal{ with } n_i \in \mathds{Z}\},
+%\end{equation}
+    
+%where the $\{a_i\}$-vector are the so-called primitive vector. The Bravais lattice is invariant under the operation 
+
+%$$
+%\Rb \rightarrow \Rb + {\bf T} \textnormal{ where } {\bf %T} = \sum_{i=1}^{3} L_i {\bf a}_i \blanky | \blanky L_i %\in \mathds{Z}
+%
+
+\clearpage
+
+\section{Photons: coupling to electrons}
+
+Phonons are quantized vibrations and play a fundamental role in sound physics, specific heat, elasticity and electrical resistivity of solids. More surprisingly, the electron-phonon coupling is the cause of conventional superconductivity. There are two distinct models for electron-phonon coupling, the jellium model, where the ions are represented by a smeared-out continuous positive background, and the lattice model where the ions oscillate around their equilibrium positions forming a crystal lattice. \\
+
+Phonons are basically harmonic oscillators, they are bosons. Moreover, these naturally occur at finite temperature, so the thermal distribution function for bosons will be used. \\
+
+\paragraph{\textbf{Jellium oscillations and Einstein phonons}}
+
+Let $\rho^0_{\textnormal{ion}}$ be the particle density of the ion jellium and let $\rho^0_{\textnormal{el}} = Z \rho^0_{\textnormal{ion}}$ that of the homogeneous electron gas. Consider slow ionic density oscillations in a static electron gas, where the restoring force is the long range Coulomb interaction, where the electron dynamics are neglected as well. This entails that $\rho_{\textnormal{ext}}$ is a fixed constant. In the limit of small harmonic deviations from the equilibrium, $\delta \rho_{\textnormal{ion}}(x^\mu) = \delta \rho_{\textnormal{ion}} ({\bf x}) e^{-i\Omega t}$. The equations of motion are linear up to first order in the ionic density variations, thus its solutions can be written as 
+
+\begin{equation}
+    \rho_{\textnormal{ion}}(x^\mu) = \rho^0_{\textnormal{ion}} + \delta \rho_{\textnormal{ion}} ({\bf x}) e^{-i\Omega t}.
+\end{equation}
+
+A non-zero $\delta \rho_{\textnormal{ion}}$ corresponds to a charge density $Z e \delta \rho_{\textnormal{ion}}$ and hence is associated with an electric field ${\bf E}$ which must obey Maxwell's equations, ie.
+
+\begin{align}
+    \nabla \cdot {\bf E} &= \frac{Ze}{\epsilon_0} \delta \rho_{\textnormal{ion}} & \Rightarrow  \nabla \cdot \bm{\mathfrak{f}} &= \frac{Z^2 e^2 \rho^0_{\textnormal{ion}} }{\epsilon_0} \delta \rho_{\textnormal{ion}},
+\end{align}
+
+where $\bm{\mathfrak{f}} = Z e \rho_{\textnormal{ion}} {\bf E} \approx Z e \rho^0_{\textnormal{ion}} {\bf E}$ is a force density written upto first order in $\delta \rho_{\textnormal{ion}}$. This force equation is supplemented by the continuity equation, $\partial_{\mu} J^\mu = 0$, where $J^\mu = (\rho_{\textnormal{ion}}, \rho_{\textnormal{ion}} {\bf v})$. This equation can be rewritten as 
+
+$$
+\partial_t \delta \rho_{\textnormal{ion}} +  \rho^0_{\textnormal{ion}} \nabla \cdot {\bf v} + \mathcal{O}(\delta^2 \rho_{\textnormal{ion}}) = 0,
+$$
+
+since the velocity is already a small quantity. Differentiating this with respect to time once and again and using Newton's second law $\bm{\mathfrak{t}} = M \rho_{\textnormal{ion}} \partial_t {\bf v}$ yields 
+
+
+\clearpage
+\section{Linear Response Theory}
+
+Linear response theory is an extremely widely used concept in physics, stating that the response to a weak external perturbation is proportional to the perturbation, and therefore the quantity of interest is the proportionality constant. The physical question to ask is thus: supposing some perturbation $H'$, what is the measured consequence for an observable quantity ${\bf A}$. In other words, what is $\langle {\bf A} \rangle$ to linear order in $H'$? 
+
+Among the numerous physical application of the linear response formalism, one can mention charge and spin susceptibilities of eg. electron systems due to external electric or magnetic fields. Responses to external mechanical forces or vibrations can also be calculated using the same formalism. \\
+
+\paragraph{\textbf{The general Kubo formula}}
+
+Consider a quantum system described by a time independent Hamiltonian ${\bf H}_0$ in thermodynamic equilibrium. This means that an expectation value of a physical quantity, described by the operator ${\bf A}$, which can be evaluated as 
+
+\begin{equation}
+    \begin{split}
+        \langle {\bf A} \rangle = \frac{1}{\mathcal{Z}_0} \textnormal{Tr }_{\mathds{H}} \rho_0 {\bf A}  = \frac{1}{\mathcal{Z}_0} \sum_{n \in \Lambda} \bra{n} {{\bf A}} \ket{n} e^{-\beta E_n} \\
+        \rho_0 = e^{-\beta {\bf H}_0} = \sum_{n \in \Lambda} \ket{n} \bra{n} e^{-\beta E_n},
+    \end{split} \begin{array}{c}
+         \textnormal{ where $\{\ket{n}\}_{n \in \Lambda}$ is a complete} \\
+         \\
+         \textnormal{set of eigenstates}.
+    \end{array}
+\end{equation}
+
+Suppose now that at some time, $t = t_0$, an external perturbation is applied to the system, driving it out of equilibrium. The perturbation is described by an additional time dependent term in the Hamiltonian 
+
+\begin{equation}
+    \Hamiltonian(t) = \Hamiltonian_0 + \Hamiltonian'(t) \theta(t-t_0)
+\end{equation}
+
+Now, the interest lies in finding the expectation value of the ${\bf A}$ operator at times $t$ greater that $t_0$-. In order to do so, the time evolution of the density matrix must be found, or equivalently the time evolution of the eigenstates of the unperturbed Hamiltonian. Once $\ket{n(t)}$ is found, the time-dependent expectation value can be found as 
+
+\begin{align}
+        \langle {\bf A}(t) \rangle = \frac{1}{\mathcal{Z}_0} \textnormal{Tr }_{\mathds{H}} \rho(t) {\bf A}  = \frac{1}{\mathcal{Z}_0} \sum_{n \in \Lambda} \bra{n(t)} {{\bf A}} \ket{n(t)} e^{-\beta E_n} \\
+        \rho_0 = e^{-\beta {\bf H}_0} = \sum_{n \in \Lambda} \ket{n(t)} \bra{n(t)} e^{-\beta E_n},
+\end{align}
+
+The physical idea behind this expression is as follows. The initial states of the system are distributed according to the usual Boltzmann distribution $\frac{e^{-\beta E_{0n}}}{\mathcal{Z_0}}$. At later times, the system is described by the same distribution of states but the states are now time-dependent and they have evolved according to the new Hamiltonian. The time dependence of the states $\ket{n(t)}$ is governed by the Schr\"odinger equation. Since $\Hamiltonian'$ is regarded to be a small perturbation, the interaction picture representation is suitable for this setting. In this representation, the time dependence is given by 
+
+\begin{equation}
+    \ket{n(t)} = e^{-i\Hamiltonian_0 t} \ket{n(t)}_I = e^{-i\Hamiltonian_0 t} \mathcal{U}(t, t_0) \ket{\hat{n}(t_0)},
+\end{equation}
+
+where by definition $\ket{\hat{n}(t_0)} = e^{i \Hamiltonian_0 t_0} \ket{n(t_0)} = \ket{n}$.
+
+Up to linear order in $\Hamiltonian'$, the time evolution operator $\mathcal{U}(t, t_0)$ can be written 
+
+$$
+    \mathcal{U}(t, t_0) = \mathds{1} - i \int_{t_0}^t dt' \Hamiltonian'(t') + \mathcal{O}(\Hamiltonian^{'2})
+$$
+
+Then, using this in the time-dependent expectation value yields 
+
+\begin{equation} \begin{split}
+    \langle {\bf A}(t) \rangle &= \frac{1}{\mathcal{Z}_0} \sum_{n \in \Lambda} \bra{n(t)} {{\bf A}} \ket{n(t)} e^{-\beta E_n} \\
+    &= \frac{1}{\mathcal{Z}_0} \sum_{n \in \Lambda} \bra{n(t_0)} \bigg(\mathds{1} - i \int_{t_0}^t dt' \Hamiltonian'(t')\bigg) e^{-i \Hamiltonian_0 t_0} {{\bf A}} e^{i \Hamiltonian_0 t_0} \bigg(\mathds{1} - i \int_{t_0}^t dt' \Hamiltonian'(t')\bigg) \ket{n(t_0)}  e^{-\beta E_n}+ \mathcal{O}(\Hamiltonian^{'2}) \\
+    &= \frac{1}{\mathcal{Z}_0} \sum_{n \in \Lambda} \bra{n(t_0)} {{\bf A}} \ket{n(t_0)} - \frac{i}{\mathcal{Z}_0} \int_{t_0}^{t} dt' \sum_{n \in \Lambda} e^{-\beta E_n} \bigg( e^{-i \Hamiltonian_0 t_0} {{\bf A}} e^{i \Hamiltonian_0 t_0} \Hamiltonian'(t') - \Hamiltonian'(t')e^{-i \Hamiltonian_0 t_0} {{\bf A}} e^{i \Hamiltonian_0 t_0} \ket{n(t_0)} \bigg) \\
+    &= \langle {{\bf A}} \rangle_{0} + \int_{t_0}^{t} \frac{dt'}{i} \langle[{{\bf A}}(t), \Hamiltonian'(t')]\rangle_{0},
+\end{split}
+\end{equation}
+
+where the brackets $\langle \rangle_{0}$ means an equilibrium average with respect to the Hamiltonian $\Hamiltonian$. This is in fact a remarkable and very useful result since the inherently non-equilibrium quantity $\langle {{\bf A}}(t) \rangle$ has been expressed as a correlation function of the system in equilibrium. The physical reason for this is that the interaction between excitations created in the non-equilibrium state is an effect to second order in the weak perturbation, hence not included in the linear response. \\
+
+The correlation function is the retarded correlation function, which can be rewritten as 
+the difference between $\langle {{\bf A}}(t) \rangle \textnormal{ and } \langle {{\bf A}}\rangle_0 $ ie. 
+
+\begin{align} 
+        & \alignedbox{\delta \langle {{\bf A}}(t) \rangle }{
+        = \int_{t_0}^{\infty} dt' \mathcal{C}_{AH'}^{R}(t,t') e^{-\eta(t-t')} \textnormal{ where } \mathcal{C}_{AH'}^{R}(t,t') = -i \theta(t-t') \langle[{{\bf A}}(t), \Hamiltonian'(t')]\rangle_{0}},
+\end{align}
+
+which is the Kubo formula. This expresses the linear response to a perturbation $\Hamiltonian'$. Note that the factor $e^{-\eta(t-t')}$, with an infinitesimal positive parameter $\eta$, has been included to force the response at time $t$ due to the influence of $\Hamiltonian'$ at time $t'$ to decay when $t >> t'$. At the end of the calculation, the limit $\eta \rightarrow 0^+$,. This is so since the retarded effect of a perturbation must decrease in time\footnote{The other, the advanced correlation function is non-physical and must be ditched. The other one, the retarded correlation function, decreases exponentially with time, the exponential factor thus picks out the physically relevant solution by introducing an artificial relaxation mechanism.}. \\
+
+\paragraph{\textbf{Kubo fromula in the frequency domain}}
+
+It is often convenient to express the response to an external disturbance in the frequency domain via Fourier transformations\footnote{Consider the $L^1$-space, ie. the space of all integrable functions on the real line. Then the Fourier transform and the Fourier-anti trasnform can be defined as 
+\begin{align}
+    \mathcal{F}[f(t)](\omega) = f(\omega) = \int_{\R} dt e^{i\omega t} f(t) \blanky \textnormal{ and } \blanky \mathcal{F}^{-1}[f(\omega)](t) = f(t) = \int_{\R} \frac{d\omega}{2\pi} e^{-i\omega t} f(\omega)
+\end{align}
+
+}. Therefore, consider the perturbation Hamiltonian $\Hamiltonian'$, which can be rewritten in terms of its Fourier components 
+
+\begin{equation}
+    \Hamiltonian'(t) = \int_{\Omega \subset \R} \frac{d\omega}{2\pi} e^{-i\omega t} \Hamiltonian'_\omega,
+\end{equation}
+
+such that the retarded correlation function becomes 
+
+\begin{equation}
+    \mathcal{C}_{AH'}^{R}(t,t') = \int_{\mathds{R}} \frac{d\omega}{2\pi} e^{-i\omega t'} \mathcal{C}_{AH'_\omega}^{R}(t-t') \begin{array}{c}
+         \textnormal{since $\langle[{{\bf A}}(t), \Hamiltonian'(t')_{\omega'}]\rangle_{0}$ only depends } \\
+         \textnormal{ on the difference between $t$ and $t'$. }
+    \end{array}
+\end{equation}
+
+Therefore, inserting this result into the Kubo formula yields
+
+\begin{equation}
+    \begin{split}
+        \delta \langle {{\bf A}}(t) \rangle
+        &= \int_{t_0}^{\infty} dt' \mathcal{C}_{AH'_\omega}^{R}(t,t') e^{-\eta(t-t')} \\
+        &= \int_{\R} dt' \int_{\R} \frac{d\omega}{2\pi} e^{-i\omega t} e^{-i(\omega + i\eta) (t'-t)} \mathcal{C}_{AH'_\omega}^{R}(t-t') \\
+        &= \int_{\R} \frac{d\omega}{2\pi} e^{-¿i\omega t} \bigg(\int_{\R} d(t'-t) e^{-i(\omega + i\eta)(t'-t)} \mathcal{C}_{AH'_\omega}^{R}(t-t')\bigg) \\
+        &= \int_{\R} \frac{d\omega}{2\pi} e^{-i\omega t} \mathcal{C}_{AH'_\omega}^{R}(\omega; \eta) 
+    \end{split}
+\end{equation}
+
+which can be inverted to yield the final result in the frequency domain
+
+\begin{equation}
+    \begin{split}
+        \int_{\R} {dt} e^{i\nu t}
+        \delta \langle {{\bf A}}(t) \rangle &= \int_{\R} {dt} e^{i\nu t} \int_{\R} \frac{d\omega}{2\pi} e^{-i\omega t} \mathcal{C}_{AH'_\omega}^{R}(\omega; \eta) \\
+        \langle {{\bf A}}_\nu \rangle &= \int_{\R} \frac{d\omega}{2\pi} \int_{\R} dt e^{i(\nu - \omega)t} \mathcal{C}_{AH'_\omega}^{R}(\omega; \eta) \\
+        &= \int_{\R} {d\omega} \delta(\nu - \omega) \mathcal{C}_{AH'_\omega}^{R}(\omega; \eta) \\
+        &= \mathcal{C}_{AH'_\nu}^{R}(\nu; \eta) 
+    \end{split}
+\end{equation}
+
+\begin{align}
+       & \alignedbox{\Rightarrow \delta \langle {{\bf A}}_\omega \rangle = \mathcal{C}_{AH'_\omega}^{R}(\omega) \textnormal{ with } \mathcal{C}_{AH'_\omega}^{R}(\omega)}{ = \int_{\R} dt e^{i\omega t} e^{-\eta t} \mathcal{C}_{AH'_\omega}^{R}(t)},
+\end{align}
+
+{where the infinitesimal $\eta$ parameter is incorporated } { in order to ensure the correct physical result, ie.} {the retarded response function decays at $t>>1$.} \\
+
+\paragraph{\textbf{Kubo formula for conductivity}}
+
+Consider a system of charged particles, eg. electrons, which is subjected t an external electromagnetic field. The electromagnetic field induces a current and the conductivity is the linear response coefficient. In the general case, the conductivity is a non-local quantity in both time and space, such that the electric current ${{\bf J}_e}$ at some point ${\bf x}$ at time $t$ depends on the electric field at points ${\bf y}$ at times $t'$, eg.\footnote{Note that this section's mathematical treatment is not Lorentz-covariant. This is, the spacetime is treated as $\R^4$ with the metric being $g_{\mu \nu} = \delta_{\mu \nu}$} 
+
+\begin{equation}
+    J^{\alpha}_{e}(x^\mu) = \int_{\Omega \subset \R^4 } dx^{\mu} \sum_{\alpha \beta} \sigma_{\beta}(x^\mu, y^{\mu}) E^{\beta} (y^{\mu}), \begin{array}{c} 
+         \textnormal{ where $\sigma_{\alpha \beta}(x^\mu, y^{\mu})$ is the conductivity tensor, which  } \\ 
+         \textnormal{ describes the current response in the } \\
+         \textnormal{ ${\bf e}_\alpha$-direction to an applied }
+         \textnormal{ electric field in the ${\bf e}_\beta$-direction.}
+    \end{array}
+\end{equation}
+
+The electric field ${\bf E}$ is given by the electric potential $\phi_{ext}$ and the vector potential ${\bf A}_{\textnormal{ext}}$ as $
+{\bf E}(x^\mu) = -\partial_{\mu} A^{\mu}$. For electrons, the current density can be written as ${\bf J}_e = -e \langle {\bf J} \rangle$. The perturbing term in the Hamiltonian due to the external electromagnetic field is given by the coupling of the electrons to both the scalar potential and the vector potential. Then, upto linear order in the external potential, 
+
+$$
+\Hamiltonian_{\textnormal{ext}} = -e \int_{\R^3} d{\bf x} J_{\mu}({\bf x}) A^{\mu}_{\textnormal{ext}}(x^{\mu}).
+$$
+
+Let, ${\bf A}_0$ denote the vector potential in the equilibrium ie. prior to the onset of the perturbation ${\bf A}_0(x^{\mu}$ and let ${\bf A}_0(x^{\mu})$ denote the total vector potential. Then, 
+
+$$
+   {\bf A}(x^{\mu}) = {\bf A}_{0}(x^{\mu}) +  {\bf A}_{\textnormal{ext}}(x^{\mu}).
+$$
+
+The current operator can be decomposed in two components, the diamagnetic and the paramagnetic terms, as follows 
+
+\begin{equation}
+    {\bf J} = {\bf J}^{\nabla}({\bf x}) + \frac{e}{m} {\bf A}({\bf x}) \rho({\bf x}).  
+\end{equation}
+
+For simplicity and using gauge invariance, the external electric potential can be set to zero. The conductivity is most easily expressed in the frequency domain via a Fourier transformation of the perturbation. Since 
+
+\begin{equation} \begin{array}{cc}
+     \partial_t \overset{\mathcal{F}}{\rightarrow} -i\omega \blanky & \textnormal{ then } \blanky {\bf A}_{\textnormal{ext}}({\bf x}, \omega) \overset{\mathcal{F}}{\rightarrow}  \frac{1}{i\omega} {\bf E}_{\textnormal{ext}}({\bf x}, \omega) \\
+\end{array}
+     \Rightarrow \Hamiltonian_{\textnormal{ext}, \omega} = \frac{e}{i\omega} \int_{\Omega \subset \R^3} d{\bf x} \blanky {\bf J}({\bf x}) \cdot {\bf E}_{\textnormal{ext}}({\bf x}, \omega).
+\end{equation}
+
+In order to exploit the frequency domain formulation of linear response theory, it is desirable to find the corresponding formula for the conductivity tensor in frequency-space. The conductivity tensor is a property of the equilibrium system and can thus onyly depend on time differences $ \sigma_{\alpha \beta}(x^\mu, y^{\mu}) =  \sigma_{\alpha \beta}({\bf x},{\bf y}, t-t')$. The frequency transform of the conductivity yields
+
+\begin{equation}
+    J^{\alpha}_{e}({\bf x}, \omega) = \int_{\Omega \subset \R^3 } d{\bf y} \blanky \sum_{ \beta} \sigma_{\alpha \beta}({\bf x},{\bf y}, \omega) E^{\beta}({\bf y}, \omega).
+\end{equation}
+
+Now, given that he external perturbation, written in frequency space, is already linear in the external potential ${\bf E}_{\textnormal{ext}}$, and given that the interest lies only on terms proportional to said perturbation, the conductivity can be rewritten as 
+
+\clearpage
 
 \section{.}
  
