@@ -10,6 +10,21 @@
 
 \section{Spin Chain models}
 
+\subsection{Classical Spin Systems}
+
+Classical spin systems are idealized versions of magnets. Although many magnetic phenomena in materials are inherently quantum mechanical, many properties are well described at least qualitatively by classical spin systems. \\
+
+Each degrees of freedom of a spin system models a magnetic moment at a fixed location. A classical spin is simply the angular momentum vector of a spinning particle, and so can be represented by an arrow, which is assumed to have fixed length. For a spin system to be well-defined, the following requirements are needed 
+
+\begin{itemize}
+    \item 
+\end{itemize}
+
+
+\subsection{Quantum Spin Systems}
+
+\clearpage
+
 The Hilbert space of a quantum spin is defined by choosing a representation for the spin operators. A representation of a Lie algebra is a set of three matrices satisfying the commutation relations of the $\mathfrak{su}(2)$-algebra. An \textbf{irreducible representation} is a set of matrices such that no unitary transformation $\mathcal{U} {\bf S}^{a} \mathcal{U}^\dagger$ block-diagonalizes all three matrices. It is known that for the $\mathfrak{su}(2)$-Lie algebra there is exactly one set (up to unitary transformations) of irreducible complex $n\times n$-matrices, for each integer $n$. It is customary to write $n=2s+1$ for all integers and half-integers $s$. A sinsle spin-$s$ quantum particle at a fixed point in space therefore has a Hilbert space $\mathds{C}^{2s+1}$, so the matrices ${\bf S}^a$ are all $(2s+1)\times(2s+1)$. An orthonormal basis is given by the eigenstates of any one of the matrices. 
 
 \begin{itemize}
@@ -93,11 +108,47 @@ Additional insight comes from solving the Heisenberg model on a four-site chain,
 \begin{equation}
 \begin{split}
     \mathcal{T} : \mathfrak{A}_i \rightarrow \mathfrak{A}_j \\
-    \mathcal{T}^{-1} \vec{\bf S}_i \mathcal{T} = \vec{\spin}_{i+1} \textnormal{ with }
+    \mathcal{T}^{-1} \vec{\bf S}_i \mathcal{T} = \vec{\spin}_{i+1}
 \end{split}
+\begin{array}{c}
+     \textnormal{ where } \mathfrak{A}_i, \mathfrak{A}_j \simeq \mathfrak{su}(2) \blanky \forall i,j. 
+\end{array}
 \end{equation}
 
+The Hamiltonian commutes with the translation operator when the boundary conditions are periodic, and commutes with the magnetization as well. Thus the Hamiltonian can be broken into blocks acting on states with a fixed eigenvalue of the traslation operator and of the magnetization. \\
 
+Since $\mathcal{T}^N = \mathds{1}$ for an $N$-site chain, the eigenvalues of $\mathcal{T}$ are $\lambda_i = e^{\frac{2\pi i n}{N}}, \forall n \in \mathds{Z}$, from which the corresponding momentum can be defined as $k = \frac{2\pi n}{N}$. Then, the following holds 
+$$
+    \sum_{n \in \mathds{Z}_{[0, N-1]}} e^{-\frac{2\pi i n}{N}} \mathcal{T}^n \ket{s} = \ket{s} + e^{-\frac{2\pi i}{N}} \ket{s} + \cdots + e^{-\frac{2\pi i (N-1)}{N}}\mathcal{T}^{N-1} \ket{s}.
+$$
+
+For example, for a four-site chain, the translational invariance diagonalizes the enire Hamiltonian save for $m=0$ and $k = 0$ or $k = \pi$, since the corresponding eigenstates are 
+
+\begin{equation}
+    \begin{split}
+        \ket{A} = \frac{1}{\sqrt{2}} \bigg({\uparrow\downarrow\uparrow\downarrow} + e^{-i\pi k} {\downarrow\uparrow\downarrow\uparrow}\bigg), \\
+        \ket{B} = \frac{1}{2}  \bigg(\ket{{\uparrow\uparrow\downarrow\downarrow}} + \ket{\downarrow \uparrow \uparrow \downarrow} + \cdots \bigg)
+    \end{split} \begin{array}{c}
+         \textnormal{with the hamiltonian} \\ \textnormal{ on these} \\ \textnormal{ $k=0$ and $k=\pi$} \\ \textnormal{states being }  
+    \end{array}-J \left(\begin{array}{cc}
+        -1 & \sqrt{2} \cos\left(\frac{\pi k}{2}\right)  \\
+        \sqrt{2} \cos\left(\frac{\pi k}{2}\right) & 0
+    \end{array}\right).
+\end{equation}
+
+These sector's eigenvalues are therefore $-J$ and $2J$ for $k=0$ and $J = 0$ for $k=\pi$. Again organising the eigenstates into $\mathfrak{su}(2)$-multiplets yield the energy levels divided by $-J$, as follows 
+
+\begin{equation}
+    \begin{split}
+        & \textnormal{quintuplet}: 1 \\
+        & \textnormal{triplets}: \cos(\pi k) (k \neq 0) \\
+        & \textnormal{singlets}: -2,0 \textnormal{ for } k=0, \pi \textnormal{ respectively}. 
+    \end{split}
+\end{equation}
+
+This $\mathfrak{su}(2)$-invariance allows for the construction of the entire multiplet once one of the states is known. \\
+
+As with the two-site chain, the ferromagnetic ground state is a multiplet, whereas the antiferromagnetic is a singlet. For a general $N$-site ferromagnet, the completely ferromagnetic states (all spins up or all spins down) are exact ground states of the Hamiltonian. This suggest using an order parameter for ferromagnetism. 
 
  . \\
 
@@ -1276,6 +1327,24 @@ This quantities' time evolution can then be found out to be
 which can then be numerically solved. 
 
 \clearpage 
+
+%\section{Independent Electrons and Static Crystals}
+
+%\subsection{Crystal lattices} 
+
+%The mathematical concept which best describes an actual crystal lattice is that of a Bravais lattice, defined as a set of mathematical points corresponding to the discrete positions in space given by 
+
+%\begin{equation}
+ %   \{\Rb \in \R^{3} \blanky | \blanky \R = \sum_{i=1}^{3} n_i {\bf a}_i \textnormal{ with } n_i \in \mathds{Z}\},
+%\end{equation}
+    
+%where the $\{a_i\}$-vector are the so-called primitive vector. The Bravais lattice is invariant under the operation 
+
+%$$
+%\Rb \rightarrow \Rb + {\bf T} \textnormal{ where } {\bf %T} = \sum_{i=1}^{3} L_i {\bf a}_i \blanky | \blanky L_i %\in \mathds{Z}
+%
+
+\clearpage
 
 %\section{Independent Electrons and Static Crystals}
 
