@@ -8,8 +8,6 @@
 
 \begin{document} \maketitle
 
-\section{Spin Chain models}
-
 \subsection{Classical Spin Systems}
 
 Classical spin systems are idealized versions of magnets. Although many magnetic phenomena in materials are inherently quantum mechanical, many properties are well described at least qualitatively by classical spin systems. \\
@@ -17,9 +15,52 @@ Classical spin systems are idealized versions of magnets. Although many magnetic
 Each degrees of freedom of a spin system models a magnetic moment at a fixed location. A classical spin is simply the angular momentum vector of a spinning particle, and so can be represented by an arrow, which is assumed to have fixed length. For a spin system to be well-defined, the following requirements are needed 
 
 \begin{itemize}
-    \item 
+    \item constraints on where the arrow is allowed to point. For example, in the XY-model, the arrow is constrained to point in a two-diensional plane, and in the Ising model, the arrow is allowed to point in only directions. More complicated examples are the sigma-models, where instead of an arrow, the degrees of freedom take values on some manifold. In this language, the spins in the XY model take values on a circle. \\
+    \item Where the spins physically are. For example, they may be at each point of some lattice in some dimension or they could be continuously distributed (ie. an arrow for every point in space eg. a field theory). \\
+    \item How the spins themselves interact with one another ie. the energies associated with the possible spin configurations. Two major types of interaction are the ferromagnetic, where the energy is lowered when two spin are aligned, and antiferromagnetic, where the energy is lowered when they point in opposite directions. A given model can include interactions of both types. \\
 \end{itemize}
 
+Many many-body physical systems can effectively be treated as being on a lattice. For example, many of these systems are often well treated by utilizing a tight-binding model, where each electron is treated as being located at a fixed nucleus and so live at particular points in space. In some situations, the physics itself arises from the interplay between the degrees of freedom and the particular lattice they live on eg. geometrical frustration in the two-dimensional antiferromagnetic Ising model on a triangular lattice. Calling the two allowed directions in the Ising model as "up" and "down", antiferromagnetic interactions make adjacent spins different. On the square lattice, it is possible to make a low-energy state by alternating up and down spins, but on a triangular lattice this is not the case. Around a triangle, there must be at least two mutually up or down spins adjacent to each other. Such a bond in said to be unsatisfied and so the spins are frustrated, yielding completely new properties different fro the unfrustrated model. \\
+
+\subsubsection{The partition function and correlators}
+
+Consider a general spin chain as a dynamical system. Its spins can take 
+any value in a given configuration space, which is a finite-dimensional %or infinite-dimensional 
+manifold $\mathcal{M}$. Therefore, assuming that $\mathcal{M}$ is a smooth manifold, the tangent space at $\ket{s}$ is denoted by $T_{\ket{s}} \mathcal{M}$. Then, the cotangent space at $\ket{s}$ is defined as the dual space of $T_{\ket{s}} \mathcal{M}$, 
+
+\begin{equation}
+    T_{\ket{s}}^* \mathcal{M} = (T_{\ket{s}} \mathcal{M})^*. \begin{array}{c}
+         \textnormal{ Concretely, elements of the cotangent  }  \\
+         \textnormal{ space are linear functionals on $T_{\ket{s}} \mathcal{M}$ } \\
+         \textnormal{  that is, every element $\bra{s} \in T_{\ket{s}}^* \mathcal{M}$ is a linear map } 
+    \end{array} 
+\bra{s} : T_{\ket{s}} \mathcal{M} \rightarrow \mathds{C}.
+\end{equation}
+
+Then, for for each value $\ket{\mathfrak{s}} \in \mathcal{M}$, the "momentum" $\bra{\mathfrak{s}}$ of the system would take values in the cotangent space $T_s^* \mathcal{M}$ of that space. Thus, the phase space is naturally represented here by the cotangent bundle 
+
+$$
+T^* \mathcal{M} = \{(\ket{\mathfrak{s}}, \bra{\mathfrak{s}}) : \ket{\mathfrak{s}} \in \mathcal{M} \textnormal{ and } \bra{\mathfrak{s}} \in T_{\ket{s}}^* \mathcal{M}\}
+$$
+
+Thus the basic object classical statistical mechanics is the Boltzmann weight $\prob(n)$. In thermal equilibrium, this is a probability measure that gives the probability that a system will be in a certain configuration $n \in \mathcal{M}$, in terms of said configuration's energy and system's temperature. In other words,
+
+\begin{equation}
+    \begin{split}
+        \prob : T^* \mathcal{M} \rightarrow \R_{[0,1]} \textnormal{ where }
+        \prob{(n)} = \frac{e^{-\beta E_n}}{\mathcal{Z}},
+    \end{split}
+\end{equation}
+
+where $\mathcal{Z}$ is the partition function, defined by the requirement that the probabilities sum to one, that is 
+
+$$
+\mathcal{Z} = \sum_{n \in T^* \mathcal{M}} e^{-\beta E_n}.
+$$
+
+Note that if the degrees of freedom take on continuous values, or the model is defined in the continuum, then this sum is replaced by an integral. Note that, indeed, the probability of a given configuration increases as the energy gets lower, and conversely, that as the temperature gets higher and higher, the energies involved must get larger and larger to make a difference. 
+
+\clearpage
 
 \subsection{Quantum Spin Systems}
 
