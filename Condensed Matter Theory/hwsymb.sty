@@ -1,6 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{hwsymb}[2021/01/01 hwsymb]
 \usepackage{dsfont}
+\usepackage[noabbrev,nameinlink]{cleveref}
 \RequirePackage{amssymb, amsthm, amscd, graphicx}
 \usepackage{amsmath,times}
 \usepackage{physics}
@@ -31,6 +32,7 @@
 
 % New enviroments
 \newtheorem{df}{Definition}
+\newtheorem{lemma}{Lemma}
 \newtheorem{theo}{Theorem}
 
 % Deprecated Set Symbols
@@ -46,6 +48,7 @@
 \newcommand{\vds}{\mathds{V}}
 \newcommand{\br}{\bm {\mathcal{R}}}
 \newcommand{\summation}{\sum_{j=1}^{L-1}}
+\newcommand{\Hamiltonian}{{\bf H}}
 
 \newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
 
