@@ -8,6 +8,8 @@
 
 \begin{document} \maketitle
 
+\section{Spin Chain models}
+
 \subsection{Classical Spin Systems}
 
 Classical spin systems are idealized versions of magnets. Although many magnetic phenomena in materials are inherently quantum mechanical, many properties are well described at least qualitatively by classical spin systems. \\
@@ -22,7 +24,9 @@ Each degrees of freedom of a spin system models a magnetic moment at a fixed loc
 
 Many many-body physical systems can effectively be treated as being on a lattice. For example, many of these systems are often well treated by utilizing a tight-binding model, where each electron is treated as being located at a fixed nucleus and so live at particular points in space. In some situations, the physics itself arises from the interplay between the degrees of freedom and the particular lattice they live on eg. geometrical frustration in the two-dimensional antiferromagnetic Ising model on a triangular lattice. Calling the two allowed directions in the Ising model as "up" and "down", antiferromagnetic interactions make adjacent spins different. On the square lattice, it is possible to make a low-energy state by alternating up and down spins, but on a triangular lattice this is not the case. Around a triangle, there must be at least two mutually up or down spins adjacent to each other. Such a bond in said to be unsatisfied and so the spins are frustrated, yielding completely new properties different fro the unfrustrated model. \\
 
-\subsubsection{The partition function and correlators}
+%\subsubsection{The partition function and correlators}
+
+\paragraph{\textbf{The partition function and correlators}}
 
 Consider a general spin chain as a dynamical system. Its spins can take 
 any value in a given configuration space, which is a finite-dimensional %or infinite-dimensional 
@@ -58,13 +62,353 @@ $$
 \mathcal{Z} = \sum_{n \in T^* \mathcal{M}} e^{-\beta E_n}.
 $$
 
-Note that if the degrees of freedom take on continuous values, or the model is defined in the continuum, then this sum is replaced by an integral. Note that, indeed, the probability of a given configuration increases as the energy gets lower, and conversely, that as the temperature gets higher and higher, the energies involved must get larger and larger to make a difference. 
+Note that if the degrees of freedom take on continuous values, or the model is defined in the continuum, then this sum is replaced by an integral. Note that, indeed, the probability of a given configuration increases as the energy gets lower, and conversely, that as the temperature gets higher and higher, the energies involved must get larger and larger to make a difference. Note as well that if all the energies are shifted by some constant $E_0$, the probabilities are left unchanged, since both the numerator and denominator are multiplied by the same constant, namely $e^{-\beta E_0}$. \\
+
+Consider the Ising model, an interacting many-body system, where the energies $E_n$ depends on mutual properties of the degrees of freedom. This is a spin system where the spin is contrained to point in one of two directions, these directions are describied by a variable $\sigma_i = 1$ for the up direction and $\sigma_i = -1$ for the down direction. For an $N$-site lattice, there are therefore $2^N$ different configurations in the model. The simplest interaction is to assign one energy unit if the neighbouring spins are the same, and another if neighbouring spins are different, that is 
+
+\begin{equation}
+    E(\{\sigma_i\}_{i=1}^{N}) = -J \sum_{\langle ij \rangle} \sigma_i \sigma_j, \textnormal{ where } \begin{array}{c}
+        \{\sigma_i\}_{i=1}^{N} \in \bigtimes_{i=1}^{N}  T^* \mathcal{M}_i \\
+    \end{array}
+\end{equation}
+
+and where the sum is performed on all nearest-neighbour sites $i$ and $j$ ie. this sum is not over all sites, but rather over all bonds. Note that on the square lattice, there are two bonds for every site. The parameter $J$ is the coupling strength, if $J>0$ this models describes a ferromagnetic coupling, while $J<0$ describes an antiferromagnetic coupling. The partition function is then 
+
+\begin{equation}
+    \mathcal{Z} = \sum_{\sigma_i = \pm 1} e^{-\beta E(\{\sigma_i\})},
+\end{equation}
+
+where the sum is performed over all $2^N$ different configurations. From the partition function, the expectation values of physical quantities can be calculated. For example
+
+\begin{itemize}
+    \item Internal energy $\langle E\rangle = \frac{1}{\mathcal{Z}} \sum_{n} E_n e^{-\beta E_n} = - \frac{\partial}{\partial \beta} \log \mathcal{Z}$. \\
+    \item Specific heat $C = \frac{\partial}{\partial T} \langle E\rangle = k \frac{\partial}{\partial T} T^2 \frac{\partial \log \mathcal{Z}}{\partial T}$ \\
+    \item Two-point correlator in the Ising model, 
+    
+    $$
+    \langle \sigma_a \sigma_b \rangle = \sum_{\sigma_i} \sigma_a \sigma_b \prob({\sigma_i}) = \frac{1}{\mathcal{Z}} \sum_{\sigma_i = \pm 1} \sigma_a \sigma_b e^{-\beta E(\{\sigma_i\})},
+    $$
+    
+    which describes how the degrees of freedom at one point are affected by the degrees of freedom at another point. If $ \langle \sigma_a \sigma_b \rangle = 1$, the two spins are aligned, while if $ \langle \sigma_a \sigma_b \rangle = -1$ the two spins are anti-aligned, and if $ \langle \sigma_a \sigma_b \rangle = 0$, they are uncorrelated. 
+\end{itemize}
+
+\blanky \\
+
+\paragraph{\textbf{Three kinds of phases}}
+
+Even in simple interacting systems, the two point function will not have such simple values except in some extreme limits. However, knowing its dependence on the separation is valuable information, and it implies that the behaviour of the correlators is one of the best ways of understanding and characterising different phases of matter. Consider a correlator defined so that in the non-interacting limit, ie. the $T \rightarrow \infty$, it vanishes. Letting $L$ be the system size, there are three main types of behaviour of such a two-point function as $L >> |a-b|>> 1$, as follows 
+
+\begin{itemize}
+    \item \textbf{ordered:} 
+    
+    $$
+      \langle \sigma_a \sigma_b \rangle \sim C \neq 0,
+    $$
+    
+    
+In an ordered spin system, the spins are correlated arbitrarily far from each other: if a spin, at a given position, points in some direction, then another spin is going to most likely point in the same direction. For example, in an antiferromagnet, order typically means that spins at an odd number of sites apart, are antialigned, while those an ever number of sites apart are aligned. 
+
+Another way to characterize order is in terms of a one-point function, of a given variable whose thermodynamic average vanishes in the non-interacting limit. In the Ising model, this is simply $\langle \sigma_a \rangle$, which is the probability that a given spin is either up or down. In principle, this is easier to compute than the two-point function but, in many cases including the Ising model, it vanishes for all values of $a, b, J$. Indeed, this follows from the Ising model's $\mathds{Z}_2$-symmetry $    \sigma_i \rightarrow -\sigma_i$. Then, $E(\{\sigma_i\}_{i=1}^{N}) =  E(-\{\sigma_i\}_{i=1}^{N})$. Therefore, as long as the boundary conditions remain invariant under spin flip, it holds that 
+
+\begin{equation}
+    -\langle \sigma_a \rangle = - \sum_{\sigma_i = \pm 1} \sigma_i e^{-\beta E(\{\sigma_i\})} = \sum_{\sigma_i = \mp 1} s_a e^{-\beta E(\{s_i\})} \textnormal{ where } s_i = -\sigma_i.
+\end{equation}
+
+However, since the sum is performed over a finite number of lattice sites, the $s_i$-variables on the last equality may be renamed as $\sigma_i$. Thus, the last expression is simply $\langle \sigma_a \rangle=0$. \\
+    
+    \item \textbf{disordered:} 
+    
+    $$
+      \langle \sigma_a \sigma_b \rangle \sim e^{-\frac{|a-b|}{\epsilon}},
+    $$
+    
+    A more general way of characterizing order is to use the previous definition, ie. a non-vanishing value of a two-point function at arbitrarily large separation. Then, the order parameter can be defined as the square root of this absolute value. \\
+    
+    \item \textbf{critical:} 
+    
+    $$
+      \langle \sigma_a \sigma_b \rangle \sim \frac{1}{|a-b|^{2x}}.
+    $$
+    
+    In a disordered phase, the two-point function class off to zero exponentially fast. Thus a conveniet measure is the correlation length $\epsilon$. A useful heuristic argument is to think of the degrees of freedom closer than $\epsilon$ as being correlated, and those further apart as being uncorrelated. One thing to bear in mind is that not all disordered systems behave in the same way. Some systems are disordered by definition, but possess a topological order, where an expectation value of some non-local quantities has a non-vanishing expectation value. \\
+
+The system's criticality is the most difficult and physically meaningful case. The correlator is said to be algebraically decaying. In particular, in the algebraic decay, the spatial dependence does not involve in any way a dimensional parameter, but rather only a dimensionless parameter $x$. Thus, this behaviour is characteristic of a critical phase, where the system is scale-invariant, given that there is no parameter like a correlation length. The reason for the factor of 2 in the $x$-quantity's definition stems from this picture, in the continuum limit, $x$ can be thought of as a "scaling dimension" of the spin field. \\
+\end{itemize}
+
+Note that, this picture is oversimplified since different types of correlators can occur in the same system. \\
+
+%A simple phase diagram in statistical mechanics. 
+
+A common case in statistical mechanics occurs when, at temperatures much larger than any parameter with dimensions of energy - like $J$ in the Ising model-, one can effectively neglect the energy altogether. The partition function is then a sum over all allowed configurations with the same weight each. Then, the two-point function of any local operators vanishes quickly as they are brought apart (as long as non-local constraints are not present). The system is then in a disordered phase at sufficiently large temperatures. At low enough temperatures, the opposite occurs: since the Boltzmann weight is proportional to $e^{-E/T}$, the very low-energy configurations are much more likely. This can lead to order, the lowest-energy configurations have some regular pattern and so there is a non-vanishing local order parameter. When there is a disordered phase at high-temperature and an ordered phase at high temperature as well, there must be a phase transition in between. There are two categories of phase transitions, often referred to as first-order and continuous. In the latter case, correlators become algebraically decaying, and then the system is critical. In the former case, the system remains disordered at the phase transition and abruptly changes its behaviour. \\
+
+\subsubsection{Exact solution to the Ising Models}
+
+\paragraph{\textbf{Zero-dimensional Ising model}}
+
+A system with a finite number of spins, no matter in which directions, is commonly referred to a zero-dimensional model. In the $d=0$-Ising model, there just two degrees of freedom, called $s_1$ and $s_2$. In addition, the Ising spins can only take two values $s_i \in \mathcal{M} = \{\pm 1\}$. To compute the partition function, $\mathcal{Z}$, the system's energy must be known for every configuration $(s_1, s_2)$, which is assumed to be 
+
+\begin{equation}
+    E({\bf s}) = - J s_1 s_2 - B(s_1+s_2).
+\end{equation}
+
+This energy models a system made of magnetic moments. Although, in general, the moments can point in any direction, in the Ising model they point up or down one axis - say the $z$-axis - along which an external magnetic field $B$ is applied. The constant $J$ has units of energy and $B$ has units of magnetic moment. If $J>0$, the model is ferromagnetic and the energy favors aligned spins while if $J<0$ it models an antiferromagnetic system, which favours anti-parallel spins. In both cases, $B>0$ is chosen so that the spins tend to align with the external field. \\
+
+The partition function may be evaluated as 
+
+\begin{equation}
+    \mathcal{Z} = \sum_{s_i \in \bigtimes_{i=1}^{2} \mathcal{M}} e^{K s_1 s_2 + h(s_1+s_2)} \textnormal{ where } \begin{array}{c}
+         K = \beta J  \\
+         h = \beta B.
+    \end{array}
+\end{equation}
+
+It is readily seen that 
+
+\begin{equation}
+    \mathcal{Z}(K,h) = 2 \cosh(2h) e^{K} + 2e^{-K}.
+\end{equation}
+
+At very low temperatures (very low $T$ or very high $\beta$), the state of lowest energy will dominate the sum and thus, the spins are expected to be aligned with $B$ and also with each other. At very high temperatures and vanishing $\beta$, all four states get equal weight and the spins will fluctuate independently of each other and the applied field. In effect, let the system's (spin-) average magnetization be $M = \frac{1}{2} (s_1+s_2)$, in any given configuration\footnote{Note that this is the average over all spins in the system, and not the thermal average}. The thermal average can then be found to be 
+
+\begin{equation}
+    \begin{split}
+        \langle M \rangle &= \frac{1}{\mathcal{Z}} \sum_{s_i \in \bigtimes_{i=1}^{2} \mathcal{M}} \frac{1}{2} (s_1+s_2) e^{K s_1 s_2 + h(s_1+s_2)} = \frac{1}{2} \frac{1}{\mathcal{Z}} \frac{\partial \mathcal{Z}(K,h)}{\partial h} \\
+        &= \frac{1}{2} \frac{\partial \log \mathcal{Z}(K,h)}{\partial h}.
+    \end{split}
+\end{equation}
+
+In terms of the free energy $F(K,h)$, defined as $\mathcal{Z} = e^{-\beta F}$, where $-\beta F = \log(2 \cosh(2h) e^{K} + 2e^{-K})$ it yields
+
+\begin{equation}
+    \langle M \rangle = \frac{\partial [-\beta F(K,h)]}{\partial h} = \frac{\sinh 2h}{\cosh 2h + e^{-2K}} \textnormal{ which, as expected} \begin{array}{c}
+         \langle M \rangle \underset{h, K \rightarrow \infty}{\rightarrow} 1   \\
+         \langle M \rangle \underset{h, K \rightarrow 0}{\rightarrow} h. 
+    \end{array}
+\end{equation}
+
+\blanky \\
+
+The thermal average of a particular spin can also be calculated, provided a soruce term of the form $h_1 s_1 + h_2 s_2$ is added in the Boltzmann weight, which couples the $i$
+th spin to its own independent field $h_i$. Then,
+
+\begin{align}
+    \mathcal{Z}(K,h) &= \sum_{s_i \in \mathcal{M}^{\times 2}} e^{K s_1 s_2 + {\bf h} \cdot {\bf s}} = e^{-\beta F(K, {\bf h})} \\ \Rightarrow \langle s_i \rangle = & \frac{\partial [-\beta F(K,{\bf h})]}{\partial h_i} = \frac{\partial \log \mathcal{Z}(K,{\bf h})}{\partial h_i} = \frac{1}{\mathcal{Z}} \frac{\partial \mathcal{Z}}{\partial h_i} .
+\end{align}
+
+Taking the mixed derivative with respect to both $h_1$ and $h_2$ yields 
+
+\begin{equation}
+    \begin{split}
+        \frac{\partial^2 [-\beta F(K,{\bf h})]}{\partial h_1 \partial h_2} &= \frac{\partial}{\partial h_1} \bigg(\frac{1}{\mathcal{Z}} \frac{\partial \mathcal{Z}}{\partial h_2} \bigg)  \\
+        &= \frac{1}{\mathcal{Z}} \frac{\partial^2 \mathcal{Z}}{\partial h_1 \partial h_2} - \frac{1}{\mathcal{Z}^2} \frac{\partial \mathcal{Z}}{\partial h_1} \frac{\partial \mathcal{Z}}{\partial h_2} \\
+        &= \langle s_1 s_2 \rangle - \langle s_1 \rangle \langle s_2 \rangle \\
+        &= \langle s_1 s_2 \rangle_c \textnormal{ which is the connected correlation function.}
+    \end{split}
+\end{equation}
+
+Similarly, if there are four spins coupled to four independent magnetic field $h_1, h_2, h_3, h_4$ then
+
+\begin{equation}
+    \begin{split}
+        \frac{\partial^4 [-\beta F(K,{\bf h})]}{\partial h_1 \partial h_2 \partial h_3 \partial h_4}\bigg|_{h=0} &= \langle s_1 s_2 s_3 s_4 \rangle_c \\
+        &= \langle s_1 s_2 s_3 s_4 \rangle - \langle s_1 s_2 \rangle \langle s_3 s_4 \rangle - \langle s_1 s_3 \rangle \langle s_2 s_4 \rangle - \langle s_1 s_4 \rangle \langle s_2 s_3 \rangle.
+    \end{split}
+\end{equation}
+
+Since $h=0$ in the end, there will be no correlators with an odd number of spins. Note that the previous derivations are valid even if $s$ is replaced by some other variable, with eg. continuous values, coupled to the corresponding magnetic field in the Boltzmann weight, since the fact that $s = \pm 1$ was not used. The thermal averages may be computed in the case of non-zero zeros. In particular, if the field is uniform or zero. In that case, the $h_i$-derivatives are calculated and then set to $h_i = h$ or $0$, for all $i$. Then, for example, if there were a uniform external field $h$, the connected correlation function is 
+
+\begin{equation}
+    \begin{split}
+        \langle s_1 s_2 \rangle - \langle s_1 \rangle \langle s_2 \rangle = \langle s_1 s_2 \rangle_c = \frac{\partial^2 [-\beta F(K,{\bf h})]}{\partial h_1 \partial h_2}\bigg|_{h_i = h, \blanky \forall i.}
+    \end{split}
+\end{equation}
+
+The correlation function $\langle s_1 s_2 \rangle$ as a $K$-derivative, 
+
+\begin{equation}
+    \begin{split}
+        \frac{\partial[-\beta F(K,{\bf h})]}{\partial K} &= \frac{\partial \log \mathcal{Z}}{\partial K} = \frac{1}{\mathcal{Z}}\frac{\partial \mathcal{Z}}{\partial K} = \frac{1}{\mathcal{Z}} \frac{\partial}{\partial K}  \sum_{\mathcal{M}^{\times 2}} e^{K s_1 s_2 + h(s_1+s_2)} \\
+        &= \frac{1}{\mathcal{Z}} \sum_{\mathcal{M}^{\times 2}} s_1 s_2 e^{K s_1 s_2 + h(s_1+s_2)} = \langle s_1 s_2 \rangle \\
+        &= \frac{e^K \cosh 2h - e^{-K}}{e^K \cosh 2h + e^{-K}},
+    \end{split}
+\end{equation}
+
+which may interpreted as quantifying the average interaction energy, which happens to coincide with the correlation of neighbouring spins. In a model with more spins, correlations of not-neighbouring spins (eg. the correlation between $s_5$ and $s_{92}$) cannot be obtained via a $K$-derivative. The distinction between the average interaction energy and generic spin correlations is blurred in this toy-model. \\
+
+Higher-order derivatives with respect to $K$ or $h$ (for uniform $h$) give additional information about fluctuactions about the mean. Thus, 
+
+\begin{equation}
+    \chi = \frac{1}{2} \frac{ \partial \langle M \rangle}{\partial h} = \frac{1}{4} \frac{\partial^2 [-\beta F]}{\partial h^2} = \langle M^2 \rangle - \langle M \rangle^2
+\end{equation}
+
+measures the magnetization's fluctuation about its mean and is the magnetic susceptibility, and quantifies the rate of change of the average magnetization with the applied field. \\
+
+\paragraph{\textbf{One-dimensional Ising model}}
+
+The standard way for solving the one-dimensional Ising model is to use the transfer matrix. The physical motivation behind it is very elegant: it consists on singling out a given spatial direction, say the $x$-direction. Then the partition function is built up by "evolving" the system from one value of $x=x_0$ to the next value $x=x_1$. Repeating this process yields the full partition function after all values of $x$ are summed over. This method is not only useful for classical statistical mechanics, but by replacing the spatial evolution with a real time-evolution, yields a connection between quantum and classical statistical mechanics. \\
+
+Now, any real system is finite, one may ask why we should focus on infinite systems. The answer lies that systems with a very large number of degrees of freedom look more like infinite systems than finite ones in the following sense.  Phenomenologically, system at a temperature lower than some Curie temperature $T_C$ will magnetize. But it can be shown rigorously that a finite system of Ising spins can never magnetize: if it is polarized one way (say the $z$-axis) for some time, it can jump to the opposite polarization after some time, so that on average it is not magnetized. This rigorous result can be reconciled with reality by noting that the time to flip can be as large as the age of the universe, so that in human time, magnetization is possible. The nice thing about infinite system is that remote possibilities are rendered impossible, making them a better model of real life. \\
+
+Consider a lattice of $N+1$ equally spaced points, numbered by a natural index $i = 0, 1, \cdots, N$. Eventually, the thermodynamic limit $N \rightarrow \infty$ may be taken. The reason for lining up the lattice points on a vertical axis is that later it will become the time axis for a related problem. The energy of a given configuration may be written as 
+
+\begin{equation}
+    E = -J \sum_{i=0}^{N-1} s_i s_{i+1}.
+\end{equation}
+
+In the one-dimensional Ising model, there is only a single site at a fixed $x$-vale, so that the transfer matrix therefore "evolves" the system from one spin to the next. Therefore, consider two nearest-neighbour sites in the Ising model. There are, then, four configurations on these two sites, $++, +-, -+, --$. The Boltzmann weights $\prob(\sigma_1 \sigma_2)$ for these four configurations are 
+
+\begin{equation}
+    \prob(++) = \prob(--) = e^{\beta J} \textnormal{  and  } \prob(+-) = \prob(-+) = e^{-\beta J}.
+\end{equation}
+
+Now consider for example an Ising model on three sites, with the simplest boundary conditions, where both spins $\sigma_1$ and $\sigma_3$ are both fixed at specific values. Summing over all values of the middle spin $\sigma_2 = \pm 1$, the partition function with both end spins fixed is 
+
+\begin{equation}
+    \sum_{\sigma_2 = \pm 1} \prob(+\sigma_2) \prob(\sigma_2+) = e^{2J} + e^{-2J}.
+\end{equation}
+
+The general expression for the partition function of an $\ell$-site Ising model with fixed boundary conditions can be found to be 
+
+\begin{equation*}
+    \begin{array}{c}
+        \textnormal{If $N = 3$ then } \mathcal{Z}_3(\textnormal{fixed}) = \sum_{\sigma_2 = \pm 1} \prob(\sigma_1\sigma_2) \prob(\sigma_2\sigma_3).  \\
+        \\
+        \textnormal{If $N = 4$ then } \mathcal{Z}_4(\textnormal{fixed}) = \sum_{\substack{\sigma_2 = \pm 1\\
+    \sigma_3 = \pm 1}} \prob(\sigma_1\sigma_2) \prob(\sigma_2\sigma_3) \prob(\sigma_3s\sigma_4). \\
+    \end{array}
+\end{equation*}
+
+These expression look exactly like matrix multiplications, written out in terms of the matrix elements. The matrix being multiplied is called the transfer matrix and includes all the nearest-neighbour interactions. For the one-dimensional Ising model it is given by 
+
+\begin{equation}
+    \bm{\mathcal{T}} = \left( \begin{array}{cc}
+        \prob(++) & \prob(+-) \\
+         \prob(-+) &  \prob(--)
+    \end{array} \right) = \left(\begin{array}{cc}
+        e^J & e^{-J}  \\
+        e^{-J} & e^J
+    \end{array}\right).
+\end{equation}
+
+To compute the partition function with fixed boundaries conditions, from the transfer matrix, the boundary conditions are treated as vectors, on which the transfer $\bm{\mathcal{T}}$-matrix acts on. Here, the basis elements are the two spin values $+$ and $-$. These two vectors span a $\ctwo$-vector space. The partition function of an $N$-site system with fixed boundary conditions can be found out to be 
+
+\begin{itemize}
+    \item if $N=2$,
+        $
+        \mathcal{Z}_2(\textnormal{fixed}) = \bra{\sigma_1} \bm{\mathcal{T}} \ket{\sigma_2} = \prob(\sigma_1 \sigma_2),
+        $
+    \item if $N=3$,
+        $
+        \mathcal{Z}_3(\textnormal{fixed}) = \bra{\sigma_1} \bm{\mathcal{T}}^2 \ket{\sigma_3},
+        $
+    \item in general,
+        $
+        \mathcal{Z}_N(\textnormal{fixed}) = \bra{\sigma_1} \bm{\mathcal{T}}^{N-1} \ket{\sigma_N}.
+        $
+\end{itemize}
+
+Note that each time the transfer matrix is applied, it corresponds to adding one bond to the system. The transfer matrix now can easily be used to find analogous expressions for other boundary conditions. For example, \\
+
+\begin{itemize}
+    \item for free boundary conditions, allowing the extreme-most spins to take on all allowed value, the partition function is given by 
+    
+    \begin{equation}
+    \begin{split}
+     \mathcal{Z}_N(\textnormal{free}) &= \sum_{\substack{\sigma_1 = \pm 1\\
+    \sigma_N = \pm 1}} \bra{\sigma_1} \bm{\mathcal{T}}^{N-1} \ket{\sigma_N} =  \left(\begin{array}{cc}
+        1 & 0 \\
+    \end{array}\right) \bm{\mathcal{T}}^{N-1} \left(\begin{array}{c}
+        1 \\
+        0
+    \end{array}\right) +\left(\begin{array}{cc}
+        1 & 0 \\
+    \end{array}\right) \bm{\mathcal{T}}^{N-1} \left(\begin{array}{c}
+        0 \\
+        1
+    \end{array}\right) \\
+    & + \left(\begin{array}{cc}
+        0 & 1 \\
+    \end{array}\right) \bm{\mathcal{T}}^{N-1} \left(\begin{array}{c}
+        1 \\
+        0 
+    \end{array}\right).
+    \left(\begin{array}{cc}
+        0 & 1 \\
+    \end{array}\right) \bm{\mathcal{T}}^{N-1} \left(\begin{array}{c}
+        0 \\
+        1 
+    \end{array}\right)
+    \\
+    &= \left(\begin{array}{cc}
+        1 & 1 \\
+    \end{array}\right) \bm{\mathcal{T}}^{N-1} \left(\begin{array}{c}
+        1 \\
+        1 
+    \end{array}\right).
+    \end{split}
+    \end{equation}
+    
+    \item for periodic boundary conditions, where an extra interaction $-J \sigma_N \sigma_1$ is added to the energy, including a bond between the two most-extreme spins. In this case, the model is translation invariant, shifting all the spins by one site mod $N$ doesn't change the energy. The transfer $\bm{\mathcal{T}}$ must therefore evolve the first spin back to the $N$-th one. This is equivalent to having fixed boundary conditions on $N+1$-sites where $\sigma_{N+1} = \sigma_1$, and then summing over both possible values, thus yielding 
+    
+    \begin{equation}
+    \begin{split}
+    \mathcal{Z}_N(\textnormal{periodic}) &= \sum_{\sigma_1 = \pm 1} \bra{\sigma_1} \bm{\mathcal{T}} \ket{\sigma_1} =  \left(\begin{array}{cc}
+        1 & 0 \\
+    \end{array}\right) \bm{\mathcal{T}}^{N} \left(\begin{array}{c}
+        1 \\
+        0 
+    \end{array}\right) +  \left(\begin{array}{cc}
+        0 & 1 \\
+    \end{array}\right) \bm{\mathcal{T}}^{N} \left(\begin{array}{c}
+        0 \\
+        1 
+    \end{array}\right) \\
+    &= \Tr_{\mathds{C}^2} \bm{\mathcal{T}}^{N}.
+    \end{split}
+    \end{equation}
+\end{itemize}
+
+The partition functions with different boundary conditions are simply related, eg. $\mathcal{Z}_N(\textnormal{periodic}) = \mathcal{Z}_N(++) + \mathcal{Z}_N(--)$. The usefulness of the transfer matrix in a one-dimensional system lies in that the partition function can be computed simply by diagonalizing the transfer matrix. For the one-dimensional Ising model, the eigenvalues and eigenvectors simply are 
+
+\begin{equation}
+    \begin{split}
+        & \lambda_1 = 2\cosh \beta J \textnormal{  and  } \lambda_2 = 2 \sinh \beta J \\
+        & \left(\begin{array}{c}
+        1 \\
+        1 
+    \end{array}\right) \textnormal{    and   } \left(\begin{array}{c}
+        1 \\
+        -1 
+    \end{array}\right)
+    \end{split},
+\end{equation}
+
+and given that the transfer matrix is hermitian, the eigenvalues are real. Then, the partition functions for the different boundary conditions can then be found
+
+\begin{itemize}
+    \item In the free case, the $\ket{\sigma_j}$ vectors can be decomposed in terms of the eigenvectors $v_{\pm}= \frac{1}{2} \bigg(\left(\begin{array}{cc}
+     1 & 1 \end{array}\right)^{\textnormal{T}} + \left(\begin{array}{cc}
+     1 & -1 \end{array}\right)^{\textnormal{T}} \bigg) $
+    $\mathcal{Z}_N(\textnormal{free}) = 2(2\cosh \beta J)^{N-1}$. \\
+    \item \begin{equation*}
+        \begin{split}
+          \mathcal{Z}_N(\textnormal{periodic}) &= (2\cosh \beta J)^N + (2\sinh \beta J)^N \\
+          &= (2\cosh \beta J)^N \bigg(1+ (2\tanh \beta J)^N\bigg) \\
+          &\approx (2\cosh \beta J)^N \textnormal{ for } N >> 1. 
+        \end{split}
+    \end{equation*}
+\end{itemize}
+
+Remembering that $\mathcal{Z}_N(\textnormal{periodic}) = \mathcal{Z}_N(++) + \mathcal{Z}_N(--)$, then note that 
+
+\begin{align*}
+    (2\cosh \beta J)^N + (2\sinh \beta J)^N = (2\cosh \beta J)^N \bigg(1+ ((2\tanh \beta J)^N)^N\bigg) \\
+    = \frac{1}{2} \bigg[(2\cosh \beta J)^N \bigg(1+  (2\tanh \beta J)^N\bigg) ] + \frac{1}{2} \bigg[(2\cosh \beta J)^N \bigg(1+  (2\tanh \beta J)^N\bigg) ]
+\end{align*}
 
 \clearpage
 
 \subsection{Quantum Spin Systems}
-
-\clearpage
 
 The Hilbert space of a quantum spin is defined by choosing a representation for the spin operators. A representation of a Lie algebra is a set of three matrices satisfying the commutation relations of the $\mathfrak{su}(2)$-algebra. An \textbf{irreducible representation} is a set of matrices such that no unitary transformation $\mathcal{U} {\bf S}^{a} \mathcal{U}^\dagger$ block-diagonalizes all three matrices. It is known that for the $\mathfrak{su}(2)$-Lie algebra there is exactly one set (up to unitary transformations) of irreducible complex $n\times n$-matrices, for each integer $n$. It is customary to write $n=2s+1$ for all integers and half-integers $s$. A sinsle spin-$s$ quantum particle at a fixed point in space therefore has a Hilbert space $\mathds{C}^{2s+1}$, so the matrices ${\bf S}^a$ are all $(2s+1)\times(2s+1)$. An orthonormal basis is given by the eigenstates of any one of the matrices. 
 
@@ -1387,24 +1731,6 @@ which can then be numerically solved.
 
 \clearpage
 
-%\section{Independent Electrons and Static Crystals}
-
-%\subsection{Crystal lattices} 
-
-%The mathematical concept which best describes an actual crystal lattice is that of a Bravais lattice, defined as a set of mathematical points corresponding to the discrete positions in space given by 
-
-%\begin{equation}
- %   \{\Rb \in \R^{3} \blanky | \blanky \R = \sum_{i=1}^{3} n_i {\bf a}_i \textnormal{ with } n_i \in \mathds{Z}\},
-%\end{equation}
-    
-%where the $\{a_i\}$-vector are the so-called primitive vector. The Bravais lattice is invariant under the operation 
-
-%$$
-%\Rb \rightarrow \Rb + {\bf T} \textnormal{ where } {\bf %T} = \sum_{i=1}^{3} L_i {\bf a}_i \blanky | \blanky L_i %\in \mathds{Z}
-%
-
-\clearpage
-
 \section{Photons: coupling to electrons}
 
 Phonons are quantized vibrations and play a fundamental role in sound physics, specific heat, elasticity and electrical resistivity of solids. More surprisingly, the electron-phonon coupling is the cause of conventional superconductivity. There are two distinct models for electron-phonon coupling, the jellium model, where the ions are represented by a smeared-out continuous positive background, and the lattice model where the ions oscillate around their equilibrium positions forming a crystal lattice. \\
@@ -1608,5 +1934,5 @@ Now, given that he external perturbation, written in frequency space, is already
 \clearpage
 
 \section{.}
- 
+
 \end{document}
