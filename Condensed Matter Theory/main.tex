@@ -346,6 +346,7 @@ Note that each time the transfer matrix is applied, it corresponds to adding one
         1 
     \end{array}\right).
     \end{split}
+    \label{Ising model - Free PF}
     \end{equation}
     
     \item for periodic boundary conditions, where an extra interaction $-J \sigma_N \sigma_1$ is added to the energy, including a bond between the two most-extreme spins. In this case, the model is translation invariant, shifting all the spins by one site mod $N$ doesn't change the energy. The transfer $\bm{\mathcal{T}}$ must therefore evolve the first spin back to the $N$-th one. This is equivalent to having fixed boundary conditions on $N+1$-sites where $\sigma_{N+1} = \sigma_1$, and then summing over both possible values, thus yielding 
@@ -368,29 +369,84 @@ Note that each time the transfer matrix is applied, it corresponds to adding one
     \end{equation}
 \end{itemize}
 
-The partition functions with different boundary conditions are simply related, eg. $\mathcal{Z}_N(\textnormal{periodic}) = \mathcal{Z}_N(++) + \mathcal{Z}_N(--)$. The usefulness of the transfer matrix in a one-dimensional system lies in that the partition function can be computed simply by diagonalizing the transfer matrix. For the one-dimensional Ising model, the eigenvalues and eigenvectors simply are 
+The partition functions with different boundary conditions are simply related, eg. $\mathcal{Z}_N(\textnormal{periodic}) = \mathcal{Z}_N(++) + \mathcal{Z}_N(--)$. The usefulness of the transfer matrix in a one-dimensional system lies in that the partition function can be computed simply by diagonalizing the transfer matrix. For the one-dimensional Ising model, the diagonalization yields  
 
 \begin{equation}
     \begin{split}
-        & \lambda_1 = 2\cosh \beta J \textnormal{  and  } \lambda_2 = 2 \sinh \beta J \\
-        & \left(\begin{array}{c}
-        1 \\
-        1 
-    \end{array}\right) \textnormal{    and   } \left(\begin{array}{c}
-        1 \\
-        -1 
-    \end{array}\right)
+    \bm{\mathcal{T}} = \left(\begin{array}{cc}
+        1 & 1 \\
+        -1 & 1 
+    \end{array}\right)\left(\begin{array}{cc}
+        2\cosh(\beta J) & 0 \\
+        0 & 2\sinh(\beta J)
+    \end{array}\right) \left(\begin{array}{cc}
+        1 & 1 \\
+        -1 & 1 
+    \end{array}\right)^{-1}
     \end{split},
+    \label{Ising model - T matrix diag}
 \end{equation}
 
 and given that the transfer matrix is hermitian, the eigenvalues are real. Then, the partition functions for the different boundary conditions can then be found
 
 \begin{itemize}
-    \item In the free case, the $\ket{\sigma_j}$ vectors can be decomposed in terms of the eigenvectors $v_{\pm}= \frac{1}{2} \bigg(\left(\begin{array}{cc}
+    \item For the free case, the $\ket{\sigma_j}$-vectors can be decomposed in terms of the $\bm{\mathcal{T}}$- matrix's eigenvectors, which can be written as 
+    
+    $$ 
+     v_{\pm}= \frac{1}{2} \bigg(\left(\begin{array}{cc}
      1 & 1 \end{array}\right)^{\textnormal{T}} + \left(\begin{array}{cc}
-     1 & -1 \end{array}\right)^{\textnormal{T}} \bigg) $
-    $\mathcal{Z}_N(\textnormal{free}) = 2(2\cosh \beta J)^{N-1}$. \\
-    \item \begin{equation*}
+     1 & -1 \end{array}\right)^{\textnormal{T}} \bigg) 
+     $$
+     
+     Therefore, plugging in these results in \cref{Ising model - Free PF} yields,
+     
+     \begin{equation}
+         \begin{split}
+             \mathcal{Z}_N(\textnormal{free}) &= \left(\begin{array}{cc}
+        1 & 1 \\
+    \end{array}\right) \bm{\mathcal{T}}^{N-1} \left(\begin{array}{c}
+        1 \\
+        1 
+    \end{array}\right) = 2(2\cosh \beta J)^{N-1}.
+         \end{split}
+     \end{equation}
+     
+    \item For the periodic-boundary conditions, the partition function may be calculated as the sum of $\mathcal{Z}_N(++)$ and $\mathcal{Z}_N(--)$, which can be easily calculated from \cref{Ising model - T matrix diag}, as follows 
+    
+    \begin{equation}
+    \begin{array}{c}
+             \mathcal{Z}_N(++) = \left(\begin{array}{cc}
+        1 & 0 \\
+    \end{array}\right) \bm{\mathcal{T}}^{N} \left(\begin{array}{c}
+        1 \\
+        0 
+    \end{array}\right)  = \frac{1}{2}\bigg[\bigg(2 \cosh \beta J\bigg)^N + \bigg(2 \sinh \beta J\bigg)^N \bigg] \\
+    \mathcal{Z}_N(+-) = \left(\begin{array}{cc}
+        1 & 0 \\
+    \end{array}\right) \bm{\mathcal{T}}^{N} \left(\begin{array}{c}
+        0 \\
+        1 
+    \end{array}\right)  = \frac{1}{2}\bigg[\bigg(2 \cosh \beta J\bigg)^N - \bigg(2 \sinh \beta J\bigg)^N \bigg]
+    \\
+    %\end{array} \begin{array}{c}
+    \mathcal{Z}_N(-+) = \left(\begin{array}{cc}
+        0 & 1 \\
+    \end{array}\right) \bm{\mathcal{T}}^{N} \left(\begin{array}{c}
+        1 \\
+        0 
+    \end{array}\right)  = \frac{1}{2}\bigg[\bigg(2 \cosh \beta J\bigg)^N - \bigg(2 \sinh \beta J\bigg)^N \bigg] \\
+    \mathcal{Z}_N(--) = \left(\begin{array}{cc}
+        0 & 1  \\
+    \end{array}\right) \bm{\mathcal{T}}^{N} \left(\begin{array}{c}
+        0 \\
+        1 
+    \end{array}\right)  = \frac{1}{2}\bigg[\bigg(2 \cosh \beta J\bigg)^N + \bigg(2 \sinh \beta J\bigg)^N \bigg] \\
+    \end{array}
+    \end{equation}
+    
+    Then, given that $\mathcal{Z}_N(\textnormal{periodic}) = \mathcal{Z}_N(++) + \mathcal{Z}_N(--)$, the periodic boundary condition partition functions is given by 
+    
+    \begin{equation*}
         \begin{split}
           \mathcal{Z}_N(\textnormal{periodic}) &= (2\cosh \beta J)^N + (2\sinh \beta J)^N \\
           &= (2\cosh \beta J)^N \bigg(1+ (2\tanh \beta J)^N\bigg) \\
@@ -399,12 +455,81 @@ and given that the transfer matrix is hermitian, the eigenvalues are real. Then,
     \end{equation*}
 \end{itemize}
 
-Remembering that $\mathcal{Z}_N(\textnormal{periodic}) = \mathcal{Z}_N(++) + \mathcal{Z}_N(--)$, then note that 
+Note as well that the free energy per site is proportional to $\frac{\log \mathcal{Z}}{N}$, and is independent of boundary conditions when $N >> 1$. In effect, the free energy per site in the thermodynamic limit may be written as
 
-\begin{align*}
-    (2\cosh \beta J)^N + (2\sinh \beta J)^N = (2\cosh \beta J)^N \bigg(1+ ((2\tanh \beta J)^N)^N\bigg) \\
-    = \frac{1}{2} \bigg[(2\cosh \beta J)^N \bigg(1+  (2\tanh \beta J)^N\bigg) ] + \frac{1}{2} \bigg[(2\cosh \beta J)^N \bigg(1+  (2\tanh \beta J)^N\bigg) ]
-\end{align*}
+\begin{equation}
+    F(\beta, K) = - \lim_{N \rightarrow \infty} \frac{\log \mathcal{Z}}{N}.
+\end{equation}
+
+\blanky \\
+
+It is straight forward to compute the two-point function in terms of these partition functions. Consider the following special cases.
+
+\begin{itemize}
+    \item First, consider an Ising spin chain with free boundary conditions. Then, the two-point function between the two end-spins can be computed by summing over the four possible configurations. But these spins are opposite, then 
+
+\begin{equation}
+    \langle \sigma_1 \sigma_N \rangle = \frac{\mathcal{Z}_N(++) + \mathcal{Z}_N(--) - \mathcal{Z}_N(+-) - \mathcal{Z}_N(-+)}{\mathcal{Z}_{\textnormal{free}}} =
+    (\tanh \beta J)^{N-1},
+    \end{equation}
+    
+   which falls off exponentially with distance, so even for small distances, the end spins are effectively uncorrelated.
+  \\
+   \item Now, consider an Ising chain with periodic boundary condtions. Then, the the two-point function between the $j$-th and the $i$-th spins, with $j>i$, may be written as
+
+    \begin{equation}
+       \langle \sigma_j \sigma_i \rangle_{\textnormal{periodic}} =  \frac{2 \mathcal{Z}_{|j-i|}(++)\mathcal{Z}_{N-|j-i|}(--) + 2\mathcal{Z}_{|j-i|}(+-) \mathcal{Z}_{N-|j-i|}(-+)}{\mathcal{Z}_N{\textnormal{periodic}}},
+    \end{equation}
+\end{itemize}
+
+\blanky \\
+
+The general two-point correlator is similar and is given by 
+
+\begin{equation}
+    \langle \sigma_j \sigma_i \rangle_{j > i} = \frac{1}{\mathcal{Z}} \sum_{k} \sigma_j \sigma_i e^{\sum_{k} \beta J \sigma_k \sigma_{k+1}},
+\end{equation}
+
+which measures how likely $s_i$ and $s_j$ are, on average, to point in the same direction. In any ferromagnetic system, the average will be positive for a pair of neighbouring spins since the Boltzmann weight is biased toward parallel values. Surely, if a spin can influence its neighbours to be parallel to it, they in turn will act similarly on their own neighbours, therefore long-range correlations may be present. In addition, if there is an external magnetic field present, it will enhance this correlation further. Naturally, if $j>i$ it holds that 
+
+$$
+\sigma_j \sigma_i = \sigma_i \sigma_j = \sigma_i \sigma_{i+1} \sigma_{i+1} \cdots \sigma_{j-1} \sigma_j = \mathfrak{t}_{i}\mathfrak{t}_{i+1}\cdots\mathfrak{t}_{j-1} \textnormal{ where } \mathfrak{t}_i = \sigma_i _{i+1}, 
+$$
+
+then 
+
+\begin{equation}
+    \langle \sigma_j \sigma_i \rangle = \langle \mathfrak{t}_i \rangle \langle \mathfrak{t}_{i+1} \rangle \cdots \langle \mathfrak{t}_{j-1} \rangle.
+\end{equation}
+
+Note that the answer factorizes over $i$ since the Boltzmann weight factorizes over $i$ as well, when written in terms of the $\mathfrak{t}_i$\footnote{In effect, note that the partition function may be written as 
+
+\begin{equation}
+\begin{split}
+    \mathcal{Z} &= \sum_{\sigma_i = \pm 1} \exp \bigg(\sum_{i=0}^{N-1} \beta J \sigma_i \sigma_{i+1} \bigg) = \sum_{\mathfrak{t}_i = \pm 1} \exp \bigg(\sum_{i=0}^{N-1} \beta J \mathfrak{t}_i \bigg) \\
+    &= \sum_{\mathfrak{t}_i = \pm 1} \prod_{i=0}^{N-1} e^{\beta J \mathfrak{t}_i},
+\end{split}
+\end{equation}
+
+where the exponential has naturally factorized into a product over $i$.}. Then, the thermal average for any one $\mathfrak{t}$ can be easily calculated as 
+
+\begin{equation}
+\begin{array}{ccc}
+    \langle \mathfrak{t} \rangle = \frac{1}{\mathcal{Z}}\sum_{\mathfrak{t} =  \pm 1} \mathfrak{t} e^{E\{\mathfrak{t}\}}\\
+     \langle \mathfrak{t} \rangle  = \frac{1 e^{\beta J} - 1 e^{-\cdot \beta J}}{e^{\beta J} +  e^{-\cdot \beta J}} = \tanh \beta J & \Rightarrow & \langle \sigma_j \sigma_i \rangle = (\tanh \beta J)^{|j-i|} = \exp \bigg(|j-i| \log \tanh \beta J\bigg).
+\end{array}
+\end{equation}
+
+At any finite $\beta J$, since $\tanh \beta J < 1$, $\langle \sigma_j \sigma_i \rangle  \underset{|j-i| \rightarrow \infty}{\longrightarrow} 0$. Only at $T=0$ or $\beta J \rightarrow \infty$, when $\tanh \beta J = 1$, does the correlation not exponentially decay but remain flat. In other words, note that 
+
+\begin{equation}
+    \langle \sigma_j \sigma_i \rangle \sim e^{\frac{-|j-i|}{\zeta}} \textnormal{ where } \zeta = -\frac{1}{\log \tanh \beta J} \textnormal{ is the correlation length.}
+\end{equation}
+
+Thus, the one-dimensional Ising model is in a disordered phase for any non-zero temperature. The zero-temperature case is pathological, since there is no meaning of equilibrium in a zero-temperature classical system. 
+\\
+
+The $\langle \sigma_j \sigma_i \rangle$-correlator depends on just the difference in coordinates, ie. it presents translational invariance. This is not a generic result for a finite chain, but a peculiarity of this model in particular. In general, for an $N+1$-site chain, correlations between two spins will generally depend on where the two points are in relation to the ends. On the other hand, for $N\rightarrow\infty$-models, translational invariance is expected to hold for correlations of spins far from the ends. In order for translational invariance to hold for a finite system, periodic boundary conditions must be imposed on the system. In said case, correlation functions will now only depend on the difference between the two coordinates, but will not decay monotonically with separation since as one point start moving away from one extreme, it starts approaching the extreme spin from the other side. \\
 
 \clearpage
 
