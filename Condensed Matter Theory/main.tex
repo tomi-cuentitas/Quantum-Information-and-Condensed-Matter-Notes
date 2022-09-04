@@ -10,6 +10,8 @@
 
 \section{Spin Chain models}
 
+\section{Spin Chain models}
+
 \subsection{Classical Spin Systems}
 
 Classical spin systems are idealized versions of magnets. Although many magnetic phenomena in materials are inherently quantum mechanical, many properties are well described at least qualitatively by classical spin systems. \\
@@ -26,71 +28,385 @@ Many many-body physical systems can effectively be treated as being on a lattice
 
 %\subsubsection{The partition function and correlators}
 
-\paragraph{\textbf{The partition function and correlators}}
+%\paragraph{\textbf{The partition function and correlators}}
 
-Consider a general spin chain as a dynamical system. Its spins can take 
-any value in a given configuration space, which is a finite-dimensional %or infinite-dimensional 
-manifold $\mathcal{M}$. Therefore, assuming that $\mathcal{M}$ is a smooth manifold, the tangent space at $\ket{s}$ is denoted by $T_{\ket{s}} \mathcal{M}$. Then, the cotangent space at $\ket{s}$ is defined as the dual space of $T_{\ket{s}} \mathcal{M}$, 
+\subsubsection{Formalization of Statistical Mechanics}
+
+A formal definition for a classical general spin chain, as a dynamical system, requires the use of measure theory terminology. \\
+
+\paragraph{\textbf{Some technical aspects}} 
+\underline{\textbf{An introduction to Measure Theory}}
+
+A \textbf{measure} is a mathematical device which reflects the notion of quantity for a given set. Let ${\bf X}$ be a set, then each subset ${\bf U} \in {\bf X}$ is assigned a positive real number $\mu[{\bf U}]$. Thus, the measure is a function
+
+$$
+\mu: \textnormal{Dom}(\mu) \subset 2^{\bf X} \rightarrow \mathds{R},
+$$
+
+where $2^{\bf X} = \{{\bf S} \in {\bf X}\}$ is the power set of ${\bf X}$. However, it's usually impossible to define a satisfactory notion of quantity for all subsets of ${\bf X}$. Therefore, it is useful to consider 
+$\textnormal{Dom}(\mu) \in {\bf X}$ ie. only some subsets of ${\bf X}$ will be measurable. Before defining a proper measure, it's domain must be specified first. This domain will be a collection of subsets of the space ${\bf X}$, called a $\sigma$-\textbf{algebra}. \\
+
+Let ${\bf X}$ be a nonempty set, which in the following sections will be a sample space. A $\sigma$-\textbf{algebra} over ${\bf X}$ is a collection $\mathcal{F} = \{{\bf U}_i\}_{i \in \mathds{N}}$ of subsets of ${\bf X}$ with the following properties:
+
+\begin{itemize}
+    \item $\mathcal{F}$ contains the set ${\bf X}$: ${\bf X} \subset \mathcal{F}$. \\
+    \item { $\mathcal{F}$ is closed under \underline{complementation}: if ${\bf U} \subset \mathcal{F}$, then } $ 
+    {\bf U}^c = ({\bf X} / {\bf U}) \subset \mathcal{F}.
+    $\\
+    \item $\mathcal{F}$ is closed under \underline{countable unions} ie. 
+    $\{{\bf U}_i\}_{i \in \mathds{N}} \textnormal{ } | \textnormal{ } {\bf U}_i \subset \mathcal{F} \Rightarrow \underset{i \in \mathds{N}}{\cup} {\bf U}_i \subset \mathcal{F}.
+    $\\
+    \item $\mathcal{F}$ is closed under \underline{countable intersections} ie. $
+    \textnormal{}
+    \{{\bf U}_i\}_{i\in \mathds{N}} \textnormal{ } | \textnormal{ } {\bf U}_i \subset \mathcal{F} \Rightarrow \underset{i\in \mathds{N}}{\cap} {\bf U}_i \subset \mathcal{F}. 
+    $\\
+\end{itemize}
+
+Technically, the fourth property, is a corollary and follows directly from the second and third properties and due to De Morgan's laws. \\
+
+A \textbf{measurable space} is an ordered pair $({\bf X}, \mathcal{F})$, where ${\bf X}$ is a set and where $\mathcal{F}$ is a $\sigma$-algebra on ${\bf X}$. Some of the most common examples of $\sigma$-algebras are
+
+\begin{itemize}
+    \item Two examples of trivial $\sigma$-algebras are:
+    \begin{itemize}
+        \item for any set ${\bf X}$ the collection $\{\emptyset, {\bf X}\}$ is a $\sigma$-algebra. This first example is far too small to be of any use.
+        \item The power set $2^{\bf X}$ is also a $\sigma$-algebra. Note that for large sets, the power set becomes too large to be manageable.\\
+    \end{itemize}
+    
+    \item A more manageable $\sigma$-algebra is the one induced by the (co-)countable sets. Let $\mathcal{M}$ be the most conservative collection of "manageable" sets, this is 
+    
+    $$
+    \mathcal{M} = \bigg\{\{x\}: x \in {\bf X} \bigg\},
+    $$
+    
+    ie. the set of all the singleton subsets of ${\bf X}$. Then $\mathcal{C} = \sigma(\mathcal{M}))$ is the $\sigma$-algebra of \textbf{countable and co-countable sets} 
+    
+    $$
+    \mathcal{C} = \{{\bf C} \subset {\bf X} | \textnormal{ either } {\bf C} \textnormal{ is countable, or } {\bf X}/{\bf C} \textnormal{ is countable}\}.
+    $$
+    
+    If ${\bf X}$ is itself finite or countable, then $\mathcal{C} = \mathcal{P}({\bf X})$. \\
+    
+    \item Another example are the partition algebras. Let ${\bf X}$ be a set. Then a \textbf{partition} of ${\bf X}$ is a collection $\mathcal{P} = \{{\bf P}_i\}_{i=1}^{N}$ of disjoint subsets, such that ${\bf X}= \sqcup_{n=1}^{N} {\bf P}_N$. These subsets ${\bf P}_i$ are called the \textbf{atoms} of the partition. Then, the $\sigma$-algebra generated by $\mathcal{P}$ is the collection of all possible unions of $\mathcal{P}$-atoms:
+    
+    $$
+    \sigma(\mathcal{P}) = \{\sqcup_{j=1}^{k}{\bf P}_{n_j}\textnormal{ }|\textnormal{ } \{n_j\}_{j=1}^{k} \in \mathds{N}_{[1, \cdots, N]}\}.
+    $$
+    
+    Therefore if $\textnormal{card}[{\bf P}] = N$, then $\textnormal{card}[\sigma({\bf P})] = 2^N$. \\
+    
+    If $\mathcal{Q}$ is another partition, we say $\mathcal{Q}$ redefines $\mathcal{P}$ ($\mathcal{Q}\prec \mathcal{P}$) if, for every ${\bf P}\in \mathcal{Q}$, there are $\{{\bf Q}_i\}_{i=1}^{N} \in \mathcal{Q}$ so that ${\bf P} = \sqcup_{j=1}^{N} {\bf Q}_{j}$. In said case we have 
+    
+    $$
+    \mathcal{P}\prec \mathcal{Q} \Leftrightarrow \sigma(\mathcal{P}) \subset \sigma(\mathcal{Q}).
+    $$ 
+    
+    \item \textbf{Borel } $\sigma$\textbf{-algebra of } $\mathds{R}$: \\
+    
+    Let ${\bf X} =\mathds{R}$ be the real numbers and let $\mathcal{M}$ be the set of all open intervals in $\mathds{R}$:
+    
+    $$
+    \mathcal{M} = \{(a,b): -\infty \leq a < b \leq \infty\}, 
+    $$
+    
+    then the $\sigma$-algebra $\mathcal{B} = \sigma(\mathcal{M})$ contains all open subsets of $\mathds{R}$, all closed subset, all countable intersections of open subsets, countable unions of closed subsets, etc. For example, $\mathcal{B}$ contains, as elements, the set $\mathds{Z}$ of integers, the set $\mathds{Q}$ of rationals and the set $\mathds{I}$ of irrationals. Then, $\mathcal{B}$ is called the \textbf{Borel} $\sigma$\textbf{-algebra} of $\mathds{R}$. \\
+\end{itemize}
+
+In general, let ${\bf X}$ be a topological space and let $\mathcal{M}$ be the set of all open subsets of ${\bf X}$. The $\sigma$-algebra $\sigma(\mathcal{M)}$ is the \textbf{Borel} $\sigma$\textbf{-algebra} of {\bf X} and is denoted by $\mathcal{B}({\bf X})$. It contains all open sets and closed subsets of ${{\bf X}}$, all countable intersections of open sets (called $G\delta$ sets), all countable unions of closed sets (called $F\sigma$ sets). For example, if ${\bf X}$ is Hausdorff, then $\mathcal{B}({\bf X})$ contains all countable and co-countable sets.\\
+
+Let $({\bf X}, \mathcal{F})$ be a measurable space. A \textbf{measure} on $\mathcal{F}$ is a map $\mu: \mathcal{F} \rightarrow \mathds{R}_{+}$, which is \textbf{countably additive} ie. 
+
+$$
+\textnormal{If } \{{\bf Y}_i\}_{i=1} \textnormal{ }| \textnormal{ } {\bf Y}_i \in \mathcal{F} \rightarrow \mu\bigg[\sqcup_{n=1}^{\infty}{\bf Y}_n\bigg] = \sum_{n=1}^{\infty} \mu[{\bf Y}_n].
+$$
+
+Then a \textbf{measure space} is an ordered triple $({\bf X}, \mathcal{F}, \mu)$, where ${\bf X}$ is a set, $\mathcal{F}$ is a $\sigma$-algebra and $\mu$ is a measure on $\mathcal{F}$. Thus, $\mu$ assigns a size to the $\mathcal{F}$-measurable subsets of ${\bf X}$. Some important measures and measureable spaces are
+
+\begin{itemize}
+    \item \textbf{The counting measure} assigns, to any set, the cardinality of that set. 
+    
+    $$
+    \mu[{\bf S}] =\textnormal{card}[{\bf S}].
+    $$
+    
+    This measure provides no means of distinguishing between sets of the same cardinality, only being useful in finite measure spaces. \\
+    
+    \item A \textbf{finite measure space} is made up by a finite set ${\bf X}$, and a $\sigma$-algebra $\mathcal{F}= {\bf X}$. Then a measure $\mu$ on ${\bf X}$ is entirely defined by some function $f: {\bf X} \rightarrow \mathds{R}_{+}$. For any subset $\{x_i\}_{i=1}^{N}$ we then define 
+    
+    $$
+    \mu\bigg(\{x_i\}_{i=1}^{N}\bigg)= \sum_{i=1}^{N}f(x_i).
+    $$
+    
+    Discrete probability theory is based on at most countable sample spaces $\Omega$, where all subsets of $\Omega$ may be treated as events, and thus elements of the $\sigma$-algebra $\mathcal{F}$. \\
+    
+    \item \textbf{Discrete measures}: If, instead, the sample space is uncountable, (eg. it has a discrete part a non-discrete part), it can be decomposed into \textbf{atoms}. The atoms are an at most countable (maybe even empty) set, whose probability is the sum of probabilities of all atoms. If this sum is equal to 1, then all other points can safely be excluded from the sample space, returning to the discrete case. Otherwise, if the sum of probabilities of all atoms is between 0 and 1, then the measure space decomposes into a discrete atomic part and a non-atomic part.    If $({\bf X}, \mathcal{F},\mu)$ is a measure space, then an \textbf{atom} of $\mu$ is a subset $\mathbf{A} \in \mathcal{F}$ such that
+    
+    \begin{itemize}
+        \item it has positive measure $\mu[{\bf A}] = A > 0$.
+        \item and it contains no set of smaller positive measure, ie. $\forall {\bf B} \subset {\bf A}$, either $\mu[{\bf B}] = A$ or $\mu[{\bf B}] = 0$.\\
+    \end{itemize}
+    
+    For example, in the finite measure space above, the singleton set $\{x_n\}$ is an atom if $f(x_n) > 0$. The measure space $({\bf X}, \mathcal{F},\mu)$ is called discrete if it can be written as 
+    
+    $$
+    {\bf X} = {\bf Z} \sqcup (\sqcup_{n=1}^{\infty} A_n),
+    $$
+    
+    where $\mu[{\bf Z}] = 0$ and where $\{A_n\}_{n=1}^{\infty}$ is a collection of atoms. Note that any finite measure space is discrete. \\
+    
+    For example, consider the set ${\bf X}$ = \{1, 2, ..., 9, 10\} and let the $\sigma$-algebra ${\displaystyle \Sigma }$ be the power set of ${\bf X}$. Define the measure ${\displaystyle \mu }$  of a set to be its cardinality, that is, the number of elements in the set. Then, each of the singletons ${i}$, for i = 1, 2, ..., 9, 10 is an atom. On the other hand, consider the Lebesgue measure on the real line. This measure has no atoms. \\
+    
+    %\item \textbf{The Lebesgue measure}, the \textbf{Haar measures} and the \textbf{Hausdorff measure}. \\ 
+    
+    %If $\mathds{R}$ is seen as a group, then the Lebesgue measure arises as a Haar measure, instead, if $\mathds{R}$ is interpreted as a metric space, the Lebesgue measure arises as a Hausdorff measure. Instead, if it is treated as an ordered set, then the Lebesgue measure arises from a Stieltjes measure.\\
+    
+    %Given an ordered set $({\bf X}, <)$, a $\sigma$-algebra $\mathcal{F}$ can be defined to be the $\sigma$-algebra generated by all left-open intervals of the form $(a,b ]$\footnote{If ${\bf X}=\mathds{R}$ with the usual linear ordering, then this $\mathcal{F}$ is just the usual Borel $\sigma$-algebra.}. Now suppose that $f: {\bf X}\rightarrow \mathds{R}    $ is a  right-continuous, non-decreasing function, we can define the measure of any interval $(a,b]$ to be simply the difference between the value of $f$ at the two end-points, $a$ and $b$ :
+    
+    %$$
+    %\mu_f (a,b] = f(b) - f(a).
+    %$$
+    
+    %This measure can then be extended to the rest of the elements of $\mathcal{F}$ by approximating them with disjoint union of left-open intervals. \\
+    
+    %A measure $\mu_f$ is a \textbf{Stieltjes measure} and $f$ the \textbf{accumulation function} or \textbf{cumulative distribution} of $\mu_f$. Under suitable conditions, every measure on $({\bf X}, \mathcal{F})$ can be generated in this way: \\
+    %Starting with an arbitrary measure, $\mu$, we can find a zero-point $x_0 \in {\bf X}$ so that 
+    
+    %\begin{itemize}
+    %    \item $\mu(x_0, x]$ is finite for all $x > x_0$, \\
+    %    \item $\mu(x_0, x]$ is finite for all $x < x_0$ \\
+    %    \item Then define the function $f: {\bf X} \rightarrow \mathds{R}$ as 
+    %$$
+    %f(x) = \bigg\{ \begin{array}{ccc}
+    %   \mu(x_0, x]  & \textnormal{if } x > x_0  \\
+    %   -\mu(x_0, x]  & \textnormal{if } x < x_0 
+    %\end{array}
+    %$$.
+    %\end{itemize}
+    
+    \item \textbf{Density Functions}: Let $\rho : \mathds{R}^n \rightarrow \mathds{R}$ be a positive, integrable function on $\mathds{R}^n$. For any ${\bf B} \in \mathcal{B}(\mathds{R}^n)$, then a measure can be defined as
+    
+    $$
+    \mu_{\rho}({\bf B}) = \int_{{\bf B}} \rho,
+    $$
+    
+    where $\rho$ is the \textbf{density function} for $\mu$. \\
+
+\end{itemize}
+
+Then, the ordered triple $({\bf X}, \mathcal{F}, \mu)$ is a \textbf{probability space} if $\mu$ is a \textbf{probability measure}. This is, a measure $\mu$ on ${\bf X}$ is a \textbf{probability measure} if $\mu[{\bf X}] = 1$ \footnote{\textbf{Stochastic processes} are a particular kind of probability measures, which represent a system randomly evolving in time. Let $\mathcal{S}$ be any  randomly-evolving complex system, let ${\bf X}$ be the set of all possible states of the system $\mathcal{S}$ and let $\mathds{T}$ be a set representing time. For example, 
+    
+    \begin{itemize}
+        \item If $\mathcal{S}$ is a rolling die, then ${\bf X}= \{1,2,3,4,5,6\}$ and $\mathds{T}=\mathds{N} $ indexes the successive dice rolls. \\
+        \item If $\mathcal{S}$ is a publically traded stock, then its state is its price. Thus ${\bf X} = \mathds{R}$. If we assume trading occurs continuously when the market is open, and let each trading day have length $c < 1$, then one representation of market time is $\mathds{T} = \sqcup_{n=1}^{\infty} [n, n+c]$. \\
+        \item If $\mathcal{S}$ is a weather system, then its state can be representated by a large array of data ${\bf x} = [x_1,\cdots,x_n]$. Thus ${\bf X} = \mathds{R}^n$ and since the weather evolves continuously $\mathds{T}= \mathds{R}$.\\
+    \end{itemize}
+    
+    The random evolution of $\mathcal{S}$ is represented by assigning a probability to every possible \textit{history}. A history is an assignment of a state in ${\bf X}$ to every moment in time (ie. in $\mathds{T}$). In other words, it's a function $f: \mathds{T} \rightarrow {\bf X}$. The set of all possibly histories is ${\bf H} = {\bf X}^{\mathds{T}}$ ie. the set of all functions $f: \mathds{T} \rightarrow {\bf X}$. The $\sigma$-algebra on ${\bf H}$ is usually a \textbf{cylinder algebra}. 
+    
+    \begin{itemize}
+        \item Let $({\bf X}_\lambda, \mathcal{X}_\lambda)$ be measurable spaces for all $\lambda \in \Lambda$, where $\Lambda$ is some (possibly uncountably infinite) indexing set. Consider the cartesian product  $\bigtimes\limits_{\lambda \in \Lambda}{\bf X}_\lambda$. Let 
+        
+        $$
+        \mathcal{M} = \bigg\{\bigtimes\limits_{\lambda \in \Lambda}{\bf U}_\lambda \textnormal{ } | \textnormal{ } \forall \lambda \in \Lambda \textnormal{ and } {\bf U}_{\lambda} \in \mathcal{F}_{\lambda} \textnormal{ and } {\bf U}_{\lambda} = {\bf X}_{\lambda} \textnormal{ for all but finitely many } \lambda \bigg\},
+        $$
+        
+    such subsets are called \textbf{cylinder sets} in ${\bf X}$ and $\sigma(\mathcal{M})$ is the \textbf{cylinder} $\sigma$\textbf{-algebra} denoted by $\bigtimes\limits_{\lambda \in \Lambda}{\bf X}_\lambda \mathcal{F}_{\lambda}$. If the ${\bf X}_{\lambda}$ are topological spaces with Borel $\sigma$-algebras $\mathcal{F}_{\lambda}$, and we endow ${\bf X}$ with the Tychonoff product topology, then $\bigtimes\limits_{\lambda \in \Lambda} \mathcal{F}_{\lambda}$ is the Borel $\sigma$-algebra of ${\bf X}$. \\
+    \end{itemize}
+    
+    Suppose that ${\bf X}$ has a $\sigma$-algebra $\mathcal{F}$, then it follows ${\bf H}$'s $\sigma$-algebra is $\mathcal{H}= \bigtimes\limits_{t \in \mathds{T}}\mathcal{F}_t$. An \textbf{event} is an element of $\mathcal{F}$ and thus corresponds to a cylinder set, a countable union of cylinder sets etc. Suppose, for all ${t\in \mathds{T}}$, that ${\bf U}_t \in \mathcal{F}$ with ${\bf U}_t = X$ for all but finitely many $t$. The cylinder set ${\bf U} = \prod_{t \in \mathds{T}} {\bf U}_t$ thus corresponds to the assertion: "for every ${t\in \mathds{T}}$, at time $t$, the state of $\mathcal{S}$ was inside ${\bf U}_t$. A probability measure on $(\bf H, \mathcal{H})$ is then a way of assigning probabilities to such assertions. }. \\
+    
+\paragraph{\textbf{Gibbs Random Fields}}
+
+A \textbf{Gibbs random field} is defined on a lattice, as follows
+
+\begin{itemize}
+    \item A lattice, which is a countable set $\mathds{L}$ and a set $\mathcal{L}$, the set of all finite subsets of $\mathds{L}$.
+    \item A single-spin space, which is a probability space $(S, \bm{\mathcal{S}}, \lambda)$, where $S$ is the set of all possible spin-values and is assumed to be discrete, $\bm{\mathcal{S}}$ is the $\sigma$-algebra associated with this set. By definition, $\bm{\mathcal{S}} \subseteq 2^{S}$, where $2^{S}$ is the powerset of $S$, and where $\lambda$ is the probability measure on this single-spin space.
+    \item A configuration space $(\Omega, \mathcal{F})$, where $\Omega = S^{\mathds{L}}$ is the event space and where $\mathcal{F} = \mathcal{S}^{\mathds{L}}$.
+    \item Given a configuration $\omega \in \Omega$ and a subset $\Lambda \subset \mathds{L}$, the restriction of $\omega$ to $\Lambda$ is 
+    
+    $$
+        \omega_{\Lambda} = (\omega(t))_{t \in \Lambda}.
+    $$
+    
+    In particular, if $A_1 \cap A_2 = \emptyset$ and $A_1 \cup A_2 = \mathds{L}$, then the configuration $\omega_{\Lambda_1} \omega_{\Lambda_2}$ is the configuration whose restrictions to $\Lambda_1$ and $\Lambda_2$ are $\omega_{\Lambda_1}$ and $\omega_{\Lambda_2}$, respectively. \\
+    \item For each subset $\Lambda \subset \mathds{L}$, $\mathcal{F}_{\Lambda}$ is the $\sigma$-algebra generated by the family of functions 
+    
+    $$
+        (\sigma(t))_{t\in \Lambda}, \textnormal{   where   } \sigma(t) (\omega) = \omega(t). 
+    $$
+    
+    The union of these $\sigma$-algebras as $\Lambda$ varies over $\mathcal{L}$ is the algebra of cylinder sets on the lattice. 
+    \item The potential is a family of functions 
+    
+    \begin{equation*}
+        \Phi = (\Phi_A)_{A \in \mathcal{L}} \textnormal{   where   } \Phi_A : \Omega \rightarrow \mathds{R},
+    \end{equation*}
+    
+    such that 
+    
+    \begin{enumerate}
+        \item $\forall A \in \mathcal{L}$, $\Phi_A$ is $\mathcal{F}_\Lambda$-measurable, meaning it depends only on the restriction $\omega_A$, and does so measurably. 
+        \item $\forall A \in \mathcal{L}, \blanky \forall \omega \in \Omega$, then 
+        
+        $$
+        \exists H_{\Lambda}^{\Phi}(\omega) = \sum_{\substack{A \in \mathcal{L} \\
+              A \cap \Lambda \neq \emptyset}} \Phi_A (\omega),
+        $$
+        
+        where $\Phi_A$ is interpreted as the contribution to the total energy, ie. the Hamiltonian, associated to the interaction among all the points of finite set $A$. Then, $H_{\Lambda}^{\Phi}(\omega)$ is the contribution to the total energy of all the finite sets $A$ that meet $\Lambda$. Typically, the total energy may be infinite. \\
+    
+    \item The Hamiltonian in $\Lambda \in \mathcal{L}$ with boundary conditions $\bar \omega$, for the potential $\Phi$, is defined by 
+    
+    $$
+     H_{\Lambda}^{\Phi}(\omega | \bar{\omega}) =  H_{\Lambda}^{\Phi}(\omega_{\Lambda} \bar{\omega}_{\Lambda^c}) \textnormal{    where   } \Lambda^c = \mathds{L} / \Lambda.
+    $$
+    \end{enumerate}
+    
+    \item The partition function in $\Lambda \in \mathds{L}$ with boundary conditions $\bar \omega$ and inverse temperature $\beta > 0$, for the $\Phi$-potential and $\lambda$ previously defined, is given by 
+    
+    \begin{equation*}
+        \mathcal{Z}_{\Lambda}^{\Phi}(\bar{\omega}) = \int \lambda^{\Lambda}(d\omega) exp(-\beta   H_{\Lambda}^{\Phi}(\omega | \bar{\omega} ), \textnormal{ where } \lambda^\Lambda(d\omega) = \prod_{t\in\Lambda} \lambda(d\omega(t)) \textnormal{ is the product measure}.
+    \end{equation*}
+\end{itemize}
+
+\blanky \\
+
+As dynamical systems, the Ising model or lattice gas can be obtained by first ignoring the momenta and assuming that the particles' positions are restricted to a discrete subset of $\mathds{R}^d$. In general, this subset is taken to be the $d$-\textbf{dimensional cubic lattice}. Then,
 
 \begin{equation}
-    T_{\ket{s}}^* \mathcal{M} = (T_{\ket{s}} \mathcal{M})^*. \begin{array}{c}
-         \textnormal{ Concretely, elements of the cotangent  }  \\
-         \textnormal{ space are linear functionals on $T_{\ket{s}} \mathcal{M}$ } \\
-         \textnormal{  that is, every element $\bra{s} \in T_{\ket{s}}^* \mathcal{M}$ is a linear map } 
-    \end{array} 
-\bra{s} : T_{\ket{s}} \mathcal{M} \rightarrow \mathds{C}.
+    \textnormal{ the lattice is simply } \mathds{L} = \mathds{Z}^d, \textnormal{ where }
+    \mathds{Z}^d = \{{\bf i} = (i_1, \cdots, i_d) \in \mathds{R}^d \blanky  |  \blanky i_k \in \mathds{Z} \blanky \forall k \in \mathds{N}_{[1, d]}\}.
 \end{equation}
 
-Then, for for each value $\ket{\mathfrak{s}} \in \mathcal{M}$, the "momentum" $\bra{\mathfrak{s}}$ of the system would take values in the cotangent space $T_s^* \mathcal{M}$ of that space. Thus, the phase space is naturally represented here by the cotangent bundle 
+In other words, the system is imagined as living on $\mathds{R}^d$ and said space is composed of small cells, so that each cell can accommodate at most one particle. On each one of these cells, a single-spin space is then defined as $S_i = \{-1, 1\}^{i}, \blanky i \in \mathds{Z}$. To describe the model's microstates, consider a finite region $\Lambda \subset \mathds{Z}^d$, representing the vessel and an \textbf{occupation number} $n_i$ defined as 
+
+\begin{equation}
+    n_i : \Lambda \rightarrow \{0,1\} \Rightarrow \textnormal{ then the set of microstates is } \Omega_{\Lambda} = \{0, 1\}^{\times \Lambda}.
+\end{equation}
+
+The model automatically includes a short-range repulsion between the particles since no two particles are allowed to share a same cell. The attractive part of the interaction can then be included into the Hamiltonian:
 
 $$
-T^* \mathcal{M} = \{(\ket{\mathfrak{s}}, \bra{\mathfrak{s}}) : \ket{\mathfrak{s}} \in \mathcal{M} \textnormal{ and } \bra{\mathfrak{s}} \in T_{\ket{s}}^* \mathcal{M}\}
+    \forall {\bf n} = (n_i)_{i \in \Lambda}, n_i \in \Omega_{\Lambda}, \blanky {\bf H}({\bf n}) = \sum_{\{i,j\} \subset \Lambda} \mathcal{J}(i-j) n_i n_j, 
 $$
 
-Thus the basic object classical statistical mechanics is the Boltzmann weight $\prob(n)$. In thermal equilibrium, this is a probability measure that gives the probability that a system will be in a certain configuration $n \in \mathcal{M}$, in terms of said configuration's energy and system's temperature. In other words,
+which is completely similar to a classical, continuous, Hamiltonian ${\bf H}({\bf q})$ and where the function $\mathcal{J}: \mathds{Z}^d \rightarrow \mathds{R}$ depends, \textit{a priori}, only on the distance between the $i$-th and $j$-th cells. Note that the contribution of a pair of cells $\{i,j\}$ is zero if they do not both contain a particle. The number of particles in $\Lambda$ is given by 
+
+$$
+    N_{\Lambda}({\bf n}) = \sum_{i\in\Lambda} n_i.
+$$
+
+Thus the basic object classical statistical mechanics is the Boltzmann weight $\prob(n)$. In thermal equilibrium, this is a probability measure that gives the probability that a system will be in a certain configuration ${\bf n} \in \Omega_{\Lambda}$, in terms of said configuration's energy and system's temperature. In other words,
 
 \begin{equation}
     \begin{split}
-        \prob : T^* \mathcal{M} \rightarrow \R_{[0,1]} \textnormal{ where }
-        \prob{(n)} = \frac{e^{-\beta E_n}}{\mathcal{Z}},
+        \prob_{\Lambda, \beta, N} :{\bf n} \in \Omega_{\Lambda}\rightarrow \R_{[0,1]} \textnormal{ where }
+         \prob_{\Lambda, \beta, N} {(\bf n)} = \frac{e^{- {\bf H}({\bf n})}}{\mathcal{Z}_{\Lambda, \beta, N}},
     \end{split}
 \end{equation}
 
-where $\mathcal{Z}$ is the partition function, defined by the requirement that the probabilities sum to one, that is 
+where $\mathcal{Z}_{\Lambda, \beta, N}$ is the partition function defined on the finite region $\Lambda \subset \mathds{Z}^d$, at inverse temperature $\beta$ with $N$ particles. The Boltzmann weight is defined by the requirement that the probabilities sum to one. Then, the two relevant ensemble partition functions can be defined, as follows
+
+\begin{align*}
+        \mathcal{Q}_{\Lambda, \beta, N} = \sum_{\eta \in \Omega_{\Lambda, N}} e^{-\beta {\bf H}({\bf n})} & \blanky & 
+        \Theta_{\Lambda, \beta, N} = \sum_{N} e^{\beta \mu N} \sum_{\eta \in \Omega_{\Lambda, N}} e^{-\beta {\bf H}({\bf n})} \\
+        \blanky & \textnormal{ where } \Omega_{\Lambda, N} = \{n \in \Omega_{\Lambda} | N_{\Lambda} (n) = N\} & \blanky
+\end{align*}
+
+
+Note that if the degrees of freedom take on continuous values, or the model is defined in the continuum, then the sums are replaced by integrals. Note that, indeed, the probability of a given configuration increases as the energy gets lower, and conversely, that as the temperature gets higher and higher, the energies involved must get larger and larger to make a difference. Note as well that if all the energies are shifted by some constant $E_0$, the probabilities are left unchanged, since both the numerator and denominator are multiplied by the same constant, namely $e^{-\beta E_0}$. \\
+
+
+Consider then the Ising model, with nearest-neighbour interactions (coupling constant $J$) and a magnetic field $(h)$. Its regular crystalline structure, corresponding to the positions of the magnet's atoms by a finite, non-oriented graph $G = (\Lambda, \mathcal{E})$, whose set of vertices is $\Lambda \subset \mathds{Z}^d$. Then, the \textbf{box of radius $n$} is 
 
 $$
-\mathcal{Z} = \sum_{n \in T^* \mathcal{M}} e^{-\beta E_n}.
+    B({n}) = \{-n, \cdots, n\}^d
 $$
 
-Note that if the degrees of freedom take on continuous values, or the model is defined in the continuum, then this sum is replaced by an integral. Note that, indeed, the probability of a given configuration increases as the energy gets lower, and conversely, that as the temperature gets higher and higher, the energies involved must get larger and larger to make a difference. Note as well that if all the energies are shifted by some constant $E_0$, the probabilities are left unchanged, since both the numerator and denominator are multiplied by the same constant, namely $e^{-\beta E_0}$. \\
+The edges of the graph will most often be between nearest neighbours, that is, pairs of vertices $i, j$ such that $||j-i||_{1} = 1$ \footnote{In this discrete setting, the norm is defined such that $||i||_1 = \sum_{k=1}^d |i_k|$}. Two nearest-neighbours spins are denoted by $i \sim j$. Then, the set of edges in the box $B(n)$ is $\{\{i,j\} \subset B(n) : i \sim j\}$. \\
 
-Consider the Ising model, an interacting many-body system, where the energies $E_n$ depends on mutual properties of the degrees of freedom. This is a spin system where the spin is contrained to point in one of two directions, these directions are describied by a variable $\sigma_i = 1$ for the up direction and $\sigma_i = -1$ for the down direction. For an $N$-site lattice, there are therefore $2^N$ different configurations in the model. The simplest interaction is to assign one energy unit if the neighbouring spins are the same, and another if neighbouring spins are different, that is 
+The Ising model is defined by first assuming that a spin is located at each vertex of a graph $G = (\Lambda, \mathcal{E})$, such that each single-spin space has cardinality two, ie. each spin can only take two values. It follows, then, that to describe a microstate, a variable $\sigma_i$ taking two possible values ($\pm1$) is associated to each vertex $i \in \Lambda$, which is called the \textbf{spin} at $i$. A microstate of the system is called a \textbf{configuration}, and is thus an element
+
+$$
+    \sigma \in \Omega_{\Lambda} = \{0, 1\}^{\times \Lambda}.
+$$
+
+An $N$-site chain, with finite $N$, has a configuration space, which is a discrete space, which is a 0-manifold. This 0-manifold has zero topological dimension and $2^N$ cardinality. The microscopic interactions among the spins are defined such that 
+
+\begin{enumerate}
+    \item There are only interactions between pairs of sins located at neighbouring vertices. That is, it is assumed that the spins at two distinct vertices $i, j \in \Lambda$ interact if and only if the pair $\{i, j\}$ is an edge of the graph. \\
+    
+    \item The interaction favours agreement of spin values. In the simplest form of the Ising model, this is done in the simplest possible way: a pair of spins at the endpoints $i$ and $j$ of an edge, decreases the overall configuration's energy if they agree $\sigma_i = \sigma_j$ and increases if they differ. More precisely, the spins at the endpoints of the $\{i,j\}-$edge contribute to the total energy by an amount 
+    
+    $$
+        - \sigma_i \sigma_j.
+    $$
+    
+    Therefore, configurations in which most pairs of neighbours are aligned to have smaller energy. 
+    
+    \item Spins align with the external magnetic field. Assume that a constant external magnetic field of $h \in \mathds{R}$ intensity, oriented along the same direction as the spins, acts on the system. Its interaction with the $i$-th spin contributed an
+    
+    $$
+        -h \sigma_i
+    $$
+    
+    to the total energy. That is, when the magnetic field is positive, the configurations with most of their spins equal to +1 have smaller energy. \\
+\end{enumerate}
+
+Then, the energy of a given configuration $\sigma$ is obtained by summing the interactions over all pairs and by adding the interaction of each spin with the external magnetic field, thus yielding the \textbf{Ising Hamiltonian}
 
 \begin{equation}
-    E(\{\sigma_i\}_{i=1}^{N}) = -J \sum_{\langle ij \rangle} \sigma_i \sigma_j, \textnormal{ where } \begin{array}{c}
-        \{\sigma_i\}_{i=1}^{N} \in \bigtimes_{i=1}^{N}  T^* \mathcal{M}_i \\
-    \end{array}
+    {\bf H}_{\Lambda; h}(\sigma) = - J \sum_{\substack{i,j \in \Lambda} \\
+    i \sim j} \sigma_i \sigma_j - h \sum_{i \in \Lambda} \sigma_i, \textnormal{ with } \sigma \in \Omega_{\Lambda}. 
 \end{equation}
 
-and where the sum is performed on all nearest-neighbour sites $i$ and $j$ ie. this sum is not over all sites, but rather over all bonds. Note that on the square lattice, there are two bonds for every site. The parameter $J$ is the coupling strength, if $J>0$ this models describes a ferromagnetic coupling, while $J<0$ describes an antiferromagnetic coupling. The partition function is then 
+Since it favours local alignment of the spins, the Hamiltonian of the model is said to be ferromagnetic, which is not to say it behaves like a ferromagnet. The Gibbs measure/distribution is then denoted by 
 
 \begin{equation}
-    \mathcal{Z} = \sum_{\sigma_i = \pm 1} e^{-\beta E(\{\sigma_i\})},
+    \begin{split}
+        \prob_{\Lambda, \beta, h} :{\bf n} \in \Omega_{\Lambda}\rightarrow \R_{[0,1]} \textnormal{ where }
+         \prob_{\Lambda, \beta, h}(\sigma) = \frac{e^{-\beta {\bf H}_{\Lambda; h}(\sigma) }}{\mathcal{Z}_{\Lambda, \beta, h}}. 
+    \end{split}
 \end{equation}
 
-where the sum is performed over all $2^N$ different configurations. From the partition function, the expectation values of physical quantities can be calculated. For example
+Note that, in the absence of a magnetic field, even though local spin alignment is favoured by the Hamiltonian, neither of the orientations (+1 or -1) is globally favoured. Namely, if $-\sigma$ denotes the spin-flipped configuration in which $(-\sigma)_{i} = -\sigma_i$, then ${\bf H}_{\Lambda; 0}(\sigma) = {\bf H}_{\Lambda; 0}(-\sigma)$, this implies 
+
+$$
+    \prob_{\Lambda, \beta, 0} (-\sigma) = \prob_{\Lambda, \beta, 0}. 
+$$
+
+The model is then said to be invariant under global spin flip. When $h\neq0$, this symmetry no longer holds. Then the expectation of an observable $f : \Omega_\Lambda \rightarrow \mathds{R}$, under $\mu_{\Lambda, \beta, h}$, is denoted by $\langle f \rangle_{\Lambda, \beta, h}$. 
+The parameter $J$ is the coupling strength, if $J>0$ this models describes a ferromagnetic coupling, while $J<0$ describes an antiferromagnetic coupling. 
+From the partition function, the expectation values of physical quantities can be calculated. For example
 
 \begin{itemize}
-    \item Internal energy $\langle E\rangle = \frac{1}{\mathcal{Z}} \sum_{n} E_n e^{-\beta E_n} = - \frac{\partial}{\partial \beta} \log \mathcal{Z}$. \\
-    \item Specific heat $C = \frac{\partial}{\partial T} \langle E\rangle = k \frac{\partial}{\partial T} T^2 \frac{\partial \log \mathcal{Z}}{\partial T}$ \\
+    \item Internal energy $\langle E\rangle_{\Lambda, \beta, h} = \frac{1}{\mathcal{Z}} \sum_{n} E_n e^{-\beta E_n} = - \frac{\partial}{\partial \beta} \log \mathcal{Z}$. \\
+    \item Specific heat $C = \frac{\partial}{\partial T} \langle E\rangle_{\Lambda, \beta, h} = k \frac{\partial}{\partial T} T^2 \frac{\partial \log \mathcal{Z}}{\partial T}$ \\
     \item Two-point correlator in the Ising model, 
     
     $$
-    \langle \sigma_a \sigma_b \rangle = \sum_{\sigma_i} \sigma_a \sigma_b \prob({\sigma_i}) = \frac{1}{\mathcal{Z}} \sum_{\sigma_i = \pm 1} \sigma_a \sigma_b e^{-\beta E(\{\sigma_i\})},
+    \langle \sigma_a \sigma_b \rangle_{\Lambda, \beta, h} = \sum_{\sigma_i} \sigma_a \sigma_b \prob_{\Lambda, \beta, h}({\sigma_i}) = \frac{1}{\mathcal{Z}} \sum_{\sigma_i = \pm 1} \sigma_a \sigma_b e^{-\beta {\bf H}_{\Lambda; h}(\sigma)},
     $$
     
     which describes how the degrees of freedom at one point are affected by the degrees of freedom at another point. If $ \langle \sigma_a \sigma_b \rangle = 1$, the two spins are aligned, while if $ \langle \sigma_a \sigma_b \rangle = -1$ the two spins are anti-aligned, and if $ \langle \sigma_a \sigma_b \rangle = 0$, they are uncorrelated. 
 \end{itemize}
+
+%The partition function is then 
+%\begin{equation}
+%    \mathcal{Z} = \sum_{\sigma_i = \pm 1} e^{-\beta E(\{\sigma_i\})},
+%\end{equation}
+%where the sum is performed over all $2^N$ different configurations. 
+
+%Consider the Ising model, an interacting many-body system, where the energies $E_n$ depends on mutual properties of the degrees of freedom. This is a spin system where the spin is contrained to point in one of two directions, these directions are describied by a variable $\sigma_i = 1$ for the up direction and $\sigma_i = -1$ for the down direction. For an $N$-site lattice, there are therefore $2^N$ different configurations in the model. The simplest interaction is to assign one energy unit if the neighbouring spins are the same, and another if neighbouring spins are different, that is 
+
+%\begin{equation}
+%    E(\{\sigma_i\}_{i=1}^{N}) = -J \sum_{\langle ij \rangle} \sigma_i \sigma_j, \textnormal{ where } \begin{array}{c}
+%        \{\sigma_i\}_{i=1}^{N} \in \bigtimes_{i=1}^{N}  T^* \mathcal{M}_i \\
+%    \end{array}
+%\end{equation}
+
+%and where the sum is performed on all nearest-neighbour sites $i$ and $j$ ie. this sum is not over all sites, but rather over all bonds. Note that on the square lattice, there are two bonds for every site. 
 
 \blanky \\
 
@@ -145,7 +461,7 @@ A common case in statistical mechanics occurs when, at temperatures much larger 
 
 \paragraph{\textbf{Zero-dimensional Ising model}}
 
-A system with a finite number of spins, no matter in which directions, is commonly referred to a zero-dimensional model. In the $d=0$-Ising model, there just two degrees of freedom, called $s_1$ and $s_2$. In addition, the Ising spins can only take two values $s_i \in \mathcal{M} = \{\pm 1\}$. To compute the partition function, $\mathcal{Z}$, the system's energy must be known for every configuration $(s_1, s_2)$, which is assumed to be 
+A system with a finite number of spins, no matter in which directions, is commonly referred to a zero-dimensional model. In the $d=0$-Ising model, there are just two degrees of freedom, called $s_1$ and $s_2$, both of which can only take two values $s_i \in S = \{\pm 1\}$ and where the configuration space is given by $(\Omega_\Lambda, \mathcal{F})$, where $\Omega_\Lambda = \{-1, 1\}^{\times 2}$ and where the $\sigma$-algebra $\mathcal{F} = 2^{\Omega_\Lambda}$. To compute the partition function, $\mathcal{Z}_{\Lambda, \beta, B}$, the system's energy must be known for every configuration $(s_1, s_2) \in \Omega_{\Lambda}$, which is assumed to be 
 
 \begin{equation}
     E({\bf s}) = - J s_1 s_2 - B(s_1+s_2).
@@ -156,7 +472,7 @@ This energy models a system made of magnetic moments. Although, in general, the 
 The partition function may be evaluated as 
 
 \begin{equation}
-    \mathcal{Z} = \sum_{s_i \in \bigtimes_{i=1}^{2} \mathcal{M}} e^{K s_1 s_2 + h(s_1+s_2)} \textnormal{ where } \begin{array}{c}
+    \mathcal{Z}_{\Lambda, K, h} = \sum_{{\bf s} \in \Omega_{\Lambda}} e^{K s_1 s_2 + h(s_1+s_2)} \textnormal{ where } \begin{array}{c}
          K = \beta J  \\
          h = \beta B.
     \end{array}
@@ -165,22 +481,22 @@ The partition function may be evaluated as
 It is readily seen that 
 
 \begin{equation}
-    \mathcal{Z}(K,h) = 2 \cosh(2h) e^{K} + 2e^{-K}.
+    \mathcal{Z}_{\Lambda, K, h}  = \sum_{m=-\frac{1}{2}}^{\frac{1}{2}} e^{\beta h m} 2 \cosh\bigg(\frac{h + Km}{2}\bigg) = 2 \cosh(2h) e^{K} + 2e^{-K}.
 \end{equation}
 
 At very low temperatures (very low $T$ or very high $\beta$), the state of lowest energy will dominate the sum and thus, the spins are expected to be aligned with $B$ and also with each other. At very high temperatures and vanishing $\beta$, all four states get equal weight and the spins will fluctuate independently of each other and the applied field. In effect, let the system's (spin-) average magnetization be $M = \frac{1}{2} (s_1+s_2)$, in any given configuration\footnote{Note that this is the average over all spins in the system, and not the thermal average}. The thermal average can then be found to be 
 
 \begin{equation}
     \begin{split}
-        \langle M \rangle &= \frac{1}{\mathcal{Z}} \sum_{s_i \in \bigtimes_{i=1}^{2} \mathcal{M}} \frac{1}{2} (s_1+s_2) e^{K s_1 s_2 + h(s_1+s_2)} = \frac{1}{2} \frac{1}{\mathcal{Z}} \frac{\partial \mathcal{Z}(K,h)}{\partial h} \\
-        &= \frac{1}{2} \frac{\partial \log \mathcal{Z}(K,h)}{\partial h}.
+        \langle M \rangle_{\Lambda, K, h} &= \frac{1}{ \mathcal{Z}_{\Lambda, \beta, h}} \sum_{{\bf s} \in \Omega_\Lambda} \frac{1}{2} (s_1+s_2) e^{K s_1 s_2 + h(s_1+s_2)} = \frac{1}{2 \mathcal{Z}_{\Lambda, K, h} }\frac{\partial  \mathcal{Z}_{\Lambda, K, h} }{\partial h} \\
+        &= \frac{1}{2} \frac{\partial \log  \mathcal{Z}_{\Lambda, K, h}}{\partial h}.
     \end{split}
 \end{equation}
 
-In terms of the free energy $F(K,h)$, defined as $\mathcal{Z} = e^{-\beta F}$, where $-\beta F = \log(2 \cosh(2h) e^{K} + 2e^{-K})$ it yields
+In terms of the free energy $F(K,h)$, defined as $\mathcal{Z}_{\Lambda, K, h} = e^{-\beta F}$, where $-\beta F = \log(2 \cosh(2h) e^{K} + 2e^{-K})$ it yields
 
 \begin{equation}
-    \langle M \rangle = \frac{\partial [-\beta F(K,h)]}{\partial h} = \frac{\sinh 2h}{\cosh 2h + e^{-2K}} \textnormal{ which, as expected} \begin{array}{c}
+    \langle M \rangle_{\Lambda, K, h}  = \frac{\partial [-\beta F(K,h)]}{\partial h} = \frac{\sinh 2h}{\cosh 2h + e^{-2K}} \textnormal{ which, as expected} \begin{array}{c}
          \langle M \rangle \underset{h, K \rightarrow \infty}{\rightarrow} 1   \\
          \langle M \rangle \underset{h, K \rightarrow 0}{\rightarrow} h. 
     \end{array}
@@ -192,15 +508,15 @@ The thermal average of a particular spin can also be calculated, provided a soru
 th spin to its own independent field $h_i$. Then,
 
 \begin{align}
-    \mathcal{Z}(K,h) &= \sum_{s_i \in \mathcal{M}^{\times 2}} e^{K s_1 s_2 + {\bf h} \cdot {\bf s}} = e^{-\beta F(K, {\bf h})} \\ \Rightarrow \langle s_i \rangle = & \frac{\partial [-\beta F(K,{\bf h})]}{\partial h_i} = \frac{\partial \log \mathcal{Z}(K,{\bf h})}{\partial h_i} = \frac{1}{\mathcal{Z}} \frac{\partial \mathcal{Z}}{\partial h_i} .
+    \mathcal{Z}_{\Lambda, K, h} &= \sum_{{\bf s} \in \Omega_\Lambda} e^{K s_1 s_2 + {\bf h} \cdot {\bf s}} = e^{-\beta F(K, {\bf h})} \\ \Rightarrow \langle s_i \rangle = & \frac{\partial [-\beta F(K,{\bf h})]}{\partial h_i} = \frac{\partial \log \mathcal{Z}_{\Lambda, K, h}}{\partial h_i} = \frac{1}{\mathcal{Z}_{\Lambda, K, h}} \frac{\partial \mathcal{Z}_{\Lambda, K, h}}{\partial h_i} .
 \end{align}
 
 Taking the mixed derivative with respect to both $h_1$ and $h_2$ yields 
 
 \begin{equation}
     \begin{split}
-        \frac{\partial^2 [-\beta F(K,{\bf h})]}{\partial h_1 \partial h_2} &= \frac{\partial}{\partial h_1} \bigg(\frac{1}{\mathcal{Z}} \frac{\partial \mathcal{Z}}{\partial h_2} \bigg)  \\
-        &= \frac{1}{\mathcal{Z}} \frac{\partial^2 \mathcal{Z}}{\partial h_1 \partial h_2} - \frac{1}{\mathcal{Z}^2} \frac{\partial \mathcal{Z}}{\partial h_1} \frac{\partial \mathcal{Z}}{\partial h_2} \\
+        \frac{\partial^2 [-\beta F(K,{\bf h})]}{\partial h_1 \partial h_2} &= \frac{\partial}{\partial h_1} \bigg(\frac{1}{\mathcal{Z}_{\Lambda, K, h}} \frac{\partial \mathcal{Z}_{\Lambda, K, h}}{\partial h_2} \bigg)  \\
+        &= \frac{1}{\mathcal{Z}_{\Lambda, K, h}} \frac{\partial^2 \mathcal{Z}_{\Lambda, K, h}}{\partial h_1 \partial h_2} - \frac{1}{\mathcal{Z}^2} \frac{\partial \mathcal{Z}_{\Lambda, K, h}}{\partial h_1} \frac{\partial \mathcal{Z}_{\Lambda, K, h}}{\partial h_2} \\
         &= \langle s_1 s_2 \rangle - \langle s_1 \rangle \langle s_2 \rangle \\
         &= \langle s_1 s_2 \rangle_c \textnormal{ which is the connected correlation function.}
     \end{split}
@@ -227,8 +543,8 @@ The correlation function $\langle s_1 s_2 \rangle$ as a $K$-derivative,
 
 \begin{equation}
     \begin{split}
-        \frac{\partial[-\beta F(K,{\bf h})]}{\partial K} &= \frac{\partial \log \mathcal{Z}}{\partial K} = \frac{1}{\mathcal{Z}}\frac{\partial \mathcal{Z}}{\partial K} = \frac{1}{\mathcal{Z}} \frac{\partial}{\partial K}  \sum_{\mathcal{M}^{\times 2}} e^{K s_1 s_2 + h(s_1+s_2)} \\
-        &= \frac{1}{\mathcal{Z}} \sum_{\mathcal{M}^{\times 2}} s_1 s_2 e^{K s_1 s_2 + h(s_1+s_2)} = \langle s_1 s_2 \rangle \\
+        \frac{\partial[-\beta F(K,{\bf h})]}{\partial K} &= \frac{\partial \log \mathcal{Z}_{\Lambda, K, h}}{\partial K} = \frac{1}{\mathcal{Z}_{\Lambda, K, h}}\frac{\partial \mathcal{Z}_{\Lambda, K, h}}{\partial K} = \frac{1}{\mathcal{Z}_{\Lambda, K, h}} \frac{\partial}{\partial K}  \sum_{{\bf s} \in \Omega_{\Lambda}} e^{K s_1 s_2 + h(s_1+s_2)} \\
+        &= \frac{1}{\mathcal{Z}_{\Lambda, K, h}} \sum_{\mathcal{M}^{\times 2}} s_1 s_2 e^{K s_1 s_2 + h(s_1+s_2)} = \langle s_1 s_2 \rangle \\
         &= \frac{e^K \cosh 2h - e^{-K}}{e^K \cosh 2h + e^{-K}},
     \end{split}
 \end{equation}
@@ -238,7 +554,7 @@ which may interpreted as quantifying the average interaction energy, which happe
 Higher-order derivatives with respect to $K$ or $h$ (for uniform $h$) give additional information about fluctuactions about the mean. Thus, 
 
 \begin{equation}
-    \chi = \frac{1}{2} \frac{ \partial \langle M \rangle}{\partial h} = \frac{1}{4} \frac{\partial^2 [-\beta F]}{\partial h^2} = \langle M^2 \rangle - \langle M \rangle^2
+    \chi = \frac{1}{2} \frac{ \partial \langle M \rangle}{\partial h} = \frac{1}{4} \frac{\partial^2 [-\beta F]}{\partial h^2} = \langle M^2 \rangle_{\Lambda, K, h}- \langle M \rangle^2_{\Lambda, K, h}
 \end{equation}
 
 measures the magnetization's fluctuation about its mean and is the magnetic susceptibility, and quantifies the rate of change of the average magnetization with the applied field. \\
@@ -249,7 +565,14 @@ The standard way for solving the one-dimensional Ising model is to use the trans
 
 Now, any real system is finite, one may ask why we should focus on infinite systems. The answer lies that systems with a very large number of degrees of freedom look more like infinite systems than finite ones in the following sense.  Phenomenologically, system at a temperature lower than some Curie temperature $T_C$ will magnetize. But it can be shown rigorously that a finite system of Ising spins can never magnetize: if it is polarized one way (say the $z$-axis) for some time, it can jump to the opposite polarization after some time, so that on average it is not magnetized. This rigorous result can be reconciled with reality by noting that the time to flip can be as large as the age of the universe, so that in human time, magnetization is possible. The nice thing about infinite system is that remote possibilities are rendered impossible, making them a better model of real life. \\
 
-Consider a lattice of $N+1$ equally spaced points, numbered by a natural index $i = 0, 1, \cdots, N$. Eventually, the thermodynamic limit $N \rightarrow \infty$ may be taken. The reason for lining up the lattice points on a vertical axis is that later it will become the time axis for a related problem. The energy of a given configuration may be written as 
+
+
+
+
+
+
+
+Eventually, the thermodynamic limit $N \rightarrow \infty$ may be taken. The reason for lining up the lattice points on a vertical axis is that later it will become the time axis for a related problem. The energy of a given configuration may be written as 
 
 \begin{equation}
     E = -J \sum_{i=0}^{N-1} s_i s_{i+1}.
@@ -533,9 +856,89 @@ The $\langle \sigma_j \sigma_i \rangle$-correlator depends on just the differenc
 
 \clearpage
 
+\paragraph{\textbf{The Monte-Carlo method}}
+
+The partition function and two-point functions may be numerically calculated with the Monte-Carlo method. Consider the two point function, 
+
+\begin{equation}
+    \langle \sigma_i \sigma_j \rangle_{\Lambda, \beta, h} = \frac{\sum_{{\bm \sigma} \in \Omega_{\Lambda}} \sigma_i \sigma_j e^{-\beta {\bf H}_{\Lambda, \beta, h}({\bm \sigma})}}{\sum_{{\bm \sigma} \in \Omega_{\Lambda}} e^{-\beta {\bf H}_{\Lambda, \beta, h}({\bm \sigma})}} = \sum_{{\bm \sigma} \in \Omega_{\Lambda}} \sigma_i \sigma_j({\bm \sigma}) \prob_{\Lambda, \beta, h}{({\bm \sigma})},
+\end{equation}
+
+where $\sigma_i \sigma_j({\bm \sigma})$ is the value of $\sigma_i \sigma_j$ at the ${\bm \sigma} \in \Omega_{\Lambda}$ configuration. The Monte-Carlo method is useful for numerically computing multidimensional integrals or sums. Each configuration will occur at a rate proportional to its Boltzmann weight. Then, for each configuration, the value of $\sigma_i \sigma_j$ can be computed. Since the configurations are already weighted, the arithmetic average of these numbers will yield the weighted thermal average. From this correlation function, the correlation length $\varepsilon$ can be calculated. By the same method, any other quantity of interest may be calculated eg. the magnetization. This can be done for any problem with a real, positive, Boltzmann weight, not just for Ising models. One specific algorithm for calculating these weighted configurations is the \textbf{Metropolis Method}, as follows \\
+
+\begin{algorithm}[H]
+ \KwData{System's parameters: $J, h, \beta$}
+ \KwResult{}
+ Start with some configuration ${\bm \sigma}_i \in \Omega_{\Lambda}$ with energy $E_i$;\
+ \While{not at end of this document}{
+  Consider another configuration ${\bm \sigma}_j \in \Omega_{\Lambda}$ with energy $E_j$, obtained by changing some degrees of freedom\;
+  \eIf{ $E_j < E_i$}{
+   jump to $j$ with unit probability\;
+   }
+   {{
+    jump to $j$ with probability $e^{-\beta(E_j - E_i)}$
+  }}
+ }
+ \caption{Metropolis Algorithm}
+\end{algorithm}
+
+After a great number of iterations, the configurations appear with probabilities obeying 
+
+$$
+    \frac{p(i)}{p(j)} = e^{-\beta (E_i - E_j)}.
+$$
+
+In effect, the rate equation reads 
+
+\begin{equation*}
+    \frac{dp(i)}{dt} = -p(i) \sum_{j} R(i\rightarrow j) + \sum_{j} p(j) R(j\rightarrow i),
+\end{equation*}
+
+where $R(i\rightarrow j)$ is the rate of jumping from the $i$-th configuration to the $j$-th configuration and vice-versa. In equilibrium or steady state, $\dot{p(i)} = 0$. One way to impose such constrain on the right-hand side is by considering a detailed balance approach, to
+
+\clearpage
+
 \subsection{Quantum Spin Systems}
 
-The Hilbert space of a quantum spin is defined by choosing a representation for the spin operators. A representation of a Lie algebra is a set of three matrices satisfying the commutation relations of the $\mathfrak{su}(2)$-algebra. An \textbf{irreducible representation} is a set of matrices such that no unitary transformation $\mathcal{U} {\bf S}^{a} \mathcal{U}^\dagger$ block-diagonalizes all three matrices. It is known that for the $\mathfrak{su}(2)$-Lie algebra there is exactly one set (up to unitary transformations) of irreducible complex $n\times n$-matrices, for each integer $n$. It is customary to write $n=2s+1$ for all integers and half-integers $s$. A sinsle spin-$s$ quantum particle at a fixed point in space therefore has a Hilbert space $\mathds{C}^{2s+1}$, so the matrices ${\bf S}^a$ are all $(2s+1)\times(2s+1)$. An orthonormal basis is given by the eigenstates of any one of the matrices. 
+A general spin chain is a dynamical system. In particular, an $N$-site chain, with finite $N$, has a configuration space, which is a discrete space or also known as a 0-manifold.
+
+Consider a general spin chain as a dynamical system. Its spins can take any value in a given configuration space, which is a finite-dimensional, discrete space, also called as a 0-%or infinite-dimensional 
+manifold $\mathcal{M}$. Therefore, assuming that $\mathcal{M}$ is a smooth manifold, the tangent space at $\ket{s}$ is denoted by $T_{\ket{s}} \mathcal{M}$. Then, the cotangent space at $\ket{s}$ is defined as the dual space of $T_{\ket{s}} \mathcal{M}$, 
+
+\begin{equation}
+    T_{\ket{s}}^* \mathcal{M} = (T_{\ket{s}} \mathcal{M})^*. \begin{array}{c}
+         \textnormal{ Concretely, elements of the cotangent  }  \\
+         \textnormal{ space are linear functionals on $T_{\ket{s}} \mathcal{M}$ } \\
+         \textnormal{  that is, every element $\bra{s} \in T_{\ket{s}}^* \mathcal{M}$ is a linear map } 
+    \end{array} 
+\bra{s} : T_{\ket{s}} \mathcal{M} \rightarrow \mathds{C}.
+\end{equation}
+
+Then, for for each value $\ket{\mathfrak{s}} \in \mathcal{M}$, the "momentum" $\bra{\mathfrak{s}}$ of the system would take values in the cotangent space $T_s^* \mathcal{M}$ of that space. Thus, the phase space is naturally represented here by the cotangent bundle 
+
+$$
+T^* \mathcal{M} = \{(\ket{\mathfrak{s}}, \bra{\mathfrak{s}}) : \ket{\mathfrak{s}} \in \mathcal{M} \textnormal{ and } \bra{\mathfrak{s}} \in T_{\ket{s}}^* \mathcal{M}\}
+$$
+
+Thus the basic object classical statistical mechanics is the Boltzmann weight $\prob(n)$. In thermal equilibrium, this is a probability measure that gives the probability that a system will be in a certain configuration $n \in \mathcal{M}$, in terms of said configuration's energy and system's temperature. In other words,
+
+\begin{equation}
+    \begin{split}
+        \prob : T^* \mathcal{M} \rightarrow \R_{[0,1]} \textnormal{ where }
+        \prob{(n)} = \frac{e^{-\beta E_n}}{\mathcal{Z}},
+    \end{split}
+\end{equation}
+
+where $\mathcal{Z}$ is the partition function, defined by the requirement that the probabilities sum to one, that is
+
+$$
+\mathcal{Z} = \sum_{n \in T^* \mathcal{M}} e^{-\beta E_n}.
+$$
+
+Note that if the degrees of freedom take on continuous values, or the model is defined in the continuum, then this sum is replaced by an integral. Note that, indeed, the probability of a given configuration increases as the energy gets lower, and conversely, that as the temperature gets higher and higher, the energies involved must get larger and larger to make a difference. Note as well that if all the energies are shifted by some constant $E_0$, the probabilities are left unchanged, since both the numerator and denominator are multiplied by the same constant, namely $e^{-\beta E_0}$. \\
+
+
+The Hilbert space of a quantum spin is defined by choosing a representation for the spin operators. A representation of a Lie algebra is a set of three matrices satisfying the commutation relations of the $\mathfrak{su}(2)$-algebra. An \textbf{irreducible representation} is a set of matrices such that no unitary transformation $\mathcal{U} {\bf S}^{a} \mathcal{U}^\dagger$ block-diagonalizes all three matrices. It is known that for the $\mathfrak{su}(2)$-Lie algebra there is exactly one set (up to unitary transformations) of irreducible complex $n\times n$-matrices, for each integer $n$. It is customary to write $n=2s+1$ for all integers and half-integers $s$. A single spin-$s$ quantum particle at a fixed point in space therefore has a Hilbert space $\mathds{C}^{2s+1}$, so the matrices ${\bf S}^a$ are all $(2s+1)\times(2s+1)$. An orthonormal basis is given by the eigenstates of any one of the matrices. 
 
 \begin{itemize}
     \item For $s=0$, the matrices all consist of the number zero, thus this is the trivial representation. 
