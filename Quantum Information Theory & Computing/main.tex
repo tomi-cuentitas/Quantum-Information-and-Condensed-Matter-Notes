@@ -1,0 +1,60 @@
+\documentclass{homework}
+\author{Tomás Pérez}
+\class{Condensed Matter Theory - Lecture Notes}
+\date{\today}
+\title{Theory \& Notes}
+
+\graphicspath{{./media/}}
+
+\begin{document} \maketitle
+
+\section{Elements of Matrix Analysis}
+
+Consider a linear operator, an endomorphism on $\mathds{C}^{n \times n}$, ${\bf A}: \mathds{C}^{n \times n} \rightarrow \mathds{C}^{n \times n}$. Its spectrum is defined as the set of eigenvalues 
+
+$$
+  \sigma({\bf A}) = \{\lambda \in \mathds{C} \blanky | \blanky \ker(A - \lambda \mathds{1}_n) \neq {0}\}, 
+$$
+
+which is a finite, non-empty $\mathds{C}$-subset. Then, the following statements hold
+
+\begin{itemize}
+    \item $\lambda \in \sigma({\bf A}) \leftrightarrow \exists x \in \mathds{C}^n \blanky | \blanky x \neq 0 \land {\bf A}x = \lambda x$.
+    \item $\forall \mu \in \mathds{C}, \sigma({\bf A}+\mu \mathds{1}) = \sigma({\bf A}) + \mu = \{\lambda + \mu \blanky | \blanky \sigma({\bf A})\}$.
+    \item ${\bf A} \in \textnormal{GL}(n, \mathds{C}) \leftrightarrow 0 \notin \sigma({\bf A})$. Moreover, $\lambda \notin \sigma({\bf A}) \leftrightarrow {\bf A}-\lambda \mathds{1}_n \in \textnormal{GL}(n, \mathds{C}).$
+    \item If $P_{{\bf A}}(x) \in \mathds{C}[x]$ is ${\bf A}$'s characteristic polynomial, then $\lambda \in \sigma({\bf A}) \leftrightarrow P_{{\bf A}}(\lambda) = 0$ ie. $\sigma({\bf A})$ is $P_{\bf A}(x)$'s zeros-set. 
+    \item Since $\textnormal{gr}(P_{{\bf A}})=n$, then $0 < |\sigma({\bf A})| \leq n$. 
+\end{itemize}
+
+
+
+\clearpage
+
+\section{Essentials of Information Entropy and Related Measures}
+
+Rossignoli, Kowalski, Curado (2013) \\
+
+\paragraph{\textbf{Shannon Entropy}}
+
+Consider a probability distribution given by 
+
+\begin{equation}
+    \bm{\mathfrak{p}} = \{p_i\}_{i=1}^{n} \textnormal{ such that }  \begin{medsize}\begin{array}{@{\mathsmaller{\bullet}\enspace}l@{}}
+    p_i \geq 0 \\[1ex]
+    \sum_{i=1}^{n} p_i = 1 
+    \end{array}\end{medsize}
+\end{equation}
+
+where $p_i$ indicates the probability of a certain event $i$ in a random experiment. The Shannon entropy is a mesaure of the lack of information associated with the probability distribution and is defined as 
+
+\begin{equation}
+    S(\bm{\mathfrak{p}}) = - \sum_{i=1}^{n} p_i \log p_i,
+\end{equation}
+
+where the most common choice for the logarithm base is $a=2$, with the unit of information being the bit. In this case, if $\bm{\mathfrak{p}} = \left(\frac{1}{2},\frac{1}{2}\right)$ ie. for an experiment with just two possible and equally likely outcomes. Said quantity is a measure of the lack of information associated with the discrete probability distribution $\bm{\mathfrak{p}}$, quantifying the uncertainty about the possible outcome of the random experiment. It can also be considered as the average information gained once the outcome is known, as well as a measure of the disorder associated with $\bm{\mathfrak{p}}$. It satisfies that $S(\bm{\mathfrak{p}}) \geq 0$, where the lower bound occurs if and only if there is no uncertainty, ie. there just a single event occurring with probability 1, and all others with zero probability, this is 
+
+\begin{equation}
+    S(\bm{\mathfrak{p}}) = 0 \textnormal{ if and only if } p_i = \delta_{ij}
+\end{equation}
+
+\end{document}
