@@ -1315,7 +1315,73 @@ Another interesting quantity is the total magnetic susceptibility, which can be 
 
 which is divergent if $\lambda = J$. This shows that the XX-Heisenberg model has a second order (since there is no latent heat involved it can't be a first order phase transition) quantum phase transition, with an associated power law with a critical exponent.  \\
 
-%\subsection{XXZ-model}
+\clearpage
+
+\subsection{XXZ-model}
+
+Consider the $d=1$-XXZ-Heisenberg model, with its Hamiltonian (written in its longitudinal and transverse terms) as 
+
+\begin{equation}
+    \Hamiltonian_{\mathds{X}\mathds{X}\mathds{Z}} = J \sum_{n=1}^{N} \bigg( \frac{1}{2} (\spin^{+}_{n} \spin^{-}_{n+1} + \spin^{-}_{n} \spin^{+}_{n+1}) + \Delta \spin^{z}_{n} \spin_{n+1}^{z} \bigg),
+    %\label{XXZ hamiltonian}
+\end{equation}
+
+where the effect of the transverse part, for spin-$\frac{1}{2}$ particles, is nothing but to interchange up and down spins, $\ket{\uparrow\downarrow} \Leftrightarrow \ket{\downarrow\uparrow}$, upto a factor of $\frac{1}{2}$. This model has a number of symmetries, leading to good quantum numbers such as wave vector ${\bf q}$ (translation), ${\bf M}^z$ (rotation about $z$-axis), ${\bf S}_{\textnormal{tot}}$ (for general rotations, $|\Delta| = 1$) and parity (spin inversion). The most important link between theory and experiment are the spin correlation functions or response dynamical structure factors, which for a spin chain are defined as follows
+
+\begin{equation}
+    \begin{split}
+        \bm{\mathcal S}^{\alpha, \alpha}(q, \omega) = \sum_{n} \int dt e^{i(qn-\omega t)} \langle \spin_n^{\alpha} \spin_{0}^{\alpha}(t=0) \rangle, \\
+        \bm{\mathcal S}^{\alpha, \alpha}(q) = \sum_{n} e^{iqn} \langle {\bf S}_n^{\alpha} {\bf S}_{0}^{\alpha} \rangle = \frac{1}{2\pi} \int d\omega \blanky \bm{\mathcal S}^{\alpha, \alpha}(q, \omega),
+    \end{split}
+\end{equation}
+
+where $\bm{\mathcal S}(q, \omega)$ determines the cross-section for scattering experiments as well as line shapes in NMR and ESR experiments. A useful sum rule is the total intensity, obtained by integrating $\bm{\mathcal S}(q)$ over frequency and wave vector, 
+
+\begin{equation}
+    \frac{1}{4\pi^2} \int d\omega \bm{\mathcal S}^{\alpha, \alpha}(q, \omega) = \frac{1}{2 \pi} \int dq \bm{\mathcal S}^{\alpha, \alpha}(q) = \langle (\spin_0^\alpha)^2 \rangle,
+\end{equation}
+
+which is simply equal to $\frac{1}{3} \bm{\mathcal S}( \bm{\mathcal S}+ 1)$ in the isotropic case. \\
+
+The XXZ-Heisenberg chain is an important model to describe real material and is the most important paradigm of low-dimensional quantum magnetism, as it allows to introduce many scenarios, such as broken symmetry, the gapless Luttinger liquid, the Kosterlitz-Thouless phase transition, gapped and gapless excitation continua. Consider a Heisenberg XXZ chain supplemented by and external magnetic field. \\
+
+\paragraph{\textbf{Ferromagnetic phase: }}
+
+For $\Delta < -1$, the XXZ-chain is in the ferromagnetic Ising phase: the ground state is the saturated state, with all its spins aligned in either the $z$-direction or $-z$-direction. This entails that the classical ground state has magnetization ${\bf M}^z = \pm \frac{N}{2}$, where $N$ is the number of lattice sites. This is a phase with broken symmetry since the ground state does not exhibit the discrete symmetry of spin reflection $\spin^z \rightarrow -\spin^z$, under which the Hamiltonian is invariant. Furthermore, when an external magnetic field in the $z$-axis is considered, and additional term is included into the Hamiltonian, namely a Zeeman interaction 
+
+$$
+    {\bf H}_{\textnormal{Zeeman}} = - g \mu_B H \sum_{n} \spin^z.
+$$
+
+Since the XXZ-Hamiltonian commutes with the magnetization operator, the external magnetic field results in an additional energy contribution $-g \mu_B H {\bf M}^z$, without affecting the wave-functions. The symmetry under spin reflection is lifted and the saturated ground state is stabilized. The low-lying excited states in the ferromagnetic phase are magnons with the total spin quantum number ${\bf M}^z_{\textnormal{tot}} = \frac{1}{2} N - 1$ and the dispersion law, which is valid for general spin $S$
+
+\begin{equation}
+    \epsilon(q) = 2 J S (1-\cos(q) - (\Delta + 1)) + 2g \mu_B H S. 
+    \label{XXZ-spectrum}
+\end{equation}
+
+These states are exact eigenstates of the XXZ-Hamiltonian, In zero field, the excitation spectrum has a gap at $q=0$ of magnitude $|\Delta| - 1$ for $\Delta < -1$. At $\Delta = -1$, the discrete spin-reflection symmetry generalizes to a continuous rotation symmetry and the spectrum thus becomes gapless. This is a consequence of Goldstone's theorem: the breaking of a continuous symmetry in the ground state results in the emergence of a gapless excitation mode. Whereas the ground state exhibit long range order, the large phase space available to the low-lying excitations in 1D leads to exponential decay of correlations at arbitrarily small finite temperatures following the Theorem of Mermin and Wagner. \\
+
+%%% da hell are magnons??????
+
+Two interesting consequences of \cref{XXZ-spectrum} quickly arise, which can be generalized to any $XXZ$-type Hamiltonian conserving the total magnetization: 
+
+\begin{enumerate}
+    \item For sufficiently strong external magnetic field, the classical saturated state is forced to be the ground state for arbitrary value of $\Delta$ and the lowest excitations are exactly known. If the necessary magnetic fields are within experimentally accessible range, this can be used for an experimental determination of the exchange constants from the magnon dispersions (an example in 2D are recent neutron scattering experiments on $Cs_2 Cu Cl_4$. \\
+    \item The ferromagnetic ground state becomes unstable when the lows spin wave frequency becomes negative. This allows to determine eg. the boundary of the ferromagnetic phase for $\Delta > -1$ in an external field as $H = H_c$ with $g \mu_B H_c = \Delta + 1$. 
+\end{enumerate}
+
+\blanky \\
+
+\paragraph{\textbf{Néel phase:}}
+
+For $\Delta > +1$, the XXZ-chain is in the antiferromagnetic Ising or Néel phase with, in the thermodynamic limit, broken symmetry and one from 2 degenerate ground states, the $S=\frac{1}{2}$ remnants of the classical Néel states. The spatial period is $2a$, and the states are described in the reduced Brillouin zone with wave vectors $0 \leq q \leq \frac{\pi}{a}$. The ground states have zero magnetisation but finite sublattice magnetization, 
+
+$$
+{\bf N}^z = \sum_{n} (-1)^n \spin_n^z,
+$$
+
+and long range order in the corresponding correlation function. In contrast to the ferromagnet, however, quantum fluctuations prevent the order from being complete since the sublattice magnetization does not commute with the XXZ-Hamiltonian. For periodic boundary conditions and large but finite $N$, as in the situation in numerical approaches, the two ground states mix with energy separation $\propto e^{\textnormal{-const}\times N}$, as $N \rightarrow \infty$. Then invariance under translation by the original lattice constant $a$ is restored and the original Brillouin zone can be used, $\textnormal{BZ} = \{q | 0 \leq q \leq \frac{2\pi}{a}\}$. 
 
 \clearpage
 
