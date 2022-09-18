@@ -12,6 +12,7 @@
 \usepackage{cancel}
 \usepackage{xcolor}
 \usepackage{relsize}
+\usepackage{calligra, unicode-math}
 \newlength\dlf
 \newcommand\alignedbox[2]{
   % #1 = before alignment
@@ -45,6 +46,15 @@
 \newcommand{\bN}{\bb{N}\PackageWarning{hwsymb}{\noexpand\bN is deprecated, use \noexpand\N instead}}
 
 % Symbols
+\newcommand{\fancyf}{%
+  \mkern-4mu
+  \text{%
+    \scalebox{1}[.8]{%
+      \rotatebox[origin=c]{20}{\fontfamily{calligra}\selectfont f}
+    }%
+  }%
+ \mkern-4mu
+}
 \newcommand{\bl}{\bm{\mathcal{L}}}
 \newcommand{\bmt}{\bm{\mathcal{T}}}
 \newcommand{\vds}{\mathds{V}}
