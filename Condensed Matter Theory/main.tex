@@ -8,6 +8,66 @@
 
 \begin{document} \maketitle
 
+
+\section{Quantum Phase Transitions}
+
+Consider a Hamiltonian ${\bf H}(g)$, whose degrees of freedom reside on the sites of a lattice $\Lambda \subseteq \mathds{Z}^d$, and which varies a function of a dimensionless coupling $g$. Then,
+
+\begin{itemize}
+    \item for the case of a finite lattice, the ground state energy will be, in general, a smooth, analytic function of $g$. The main exception comes from the case when $g$ couples only to a conserved quantity, ie.
+    
+    $$
+        {\bf H}(g) = {\bf H}_0 + g {\bf H}_1 \textnormal{ where } [{\bf H}_0, {\bf H}_1] = 0.  
+    $$
+    
+    This entails that these Hamiltonians can be simultaneously diagonalized and so, the eigenfunctions are independent of $g$ even though the eigenvalues vary with $g$. Then, there may be a level crossing where an excited level becomes the ground state at $g = g_c$, creating a point of non-analyticity of the ground state energy as a function of $g$. \\
+    
+    \item For an infinite lattice, the possibilities are richer. An avoided level-crossing between the ground and an excited state in a finite lattice could become progressively sharper as the lattice size increases, leading to a non-analyticity at $g = g_c$ in the infinite-lattice limit. Any point of non-analyticity in the ground state energy of the infinite lattice system as a quantum phase transtion. The non-analyticity could be either the limiting case of an avoided level crossing, or an actual level crossing, the first situation being the most common. The phase transition is usually accompanied by a qualitative change in the nature of the correlations in the ground state. \\
+\end{itemize}
+
+In particular, second order quantum phase transitions are transtions at which the characteristic energy scale of fluctuations above the ground state vanishes as $g \rightarrow g_c$. Let $\Delta$ be the scale characterizing some significant spectral density of fluctuations at zero temperature for $g \neq g_c$. Thus, $\Delta$ could be the energy of the lowest excitation above the ground state. If this is non-zero (ie. there is an energy gap $\Delta)$, or if there are excitations at arbitrarily low energies in the infinite lattice limit (ie. the energy spectrum is gapless), $\Delta$ is the scale at which there is a qualitative change in the nature of the frequency spectrum from its lowest frequency to its higher frequency behaviour. In most cases, it is the case that 
+
+$$
+    \Delta_{\pm} \underset{g \rightarrow g_c}{\sim} J |g-g_c|^{zv},  \begin{array}{c}
+         \textnormal{ where $J$ is the energy scale of a characteristic microscopic coupling, }  \\
+         \textnormal{ and where $zv$ is the critical phase exponent, which is universal.} 
+    \end{array}
+$$
+
+A critical phase exponent is independent of most of the microscopic details of the ${\bf H}(g)$-Hamiltonian. The previous behaviour holds both for $g > g_c$ and $g < g_c$ with the same value of the exponent $zv$, but with different non-universal constant of proportionality. In addition to a vanishing energy scale, second order quantum phase transitions invariably have a diverging characteristic length scale $\zeta$, which could the length scale determining the exponential decay of equal time correlations in the ground state or the length scale at which some characteristic crossover occurs to the correlation at the longest distances. This length diverges as 
+
+$$
+\zeta^{-1} \sim \Lambda |g-g_c|^{v}, \begin{array}{c}
+         \textnormal{ where $v$ is a critical exponent, }  \\
+         \textnormal{ and where $\Lambda$ is an inverse length scale ("a momentum}\\\textnormal{ cutoff") of order the inverse lattice spacing.} 
+    \end{array}.
+$$
+
+The ratio of the exponents for energy and length is $z$, the dynamic critical exponent: the characteristic energy scale vanishes as the $z$-th power of the characteristic inverse length scale 
+
+$$
+    \Delta \sim \zeta^{-z}.
+$$
+
+It is important to notice that the previous discussion concerns only the ground state of the system. Thus, quantum phase transitions occur only at zero temperature. Since all experiments are at necessarily non-zero temperature, a central task of the theory of quantum phase transitions is to describe the consequences of this $T=0$-singularity on physical properties at $T > 0$. It turns out that working outward from the critical point $g = g_c$, and $T=0$, is a powerful way of understanding and describing the thermodynamic properties of numerous systems over a broad range of values $|g-g_c|$ and $T$. \\
+
+\paragraph{\textbf{Quantum versus classical phase transitions}}
+
+There are two important possibilities for the $T > 0$ phase diagram of a system near a quantum critical point, 
+
+\begin{itemize}
+    \item either the thermodynamic singularity is present only at zero temperature and all $T>0$ properties are analytic as a function of $g$ near $g = g_c$,
+    \item or there is a curve of $T>0$ second order phase transitions (this is a line at which the thermodynamic free energy is not analytic) which terminates at the $T=0$-quantum critical point, $g = g_c$.
+\end{itemize}
+
+In particular, for the second kind of transitions, in the vicinity of such curve, the typical frequency at which the important long distance degrees of freedom fluctuate, $\omega_{\textnormal{typ}}$, satisfies 
+
+$$
+\hbar \omega_{\textnormal{typ}} << k_B T.
+$$
+
+Under 
+
 \section{Spin Chain models}
 
 \subsection{Classical Spin Systems}
@@ -463,12 +523,7 @@ The partition function may be evaluated as
     \mathcal{Z}_{\Lambda, K, h} = \sum_{{\bf s} \in \Omega_{\Lambda}} e^{K s_1 s_2 + h(s_1+s_2)} \textnormal{ where } \begin{array}{c}
          K = \beta J  \\
          h = \beta B.
-    \end{array}
-\end{equation}
-
-It is readily seen that 
-
-\begin{equation}
+    \end{array} \Rightarrow 
     \mathcal{Z}_{\Lambda, K, h}  = \sum_{m=-\frac{1}{2}}^{\frac{1}{2}} e^{\beta h m} 2 \cosh\bigg(\frac{h + Km}{2}\bigg) = 2 \cosh(2h) e^{K} + 2e^{-K}.
 \end{equation}
 
@@ -1077,7 +1132,7 @@ For example, for a four-site chain and $J<0$, the ground state is a spin singlet
 
 It is often useful to write a Hamiltonian as a sum of projection operators, especially if a form can be found where all the coefficients are positive. 
 
- . \\
+ . \\9
 
 \clearpage
 
@@ -1229,17 +1284,12 @@ since $\spin_1^- \spin_2^+$ destroys the state. Similarly, $(\spin_1^+ \spin_2^-
 Under the Jordan-Wigner map, nearest-neighbours spin flipping is translated into to nearest-neighbours fermionic hopping, ie. $\spin_{j}^{+} \spin_{j+1}^{-} = f_{j}^{\dagger} f_{j+1}$ and $\spin_{j}^{-} \spin_{j+1}^{+} = f_{j+1}^{\dagger} f_{j}$. However, due to the boundary conditions' periodicity, the XX-Hamiltonian cannot be rewritten as a fermionic model yet since (it will contain an additional boundary term), for example, the fermionic counterparts to the $\spin_{L}^{+} \spin_{1}^{-}$ interaction are highly non-local operators and are not desirable. Indeed, under the Jordan-Wigner mapping 
 
 \begin{equation*}
-    \spin_{L}^{+} \spin_{1}^{-} = f_L^\dagger \exp\bigg(-i\pi \sum_{\ell = 1}^{L-1} f_\ell^\dagger f_\ell \bigg) f_1,
-\end{equation*}
-
-which is not problematic, since it accounts for all $L$-lattice sites. Let
-
-\begin{equation}
-    \begin{array}{c}
-       \spin_{L}^{+} \spin_{1}^{-} = \mathcal{Q} f_L^\dagger f_1 \textnormal{  and  }
+    \spin_{L}^{+} \spin_{1}^{-} = f_L^\dagger \exp\bigg(-i\pi \sum_{\ell = 1}^{L-1} f_\ell^\dagger f_\ell \bigg) f_1 \Rightarrow \begin{array}{cc}
+       \spin_{L}^{+} \spin_{1}^{-} = \mathcal{Q} f_L^\dagger f_1 \\
        \spin_{L}^{-} \spin_{1}^{+} = \mathcal{Q} f_1^\dagger f_L,
     \end{array}
-\end{equation}
+\end{equation*}
+
 
 then \eqref{raising Hamiltonian} can be rewritten as 
 
@@ -1312,14 +1362,6 @@ where $k = \frac{2\pi m}{L}, \blanky m = -\frac{L}{2} + 1, \cdots \frac{L}{2}, $
 \begin{equation}
     \mathcal{N}_{jk} = \langle d_j^\dagger d_k \rangle_{\textnormal{th}} =  \frac{1}{1+e^{\beta \epsilon_k + \mu}} \delta_{jk} 
 \end{equation} \\
-
-\begin{itemize}
-    \item for $\lambda > J$,  
-    \item whereas, for $\lambda < J$, 
-    \item and for intermediate $\lambda$, two Fermi points $k = \pm k_F$ arise, separating occupied and vacant levels.
-\end{itemize}
-
-This is the regime of the XY-pahse with a ground state which is a simple Slater determinant. For zero mangnetic field, $\lambda = 0$, this Fermi-point $k_F = \frac{\pi}{2}$ and the total ground state magnetization vanishes. 
 
 \clearpage
 
@@ -1443,7 +1485,38 @@ $$
 C(T) \approx \frac{\pi T}{6 v_F}, \textnormal{ where } v_F = \frac{\partial \epsilon(k)}{\partial k}\bigg|_{k = k_F} = J \textnormal{ is the Fermi velocity.} 
 $$
 
-Low-lying excitations are also simply described in the fermion picture: they are either obtained by adding or removing fermions, thus changing the total magnetization by one unity and adding or removing the energy $\epsilon(k)$, or particle-hole excitations which do not change the toal magnetization. Creating a particle-hole 
+Low-lying excitations are also simply described in the fermion picture: they are either obtained by adding or removing fermions, thus changing the total magnetization by one unity and adding or removing the energy $\epsilon(k)$, or particle-hole excitations which do not change the total magnetization. Creating a particle-hole excitation involves moving a fermion with momentum $k_i$ inside the Fermi sea t o some momentum $k_f$, outside of the Fermi sea. It is clear that moving a fermion just across the Fermi point costs arbitrarily low energy since the excitation spectrum is gapless. It is easily seen that for a given total momentum $q = k_f - k_i$, a finite range of excitation energies is possible, thus the spectrum of particle-hole excitations is a continuum with the initial momentum $k=ki$ as an internal degree of freedom,
+
+$$
+    \omega(q,k) = \epsilon(k+q) - \epsilon(k).
+$$
+
+\blanky \\
+
+For $\Delta \neq 0$ the interacting fermion Hamiltonian can be treated in perturbation theory. From this approach, and more generally from the Bethe ansatz and field-theoretic methods, it is established that the behaviour for $-1 < \Delta < 1$ is qualitatively the same as the free fermion limit $\Delta = 0$: the excitation spectrum is gapless, a Fermi point exists and correlation functions show a power-law behaviour. The Heisenberg chain is in the XY regime, and thus is in a critical phase. The phase is equivalent to the so-called Tomonaga-Luttinger liquid. The fermion dispersion, upto first order in $\Delta$, is obtained by direct perturbation theory starting from the free fermion limit (in unit of $J$), 
+
+\begin{equation*}
+    \epsilon(k) = \Delta - \lambda + \cos q - \frac{2\Delta}{\pi} \Theta(1-\lambda) \bigg[\arccos \lambda - \frac{\cos q}{(1-\lambda^2)^{\frac{1}{2}}}\bigg].
+\end{equation*}
+
+\blanky \\
+
+For the more general XYZ-chain, wherein the Hamiltonian reads 
+\begin{equation}
+    \Hamiltonian_{\mathds{X}\mathds{Y}\mathds{Z}} = J \sum_{n=1}^{N} \bigg( (1+\gamma) \spin^{x}_{n} \spin^{x}_{n+1} + (1+\gamma) \spin^{y}_{n} \spin^{y}_{n+1} + \Delta \spin^{z}_{n} \spin_{n+1}^{z} \bigg) - \lambda \sum_{n} {\spin}_n,
+    %\label{XXZ hamiltonian}
+\end{equation}
+
+the rotational symmetry in the $xy$-plane is broken and a unique preferred direction in spin space exists: $\Delta = 0$ continues to result in a free fermion system, but the basic fermion dispersion acquires a gap and the ground state correlation functions $\bra{0}{\spin}_n^x{\spin}_0^x\ket{0}$
+develops long range order. \\
+
+\paragraph{\textbf{$\Delta \approx 1$: The isotropic Heisenberg Antiferromagnet}}
+
+The most interesting regime for the XXZ chain is $\Delta \approx 1$, ie. the vicinity of the Isotropic Heisenberg antiferromagnet (HAF), wherein the ground state energy is given by 
+
+$$
+    E_0 = - N J \log 2.
+$$
 
 \clearpage
 
@@ -2383,6 +2456,260 @@ which can then be numerically solved.
 %\Rb \rightarrow \Rb + {\bf T} \textnormal{ where } {\bf %T} = \sum_{i=1}^{3} L_i {\bf a}_i \blanky | \blanky L_i %\in \mathds{Z}
 %
 
+\section{Mean field theory}
+
+From "Many Body Quantum Theory in Condensed Matter Physics" by Henrik Bruus and Karsten Flensberg. 
+
+The physics of interacting particles is often very complicated because the motion of the individual particles depend on the position of all other, thus these variables become correlated. This is clearly the case for a system of charged particles interacting by Coulomb forces, such as eg. the electron gas. There, the probability to find two electrons in close proximity is expected to be small due to the strong repulsive interaction. Consequently, due to these correlation effects, there is a suppressed density in the neighbourhood of every electron, and there is a correlation hole. 
+Nevertheless, in spite of these complications, there a re a number of cases where a more crude treatment, not fully including the correlations, gives a good physical model. In these cases, it suffices to include correlations o the average. This means that the effect of the other particles is included as a mean density (or mean field), leaving an effective single particle problem, which is solvable. These mean fields are chosen so that they minimize the free energy, which in turn, ensures that the method is self-consistent. This method is called mean field theory, which allows to neglect detailed dynamics and time-dependent second quantization methods. \\
+
+First, consider a system with two types of particles, described by operators ${\bf a}_\nu, {\bf b}_{\mu}$, respectively. In this model, the only interactions present are those between different kind of particles. The Hamiltonian then reads
+
+\begin{equation}
+    {\bf H} = {\bf H}_0 + {\bf V}_{\textnormal{int}}, \textnormal{ with } \begin{array}{c}
+         {\bf H}_0 = \sum_{\nu} \varepsilon_{\nu}^a {\bf a}_\nu^\dagger {\bf a}_\nu + \sum_{\nu} \varepsilon_{\mu}^b{\bf b}_\mu^\dagger {\bf b}_\mu,  \\
+         \\
+         {\bf V}_{\textnormal{int}}  = \sum_{\nu\nu', \mu\mu'} {\mathcal V}_{\nu\mu, \nu'\mu'} {\bf a}^\dagger_{\nu} {\bf b}_{\mu}^\dagger {\bf b}_{\mu'} {\bf a}_{\nu'}.
+    \end{array}
+\end{equation}
+
+Now it may be expected that the density operator ${\bf a}_{\nu}^\dagger {\bf a}_{\nu'}$ and ${\bf b}_{\mu}^\dagger {\bf b}_{\mu'}$, deviate only little from their averages values, $ \langle {\bf a}_{\nu}^\dagger {\bf a}_{\nu'} \rangle$ and  $ \langle {\bf b}_{\nu}^\dagger {\bf b}_{\nu'} \rangle$, respectively. It is natural then to use this deviation as a small parameter and perform an expansion. Let the deviation operators be 
+
+\begin{align}
+    {\bf d}_{\nu \nu'} &= {\bf a}_{\nu}^\dagger {\bf a}_{\nu'} - \langle {\bf a}_{\nu}^\dagger {\bf a}_{\nu'} \rangle, & {\bf e}_{\mu \mu'} &= {\bf b}_{\nu}^\dagger {\bf b}_{\nu'} - \langle {\bf b}_{\mu}^\dagger {\bf b}_{\mu'} \rangle.
+\end{align}
+
+Then, in terms of these new operators, the Hamiltonian reads
+
+\begin{equation*}
+    {\bf H}_{\textnormal{MFT}}  = {\bf H}_0 + {\bf V}_{\textnormal{MFT}} + \cancelto{0}{\sum_{\nu\nu', \mu\mu'} {\bf d}_{\nu \nu'} {\bf e}_{\mu \mu'}},
+\end{equation*}
+
+where 
+
+$$
+    {\bf V}_{\textnormal{MFT}} = \sum_{\nu\nu', \mu\mu'} {\mathcal V}_{\nu\mu, \nu'\mu'}\bigg[{\bf a}_{\nu}^\dagger {\bf a}_{\nu'} \langle {\bf b}_{\mu}^\dagger {\bf b}_{\mu'} \rangle + {\bf b}_{\mu}^\dagger {\bf b}_{\mu'} \langle {\bf a}_{\nu}^\dagger {\bf a}_{\nu'} \rangle \\ &- \langle {\bf a}_{\nu}^\dagger {\bf a}_{\nu'} \rangle \langle {\bf b}_{\mu}^\dagger {\bf b}_{\mu'} \rangle \bigg] + \mathcal{O}(d e).
+$$
+
+The mean field Hamiltonian $H_{\textnormal{MFT}}$ thus contains only single-particle operators, and thus the original many-body problem has been reduced to a single-particle problem, which can always be solved\footnote{In effect, any quadratic Hamiltonian may be diagonalized since it can be written as ${\bf H} = \sum_{ij} a_i^\dagger {\mathcal{H}}_{ij} a_i^\dagger$. Since this $\bm{ {\mathcal{H}}}$ is hermitian, then there exists a transformation
+
+$$
+    {\alpha}_i \rightarrow \sum_{j} U_{ij} a_j, \blanky U \in U(N),
+$$
+
+such that $\bm{ {\mathcal{H}}}$ is diagonal: $\sum_{kk'} U_{ik}^\dagger h_{kk'} U_{k'j} = \delta_{ij} \varepsilon_i$. Then, in terms of this new basis, the Hamiltonian then becomes ${\bf H} = \sum_{i} \alpha_i^\dagger \varepsilon_i \alpha_i$, and $\{\varepsilon_i\}$ are thus  $\bm{ {\mathcal{H}}}$'s eigenvalues.}
+
+\blanky \\
+
+Mean field theory may be formulated in a different way: if an interaction term involving the product of two operators, ${\bf A}, {\bf B}$, ie. ${\bf H}_{AB} = {\bf A} {\bf B}$, then the mean field approximation is given by 
+
+$$
+    {\bf H}_{AB}^{\textnormal{MFT}} = {\bf A} \langle{\bf B}\rangle + \langle{\bf A} \rangle{{\bf B}} - \langle{\bf A} \rangle\langle{\bf B} \rangle.
+$$
+
+The question is then, how to find the averages $\langle {\bf a}_{\nu}^\dagger {\bf a}_{\nu'} \rangle$ and $\langle {\bf b}_{\mu}^\dagger {\bf b}_{\mu'} \rangle$. In principle, there are two possible routes. 
+
+\begin{itemize}
+    \item Method 1: these averages are to be determined self-consistently, ie. when calculating the averages 
+    
+    \begin{align}
+        \bar{{\bf n}}_{\nu \nu'}^{a} &= \langle {\bf a}_{\nu}^\dagger {\bf a}_{\nu'} \rangle, & \bar{{\bf n}}_{\mu \mu'}^{b} &= \langle {\bf b}_{\nu}^\dagger {\bf b}_{\nu'} \rangle,
+    \end{align}
+    
+    using the new mean field Hamiltonian, the same answer should be re-obtained. This entails the following prescriptions for $\bar{{\bf n}}_{\nu \nu'}^{a}$ and $\bar{{\bf n}}_{\mu \mu'}^{b}$,
+    
+     \begin{align}
+        \bar{{\bf n}}_{\nu \nu'}^{a} &= \langle {\bf a}_{\nu}^\dagger {\bf a}_{\nu'} \rangle_{\textnormal{MFT}} = \frac{1}{\mathcal{Z}_{\textnormal{MFT}}} \Tr \bigg(e^{-\beta {\bf H}_{\textnormal{MFT}}} {\bf a}_{\nu}^\dagger {\bf a}_{\nu'}\bigg) 
+        \\ \bar{{\bf n}}_{\nu \nu'}^{b} &= \langle {\bf b}_{\mu}^\dagger {\bf b}_{\mu'} \rangle_{\textnormal{MFT}} = \frac{1}{\mathcal{Z}_{\textnormal{MFT}}} \Tr \bigg(e^{-\beta {\bf H}_{\textnormal{MFT}}} {\bf b}_{\mu}^\dagger {\bf b}_{\mu'}\bigg), 
+     \begin{array}{c} \textnormal{ where } 
+             \mathcal{Z}_{\textnormal{MFT}} = \Tr \bigg(e^{-\beta {\bf H}_{\textnormal{MFT}}}\bigg).
+        \end{array}
+    \end{align}
+    
+    Said equations are the self-consistency equations, since the averages are given in terms of the mean field hamiltonian and the mean field partition function, which themselves depend on these averages. \\
+    
+    \item Method 2: the alternative route consists on using the ${\bf n}_{\nu \nu'}$ which minimizes the free energy $F_{\textnormal{MFT}}$ of the mean field Hamiltonian. Then, 
+    
+    \begin{equation}
+        \begin{split}
+            0 &= \frac{d}{d\bar{\bf n}_{\nu \nu'}^{a}} F_{\textnormal{MFT}} \\
+            &= \frac{d}{d\bar{\bf n}_{\nu \nu'}^{a}} \bigg(-\frac{\log \mathcal{Z}_{\textnormal{MFT}}}{\beta}\bigg) \\
+            &= \frac{1}{\mathcal{Z}_{\textnormal{MFT}}} \Tr \bigg(e^{-\beta {\bf H}_{\textnormal{MFT}}} \frac{d}{d\bar{\bf n}_{\nu \nu'}^{a}} {\bf H}_{\textnormal{MFT}} \bigg) \\
+            &=\frac{1}{\mathcal{Z}_{\textnormal{MFT}}} \Tr \bigg(e^{-\beta {\bf H}_{\textnormal{MFT}}} \bigg(\sum_{\nu\nu', \mu\mu'} {\mathcal{V}}_{\nu\mu, \nu'\mu'} ({\bf b}_{\mu}^\dagger {\bf b}_\mu - \bar{\bf n}_{\mu\mu'}^{b})\bigg)\bigg) \\
+            &= \frac{1}{\mathcal{Z}_{\textnormal{MFT}}} \Tr \bigg(e^{-\beta {\bf H}_{\textnormal{MFT}}} \sum_{\nu\nu', \mu\mu'} {\mathcal{V}}_{\nu\mu, \nu'\mu'} {\bf b}_{\mu}^\dagger {\bf b}_\mu \bigg) - \frac{1}{\mathcal{Z}_{\textnormal{MFT}}} \Tr \bigg(e^{-\beta {\bf H}_{\textnormal{MFT}}} \sum_{\nu\nu', \mu\mu'} {\mathcal{V}}_{\nu\mu, \nu'\mu'}\bar{\bf n}_{\mu\mu'}^{b}\bigg)
+            \\
+            &= \sum_{\mu \mu'} \frac{1}{\mathcal{Z}_{\textnormal{MFT}}} {\mathcal{V}}_{\nu\mu, \nu'\mu'} \Tr \bigg(e^{-\beta {\bf H}_{\textnormal{MFT}}} {\bf b}_{\mu}^\dagger {\bf b}_\mu \bigg) - \frac{1}{\mathcal{Z}_{\textnormal{MFT}}} \sum_{\mu \mu'} {\mathcal{V}}_{\nu\mu, \nu'\mu'} \bar{\bf n}_{\mu\mu'}^{b} \cancel{\frac{1}{\mathcal{Z}_{\textnormal{MFT}}} \Tr \bigg(e^{-\beta {\bf H}_{\textnormal{MFT}}}}\bigg)\\
+            &= \sum_{\mu\mu'} {\mathcal{V}}_{\nu\mu, \nu'\mu'} \bigg(\langle {\bf b}_{\mu}^\dagger {\bf b}_{\mu'} \rangle_{\textnormal{MFT}} - \bar{\bf n}_{\mu\mu'}^{b}\bigg), 
+        \end{split}
+    \end{equation}
+    
+    which should hold for any pair $(\nu, \nu')$ and hence, the last parenthesis should vanish. Thus, the self-consistency equation is obtained as well for the second method, making both approaches equivalent. \\
+\end{itemize}
+
+Consider the average interaction energy, $\langle {\bf V}_{\textnormal{int}} \rangle$, a natural approximation would be to evaluate the expectation value of the ${\bf a}$ and ${\bf b}$ operators separately, this is 
+
+$$
+    \langle {\bf V}_{\textnormal{int}} \rangle \approx \sum_{\nu \nu', \mu \mu'} {\mathcal{V}}_{\nu\mu, \nu'\mu'} \langle {\bf a}_{\nu}^\dagger {\bf a}_{\nu'} \rangle \langle {\bf b}_{\mu}^\dagger {\bf b}_{\mu'} \rangle,
+$$
+
+which is equivalent to assuming that the ${\bf a}$ and ${\bf b}$ operators are uncorrelated. This is, in essence, the approximation done in the mean-field approach. In effect, the interaction term can be evaluated using the mean field Hamiltonian 
+
+$$
+    \langle {\bf V}_{\textnormal{int}} \rangle_{\textnormal{MFT}} = \frac{1}{\mathcal{Z}_{\textnormal{MFT}}} \Tr \bigg((e^{-\beta {\bf H}_{\textnormal{MFT}}} {\bf V}_{\textnormal{int}}\bigg). 
+$$
+
+Since, the mean field Hamiltonian can be separated into a part containing only ${\bf a}$-operators and another term containing only ${\bf b}$-operators, ${\bf H}_{\textnormal{MFT}} = {\bf H}_{\textnormal{MFT}}^a + {\bf H}_{\textnormal{MFT}}^b$, the average factorization yields
+
+\begin{equation}
+    \langle {\bf V}_{\textnormal{int}} \rangle_{\textnormal{MFT}} = \sum_{\mu\mu'} {\mathcal{V}}_{\nu\mu, \nu'\mu'} \langle {\bf a}_{\nu}^\dagger {\bf a}_{\nu'} \rangle_{\textnormal{MFT}} \langle {\bf b}_{\mu}^\dagger {\bf b}_{\mu'} \rangle _{\textnormal{MFT}}.
+\end{equation}
+
+The mean field theory approach hence provides a consistent a physically sensible method to study interacting system where correlation are less important. Mean field theory is only valid provided $d$ is actually small. This can be checked by calculating $\langle {\bf d} \rangle$, using the neglected term in the Hamiltonian (that concerning the cross term of ${{\bf d}_{\nu \nu'} {\bf e}_{\mu\mu'}}$) as a perturbation, and then compare the result to $\langle {\bf a}_{\nu}^\dagger {\bf a}_{\nu'} \rangle$. If the difference is not negligible, then either the wrong mean field parameter has been chosen or the method simply fails and other more adequate tools must be employed. \\
+
+In practice, it is necessary to assume something about the averages $\langle {\bf a}_{\nu}^\dagger {\bf a}_{\nu'}\rangle$ and $\langle {\bf b}_{\mu}^\dagger {\bf b}_{\mu'} \rangle$. Even though, there is a prescription for which to find which averages are important, there are simply too many combinations. Suppose there are $N$ different quantum numbers, then there are in principle $N^2$ combinations, which then yields $N^2$ coupled non-linear equations, which is only tractable for small systems. Often, symmetry arguments can help in reducing the number of parameters. Suppose for example that the system's Hamiltonian has translational symmetry, such that the momentum space is a natural choice. For a system of particles described by $({\bf c} \blanky {\bf c}^\dagger)$-operators, then 
+
+\begin{equation}
+    \langle {\bf c}_{{\bf k}}^\dagger {\bf c}_{{\bf k}'} \rangle = \frac{1}{\mathcal{V}} \int_{\mathds{R}^6} d{\bf x} d{\bf x}' e^{-i {\bf k}' \cdot {\bf x}'} e^{i {\bf k} \cdot {\bf x}} \langle \Psi^\dagger({\bf x}) \Psi({\bf x}') \rangle.
+\end{equation}
+
+It is natural to assume that the system is homogenous, which means that 
+
+\begin{equation}
+    \langle \Psi^\dagger({\bf x}) \Psi({\bf x}') \rangle = f({\bf x} - {\bf x}') \Rightarrow \langle {\bf c}_{{\bf k}}^\dagger {\bf c}_{{\bf k}'} \rangle = \langle {\bf n}_{\bf k} \rangle \delta_{{\bf k}{\bf k}'}.
+\end{equation}
+
+The homogeneity assumption is however not always true, since in some cases the system's symmetry is lower than that of the Hamiltonian. Eg. if the system spontaneously orders into a state with a spatial density variation, like a wave formation, then the average $\langle \Psi^\dagger({\bf x}) \Psi({\bf x}') \rangle$ is not a function of ${\bf x} - {\bf x}'$ only. Instead it has a lower and more restricted symmetry, namely that 
+
+$$
+    \langle \Psi^\dagger({\bf x}) \Psi({\bf x}') \rangle = h({\bf x}, {\bf x}') \textnormal{ with } h({\bf x}, {\bf x}') = h({\bf x} + {\bf R}, {\bf x}' + {\bf R}), \textnormal{ ${\bf R}$ a lattice vector}.
+$$
+
+This kind of crystal structure exists in nature and when it happens, the system undergoes a broken symmetry phenomena. It is important to realize that this solution cannot be found by taking the homogeneity assumption but instead by calculating $ \langle {\bf c}_{{\bf k}}^\dagger {\bf c}_{{\bf k} + {\bf Q}} \rangle$, leading to the possibility of this quantity being finite, where ${\bf R} \cdot {\bf Q} = 2\pi$. Thus, the choice of the proper mean field parameters requires physical motivation about which possible states one expects. 
+
+\paragraph{\textbf{Hartree-Fock theory}}
+
+Mean field theory's methods, upto now, concern only interaction between different particles, wherein correlation terms are replaced by their average values plus small corrections. For interactions between identical particles this, however, does not exhaust the possibilities and only includes the so-called Hartree term, requiring a more general approximation scheme, given by the Hartree-Fock approximation. Consider a quantum system of interacting particles, whose Hamiltonian is given by 
+\begin{equation}
+    {\bf H} = {\bf H}_0 + {\bf V}_{\textnormal{int}}, \textnormal{ with } \begin{array}{c}
+         {\bf H}_0 = \sum_{\nu} \varepsilon_{\nu} {\bf c}_{\nu}^\dagger {\bf c}_{\nu}\\
+         \\
+         {\bf V}_{\textnormal{int}}  = \frac{1}{2} \sum_{\nu\nu', \mu\mu'} {\mathcal V}_{\nu\mu, \nu'\mu'} {\bf c}_{\nu}^\dagger {\bf c}_{\mu}^\dagger {\bf c}_{\mu'} {\bf c}_{\nu'}.\\
+    \end{array}
+\end{equation}
+
+The theory's main idea is that the operator $\rho_{\mu \mu'} = {\bf c}_{\mu}^\dagger {\bf c}_{\mu'}$ is large only when the average $\langle \rho_{\mu \mu'} \rangle$ is non-zero. For most $(\nu \nu')$-combinations, the average $\langle \rho_{\nu \nu'} \rangle$ is zero. Therefore, the four-body interaction term may be rewritten in terms of a deviation from the average value
+
+$$
+    {\bf c}_{\nu}^\dagger \bigg({\bf c}_{\mu}^\dagger {\bf c}_{\mu'} - \langle {\bf c}_{\mu}^\dagger {\bf c}_{\mu'} \rangle \bigg) {\bf c}_{\nu'} + {\bf c}_{\nu}^\dagger {\bf c}_{\nu'} \langle {\bf c}_{\mu}^\dagger {\bf c}_{\mu'}\rangle.
+$$
+
+If $\nu' \neq \mu$, then ${\bf c}_{\nu}$ operator commutes with the parenthesis, which is true except in a set of measure zero. With this assumption, then 
+\begin{equation}
+    \begin{split}
+    {\bf c}_{\nu}^\dagger \bigg({\bf c}_{\mu}^\dagger {\bf c}_{\mu'} - \langle {\bf c}_{\mu}^\dagger {\bf c}_{\mu'} \rangle \bigg) {\bf c}_{\nu'} &+ {\bf c}_{\nu}^\dagger {\bf c}_{\nu'} \langle {\bf c}_{\mu}^\dagger {\bf c}_{\mu'}\rangle \overset{{\mu \neq \nu'}}{=} {\bf c}_{\nu}^\dagger {\bf c}_{\nu'} \bigg({\bf c}_{\mu}^\dagger {\bf c}_{\mu'} - \langle {\bf c}_{\mu}^\dagger {\bf c}_{\mu'} \rangle \bigg) + {\bf c}_{\nu}^\dagger {\bf c}_{\nu'} \langle {\bf c}_{\mu}^\dagger {\bf c}_{\mu'}\rangle \\
+    &= \bigg({\bf c}_{\nu}^\dagger {\bf c}_{\nu'} - \langle {\bf c}_{\nu}^\dagger {\bf c}_{\nu'} \rangle\bigg) \bigg({\bf c}_{\mu}^\dagger {\bf c}_{\mu'} - \langle {\bf c}_{\mu}^\dagger {\bf c}_{\mu'} \rangle \bigg) + {\bf c}_{\nu}^\dagger {\bf c}_{\nu'} \langle {\bf c}_{\mu}^\dagger {\bf c}_{\mu'}\rangle - {\bf c}_{\mu}^\dagger {\bf c}_{\mu'} \langle {\bf c}_{\nu}^\dagger {\bf c}_{\nu'} \rangle - \langle {\bf c}_{\mu}^\dagger {\bf c}_{\mu'} \rangle \langle {\bf c}_{\nu}^\dagger {\bf c}_{\nu'} \rangle.
+    \end{split}
+\end{equation}
+
+The first term is proportional to the deviation squared and then may be neglected, yielding the Hartree approximation for interactions
+
+\begin{equation}
+\begin{split}
+    {\bf V}_{\textnormal{int}}^{\textnormal{HF}} = \frac{1}{2} \sum_{\nu\nu', \mu\mu'} {\mathcal V}_{\nu\mu, \nu'\mu'} \bigg[ \bar{\bf n}_{\mu \mu'} {\bf c}_{\nu}^\dagger {\bf c}_{\nu'} + \bar{\bf n}_{\nu \nu'} {\bf c}_{\mu}^\dagger {\bf c}_{\mu'} - \bar{\bf n}_{\nu \nu'} \bar{\bf n}_{\mu \mu'}\bigg],
+\end{split}
+\end{equation}
+
+which is the same result that would be obtained if the $(\nu \nu')$ and $(\mu \mu')$-operators were considered to be from different kinds of particles. However, this is not yet the full result, since the $\mu$ and $\nu$-labelled operators represent identical, indistinguishable particles and there is therefore one combination not accounted for by the Hartree approximation, the so-called Fock exchange term. This new term appears since the product of four one-body operators also gives a large contribution if $\langle{\bf c}_{\nu}^\dagger {\bf c}_{\nu'} \rangle$ finite. To derive the mean field contribution from this possibility the $\langle {\bf c}_{\nu}^\dagger {\bf c}_{\mu'} \rangle$ term must first be replaced by its average value and do the same with the combination of $\langle {\bf c}_{\mu}^\dagger {\bf c}_{\nu'} \rangle$, thus yielding 
+
+\begin{equation}
+    {\bf V}_{\textnormal{int}}^{\textnormal{Fock}} = - \frac{1}{2} \sum_{\nu\nu', \mu\mu'} {\mathcal V}_{\nu\mu, \nu'\mu'} \bigg[ \bar{\bf n}_{\nu \mu'} {\bf c}_{\mu}^\dagger {\bf c}_{\nu'} + \bar{\bf n}_{\mu \nu'} {\bf c}_{\nu}^\dagger {\bf c}_{\mu'} - \bar{\bf n}_{\mu \nu'} \bar{\bf n}_{\nu \mu'}\bigg].
+\end{equation}
+
+Therefore, the final mean field Hamiltonian within the Hartree-Fock approximation is 
+
+\begin{equation}
+    {\bf H}^{\textnormal{HF}} = {\bf H}_0 + {\bf V}_{\textnormal{int}}^{\textnormal{Hartree}} + {\bf V}_{\textnormal{int}}^{\textnormal{Fock}}.
+\end{equation}
+
+\blanky \\
+
+Consider the example of a translationally invariant homogeneous electron gas, wherein the expectation value $\langle {\bf c}_{\bf k}^\dagger {\bf c}_{\bf k'} \rangle$ is diagonal. From the Hartree-Fock approximation, the Hamiltonian for this system reads 
+\begin{align}
+    {\bf H}^{\textnormal{HF}} = \sum_{{\bf k} \sigma} \varepsilon_{\bf k}^{\textnormal{HF}} {\bf c}_{{\bf k} \sigma}^\dagger {\bf c}_{{\bf k} \sigma}, \textnormal{ where } \begin{split}
+        \varepsilon_{\bf k}^{\textnormal{HF}} &= \varepsilon_{\bf k} + \sum_{{\bf k}' \sigma'} [V(0) - \delta_{\sigma\sigma'} V({\bf k}- {\bf k}')] {\bf n}_{{\bf k}' \sigma'} \\
+        &= \varepsilon_{\bf k} + V(0) N - \sum_{{\bf k}' \sigma'} V({\bf k}- {\bf k}') {\bf n}_{{\bf k'} \sigma'}.
+    \end{split}
+\end{align}
+
+The second term is the interaction with the average electron charge. In condensed matter systems, it is normally cancelled out by an equally large term due to the positively charged ionic background. The third term is precisely the exchange correlation term. \\
+
+The Hartree-Fock approach depends crucially on what averages are assumed to be finite, and these assumptions must be based on physical knowledge or clever guess-work. For example, in the previous example, spin symmetry is assumed to be maintained, which then implies that $\langle {\bf c}_{{\bf k} \downarrow} {\bf c}_{{\bf k}\downarrow} \rangle = \langle {\bf c}_{{\bf k} \uparrow} {\bf c}_{{\bf k}\uparrow} \rangle$. Should this not be the case, a ferromagnetic solution may be obtained. \\
+
+\paragraph{\textbf{Broken Symmetry}}
+
+Mean field theory is often used to study phase transitions and thus changes of symmetry. For a given Hamiltonian with some symmetry (eg. translational symmetry, rotational symmetry in real space or in spin space), there exists an operator which reflects this symmetry and therefore commutes with the Hamiltonian (eg. translation operator, rotation operator in either real or spin space). Since the operator and the Hamiltonian commute, a common set of eigenstates exists. Consider for example, the case of a liquid of particles, wherein the Hamiltonian has translational symmetry. Thus, if ${\mathcal{T}}({\bf R})$ is the translation operator which displaces all particles coordinates by an ${\bf R}$-vector, then $[{\bf H}, {\mathcal{T}}({\bf R})] = 0$. Then, given that this translation operator is in reality a semigroup and given Stone's theorem, then ${\mathcal{T}} = e^{i {\bf R} \cdot {\bf P}}$, where $P$ is the total momentum operator. The total momentum operator is then a conserved quantity, given by 
+
+$$
+    {\bf P} = \hbar \sum_{{\bf k} \sigma} {\bf k} {\bf c}^\dagger_{{\bf k} \sigma} {\bf c}_{{\bf k} \sigma}.
+$$
+
+An orthonormal basis of states $\ket{{\bf P}}$ with definite total momentum may be chosen. This fact can be used to "prove" the unphysical nature of a density wave. In effect, a ${\bf Q}$-density wave can be written in terms of its Fourier components as 
+
+$$
+\rho({\bf Q}) = \sum_{{\bf k}\sigma} {\bf c}_{{\bf k}\sigma}^\dagger {\bf c}_{{\bf k + Q}\sigma}.
+$$
+
+Said Forier transform has a finite expectation value. However, it holds as well that
+
+$$
+\langle {\bf c}_{{\bf k}\sigma}^\dagger {\bf c}_{{\bf k} + {\bf Q}\sigma} \rangle = \frac{1}{\mathcal{Z}} \sum_{{\bf P}} e^{-\beta E_{{\bf P}}} \bra{{\bf P}} {\bf c}_{{\bf k}\sigma}^\dagger {\bf c}_{{\bf k + Q}\sigma} \ket{{\bf P}} = 0,
+$$
+
+since ${\bf c}_{{\bf k}\sigma}^\dagger {\bf c}_{{\bf k + Q}\sigma} \ket{{\bf P}}$ has momentum ${\bf P} - {\bf Q}$ and is thus orthogonal to ${\bf P}$. Then, according to this result, crystals do not exist. In the same way, magnetism, superconductivity and other physical phenomenon do not exist as well. What is wrong? The previous result breaks down if the sum of states in the thermodynamical average is restricted. Even though crystals with different spatial reference points (or ferromagnets with magnetizations in different directions) have formally the same energy, they are effectively decoupled due to the large energy barrier it takes to melt and then recrystallize into a new state with a shifted distance (or direction of magnetization). In those cases, where many states of the system are degenerate but separated by large energy barriers, it does not make sense to include them on equal footing in the statistical average, since they correspond to macroscopically totally different configurations. Therefore, the ergodicity postulate does not hold, giving rise to a phase space of physically separated sections, which is often illustrated by the double barrier model of phase transitions. 
+
+When at some critical temperature, the thermodynamical state of the system develops a non-zero expectation value of some macroscopic quantity, which has less symmetries than the original Hamiltonian, it is called spontaneous symmetry breaking. The quantity which signals that a phase transition has occurred is the order parameter. Some examples of order parameters are presented in \cref{order paras table}.
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{ |p{5cm}||p{5cm}|p{4cm}|  }
+ \hline
+ \multicolumn{3}{|c|}{Examples of Spontaneous Symmetry Breaking} \\
+ \hline
+ \textbf{Phenomena} & \textbf{Order parameter} & \textbf{ Order parameter} \\
+ & \textbf{ physical } & \textbf{ mathematical }\\
+ \hline
+ crystal & density wave & $\sum_{{\bf k}} \langle {\bf c}_{{\bf k}}^\dagger {\bf c}_{{\bf k} + {\bf Q}} \rangle $\\
+ ferromagnet & magnetization & $\sum_{{\bf k}} \langle {\bf c}_{{\bf k}\uparrow}^\dagger {\bf c}_{{\bf k}\uparrow} - {\bf c}_{{\bf k}\downarrow}^\dagger {\bf c}_{{\bf k}\downarrow} \rangle$\\
+ Bose-Einstein condensate & population of ${\bf k}=0$-state & $\langle {\bf a}_{{\bf k} = 0}^\dagger \rangle$\\
+ superconductor & pair condensate & $\langle {\bf c}_{{\bf k} \uparrow}^\dagger {\bf c}_{-{\bf k}\downarrow} \rangle$ \\
+ \hline
+\end{tabular}
+ \caption{Typical examples of spontaneous symmetry breakings and their correspondent order parameters. }
+ \label{order paras table}
+\end{table}
+
+In order to avoid the paradox obtained before with the wave density, the possibility of phase transitions must be explicitly included into the theory. In the mean field approach, the trick is to include the order parameter in the choice of finite mean fields, and, of course, show that the resulting mean field Hamiltonian leads to a self-consistent finite result. \\
+
+\paragraph{\textbf{Ferromagnetism: The Heisenberg model}}
+
+In ionic magnetic crystals, the interaction between the magnetic ions is due to the exchange interactions originating from the Coulomb interactions. The theory's effective Hamiltonian is given by 
+
+\begin{equation}
+    {\bf H} = - 2 \sum_{i \sim j} J_{ij} {\spin}_i \cdot \spin, \textnormal{ where } i \sim j \textnormal{ if } ||i-j||_1 = 1.
+\end{equation}
+
+The interaction, which depends only on the inter-ion distance, is generally short ranged and assumed to be simply $J_{ij} = J_0 \delta_{||i-j||_1, 1}$, ie. is only non-zero for nearest-neighbours. \\
+
+If $J<0$, the spins tend to become anti-parallel whereas for $J>0$, it is energetically favourable for the spins to be parallel, the first case corresponds to the antiferromagnetic case while the latter to the ferromagnetic case. For now, consider only the ferromagnetic case, $J > 0$. \\
+
+As the model stands, it is inherently complicated and cannot be solved in general, the spins of the individual ions being strongly correlated. However, a mean field solution can be readily be found to give sensical physical results. The mean field decomposition reads
+
+\begin{equation}
+    {\bf H} \approx {\bf H}_{\textnormal{MF}} = -2 \sum_{i \sim j} J_{ij} \bigg( \langle \spin_i \rangle \spin_j + \spin_i\langle \spin_j \rangle - \langle \spin_i \rangle \langle \spin_j \rangle \bigg).
+\end{equation}
+
+From symmetry arguments it is expected that the expectation value of $\langle {\bf S}_i \rangle$ is zero, since all directions are equivalent. But this is not the right answer, since a symmetry has been broken, and has to be presumed to be non-zero. Furthermore, since 
+
 \clearpage
 
 \section{Photons: coupling to electrons}
@@ -2415,6 +2742,7 @@ since the velocity is already a small quantity. Differentiating this with respec
 
 
 \clearpage
+
 \section{Linear Response Theory}
 
 Linear response theory is an extremely widely used concept in physics, stating that the response to a weak external perturbation is proportional to the perturbation, and therefore the quantity of interest is the proportionality constant. The physical question to ask is thus: supposing some perturbation $H'$, what is the measured consequence for an observable quantity ${\bf A}$. In other words, what is $\langle {\bf A} \rangle$ to linear order in $H'$? 
@@ -2587,6 +2915,10 @@ Now, given that he external perturbation, written in frequency space, is already
 
 \clearpage
 
-\section{.}
+\section{Microscopic Theory of Conventional Superconductivity}
+
+From \textbf{Advanced Quantum Condensed Matter Physics, One-Body, Many-Body and Topological perspectives. Michael El-Batanouny} \\
+
+\paragraph{\textbf{}}
 
 \end{document}
