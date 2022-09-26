@@ -8,7 +8,6 @@
 
 \begin{document} \maketitle
 
-
 \section{Quantum Phase Transitions}
 
 Consider a Hamiltonian ${\bf H}(g)$, whose degrees of freedom reside on the sites of a lattice $\Lambda \subseteq \mathds{Z}^d$, and which varies a function of a dimensionless coupling $g$. Then,
@@ -2518,12 +2517,11 @@ The question is then, how to find the averages $\langle {\bf a}_{\nu}^\dagger {\
     
     using the new mean field Hamiltonian, the same answer should be re-obtained. This entails the following prescriptions for $\bar{{\bf n}}_{\nu \nu'}^{a}$ and $\bar{{\bf n}}_{\mu \mu'}^{b}$,
     
-     \begin{align}
-        \bar{{\bf n}}_{\nu \nu'}^{a} &= \langle {\bf a}_{\nu}^\dagger {\bf a}_{\nu'} \rangle_{\textnormal{MFT}} = \frac{1}{\mathcal{Z}_{\textnormal{MFT}}} \Tr \bigg(e^{-\beta {\bf H}_{\textnormal{MFT}}} {\bf a}_{\nu}^\dagger {\bf a}_{\nu'}\bigg) 
-        \\ \bar{{\bf n}}_{\nu \nu'}^{b} &= \langle {\bf b}_{\mu}^\dagger {\bf b}_{\mu'} \rangle_{\textnormal{MFT}} = \frac{1}{\mathcal{Z}_{\textnormal{MFT}}} \Tr \bigg(e^{-\beta {\bf H}_{\textnormal{MFT}}} {\bf b}_{\mu}^\dagger {\bf b}_{\mu'}\bigg), 
-     \begin{array}{c} \textnormal{ where } 
+     \begin{align} 
+     \begin{array}{c}
+        \bar{{\bf n}}_{\nu \nu'}^{a} = \langle {\bf a}_{\nu}^\dagger {\bf a}_{\nu'} \rangle_{\textnormal{MFT}} = \frac{1}{\mathcal{Z}_{\textnormal{MFT}}} \Tr \bigg(e^{-\beta {\bf H}_{\textnormal{MFT}}} {\bf a}_{\nu}^\dagger {\bf a}_{\nu'}\bigg) \\ \bar{{\bf n}}_{\nu \nu'}^{b} = \langle {\bf b}_{\mu}^\dagger {\bf b}_{\mu'} \rangle_{\textnormal{MFT}} = \frac{1}{\mathcal{Z}_{\textnormal{MFT}}} \Tr \bigg(e^{-\beta {\bf H}_{\textnormal{MFT}}} {\bf b}_{\mu}^\dagger {\bf b}_{\mu'}\bigg),
+     \end{array} \textnormal{ where } 
              \mathcal{Z}_{\textnormal{MFT}} = \Tr \bigg(e^{-\beta {\bf H}_{\textnormal{MFT}}}\bigg).
-        \end{array}
     \end{align}
     
     Said equations are the self-consistency equations, since the averages are given in terms of the mean field hamiltonian and the mean field partition function, which themselves depend on these averages. \\
@@ -2532,13 +2530,11 @@ The question is then, how to find the averages $\langle {\bf a}_{\nu}^\dagger {\
     
     \begin{equation}
         \begin{split}
-            0 &= \frac{d}{d\bar{\bf n}_{\nu \nu'}^{a}} F_{\textnormal{MFT}} \\
-            &= \frac{d}{d\bar{\bf n}_{\nu \nu'}^{a}} \bigg(-\frac{\log \mathcal{Z}_{\textnormal{MFT}}}{\beta}\bigg) \\
-            &= \frac{1}{\mathcal{Z}_{\textnormal{MFT}}} \Tr \bigg(e^{-\beta {\bf H}_{\textnormal{MFT}}} \frac{d}{d\bar{\bf n}_{\nu \nu'}^{a}} {\bf H}_{\textnormal{MFT}} \bigg) \\
+            0 &= \frac{d}{d\bar{\bf n}_{\nu \nu'}^{a}} F_{\textnormal{MFT}} = \frac{d}{d\bar{\bf n}_{\nu \nu'}^{a}} \bigg(-\frac{\log \mathcal{Z}_{\textnormal{MFT}}}{\beta}\bigg) = \frac{1}{\mathcal{Z}_{\textnormal{MFT}}} \Tr \bigg(e^{-\beta {\bf H}_{\textnormal{MFT}}} \frac{d}{d\bar{\bf n}_{\nu \nu'}^{a}} {\bf H}_{\textnormal{MFT}} \bigg) \\
             &=\frac{1}{\mathcal{Z}_{\textnormal{MFT}}} \Tr \bigg(e^{-\beta {\bf H}_{\textnormal{MFT}}} \bigg(\sum_{\nu\nu', \mu\mu'} {\mathcal{V}}_{\nu\mu, \nu'\mu'} ({\bf b}_{\mu}^\dagger {\bf b}_\mu - \bar{\bf n}_{\mu\mu'}^{b})\bigg)\bigg) \\
             &= \frac{1}{\mathcal{Z}_{\textnormal{MFT}}} \Tr \bigg(e^{-\beta {\bf H}_{\textnormal{MFT}}} \sum_{\nu\nu', \mu\mu'} {\mathcal{V}}_{\nu\mu, \nu'\mu'} {\bf b}_{\mu}^\dagger {\bf b}_\mu \bigg) - \frac{1}{\mathcal{Z}_{\textnormal{MFT}}} \Tr \bigg(e^{-\beta {\bf H}_{\textnormal{MFT}}} \sum_{\nu\nu', \mu\mu'} {\mathcal{V}}_{\nu\mu, \nu'\mu'}\bar{\bf n}_{\mu\mu'}^{b}\bigg)
             \\
-            &= \sum_{\mu \mu'} \frac{1}{\mathcal{Z}_{\textnormal{MFT}}} {\mathcal{V}}_{\nu\mu, \nu'\mu'} \Tr \bigg(e^{-\beta {\bf H}_{\textnormal{MFT}}} {\bf b}_{\mu}^\dagger {\bf b}_\mu \bigg) - \frac{1}{\mathcal{Z}_{\textnormal{MFT}}} \sum_{\mu \mu'} {\mathcal{V}}_{\nu\mu, \nu'\mu'} \bar{\bf n}_{\mu\mu'}^{b} \cancel{\frac{1}{\mathcal{Z}_{\textnormal{MFT}}} \Tr \bigg(e^{-\beta {\bf H}_{\textnormal{MFT}}}}\bigg)\\
+            &= \sum_{\mu \mu'} \frac{1}{\mathcal{Z}_{\textnormal{MFT}}} {\mathcal{V}}_{\nu\mu, \nu'\mu'} \Tr \bigg(e^{-\beta {\bf H}_{\textnormal{MFT}}} {\bf b}_{\mu}^\dagger {\bf b}_\mu \bigg) - \sum_{\mu \mu'} {\mathcal{V}}_{\nu\mu, \nu'\mu'} \bar{\bf n}_{\mu\mu'}^{b} \cancel{\frac{1}{\mathcal{Z}_{\textnormal{MFT}}} \Tr \bigg(e^{-\beta {\bf H}_{\textnormal{MFT}}}}\bigg)\\
             &= \sum_{\mu\mu'} {\mathcal{V}}_{\nu\mu, \nu'\mu'} \bigg(\langle {\bf b}_{\mu}^\dagger {\bf b}_{\mu'} \rangle_{\textnormal{MFT}} - \bar{\bf n}_{\mu\mu'}^{b}\bigg), 
         \end{split}
     \end{equation}
@@ -2584,7 +2580,7 @@ $$
     \langle \Psi^\dagger({\bf x}) \Psi({\bf x}') \rangle = h({\bf x}, {\bf x}') \textnormal{ with } h({\bf x}, {\bf x}') = h({\bf x} + {\bf R}, {\bf x}' + {\bf R}), \textnormal{ ${\bf R}$ a lattice vector}.
 $$
 
-This kind of crystal structure exists in nature and when it happens, the system undergoes a broken symmetry phenomena. It is important to realize that this solution cannot be found by taking the homogeneity assumption but instead by calculating $ \langle {\bf c}_{{\bf k}}^\dagger {\bf c}_{{\bf k} + {\bf Q}} \rangle$, leading to the possibility of this quantity being finite, where ${\bf R} \cdot {\bf Q} = 2\pi$. Thus, the choice of the proper mean field parameters requires physical motivation about which possible states one expects. 
+This kind of crystal structure exists in nature and when it happens, the system undergoes a broken symmetry phenomena. It is important to realize that this solution cannot be found by taking the homogeneity assumption but instead by calculating $ \langle {\bf c}_{{\bf k}}^\dagger {\bf c}_{{\bf k} + {\bf Q}} \rangle$, leading to the possibility of this quantity being finite, where ${\bf R} \cdot {\bf Q} = 2\pi$. Thus, the choice of the proper mean field parameters requires physical motivation about which possible states one expects. \\
 
 \paragraph{\textbf{Hartree-Fock theory}}
 
@@ -2632,6 +2628,8 @@ Therefore, the final mean field Hamiltonian within the Hartree-Fock approximatio
 \end{equation}
 
 \blanky \\
+
+\paragraph{\textbf{Homogeneous electron gas}}
 
 Consider the example of a translationally invariant homogeneous electron gas, wherein the expectation value $\langle {\bf c}_{\bf k}^\dagger {\bf c}_{\bf k'} \rangle$ is diagonal. From the Hartree-Fock approximation, the Hamiltonian for this system reads 
 \begin{align}
@@ -2708,7 +2706,152 @@ As the model stands, it is inherently complicated and cannot be solved in genera
     {\bf H} \approx {\bf H}_{\textnormal{MF}} = -2 \sum_{i \sim j} J_{ij} \bigg( \langle \spin_i \rangle \spin_j + \spin_i\langle \spin_j \rangle - \langle \spin_i \rangle \langle \spin_j \rangle \bigg).
 \end{equation}
 
-From symmetry arguments it is expected that the expectation value of $\langle {\bf S}_i \rangle$ is zero, since all directions are equivalent. But this is not the right answer, since a symmetry has been broken, and has to be presumed to be non-zero. Furthermore, since 
+From symmetry arguments it is expected that the expectation value of $\langle {\bf S}_i \rangle$ is zero, since all directions are equivalent. But this is not the right answer, since a symmetry has been broken, and has to be presumed to be non-zero. Furthermore, since the system has translational symmetry, this average is expected to be position coordinate independent. This would not be the case for an antiferromagnetic solution, wherein position is important since the spins point on opposite directions on even and odd sites. In the ferromagnetic case, a finite but spatially independent average spin polarization is studied. In particular, if the $z$-axis is chosen to lie along the direction of the magnetization, then the mean field assumption is
+
+$$
+    \langle \spin_i \rangle = \langle \spin_z \rangle {\bf e}_z,
+$$
+
+and each spin's magnetic moment ${\bf m}$, which by assumption is equal for all sites, reads
+
+$$
+    {\bf m} = 2 \sum_{j} J_{ij} \langle \spin_z \rangle {\bf e}_z = 2n J_0 \langle \spin_z \rangle {\bf e}_z, \textnormal{ where $n$ is the number of neighbours}. 
+$$
+
+For a square lattice, $\Lambda \subseteq \mathds{Z}^d$ and $n = 2d$. Then men field Hamiltonian is then
+
+$$
+    {\bf H}_{\textnormal{MFT}} = - 2 \sum_{i} {\bf m} \cdot \spin_i + m N \langle \spin_z \rangle,
+$$
+
+which is now diagonal in the site index and hence easily solved. If the ions are spin-$\frac{1}{2}$ particles, with this simplification, the mean field partition function is 
+
+$$
+    {\mathcal{Z}_{\textnormal{MFT}}} = \bigg( e^{\beta m} + e^{-\beta m} \bigg)^N e^{\beta N m \langle \spin_z \rangle} = \bigg[ \bigg( e^{\beta m} + e^{-\beta m} \bigg) e^{\frac{\beta m^2}{2n J_0}} \bigg]^N,
+$$
+
+with one term for each possible spin projection. \\
+
+The self-consistency equation is found by minimizing the free energy 
+
+$$
+    \frac{\partial F_{\textnormal{MFT}}}{\partial m} = - \frac{1}{\beta} \frac{\partial \log  {\mathcal{Z}_{\textnormal{MFT}}}}{\partial m} = -N \bigg(\frac{e^{\beta m} - e^{-\beta m}}{e^{\beta m} + e^{-\beta m}}\bigg) + N \frac{m}{n J_0} = 0 \Rightarrow \alpha = \tanh(b \alpha), \textnormal{ where } \begin{array}{c}
+        \alpha = \frac{m}{nJ_0}  \\
+        \\
+        b = nJ_0 \beta.  
+    \end{array}
+$$
+
+For small $\alpha$, the previous equation reads
+
+$$
+\alpha \approx b \alpha - \frac{(b\alpha)^3}{3},
+$$
+
+from which it is evident that there is no solution for $b < 1$. Thus, the critical temperature $T_c$ can be found since at this temperature magnetism disappears. From the $(b_c = 1)$-condition, it is found that $k_B T_c = n J_0$. Furthermore, for small $\alpha$, the solution for the magnetization can be found 
+
+\begin{align}
+    \alpha \approx \frac{1}{b} \sqrt{\frac{3(b-1)}{b}} \Rightarrow m \approx nJ_0 \sqrt{3 \frac{T_c - T}{T_c}}, \textnormal{ valid for } T \rightarrow T_c.    
+\end{align}
+
+
+At $T=0$, where $t \rightarrow\infty$, the solution is $\alpha = 1$ and hence $m = n J_0$. For the functional form of the magnetization in the entire range of temperature, the transcendental equation must be solved numerically. \\
+
+\paragraph{\textbf{The Stoner-Hubbard of metallic ferromagnets}}
+
+In magnets where the electrons both generate magnetic moments and also form conduction bands, the Heisenberg model proves to be inadequate given that the spins are not localized. Metallic magnetism occurs eg. in transition metals, where the conduction bands are formed by the narrower $d$ or $f$ orbitals. The interaction between two particles in those orbitals is stronger than between electrons occupying the more spread out $s$ or $p$ orbitals and hence give a larger correlation between electrons. Typical metals where correlations between conduction band electrons are important for Fe and Ni. \\
+
+Since the short-range of the interaction is important, the physical model -the so-called Hubbard model- must incorporate a simple physical fact. Namely, that the Coulomb interaction between electrons is taken to be point-like in real space, and hence constant in momentum space
+
+\begin{equation}
+    {\bf H}_{\textnormal{Hub}} = \sum_{{\bf k} \sigma} \varepsilon_{{\bf k}} {\bf c}_{{\bf k}\sigma}^\dagger {\bf c}_{{\bf k}\sigma} + \frac{U}{2\mathcal{V}} \sum_{\substack{{\bf k}, {\bf k}', {\bf q} \\
+          {\sigma \sigma'}}} {\bf c}_{{\bf k+q} \sigma}^\dagger {\bf c}_{{\bf k'-q} \sigma'}^\dagger {\bf c}_{{\bf k}' \sigma'} {\bf c}_{{\bf k}\sigma}.
+\end{equation}
+
+Then, the Hartree-Fock approximation scheme may be employed on this model, by searching for a ferromagnetic solution which allows expectation values to depend on the direction of the spin. The mean field parameters are 
+
+\begin{align}
+    \langle {\bf c}_{{\bf k}\uparrow}^\dagger {\bf c}_{{\bf k}'\uparrow} \rangle &= \delta_{{\bf k} {\bf k}'} \bar{n}_{{\bf k} \uparrow} & \langle {\bf c}_{{\bf k}\downarrow}^\dagger {\bf c}_{{\bf k}'\downarrow} \rangle &= \delta_{{\bf k} {\bf k}'} \bar{n}_{{\bf k} \downarrow}, 
+\end{align}
+
+and the mean-field interaction Hamiltonian becomes 
+
+\begin{align*}
+    {\bf V}_{\textnormal{int}}^{\textnormal{MFT}} &= \frac{U}{\mathcal{V}} \sum_{\substack{{\bf k}, {\bf k}', {\bf q} \\
+          {\sigma \sigma'}}} \bigg[ {\bf c}_{{\bf k + q}\sigma}^\dagger \langle {\bf c}_{{\bf k'-q}\sigma'}^\dagger {\bf c}_{{\bf k}'\sigma'} \rangle {\bf c}_{{\bf k}\sigma} - \langle {\bf c}_{{\bf k + q}\sigma}^\dagger {\bf c}_{{\bf k}'\sigma'} \rangle {\bf c}_{{\bf k'-q}\sigma'}^\dagger {\bf c}_{{\bf k}\sigma}  \\
+          &  \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky   -\frac{1}{2} \bigg( \langle {\bf c}_{{\bf k + q}\sigma}^\dagger {\bf c}_{{\bf k}\sigma} \rangle \langle {\bf c}_{{\bf k' - q}\sigma'}^\dagger {\bf c}_{{\bf k}'\sigma'} \rangle - \langle {\bf c}_{{\bf k + q}\sigma}^\dagger {\bf c}_{{\bf k}'\sigma'} \rangle \langle {\bf c}_{{\bf k' - q}\sigma'}^\dagger {\bf c}_{{\bf k}\sigma} \rangle  \bigg)  \bigg] \\
+          &= \frac{U}{\mathcal{V}} \sum_{\substack{{\bf k}, {\bf k}', {\bf q} \\
+          {\sigma \sigma'}}} 
+          \bigg[ {\bf c}_{{\bf k + q}\sigma}^\dagger {\bf c}_{{\bf k}\sigma} \delta_{{\bf k'-q} \blanky {\bf k}'} \bar{n}_{{\bf k'} \sigma'} - {\bf c}_{{\bf k'-q}\sigma'}^\dagger {\bf c}_{{\bf k}\sigma} \delta_{{\bf k+q} \blanky {\bf k}'} \delta_{\sigma \sigma'} \bar{n}_{{\bf k}' \sigma'} \\
+          & \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky  - \frac{1}{2} \bigg(\delta_{{\bf k+q} \blanky {\bf k}} \bar{n}_{{\bf k} \sigma} \delta_{{\bf k'-q} \blanky {\bf k}'} \bar{n}_{{\bf k}' \sigma'} - \delta_{{\bf k+q} \blanky {\bf k}'} \delta_{\sigma \sigma'} \bar{n}_{{\bf k}' \sigma'} \delta_{{\bf k'-q} \blanky {\bf k}} \delta_{\sigma \sigma'} \bar{n}_{{\bf k} \sigma} \bigg) \bigg] \\
+          &= U \sum_{\substack{{\bf k}, {\bf k}'\\
+          {\sigma \sigma'}}} \bigg[ {\bf c}_{{\bf k}\sigma}^\dagger {\bf c}_{{\bf k}\sigma} \frac{\bar{n}_{{\bf k'} \sigma'}}{\mathcal{V}} - {\bf c}_{{\bf k}\sigma}^\dagger {\bf c}_{{\bf k}\sigma} \delta_{\sigma \sigma'} \frac{\bar{n}_{{\bf k'} \sigma'}}{\mathcal{V}} - \frac{1}{2} \bigg(\bar{n}_{{\bf k} \sigma} \frac{\bar{n}_{{\bf k'} \sigma'}}{\mathcal{V}} - \delta_{\sigma \sigma'} \bar{n}_{{\bf k'} \sigma'} \frac{\bar{n}_{{\bf k} \sigma}}{\mathcal{V}} \bigg)\bigg] \\
+          &= U \sum_{{\bf k} \sigma \sigma'} \bigg[{\bf c}_{{\bf k}\sigma}^\dagger {\bf c}_{{\bf k}\sigma} (\bar{n}_{\sigma'} - \delta_{\sigma \sigma'} \bar{n}_{\sigma}) - \mathcal{V} \bar{n}_{\sigma} \bar{n}_{\sigma'} + \mathcal{V} \bar{n}_{\sigma}^2   \bigg], \textnormal{ where } \bar{n}_{\sigma} = \frac{1}{\mathcal{V}} \sum_{{\bf k'}} \langle {\bf c}_{{\bf k'}\sigma}^\dagger {\bf c}_{{\bf k'}\sigma} \rangle \textnormal{ is the spin density}.
+\end{align*}
+
+The full Hamiltonian reads
+
+\begin{equation}
+    {\bf H}_{\textnormal{MFT}} = \sum_{{\bf k} \sigma} \varepsilon_{{\bf k} \sigma}^{\textnormal{MFT}} {\bf c}_{{\bf k}\sigma}^\dagger {\bf c}_{{\bf k}} - \frac{U \mathcal{V}}{2} \sum_{\sigma \sigma'} \bigg( \bar{n}_{\sigma} \bar{n}_{\sigma'} - \bar{n}_{\sigma}^2 \delta_{\sigma \sigma'} \bigg), \textnormal{ with } \varepsilon_{{\bf k} \sigma}^{\textnormal{MFT}} = \varepsilon_{{\bf k}} + U(n_\uparrow + {\bar n}_\downarrow - \bar{n}_\sigma) = \varepsilon_{\bf k} + U\bar{n}_{\bar{\sigma}}.
+\end{equation}
+
+The mean field solution is found via minimization, 
+
+\begin{align*}
+    0 &= \frac{d}{d \bar{n}_{\sigma}} F_{\textnormal{MFT}} = \frac{d}{d \bar{n}_{\sigma}} \bigg( - \frac{\log \mathcal{Z}_{\textnormal{MFT}}}{\beta} \bigg) = \frac{1}{\mathcal{Z}_{\textnormal{MFT}}} \Tr \bigg(e^{-\beta {\bf H}_{\textnormal{MFT}}} \frac{d}{d\bar{n}_{\sigma}} {\bf H}_{\textnormal{MFT}} \bigg) \\
+    &= - \frac{1}{\mathcal{Z}_{\textnormal{MFT}}} \Tr \bigg[e^{-\beta {\bf H}_{\textnormal{MFT}}} \bigg(\sum_{{\bf k}\sigma} \frac{d \varepsilon_{{\bf k} \sigma}^{\textnormal{MFT}}}{d \bar{n}_{\sigma}} {\bf c}_{{\bf k}\sigma}^\dagger {\bf c}_{{\bf k}\sigma} - \frac{U  \mathcal{V}}{2} \sum_{\sigma \sigma'} ({\bar n}_{\sigma'} + \bar{n}_{\sigma} \delta_{\sigma \sigma'} -2 \bar{n}_{\sigma'} \delta_{\sigma \sigma'} ) \bigg) \bigg] \\
+    &= - \frac{1}{\mathcal{Z}_{\textnormal{MFT}}} \Tr \bigg[e^{\beta {\bf H}_{\textnormal{MFT}}} \bigg(\sum_{{\bf k}\sigma} -U {\bf c}_{{\bf k}\sigma}^\dagger {\bf c}_{{\bf k}\sigma}  - \frac{U  \mathcal{V}}{2} \sum_{\sigma \sigma'} ({\bar n}_{\sigma'} - \bar{n}_{\sigma'} \delta_{\sigma \sigma'} ) \bigg) \bigg] \\
+    &= U \sum_{{\bf k} \sigma} \langle {\bf c}_{{\bf k}\sigma}^\dagger {\bf c}_{{\bf k}\sigma} \rangle_{\textnormal{MFT}} - \frac{U  \mathcal{V}}{2} \sum_{\sigma \sigma'} ({\bar n}_{\sigma'} - \bar{n}_{\sigma'} \delta_{\sigma \sigma'} ) =  U \langle {\bf c}_{{\bf k}\sigma}^\dagger {\bf c}_{{\bf k}} \rangle_{\textnormal{MFT}} + U \mathcal{V} \bar{n}_{\sigma} \\
+    &= \frac{U}{\mathcal{Z}_{\textnormal{MFT}}} \sum_{{\bf k} \sigma} \Tr \bigg[e^{-\beta {\bf H}_{\textnormal{MFT}}} {\bf c}_{{\bf k}\sigma}^\dagger {\bf c}_{{\bf k}\sigma} \bigg] + \frac{U  \mathcal{V}}{2} \sum_{\sigma \sigma'} ({\bar n}_{\sigma'} - \bar{n}_{\sigma'} \delta_{\sigma \sigma'}) \cancel{\frac{1}{\mathcal{Z}_{\textnormal{MFT}}} \Tr \bigg[e^{-\beta {\bf H}_{\textnormal{MFT}}} \mathds{1} \bigg]} \\
+    &= \frac{U}{\mathcal{V}} \sum_{{\bf k}} \langle {\bf c}_{{\bf k}\sigma}^\dagger {\bf c}_{{\bf k}\sigma} \rangle_{\textnormal{MFT}} - \frac{U \mathcal{V}}{2} \bigg( 2 \sum_{\sigma'} {\bar n}_{\sigma'} - \sum_{\sigma} {\bar n}_{\sigma} \bigg) \bigg] =  \sum_{\sigma} \bigg[ \sum_{{\bf k}} \frac{U}{\mathcal{V}} \langle {\bf c}_{{\bf k}\sigma}^\dagger {\bf c}_{{\bf k}\sigma} \rangle_{\textnormal{MFT}} + \frac{U \mathcal{V}}{2} {\bar{ n}_{\sigma}} \bigg]\\
+    \Rightarrow \bar{n}_{\sigma} &= \frac{1}{\mathcal{V}} \sum_{{\bf k}} \langle {\bf c}_{{\bf k}\sigma}^\dagger {\bf c}_{{\bf k}\sigma} \rangle_{\textnormal{MFT}} = \frac{1}{\mathcal{V}} \sum_{{\bf k}} n_F(\varepsilon_{{\bf k} \sigma}^{\textnormal{MFT}}).
+\end{align*}
+
+% revisar esta cuenta porque me quedó con un dos de más
+
+At zero temperature, 
+
+\begin{align}
+\begin{array}{c}
+    {\bar n}_\uparrow = \int_{\mathds{R}^3} \frac{d {\bf k}}{(2\pi)^3} \blanky \Theta\bigg( \mu - \frac{\hbar^2 k^2}{2m} - U \bar{n}_\downarrow\bigg) = \frac{k_{F\uparrow}^3}{6\pi^2} \\
+    {\bar n}_\downarrow = \int_{\mathds{R}^3} \frac{d {\bf k}}{(2\pi)^3} \blanky \Theta\bigg( \mu - \frac{\hbar^2 k^2}{2m} - U \bar{n}_\uparrow\bigg) = \frac{k_{F\downarrow}^3}{6\pi^2},
+\end{array}
+\textnormal{ where } \frac{\hbar^2 k_{F \sigma}}{2m} + U \bar{n}_{(\sigma)^{*}} = \mu.
+\end{align}
+
+Thus, yielding two equations 
+
+\begin{align}
+    \frac{\hbar^2}{2m} (6\pi)^{\frac{2}{3}} {\bar n}_{\uparrow}^{\frac{2}{3}} + U {\bar n}_{\downarrow} &= \mu,s & \frac{\hbar^2}{2m} (6\pi)^{\frac{2}{3}} {\bar n}_{\downarrow}^{\frac{2}{3}} + U {\bar n}_{\uparrow} &= \mu.
+\end{align}
+
+Let, 
+
+\begin{align*}
+    \zeta &= \frac{{\bar n}_{\uparrow}-{\bar n}_{\downarrow}}{{\bar n}}, & \gamma = \frac{2m U n^{\frac{1}{3}}}{(3\pi^2)^{\frac{3}{2}} \hbar^2}, & {\bar n} &= {\bar n}_{\uparrow} + {\bar n}_{\downarrow},
+\end{align*}
+
+then, by subtracting the two equations,
+
+\begin{align}
+    {\bar n}_{\uparrow}^{\frac{2}{3}} - {\bar n}_{\downarrow}^{\frac{2}{3}} = \frac{2mU}{\hbar^2} (6\pi)^{-\frac{2}{3}} ({\bar n}_{\uparrow}-{\bar n}_{\downarrow}) \Rightarrow \gamma \zeta = (1+\zeta)^{\frac{2}{3}} - (1-\zeta)^{\frac{2}{3}},
+\end{align}
+
+which has three types of solutions:
+
+\begin{itemize}
+    \item $\gamma < \frac{4}{3}$: isotropic solution: $\zeta = 0$, which corresponds to a normal state.
+    \item $\frac{4}{3} < \gamma < 2^{\frac{2}{3}}$: Partial polarization $0 < \zeta < 1$, which corresponds to a weak ferromagnet.
+    \item $\gamma > 2^{\frac{2}{3}}$: Full polarization $\zeta = 1$, which corresponds to a strong ferromagnet. \\
+\end{itemize}
+
+The possibility for a magnetic solution can be traced back to the spin dependent eigenenergies, where it is clear that the mean field energy of a given spin direction depends on the occupation of the opposite spin direction, whereas the energy does not depend on the occupation of the same spin direction. This is a consequence of two things: the short range interaction and the exchange term. Both can be understood from the Pauli principle, which ensures that electrons with the same spin never occupy the same spatial orbitals and therefore, if the interaction is short-range, they cannot interact. This leaves interactions between opposite spins as the only possibility. Thus, the interaction energy is lowered by having a polarized ground state, which on the other hand for a fixed density costs kinetic energy. The competition between the kinetic and potential energy gives rise to the phase transition. \\
+
+The Stoner-Hubbard model gives a reasonable account for metallic magnets and is capable of qualitatively explaining the properties of excitations in the spin polarized states. \\
+
+%incluir el grafiquito de transiciones de fase del modelo, sacado del Many Body Quantum Theory yada yada yada de Bruus-Flensberg. 
+
+\paragraph{\textbf{Superconductivity: BCS theory}}
 
 \clearpage
 
@@ -2922,3 +3065,4 @@ From \textbf{Advanced Quantum Condensed Matter Physics, One-Body, Many-Body and 
 \paragraph{\textbf{}}
 
 \end{document}
+
