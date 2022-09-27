@@ -30,6 +30,106 @@ where $\textnormal{GL}(N, \mathds{C})$ is the general linear group over the comp
     \item and is a Riemannian non-convex manifold
 \end{enumerate}
 
+Let $\Lambda$ be a $d$-dimensional quantum spin system, with its lattice being defined as $\mathds{L} = \mathds{Z}^d$ so that $\Lambda \subset \mathds{Z}^d$. Its single-spin space is a probability space $(S, {\bm S}, \lambda)$ where $S = \{\pm 1\}$. A spin chain's regular crystalline structure can be viewed as a finite, non-oriented. Let $\mathfrak{H}\mathfrak{s}(\hilbert^{\otimes N})$ be the set of all trace-class operators, endomorphisms acting on the $N$-partite Hilbert space. By construction, this set is, in and on itself, a Hilbert space. In particular, consider the subset of all trace-class hermitian operators, labelled 
+
+\begin{equation}
+    \mathfrak{H}\mathfrak{s}^{\dagger}(\hilbert^{\otimes N}) \subset \mathfrak{H}\mathfrak{s}(\hilbert^{\otimes N}), \textnormal{ where } {\bf K} \in \mathfrak{H}\mathfrak{s}^{\dagger}(\hilbert^{\otimes N}) \textnormal{ if and only if } \begin{array}{c}
+         {\bf K}: \hilbert^{\otimes N} \rightarrow \hilbert^{\otimes N} \\
+         {\bf K} = \bf K^\dagger  \\
+         \Tr \bf K^\dagger {\bf K} = \Tr \bf K^2 < \infty 
+    \end{array}
+\end{equation}
+
+We claim the following
+
+\begin{theo}
+     Let $\mathcal{M} = \bigg\{ \rho \in \mathcal{C}(\mathds{H}^{\otimes N}) \blanky | \blanky \exists \{\mu\}_{k=1}^{\ell} \subset \mathds{R} \land \exists {\bf K} \in \mathfrak{H}\mathfrak{s}^{\dagger}(\hilbert^{\otimes N}) \textnormal{ such that } \rho \propto e^{-{\bf K}} \bigg\}$. Then $M$ is a Riemannian manifold $(M, B)$, where $B$ is the Bures metric. 
+
+\end{theo}
+
+\begin{proof}
+    
+In effect, this manifold is path-connected,
+
+$$
+    \forall \rho_1, \rho_2 \in \mathcal{M}, \exists f:\mathds{R}_{[0,1]} \rightarrow \mathcal{M} \textnormal{ and } f(0) = \rho_1, f(1) = \rho_"
+$$
+
+such that said path always exists. In effect, consider the function 
+
+\begin{align*}
+    f&:\mathds{R}_{[0,1]} \rightarrow \mathcal{M} \\
+    &f(x) = x \rho_1 + (1-x) \rho_2,
+\end{align*}
+
+which is continuous for arbitrary density matrices. Thus, according to the Hopf-Rinow theorem, there are a number of inmediate consequences:
+
+\begin{itemize}
+    \item the closed and bounded subsets of $\mathcal{M}$ are compact, ie. for each of these subsets, there always exists a uniformly convergent Cauchy subsequence. \footnote{Remember that a set $X$ is compact if every sequence on $X$ has a uniformly convergent subsequence, a subsequence which converges to a point on $X$.}
+    \item $\mathcal{M}$ is a complete metric space ie. every Cauchy sequence of points on $\mathcal{M}$ has a limit that is also in $\mathcal{M}$.
+    \item $\mathcal{M}$ is geodesically complete, that is, $\forall \rho \in \mathcal{M}$, the exponential map $\mathfrak{e}\mathfrak{x}\mathfrak{p}_{\rho}: T_{\rho} \mathcal{M} \rightarrow \mathcal{M}$ is always well defined and can be defined on the entire tangent space. 
+\end{itemize}
+
+In other words, the Hopf-Rinow theorem assures that, given any two arbitrary point $\rho, \sigma \in \mathcal{M}$, there always exists a length-minimizing geodesic connecting these two-points\footnote{Note that these conclusions only hold for finite dimensional manifolds. The theorem does not hold for infinite dimensional complete Hilbert manifolds. Note that, in our case, the Hilbert space $\hilbert^{\otimes N}$ can be thought of as a Hilbert manifold, with a single global chart given by the identity function $\mathds{1}_{\hilbert^{\otimes N}}$ on said Hilbert space. Moreover, since by definition a Hilber tspace is a vector space, the tangent space $T_{\rho} \mathcal{M}$ to $\mathcal{M}$ at the point $\rho \in \hilbert^{\otimes}$ is canonically isomorphic to the Hilbert space itself, and thus has a natural inner product, the same as the one defined on the Hilbert space. Thus $\hilbert^{\otimes N}$ can be given the structure of a Riemannian manifold with metric 
+
+$$
+    g(v, w) (\rho) = \langle v, w \rangle_{\hilbert^{\otimes N}}, \textnormal{ for } v, w \in T_{\rho} \mathcal{M}
+$$
+
+wherein $\langle \cdot, \cdot \rangle_{\hilbert^{\otimes N}}$ denotes the inner product in $\hilbert^{\otimes N}$
+}. 
+
+By construction, it is clear that the natural choice for the 
+tangent space $T_\rho \mathcal{M}$ is $\mathfrak{H}\mathfrak{s}^{\dagger}(\hilbert^{\otimes N})$
+
+$$
+    T_\rho \mathcal{M} \simeq \mathfrak{H}\mathfrak{s}^{\dagger}(\hilbert^{\otimes N})
+$$
+
+, for all $\rho \in \mathcal{M}$. Therefore, the tangent bundle, a vector bundle made up of copies of $\mathfrak{H}\mathfrak{s}^{\dagger}(\hilbert^{\otimes N})$, can be written as 
+
+$$
+    {\displaystyle {\begin{aligned}T\mathcal{M}&=\bigsqcup _{\rho \in \mathcal{M}}T_{\rho}\mathcal{M}\\&=\bigcup _{\rho\in \mathcal{M}}\left\{\rho\right\}\times T_{\rho}\mathcal{M}\\&=\bigcup_{\rho\in \mathcal{M}}\left\{(\rho,{\bf O})\mid {\bf O}\in T_{\rho} \mathcal{M}\right\}\\&=\left\{(\rho,{\bf O})\mid \rho\in \mathcal{M},{\bf O}\in T_{\rho} \mathcal{M}\right\}\end{aligned}}}
+$$
+
+\end{proof}
+
+
+\clearpage
+
+Consider the set of all density operators, labelled $\mathcal{C}(\mathds{H}^{\otimes N})$, we are interested in two subsets of these, the Max-Ent manifolds
+
+
+
+
+By definition, $\mathcal{C}(\mathds{H}^{\otimes N}) \subset \textnormal{GL}(N, \mathds{C})$. In particular, we claim that it has the structure of a Riemannian non-convex manifold. All of these density matrices can be written as the exponential of a hermitian ${\bf K}$-operator,
+
+$$
+    {\bf K} \in \textnormal{End}(\mathcal{C}(\mathds{H}^{\otimes N})) \textnormal{  and  } {\bf K}^\dagger = {\bf K}.
+$$
+
+If a basis $\mathcal{B}$ of trace-class operators is chosen, then
+
+$$
+    \mathcal{B} = \{{\bf O}_i\}_{i=1}^{\dim \mathcal{B}} \Rightarrow {\bf K} = \sum_{i} \alpha_i {\bf O}, \alpha_i \in \mathds{C}
+ $$
+ 
+so that there exists a mapping from the space of all trace-class endomorphisms to the space of all Max Ent-type density matrices, said mapping being the exponential mapping.
+
+\begin{align*}
+    &\mathfrak{e}\mathfrak{x}\mathfrak{p}: T_{\alpha} \mathcal{M} \rightarrow \mathcal{M} \\
+    &\mathfrak{e}\mathfrak{x}\mathfrak{p}({\bf K}) \rightarrow e^{{\bf K}} \textnormal{ so long as } {\bf K} \in \textnormal{End}(\mathcal{C}(\mathds{H}^{\otimes N})) \textnormal{ and } {\bf K} = {\bf K}^{\dagger}
+\end{align*}
+
+The exponential mapping is well defined for all trace-class hermitian operators since the manifold is path-connected. In effect, 
+
+
+\begin{align}
+    \forall \rho_1, \rho_2 \in \mathcal{\bf S}_{\textnormal{ME2}}     
+\end{align}
+
+\clearpage
+
 Density operators can either describe pure or mixed states, which are deffined as follows 
 
 \begin{itemize}
@@ -166,7 +266,7 @@ In effect,
 
 \begin{enumerate}
     \item the linearity and sesquilinearity is self evident. \\
-    \item Is it hermitian? Yes
+    \item Is it real? Yes
     
     \begin{equation}
     \begin{split}
@@ -402,4 +502,66 @@ where we have chosen the Schrodinger picture for the operators. Now we claim the
     \notaFTBP{ pero lo que no me gusta de acá es que es que usé que $\log AB^{-1} = \log A - \log B$, que vale solo si conmutan y si $\rho' \rho^{-1}$ conmutan dentro del límite. Me hace ruido}
 \end{proof}
 
+\blanky \\
+
+\begin{theo}
+     Consider an $N$-particle closed quantum system and consider an $\ell+\ell'$-dimensional basis of Hilbert-Schmidt operators, which includes upto two-body operators, ie. 
+     
+     $$
+     \mathfrak{B} = \{{\bf O}_i\}_{i=1}^{\ell} \cup \{{\bf O}_i {\bf O}_j\}_{\substack{i=1\\
+                                        j=1}}^{\ell'} \textnormal{ with } O_i \in \mathfrak{H}\mathfrak{s}_1(\hilbert^{(\ell)})  \blanky \forall i \textnormal{ and } \mathfrak{B} \subset \mathfrak{H}\mathfrak{s}_2(\hilbert^{(\ell)}).
+     $$
+     
+     We then claim that the system's time evolution can then be approximated as 
+     
+     $$
+     \rho(t) = e^{\bm{\mathfrak{K}}} \textnormal{ where } \bm{\mathfrak{K}} = \sum_{\mu} \phi^{\mu}(t) {\bf O}_{\mu} + \sum_{\mu \nu} \gamma^{\mu \nu}(t) {\bf O}_\mu {\bf O}_\nu \textnormal{ for some } \{\phi^{\mu}\}_{\mu}, \{\gamma^{\mu \nu}\}_{{\mu, \nu}} \subset C^\infty(\R) \textnormal{ such that } \rho \in \statespace, \forall t.
+     $$
+     
+\end{theo}
+
+\begin{proof}
+    In effect, the closed evolution is governed by the Schrodinger equation on the density matrix, 
+    
+    $$
+    \frac{d\rho}{dt} = \frac{[{\bf H}, \rho]}{i},
+    $$
+    
+    If the density operator can be written as the exponential of a positive-defined operator $\bm{\mathfrak{K}}$, the previous equation naturally induces a Schrodinger equation on the $\bm{\mathfrak{K}}$-operator, as follows 
+    
+    $$
+    \frac{d\bm{\mathfrak{K}}
+    }{dt} = \frac{[{\bf H}, \bm{\mathfrak{K}}
+    ]}{i}.
+    $$
+    
+    Which entails,
+    
+    \begin{equation}
+        \begin{split}
+            \sum_{\mu} \frac{d\phi^{\mu}}{dt} {\bf O}_{\mu} + \sum_{\mu \nu} \frac{d\gamma^{\mu \nu}}{dt} {\bf O}_\mu {\bf O}_\nu &= \bigg[{\bf H}, \sum_{\mu} \phi^{\mu}(t) {\bf O}_{\mu} + \sum_{\mu \nu} \gamma^{\mu \nu}(t) {\bf O}_\mu {\bf O}_\nu\bigg] \\
+            \sum_{\mu} \frac{d\phi^{\mu}}{dt} {\bf O}_{\mu} + \sum_{\mu \nu} \frac{d\gamma^{\mu \nu}}{dt} {\bf O}_\mu {\bf O}_\nu &=
+            \sum_{\mu} \phi^\mu(t) [{\bf H}, {\bf O}_{\mu}] + \sum_{\mu \nu} \gamma^{\mu \nu}(t) [{\bf H}, {\bf O}_{\mu} {\bf O}_{\nu}] \\
+        \end{split}
+    \end{equation}
+    \begin{equation}
+        \begin{split}
+            \Rightarrow \left({\bf O}_\alpha, \sum_{\mu} \frac{d\phi^{\mu}}{dt} {\bf O}_{\mu} + \sum_{\mu \nu} \frac{d\gamma^{\mu \nu}}{dt} {\bf O}_\mu {\bf O}_\nu \right) = \left({\bf O}_\alpha, \sum_{\mu} \phi^\mu(t) [{\bf H}, {\bf O}_{\mu}] + \sum_{\mu \nu} \gamma^{\mu \nu}(t) [{\bf H}, {\bf O}_{\mu} {\bf O}_{\nu}] \right) \\
+            \sum_{\mu} \frac{d\phi^{\mu}}{dt} \cancelto{\delta_{\alpha \mu}}{({\bf O}_\alpha, {\bf O}_{\mu})} + \cancelto{0}{\sum_{\mu \nu} \frac{d\gamma^{\mu \nu}}{dt} ({\bf O}_\alpha, {\bf O}_\mu {\bf O}_\nu)} = \left(\sum_{\mu} \phi^\mu(t) ({\bf O}_\alpha, [{\bf H}, {\bf O}_{\mu}]) + \sum_{\mu \nu} \gamma^{\mu \nu}(t) ({\bf O}_\alpha, [{\bf H}, {\bf O}_{\mu} {\bf O}_{\nu}] )\right) \\
+            {\frac{d\phi^{\alpha}}{dt}}{= \left(\sum_{\mu} \phi^\mu(t) ({\bf O}_\alpha, [{\bf H}, {\bf O}_{\mu}]) + \sum_{\mu \nu} \gamma^{\mu \nu}(t) ({\bf O}_\alpha, [{\bf H}, {\bf O}_{\mu} {\bf O}_{\nu}] )\right)} \\
+            & \alignedbox{\frac{d\phi^{\alpha}}{d\alpha}}{= \sum_{\mu} \bm{\mathcal{H}} \phi^{\mu}},
+            \end{split}
+    \end{equation}
+
+where 
+
+\begin{align*}
+    \bm{\mathcal{H}} : \mathfrak{H}\mathfrak{s}(\hilbert^{\otimes N}) & \times \mathfrak{H}\mathfrak{s}(\hilbert^{\otimes N}) \rightarrow \mathds{C}^{\dim \times \dim} \\
+    & (\bm{\mathcal{H}})_{\mu \nu} = ({\bf O}_{\nu}, [{\bf H}, {\bf O}_{\nu}])
+\end{align*}
+    
+\end{proof}
+
+
 \end{document}
+
