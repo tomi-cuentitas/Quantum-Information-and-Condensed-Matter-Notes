@@ -24,9 +24,48 @@ which is a finite, non-empty $\mathds{C}$-subset. Then, the following statements
     \item ${\bf A} \in \textnormal{GL}(n, \mathds{C}) \leftrightarrow 0 \notin \sigma({\bf A})$. Moreover, $\lambda \notin \sigma({\bf A}) \leftrightarrow {\bf A}-\lambda \mathds{1}_n \in \textnormal{GL}(n, \mathds{C}).$
     \item If $P_{{\bf A}}(x) \in \mathds{C}[x]$ is ${\bf A}$'s characteristic polynomial, then $\lambda \in \sigma({\bf A}) \leftrightarrow P_{{\bf A}}(\lambda) = 0$ ie. $\sigma({\bf A})$ is $P_{\bf A}(x)$'s zeros-set. 
     \item Since $\textnormal{gr}(P_{{\bf A}})=n$, then $0 < |\sigma({\bf A})| \leq n$. 
+    \item $\sigma({\bf A}^\dagger) = \sigma({\bf A})^{*}$ In effect, if 
+    
+    \begin{equation*}
+        {\bf A} - \lambda \mathds{1}_n \notin \textnormal{GL}(n,\mathds{C}) \rightarrow ({\bf A}-\lambda \mathds{1})^{\dagger} = {\bf A}^\dagger - \lambda^{*} \mathds{1}_n  \notin \textnormal{GL}(n,\mathds{C}).
+    \end{equation*}
+    
+    \item If ${\bf A} \in \textnormal{GL}(n,\mathds{C}) \Rightarrow \sigma({\bf A}^{-1}) = \sigma({\bf A})^{-1} = \{\lambda^{-1} : \lambda \in \sigma({\bf A})\}$. \\
 \end{itemize}
 
+Now, let ${\bf A} \in \mathds{C}^{n \times n}$, then
 
+\begin{enumerate}
+    \item the numerical radius is defined as 
+    
+    $$
+    w({\bf A}) = \max_{x \in \mathds{C}^n : ||x|| = 1} |\langle {\bf A} x, x \rangle|.
+    $$
+    
+    \item The spectral radius is defined as 
+    
+    $$
+    \rho({\bf {A}}) = \max_{\lambda \in \sigma({\bf A})} |\lambda|.
+    $$
+    
+    \item The spectral norm of ${\bf A}$ is its operator norm, said norm being induced by the euclidean norm on $\mathds{C}^{n}$, this is 
+    
+    $$
+    ||{\bf A}||_{\textnormal{sp}} =  \max_{x \in \mathds{C}^n : ||x|| = 1} ||{\bf A}x|| = \min_{x \in \mathds{C}^n, C \geq 0} ||{\bf A}x|| \leq C||x||.
+    $$
+    
+    \item The $2$-norm or the Frobenius-norm of ${\bf A}$ is its euclidean norm, induced by thinking of ${\bf A}$ as a $2n$-dimensional vector, 
+    
+    $$
+    ||{\bf A}||_2^2 = \sum_{i,j=1}^{n} |a_{ij}|^2 = \tr({\bf A}^\dagger {\bf A}).
+    $$
+\end{enumerate}
+
+Given an operator ${\bf A}$, from its norm-one eigenvectors, it is clear that 
+
+$$
+\rho({\bf A}) \leq w({\bf A}) \leq ||{\bf A}||_{\textnormal{sp}}
+$$
 
 \clearpage
 
@@ -57,4 +96,76 @@ where the most common choice for the logarithm base is $a=2$, with the unit of i
     S(\bm{\mathfrak{p}}) = 0 \textnormal{ if and only if } p_i = \delta_{ij}
 \end{equation}
 
+\clearpage
+
+\section{Theory of Open Quantum Systems}
+
+\paragraph{\textbf{Probability measures on a Hilbert space}}
+
+Consider a fixed orthonormal basis $\{\phi_n\} \subset \mathds{H}$, then any other $\psi \in \mathds{H}$ may be decomposed as 
+
+$$
+    \psi = \sum_{n} z_n \phi_n.
+$$
+
+The probability density functional $P = P[\psi]$ may be regarded as a function $P = P[z_n, z_n^*]$ on the $\mathds{C}$-variables $z_n, z_n^*$. Alternatively, it can be regarded as function $P = P[{\bf a}_n, {\bf b}_n]$, wherein 
+
+\begin{align*}
+    z_n = {\bf a}_n + i{\bf b}_n.
+\end{align*}
+
+An appropriate expression for the volume element in Hilbert space can be found as the usual Euclidean volume element in a real space, with coordinate atlas given by $({\bf a}_n,{\bf b}_n)$, that is 
+
+$$
+    D\psi D\psi^* = \prod_{n} d{\bf a}_n d{\bf b}_n, \textnormal{ where } \begin{array}{c}
+        d{\bf a}_n = \frac{1}{2} (dz_n + dz_n^*)  \\
+        \\
+        d{\bf b}_n = \frac{1}{2i} (dz_n - dz_n^*)  
+    \end{array} \Rightarrow D\psi D\psi^* = \prod_{n} \frac{i}{2} dz_n dz_n^*.
+$$
+
+Then, a functional integration on the Hilbert space can be written as 
+
+$$
+    \int_{A} D\psi D\psi^* P[\psi] = \int_{A} \prod_{n} \frac{i}{2} dz_n dz_n^*.
+$$
+
+This functional volume element on the Hilbert space is invariant under linear unitary transformations 
+
+$$
+    \psi \rightarrow U \psi \Rightarrow D\psi D\psi^*  \rightarrow D\psi' D\psi^{'*}. 
+$$
+
+In effect, the unitary transformation $U \in U(N)$ may be decomposed into its real and imaginary parts, 
+
+$$
+    U = \mathfrak{R}(U) + I \mathfrak{I}(U).
+$$
+
+The unitary of $U$ leads to the following relations 
+
+\begin{align}
+    \mathfrak{R}(U) \mathfrak{R}(U)^{\textnormal{T}} + \mathfrak{I}(U)\mathfrak{I}(U)^{\textnormal{T}} = \mathds{1}_N, \\
+    \mathfrak{I}(U) \mathfrak{R}(U)^{\textnormal{T}} - \mathfrak{R}(U)\mathfrak{I}(U)^{\textnormal{T}} = 0.
+\end{align}
+
+In the chosen representation, the $U$-matrix describes a unitary transformation $z_n \rightarrow z_n'$, from the coefficients $z_n$ in the $\psi_n$-decomposition to $z_n'$-coefficients in the $\psi'$-basis decomposition. The corresponding transformation of the real coefficients ${\bf a}_n, {\bf b}_n$ defined by $z_n = {\bf a} + i {\bf b}_n$ is provided by the real matrix 
+
+$$
+    \tilde{U} = \left( \begin{array}{cc}
+        \mathfrak{R}(U)  & - \mathfrak{I}(U)  \\
+        \mathfrak{I}(U)  &  \mathfrak{R}(U) 
+    \end{array}
+    \right),
+$$
+
+which is an orthogonal matrix satisfying $|\det \tilde U|= 1$. Thus, as it was expected, the unitary transformation $U$ on the Hilbert space $\mathds{H}$ induces an orthogonal transformation $\tilde{U}$ on the $\mathds{R}$-variables, ${\bf a}_n, {\bf b}_n$, which were introduced to define a volume element in a Hilbert space. The transformation formula for multidimensional integrals conclude that 
+
+$$
+\prod_{n} d{\bf a}'_n d{\bf b}'_n = |\det \tilde U| \prod_{n} d{\bf a}_n d{\bf b}_n = \prod_{n} d{\bf a}_n d{\bf b}_n,
+$$
+
+thus proving the unitary invariance of the volume element. 
+
 \end{document}
+
