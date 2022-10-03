@@ -2455,9 +2455,13 @@ which can then be numerically solved.
 %\Rb \rightarrow \Rb + {\bf T} \textnormal{ where } {\bf %T} = \sum_{i=1}^{3} L_i {\bf a}_i \blanky | \blanky L_i %\in \mathds{Z}
 %
 
-\section{Mean field theory}
+\clearpage 
 
-From "Many Body Quantum Theory in Condensed Matter Physics" by Henrik Bruus and Karsten Flensberg. 
+\section{Quantum Field-Therotic approach to Condensed Matter Physics}
+
+\subsection{Mean field theory}
+
+\textbf{From "Many Body Quantum Theory in Condensed Matter Physics" by Henrik Bruus and Karsten Flensberg.}
 
 The physics of interacting particles is often very complicated because the motion of the individual particles depend on the position of all other, thus these variables become correlated. This is clearly the case for a system of charged particles interacting by Coulomb forces, such as eg. the electron gas. There, the probability to find two electrons in close proximity is expected to be small due to the strong repulsive interaction. Consequently, due to these correlation effects, there is a suppressed density in the neighbourhood of every electron, and there is a correlation hole. 
 Nevertheless, in spite of these complications, there a re a number of cases where a more crude treatment, not fully including the correlations, gives a good physical model. In these cases, it suffices to include correlations o the average. This means that the effect of the other particles is included as a mean density (or mean field), leaving an effective single particle problem, which is solvable. These mean fields are chosen so that they minimize the free energy, which in turn, ensures that the method is self-consistent. This method is called mean field theory, which allows to neglect detailed dynamics and time-dependent second quantization methods. \\
@@ -2853,7 +2857,334 @@ The Stoner-Hubbard model gives a reasonable account for metallic magnets and is 
 
 \paragraph{\textbf{Superconductivity: BCS theory}}
 
+One of the most striking examples of symmetry breaking is the superconducting phase transition. Below the critical temperature the metal which turns superconducting, has no resistance whatsoever, and it exhibits perfect diamagnetism, called Meisner effect, which means that magnetic fields are totally expelled from the interior of the material. These astonishing phenomena result from the superconducting state having a new form of symmetry breaking, namely loss of global gauge invariance. Both the new type of phase and the appearance of an excitation gap are explained by the Bardeen-Cooper-Schrieffer theory. \\
+
+\underline{Breaking of global gauge symmetry and its consequences}. What kind of broken symmetry may give rise to a superconducting state? the relevant symmetry is the global gauge symmetry, ie. all electrons may be added the same constant extra phase without altering the Hamiltonian. The ferromagnetic analog is that all spins can be rotated by some angle without changing the Hamiltonian, due to a global $SO(3)$-symmetry. In that case, a broken $SO(3)$-symmetry, entails that the expectation value $\langle {
+\bf S}\rangle$ is not invariant under rotation, since it will change the magnetization's direction. In the same venue, a phase rotation changes the superconducting order parameter, which is of the form $\langle {\bf c}_{\mu} {\bf c}_{\mu'} \rangle$ ie. the expectation value of two annihilation operators. Of course, the number of particles is conserved, but this is not a problem in our setting for we are only interested in superconductors connected to electron reservoirs. 
+
+While it is clear why the finite expectation value $\langle {\bf S} \rangle$ gives a magnetization in the case of a ferromagnet, it is not so clear why broken symmetry in the superconducting case leads to a system without resistance. Moreover, even though the superconducting phase is sensitive to a change in global phase, it is clear that a constant phase cannot have any measurable effect, since all expectation values are given in terms of the absolute square of the wave function. However, phase gradients can have an effect. \\
+
+Consider a superconducting state, which is ascribed by a phase which depends on the position, $\phi({\bf x})$, and varies extremely slowly, such that it takes a macroscopic distance to see any significant changes in $\phi({\bf x})$. For any other non-superconducting system, it would not make sense to talk about a quantum mechanical phase difference over macroscopic distances, simply because quantum coherence is destroyed by all sorts of scattering events on rather short lengths ($\sim 10 nm$ for metals). To argue that the superconducting state depends on phase differences over macroscopic distances is unusual and implies that superconductivity is a macroscopic quantum phenomenon. \\
+
+Consider the following unitary transformation, which changes the phase 
+
+$$
+    U = \exp \bigg( i \int_{\mathds{R}^3} d{\bf x} \blanky \rho({\bf x}) \phi({\bf x}) \bigg), \textnormal{ where } \rho({\bf x}) =  \Psi^{\dagger}({\bf x}) \Psi({\bf x}).
+$$
+
+When applied to quantum field operators it has the following properties 
+
+\begin{align}
+    {\tilde \Psi}({\bf x}) &= U {\Psi}({\bf x}) U^{-1} = \exp\bigg(i \int_{\mathds{R}^3} d{\bf x} \blanky \rho({\bf x}) \phi({\bf x}) \bigg) {\Psi}({\bf x}) \exp\bigg(-i \int_{\mathds{R}^3} d{\bf x} \blanky \rho({\bf x}) \phi({\bf x}) \bigg) \\
+    &= {\Psi}({\bf x}) e^{-i \phi({\bf x})} \\
+    {\tilde \Psi}^\dagger({\bf x}) &= U {\Psi}^\dagger({\bf x}) U^{-1} = {\Psi}^\dagger({\bf x}) e^{i \phi({\bf x})}.
+\end{align}
+
+These equations follow from the differential equation problem
+
+$$
+    \left\{\begin{array}{cc}
+         \frac{\delta \tilde{\Psi}({\bf x})}{\delta \phi({\bf x'})} = i U [\rho({\bf x}'), \Psi({\bf x})] U^{-1} = i \tilde{\Psi}({\bf x}) \delta({\bf x}-{\bf x}')  \\
+         \tilde{\Psi}({\bf x})\bigg|_{\phi = 0} = \Psi({\bf x})
+    \end{array} \right.
+$$
+
+The transformed partition function is given by 
+
+$$
+    \tilde{\mathcal{Z}} = \Tr' [U e^{-\beta {\bf H}} U^{-1}] = \Tr' [e^{-\beta \tilde{\bf H}}],
+$$
+
+note that, if the cyclic property of the trace had been used, $U$ would have disappeared all-together. However, when dealing with systems with broken symmetry, the sum-over-states has to be restricted so that the the cyclic property does not hold. In other words, the trace is restricted due to the spontaneous symmetry breaking. The transformation only changes the kinetic term of the Hamiltonian, since the Coulomb interaction term, the impurity scattering term and the phonon coupling term only involves the, phase-invariant, electron density operator $\rho({\bf x})$. The kinetic term reads
+
+\begin{equation}
+    \begin{split}
+        \tilde{\bf H} &= \frac{1}{2m_e} \int_{\mathds{R}^3} d{\bf x} \blanky {\bf \Psi}^\dagger({\bf x}) e^{i\phi({\bf x)}} \bigg(\frac{\hbar}{i} \nabla + e {\bf A}\bigg)^2 e^{-i\phi({\bf x)}} {\bf \Psi}({\bf x}) \\
+        &= \frac{1}{2m_e} \int_{\mathds{R}^3} d{\bf x} \blanky {\bf \Psi}^\dagger({\bf x}) \bigg(\frac{\hbar}{i} \nabla + e {\bf A} - \hbar \nabla \phi({\bf x})\bigg)^2 {\bf \Psi}({\bf x}) \\
+        &= {\bf H} - \hbar \int_{\mathds{R}^3} d{\bf x} \blanky \nabla \phi({\bf x}) \cdot {\bf J}({\bf x}) - \frac{\hbar}{2m_e} \rho({\bf x}) (\nabla \phi({\bf x}))^2.
+    \end{split}
+\end{equation}
+
+Therefore, the phase is a macroscopic quantity. The lowest free energy condition can be found by minimizing the free energy with respect to the phase. It is clear that the energy does not depend with $\phi$ itself, but on its gradient, hence
+
+\begin{equation}
+\begin{split}
+    \frac{\delta F}{\delta \phi({\bf x})} &= - \hbar \int_{\mathds{R}^3} d{\bf x} \blanky {\bf J}({\bf x}) - \frac{\hbar}{m_e} \rho({\bf x}) \nabla \phi({\bf x}) \\
+    &= - \langle {\bf J}({\bf x}) \rangle + \frac{\hbar}{m_e} \langle \rho({\bf x}) \rangle \nabla \phi({\bf x}) = 0   \Rightarrow \langle {\bf J} \rangle = \frac{\hbar \rho_0}{m_e} \nabla \phi.
+\end{split}
+\end{equation}
+
+The previous equation's physical meaning is that, by forcing a phase gradient onto the system, it minimizes its energy by carrying a current even in thermodynamical equilibrium, giving rise to a non-equilibrium current. In reality, the electron density should only include those electrons participating in the superconducting condensate, the so-called superfluid. In this derivation, it is assumed all electrons participate. 
+
+In the normal state of metals, a current is always associated with a non-equilibrium state, where energy is constantly dissipated from the driving source and absorbed in the conductor. Of course, there is an energy cost for the system to carry the current, but as long as this cost is smaller than the alternative which is to go out of the superconducting state, the current carrying state is chosen. The critical current is reaches when the energies are equal, and then the superconductor goes into the normal state. Thus, when a phase gradient is imposed to a system, wherein the energy is assumed to depend on phase differences on a macroscopic scale, it unavoidably leads to the conclusion that the system will carry a dissipationless current in order to minimize the energy cost of the phase gradient. Finally, it should be noted that the appearance of the excitation gap is not the reason for the superconductivity itself. The superconductivity arises from the lack of gauge invariance, and in fact gapless superconductors do exist. \\
+
+\underline{Microscopic theory:} 
+
+Historical context: the understanding that superconductivity was closely related to the electron-phonon coupling was clear from the 1950's onwards, where the isotope effect was discovered. Also the idea that superconductivity was somehow similar to the Bose-Einstein condensate, with the bosons being electron pairs, had been tried and in fact was the underlying idea of London's theory in 1935. However, only in 1956 Cooper showed that the Fermi surface of the normal mental state was unstable towards formation of bound pairs of electrons. Subsequently in 1957, when the superconducting state was derived using a variation wavefunction by BCS were the principles fully understood. It turns out that the phonon mediante electron-electron interaction, in fact has a range in frequency and momentum space where it is negative, ie. attracitive. This happens for energy exchanges of order the Debye energy, $\omega_D$, for metals is much smaller than the Fermi energy $\omega_D << E_F$. Furthermore, from the Cooper instability, it follows that the photon-mediated interactions tends to pair electrons with opposite spin and momentum. \\
+
+\blanky \\
+
+Let a Cooper pair operator be
+
+\begin{equation}
+    {\bf b}_k = {\bf c}_{k \downarrow} {\bf c}_{-k \uparrow}.
+\end{equation}
+
+Then, the previous two physical inputs, led BCS to suggest the following remarkably successful model Hamiltonian to explain the superconducting state. The BCS effective Hamiltonian model is 
+
+\begin{equation}
+    {\bf H}_{\textnormal{BCS}} = \sum_{{\bf k} \sigma} \varepsilon_{{\bf k}} {\bf c}_{{\bf k} \sigma}^\dagger {\bf c}_{{\bf k} \sigma} + \sum_{{\bf k} {\bf k}'} {\mathfrak{V}}_{{\bf k}{\bf k}'} {\bf c}_{{\bf k} \uparrow}^\dagger {\bf c}_{-{\bf k} \downarrow}^\dagger {\bf c}_{-{\bf k}' \downarrow} {\bf c}_{{\bf k}', \uparrow}, 
+\end{equation}
+
+$\textnormal{ where } {\mathfrak{V}}_{{\bf k}{\bf k}'} = -V_0 \bigg(\Theta(\varepsilon_{\bf k} + \epsilon_F + \omega_D) - \Theta(\varepsilon_{\bf k} - \epsilon_F - \omega_D)\bigg) \delta_{{\bf k}{\bf k}'} \neq 0 \textnormal{ if }\varepsilon_{{\bf k}} \in (\epsilon_F - \omega_D, \epsilon_F + \omega_D)$. The interaction includes only pair interactions and the remaining interaction is supposed to be included in $\varepsilon_{{\bf k}}$ via a Hartree-Fock term. The attractive interaction is due to the phenomenon of an electron propagating through a crystal, thereby attracting the positive ions and thus effectively creating a positive trace behind it, which is felt by the other electrons as an attractive interaction. It turns out that this effective interaction is most important for electrons occupying time reversed states, and in fact they can form a bounded state which is a Cooper pair. The Cooper pairs is thus a bounded state of an electron in state $\psi_{\mu}({\bf x})$ and another electron in state $\psi_{\mu}^*({\bf x})$, or in the homogeneous case, electrons in states ${\bf k}$ and ${\bf -k}$. \footnote{Note that, since the typical energy exchange due to the attractive interaction is the Debye energy $\omega_D$ one could naively expect that the energy scale for the superconducting transition temperature would be of $\mathcal{O}(\frac{\omega_D}{k})$-order. This is however far from the truth, since $\frac{\omega}{k}$ is typically of the order of several hundred kelvin, while the critical temperatures found in conventional low superconductors are, in most cases, less than 10K. Thus, it seems that a new energy scale is needed. }\\ 
+
+The mean field assumption made by BCS is that the pair operator has a finite expectation value, which deviates only a little from its average values. Therefore, the BCS mean field Hamiltonian is derived in full analogy with Hartree-Fock's mean field theory, yielding
+
+\begin{equation}
+    \begin{split}
+        {\bf H}_{\textnormal{BCS}}^{\textnormal{MFT}} &=  \sum_{{\bf k} \sigma} \varepsilon_{{\bf k}} {\bf c}_{{\bf k} \sigma}^\dagger {\bf c}_{{\bf k} \sigma} - \sum_{{\bf k}} \Delta_{{\bf k}} {\bf c}_{{\bf k} \uparrow}^\dagger {\bf c}_{-{\bf k} \downarrow}^\dagger - \sum_{{\bf k}} \Delta^*_{{\bf k}} {\bf c}_{{\bf k} \downarrow} {\bf c}_{-{\bf k} \uparrow} \\
+        &+ \sum_{{\bf k}{\bf k}'} \mathfrak{V}_{{\bf k}{\bf k}'} \langle {\bf c}_{{\bf k} \uparrow}^\dagger {\bf c}_{-{\bf k} \downarrow}^\dagger \rangle \langle {\bf c}_{{\bf k} \downarrow} {\bf c}_{-{\bf k} \uparrow} \rangle, \textnormal{ where } \Delta_{{\bf k}} = - \sum_{{\bf k'}} \mathfrak{V}_{{\bf k} {\bf k'}} \langle  {\bf c}_{-{\bf k}' \downarrow} {\bf c}_{{\bf k}' \uparrow} \rangle,
+        \label{BCS hamiltonian}
+    \end{split}
+\end{equation}
+
+which is quadratic in electron operators and should be readily solvable. It is however unusual in that terms ${\bf c}^\dagger {\bf c}^\dagger$ and ${\bf c} {\bf c}$ both appear. Said Hamiltonian can then be solved via a Bogoliubov transformation. Note that ${\bf H}_{\textnormal{BCS}}^{\textnormal{MFT}}$ may be rewritten in $\mathds{C}^2$-matrix form 
+
+\begin{align}
+    {\bf H}_{\textnormal{BCS}}^{\textnormal{MFT}} &= \sum_{{\bf k}} \left( \begin{array}{cc}
+        {\bf c}_{{\bf k}\uparrow}^\dagger & {\bf c}_{-{\bf k}\downarrow} \\ 
+    \end{array} \right) \left(\begin{array}{cc}
+        \varepsilon_{\bf k} &  \Delta_{{\bf k}}\\
+        \Delta_{{\bf k}}^* & -\varepsilon_{\bf k}
+    \end{array} \right) \left( \begin{array}{c}
+        {\bf c}_{{\bf k}\downarrow}^\dagger \\
+        {\bf c}_{-{\bf k}\uparrow} 
+    \end{array} \right) + \sum_{{\bf k}} \varepsilon_{{\bf k}} + \sum_{{\bf k} {\bf k'}} \mathfrak{V}_{{\bf k} {\bf k'}} \langle {\bf c}_{{\bf k} \uparrow}^\dagger {\bf c}_{-{\bf k} \downarrow}^\dagger \rangle \langle {\bf c}_{{\bf k} \downarrow} {\bf c}_{-{\bf k} \uparrow} \rangle \\
+    &= \sum_{{\bf k}} {\bf A}_{{\bf k}}^\dagger {\bf H}_k {\bf A}_{{\bf k}} + \tr {\bf H},
+\end{align}
+
+where 
+
+$$
+{\bf A}_{\bf k} = \left( \begin{array}{c}
+     {\bf c}_{{\bf k}\uparrow}  \\
+     {\bf c}_{-{\bf k}\downarrow}^\dagger  
+\end{array} \right).
+$$
+
+Then, the Hamiltonian can be rewritten in diagonal for, via a redefinition of operators, said redefinition being given by a unitary transformation,
+
+\begin{align}
+    {\bf B}_{{\bf k}} = \left( \begin{array}{c}
+     {\gamma}_{{\bf k}\uparrow}  \\
+     {\gamma}_{-{\bf k}\downarrow}^\dagger  
+\end{array} \right) = {\bf U}_{{\bf k}}^{-1} {\bf A}_{\bf k} \textnormal{ where } {\bf U}_{\bf k} = \left( \begin{array}{cc}
+    u_{{\bf k}} & -v_{{\bf k}} \\
+    v_{{\bf k}}^* & u_{{\bf k}}^*
+\end{array} \right),
+\end{align}
+
+which diagonalizes the Hamiltonian provided 
+
+%%% rehacer 
+
+\begin{equation}
+\begin{split}
+    {\bf U}_{{\bf k}}^\dagger {\bf H}_{{\bf k}} {\bf U}_{{\bf k}} &= \left( \begin{array}{cc}
+    u_{{\bf k}}^* & v_{{\bf k}} \\
+    -v_{{\bf k}}^* & u_{{\bf k}}
+\end{array} \right) \\
+    &\Rightarrow \left( \begin{array}{cc}
+    u_{{\bf k}}^* & -v_{{\bf k}}^* \\
+    v_{{\bf k}} & u_{{\bf k}}^*
+\end{array} \right) \left(\begin{array}{cc}
+        \varepsilon_{\bf k} &  \Delta_{{\bf k}}\\
+        \Delta_{{\bf k}}^* & -\varepsilon_{\bf k}
+    \end{array} \right) \left( \begin{array}{cc}
+    u_{{\bf k}} & -v_{{\bf k}} \\
+    v_{{\bf k}}^* & u_{{\bf k}}^*
+\end{array} \right) 
+= \left( \begin{array}{cc}
+    u_{{\bf k}}^* & v_{{\bf k}} \\
+    -v_{{\bf k}}^* & u_{{\bf k}}
+\end{array} \right) \left(\begin{array}{cc}
+    \varepsilon_{{\bf k}} u_{{\bf k}} + \Delta_{{\bf k}} v_{{\bf k}}^* & - \varepsilon_{{\bf k}} v_{{\bf k}} + \Delta_{{\bf k}} u_{{\bf k}}^*  \\
+    \Delta_{{\bf k}}^* u_{{\bf k}} - \varepsilon_{{\bf k}} v_{{\bf k}}^* & - \Delta_{{\bf k}}^* v_{{\bf k}} - \varepsilon_{{\bf k}} u_{{\bf k}}^* 
+\end{array}\right) \\
+    &= \left( \begin{array}{cc}
+       \varepsilon_{{\bf k}} |u_{{\bf k}}|^2+ \Delta_{{\bf k}} u_{{\bf k}}^* v_{{\bf k}}^* + \Delta_{{\bf k}}^* u_{{\bf k}} v_{{\bf k}} - \varepsilon_{{\bf k}} |v_{{\bf k}}|^2  &  -\varepsilon_{{\bf k}} u_{{\bf k}}^* v_{{\bf k}} + \Delta_{{\bf k}} |u_{{\bf k}}|^2 - \Delta_{{\bf k}}^* v_{{\bf k}}^2 - \varepsilon_{{\bf k}} u_{{\bf k}}^* v_{{\bf k}}\\
+       - \varepsilon_{{\bf k}} u_{{\bf k}} v_{{\bf k}}^* - \Delta_{{\bf k}} |v_{{\bf k}}|^2 + \Delta_{{\bf k}}^* u_{{\bf k}}^2 - \varepsilon_{{\bf k}} u_{{\bf k}} v_{{\bf k}}^* & \varepsilon_{{\bf k}} |v_{{\bf k}}|^2 - \Delta_{{\bf k}} u_{{\bf k}}^* v_{{\bf k}}^* - \Delta_{{\bf k}}^* v_{{\bf k}} u_{{\bf k}} - \varepsilon_{{\bf k}} |u_{{\bf k}}|^2
+    \end{array} \right) \\
+    & \Rightarrow \begin{array}{c}
+        |u_{{\bf k}}|^2 = \frac{1}{2} \bigg(1 + \frac{\varepsilon_{{\bf k}}}{E_{{\bf k}}}\bigg)  \\
+        |v_{{\bf k}}|^2 = \frac{1}{2} \bigg(1 - \frac{\varepsilon_{{\bf k}}}{E_{{\bf k}}}\bigg) \end{array}   
+        E_{{\bf k}} = \sqrt{\varepsilon_{{\bf k}}^2 + |\Delta_{{\bf k}}|^2} = - \tilde{E}_{{\bf k}}.
+\end{split}
+\end{equation}
+
+The new fermionic operators, which diagonalize the Hamiltonian, are fermionic quasiparticles, frequently called bogoliubons and are the superposition of electrons and holes. This new particle arises due to a lack of particle conservation in the mean field Hamiltonian. Note that there are two different bogoliubons inherited from the two-fold spin degeneracy. The quasiparticles operators are given by 
+\begin{equation} \begin{split}
+    \left( \begin{array}{c}
+     {\gamma}_{{\bf k}\uparrow}  \\
+     {\gamma}_{-{\bf k}\downarrow}^\dagger  
+\end{array} \right) = \left( \begin{array}{cc}
+    u_{{\bf k}}^* & v_{{\bf k}} \\
+    -v_{{\bf k}}^* & u_{{\bf k}}
+\end{array} \right) \left( \begin{array}{c}
+     {\bf c}_{{\bf k}\uparrow}  \\
+     {\bf c}_{-{\bf k}\downarrow}^\dagger  
+\end{array} \right) \Leftrightarrow \left( \begin{array}{c}
+     {\bf c}_{{\bf k}\uparrow}  \\
+     {\bf c}_{-{\bf k}\downarrow}^\dagger  
+\end{array} \right) =  \left( \begin{array}{cc}
+    u_{{\bf k}} & -v_{{\bf k}} \\
+    v_{{\bf k}}^* & u_{{\bf k}}^*
+\end{array} \right) \left( \begin{array}{c}
+     {\gamma}_{{\bf k}\uparrow}  \\
+     {\gamma}_{-{\bf k}\downarrow}^\dagger \\
+\end{array} \right) \\
+\left( \begin{array}{c}
+     {\gamma}_{{\bf k}\uparrow}  \\
+     {\gamma}_{-{\bf k}\downarrow}^\dagger  \\
+     {\gamma}_{{\bf k}\uparrow}^\dagger  \\
+     {\gamma}_{-{\bf k}\downarrow}
+\end{array} \right) =  \left( \begin{array}{c}
+     u_{{\bf k}}^* {\bf c}_{{\bf k}\uparrow} + v_{{\bf k}} {\bf c}_{-{{\bf k}}\downarrow}^\dagger \\
+     -v_{{\bf k}}^* {\bf c}_{{\bf k}\uparrow} + u_{{\bf k}} {\bf c}_{-{{\bf k}}\downarrow}^\dagger \\
+     u_{{\bf k}} {\bf c}_{{\bf k}\uparrow}^\dagger + v_{{\bf k}}^* {\bf c}_{-{{\bf k}}\downarrow} \\
+     -v_{{\bf k}} {\bf c}_{{\bf k}\uparrow}^\dagger  + u_{{\bf k}} {\bf c}_{-{{\bf k}}\downarrow}
+\end{array} \right) \Leftrightarrow \left( \begin{array}{c}
+     {\bf c}_{{\bf k}\uparrow}  \\
+     {\bf c}_{-{\bf k}\downarrow}^\dagger \\
+     {\bf c}_{{\bf k}\uparrow}^\dagger  \\
+     {\bf c}_{-{\bf k}\downarrow}  
+\end{array} \right) = \left( \begin{array}{c}  
+     u_{{\bf k}} \gamma_{{\bf k}\uparrow} - v_{{\bf k}} \gamma_{-{\bf k}\downarrow}^\dagger \\ 
+     v_{{\bf k}}^* \gamma_{{\bf k}\uparrow} + u_{{\bf k}}^* \gamma_{-{\bf k}\downarrow}^\dagger \\
+     u_{{\bf k}}^* \gamma_{{\bf k}\uparrow}^\dagger - v_{{\bf k}}^* \gamma_{-{\bf k}\downarrow} \\ 
+     v_{{\bf k}} \gamma_{{\bf k}\uparrow}^\dagger + u_{{\bf k}} \gamma_{-{\bf k}\downarrow} 
+\end{array} \right).
+\end{split}
+\end{equation}
+
+It is necessary to inquire in the bogoliubons' nature. Namely, it they obey fermionic anticommutation rules, 
+
+\begin{equation*}
+    \begin{array}{cc}
+        \begin{split}
+        \{{\gamma}_{{\bf k}\uparrow}^\dagger, {\gamma}_{{\bf k}'\uparrow} \} &= \{ u_{{\bf k}} {\bf c}_{{\bf k}\uparrow}^\dagger +  v_{{\bf k}}^* {\bf c}_{-{{\bf k}}\downarrow} , u_{{\bf k}'}^* {\bf c}_{{\bf k}'\uparrow} + v_{{\bf k}'} {\bf c}_{-{{\bf k}'}\downarrow}^\dagger\} \\
+        = u_{{\bf k}} u_{{\bf k}'}^* &\{{\bf c}_{{\bf k}^\uparrow}^\dagger, {\bf c}_{{\bf k}' \uparrow}\} 
+        + u_{{\bf k}}^* v_{{\bf k}'}^* \cancel{\{{\bf c}_{-{\bf k}\downarrow}, {\bf c}_{{\bf k}'\uparrow}\}} \\
+        &+ u_{{\bf k}'} v_{{\bf k}} \cancel{\{{\bf c}_{{\bf k} \uparrow}^\dagger, {\bf c}_{-{\bf k}'\downarrow}\}} 
+        + v_{{\bf k}} v_{{\bf k}'}^* \{{\bf c}_{-{\bf k} \downarrow}, {\bf c}_{-{\bf k}' \downarrow}^\dagger\}
+        \\
+        &= u_{{\bf k}} u_{{\bf k}'}^* \delta_{{\bf k}{\bf k}'} +  v_{{\bf k}} v_{{\bf k}'}^* \delta_{{\bf k}{\bf k}'}= \delta_{{\bf k}{\bf k}'}
+        \end{split} & \begin{split}
+        \{{\gamma}_{-{\bf k}\downarrow}^\dagger, {\gamma}_{-{\bf k}'\downarrow} \} &= \{-v_{{\bf k}}^* {\bf c}_{{\bf k}\uparrow} + u_{{\bf k}} {\bf c}_{-{{\bf k}}\downarrow}^\dagger, -v_{{\bf k}'} {\bf c}_{{\bf k}'\uparrow}^\dagger + u_{{\bf k}'} {\bf c}_{-{{\bf k}'}\downarrow}\}\\
+        = v_{{\bf k}} v_{{\bf k}'}^* &\{c_{{\bf k}\uparrow}, c_{{\bf k}'\uparrow}^\dagger\} - u_{{\bf k}} v_{{\bf k}'} \cancel{\{{\bf c}_{-{\bf k}\downarrow}^\dagger, {\bf c}_{{\bf k}'\uparrow} \}} \\
+        &- u_{{\bf k}'} v_{{\bf k}}^* \cancel{\{{\bf c}_{-{\bf k} \downarrow}^\dagger, {\bf c}_{{\bf k}' \uparrow}^\dagger\} } + v_{{\bf k}} v_{{\bf k}'}^* \{{\bf c}_{-{\bf k} \downarrow}^\dagger, {\bf c}_{-{\bf k}' \downarrow}\} \\
+        &= u_{{\bf k}} u_{{\bf k}'}^* \delta_{{\bf k}{\bf k}'} +  v_{{\bf k}} v_{{\bf k}'}^* \delta_{{\bf k}{\bf k}'}= \delta_{{\bf k}{\bf k}'}
+        \end{split} \\
+        \\
+        \begin{split}
+        \{{\gamma}_{{\bf k}\uparrow}^\dagger, {\gamma}_{-{\bf k}'\downarrow}^\dagger\} &= \{u_{{\bf k}} {\bf c}_{{\bf k}\uparrow}^\dagger + v_{{\bf k}}^* {\bf c}_{-{{\bf k}}\downarrow}, -v_{{\bf k}'}^* {\bf c}_{{\bf k}'\uparrow} + u_{{\bf k}'} {\bf c}_{-{{\bf k}'}\downarrow}^\dagger\} \\
+        = -u_{{\bf k}} v_{{\bf k}'}^* & \{{\bf c}_{{\bf k} \uparrow}^\dagger, {\bf c}_{{\bf k}' \uparrow}\} + u_{{\bf k}} u_{{\bf k}'} \cancel{\{{\bf c}_{{\bf k} \uparrow}^\dagger, {\bf c}_{-{\bf k}' \downarrow}^\dagger\}} \\
+        &- v_{{\bf k}} v_{{\bf k}'} \cancel{\{{\bf c}_{-{\bf k} \downarrow}, {\bf c}_{{\bf k}' \uparrow}\}} + v_{{\bf k}}^* u_{{\bf k}'} \{{\bf c}_{-{\bf k} \downarrow}, {\bf c}_{-{\bf k}' \downarrow}^\dagger\} \\
+        &= -u_{{\bf k}} v_{{\bf k}'}^* \delta_{{\bf k}{\bf k}'} +  u_{{\bf k}} v_{{\bf k}'}^* \delta_{{\bf k}{\bf k}'}= 0 
+        \end{split} & \begin{split}
+        \{{\gamma}_{{\bf k}\uparrow}, {\gamma}_{-{\bf k}'\downarrow}\} &= \{u_{{\bf k}}^* {\bf c}_{{\bf k}\uparrow} + v_{{\bf k}} {\bf c}_{-{{\bf k}}\downarrow}^\dagger, -v_{{\bf k}'} {\bf c}_{{\bf k}'\uparrow}^\dagger + u_{{\bf k}'} {\bf c}_{-{\bf k}'\downarrow}\} \\
+        = -u_{{\bf k}}^* v_{{\bf k}'} &\{{\bf c}_{{\bf k} \uparrow}, {\bf c}_{{\bf k}'\uparrow}^\dagger\} + u_{{\bf k}}^* u_{{\bf k}'} \cancel{\{{\bf c}_{{\bf k} \uparrow}, {\bf c}_{-{\bf k}' \downarrow}\}}\\
+        &- v_{{\bf k}}^* v_{{\bf k}'} \cancel{\{{\bf c}_{-{\bf k}\downarrow}^\dagger, {\bf c}_{{\bf k}'\uparrow}^\dagger\}} + u_{{\bf k}'} v_{{\bf k}} \{{\bf c}_{-{\bf k}\downarrow}^\dagger, {\bf c}_{-{\bf k}' \downarrow}\} \\
+        &= -u_{{\bf k}} v_{{\bf k}'}^* \delta_{{\bf k}{\bf k}'} +  u_{{\bf k}} v_{{\bf k}'}^* \delta_{{\bf k}{\bf k}'}= 0 
+        \end{split}
+    \end{array}
+\end{equation*}
+
+\begin{equation*}
+    \begin{split}
+        \{{\gamma}_{{\bf k}\uparrow}, {\gamma}_{{\bf k}'\uparrow}\} &= \{u_{{\bf k}}^* {\bf c}_{{\bf k}\uparrow} + v_{{\bf k}} {\bf c}_{-{{\bf k}}\downarrow}^\dagger, u_{{\bf k}'}^* {\bf c}_{{\bf k}'\uparrow} + v_{{\bf k}'} {\bf c}_{-{{\bf k}'}\downarrow}^\dagger\} \\
+        &= u_{{\bf k}}^*u_{{\bf k}'}^* \cancel{\{{\bf c}_{{\bf k} \uparrow}, {\bf c}_{{\bf k}' \uparrow} \}} + u_{{\bf k}}^* v_{{\bf k}'} \cancel{\{{\bf c}_{{\bf k} \uparrow}, {\bf c}_{-{\bf k}' \downarrow}^\dagger\}} + u_{{\bf k}'}^* v_{{\bf k}} \cancel{\{{\bf c}_{-{\bf k} \downarrow}^\dagger,{\bf c}_{{\bf k}' \uparrow}\}} + {v}_{{\bf k}} {v}_{{\bf k}'} \cancel{\{{\bf c}_{-{\bf k} \downarrow}^\dagger, {\bf c}_{-{\bf k}' \downarrow}^\dagger\}} = 0,
+                \end{split}
+\end{equation*}
+
+thus confirming the bogoliubon's fermionic character. \\
+
+Then, the Hamiltonian, in terms of the bogoliubons, reads
+
+\begin{equation}
+\begin{split}
+    {\bf H}_{\textnormal{BCS}}^{\textnormal{MFT}} &= \sum_{{\bf k}} {\bf A}_{{\bf k}}^\dagger {\bf H}_k {\bf A}_{{\bf k}} + \tr {\bf H} = \sum_{{\bf k}} {\bf B}_{{\bf k}}^\dagger {\bf U}_{{\bf k}}^\dagger {\bf H}_k {\bf U}_{{\bf k}} {\bf B}_{{\bf k}} + \tr {\bf H} \\
+    &= E_{{\bf k}} \bigg(\gamma_{{\bf k} \uparrow}^\dagger \gamma_{{\bf k} \uparrow} + \gamma_{{\bf k} \downarrow}^\dagger \gamma_{{\bf k} \downarrow}\bigg) + c
+\end{split}
+\end{equation}
+
+From the new Hamiltonian and its eigenvalues, it is clear that there are no fermion excitations possible with energy less than $|\Delta|$. The mean field parameter provides an energy gap, which is called the superconducting gap, which has a number of important consequences. The self-consistent solution is found from the gap equation, given by \cref{BCS hamiltonian}, by calculating $\Delta_{{\bf k}}$'s expectation value using the diagonalized Hamiltonian, which is equivalent to minimizing the free energy with respect to the mean field parameter $\langle {\bf b}_{{\bf k}} \rangle$; thus yielding
+
+\begin{equation}
+    \begin{split}
+        \Delta_{{\bf k}} &= - \sum_{{\bf k}} \mathfrak{V}_{{\bf k}{\bf k}'} \langle {\bf c}_{-{\bf k}' \downarrow} {\bf c}_{{\bf k}' \uparrow} \rangle = - \sum_{{\bf k}} \mathfrak{V}_{{\bf k}{\bf k}'} \langle \bigg( v_{{\bf k}'} \gamma_{{\bf k}'\uparrow}^\dagger + u_{{\bf k}'} \gamma_{-{\bf k}'\downarrow}
+        \bigg) \bigg(u_{{\bf k}'} \gamma_{{\bf k}'\uparrow} - v_{{\bf k}'} \gamma_{-{\bf k}'\downarrow}^\dagger
+        \bigg) \rangle \\
+        &= - \sum_{{\bf k}} \mathfrak{V}_{{\bf k}{\bf k}'} \bigg( v_{{\bf k}'} u_{{\bf k}'} \langle \gamma_{{\bf k}'\uparrow}^\dagger \gamma_{{\bf k}'\uparrow}\rangle - v_{{\bf k}'} u_{{\bf k}'} \langle \gamma_{-{\bf k}'\downarrow} \gamma_{-{\bf k}'\downarrow}^\dagger \rangle \bigg) \\
+        &= - \sum_{{\bf k}} \mathfrak{V}_{{\bf k}{\bf k}'} v_{{\bf k}'} u_{{\bf k}'} \bigg(1 - n_{\mathfrak{F}\mathfrak{D}}(E_{\bf k}') \bigg),
+    \end{split}
+\end{equation}
+
+where, in the last step, the bogoliubons' fermionic nature was used. Since these are free fermionic particles, they obey Fermi-Dirac statistics. Now, given that $\mathfrak{V}_{{\bf k}{\bf k}'}$ is finitely-non zero only for $\varepsilon_{{\bf k}}, \varepsilon_{{\bf k}} \in [-\omega_D, \omega_D]$, and given that $\omega_D << E_F$, such taht the density of states is constant in the energy interval in question, thus yielding
+
+\begin{equation}
+    |\Delta| = V_0 \frac{d(E_F)}{2} \int_{-\omega_D}^{\omega_D} d \varepsilon \frac{|\Delta|}{2E} \bigg(1 - n_{\mathfrak{F}\mathfrak{D}}(E_{\bf k}') \bigg) \Rightarrow \frac{2}{V_0 d(E_F)} = \int_{0}^{\omega_D} d\varepsilon \frac{\tanh(\frac{\beta}{2} \sqrt{\varepsilon^2+|\Delta|^2|})}{\sqrt{\varepsilon^2 + |\Delta|^2}},
+\end{equation}
+
+which can be numerically solved. The critical temperature is found by setting $\Delta = 0$, yielding an approximate formula
+
+$$
+    k T_c = 1.13 \omega_D e^{-\frac{2}{V_0} d(E_F)} \textnormal{ and } \Delta_0 \approx 2 \omega_D e^{-\frac{2}{V_0} d(E_F)}.
+$$
+
+Note that for metals, $V_0 d(E_F)$ is a very small number. Combining both equations yield the BCS prediction 
+
+$$
+\frac{2\Delta_0}{kT_c} = 3.53,
+$$
+
+which is very close to the experimental result. Note that both the gap and the critical temperature are reduced by an exponential factor, compared to the bare energy scale of the interaction $\omega_D$. This strong renormalization cannnot be obtained via pertubation theory. Moreover, no phase transition can be obtained from a perturbative approach alone, since eg. functions like $\exp(1/x)$ have no Taylor expansion at $x=0$, ruling out any analytic connection between different phases. 
+
+\subsection{Coherent States}
+
+In field, the basic ingredient are fields, operators $\phi({\bf x})$ defined at each point in space. Thus, it is necessary to work in a basis that diagonalizes field operators, thus the coherent states arise. Moreover, coherent states comprise states with varying particle numbers, providing an extremely useful (non-orthonormal) basis for the Fock basis.
+
+\paragraph{\textbf{Bosonic coherent states}}
+
+For a bosonic state with annihilation operator ${\bf b}$, the coherent states are defined as ${\bf b}$'s eigenstates, namely 
+
+$$
+    {\bf b} \ket{z} = z \ket{z}, \textnormal{ where } z = |z| e^{i\phi}.
+$$
+
+Every state in the Hilbert space can thus be written as 
+
+\begin{align*}
+    \ket{z} = \mathcal{B}({\bf b}^\dagger) \ket{}, \begin{array}{c}
+     \textnormal{ where the function $\mathcal{B}({\bf b}^\dagger)$ }\\
+     \textnormal{  has to satisfy }
+\end{array} [{\bf b},  \mathcal{B}({\bf b}^\dagger)] = z \mathcal{B}({\bf b}^\dagger) \\
+\textnormal{Given that } [{\bf b}, \mathcal{B}({\bf b}^\dagger)] = \frac{\partial \mathcal{B}({\bf b}^\dagger)}{\partial {\bf b}^\dagger} \Rightarrow \frac{\partial \mathcal{B}({\bf b}^\dagger)}{\partial {\bf b}^\dagger}  = z \mathcal{B}({\bf b}^\dagger) \Rightarrow \mathcal{B}({\bf b}^\dagger) = C e^{z {\bf b}^\dagger}.
+\end{align*}
+
+Thus, every ${\bf b}$-eigenstate may be written as
+
+\begin{align*}
+     \ket{z} = C ^{z {\bf b}^\dagger} \ket{0}, \textnormal{ with } \bra{z}\ket{z} = |C|2
+\end{align*}
+
+
 \clearpage
+
+\paragraph{\textbf{Fermionic coherent states}}
+\clearpage
+
+
 
 \section{Photons: coupling to electrons}
 
@@ -2958,7 +3289,7 @@ which is the Kubo formula. This expresses the linear response to a perturbation 
 
 \paragraph{\textbf{Kubo fromula in the frequency domain}}
 
-It is often convenient to express the response to an external disturbance in the frequency domain via Fourier transformations\footnote{Consider the $L^1$-space, ie. the space of all integrable functions on the real line. Then the Fourier transform and the Fourier-anti trasnform can be defined as 
+It is often convenient to express the response to an external disturbance in the frequency domain via Fourier transformations\footnote{Consider the $L^1$-space, ie. the space of all integrable functions on the real line. Then the Fourier transform and the Fourier-anti transform can be defined as 
 \begin{align}
     \mathcal{F}[f(t)](\omega) = f(\omega) = \int_{\R} dt e^{i\omega t} f(t) \blanky \textnormal{ and } \blanky \mathcal{F}^{-1}[f(\omega)](t) = f(t) = \int_{\R} \frac{d\omega}{2\pi} e^{-i\omega t} f(\omega)
 \end{align}
