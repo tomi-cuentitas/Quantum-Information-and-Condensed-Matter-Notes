@@ -1502,7 +1502,7 @@ For $\Delta \neq 0$ the interacting fermion Hamiltonian can be treated in pertur
 
 For the more general XYZ-chain, wherein the Hamiltonian reads 
 \begin{equation}
-    \Hamiltonian_{\mathds{X}\mathds{Y}\mathds{Z}} = J \sum_{n=1}^{N} \bigg( (1+\gamma) \spin^{x}_{n} \spin^{x}_{n+1} + (1+\gamma) \spin^{y}_{n} \spin^{y}_{n+1} + \Delta \spin^{z}_{n} \spin_{n+1}^{z} \bigg) - \lambda \sum_{n} {\spin}_n,
+    \Hamiltonian_{\mathds{X}\mathds{Y}\mathds{Z}} = J \sum_{n=1}^{N} \bigg( (1+\gamma) \spin^{x}_{n} \spin^{x}_{n+1} + (1-\gamma) \spin^{y}_{n} \spin^{y}_{n+1} + \Delta \spin^{z}_{n} \spin_{n+1}^{z} \bigg) - \lambda \sum_{n=1}^{N} {\spin}_n,
     %\label{XXZ hamiltonian}
 \end{equation}
 
@@ -3165,7 +3165,7 @@ $$
 Every state in the Hilbert space can thus be written as 
 
 \begin{align*}
-    \ket{z} = \mathcal{B}({\bf b}^\dagger) \ket{}, \begin{array}{c}
+    \ket{z} = \mathcal{B}({\bf b}^\dagger) \ket{0}, \begin{array}{c}
      \textnormal{ where the function $\mathcal{B}({\bf b}^\dagger)$ }\\
      \textnormal{  has to satisfy }
 \end{array} [{\bf b},  \mathcal{B}({\bf b}^\dagger)] = z \mathcal{B}({\bf b}^\dagger) \\
@@ -3174,17 +3174,402 @@ Every state in the Hilbert space can thus be written as
 
 Thus, every ${\bf b}$-eigenstate may be written as
 
-\begin{align*}
-     \ket{z} = C ^{z {\bf b}^\dagger} \ket{0}, \textnormal{ with } \bra{z}\ket{z} = |C|2
-\end{align*}
+\begin{equation*}   
+\begin{array}{ccc}
+     \ket{z} = C e^{z {\bf b}^\dagger} \ket{0}, \textnormal{ with } & 
+     \begin{split}
+     \bra{z}\ket{z} &= |C|^2 \bra{0} e^{z^* {\bf b}} e^{z {\bf b}^\dagger} \ket{0} \\
+     &= |C|^2 e^{z^* {\bf b} + z {\bf b}^\dagger + \frac{1}{2} [z^* {\bf b}, z {\bf b}^\dagger]} \\
+     &= |C|^2 e^{z^*z} = 1 \Rightarrow |C|^2 = e^{-z^*z} 
+     \end{split} 
+     &  \begin{split} \Rightarrow \ket{z} &= e^{-\frac{|z|^2}{2}} e^{z {\bf b}^\dagger} \ket{0}  \\
+         &= e^{-\frac{|z|^2}{2}} \sum_{n=0}^{\infty} \frac{z^n}{n!} \ket{n}.
+     \end{split}
+     \end{array}
+\end{equation*}
 
+For an $N$-boson system, the most general coherent state may be written as 
 
-\clearpage
+\begin{equation}
+    \ket{{\bf z}} = \prod_{i=1}^N e^{-\frac{|z_i|^2}{2}} e^{z_i {\bf b}^\dagger}_i \ket{0} = e^{-i \sum_{i=1}^N \frac{|z_i|^2}{2}} e^{\sum_{i=1}^N z_i {\bf b}_i^\dagger} \ket{0}.
+\end{equation}
+
+The bosonic coherent states have some interesting consequences, namely 
+
+\begin{itemize}
+    \item The coherent states are not pair-wise orthogonal to each other:
+    
+    \begin{equation}
+        \begin{split}
+            \bra{z_1}\ket{z_2} &= e^{-\frac{|z_1|^2+|z_2|^2}{2}} \bra{0} e^{z_1^* {\bf b}} e^{z_2^* {\bf b}^\dagger} \ket{0} \\
+            &= e^{-\frac{|z_1|^2+|z_2|^2}{2}} e^{z_1^* z_2}
+        \end{split}
+    \end{equation}
+    
+    \item The coherent states form an over complete basis
+    
+    $$
+    \mathds{1} = \int_{\mathds{C}} \frac{dz^* dz}{\pi} \ket{z} \bra{z}.
+    $$
+    
+    The trace of an operator acting on the bosonic coherent states can be written as 
+    
+    $$
+        \Tr {\bf A} = \sum_n \bra{n} {\bf A} \ket{n} = \int \frac{dz^* dz}{\pi} \ket{z} \bra{z} e^{-|z|^2} \bra{z}{\bf A}\ket{z}.
+    $$
+    
+    \item The action of ${\bf b}^\dagger$ on a coherent state $\ket{z}$ reads
+    
+    \begin{equation}
+        \begin{split}
+            {\bf b}^\dagger \ket{z} &= {\bf b}^\dagger \sum_{n=0}^{\infty} \frac{z^n}{n!} ({\bf b}^\dagger )^{n} \ket{0} = \sum_{n=0}^{\infty} \frac{z^n}{n!} ({\bf b}^\dagger )^{n+1} \ket{0}. \\
+            &= \sum_{n=0}^{\infty} \frac{z^n}{(n+1)!} ({\bf b}^\dagger )^{(n+1)} \ket{0} = \sum_{n=1}^{\infty} \frac{z^{n-1}}{(n-1)!} ({\bf b}^\dagger)^{(n)} \ket{0}\\
+            &= \frac{\partial}{\partial z} \ket{z}.
+        \end{split}
+    \end{equation}
+    
+    \item Consider normal-ordered operator's matrix elements. Note that 
+    
+    $$
+        \bra{z_1} {{\bf b}}^{\dagger n}       {{\bf b}}^{m} \ket{z_2} = z_1^{*n} z_2^m \bra{z_1}\ket{z_2} = z_1^{*n} z_2^{m} e^{z_1^* z_2},
+    $$
+    
+    which allows the matrix element of an operator to be written as 
+    
+    $$
+        {\bf A} = \sum_{mn} a_{mn} {{\bf b}}^{\dagger n} {{\bf b}}^{m} \textnormal{ such that } \bra{z_1} \sum_{mn} a_{mn} {{\bf b}}^{\dagger n} {{\bf b}}^{m} \ket{z_2} = e^{z_1^* z_2} \sum_{mn} a_{mn} z_1^{*m} z_2^n.
+    $$
+    
+    \item Any Fock state may be expanded in terms of coherent states, as 
+    
+    $$
+        \ket{\psi} = \int \frac{dz^* dz}{\pi} \ket{z} \bra{z} \ket{\psi} = \int \frac{dz^* dz}{\pi} \phi(z^*) \ket{z}.
+    $$
+    
+    \item Action of ${{\bf b}}^{\dagger}$ and ${\bf b}$ in coherent state representation reads 
+    
+    $$
+    \begin{array}{cc}
+        \bra{z} {{\bf b}^\dagger} \ket{z} = z^* \psi(z^*) & \Rightarrow {{\bf b}^\dagger} \rightarrow z^*  \\
+        \bra{z} {{\bf b}} \ket{z} = \frac{\partial}{\partial z^*} \psi(z^*) & \Rightarrow {\bf {{\bf b}}} \rightarrow \frac{\partial}{\partial z^*}. 
+    \end{array}
+    $$
+    
+    Furthermore, the coherent state variables satisfy the bosonic commutators 
+    
+    $$
+    [z_i^*, z_j^*] = \bigg[\frac{\partial}{\partial z_i^*}, \frac{\partial}{\partial z_j^*}\bigg] = 0 \textnormal{ and } \bigg[\frac{\partial}{\partial z_i^*}, z_j^*\bigg] = \delta_{ij}.
+    $$
+    
+    \item Consider the coherent-state representation of the Schr\"odinger equation, which reads 
+    
+    $$
+        {{\bf H}}({{\bf b}^\dagger},  {{\bf b}}) \ket{\psi} = E \ket{\psi}.
+    $$
+    
+    Then, acting from the left by $\bra{z}$ will yield 
+    
+    $$
+        {{\bf H}}\bigg(z^*,\frac{\partial}{\partial z^*} \bigg) \phi(z^*) = E \phi(z^*),
+    $$
+    
+    which for a typical many-body Hamiltonian reads
+    
+    $$
+        \sum_{ij} \varepsilon_{ij} z_i^* \frac{\partial}{\partial z_j^*} + \frac{1}{2} \sum_{ijkl} \bra{ij} V \ket{kl} z_i^* z_j^* \frac{\partial}{\partial z_i^*} \frac{\partial}{\partial z_j^*}.
+    $$
+\end{itemize}
+
+\blanky\\
 
 \paragraph{\textbf{Fermionic coherent states}}
+
+Fermionic coherent states may be defined in a similar way to bosonic ones. However, when considering fermionic systems, the Pauli exclusion principle must be taken into account in this formulation. The eigenstates of a fermionic annihilation should satisfy the equation 
+
+$$
+    {{\bf f}} \ket{\zeta} = \zeta \ket{\zeta}.
+$$
+
+Since, for fermions there are only two possible state occupations, the most general state may be written as $\ket{\zeta} = \alpha \ket{0} + \beta \ket{1}$, which yields 
+
+$$
+    {{\bf f}} \ket{\zeta} = \beta \ket{1} = \zeta (\alpha \ket{0} + \beta \ket{1}) \Rightarrow \ket{\zeta} = \ket{0} \textnormal{ with eigenvalue 0}.
+$$
+
+Therefore, to obtain nontrivial fermionic coherent states, the anticommutation of annihilation operators must be considered. For two operators ${{\bf f}}_i, {{\bf f}}_j$ with coherent eigenstates 
+
+$$
+    {{\bf f}}_i \ket{{\bm \zeta}} = \zeta_i \ket{{\bm \zeta}} \textnormal{ and } {{\bf f}}_j \ket{{\bm \zeta}} = \zeta_j \ket{{\bm \zeta}} \Rightarrow \textnormal{ if } \{{{\bf f}}_i, {{\bf f}}_j\} = 0 \Leftrightarrow \{\zeta_i, \zeta_j\} = 0.
+$$
+
+This equation implies that $\zeta_i^2 = 0$ as well. This implies that the $\zeta_i$-numbers are no ordinary numbers but are the elements of a Grassmann algebra, and such objects are identified as Grassmann numbers. \\
+
+\textbf{\underline{Grassmann Algebras}}
+
+Formally, let ${\bf V}$ be an $n$-dimensional complex vector space with basis $\{\theta_i\}_{i=1}^{n}$. The Grassmann algebra, whose Grassman variables are $\{\theta_i\}_{i=1}^{n}$, is defined as the exterior algebra of ${\bf V}$, namely 
+
+\begin{equation}
+\begin{split}
+    \Lambda({\bf V}) &= \mathds{C} \oplus {\bf V} \oplus ({\bf V} \land {\bf V}) \oplus ({\bf V} \land {\bf V} \land {\bf V}) \oplus \cdots \oplus (\exterior{n} {\bf V}) \\
+    &= \mathds{C} \oplus \bigoplus{k=1}^{n} \exterior{k} {\bf V},
+\end{split}
+\end{equation}
+
+where $\land$ is the exterior product. The individual elements of this algebra are the Grassmann numbers, which in their most general form may be written as 
+
+\begin{equation}
+    \begin{split}
+    z &= c_0 + \sum_{k=1}^{n} \sum_{\mathfrak{i}^{\uparrow}_k} c_{i_1, i_2, \cdots, i_k} \theta_{i_1} \theta_{i_2} \cdots  \theta_{i_k}, \\
+    &= c_0 + \sum_{i} c_i \theta_i + \sum_{i < j} c_i c_j \theta_i \theta_{j} + \sum_{i<j<k}c_i c_j c_k \theta_i \theta_{j} \theta_k + \cdots
+    \end{split}
+\end{equation} 
+
+where $\mathfrak{i}^{\uparrow} = (i_1, i_2, \cdots, i_k)$ are strictly increasing $k$-tuples, with $1 \leq i \leq n, 1 \leq j \leq k$, and where $ c_{i_1, i_2, \cdots, i_k}$ are complex, completely antisymmetric tensors of rank $k$. Again, the $\theta_i$, the $\theta_i \land \theta_j = \theta_i \theta_j$ (subject to $i<j$) and larger finite products, can be seen playing the role of a basis vector of $\Lambda$-subspaces. The Grassmann algebra generated by $n$ linearly independent Grassmann variables has dimension $2^n$, since the $(n+1)$-fold product of variables must vanish. The dimension of $\exterior{k} {\bf V}$ is given by the $n$ choose $k$ binomial coefficient. In the special case of a infinite dimensional ${\bf V}$-space, the previous series does not terminate, thus yielding a $\exterior{\infty} {\bf V}$. 
+
+For Grassmann algebras with an even number of generators, $n = 2p$, a conjugation can be defined by selecting $p$ generators $\theta_i$ and associating $\theta^\star$ to each of them, such that
+
+\begin{align*}
+    (\theta_i)^\star &= \theta_i^\star & (\theta_i^\star)^\star = \theta_i.
+\end{align*}
+
+In a fermionic field theory, the Grassmann algebra is defined by the set of its generating elements $\{1, \zeta_1, {\zeta}^\star_1, \cdots, \zeta_n, {\zeta}^\star_n\}$, which satisfy 
+
+\begin{equation}
+\begin{split}
+    \{\zeta_i, \zeta_j\} = 
+    \{{\zeta}^\star_j, {\zeta}^\star_j\} = \{{\zeta}_i, {\zeta}^\star_j \} = {\zeta}_i^2 = {{\zeta}^\star_i}^2 = 0, \\
+    \{\zeta_i, {\bf f}_i\} = \{{\zeta}^\star_i, {\bf f}_j\} = \{\zeta_i, {\bf f}_j^\dagger\} = \{{\zeta}^\star_i, {\bf f}_j^\dagger\} = 0.
+\end{split}
+\end{equation}
+
+Then, the basis set of the Grassmann algebra consists of all distinct products of its generators, namely 
+
+$\{1, \zeta_1, \cdots, \zeta_1 \zeta_2, \cdots \zeta_n\}$. 
+
+For a two-dimensional Grassmann algebra, with generators $\{\zeta, {\zeta}^\star\}$, all analytic functions of a Grassmann variables reduce to a first degree polynomial $\phi \in \mathds{C}[x]$, since ${\zeta}^2 = 0$,
+
+$$
+    \psi(\zeta) = \psi_0 + \psi_1 \zeta \Leftrightarrow {\phi}^\star(\zeta) = {\phi_0}^\star + {\phi}^\star_1 {\zeta}^\star.
+$$
+
+The most general bilinear function, acting on both ${\zeta}$ and ${\zeta}^\star$, is given by 
+$$
+    F(\zeta, {\zeta}^\star) = f_0 + f_1 \zeta + {f}_1^\star {\zeta}^\star + f_{12} {\zeta}^\star \zeta.
+$$
+
+\textbf{\underline{Grassmann calculus}}
+
+\begin{itemize}
+    \item Differentiation of Grassmann variables: \\
+    
+    Since analytic functions of Grassmann variables have such a simple structure, differentiation is just as simple and is given by the usual complex derivative. In effect, let $\psi(\zeta) = \psi_0 + \psi_1 \zeta$. Then, the derivatives are defined to be 
+    
+    \begin{align*}
+        \partial_{\zeta} \blanky \psi(\zeta) &= \psi_1, & \partial_{{\zeta}^\star} {\psi^\star(\zeta)} &= {\phi}^\star_1, & \partial_{\zeta} ({\zeta}^\star \zeta) = - \bar{\zeta},  
+    \end{align*}
+    
+    where in the last equality, $    \partial_{\zeta^\star} \blanky (\zeta^\star \zeta) = - \partial_{\zeta^\star} \blanky (\zeta\zeta^\star ) = - \zeta^\star $. Now let $ F(\zeta, {\zeta}^\star) = f_0 + f_1 \zeta + {f}_1^\star {\zeta}^\star + f_{12} {\zeta}^\star \zeta$, then
+    
+    \begin{align*}
+        \partial_{\zeta}  F(\zeta, {\zeta}^\star) &= f_1 - f_{12} {\zeta}^\star, & \partial_{{\zeta}^\star} F(\zeta, {\zeta}^\star) &= f_1 + f_{12} {\zeta}, & \partial_{{\zeta}^\star} \blanky \partial_{{\zeta}} F(\zeta, {\zeta}^\star) = - f_{12} = - \partial_{\zeta} \blanky \partial_{{\zeta}^\star}F(\zeta, {\zeta}^\star), 
+    \end{align*}
+    
+    which in turn implies that $\{\partial_{{\zeta}^\star}, \partial_{{\zeta}}\} = 0$. The chain rule for differentiation then reads
+    
+    $$
+        \partial_{{\zeta}} F(\psi) = \partial_{\zeta} \psi \blanky \partial_{\psi} F,
+    $$
+    
+    wherein, contrary to ordinary differentiation, the order of the terms matters. \\
+    
+    \item Integration over Grassmann variables: the Berezin integral.
+    
+    Integration and differentiation are identical for Grassmann variables, wherein 
+    $$
+        \partial_{\zeta_i} F(\bm{\zeta}) = \int d\zeta_i \blanky F(\bm{\zeta}) .
+    $$
+    
+    This definition thus ensures that two most fundamental of properties of ordinary integrals over functions vanishing at infinity are satisfied 
+    
+    \begin{itemize}
+        \item The integral of an exact differential form is zero:
+        
+        $$
+            \int d\zeta_i \blanky \partial_{\zeta_i} F(\bm{\zeta}) = 0.
+        $$
+        
+        \item The integral over $\zeta_i$ of $F(\bm{\zeta})$ does not depend on $\zeta_i$, thus having a vanishing $\partial_{\zeta_i}$-derivative,
+        
+        $$
+            \partial_{\zeta_i} \int d\zeta_i \blanky F(\bm{\zeta}) = 0.
+        $$
+        
+        Both properties follow from the Grassmann derivative and its nilpotence. Another immediate consequence is that 
+        
+        $$
+        \int d\zeta \blanky 1 = 0. 
+        $$
+        
+        Thus, for a Grassmann algebra with a single generator, 
+        
+        \begin{equation}
+            F(\zeta) = c_0 + c_1 \zeta \Rightarrow \int d\zeta \blanky F(\zeta) = c_1 = \partial_{\zeta} \blanky F(\zeta).
+        \end{equation}
+        \blanky \\
+    \end{itemize}
+\end{itemize}
+
+\textbf{\underline{Properties of Fermionic coherent states}}
+
+A fermionic coherent state is then defined as
+
+$$
+    \ket{\zeta} = \mathcal{N} e^{-\zeta {\bf f}^\dagger} \ket{0} \textnormal{ and } 
+    \bra{\zeta} = \bra{0} e^{\zeta^\star {{\bf f}}} \mathcal{N},
+$$
+
+since 
+
+\begin{equation*}\begin{split}
+    &{\bf f} \ket{\zeta} = {\bf f} e^{-\zeta {{\bf f}}^\dagger} \ket{0} = {\bf f} (1- \zeta {\bf f}^\dagger) \ket{0} = \zeta \ket{0} = \zeta (1-\zeta {\bf f}^\dagger) \ket{0} = \zeta \ket{\zeta} \\
+    &{\bf f}^\dagger \ket{\zeta} = {\bf f}^\dagger e^{-\zeta {{\bf f}}^\dagger} \ket{0} = {\bf f}^\dagger (1- \zeta {\bf f}^\dagger) \ket{0} = {\bf f}^\dagger \ket{0} = - \partial_{\zeta} (1-\zeta {\bf f}^\dagger) \ket{0} = - \partial_{\zeta} \ket{\zeta} \\
+&\Rightarrow \begin{array}{cc}
+    {{\bf f}}_{i} \ket{\zeta} = \zeta_i \ket{\zeta} & {{\bf f}}_{i}^\dagger \ket{\zeta} = - \partial_{\zeta_i} \blanky \ket{\zeta}  \\
+    \bra{\zeta} {{\bf f}}_{i}^\dagger = \bra{\zeta} \zeta_i^\star & \bra{\zeta} {{\bf f}}_{i} = + \partial_{\zeta_i^\star} \ket{\zeta} 
+\end{array}    
+\end{split}\end{equation*}
+
+For a Grassmann-variable, $\eta$, the associated inner product is defined as 
+
+\begin{equation}\begin{split}
+    \bra{\zeta} \ket{\eta} = \bra{0} e^{-\zeta^\star {\bf f}} e^{{\eta} {\bf f}^\dagger}\ket{0} = 1 + \zeta^\star\eta = e^{\zeta^\star\eta}.
+\end{split}
+\end{equation}
+    
+In particular, if $\eta = \zeta$, the normalization factor is $\mathcal{N} = e^{-\frac{\zeta^\star\zeta}{2}}$. Then, generalizing to $N$ fermions, the coherent states read
+
+$$
+    \ket{{\bm \zeta}} = \prod_{i=1}^{N} e^{-\frac{\zeta^\star_i\zeta_i}{2}} e^{-\zeta_i {\bf f}_i^\dagger} \ket{0} = e^{-\sum_{i} \frac{\zeta^\star_i\zeta_i}{2}} e^{-\sum_{i} \zeta_i {\bf f}_i^\dagger} \ket{0}, \textnormal{ since } [\zeta_i {\bf f}_i^\dagger, \zeta_j {\bf f}_j^\dagger] = 0.
+$$
+
+Fermions obey a closure relation as well. 
+
+\begin{equation}
+    \begin{split}
+        \int \prod_{i=1}^{N} d\zeta^\star_i d\zeta_i \blanky \ket{\bm{\zeta}}\bra{\bm{\zeta}} = \mathds{1}_{\mathcal{F}}.
+    \end{split}
+\end{equation}
+
+\begin{tcolorbox}[title = Fermionic closure relation]
+In effect, said relation holds if and only if 
+    $$
+    \bra{\alpha_1, \cdots, \alpha_n} \int \prod_{i=1}^{N} d\zeta^\star_i d\zeta_i \blanky \ket{\bm{\zeta}}\bra{\bm{\zeta}} \ket{\beta_1, \cdots, \beta_m} = \bra{\alpha_1, \cdots, \alpha_n} \ket{\beta_1, \cdots, \beta_m}.
+    $$
+
+Said overlap is 
+
+$$
+     \bra{\alpha_1, \cdots, \alpha_n}\ket{\beta_1, \cdots, \beta_m} = \delta_{nm} (-1)^p \delta_{\alpha_{i_1} \beta_1} \cdots \delta_{\alpha_{i_n} \beta_m}, \begin{array}{c}
+          \textnormal{ where $p$ is the parity} \\
+          \textnormal{ of the permutation}
+     \end{array} P\left(\begin{array}{cc}
+          \alpha_1, \cdots, \alpha_n  \\
+          \alpha_{i_i}, \cdots, \alpha_{i_n}
+     \end{array}\right).
+$$
+\end{tcolorbox}
+
+\begin{tcolorbox}
+Note that $ \bra{\alpha_1, \cdots, \alpha_n} \ket{\zeta} = \bra{0} {{\bf f}}_{\alpha_n} \cdots {{\bf f}}_{\alpha_1} \ket{\zeta} = \zeta_{\alpha_n} \cdots \zeta_{\alpha_1},$
+thus leading to the following matrix element
+
+\begin{equation}
+    \begin{split}
+        \bra{\alpha_1, \cdots, \alpha_n}& \int \prod_{i=1}^{N} d\zeta^\star_i d\zeta_i \blanky \ket{\bm{\zeta}}\bra{\bm{\zeta}} \ket{\beta_1, \cdots, \beta_m} = \int \prod_{i=1}^{N} d\zeta^\star_i d\zeta_i \blanky \bra{\alpha_1, \cdots, \alpha_n}\ket{\bm{\zeta}} \bra{\bm{\zeta}} \ket{\beta_1, \cdots, \beta_m}\\
+        &= \int \prod_{i=1}^{N} d\zeta^\star_i d\zeta_i \blanky \prod_{j=1}^{n} \bra{\alpha_j}\ket{\bm{\zeta}} \prod_{k=1}^{m} \bra{\bm{\zeta}} \ket{\beta_k} \\
+        &= \int \prod_{i=1}^{N} d\zeta^\star_i d\zeta_i \blanky \prod_{j=1}^{n} \bigg(\bra{0} {{\bf f}}_{\alpha_j} \ket{\zeta}\bigg) \prod_{k=1}^{m}\bigg(\bra{\zeta} {{\bf f}}_{\beta_k} \ket{0}\bigg) \\
+        &= \int \prod_{i=1}^{N} d\zeta^\star_i d\zeta_i \blanky \prod_{j=1}^{n} e^{-\sum_{\ell} \frac{\zeta^\star_\ell\zeta_\ell}{2}} \bigg(\zeta_{\alpha_j} \bra{0}\ket{\zeta} \bigg) \prod_{k=1}^{m} e^{-\sum_{{\ell'}} \frac{\zeta^\star_{\ell'}\zeta_{\ell'}}{2}}\bigg(\zeta_{\beta_{k}^\star} \bra{\zeta} \ket{0}\bigg) \\
+        &= \int \prod_{i=1}^{N} d\zeta^\star_i d\zeta_i \blanky e^{-\sum_{\ell} {\zeta^\star_\ell\zeta_\ell}} \prod_{j=1}^{n} \zeta_{\alpha_j} \prod_{k=1}^{m} \zeta_{\beta_{k}^\star} \\
+        &= \int \prod_{i=1}^{N} d\zeta^\star_i d\zeta_i \blanky \sum_{\ell} \bigg(1-\zeta^\star_\ell\zeta_\ell \bigg)  \prod_{j=1}^{n} \zeta_{\alpha_j} \prod_{k=1}^{m} \zeta_{\beta_{k}^\star}
+ \end{split}
+\end{equation}
+
+with the following integrals arising for a particular $\ket{\gamma}$-state
+
+\begin{equation}
+    \int d\zeta_{\gamma}^\star  d\zeta_{\gamma} \blanky \bigg(1- \zeta^\star_\ell\zeta_\ell \bigg) \left\{\begin{array}{c}
+         \zeta_{\gamma}^\star \zeta_{\gamma} \\ \zeta_{\gamma}^\star \\
+         \zeta_{\gamma} \\
+         1
+    \end{array}\right\} = \left\{\begin{array}{c}
+         1  \\
+         0  \\
+         0  \\
+         1
+    \end{array}\right\}.
+\end{equation}
+
+Therefore, this integral is non-vanishing only if each $\ket{\gamma}$-state is occupied in both $\bra{\alpha_1, \cdots, \alpha_n}$ and $\bra{\beta_1, \cdots, \beta_m}$ or unoccupied in both states. In particular, if $m = n$, ${\bm \alpha}$ is a permutation of $\bm{\beta}$. 
+\end{tcolorbox}
+
+Overcompleteness allows to define Grassmann coherent state representation for Fock states. A Fock-state $\ket{\psi}$ can be expanded in terms of fermionic coherent states as 
+
+$$
+\ket{\psi} = \int \prod_{i=1}^{N} d{\zeta}^\star_i d\zeta_i \blanky \psi({\bm \zeta)^\star} \ket{\bm{\zeta}}, \textnormal{ where } \psi({\bm \zeta)^\star} = e^{- \sum_{\alpha} \zeta^\star_{\alpha} \zeta_\alpha} \bra{\zeta}\ket{\psi} 
+$$
+
+wherein, the following matrix elements readily are found to be 
+
+\begin{equation}
+\begin{array}{cc}
+    \begin{split}
+        \bra{\bm{\zeta}} {{\bf f}}_i \ket{\psi} &= \int \prod_{i=1}^{N} d{\zeta}^\star_i d\zeta_i \blanky \bra{\bm{\zeta}} \psi({\bm \zeta)^\star} {{\bf f}}_i \ket{\bm{\zeta}} \\
+        &= \int \prod_{i=1}^{N} d{\zeta}^\star_i d\zeta_i \blanky \partial_{\zeta_i^\star} \psi({\bm \zeta)^\star} \bra{\bm{\zeta}}\ket{\bm{\zeta}} \\
+        &= \partial_{{\zeta^\star}}\psi({\bm \zeta)^\star}
+    \end{split} & \begin{split}
+         \bra{\bm{\zeta}} {{\bf f}}_i^\dagger \ket{\psi} &= \int \prod_{i=1}^{N} d{\zeta}^\star_i d\zeta_i \blanky \bra{\bm{\zeta}} \psi({\bm \zeta)^\star} {{\bf f}}_i^\dagger \ket{\bm{\zeta}} \\
+        &= \int \prod_{i=1}^{N} d{\zeta}^\star_i d\zeta_i \blanky {\zeta_i^\star} \psi({\bm \zeta)^\star} \bra{\bm{\zeta}}\ket{\bm{\zeta}} \\
+        &= {\zeta_i^\star} \psi({\bm \zeta)^\star}
+    \end{split}  \\
+   \end{array}  
+\end{equation}
+   
+The matrix elements of a normal-ordered operator ${\bf A}({{{\bf f}}_i^\dagger
+}, {{\bf f}}_i)$ is 
+
+$$
+\bra{\bm{\zeta}} {{\bf A}}(\{{{\bf f}}_i^\dagger
+\}, \{{\bf f}_i\}) \ket{\bm{\zeta}} = e^{-\frac{|\bm{\zeta}|^2 + |\bm{\zeta}'|^2}{2}} e^{\sum_{i} \zeta_i^\star \zeta_i'} {{\bf A}}(\{\zeta_i^\star\}, \{\zeta_i\}).
+$$
+
+In the case of the fermionic number operator, ${{\bf N}} = \sum_{i} {{\bf f}}_i^\dagger {{\bf f}}_i$ gives its expectation value 
+
+$$
+\frac{\bra{\bm{\zeta}} {{\bf N}} \ket{\bm{\zeta}}}{\bra{\bm{\zeta}}) \ket{\bm{\zeta}}}. 
+$$
+
 \clearpage
 
+\subsection{Gaussian Integrals}
+ 
+Quantum mechanical actions, commonly encountered in many-body path integral formalism, frequently involve exponential or complex or Grassmann variables. For quadratic-form actions, these integrals are simple generalizations of Gaussian integrals. 
 
+\begin{itemize}
+    \item \textbf{Real variables}: \\
+    
+    If the integral can be written as 
+    
+    \begin{equation}
+        \mathcal{Z}(J) = \int_{\Omega \subseteq \mathds{R}^{3N}} \prod_{i=1}^{N} d{{\bf x}}_i \blanky e^{-\frac{1}{2} {{\bf x}}^{\textnormal{T}} {{\bf A}} {{\bf x}} + {{\bf J}}^{\textnormal{T}} {{\bf x}}}, \textnormal{ with } \begin{array}{c}
+            {{\bf A}} = {{\bf A}}^{\textnormal{T}} \\
+            \sigma({{\bf A}}) > 0 
+        \end{array}
+    \end{equation}
+\end{itemize}
+
+Thus, the $3N$-dimensional real symmetric and positive defined matrix ${{{\bf A}}}$ can be diagonalized via an orthonormal transformation ${{\bf A}} = {{\bf O}}^{\textnormal{T}} D  {{\bf O}}$, with $ {{\bf O}} \in \textnormal{O}(3N)$ and $D_{ii} > 0$. 
+
+\clearpage
 
 \section{Photons: coupling to electrons}
 
@@ -3394,6 +3779,8 @@ Now, given that he external perturbation, written in frequency space, is already
 From \textbf{Advanced Quantum Condensed Matter Physics, One-Body, Many-Body and Topological perspectives. Michael El-Batanouny} \\
 
 \paragraph{\textbf{}}
+
+
 
 \end{document}
 
