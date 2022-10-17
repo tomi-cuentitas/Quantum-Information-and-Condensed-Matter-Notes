@@ -2490,9 +2490,9 @@ Then, in terms of these new operators, the Hamiltonian reads
 
 where 
 
-$$
-    {\bf V}_{\textnormal{MFT}} = \sum_{\nu\nu', \mu\mu'} {\mathcal V}_{\nu\mu, \nu'\mu'}\bigg[{\bf a}_{\nu}^\dagger {\bf a}_{\nu'} \langle {\bf b}_{\mu}^\dagger {\bf b}_{\mu'} \rangle + {\bf b}_{\mu}^\dagger {\bf b}_{\mu'} \langle {\bf a}_{\nu}^\dagger {\bf a}_{\nu'} \rangle \\ &- \langle {\bf a}_{\nu}^\dagger {\bf a}_{\nu'} \rangle \langle {\bf b}_{\mu}^\dagger {\bf b}_{\mu'} \rangle \bigg] + \mathcal{O}(d e).
-$$
+\begin{align}
+    {\bf V}_{\textnormal{MFT}} = \sum_{\nu\nu', \mu\mu'} {\mathcal V}_{\nu\mu, \nu'\mu'}\bigg[{\bf a}_{\nu}^\dagger {\bf a}_{\nu'} \langle {\bf b}_{\mu}^\dagger {\bf b}_{\mu'} \rangle + {\bf b}_{\mu}^\dagger {\bf b}_{\mu'} \langle {\bf a}_{\nu}^\dagger {\bf a}_{\nu'} \rangle - \langle {\bf a}_{\nu}^\dagger {\bf a}_{\nu'} \rangle \langle {\bf b}_{\mu}^\dagger {\bf b}_{\mu'} \rangle \bigg] + \mathcal{O}(d e).
+\end{align}
 
 The mean field Hamiltonian $H_{\textnormal{MFT}}$ thus contains only single-particle operators, and thus the original many-body problem has been reduced to a single-particle problem, which can always be solved\footnote{In effect, any quadratic Hamiltonian may be diagonalized since it can be written as ${\bf H} = \sum_{ij} a_i^\dagger {\mathcal{H}}_{ij} a_i^\dagger$. Since this $\bm{ {\mathcal{H}}}$ is hermitian, then there exists a transformation
 
@@ -3215,7 +3215,7 @@ The bosonic coherent states have some interesting consequences, namely
     The trace of an operator acting on the bosonic coherent states can be written as 
     
     $$
-        \Tr {\bf A} = \sum_n \bra{n} {\bf A} \ket{n} = \int \frac{dz^* dz}{\pi} \ket{z} \bra{z} e^{-|z|^2} \bra{z}{\bf A}\ket{z}.
+        \Tr {\bf A} = \sum_n \bra{n} {{\bf A}} \ket{n} = \int \frac{dz^* dz}{\pi} \ket{z} \bra{z} e^{-|z|^2} \bra{z}{\bf A}\ket{z}.
     $$
     
     \item The action of ${\bf b}^\dagger$ on a coherent state $\ket{z}$ reads
@@ -3565,9 +3565,122 @@ Quantum mechanical actions, commonly encountered in many-body path integral form
             \sigma({{\bf A}}) > 0 
         \end{array}
     \end{equation}
+
+Thus, the $3N$-dimensional real symmetric and positive defined matrix ${{{\bf A}}}$ can be diagonalized via an orthonormal transformation ${{\bf A}} = {{\bf O}}^{\textnormal{T}} D  {{\bf O}}$, with $ {{\bf O}} \in \textnormal{O}(3N)$ and $D_{ii} > 0$. Now, using these facts, the exponentiated factor can be rewritten as a bilinear form, without the linear term, by "completing the square". In effect, let ${{\bf y}} = {{\bf O} ({\bf x} - {\bf A}^{-1} {\bf J})}$, or equivalently ${\bf x} = {\bf O}^{-1} {\bf y} + {\bf A}^{-1} {\bf J}$
+
+\begin{equation}
+    \begin{split}
+        -\frac{1}{2} {{\bf x}}^{\textnormal{T}} {{\bf A}} {{\bf x}} + {{\bf J}}^{\textnormal{T}} {{\bf x}} &= -\frac{1}{2} \bigg({\bf O}^{-1} {\bf y} + {\bf A}^{-1} {\bf J}\bigg)^{\textnormal{T}} {{\bf A}} \bigg({\bf O}^{-1} {\bf y} + {\bf A}^{-1} {\bf J}\bigg) + {{\bf J}}^{\textnormal{T}} \bigg({\bf O}^{-1} {\bf y} + {\bf A}^{-1} {\bf J}\bigg) \\
+        &= -\frac{1}{2} \bigg(
+        {\bf y}^{\textnormal{T}} {\bf O} + 
+        {\bf J}^{\textnormal{T}} ({\bf A}^{-1})^{\textnormal{T}} \bigg){{\bf A}} \bigg({\bf O}^{-1} {\bf y} + {\bf A}^{-1} {\bf J}\bigg) + {{\bf J}}^{\textnormal{T}} \bigg({\bf O}^{-1} {\bf y} + {\bf A}^{-1} {\bf J}\bigg) \\
+        &= - \frac{1}{2} \bigg[ {\bf y}^{\textnormal{T}} {\bf O} {\bf A} {\bf O}^{-1} {\bf y} + {\bf y}^{\textnormal{T}} {\bf O} {\bf A} {\bf A}^{-1} {\bf J} +  {\bf J}^{\textnormal{T}} ({\bf A}^{-1})^{\textnormal{T}} {\bf A} {\bf O}^{-1} {\bf y} +  {\bf J}^{\textnormal{T}} ({\bf A}^{-1})^{\textnormal{T}} {\bf A} {\bf A}^{-1} {\bf J} \bigg] \\
+        & \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky + {{\bf J}}^{\textnormal{T}} {\bf O}^{-1} {\bf y} + {{\bf J}}^{\textnormal{T}} {\bf A}^{-1} {\bf J} \\
+        &= - \frac{1}{2} \bigg[ {\bf y}^{\textnormal{T}} D {\bf y} + {\bf y}^{\textnormal{T}} {\bf O} {\bf J} + {\bf J}^{\textnormal{T}} {\bf A}^{-1} {\bf A} {\bf O}^{-1} {\bf y} +  {\bf J}^{\textnormal{T}} {\bf A}^{-1} {\bf J} \bigg] + {{\bf J}}^{\textnormal{T}} {\bf O}^{-1} {\bf y} + {{\bf J}}^{\textnormal{T}} {\bf A}^{-1} {\bf J} \\
+        &= - \frac{1}{2} \bigg[ {\bf y}^{\textnormal{T}} D {\bf y} + ({\bf O} {\bf J})^{\textnormal{T}}{\bf y}^{\textnormal{T}} + {\bf J}^{\textnormal{T}} {\bf O}^{-1} {\bf y} +  {\bf J}^{\textnormal{T}} {\bf A}^{-1} {\bf J} \bigg] + {{\bf J}}^{\textnormal{T}} {\bf O}^{-1} {\bf y} + {{\bf J}}^{\textnormal{T}} {\bf A}^{-1} {\bf J} \\
+        &= - \frac{1}{2} \bigg[ {\bf y}^{\textnormal{T}} D {\bf y} + ({\bf J}^{\textnormal{T}}{\bf O}^{\textnormal{T}} {\bf y})^{\textnormal{T}} + {\bf J}^{\textnormal{T}} {\bf O}^{-1} {\bf y} +  {\bf J}^{\textnormal{T}} {\bf A}^{-1} {\bf J} \bigg] + {{\bf J}}^{\textnormal{T}} {\bf O}^{-1} {\bf y} + {{\bf J}}^{\textnormal{T}} {\bf A}^{-1} {\bf J} \\
+        &= - \frac{1}{2} {\bf y}^{\textnormal{T}} D {\bf y} -  \frac{1}{2} ({\bf J}^{\textnormal{T}}{\bf O}^{\textnormal{T}} {\bf y})^{\textnormal{T}} +  \frac{1}{2} {\bf J}^{\textnormal{T}} {\bf O}^{-1} {\bf y} + \frac{1}{2} {{\bf J}}^{\textnormal{T}} {\bf A}^{-1} {\bf J} \\
+        &= - \frac{1}{2} {\bf y}^{\textnormal{T}} D {\bf y} +  \frac{1}{2} {\bf J}^{\textnormal{T}} {\bf O}^{-1} {\bf y} + \frac{1}{2} {{\bf J}}^{\textnormal{T}} {\bf A}^{-1} {\bf J} \\
+&\Rightarrow \mathcal{Z}(J) = e^{\frac{1}{2} {{\bf J}}^{\textnormal{T}} {\bf A}^{-1} {\bf J}} \prod_{i=1}^{N} \int_{\mathds{R}} dy \blanky e^{-\frac{y^2 D_{ii}}{2}} = ^{\frac{1}{2} {{\bf J}}^{\textnormal{T}} {\bf A}^{-1} {\bf J}} \sqrt {\frac {(2\pi )^{N}}{\det A}}
+    \end{split}
+\end{equation}
+
+\item \textbf{Complex variables}: 
+
+Consider now 
+
+\begin{equation} \begin{split}
+    \mathcal{Z}({\bf J}^*, {\bf J}) &= \int_{\Omega \subseteq \mathds{C}^{6N}} \prod_{i=1}^{N} \frac{dz_i^* dz_i}{2\pi i} \blanky e^{ - \sum_{ij} z_i {\bf A}_{ij} z_j + \sum_{i} J_i^* z_i + \textnormal{h.c.}}, \textnormal{ with } \begin{array}{c}
+            {{\bf A}} = {{\bf A}}^\dagger \\
+            \sigma({{\bf A}}) > 0 
+        \end{array} \\
+        &= \int_{\Omega \subseteq \mathds{C}^{6N}} \prod_{i=1}^{N} \frac{dz_i^* dz_i}{2\pi i} \blanky e^{ - {\bf z}^\dagger {\bf A} {\bf z} + ({\bf J}^\dagger {\bf z} + \textnormal{h.c.})}
+        \end{split}
+    \end{equation}
+
+Thus, ${\bf A}$ may be diagonalized via a unitary transformation, ${\bf D} = U^\dagger {\bf A} U$, which induce the following change of variables
+
+\begin{align}
+    {\bf z}' &= U({\bf z} - {\bf A}^{-1} {\bf J}), & {\bf z}^{'\dagger} &= U^\dagger({\bf z}^\dagger -  {\bf J}^\dagger{\bf A}^{-1}),
+\end{align}
+
+yielding 
+
+\begin{equation}
+    \mathcal{Z}({\bf J}^*, {\bf J}) = e^{{\bf J}^\dagger {\bf A}^{-1} {\bf J}}\int_{\mathds{C}} \prod_{i=1}^{N} \frac{dz_i^* dz_i}{2\pi i} \blanky e^{-{\bf z}^{'\dagger} {\bf D} {\bf z}^'} = e^{{\bf J}^\dagger {\bf A}^{-1} {\bf J}}({\det A})^{-1}
+\end{equation}
+
+\item \textbf{Grasmannian integrals}:\\
+
+A Gaussian integral involving a conjugate pair of Grassmann variables can be written as
+
+$$
+\int d\zeta^\star d\zeta \blanky e^{-\zeta^\star a \zeta} = \int d\zeta^\star d\zeta \blanky (1- \zeta^\star a \zeta) = a.
+$$
+
+By analogy, Grassmann gaussian integrals may be written as 
+
+\begin{equation}
+    \mathcal{Z}(\bm{\zeta}^\star,\bm{\zeta}) = \int \prod_{i} d{\zeta}_i^\star d{\zeta}_i \blanky e^{- \bm{\zeta}^\star {\bf A} \bm{\zeta} + (\bm{\varepsilon}^\star \bm{\zeta} + \textnormal{h.c.})}.
+    \label{Grassmannian gaussian integral}
+\end{equation}
+
+To solve this Grassmann integral, the ${\bf A}$-matrix must be diagonalized by a suitable change of Grassmann-variables, which themselves have not a trivial transformation. 
+
+\begin{tcolorbox}[title = Transformation of Grassmann variables]
+
+Consider the integral\footnote{Note that, if $\theta$ is a Grassmann variable, then $\theta = a\eta$ is another Grassmann variable 
+
+$$
+1 = \int d\theta \blanky \theta = \int d(a \eta) \blanky a\eta \Rightarrow d(a \eta) = \frac{1}{a} d\eta.
+$$}
+
+\begin{equation}
+    \begin{split}
+        \mathcal{I} = \int d\zeta \blanky F(\zeta), \textnormal{ subject to a transformation } \zeta \rightarrow \alpha \zeta' + \beta, \alpha, \beta \in \mathds{C}. \\
+        \Rightarrow \mathcal{I} = \partial_{\zeta} \blanky F(\zeta) = \partial_{\zeta} (\zeta') \partial_{\zeta'} F(\zeta') = \frac{1}{\alpha} \partial_{\zeta'} F(\zeta')  = \frac{1}{\alpha} \int d\zeta \blanky F(\alpha \zeta' + \beta).
+    \end{split}
+\end{equation}
+
+Therefore, the jacobian of the transformation is $\frac{1}{\alpha}$, instead of $\alpha$ for ordinary (bosonic) transformation. This result can then be generalized to a multidimensional integral 
+
+\begin{equation}
+    \begin{split}
+        \mathcal{I} &= \int \prod_{i} d\zeta \blanky F(\bm{\zeta}) = \prod_{i} \partial_{\zeta_i} F(\bm{\zeta}) \\
+        &= \prod_{i} \bigg(\sum_{j} (\partial_{\zeta_i} \zeta_j') \partial_{\zeta_j'}\bigg) F(\bm{\zeta})\\
+        & \overbrace{=}^{\bm{\zeta}' = {\bf M} \bm{\zeta}} \prod_{i} \bigg(\sum_{j} {{\bf M}}_{ji} \partial_{\zeta_j'}\bigg) F(\bm{\zeta})\\
+     \end{split} 
+\end{equation}
+
+Given that $\zeta_{i_1} \cdots \zeta_{i_n} = \varepsilon_{i_1 \cdots i_n} \zeta'_{i_1} \cdots \zeta_{i_n} $, then
+
+\begin{equation}
+    \begin{split}
+        &= \prod_{i} \bigg(\varepsilon^{i_1 \cdots i_n} {{\bf M}}_{1i_1} \cdots  {{\bf M}}_{ni_n} \partial_{\zeta_{ i_1}} \cdots \partial_{\zeta_{i_n}} \bigg) F(\bm{\zeta}) \\
+        &= \det(\partial_{\zeta_j} \zeta_i') \prod_{i} \partial_{\zeta_j} \zeta_i' F(\bm{\zeta}) \\
+        &\Rightarrow \prod_{i} d\zeta_i = \det(\partial_{\zeta_j} \zeta_i') \prod_{i} d{\zeta_i'},
+    \end{split}
+\end{equation}
+
+the jacobian being the inverse of the determinant $\det(\partial_{\zeta_j} \zeta_i')$.
+\end{tcolorbox}
+
+With this in mind, a wide class of Grassmannian integrals may be solved, for example, 
+
+\begin{equation}
+\begin{split}
+    \mathcal{Z}(\bm{\zeta}^\star,\bm{\zeta}) &= \int \prod_{i} d{\zeta}_i^\star d{\zeta}_i \blanky e^{- \bm{\zeta}^\star {\bf A} \bm{\zeta}} = \det (\bf A) \int \prod_{i} d{\zeta}_i^\star d{\zeta}_i \blanky e^{\bm{\zeta}^\star \bm{\zeta}} \\
+    &= \det (\bf A) \int \prod_{i} d{\zeta}_i^\star d{\zeta}_i \blanky (1 - {\bm{\zeta}^\star \bm{\zeta}}) = \det (\bf A),
+\end{split}
+\end{equation}
 \end{itemize}
 
-Thus, the $3N$-dimensional real symmetric and positive defined matrix ${{{\bf A}}}$ can be diagonalized via an orthonormal transformation ${{\bf A}} = {{\bf O}}^{\textnormal{T}} D  {{\bf O}}$, with $ {{\bf O}} \in \textnormal{O}(3N)$ and $D_{ii} > 0$. 
+or, for the more general integral given by \cref{Grassmannian gaussian integral}
+
+\begin{equation}
+    \mathcal{Z}(\bm{\zeta}^\star,\bm{\zeta}) = \det(\bf A) e^{-\bm{\zeta}^\star {\bf A}^{-1} \bm{\zeta}}. 
+\end{equation}
+
 
 \clearpage
 
@@ -3577,7 +3690,8 @@ Phonons are quantized vibrations and play a fundamental role in sound physics, s
 
 Phonons are basically harmonic oscillators, they are bosons. Moreover, these naturally occur at finite temperature, so the thermal distribution function for bosons will be used. \\
 
-\paragraph{\textbf{Jellium oscillations and Einstein phonons}}
+\iffalse
+% \paragraph{\textbf{Jellium oscillations and Einstein phonons}}
 
 Let $\rho^0_{\textnormal{ion}}$ be the particle density of the ion jellium and let $\rho^0_{\textnormal{el}} = Z \rho^0_{\textnormal{ion}}$ that of the homogeneous electron gas. Consider slow ionic density oscillations in a static electron gas, where the restoring force is the long range Coulomb interaction, where the electron dynamics are neglected as well. This entails that $\rho_{\textnormal{ext}}$ is a fixed constant. In the limit of small harmonic deviations from the equilibrium, $\delta \rho_{\textnormal{ion}}(x^\mu) = \delta \rho_{\textnormal{ion}} ({\bf x}) e^{-i\Omega t}$. The equations of motion are linear up to first order in the ionic density variations, thus its solutions can be written as 
 
@@ -3598,7 +3712,190 @@ $$
 $$
 
 since the velocity is already a small quantity. Differentiating this with respect to time once and again and using Newton's second law $\bm{\mathfrak{t}} = M \rho_{\textnormal{ion}} \partial_t {\bf v}$ yields 
+\fi
 
+\paragraph{\textbf{The Jellium Model}}
+
+%El-Batanouny p. 427 \\
+
+Consider the Hamiltonian 
+
+\begin{equation}
+    {\bf H}= {\bf H}_{+} + {\bf H}_{+e} + {\bf H}_{e}, \textnormal{ where}
+    \begin{array}{c}
+         {\bf H}_+ = \frac{1}{2} \int_{\mathds{R}^6} d{\bf x} d{\bf x}' \blanky \rho_{+}({\bf x}) \rho_{+}({\bf x}') \frac{e^{-\mu |{\bf x}-{\bf x}'|}}{|{\bf x} - {\bf x}'|} = \frac{e^2}{2} \bigg(\frac{N}{\Omega}\bigg)^2 \int_{\mathds{R}^3} d{\bf x}' \int_{\mathds{R}^3} \frac{e^{-{\mu} r}}{r} = \frac{4\pi e^2 N^2}{2\mu^2\Omega}\\
+         {\bf H}_{+e} = - e\sum_{i} \int_{\mathds{R}^3} d{\bf x} \blanky \rho_{+}({\bf x}) \frac{e^{-\mu |{\bf x}-{\bf x}_i|}}{|{\bf x}-{\bf x}_i|} = -\frac{e^2 N}{\Omega} \sum_{i} \int_{\mathds{R}^3} d{\bf x} \frac{e^{-\mu |{\bf x}-{\bf x}_i|}}{|{\bf x}-{\bf x}_i|} = - \frac{e^2 N^2}{\Omega} \frac{4\pi}{\mu^2}
+    \end{array}
+\end{equation}
+
+and consider the electron Hamilton
+
+\begin{equation}
+    {\bf H}_e = \sum_{i} \frac{{\bf p}^2}{2m_e} + \frac{e^2}{2} \sum_{i\neq j}\frac{e^{-\mu |{\bf x}-{\bf x}_i|}}{|{\bf x}-{\bf x}_i|}, \underset{\longrightarrow}{\textnormal{2nd Quant.}} {\bf T} = \sum_{i} \frac{\hbar^2 k_i^2}{2m_e} {\bf c}_i^\dagger {\bf c}_i,
+\end{equation}
+
+since the single -electron wavefunctions are just plane waves, with the matrix element for the two-electron repulsion given by 
+
+\begin{equation}
+    \begin{split}
+        \bigg\langle {{\bf k}_4 \sigma_i, {\bf k}_3 \sigma_j}\bigg| \frac{e^{-\mu |{\bf x}_i - {\bf x}_j|}}{|{\bf x}_i- {\bf x}_j|} \bigg|{{\bf k}_2 \sigma_j, {\bf k}_1 \sigma_i} \bigg\rangle &= \frac{1}{\Omega^2} \int_{\R^6} d{\bf x}_i d{\bf x}_j \blanky e^{i({\bf k}_1 - {\bf k}_4) \cdot {\bf x}_i} e^{i({\bf k}_2 - {\bf k}_3) \cdot {\bf x}_j} \frac{e^{-\mu |{\bf x}_i - {\bf x}_j|}}{|{\bf x}_i- {\bf x}_j|} \\
+        &= \frac{1}{\Omega} \delta_{{\bf k}_1+{\bf k}_2 - {\bf k}_3 - {\bf k}_4} \int_{\mathds{R}^3} d({\bf x}_i - {\bf x}_j) e^{-i {\bf q} \cdot ({\bf x}_i-{\bf x}_j)} \frac{e^{-\mu r}}{r} \\
+        &= \frac{1}{\Omega} \delta_{{\bf k}_1+{\bf k}_2 - {\bf k}_3 - {\bf k}_4} \frac{4\pi}{\mu^2 + q^2}. 
+    \end{split}
+\end{equation}
+
+Then the aforementioned electron Hamiltonian reads
+
+\begin{equation}
+    {\bf H}_e = \sum_{\substack{{\bf k} \in \Lambda\\
+    \sigma \in \mathds{C}^2}} \frac{\hbar^2 k^2}{2m_e} {\bf c}_{{\bf k} \sigma}^\dagger {\bf c}_{{\bf k} \sigma} +  \sum_{\substack{{\bf k},{\bf k}',{\bf q} \in \Lambda\\
+    \sigma, \sigma' \in \mathds{C}^2}} \frac{2\pi e^2}{\Omega(\mu^2 + q^2)} {\bf c}_{{\bf k}+{\bf q} \blanky \sigma}^\dagger {\bf c}_{{\bf k}'-{\bf q} \blanky \sigma'}^\dagger {\bf c}_{{\bf k}' \blanky \sigma'} {\bf c}_{{\bf k} \blanky \sigma}.
+    \label{pre-HF-jellium H}
+\end{equation}
+
+The $({\bf q}=0)$-term is special, 
+
+\begin{equation}
+    \begin{split}
+    \sum_{\substack{{\bf k},{\bf k} \in \Lambda\\
+    \sigma, \sigma' \in \mathds{C}^2}} \frac{2\pi e^2}{\Omega\mu^2} {\bf c}_{{\bf k} \blanky \sigma}^\dagger {\bf c}_{{\bf k}' \blanky \sigma'}^\dagger {\bf c}_{{\bf k}' \blanky \sigma'} {\bf c}_{{\bf k} \blanky \sigma} &= \sum_{\substack{{\bf k},{\bf k}' \in \Lambda\\
+    \sigma, \sigma' \in \mathds{C}^2}} \frac{2\pi e^2}{\Omega\mu^2} {\bf c}_{{\bf k} \blanky \sigma}^\dagger {\bf c}_{{\bf k} \blanky \sigma} ({\bf c}_{{\bf k}' \blanky \sigma'}^\dagger {\bf c}_{{\bf k} \blanky \sigma} - \delta_{{\bf k}{\bf k}'} \delta_{\sigma \sigma'}) \\
+    &= \frac{2 \pi e^2}{\mu^2 \Omega} (N^2 - N).
+    \end{split}
+\end{equation}
+
+The $\frac{N^2 e^2}{\mu}$-terms all add up to zero while the second term $-\frac{2\pi N e^2}{\mu^2 \Omega} \underset{\Omega \rightarrow \infty}{\longrightarrow} 0$, thus reducing the system's Hamiltonian to 
+
+\begin{equation}
+    {\bf H} = \sum_{\substack{{\bf k} \in \Lambda\\
+    {\bf q} \neq 0\\
+    \sigma \in \mathds{C}^2}} \frac{\hbar^2 k^2}{2m_e} {\bf c}_{{\bf k} \sigma}^\dagger {\bf c}_{{\bf k} \sigma} + \sum_{\substack{{\bf k},{\bf k}',{\bf q} \in \Lambda\\
+    \sigma, \sigma' \in \mathds{C}^2}} \frac{2\pi e^2}{\Omega q^2} {\bf c}_{{\bf k}+{\bf q} \blanky \sigma}^\dagger {\bf c}_{{\bf k}'-{\bf q} \blanky \sigma'}^\dagger {\bf c}_{{\bf k}' \blanky \sigma'} {\bf c}_{{\bf k} \blanky \sigma},
+\end{equation}
+
+where $\mu=0$ since the $(q=0)$-singularity has been removed. The first term is the Hamiltonian for the Sommerfeld gas and where the second term is a perturbation. Notice tha the ground state has been expressed as a product of single particle wavefunctions and not as an antisymmetrized linear combination of such terms, since the antisymmetrization has already been taken care of by the creation and annihilation operator commutators. Then, the jellium ground-state is given by 
+
+$$
+    \ket{\Omega} = \prod_{{\bf k} = 0}^{k = k_F} \ket{{\bf k}\uparrow}\bra{{\bf k}\downarrow}.
+$$
+
+\blanky \\
+
+\paragraph{\textbf{The Wigner crystal}}
+
+In the small-density limit, the Coulomb energy become dominant and therefore it is more appropriate to start from the ground state of the interaction term than from that of the kinetic energy. Wigner argued that the free electron-like Fermi sphere ground state could become unstable to an insulating lattice of localized electrons when the electron density becomes sufficiently small. This leads to a purely classical problem. Namely, to calculate the lowest-energy configuration of charged particles immersed into a homogeneous background of opposite charge. This problem was first addressed by Wigner in 1934 as that of an inverted alkali metal, and he argued that at low enough densities the electrons would form a crystal. A consistent theory has of course to take into account the kinetic energy, leading to zero-point fluctuations of the electrons around their equilibrium positions. As the lattice constant decreases, these fluctuations become more and more important, until the Wigner crystal melts. Numerical simulations indicate this happens for $r_s \sim 100$. In fact, a two-dimensional Wigner crystal with a triangular structure has actually been observed for a very low-density electron system ($r_s\sim 10^4$) dispersed over the surface of liquid helium. \\
+
+The first-order energy correction is given by 
+
+$$
+    E^{(1)} = \bra{\Omega} {{\bf H}}' \ket{\Omega} = \langle {\Omega} \bigg|  \sum_{\substack{{\bf k},{\bf k}',{\bf q} \in \Lambda\\
+    \sigma, \sigma' \in \mathds{C}^2}} \frac{2\pi e^2}{\Omega q^2} {\bf c}_{{\bf k}+{\bf q} \blanky \sigma}^\dagger {\bf c}_{{\bf k}'-{\bf q} \blanky \sigma'}^\dagger {\bf c}_{{\bf k}' \blanky \sigma'} {\bf c}_{{\bf k} \blanky \sigma} \bigg| {\Omega} \rangle.
+$$
+
+For this matrix-elements to be non-zero, the states ${\bf k}+{\bf q}$, ${\bf k}'-{\bf q}$, ${\bf k}'$ and ${\bf k}$ must be contained in the ground-state wavefunction product. This means that the only terms that do not vanish will be those that do not change $\ket{\Omega}$'s occupation numbers, therefore
+
+\begin{equation}
+    \left\{\begin{array}{ccc}
+        {\bf k} = {\bf k} + {\bf q,} & {\bf k}' = {\bf k}' - {\bf q} & {\bf q} = 0 \\
+        {\bf k}' = {\bf k} + {\bf q}, & {\bf k} = {\bf k}' - {\bf q}
+    \end{array} \right.
+\end{equation}
+
+This can be interpreted via \cref{fig:feynmann_jellium}. The first configuration implies no scattering since ${\bf q} = 0$. The remaining term, the exchange scattering term, is represented by the second diagram in \cref{fig:feynmann_jellium} and depicts the case where the particle in $\ket{{\bf k}}$-state is scattered into the $\ket{{\bf k}'}$-state and vice-versa. The correction too $E_0$ is the exchange energy, given by 
+
+\begin{figure}
+    \centering
+    \subfloat[\centering ]{{\includegraphics[scale=0.55]{figs/Jellium model/jellium_integration_region.png} }}
+    \qquad
+    \subfloat[\centering ]{{\includegraphics[scale=0.55]{figs/Jellium model/jellium_gse.png}}}
+    \caption{Fig. A: Geometry for the ${\bf k}$-integration is shown for arbitrary, but fixed, ${\bf q}$, which is just the intersection of two spheres. \\
+    Fig. B: Ground-state energy per electron, including first-order correction, for the jellium model.}
+    \label{figs:jellium}
+\end{figure}
+
+\begin{equation}
+    \begin{split}
+        E^{(1)} &= \langle {\Omega} \bigg|  \sum_{\substack{{\bf k},{\bf k}',{\bf q} \in \Lambda\\
+    \sigma \in \mathds{C}^2}} \frac{2\pi e^2}{\Omega q^2} {\bf c}_{{\bf k}+{\bf q} \blanky \sigma}^\dagger {\bf c}_{{\bf k}'-{\bf q} \blanky \sigma}^\dagger {\bf c}_{{\bf k}' \blanky \sigma} {\bf c}_{{\bf k} \blanky \sigma} \bigg| {\Omega} \rangle \\
+    &= \langle {\Omega} \bigg|  \sum_{\substack{{\bf k},{\bf q} \in \Lambda\\
+    \sigma \in \mathds{C}^2}} \frac{2\pi e^2}{\Omega q^2} {\bf c}_{{\bf k}+{\bf q} \blanky \sigma}^\dagger {\bf c}_{{\bf k} \sigma}^\dagger {\bf c}_{{\bf k}+{\bf q} \blanky \sigma} {\bf c}_{{\bf k} \sigma} \bigg| {\Omega} \rangle \\
+    &= \langle {\Omega} \bigg|  \sum_{\substack{{\bf k},{\bf q} \in \Lambda\\
+    \sigma \in \mathds{C}^2}} \frac{2\pi e^2}{\Omega q^2} (-N_{{\bf k}+{\bf q} \blanky \sigma} - N_{{\bf k} \sigma}) \bigg| {\Omega} \rangle  \Rightarrow \varepsilon^{(1)}({\bf k}) = - \frac{2\pi e^2}{\Omega} \sum_{{\bf q}} \frac{N_{{\bf k}} + {\bf q}}{q^2} \\
+    \Rightarrow E^{(1)} &= -\frac{4\pi e^2}{\Omega} \frac{\Omega}{(2\pi)^6} \int_{\mathds{R}^6} d{\bf k} d{\bf q} \blanky \frac{1}{q^2} \Theta(k_F - |{\bf k} + {\bf q}|) \Theta(k_F - k) \textnormal{ with the integration region shown in \cref{figs:jellium} (left)}  \\
+    &= - \frac{4\pi e^2 \Omega}{(2\pi)^6} \int_{\mathds{R}^3} \frac{d{\bf q}}{q^2} \int_{\mathds{R}^3} d{\bf p} \blanky \Theta\bigg(k_F - \bigg| {\bf p} + \frac{1}{2} {\bf q}\bigg|\bigg) \Theta\bigg(k_F - \frac{1}{2} {\bf q}\bigg) \\
+    &= -\frac{e^2}{2a_0} N \frac{3}{2\pi} \bigg(\frac{9 \pi}{4}\bigg)^{\frac{1}{3}} \frac{1}{r_s}.
+    \end{split}
+\end{equation}
+
+This results, shown in \cref{fig:jellium} (right), shows that the electron gas is stable when the repulsive Coulomb interaction is turned on. No external confinement potential is therefore needed to hold the electron gas in the ion jellium together. There exists an optimal density $n^*$, or interparticle distance $r_s^*$, which minimizes the energy and furthermore yields an $E^* < 0$. The negative exchange energy overcome the positive kinetic energy. This method of treating the electron gas is a special case of the Hartree-Fock approximation and is the simplest way to take into account interactions. The interesting point to note is that in this approximation the energy is reduced below that of the Sommerfeld gas, which is a manifestation of the exchange hole. 
+
+\begin{figure}
+    \centering
+    \includegraphics[scale  =.5]{figs/Jellium model/feynmann_diags.png}
+    \caption{Diagrams for the jellium sea. The dashed line represents the interaction.}
+    \label{fig:feynmann_jellium}
+\end{figure}
+
+\blanky \\
+
+\paragraph{\textbf{Hartree-Fock approximation as a Mean-Field Theory}} \blanky \\
+
+Consider the electronic Hamiltonian given by 
+\cref{pre-HF-jellium H}. The goal is to write an effective two-body Hamiltonian, which takes into account the average effects of the interactions. Therefore, the four-Fermi interaction is replaced with a sum of all possible two-body terms
+
+\begin{equation}
+    \begin{split}
+    \langle {\bf c}_1^\dagger {\bf c}_2^\dagger {\bf c}_3 {\bf c}_4 \rangle_{\textnormal{MFT}} &= - \langle {\bf c}_1^\dagger {\bf c}_3 \rangle {\bf c}_2^\dagger {\bf c}_4 -  \langle {\bf c}_2^\dagger {\bf c}_4 \rangle {\bf c}_1^\dagger {\bf c}_3 +  \langle {\bf c}_1^\dagger {\bf c}_4 \rangle {\bf c}_2^\dagger {\bf c}_3 +  \langle {\bf c}_2^\dagger {\bf c}_3 \rangle {\bf c}_1^\dagger {\bf c}_4, \\
+    &\textnormal{ where } \langle {\bf c}_{{\bf k}\sigma}^\dagger {\bf c}_{{\bf k}'\sigma'} \rangle = {\bf n}_{{\bf k}\sigma} \delta_{{\bf k}{\bf k}'}^{\sigma \sigma'}
+\end{split}\end{equation}
+
+The mean field terms can be understood as the average number of particles ${\bf n}_{{\bf k}\sigma}$ in the $\ket{{{\bf k}\sigma}}$-state, which will be weighted with the two-body interaction $V({\bf q})$ to give the average interaction due to all other interaction terms. Then, the four-Fermi interaction in the mean-field approximation reads
+
+\begin{equation}
+\begin{split}
+    \mathcal{V}_{\textnormal{HF}} = \frac{1}{2} \sum_{\substack{{\bf k}{\bf k}',{\bf q} \in \Lambda\\
+    \sigma \sigma' \in \mathds{C}^2}} V({\bf q}) &\bigg[-\langle 
+    {\bf c}_{{\bf k}\sigma}^\dagger {\bf c}_{{\bf k}'\sigma'}
+    \rangle {\bf c}_{{\bf k}'-{\bf q} \blanky \sigma'}^\dagger {\bf c}_{{\bf k}-{\bf q} \sigma} 
+    -  \langle {\bf c}_{{\bf k}'-{\bf q} \blanky \sigma'}^\dagger {\bf c}_{{\bf k}-{\bf q} \sigma}  \rangle {\bf c}_{{\bf k}\sigma}^\dagger {\bf c}_{{\bf k}'\sigma'} \\
+    & \blanky \blanky \blanky + \langle {\bf c}_{{\bf k}\sigma}^\dagger {\bf c}_{{\bf k}-{\bf q} \sigma} \rangle {\bf c}_{{\bf k}'-{\bf q} \blanky \sigma'}^\dagger {\bf c}_{{\bf k}'\sigma'}
+    +  \langle {\bf c}_{{\bf k}'-{\bf q} \blanky \sigma'}^\dagger {\bf c}_{{\bf k}'\sigma'} \rangle {\bf c}_{{\bf k}\sigma}^\dagger {\bf c}_{{\bf k}-{\bf q} \sigma} 
+    \bigg] \\
+    &= - \sum_{\substack{{\bf k}{\bf q} \in \Lambda\\
+    \sigma \in \mathds{C}^2}} V({\bf q})  \langle {\bf c}_{{\bf k} \sigma}^\dagger {\bf c}_{{\bf k} \sigma} \rangle {\bf c}_{{\bf k}-{\bf q} \blanky \sigma}^\dagger {\bf c}_{{\bf k}-{\bf q} \blanky \sigma} + V(0) \sum_{\substack{{\bf k}{\bf k}' \in \Lambda\\
+    \sigma \sigma' \in \mathds{C}^2}} \langle {\bf c}_{{\bf k} \sigma}^\dagger {\bf c}_{{\bf k} \sigma} \rangle  {\bf c}_{{\bf k}' \sigma'}^\dagger {\bf c}_{{\bf k}' \sigma'} \\
+    &= \sum_{\substack{{\bf k} \in \Lambda\\
+    \sigma \in \mathds{C}^2}} \bigg(-\sum_{{\bf q} \in \Lambda} {\bf n}_{{\bf k}+{\bf q} \sigma} V({\bf q}) + nV(0)\bigg){\bf c}_{{\bf k} \sigma}^\dagger {\bf c}_{{\bf k} \sigma}, \\
+    \Rightarrow  {\bf H}^{\textnormal{HF}} &= \sum_{\substack{{\bf k} \in \Lambda\\
+    \sigma \in \mathds{C}^2}} \varepsilon_{\bf k}^{\textnormal{HF}} {\bf c}_{{\bf k} \sigma}^\dagger {\bf c}_{{\bf k} \sigma}, \textnormal{ where } \begin{split}
+        \varepsilon_{\bf k}^{\textnormal{HF}} &= \varepsilon_{\bf k} + \sum_{\substack{{\bf k}' \in \Lambda\\
+    \sigma' \in \mathds{C}^2}} [V(0) - \delta_{\sigma\sigma'} V({\bf k}- {\bf k}')] {\bf n}_{{\bf k}' \sigma'} \\
+        &= \varepsilon_{\bf k} + V(0) N - \sum_{\substack{{\bf k}' \in \Lambda\\
+    \sigma' \in \mathds{C}^2}} V({\bf k}- {\bf k}') {\bf n}_{{\bf k'} \sigma'}.
+    \end{split}
+    \end{split}
+\end{equation}
+
+Note that the Hartree or direct Coulomb term, which represents the average interaction energy of the electron ${\bf k}\sigma$ with all the other electrons in the system, is a constant; when summed over all electron it cancels exactly with the constant arising from the sum of the self-energy of the positive background and the interaction energy of the electron gas with that of the background. The Fock, or exchange term, is a momentum-dependent shift. \\
+
+\textbf{Problems with the Hartree-Fock Theory}
+
+Although we argued that the Hartree-Fock approximation becomes a better approximation in the high-density limit for electron interacting via the Coulomb attraction, it never becomes exact. The Hartree-Fock energy correction is given by 
+
+$$
+    \varepsilon^{(1)}({\bf k}) = \frac{e^2 k_F}{4\pi^2} \bigg[\frac{k_F^2 - k^2}{kk_F} \log \bigg| \frac{k_F + k}{k_F - k}\bigg| + 2\bigg]
+$$
+
+The first term in parentheses has a logarithmic divergence in slope $k=kf$. This means that while the energy shift might be small compared to the Fermi energy, the Fermi velocity $v_F = \nabla_{{\bf k}} \varepsilon({\bf k})$, contains a non-finite term. This problem can be traced back to the long-range nature of the Coulomb force. Two electrons at large distances ${\bf x}-{\bf x}'$ do not feel the full $\frac{1}{|{\bf x}-{\bf x}'|}$-interaction, but a screened version due to the presence of the intervening medium, namely the electron gas, rearranges itself to cancel out the long-range part of $V$. \\
+
+\underline{Electron Interaction in Second-order Perturbation Theory}
+
+Trying to improve upon the first-order result by going to second-order perturbation theory yields a disastrous results for the matrix elements diverge. According to second-order perturbation theory, 
+
+$$
+\frac{E^{(2)}}{N} = \frac{1}{N} \sum_{\substack{\ket{\psi} \in \mathds{H}} \\
+\ket{\psi} \neq \ket{\Omega}} \frac{\bra{\Omega} {{\bf V}}_c \ket{\psi} \bra{\psi} {{\bf V}}_c \ket{\Omega}}{E^{(0)} - E_\psi}
+$$
 
 \clearpage
 
@@ -3783,4 +4080,3 @@ From \textbf{Advanced Quantum Condensed Matter Physics, One-Body, Many-Body and 
 
 
 \end{document}
-
