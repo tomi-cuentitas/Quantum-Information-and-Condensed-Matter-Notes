@@ -8,6 +8,53 @@
 
 \begin{document} \maketitle
 
+\iffalse
+\begin{align*}
+    &\rho = e^{-\sum_{i}
+    \lambda^i {\bf O}_i} \\
+    &i\hbar \frac{d\rho}{dt} = [{\bf H}, \rho] \Leftrightarrow  {\frac{d\phi^{\alpha}}{dt}}{= \left(\sum_{\mu} \phi^\mu(t) \langle{\bf O}_\alpha, [{\bf H}, {\bf O}_{\mu}]\rangle_{\textnormal{HS}}\right)}
+\end{align*}
+
+Dado un conjunto de \\ observables objetivo los estados \\ Max-Ent 
+definen una variedad (de Hilbert) \\ Riemanniana $(\mathcal{M}, g)$ simplemente conexa, \\ ($\pi_1(\mathcal{M} )= \{1\})$, contractible, \\ \textit{path-connected} y geodésicamente completa,\\  no preservada por la dinámica \\ de Schr\"odinger. 
+Un caso notable donde la \\ variedad sí es preservada es el de \\ los estados Gaussianos. 
+En esta contribución, \\ proponemos estudiar el efecto de forzar \\ una dinámica de Schr\"odinger
+no gaussiana \\ a una variedad  de estados Max-Ent \\ con  correlaciones de pares, 
+en \\ comparación con la dinámica exacta.
+
+Consider the set of all density operators, labelled $\mathcal{C}(\mathds{H}^{\otimes N})$, we are interested in two subsets of these, the Max-Ent manifolds
+
+
+
+
+By definition, $\mathcal{C}(\mathds{H}^{\otimes N}) \subset \textnormal{GL}(N, \mathds{C})$. In particular, we claim that it has the structure of a Riemannian non-convex manifold. All of these density matrices can be written as the exponential of a hermitian ${\bf K}$-operator,
+
+$$
+    {\bf K} \in \textnormal{End}(\mathcal{C}(\mathds{H}^{\otimes N})) \textnormal{  and  } {\bf K}^\dagger = {\bf K}.
+$$
+
+If a basis $\mathcal{B}$ of trace-class operators is chosen, then
+
+$$
+    \mathcal{B} = \{{\bf O}_i\}_{i=1}^{\dim \mathcal{B}} \Rightarrow {\bf K} = \sum_{i} \alpha_i {\bf O}, \alpha_i \in \mathds{C}
+ $$
+ 
+so that there exists a mapping from the space of all trace-class endomorphisms to the space of all Max Ent-type density matrices, said mapping being the exponential mapping.
+
+\begin{align*}
+    &\mathfrak{e}\mathfrak{x}\mathfrak{p}: T_{\alpha} \mathcal{M} \rightarrow \mathcal{M} \\
+    &\mathfrak{e}\mathfrak{x}\mathfrak{p}({\bf K}) \rightarrow e^{{\bf K}} \textnormal{ so long as } {\bf K} \in \textnormal{End}(\mathcal{C}(\mathds{H}^{\otimes N})) \textnormal{ and } {\bf K} = {\bf K}^{\dagger}
+\end{align*}
+
+The exponential mapping is well defined for all trace-class hermitian operators since the manifold is path-connected. In effect, 
+
+
+\begin{align}
+    \forall \rho_1, \rho_2 \in \mathcal{\bf S}_{\textnormal{ME2}}     
+\end{align}
+
+\fi
+
 \section{Some topology definitions and results}
 
 First, consider $X$ to be a topological space.\\
@@ -92,7 +139,16 @@ In algebraic topology, there are many interesting homotopic invariants. Namely, 
 
 \paragraph{\textbf{Hopf-Rinow theorem}}
 
-Let $(M,g)$ be a connected Riemannian manifold. Then, the following statements are equivalent
+Let $(M,g)$ be a connected Riemannian manifold\footnote{Note that a path-connected topological space is connected as well. 
+\begin{tcolorbox}[title=Proof: path-connectedness implies connectedness]
+In effect, if $X$ is a path-connected topological space and assuming (by contradiction) that $X = A \sqcup B$, and $A, B \neq \emptyset$ (ie. $X$ isn't connected). Then, let $a \in A, b \in B$ and let $\gamma: \mathds{R}_{[0,1]}$ be a path in $X$ such that $\gamma(0) = a$, $\gamma(1) = b$. Then, given $\gamma$'s continuity, there is a decomposition 
+
+$$
+    \mathds{R}_{[0,1]} = \gamma^{-1}(A) \cup \gamma^{-1}(B),
+$$
+
+which, if true, implies that $\mathds{R}_{[0,1]}$ is not connected, which is false. Hence, $X$ cannot be path-connected if it isn't connected.
+\end{tcolorbox}}. Then, the following statements are equivalent
 
 \begin{itemize}
     \item The closed and bounded subsets of $M$ are compact,
@@ -106,9 +162,14 @@ Furthermore, any one of the above implies that, given any two points $p, q \in M
 
 Given a physical system, a density operator for it is a positive semi-definite, self-adjoint operator of trace one acting on the system's Hilbert space, denoted by $\mathds{H}$. The set of all density operators has the structure of a vector space $\mathcal{C}(\mathds{H})$,
 
-$$
-\mathcal{C}(\mathds{H}) = \{ \rho \in \textnormal{GL}(N, \mathds{C}) \blanky | \blanky \rho^\dagger = \rho, \blanky \rho \geq 0, \blanky \textnormal{Tr } \rho = 1 \},
-$$
+\begin{equation}
+\begin{split}
+\mathcal{C}(\mathds{H}) = \{ \rho& \in \textnormal{GL}(N, \mathds{C}) | \blanky
+\blanky \rho^\dagger = \rho, 
+\blanky \rho \geq 0, \blanky \textnormal{Tr } \rho = 1 \},    
+\end{split}
+\end{equation}
+
 
 where $\textnormal{GL}(N, \mathds{C})$ is the general linear group over the complex number field, whose elements are squared matrices of $N \times N$-dimension. The following statements can then be proved:
 
@@ -128,7 +189,8 @@ Let $\Lambda$ be a $d$-dimensional quantum spin system, with its lattice being d
 
 \begin{equation}
     \mathfrak{H}\mathfrak{s}^{\dagger}(\hilbert^{\otimes N}) \subset \mathfrak{H}\mathfrak{s}(\hilbert^{\otimes N}), \textnormal{ where } {\bf K} \in \mathfrak{H}\mathfrak{s}^{\dagger}(\hilbert^{\otimes N}) \textnormal{ if and only if } \begin{array}{c}
-         {\bf K}: \hilbert^{\otimes N} \rightarrow \hilbert^{\otimes N} \\
+         {\bf K}: \hilbert^{\otimes N}          \rightarrow \hilbert^{\otimes N} \\
+         {\bf K} \in \textnormal{GL}(N, \mathds{C}) \\
          {\bf K} = \bf K^\dagger  \\
          \Tr \bf K^\dagger {\bf K} = \Tr \bf K^2 < \infty 
     \end{array}
@@ -148,82 +210,99 @@ Special care must be taken when dealing with infinite-dimensional systems. We st
 
 It is clear that, for the finite dimensional case, $\mathcal{M}$ is a path-connected topological space. In effect, 
 
-$$
-    \forall \rho_1, \rho_2 \in \mathcal{M}, \blanky \exists f:\mathds{R}_{[0,1]} \rightarrow \mathcal{M} \textnormal{ such that } \begin{array}{c}
-         f(0) = \rho_1, \\
-         f(1) = \rho_2
-    \end{array}
-$$
-
-This path always exists. In effect, consider the function 
-
 \begin{align*}
-    f&:\mathds{R}_{[0,1]} \rightarrow \mathcal{M} \\
-    &f(x) = x \rho_1 + (1-x) \rho_2,
+\forall \rho_1, \rho_2 \in \mathcal{M}, & \blanky \exists f:\mathds{R}_{[0,1]} \rightarrow \mathcal{M} \textnormal{ such that } \begin{array}{c}
+        f(0) = \rho_1 \\
+        f(1) = \rho_2
+    \end{array} \\
+    \textnormal{ which always exists } 
+    &f:\mathds{R}_{[0,1]} \rightarrow \mathcal{M} \blanky | \blanky f(x) = x \rho_1 + (1-x) \rho_2 \in \mathcal{M} \\
 \end{align*}
 
-which is continuous for arbitrary density matrices. 
+which is continuous for arbitrary density matrices.
 
+\begin{tcolorbox}[title = Proof: Path-connectedness in the finite-dimensional case.]
+In effect, let $\rho_1, \rho_2 \in \mathcal{M} \rightarrow {{\bf K}}_1, {{\bf K}}_2 \in \mathfrak{H}\mathfrak{s}^{\dagger}(\hilbert^{\otimes N}) \blanky | \blanky \rho_1 = e^{-{\bf K}_1},  \rho_2 = e^{-{\bf K}_2}$, then
 
+\begin{equation}
+    \begin{split}
+        f(x) = x \rho_1 + (1-x) \rho_2  = x e^{-{\bf K}_1} + (1-x) e^{-{\bf K}_2} = e^{-{\bf K}} \\
+        \leftrightarrow {\bf K} = - \log (x e^{-K_1} + (1-x) ^{-K_2}) \in \mathfrak{H}\mathfrak{s}^{\dagger}(\hilbert^{\otimes N}) \\
+    \end{split}
+\end{equation}
+\end{tcolorbox}
 
-
-In other words, the Hopf-Rinow theorem assures that, given any two arbitrary point $\rho, \sigma \in \mathcal{M}$, there always exists a length-minimizing geodesic connecting these two-points\footnote{Note that these conclusions only hold for finite dimensional manifolds. The theorem does not hold for infinite dimensional complete Hilbert manifolds. Note that, in our case, the Hilbert space $\hilbert^{\otimes N}$ can be thought of as a Hilbert manifold, with a single global chart given by the identity function $\mathds{1}_{\hilbert^{\otimes N}}$ on said Hilbert space. Moreover, since by definition a Hilber tspace is a vector space, the tangent space $T_{\rho} \mathcal{M}$ to $\mathcal{M}$ at the point $\rho \in \hilbert^{\otimes}$ is canonically isomorphic to the Hilbert space itself, and thus has a natural inner product, the same as the one defined on the Hilbert space. Thus $\hilbert^{\otimes N}$ can be given the structure of a Riemannian manifold with metric 
+Since path-connectedness implies connectedness, the Hopf-Rinow theorem stands. Therefore, given any two arbitrary points $\rho, \sigma \in \mathcal{M}$, there always exists a length-minimizing geodesic connecting these points\footnote{Note that these conclusions only hold for finite dimensional manifolds. The theorem does not hold for infinite dimensional complete Hilbert manifolds. Note that, in our case, the Hilbert space $\hilbert^{\otimes N}$ can be thought of as a Hilbert manifold, with a single global chart given by the identity function $\mathds{1}_{\hilbert^{\otimes N}}$ on said Hilbert space. Moreover, since by definition a Hilber tspace is a vector space, the tangent space $T_{\rho} \mathcal{M}$ to $\mathcal{M}$ at the point $\rho \in \hilbert^{\otimes}$ is canonically isomorphic to the Hilbert space itself, and thus has a natural inner product, the same as the one defined on the Hilbert space. Thus $\hilbert^{\otimes N}$ can be given the structure of a Riemannian manifold with metric 
 
 $$
     g(v, w) (\rho) = \langle v, w \rangle_{\hilbert^{\otimes N}}, \textnormal{ for } v, w \in T_{\rho} \mathcal{M}
 $$
 
 wherein $\langle \cdot, \cdot \rangle_{\hilbert^{\otimes N}}$ denotes the inner product in $\hilbert^{\otimes N}$
-}. 
+}. Moreover, this space is both a complete metric space (hence, a Hilbert space in its own right) and is geodesically complete, with a everywhere well-defined exponential map\footnote{Note that "well-defined" in this context means there is a natural isomorphism/\underline{diffeomorphism}/algo-morphism (???!!!) between the manifold itself and its tangent space. Moreover, this is only the case for $\mathds{C}$-valued matrices and it is not true for $\mathds{R}$-valued matrices. \begin{tcolorbox}[title = Proof of surjective-ness of the exponential map onto the general linear group]
+It turns out that neither the exponential map $\mathfrak{e}\mathfrak{x}\mathfrak{p}: \mathds{R}^{N \times N} \rightarrow \textnormal{GL}(N, \mathds{R})$ nor the exponential map $\mathfrak{e}\mathfrak{x}\mathfrak{p}: \mathds{R}^{N \times N} \rightarrow \textnormal{GL}^+(N, \mathds{R})$ are surjective. \\
 
-By construction, it is clear that the natural choice for the 
+Let ${\bf A}$ be a linear operator, which should realise in the image of $\mathfrak{e}\mathfrak{x}\mathfrak{p}$. The vector space may be decomposed as a direct sum of its generalized eigenspaces $\mathds{E}_{\lambda}$ as
+
+$$
+    \mathds{C}^{N \times N} = \bigoplus_{\lambda} \mathds{E}_{\lambda \in \sigma({\bf A})}, \textnormal{ with } \lambda \neq 0, \blanky \forall \lambda \in \sigma({\bf A}).
+$$
+
+If the restriction of ${\bf A}$ to each one of the $\mathds{E}_{\lambda}$ lies in the image of $\mathfrak{e}\mathfrak{x}\mathfrak{p}$ applied to the space of linear operators of $\mathds{E}_{\lambda}$, then there exists a choice of pre-images ${\bf A}_{\mathds{E}_{\lambda}}$ to yield ${\bf A}$'s pre-image. In other words, it suffices to consider the case where there is just one generalized eigenspace so that ${\bf A} - \lambda \mathds{1}$ is nilpotent for $\lambda \neq 0$. This is a special case of the \underline{Jordan-Chevalley} decomposition, wherein any complex-valued matrix $X$ may be decomposed as $X = A + N$, where $A$ is diagonalizable and $N$ is nilpotent with $[A, N] = 0$. Given that $\mathds{1}$ commutes with everything, 
+
+$$
+    {\bf A} = \lambda \mathds{1} ○ (\mathds{1} - N), \textnormal{ with } N = \lambda^{-1} (\lambda \mathds{1} - {\bf A}).
+$$
+
+Note that $N$ is nilpotent. Thus, the problem formally reduces to the cases of a nonzero scalar operator $\lambda \mathds{1}$ on one hand, and that of a unipotent $\mathds{1} - N$ on the other. For the former case, it suffices to choose a logarithm of the complex number $\lambda$ and for the latter there is an algebraic formula for its logarithm
+
+$$
+  \log(\mathds{1} - N) = \sum_{k=1}^{n-1} \frac{N^k}{k}, \textnormal{ with } N^n = 0,
+$$
+
+which completes the proof. 
+\end{tcolorbox}
+
+\begin{tcolorbox}[title = Alternative proof of surjective-ness of the exponential map onto the general linear group]
+An equivalent proof is to use ${\bf A}$'s Jordan form. If the underlying field is algebraically closed, then ${\bf A} = P J P^{-1}$, where $J$ is ${\bf A}$'s Jordan form. Then,
+
+$$
+e^{{\bf A}} = e^{X}=Pe^{J}P^{-1}.
+$$
+
+Also since,
+
+\begin{aligned}
+ &J = \bigoplus_{\lambda_i \in \sigma({\bf A}) } J_{a_i} (\lambda_i) \Rightarrow e^J = \exp\bigg(\bigoplus_{\lambda_i \in \sigma({\bf A})} J_{a_i} (\lambda_i) \bigg) = \bigoplus_{\lambda_i \in \sigma({\bf A})} \exp(J_{a_i} (\lambda_i))
+\end{aligned}
+
+Therefore, the only information needed is the matrix exponential of a Jordan block. But each Jordan block is of the form 
+
+$$
+{\begin{aligned}&&J_{a}(\lambda )&=\lambda \mathds{1}+N\\&\Rightarrow &e^{J_{a}(\lambda )}&=e^{\lambda \mathds{1}+N}=e^{\lambda }e^{N},\end{aligned}}
+$$
+
+where $N$ is a special nilpotent matrix. The matrix exponential of $J$ is then given by
+
+$$
+e^{J}=e^{\lambda _{1}}e^{N_{a_{1}}}\oplus e^{\lambda _{2}}e^{N_{a_{2}}}\oplus \cdots \oplus e^{\lambda _{n}}e^{N_{a_{n}}}.
+$$
+\end{tcolorbox}}. By construction, it is clear that the natural choice for the 
 tangent space $T_\rho \mathcal{M}$ is $\mathfrak{H}\mathfrak{s}^{\dagger}(\hilbert^{\otimes N})$
 
 $$
-    T_\rho \mathcal{M} \simeq \mathfrak{H}\mathfrak{s}^{\dagger}(\hilbert^{\otimes N})
+    T_\rho \mathcal{M} \simeq \mathfrak{H}\mathfrak{s}^{\dagger}(\hilbert^{\otimes N}),
 $$
 
-, for all $\rho \in \mathcal{M}$. Therefore, the tangent bundle, a vector bundle made up of copies of $\mathfrak{H}\mathfrak{s}^{\dagger}(\hilbert^{\otimes N})$, can be written as 
+for all $\rho \in \mathcal{M}$. Therefore, the tangent bundle, a vector bundle made up of copies of $\mathfrak{H}\mathfrak{s}^{\dagger}(\hilbert^{\otimes N})$, can be written as 
 
 $$
     {\displaystyle {\begin{aligned}T\mathcal{M}&=\bigsqcup _{\rho \in \mathcal{M}}T_{\rho}\mathcal{M}\\&=\bigcup _{\rho\in \mathcal{M}}\left\{\rho\right\}\times T_{\rho}\mathcal{M}\\&=\bigcup_{\rho\in \mathcal{M}}\left\{(\rho,{\bf O})\mid {\bf O}\in T_{\rho} \mathcal{M}\right\}\\&=\left\{(\rho,{\bf O})\mid \rho\in \mathcal{M},{\bf O}\in T_{\rho} \mathcal{M}\right\}\end{aligned}}}
 $$
 
+Moreover, this space is contractible. This is, the identity map on $\mathcal{M}$ is null-homotopic.  
+
 \end{proof}
-
-
-\clearpage
-
-Consider the set of all density operators, labelled $\mathcal{C}(\mathds{H}^{\otimes N})$, we are interested in two subsets of these, the Max-Ent manifolds
-
-
-
-
-By definition, $\mathcal{C}(\mathds{H}^{\otimes N}) \subset \textnormal{GL}(N, \mathds{C})$. In particular, we claim that it has the structure of a Riemannian non-convex manifold. All of these density matrices can be written as the exponential of a hermitian ${\bf K}$-operator,
-
-$$
-    {\bf K} \in \textnormal{End}(\mathcal{C}(\mathds{H}^{\otimes N})) \textnormal{  and  } {\bf K}^\dagger = {\bf K}.
-$$
-
-If a basis $\mathcal{B}$ of trace-class operators is chosen, then
-
-$$
-    \mathcal{B} = \{{\bf O}_i\}_{i=1}^{\dim \mathcal{B}} \Rightarrow {\bf K} = \sum_{i} \alpha_i {\bf O}, \alpha_i \in \mathds{C}
- $$
- 
-so that there exists a mapping from the space of all trace-class endomorphisms to the space of all Max Ent-type density matrices, said mapping being the exponential mapping.
-
-\begin{align*}
-    &\mathfrak{e}\mathfrak{x}\mathfrak{p}: T_{\alpha} \mathcal{M} \rightarrow \mathcal{M} \\
-    &\mathfrak{e}\mathfrak{x}\mathfrak{p}({\bf K}) \rightarrow e^{{\bf K}} \textnormal{ so long as } {\bf K} \in \textnormal{End}(\mathcal{C}(\mathds{H}^{\otimes N})) \textnormal{ and } {\bf K} = {\bf K}^{\dagger}
-\end{align*}
-
-The exponential mapping is well defined for all trace-class hermitian operators since the manifold is path-connected. In effect, 
-
-
-\begin{align}
-    \forall \rho_1, \rho_2 \in \mathcal{\bf S}_{\textnormal{ME2}}     
-\end{align}
 
 \clearpage 
 
