@@ -91,29 +91,15 @@ An equivalent formulation is this: $X$ is simply connected if and only if
 
 Equivalently, $X$ is simply connected if and only if $X$ is path-connected and $\pi_1 (X) \simeq \mathds{Z}$ at each point. \\
 
-\paragraph{\textbf{Contractibility}}
-
- Then, said topological space $X$ is \underline{\textbf{contractible}} if the identity map on $X$ is null-homotopic, ie. if it is homotopic to some constant map. Intuitively, a contractible space is one that can be continously shrunk to a point within that space.
-
-A contractible space is precisely one with the homotopy type of a point. It follows that all the the associated homotopy groups of a contractible space are trivial. Therefore, any space with a non-trivial homotopy group cannot be contractible. For a topological space $X$, the following statements are all equivalent:
-
-\begin{itemize}
-    \item $X$ is contractible (ie. the identity map is null-homotopic). 
-    \item $X$ is homotopy-equivalent to a one-point space. 
-    \item For any space $Y$, any two maps $f, g: Y \rightarrow X$ are homotopic.
-    \item For any space $Y$, any map $f: Y \rightarrow X$ is null-homotopic. 
-    \item The cone on a space $X$ is always contractible. Therefore any space can be embedded in a contractible one (which also illustrates that subspaces of contractible spaces need not be contractible themselves).
-    \item $X$ is a contractibe if and only if there exists a retraction from the cone of $X$ to $X$.
-    \item Every contractible space is path-connected and simply connected. Moreover, since all the higher homotopy groups, vanish. Every contractible space is $n$-connected, for all $n \geq 0$.\\ 
-\end{itemize}
-
 \paragraph{\textbf{Homotopy invariants}}
 
 Formally, a homotopy between two continuous functions $f, g: X \to Y$, wherein both $X$ and $Y$ are topological spaces, is defined to be a continuous function $H: X \times \mathds{R}_{[0,1]} \to Y$, from the product of the space $X$ with the unit interval to $Y$, such that 
 
 $$
-    H(x,0) = f(x) \textnormal{ and } H(x, 1) = g(x), \forall x \in X 
+    H(x,0) = f(x) \textnormal{ and } H(x, 1) = g(x), \forall x \in X.
 $$
+
+In particular, a pointed map $f: (X, x_0) \rightarrow (Y, y_0)$ is called \underline{null-homotopic relative to the basepoint} if there is a homotopy $H: X\times \mathds{R}_{[0,1]}$ such that $H(x,0) = f(x)$ and $H(x, 1) = e_{y_0}, \blanky \forall x \in X$, with $f(x_0, t) = y_0$.
 
 In practical terms, if $H$'s second argument is thought of as time, when $H$ describes a continuous deformation of $f$ into $g$, at time 0 we have the function $f$ and at time 1 we have the function $g$, in such a way that there is a smooth transition from $f$ to $g$. \\
 
@@ -132,10 +118,46 @@ A function $f$ is said to be null-homotopic if it is homotopic to a constant fun
 In algebraic topology, there are many interesting homotopic invariants. Namely, let $X, Y$ be topological spaces, then 
 
 \begin{itemize}
-    \item $X$ is path-connected if and only if Y is.
-    \item $X$ is simply connected if and only if Y is.
+    \item $X$ is path-connected if and only if $Y$ is.
+    \item $X$ is simply connected if and only if $Y$ is.
     \item if $X$ and $Y$ are path-connected, then the fundamental groups of $X$ and $Y$ are isomorphic, and so are the higher homotopy groups. \\
 \end{itemize}
+
+\paragraph{\textbf{Contractibility}}
+
+ Then, said topological space $X$ is \underline{\textbf{contractible}} if the identity map on $X$ is null-homotopic, ie. if it is homotopic to some constant map. Intuitively, a contractible space is one that can be continously shrunk to a point within that space.
+
+A contractible space is precisely one with the homotopy type of a point. It follows that all the the associated homotopy groups of a contractible space are trivial. Therefore, any space with a non-trivial homotopy group cannot be contractible. There are two non-equivalent definitions for a contractible space:
+
+\begin{itemize}
+    \item Munkres' definition: Let $X$ be a topological space. If the identity map on $X$, $\textnormal{id}_X$, is null-homotopic, then $X$ is contractible. 
+    \item Theodore's definition: Let $X$ be a topological space and let $x_0 \in X$ a point. If there is a continuous map $F: X \times \mathds{R}_{[0,1]} \rightarrow X$ such that 
+    
+    \begin{align}
+    \begin{array}{c}
+         F(x, 0) = x \\
+         F(x, 1) = x_0 \\
+         F(x_0, t) = x_0  
+    \end{array} \begin{array}{c}
+        \forall x \in X, \\
+        \forall t \in \mathds{R}_{[0,1]}
+    \end{array} 
+    \Rightarrow \textnormal{ then $X$ is contractible. }
+    \end{align}
+\end{itemize}
+
+For a topological space $X$, the following statements are all equivalent:
+
+\begin{itemize}
+    \item $X$ is contractible (ie. the identity map is null-homotopic). 
+    \item $X$ is homotopy-equivalent to a one-point space. 
+    \item For any space $Y$, any two maps $f, g: Y \rightarrow X$ are homotopic.
+    \item For any space $Y$, any map $f: Y \rightarrow X$ is null-homotopic. 
+    \item The cone on a space $X$ is always contractible. Therefore any space can be embedded in a contractible one (which also illustrates that subspaces of contractible spaces need not be contractible themselves).
+    \item $X$ is a contractibe if and only if there exists a retraction from the cone of $X$ to $X$.
+    \item Every contractible space is path-connected and simply connected. Moreover, since all the higher homotopy groups, vanish. Every contractible space is $n$-connected, for all $n \geq 0$.\\ 
+\end{itemize}
+
 
 \paragraph{\textbf{Hopf-Rinow theorem}}
 
@@ -160,6 +182,28 @@ Furthermore, any one of the above implies that, given any two points $p, q \in M
 
 \section{Cuentitas}
 
+Density operators can either describe pure or mixed states, which are deffined as follows 
+
+\begin{itemize}
+    \item Pure states can be written as an outer product of a vector state with itself, this is 
+    
+    $$
+    \rho \textnormal{ is a pure state if } \exists \ket{\psi} \in \hilbert \blanky | \blanky \rho \propto \ket{\psi} \bra{\psi}. 
+    $$
+    
+    In other words, $\rho$ is a rank-one orthogonal projection. Equivalently, a density matrix is a pure state if there exists a unit vector in the Hilbert space such that $\rho$ is the orthogonal projection onto the span of $\psi$. \\
+    
+    Note as well that 
+    
+    $$
+       \ket{\psi} \bra{\psi} \in \hilbert \otimes \hilbert^{\star}, \textnormal{ but } \hilbert \otimes \hilbert^{\star} \sim \textnormal{End}(\hilbert)
+    $$
+    
+    ie. the tensor space $\hilbert \otimes \hilbert^{\star}$ is canonically isomorphic to the vector space of endormorphisms in $\hilbert$, ie. to the space of linear operators from $\mathds{H}$ to $\mathds{H}$.
+    It's important to note that this isomorphism is only strictly valid in finite-dimensional Hilbert spaces, wherein for infinite-dimensional Hilbert spaces, the isomorphism holds as well provided the density operators are redefined as being trace-class.
+    \item Mixed states do not adhere to the previous properties. 
+\end{itemize}
+
 Given a physical system, a density operator for it is a positive semi-definite, self-adjoint operator of trace one acting on the system's Hilbert space, denoted by $\mathds{H}$. The set of all density operators has the structure of a vector space $\mathcal{C}(\mathds{H})$,
 
 \begin{equation}
@@ -169,7 +213,6 @@ Given a physical system, a density operator for it is a positive semi-definite, 
 \blanky \rho \geq 0, \blanky \textnormal{Tr } \rho = 1 \},    
 \end{split}
 \end{equation}
-
 
 where $\textnormal{GL}(N, \mathds{C})$ is the general linear group over the complex number field, whose elements are squared matrices of $N \times N$-dimension. The following statements can then be proved:
 
@@ -208,7 +251,137 @@ Special care must be taken when dealing with infinite-dimensional systems. We st
 
 \paragraph{\textbf{Finite dimensional case}}
 
-It is clear that, for the finite dimensional case, $\mathcal{M}$ is a path-connected topological space. In effect, 
+Let $\mathcal{B}$ be the set of all operators which are endomorphisms on $\statespace$, ie. 
+
+$$
+\mathcal{B} = \{{\bf O} | \blanky {\bf O}: \statespace \rightarrow \statespace\}.
+$$
+
+Note that, by definition, $\statespace \subset \mathcal{B}$. Consider an $N$-partite physical system, then its associated Hilbert space will have $\mathcal{O}(2^N)$ dimension and its associated density operator space will have $\mathcal{O}(2^{2N})$ dimension. Then, all linear operators acting on $\statespace$ can be classified as $k$-body operators, with $k \leq N$. This is, in essence, operators whose action is non-trivial only for a total of $k$ particles. Therefore, the $N$-partite Hilbert space can be written as 
+
+$$
+    \hilbert = \bigotimes_{j=1}^{N} \mathfrak{H}_j,
+$$ 
+
+where $\mathfrak{H}_j$ is the $j$-th subsytem's Hilbert space. This definition thus allows for systems with different particles species (eg. fermions, bosons, spins etc.). Then, 
+
+$$
+\mathcal{B}_1(\mathds{H})=\{\hat{\bf O}| \hat{\bf O}:\mathfrak{H}_j \rightarrow \mathfrak{H}_j, \blanky \forall j \leq N \}
+$$ 
+
+is the space of all one-body operators. Then the
+space of $k$-body operators can be recursively defined in terms of this set, 
+
+\begin{align*}
+\mathcal{B}_k(\mathds{H}) = \{\otimes_{i=1}^{k} {\bf O}_i | {\bf O}_i \in \mathcal{B}_1(\mathds{H}) \}, \textnormal{ where } \mathcal{B}(\mathds{H}) = \bigsqcup_{i=1}^{N} \mathcal{B}_i(\mathds{H}).
+\end{align*}
+
+%Let $(\mathcal{B}(\mathds{H}), ||\cdot||)$ denote the space of all linear operators acting on the Hilbert space, noting that the sub-space of all linear bounded operators is a Banach space. 
+
+If $\hilbert$ is a Hilbert space and $A \in \mathcal{B}$ is a non-negative self-adjoint operator on $\hilbert$, then it can be shown that $A$ has a well-defined, but possible infinite, trace. Now, if ${\bf A}$ is a bounded operator, then ${\bf A}^\dagger {\bf A}$ is self-adjoint and non-negative. An operator ${\bf A}$ is said to be Hilbert-Schmidt if $\textnormal{Tr } \bf A^\dagger {\bf A} < \infty$. Naturally, the space of all Hilbert-Schmidt operators form a vector space, labelled by $\mathfrak{H}\mathfrak{s}(\hilbert)$. Then, the Hilbert Schmidt inner product can be defined as 
+
+\begin{align*}
+\langle \cdot , \cdot \rangle_{\textnormal{HS}}: \blanky \mathfrak{H}\mathfrak{s}(\hilbert) \times \mathfrak{H}\mathfrak{s}(\hilbert) \rightarrow \mathds{C}, & \textnormal{ where } &
+    \begin{array}{c} 
+         \langle {\bf A}, {\bf B} \rangle_{\textnormal{HS}} = \textnormal{Tr } \bf A^\dagger {\bf B} \\
+         ||{\bf A}||_{\textnormal{HS}} = \sqrt{\textnormal{Tr } \bf A^\dagger {\bf A}}.
+    \end{array}
+\end{align*}
+
+If the Hilbert space is finite-dimensional, the trace is well defined and if the Hilbert space is infinite-dimensional, then the trace can be proven to be absolutely convergent and independent of the orthonormal basis choice\footnote{In effect, given a non-negative, self-adjoint operator, its trace is always invariant under orthogonal change of basis. Should the trace be a finite number, then it is called a trace class. Any given operator ${\bf A} \in \mathcal{B}$ is trace-class if the non-negative self-adjoint operator $\sqrt{{\bf A^\dagger} {\bf A}}$ is trace class as well. Now, given two Hilbert-Schmidt operators ${\bf A}, {\bf B} \in \mathfrak{H}\mathfrak{s}(\hilbert)$, then the new operator $\bf A^\dagger{\bf B}$ is a trace-class operator, meaning that the sum 
+
+$$
+\textnormal{Tr } {\bf A^\dagger}{\bf B} = \sum_{\lambda \in \Lambda} \langle {\bf e}_{\lambda}, {\bf A}^\dagger {\bf B} {\bf e}_{\lambda} \rangle 
+$$
+
+is absolutely convergent and the value of the sum is independent of the choice of orthonormal basis $\{{\bf e}_{\lambda}\}_{\lambda \in \Lambda}$. 
+}. \\
+
+This inner product implies that $(\mathfrak{H}\mathfrak{s}(\hilbert), \langle \cdot , \cdot \rangle_{\textnormal{HS}})$ is a
+
+\begin{itemize}
+    \item inner product space since the norm is the square root of the inner product of a vector and itself ie.
+    
+    $$
+    ||{\bf A}||_{\textnormal{HS}} = \langle {\bf A} , {\bf A} \rangle_{\textnormal{HS}} = \sqrt{\textnormal{Tr } \bf A^\dagger {\bf A}}
+    $$
+    
+    \item and is a normed vector space since the norm is always well defined over $\mathfrak{h}\mathfrak{s}(\hilbert)$. 
+\end{itemize}
+
+Now, every inner product space is a metric space. In effect, since the function 
+
+\begin{align*}
+    \begin{array}{c}
+         {\bf A} \rightarrow \sqrt{\textnormal{Tr } {\bf A^\dagger}{\bf A}}  \\
+         \textnormal{is a well-defined norm}  
+    \end{array} & \textnormal{ then }  \begin{array}{c}
+         {\bf A}, {\bf B} \overset{d}{\rightarrow} \sqrt{\textnormal{Tr } {\bf A}^{\dagger} {\bf B}}  \\
+         \textnormal{is a well-defined distance}
+    \end{array}
+\end{align*}
+
+\begin{equation*}
+\begin{split}
+   d_{\textnormal{HS}}(\cdot, \cdot): \blanky \mathfrak{H}\mathfrak{s}(\hilbert) \times \mathfrak{H}\mathfrak{s}(\hilbert) \rightarrow \mathds{R} \\
+   d_{\textnormal{HS}}({\bf A}, {\bf B}) = \sqrt{\textnormal{Tr } {\bf A}^\dagger {\bf B}}
+\end{split}
+\end{equation*}
+
+With this metric thus defined, then $(\mathfrak{H}\mathfrak{s}(\hilbert), d_{\textnormal{HS}})$ is a metric space. Every metric space can be modified, via the completions of its metric, in such a way that 
+$(\mathfrak{H}\mathfrak{s}(\hilbert)^{\star}, d_{\textnormal{HS}}^{\star})$ is a complete metric space, in the sense of the convergence of Cauchy series, where $\mathfrak{H}\mathfrak{s}(\hilbert) \subset \mathfrak{H}\mathfrak{s}(\hilbert)^{\star}$. In this particular case, given that the metric over $\mathfrak{H}\mathfrak{s}(\hilbert)$ is always a finite number -having removed those elements with infinite trace-, then it is already complete $\mathfrak{H}\mathfrak{s}(\hilbert) \sim \mathfrak{H}\mathfrak{s}(\hilbert)^{\star}$. Therefore, $\mathfrak{H}\mathfrak{s}(\hilbert)$ is a Hilbert space with respect to the Hilbert-Schmidt inner product $\langle \cdot , \cdot \rangle_{\textnormal{HS}}$ (or with respect to the Hilbert-Schmidt distance $d_{\textnormal{HS}}$). \\
+
+Thus defined, the Hilbert-Schmidt inner product is complex-valued, thus not immediately suited for our calculations.
+
+\begin{theo}
+Consider the modified Hilbert-Schmidt product given by 
+ 
+ \begin{align*}
+ \begin{array}{c}
+    \langle \cdot , \cdot \rangle_{\textnormal{HS}}^{\rho_0}: \blanky \mathfrak{H}\mathfrak{s}(\hilbert) \times \mathfrak{H}\mathfrak{s}(\hilbert) \rightarrow \mathds{R} \\
+    \\
+    \langle {\bf A}, {\bf B} \rangle_{\textnormal{HS}}^{\rho_0} = \frac{1}{2}\textnormal{Tr } \rho_0 \bf \{A^\dagger, {\bf B}\}
+ \end{array} & \textnormal{ where } \rho_0 \in \statespace.
+\end{align*}
+
+We claim this is a valid inner product over the space of all linear trace-class endomorphisms on $\hilbert$, $\mathfrak{H}\mathfrak{s}(\hilbert)$.
+\end{theo}
+
+\begin{proof}
+
+In order to prove this is a well-defined inner product over the space of trace-class operators, we must prove that it linear in it second argument and sesquilinear in its first argument, hermitian and positive-defined. 
+
+%First and foremost, it is clear that this inner product is real-valued. In effect, consider
+
+%$$
+%    \textnormal{Tr } \bigg(\sqrt{\rho}{\bf A} {\bf A}^{\dagger} + {\bf A}^\dagger {\bf A} \sqrt{\rho} \bigg) = \textnormal{Tr } \bigg({\bf A} {\bf A}^{\dagger} \sqrt{\rho} + \sqrt{\rho} {\bf A}^\dagger {\bf A} \bigg)^{\dagger} \textnormal{Tr } \bigg({\bf A} {\bf A}^{\dagger} \sqrt{\rho} + \sqrt{\rho} {\bf A}^\dagger {\bf A} \bigg)4
+%   $$
+
+In effect, 
+
+\begin{enumerate}
+    \item the linearity and sesquilinearity is self evident. \\
+    \item Is it real? Yes
+    
+    \begin{equation}
+    \begin{split}
+        \langle {\bf A}, {\bf B} \rangle_{\textnormal{HS}}^{\rho_0} &= \frac{1}{2}\textnormal{Tr } \rho_0 \{{\bf A}^\dagger, {\bf B}\} = \frac{1}{2} \textnormal{Tr } \rho_0 \bigg({\bf A}^\dagger {\bf B} + {\bf B} {\bf A}^\dagger \bigg)  \\
+        &= \frac{1}{2} \textnormal{Tr } \rho_0 \bigg( {\bf B}^\dagger {\bf A}  + {\bf A} {\bf B}^\dagger \bigg)^{\dagger} =  \frac{1}{2}\textnormal{Tr } \rho_0 \{{\bf B}^\dagger, {\bf A}\}^\dagger \\
+        &= (\langle {\bf B}, {\bf A} \rangle_{\textnormal{HS}}^{\rho_0})^{*}
+        \end{split}
+    \end{equation} \\
+    
+    \item Is it positive-defined? Yes, in effect,
+    
+    \begin{equation}
+        \begin{split}
+            \langle {\bf A}, {\bf A} \rangle_{\textnormal{HS}}^{\rho_0}  &=  \frac{1}{2}\textnormal{Tr } \rho_0 \{{\bf A}^\dagger, {\bf B}\} = \textnormal{Tr } \sqrt{\rho} \frac{{\bf A} {\bf A}^{\dagger} + {\bf A}^{\dagger} {\bf A}}{2}\sqrt{\rho} \\
+        \end{split}
+    \end{equation}
+\end{enumerate}
+\end{proof}
+
+Now, note that the identity map on the Hilbert-Schmidt space is $\textnormal{id}_{\mathfrak{H}\mathfrak{s}^{\dagger}(\hilbert^{\otimes N})} = \mathds{1}_{N}$, which then implies that the identity map on $\mathcal{M}$ is simply $\textnormal{id}_{\mathcal{M}} = \mathds{1}_N$. We assert that $\mathcal{M}$ is a path-connected topological space. In effect, 
 
 \begin{align*}
 \forall \rho_1, \rho_2 \in \mathcal{M}, & \blanky \exists f:\mathds{R}_{[0,1]} \rightarrow \mathcal{M} \textnormal{ such that } \begin{array}{c}
@@ -216,7 +389,7 @@ It is clear that, for the finite dimensional case, $\mathcal{M}$ is a path-conne
         f(1) = \rho_2
     \end{array} \\
     \textnormal{ which always exists } 
-    &f:\mathds{R}_{[0,1]} \rightarrow \mathcal{M} \blanky | \blanky f(x) = x \rho_1 + (1-x) \rho_2 \in \mathcal{M} \\
+    &f:\mathds{R}_{[0,1]} \rightarrow \mathcal{M} \blanky | \blanky f(x) = x \rho_1 + (1-x) \rho_2 \in \mathcal{M}
 \end{align*}
 
 which is continuous for arbitrary density matrices.
@@ -300,171 +473,21 @@ $$
     {\displaystyle {\begin{aligned}T\mathcal{M}&=\bigsqcup _{\rho \in \mathcal{M}}T_{\rho}\mathcal{M}\\&=\bigcup _{\rho\in \mathcal{M}}\left\{\rho\right\}\times T_{\rho}\mathcal{M}\\&=\bigcup_{\rho\in \mathcal{M}}\left\{(\rho,{\bf O})\mid {\bf O}\in T_{\rho} \mathcal{M}\right\}\\&=\left\{(\rho,{\bf O})\mid \rho\in \mathcal{M},{\bf O}\in T_{\rho} \mathcal{M}\right\}\end{aligned}}}
 $$
 
-Moreover, this space is contractible. This is, the identity map on $\mathcal{M}$ is null-homotopic.  
+Moreover, this space is contractible. This is, the identity map on $\mathcal{M}$ is null-homotopic. 
 
+\begin{tcolorbox}[title = Proof of the contractible nature in the finite-dimensional case.]
+
+In effect, since $\mathcal{M}$ is a subset of $\textnormal{GL}(N, \mathds{C})$, $\mathcal{M}$ is trivially contractible. This is, the identity map on $\mathcal{M}$, $\textnormal{id}_{\mathcal{M}} = \mathds{1}_{N}$ is null-homotopic. In effect, let $H: \mathcal{M} \times \R_{[0,1]} \rightarrow \mathcal{M}$ given by 
+
+$$
+    H({\bf A}, t) = (1-t){\bf A} \in \mathcal{M}, \blanky ({\bf A}, t) \in \mathcal{M} \times \R_{[0,1]}. 
+$$
+
+Therefore, this implies that $\mathcal{M}$'s first homotopy group $\pi^{1}(\mathcal{M}) = \mathds{Z}$.
+\end{tcolorbox}
 \end{proof}
-
-\clearpage 
-
-For spin-systems, the Hilbert-Schmidt space, which in and of itself is a Hilbert space with respect to the Hilbert-Schmidt inner-product, is finite-dimensional. 
 
 \clearpage
-
-Density operators can either describe pure or mixed states, which are deffined as follows 
-
-\begin{itemize}
-    \item Pure states can be written as an outer product of a vector state with itself, this is 
-    
-    $$
-    \rho \textnormal{ is a pure state if } \exists \ket{\psi} \in \hilbert \blanky | \blanky \rho \propto \ket{\psi} \bra{\psi}. 
-    $$
-    
-    In other words, $\rho$ is a rank-one orthogonal projection. Equivalently, a density matrix is a pure state if there exists a unit vector in the Hilbert space such that $\rho$ is the orthogonal projection onto the span of $\psi$. \\
-    
-    Note as well that 
-    
-    $$
-       \ket{\psi} \bra{\psi} \in \hilbert \otimes \hilbert^{\star}, \textnormal{ but } \hilbert \otimes \hilbert^{\star} \sim \textnormal{End}(\hilbert)
-    $$
-    
-    ie. the tensor space $\hilbert \otimes \hilbert^{\star}$ is canonically isomorphic to the vector space of endormorphisms in $\hilbert$, ie. to the space of linear operators from $\mathds{H}$ to $\mathds{H}$.
-    It's important to note that this isomorphism is only strictly valid in finite-dimensional Hilbert spaces, wherein for infinite-dimensional Hilbert spaces, the isomorphism holds as well provided the density operators are redefined as being trace-class.
-    \item Mixed states do not adhere to the previous properties. 
-\end{itemize}
-
-Let $\mathcal{B}$ be the set of all operators which are endomorphisms on $\statespace$, ie. 
-
-$$
-\mathcal{B} = \{{\bf O} | \blanky {\bf O}: \statespace \rightarrow \statespace\}.
-$$
-
-Note that, by definition, $\statespace \subset \mathcal{B}$. Consider an $N$-partite physical system, then its associated Hilbert space will have $\mathcal{O}(2^N)$ dimension and its associated density operator space will have $\mathcal{O}(2^{2N})$ dimension. Then, all linear operators acting on $\statespace$ can be classified as $k$-body operators, with $k \leq N$. This is, in essence, operators whose action is non-trivial only for a total of $k$ particles. Therefore, the $N$-partite Hilbert space can be written as 
-
-$$
-    \hilbert = \bigotimes_{j=1}^{N} \mathfrak{H}_j,
-$$ 
-
-where $\mathfrak{H}_j$ is the $j$-th subsytem's Hilbert space. This definition thus allows for systems with different particles species (eg. fermions, bosons, spins etc.). Then, 
-
-$$
-\mathcal{B}_1(\mathds{H})=\{\hat{\bf O}| \hat{\bf O}:\mathfrak{H}_j \rightarrow \mathfrak{H}_j, \blanky \forall j \leq N \}
-$$ 
-
-is the space of all one-body operators. Then the
-space of $k$-body operators can be recursively defined in terms of this set, 
-
-\begin{align*}
-\mathcal{B}_k(\mathds{H}) = \{\otimes_{i=1}^{k} {\bf O}_i | {\bf O}_i \in \mathcal{B}_1(\mathds{H}) \}, \textnormal{ where } \mathcal{B}(\mathds{H}) = \bigsqcup_{i=1}^{N} \mathcal{B}_i(\mathds{H}).
-\end{align*}
-
-%Let $(\mathcal{B}(\mathds{H}), ||\cdot||)$ denote the space of all linear operators acting on the Hilbert space, noting that the sub-space of all linear bounded operators is a Banach space. 
-
-If $\hilbert$ is a Hilbert space and $A \in \mathcal{B}$ is a non-negative self-adjoint operator on $\hilbert$, then it can be shown that $A$ has a well-defined, but possible infinite, trace. Now, if ${\bf A}$ is a bounded operator, then ${\bf A}^\dagger {\bf A}$ is self-adjoint and non-negative. An operator ${\bf A}$ is said to be Hilbert-Schmidt if $\textnormal{Tr } \bf A^\dagger {\bf A} < \infty$. Naturally, the space of all Hilbert-Schmidt operators form a vector space, labelled by $\mathfrak{H}\mathfrak{s}(\hilbert)$. Then, the Hilbert Schmidt inner product can be defined as 
-
-\begin{align*}
-\langle \cdot , \cdot \rangle_{\textnormal{HS}}: \blanky \mathfrak{H}\mathfrak{s}(\hilbert) \times \mathfrak{H}\mathfrak{s}(\hilbert) \rightarrow \mathds{C}, & \textnormal{ where } &
-    \begin{array}{c} 
-         \langle {\bf A}, {\bf B} \rangle_{\textnormal{HS}} = \textnormal{Tr } \bf A^\dagger {\bf B} \\
-         ||{\bf A}||_{\textnormal{HS}} = \sqrt{\textnormal{Tr } \bf A^\dagger {\bf A}}.
-    \end{array}
-\end{align*}
-
-If the Hilbert space is finite-dimensional, the trace is well defined and if the Hilbert space is infinite-dimensional, then the trace can be proven to be absolutely convergent and independent of the orthonormal basis choice\footnote{In effect, given a non-negative, self-adjoint operator, its trace is always invariant under orthogonal change of basis. Should the trace be a finite number, then it is called a trace class. Any given operator ${\bf A} \in \mathcal{B}$ is trace-class if the non-negative self-adjoint operator $\sqrt{{\bf A^\dagger} {\bf A}}$ is trace class as well. Now, given two Hilbert-Schmidt operators ${\bf A}, {\bf B} \in \mathfrak{H}\mathfrak{s}(\hilbert)$, then the new operator $\bf A^\dagger{\bf B}$ is a trace-class operator, meaning that the sum 
-
-$$
-\textnormal{Tr } {\bf A^\dagger}{\bf B} = \sum_{\lambda \in \Lambda} \langle {\bf e}_{\lambda}, {\bf A}^\dagger {\bf B} {\bf e}_{\lambda} \rangle 
-$$
-
-is absolutely convergent and the value of the sum is independent of the choice of orthonormal basis $\{{\bf e}_{\lambda}\}_{\lambda \in \Lambda}$. 
-}. \\
-
-This inner product implies that $(\mathfrak{H}\mathfrak{s}(\hilbert), \langle \cdot , \cdot \rangle_{\textnormal{HS}})$ is a
-
-\begin{itemize}
-    \item inner product space since the norm is the square root of the inner product of a vector and itself ie.
-    
-    $$
-    ||{\bf A}||_{\textnormal{HS}} = \langle {\bf A} , {\bf A} \rangle_{\textnormal{HS}} = \sqrt{\textnormal{Tr } \bf A^\dagger {\bf A}}
-    $$
-    
-    \item and is a normed vector space since the norm is always well defined over $\mathfrak{h}\mathfrak{s}(\hilbert)$. 
-\end{itemize}
-
-\colorbox{red}{Acá va un comentario "importante": no tiene sentido que dos vectores estén infinitamente lejos, no?} 
-
-\colorbox{red}{entónces tengo que definir esto producto interno y métrico solo en HS(H) y no sobre B(H)} \\
-
-Now, every inner product space is a metric space. In effect, since the function 
-
-\begin{align*}
-    \begin{array}{c}
-         {\bf A} \rightarrow \sqrt{\textnormal{Tr } {\bf A^\dagger}{\bf A}}  \\
-         \textnormal{is a well-defined norm}  
-    \end{array} & \textnormal{ then }  \begin{array}{c}
-         {\bf A}, {\bf B} \overset{d}{\rightarrow} \sqrt{\textnormal{Tr } {\bf A}^{\dagger} {\bf B}}  \\
-         \textnormal{is a well-defined distance}
-    \end{array}
-\end{align*}
-
-\begin{equation*}
-\begin{split}
-   d_{\textnormal{HS}}(\cdot, \cdot): \blanky \mathfrak{H}\mathfrak{s}(\hilbert) \times \mathfrak{H}\mathfrak{s}(\hilbert) \rightarrow \mathds{R} \\
-   d_{\textnormal{HS}}({\bf A}, {\bf B}) = \sqrt{\textnormal{Tr } {\bf A}^\dagger {\bf B}}
-\end{split}
-\end{equation*}
-
-With this metric thus defined, then $(\mathfrak{H}\mathfrak{s}(\hilbert), d_{\textnormal{HS}})$ is a metric space. Every metric space can be modified, via the completions of its metric, in such a way that 
-$(\mathfrak{H}\mathfrak{s}(\hilbert)^{\star}, d_{\textnormal{HS}}^{\star})$ is a complete metric space, in the sense of the convergence of Cauchy series, where $\mathfrak{H}\mathfrak{s}(\hilbert) \subset \mathfrak{H}\mathfrak{s}(\hilbert)^{\star}$. In this particular case, given that the metric over $\mathfrak{H}\mathfrak{s}(\hilbert)$ is always a finite number -having removed those elements with infinite trace-, then it is already complete $\mathfrak{H}\mathfrak{s}(\hilbert) \sim \mathfrak{H}\mathfrak{s}(\hilbert)^{\star}$. Therefore, $\mathfrak{H}\mathfrak{s}(\hilbert)$ is a Hilbert space with respect to the Hilbert-Schmidt inner product $\langle \cdot , \cdot \rangle_{\textnormal{HS}}$ (or with respect to the Hilbert-Schmidt distance $d_{\textnormal{HS}}$). \\
-
-Thus defined, the Hilbert-Schmidt inner product is complex-valued, thus not immediately suited for our calculations.
-
-\begin{theo}
-Consider the modified Hilbert-Schmidt product given by 
- 
- \begin{align*}
- \begin{array}{c}
-    \langle \cdot , \cdot \rangle_{\textnormal{HS}}^{\rho_0}: \blanky \mathfrak{H}\mathfrak{s}(\hilbert) \times \mathfrak{H}\mathfrak{s}(\hilbert) \rightarrow \mathds{R} \\
-    \\
-    \langle {\bf A}, {\bf B} \rangle_{\textnormal{HS}}^{\rho_0} = \frac{1}{2}\textnormal{Tr } \rho_0 \bf \{A^\dagger, {\bf B}\}
- \end{array} & \textnormal{ where } \rho_0 \in \statespace.
-\end{align*}
-
-We claim this is a valid inner product over the space of all linear trace-class endomorphisms on $\hilbert$, $\mathfrak{H}\mathfrak{s}(\hilbert)$.
-\end{theo}
-
-\begin{proof}
-
-In order to prove this is a well-defined inner product over the space of trace-class operators, we must prove that it linear in it second argument and sesquilinear in its first argument, hermitian and positive-defined. 
-
-%First and foremost, it is clear that this inner product is real-valued. In effect, consider
-
-%$$
-%    \textnormal{Tr } \bigg(\sqrt{\rho}{\bf A} {\bf A}^{\dagger} + {\bf A}^\dagger {\bf A} \sqrt{\rho} \bigg) = \textnormal{Tr } \bigg({\bf A} {\bf A}^{\dagger} \sqrt{\rho} + \sqrt{\rho} {\bf A}^\dagger {\bf A} \bigg)^{\dagger} \textnormal{Tr } \bigg({\bf A} {\bf A}^{\dagger} \sqrt{\rho} + \sqrt{\rho} {\bf A}^\dagger {\bf A} \bigg)4
-%   $$
-
-In effect, 
-
-\begin{enumerate}
-    \item the linearity and sesquilinearity is self evident. \\
-    \item Is it real? Yes
-    
-    \begin{equation}
-    \begin{split}
-        \langle {\bf A}, {\bf B} \rangle_{\textnormal{HS}}^{\rho_0} &= \frac{1}{2}\textnormal{Tr } \rho_0 \{{\bf A}^\dagger, {\bf B}\} = \frac{1}{2} \textnormal{Tr } \rho_0 \bigg({\bf A}^\dagger {\bf B} + {\bf B} {\bf A}^\dagger \bigg)  \\
-        &= \frac{1}{2} \textnormal{Tr } \rho_0 \bigg( {\bf B}^\dagger {\bf A}  + {\bf A} {\bf B}^\dagger \bigg)^{\dagger} =  \frac{1}{2}\textnormal{Tr } \rho_0 \{{\bf B}^\dagger, {\bf A}\}^\dagger \\
-        &= (\langle {\bf B}, {\bf A} \rangle_{\textnormal{HS}}^{\rho_0})^{*}
-        \end{split}
-    \end{equation} \\
-    
-    \item Is it positive-defined? Yes, in effect,
-    
-    \begin{equation}
-        \begin{split}
-            \langle {\bf A}, {\bf A} \rangle_{\textnormal{HS}}^{\rho_0}  &=  \frac{1}{2}\textnormal{Tr } \rho_0 \{{\bf A}^\dagger, {\bf B}\} = \textnormal{Tr } \sqrt{\rho} \frac{{\bf A} {\bf A}^{\dagger} + {\bf A}^{\dagger} {\bf A}}{2}\sqrt{\rho} \\
-        \end{split}
-    \end{equation}
-\end{enumerate}
-\end{proof}
 
 In our context, since the calculations are to be computed via the (modified) Hilbert-Schmidt inner product and metric, only trace-class operators are allowed. Therefore, some redefinitions are needed. 
 \begin{equation}
@@ -744,4 +767,3 @@ where
 
 
 \end{document}
-
