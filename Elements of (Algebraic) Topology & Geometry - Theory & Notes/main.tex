@@ -8,6 +8,7 @@
 
 \begin{document} \maketitle
 
+
 \section{Some topology definitions and results}
 
 First, consider $X$ to be a topological space.\\
@@ -44,29 +45,15 @@ An equivalent formulation is this: $X$ is simply connected if and only if
 
 Equivalently, $X$ is simply connected if and only if $X$ is path-connected and $\pi_1 (X) \simeq \mathds{Z}$ at each point. \\
 
-\paragraph{\textbf{Contractibility}}
-
- Then, said topological space $X$ is \underline{\textbf{contractible}} if the identity map on $X$ is null-homotopic, ie. if it is homotopic to some constant map. Intuitively, a contractible space is one that can be continously shrunk to a point within that space.
-
-A contractible space is precisely one with the homotopy type of a point. It follows that all the the associated homotopy groups of a contractible space are trivial. Therefore, any space with a non-trivial homotopy group cannot be contractible. For a topological space $X$, the following statements are all equivalent:
-
-\begin{itemize}
-    \item $X$ is contractible (ie. the identity map is null-homotopic). 
-    \item $X$ is homotopy-equivalent to a one-point space. 
-    \item For any space $Y$, any two maps $f, g: Y \rightarrow X$ are homotopic.
-    \item For any space $Y$, any map $f: Y \rightarrow X$ is null-homotopic. 
-    \item The cone on a space $X$ is always contractible. Therefore any space can be embedded in a contractible one (which also illustrates that subspaces of contractible spaces need not be contractible themselves).
-    \item $X$ is a contractibe if and only if there exists a retraction from the cone of $X$ to $X$.
-    \item Every contractible space is path-connected and simply connected. Moreover, since all the higher homotopy groups, vanish. Every contractible space is $n$-connected, for all $n \geq 0$.\\ 
-\end{itemize}
-
 \paragraph{\textbf{Homotopy invariants}}
 
 Formally, a homotopy between two continuous functions $f, g: X \to Y$, wherein both $X$ and $Y$ are topological spaces, is defined to be a continuous function $H: X \times \mathds{R}_{[0,1]} \to Y$, from the product of the space $X$ with the unit interval to $Y$, such that 
 
 $$
-    H(x,0) = f(x) \textnormal{ and } H(x, 1) = g(x), \forall x \in X 
+    H(x,0) = f(x) \textnormal{ and } H(x, 1) = g(x), \forall x \in X.
 $$
+
+In particular, a pointed map $f: (X, x_0) \rightarrow (Y, y_0)$ is called \underline{null-homotopic relative to the basepoint} if there is a homotopy $H: X\times \mathds{R}_{[0,1]}$ such that $H(x,0) = f(x)$ and $H(x, 1) = e_{y_0}, \blanky \forall x \in X$, with $f(x_0, t) = y_0$.
 
 In practical terms, if $H$'s second argument is thought of as time, when $H$ describes a continuous deformation of $f$ into $g$, at time 0 we have the function $f$ and at time 1 we have the function $g$, in such a way that there is a smooth transition from $f$ to $g$. \\
 
@@ -85,14 +72,59 @@ A function $f$ is said to be null-homotopic if it is homotopic to a constant fun
 In algebraic topology, there are many interesting homotopic invariants. Namely, let $X, Y$ be topological spaces, then 
 
 \begin{itemize}
-    \item $X$ is path-connected if and only if Y is.
-    \item $X$ is simply connected if and only if Y is.
+    \item $X$ is path-connected if and only if $Y$ is.
+    \item $X$ is simply connected if and only if $Y$ is.
     \item if $X$ and $Y$ are path-connected, then the fundamental groups of $X$ and $Y$ are isomorphic, and so are the higher homotopy groups. \\
 \end{itemize}
 
+\paragraph{\textbf{Contractibility}}
+
+ Then, said topological space $X$ is \underline{\textbf{contractible}} if the identity map on $X$ is null-homotopic, ie. if it is homotopic to some constant map. Intuitively, a contractible space is one that can be continously shrunk to a point within that space.
+
+A contractible space is precisely one with the homotopy type of a point. It follows that all the the associated homotopy groups of a contractible space are trivial. Therefore, any space with a non-trivial homotopy group cannot be contractible. There are two non-equivalent definitions for a contractible space:
+
+\begin{itemize}
+    \item Munkres' definition: Let $X$ be a topological space. If the identity map on $X$, $\textnormal{id}_X$, is null-homotopic, then $X$ is contractible. 
+    \item Theodore's definition: Let $X$ be a topological space and let $x_0 \in X$ a point. If there is a continuous map $F: X \times \mathds{R}_{[0,1]} \rightarrow X$ such that 
+    
+    \begin{align}
+    \begin{array}{c}
+         F(x, 0) = x \\
+         F(x, 1) = x_0 \\
+         F(x_0, t) = x_0  
+    \end{array} \begin{array}{c}
+        \forall x \in X, \\
+        \forall t \in \mathds{R}_{[0,1]}
+    \end{array} 
+    \Rightarrow \textnormal{ then $X$ is contractible. }
+    \end{align}
+\end{itemize}
+
+For a topological space $X$, the following statements are all equivalent:
+
+\begin{itemize}
+    \item $X$ is contractible (ie. the identity map is null-homotopic). 
+    \item $X$ is homotopy-equivalent to a one-point space. 
+    \item For any space $Y$, any two maps $f, g: Y \rightarrow X$ are homotopic.
+    \item For any space $Y$, any map $f: Y \rightarrow X$ is null-homotopic. 
+    \item The cone on a space $X$ is always contractible. Therefore any space can be embedded in a contractible one (which also illustrates that subspaces of contractible spaces need not be contractible themselves).
+    \item $X$ is a contractibe if and only if there exists a retraction from the cone of $X$ to $X$.
+    \item Every contractible space is path-connected and simply connected. Moreover, since all the higher homotopy groups, vanish. Every contractible space is $n$-connected, for all $n \geq 0$.\\ 
+\end{itemize}
+
+
 \paragraph{\textbf{Hopf-Rinow theorem}}
 
-Let $(M,g)$ be a connected Riemannian manifold. Then, the following statements are equivalent
+Let $(M,g)$ be a connected Riemannian manifold\footnote{Note that a path-connected topological space is connected as well. 
+\begin{tcolorbox}[title=Proof: path-connectedness implies connectedness]
+In effect, if $X$ is a path-connected topological space and assuming (by contradiction) that $X = A \sqcup B$, and $A, B \neq \emptyset$ (ie. $X$ isn't connected). Then, let $a \in A, b \in B$ and let $\gamma: \mathds{R}_{[0,1]}$ be a path in $X$ such that $\gamma(0) = a$, $\gamma(1) = b$. Then, given $\gamma$'s continuity, there is a decomposition 
+
+$$
+    \mathds{R}_{[0,1]} = \gamma^{-1}(A) \cup \gamma^{-1}(B),
+$$
+
+which, if true, implies that $\mathds{R}_{[0,1]}$ is not connected, which is false. Hence, $X$ cannot be path-connected if it isn't connected.
+\end{tcolorbox}}. Then, the following statements are equivalent
 
 \begin{itemize}
     \item The closed and bounded subsets of $M$ are compact,
@@ -101,7 +133,6 @@ Let $(M,g)$ be a connected Riemannian manifold. Then, the following statements a
 \end{itemize}
 
 Furthermore, any one of the above implies that, given any two points $p, q \in M$, there exists a length-minimizing geodesic connecting these two points. \\
-
 
 \end{document}
 
