@@ -3421,6 +3421,39 @@ $$
 
 \textbf{\underline{Properties of Fermionic coherent states}}
 
+A fermionic coherent state is then defined as 
+
+\begin{align}
+    &\ket{\zeta} = \mathcal{N} e^{-\sum_{\alpha} \zeta_{\alpha}{\bf f}_{\alpha}^\dagger} \ket{0} = \mathcal{N} \prod_{\alpha} (1-\zeta_{\alpha} {\bf f}_{\alpha}^\dagger) \ket{0} \\
+    &\bra{\zeta} =  \mathcal{N}\bra{0} e^{-\sum_{\alpha} \zeta_{\alpha}^\star{\bf f}_{\alpha}} = \mathcal{N} \prod_{\alpha} \bra{0}(1-\zeta_{\alpha}^\star {\bf f}_{\alpha}, \textnormal{ since }
+\end{align}
+
+\begin{equation} \begin{array}{cc}
+    \begin{split}
+        {\bf f}_{\alpha} \ket{\zeta} &= \mathcal{N} {\bf f}_{\alpha} \prod_{\beta}  (1-\zeta_{\beta} {\bf f}_{\beta}^\dagger) \ket{0} \\
+        & = \mathcal{N} \prod_{\beta \neq \alpha}  (1-\zeta_{\beta} {\bf f}_{\beta}^\dagger) {\bf f}_{\alpha}  (1-\zeta_{\alpha} {\bf f}_{\alpha}^\dagger) \ket{0} \\
+        &= \mathcal{N} \prod_{\beta \neq \alpha}  (1-\zeta_{\beta} {\bf f}_{\beta}^\dagger) {\zeta}_{\alpha} (1-\zeta_{\alpha} {\bf f}_{\alpha}^\dagger) \ket{0} \\
+        &= \mathcal{N} \zeta_{\alpha} \prod_{\beta}  (1-\zeta_{\beta} {\bf f}_{\beta}^\dagger) \ket{0} \\
+        &= \zeta_{\alpha} \ket{\zeta},
+    \end{split} & \begin{split}
+         {\bf f}_{\alpha}^\dagger \ket{\zeta} 
+         %&= {\bf f}_{\alpha}^\dagger \prod_{\beta}  (1-\zeta_{\beta} {\bf f}_{\beta}^\dagger) \ket{0} \\
+         &= \mathcal{N}{\bf f}_{\alpha}^\dagger (1-\zeta_{\alpha} {\bf f}_{\alpha}^\dagger) \prod_{\beta \neq \alpha} (1-\zeta_{\beta} {\bf f}_{\beta}^\dagger) \ket{0} \\
+         &= \mathcal{N}{\bf f}_{\alpha}^\dagger \prod_{\beta \neq \alpha} (1-\zeta_{\beta} {\bf f}_{\beta}^\dagger) \ket{0} \\
+         &= - \mathcal{N}\frac{\partial}{\partial \zeta_\alpha} (1- \zeta_{\alpha} {\bf f}_{\alpha}^\dagger) \prod_{\beta \neq \alpha} (1-\zeta_{\beta} {\bf f}_{\beta}^\dagger) \ket{0} \\
+         &= - \frac{\partial}{\partial \zeta_\alpha} \ket{\zeta}.
+    \end{split} 
+\end{array} 
+\end{equation}
+
+\begin{equation}
+    \Rightarrow \begin{array}{cc}
+    {{\bf f}}_{\alpha} \ket{\zeta} = \zeta_\alpha \ket{\zeta} & {{\bf f}}_{\alpha}^\dagger \ket{\zeta} = - \partial_{\zeta_\alpha} \blanky \ket{\zeta}  \\ 
+    \\
+    \bra{\zeta} {{\bf f}}_{\alpha}^\dagger = \bra{\zeta} \zeta_\alpha^\star & \bra{\zeta} {{\bf f}}_{\alpha} = + \partial_{\zeta_\alpha^\star} \ket{\zeta} \end{array}
+\end{equation}
+
+\iffalse
 A fermionic coherent state is then defined as
 
 $$
@@ -3438,6 +3471,7 @@ since
     \bra{\zeta} {{\bf f}}_{i}^\dagger = \bra{\zeta} \zeta_i^\star & \bra{\zeta} {{\bf f}}_{i} = + \partial_{\zeta_i^\star} \ket{\zeta} 
 \end{array}    
 \end{split}\end{equation*}
+\fi
 
 For a Grassmann-variable, $\eta$, the associated inner product is defined as 
 
@@ -3545,10 +3579,10 @@ $$
 In the case of the fermionic number operator, ${{\bf N}} = \sum_{i} {{\bf f}}_i^\dagger {{\bf f}}_i$ gives its expectation value 
 
 $$
-\frac{\bra{\bm{\zeta}} {{\bf N}} \ket{\bm{\zeta}}}{\bra{\bm{\zeta}}) \ket{\bm{\zeta}}}. 
+\frac{\bra{\bm{\zeta}} {{\bf N}} \ket{\bm{\zeta}}}{\bra{\bm{\zeta}} \ket{\bm{\zeta}}}. 
 $$
 
-\clearpage
+\blanky \\
 
 \subsection{Gaussian Integrals}
  
@@ -3581,6 +3615,10 @@ Thus, the $3N$-dimensional real symmetric and positive defined matrix ${{{\bf A}
         &= - \frac{1}{2} \bigg[ {\bf y}^{\textnormal{T}} D {\bf y} + ({\bf J}^{\textnormal{T}}{\bf O}^{\textnormal{T}} {\bf y})^{\textnormal{T}} + {\bf J}^{\textnormal{T}} {\bf O}^{-1} {\bf y} +  {\bf J}^{\textnormal{T}} {\bf A}^{-1} {\bf J} \bigg] + {{\bf J}}^{\textnormal{T}} {\bf O}^{-1} {\bf y} + {{\bf J}}^{\textnormal{T}} {\bf A}^{-1} {\bf J} \\
         &= - \frac{1}{2} {\bf y}^{\textnormal{T}} D {\bf y} -  \frac{1}{2} ({\bf J}^{\textnormal{T}}{\bf O}^{\textnormal{T}} {\bf y})^{\textnormal{T}} +  \frac{1}{2} {\bf J}^{\textnormal{T}} {\bf O}^{-1} {\bf y} + \frac{1}{2} {{\bf J}}^{\textnormal{T}} {\bf A}^{-1} {\bf J} \\
         &= - \frac{1}{2} {\bf y}^{\textnormal{T}} D {\bf y} +  \frac{1}{2} {\bf J}^{\textnormal{T}} {\bf O}^{-1} {\bf y} + \frac{1}{2} {{\bf J}}^{\textnormal{T}} {\bf A}^{-1} {\bf J} \\
+\end{split}
+\end{equation}
+\begin{equation}
+    \begin{split}
 &\Rightarrow \mathcal{Z}(J) = e^{\frac{1}{2} {{\bf J}}^{\textnormal{T}} {\bf A}^{-1} {\bf J}} \prod_{i=1}^{N} \int_{\mathds{R}} dy \blanky e^{-\frac{y^2 D_{ii}}{2}} = ^{\frac{1}{2} {{\bf J}}^{\textnormal{T}} {\bf A}^{-1} {\bf J}} \sqrt {\frac {(2\pi )^{N}}{\det A}}
     \end{split}
 \end{equation}
@@ -3644,6 +3682,9 @@ $$}
 
 Therefore, the jacobian of the transformation is $\frac{1}{\alpha}$, instead of $\alpha$ for ordinary (bosonic) transformation. This result can then be generalized to a multidimensional integral 
 
+\end{tcolorbox}
+\begin{tcolorbox}
+
 \begin{equation}
     \begin{split}
         \mathcal{I} &= \int \prod_{i} d\zeta \blanky F(\bm{\zeta}) = \prod_{i} \partial_{\zeta_i} F(\bm{\zeta}) \\
@@ -3680,11 +3721,9 @@ or, for the more general integral given by \cref{Grassmannian gaussian integral}
 \begin{equation}
     \mathcal{Z}(\bm{\zeta}^\star,\bm{\zeta}) = \det(\bf A) e^{-\bm{\zeta}^\star {\bf A}^{-1} \bm{\zeta}}. 
 \end{equation}
-
-
 \clearpage
 
-\section{Photons: coupling to electrons}
+\subsection{Photons: coupling to electrons}
 
 Phonons are quantized vibrations and play a fundamental role in sound physics, specific heat, elasticity and electrical resistivity of solids. More surprisingly, the electron-phonon coupling is the cause of conventional superconductivity. There are two distinct models for electron-phonon coupling, the jellium model, where the ions are represented by a smeared-out continuous positive background, and the lattice model where the ions oscillate around their equilibrium positions forming a crystal lattice. \\
 
@@ -3740,19 +3779,15 @@ since the single -electron wavefunctions are just plane waves, with the matrix e
     \begin{split}
         \bigg\langle {{\bf k}_4 \sigma_i, {\bf k}_3 \sigma_j}\bigg| \frac{e^{-\mu |{\bf x}_i - {\bf x}_j|}}{|{\bf x}_i- {\bf x}_j|} \bigg|{{\bf k}_2 \sigma_j, {\bf k}_1 \sigma_i} \bigg\rangle &= \frac{1}{\Omega^2} \int_{\R^6} d{\bf x}_i d{\bf x}_j \blanky e^{i({\bf k}_1 - {\bf k}_4) \cdot {\bf x}_i} e^{i({\bf k}_2 - {\bf k}_3) \cdot {\bf x}_j} \frac{e^{-\mu |{\bf x}_i - {\bf x}_j|}}{|{\bf x}_i- {\bf x}_j|} \\
         &= \frac{1}{\Omega} \delta_{{\bf k}_1+{\bf k}_2 - {\bf k}_3 - {\bf k}_4} \int_{\mathds{R}^3} d({\bf x}_i - {\bf x}_j) e^{-i {\bf q} \cdot ({\bf x}_i-{\bf x}_j)} \frac{e^{-\mu r}}{r} \\
-        &= \frac{1}{\Omega} \delta_{{\bf k}_1+{\bf k}_2 - {\bf k}_3 - {\bf k}_4} \frac{4\pi}{\mu^2 + q^2}. 
-    \end{split}
-\end{equation}
-
-Then the aforementioned electron Hamiltonian reads
-
-\begin{equation}
-    {\bf H}_e = \sum_{\substack{{\bf k} \in \Lambda\\
+        &= \frac{1}{\Omega} \delta_{{\bf k}_1+{\bf k}_2 - {\bf k}_3 - {\bf k}_4} \frac{4\pi}{\mu^2 + q^2}. \\
+    \Rightarrow {\bf H}_e &= \sum_{\substack{{\bf k} \in \Lambda\\
     \sigma \in \mathds{C}^2}} \frac{\hbar^2 k^2}{2m_e} {\bf c}_{{\bf k} \sigma}^\dagger {\bf c}_{{\bf k} \sigma} +  \sum_{\substack{{\bf k},{\bf k}',{\bf q} \in \Lambda\\
     \sigma, \sigma' \in \mathds{C}^2}} \frac{2\pi e^2}{\Omega(\mu^2 + q^2)} {\bf c}_{{\bf k}+{\bf q} \blanky \sigma}^\dagger {\bf c}_{{\bf k}'-{\bf q} \blanky \sigma'}^\dagger {\bf c}_{{\bf k}' \blanky \sigma'} {\bf c}_{{\bf k} \blanky \sigma}.
     \label{pre-HF-jellium H}
+    \end{split} 
 \end{equation}
 
+%Then the aforementioned electron Hamiltonian reads
 The $({\bf q}=0)$-term is special, 
 
 \begin{equation}
@@ -3766,12 +3801,12 @@ The $({\bf q}=0)$-term is special,
 
 The $\frac{N^2 e^2}{\mu}$-terms all add up to zero while the second term $-\frac{2\pi N e^2}{\mu^2 \Omega} \underset{\Omega \rightarrow \infty}{\longrightarrow} 0$, thus reducing the system's Hamiltonian to 
 
-\begin{equation}
-    {\bf H} = \sum_{\substack{{\bf k} \in \Lambda\\
-    {\bf q} \neq 0\\
+\begin{align}
+    \alignedbox{{\bf H}}{ = \sum_{\substack{{\bf k} \in \Lambda \\
+    {\bf q} \neq 0 \\
     \sigma \in \mathds{C}^2}} \frac{\hbar^2 k^2}{2m_e} {\bf c}_{{\bf k} \sigma}^\dagger {\bf c}_{{\bf k} \sigma} + \sum_{\substack{{\bf k},{\bf k}',{\bf q} \in \Lambda\\
-    \sigma, \sigma' \in \mathds{C}^2}} \frac{2\pi e^2}{\Omega q^2} {\bf c}_{{\bf k}+{\bf q} \blanky \sigma}^\dagger {\bf c}_{{\bf k}'-{\bf q} \blanky \sigma'}^\dagger {\bf c}_{{\bf k}' \blanky \sigma'} {\bf c}_{{\bf k} \blanky \sigma},
-\end{equation}
+    \sigma, \sigma' \in \mathds{C}^2}} \frac{2\pi e^2}{\Omega q^2} {\bf c}_{{\bf k}+{\bf q} \blanky \sigma}^\dagger {\bf c}_{{\bf k}'-{\bf q} \blanky \sigma'}^\dagger {\bf c}_{{\bf k}' \blanky \sigma'} {\bf c}_{{\bf k} \blanky \sigma},}
+\end{align}
 
 where $\mu=0$ since the $(q=0)$-singularity has been removed. The first term is the Hamiltonian for the Sommerfeld gas and where the second term is a perturbation. Notice tha the ground state has been expressed as a product of single particle wavefunctions and not as an antisymmetrized linear combination of such terms, since the antisymmetrization has already been taken care of by the creation and annihilation operator commutators. Then, the jellium ground-state is given by 
 
@@ -3821,6 +3856,10 @@ This can be interpreted via \cref{fig:feynmann_jellium}. The first configuration
     \sigma \in \mathds{C}^2}} \frac{2\pi e^2}{\Omega q^2} {\bf c}_{{\bf k}+{\bf q} \blanky \sigma}^\dagger {\bf c}_{{\bf k} \sigma}^\dagger {\bf c}_{{\bf k}+{\bf q} \blanky \sigma} {\bf c}_{{\bf k} \sigma} \bigg| {\Omega} \rangle \\
     &= \langle {\Omega} \bigg|  \sum_{\substack{{\bf k},{\bf q} \in \Lambda\\
     \sigma \in \mathds{C}^2}} \frac{2\pi e^2}{\Omega q^2} (-N_{{\bf k}+{\bf q} \blanky \sigma} - N_{{\bf k} \sigma}) \bigg| {\Omega} \rangle  \Rightarrow \varepsilon^{(1)}({\bf k}) = - \frac{2\pi e^2}{\Omega} \sum_{{\bf q}} \frac{N_{{\bf k}} + {\bf q}}{q^2} \\
+    \end{split}
+\end{equation}
+\begin{equation}
+    \begin{split}
     \Rightarrow E^{(1)} &= -\frac{4\pi e^2}{\Omega} \frac{\Omega}{(2\pi)^6} \int_{\mathds{R}^6} d{\bf k} d{\bf q} \blanky \frac{1}{q^2} \Theta(k_F - |{\bf k} + {\bf q}|) \Theta(k_F - k) \textnormal{ with the integration region shown in \cref{figs:jellium} (left)}  \\
     &= - \frac{4\pi e^2 \Omega}{(2\pi)^6} \int_{\mathds{R}^3} \frac{d{\bf q}}{q^2} \int_{\mathds{R}^3} d{\bf p} \blanky \Theta\bigg(k_F - \bigg| {\bf p} + \frac{1}{2} {\bf q}\bigg|\bigg) \Theta\bigg(k_F - \frac{1}{2} {\bf q}\bigg) \\
     &= -\frac{e^2}{2a_0} N \frac{3}{2\pi} \bigg(\frac{9 \pi}{4}\bigg)^{\frac{1}{3}} \frac{1}{r_s}.
@@ -3892,9 +3931,204 @@ The first term in parentheses has a logarithmic divergence in slope $k=kf$. This
 
 Trying to improve upon the first-order result by going to second-order perturbation theory yields a disastrous results for the matrix elements diverge. According to second-order perturbation theory, 
 
+\begin{equation}
+\frac{E^{(2)}}{N} = \frac{1}{N} \sum_{\substack{\ket{\psi} \in \mathds{H} \\
+\ket{\psi} \neq \ket{\Omega}}} \frac{\bra{\Omega} {{\bf V}}_c \ket{\psi} \bra{\psi} {{\bf V}}_c \ket{\Omega}}{E^{(0)} - E_\psi}.
+\end{equation}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale = .5]{figs/Jellium model/fermi_sea_loops_second_order.png}
+    \caption{The only two possible processes in second-order perturbation theory for two states, $\ket{{\bf k}_1, \sigma_1}$ and $\ket{{\bf k}_2, \sigma_2}$, in the Fermi sea. The direct process gives a divergent contribution to $\frac{E}{N}$ while the exchange process gives a finite contribution.}
+    \label{fig:fermi_sea_loops_second_order}
+\end{figure}
+
+This, combined with the momentum-conserving Coulomb interaction, yields intermediate states where two particles are injected out of the Fermi sphere. From such an intermediate state, $\ket{\Omega}$, is restored by putting the excited electrons back into the holes they left behind. Therefore, the are only two types of possible processes: direct interaction and the exchange process, shown in \cref{fig:fermi_sea_loops_second_order}. \\
+
+\begin{enumerate}
+    \item In the \underline{Direct interaction}, it turns out that the direct interaction gives a divergent contribution $E^{(2)}_{\textnormal{dir}}$ to $E^{(2)}$ due to the singular behaviour of the Coulomb interaction at small ${\bf q}$-momentum transfers. The $(\ket{\psi} = \ket{\Omega})$-constraint leads to the second p
+    
+    $$
+        \ket{\psi} = \Theta(|{\bf k}_1 + {\bf q}| - k_F) \Theta(|{\bf k}_2 - {\bf q}| - k_F) \Theta(k_F - |{\bf k}_2|) \Theta(k_F - |{\bf k}_1|) {\bf c}_{{\bf k}_1 + {\bf q}}^\dagger {\bf c}_{{\bf k}_2 - {\bf q}}^\dagger {\bf c}_{{\bf k}_2} {\bf c}_{{\bf k}_1} \ket{\Omega}.
+    $$
+    
+    To restore $\ket{\Omega}$,  the same ${\bf q}$-momentum transfer must be involved in both $\bra{\Omega} {\bf V}_c \ket{\psi}$ and $\bra{\psi} {\bf V}_c \ket{\Omega}$, and writing ${\bf V}({\bf q}) = \frac{4 \pi e^2}{{\bf q}^2}$ yields
+    
+    \begin{equation}
+    \begin{split}
+    & E^{(2)}_{\textnormal{dir}} = \frac{1}{4 \Omega^2} \sum_{{\bf q} \in \Lambda} \sum_{\substack{{\bf k}{\bf k}' \in \Lambda\\
+    \sigma \sigma' \in \mathds{C}^2}} \frac{{\bf V}({\bf q})^2}{E^{(0)} - E_{\nu}} \Theta(|{\bf k}_1 + {\bf q}| - k_F) \Theta(|{\bf k}_2 - {\bf q}| - k_F) \Theta(k_F - |{\bf k}_2|) \Theta(k_F - |{\bf k}_1|) \\
+    & \textnormal{Given that ${\bf V}({\bf q})^2 \approx q^{-4}$} \Rightarrow E^{(0)} - E_{\psi} \overset{{\bf q} \rightarrow 0}{\approx} {\bf k}_1^2 + {\bf k}_2^2 - ({\bf k}_1+{\bf q})^2 - ({\bf k}_2 - {\bf q})^2 \approx q \\
+    & \sum_{{\bf q} \in \Lambda} \sum_{\substack{{\bf k}{\bf k}' \in \Lambda\\
+    \sigma \sigma' \in \mathds{C}^2}} \cdots \Theta(|{\bf k}_2 - {\bf q}| - k_F) \Theta(k_F - |{\bf k}_2|) \Theta(k_F - |{\bf k}_1|)  \overset{{\bf q} \rightarrow 0}{\approx} q \\
+    & \Rightarrow E^{(2)}_{\textnormal{dir}} = \int_{0} dq q^2 \frac{1}{q^4} \frac{1}{q} q q = \int_{0} \frac{dq}{q} = \log q|_{0} \rightarrow \infty.
+    \end{split}
+    \end{equation}
+    
+    \blanky \\
+    
+    \item The exchange process does not lead to a divergence since, in this case, the momentum transfer in the excitation part is ${\bf q}$, but in the relaxation part it is ${\bf k}_2-{\bf k}_1-{\bf q}$. Thus ${\bf V}^2({\bf q})$ is replaced by ${\bf V}^2({\bf q}){\bf V}({\bf k}_2-{\bf k}_1-{\bf q}) \propto q^{-2}$ for ${\bf q} \rightarrow 0$, which is less singular than ${\bf V}^2({\bf q}) \propto q^{-4}$. \\  
+\end{enumerate}
+
+Physically, the energy of an electron gas must be finite. The only hope for rescue lies in regularization of the divergent behaviour by taking higher-order perturbation terms into account. Consider now the ground-state energy of the jellium model of a three-dimensional electron gas. In the $(r_s < 1)$-regime, this energy can be expressed in terms of a power-series in $r_s$, as
+
 $$
-\frac{E^{(2)}}{N} = \frac{1}{N} \sum_{\substack{\ket{\psi} \in \mathds{H}} \\
-\ket{\psi} \neq \ket{\Omega}} \frac{\bra{\Omega} {{\bf V}}_c \ket{\psi} \bra{\psi} {{\bf V}}_c \ket{\Omega}}{E^{(0)} - E_\psi}
+    E_0 = \frac{K}{r_s^2} [1+ br_s + c r_s^2 + \cdots],
+$$
+
+where $K, a,b,c$ are constants. This is not exactly right, since first-order perturbation theory gives a term of the $(br_s)$-form in the series. But, considering second-order perturbation theory, one finds a contribution that diverges like $\int_0 \frac{dq}{q}$, where $q$ is the transfer-momentum in the Fourier transform ${\bf V}_q$ of the Coulomb interaction, ${\bf V}_q \approx q^{-2}$. Thus, there is in fact a logarithmic divergence from the lower limit $0$ of the momentum transfers. This divergence is associated with the long range of the Coulomb interaction. Furthermore, if one examines higher-order terms in the perturbation series, one finds that they diverge even more strongly. \\
+
+On physical grounds, however, the energy of the interacting electron gas must be finite and well-defined, with no phase transitions occurring as the repulsive interactions are turned on. This failure of standard perturbation theory appears to signal that the energy does not have a standard power-series expansion in $r_s$. In 1957, Gell-Mann and Bruckner resolved this issue by developing many-body perturbation theory\footnote{Many-body perturbation expansions without diagrams.
+I. Normal states. Behnam Farid §}, in which the summation of the divergent terms in the series an infinite number of terms) is performed before doing the momentum integrals, thus arriving to a finite and well-defined results. This is called the resummation of the perturbation series. They found that there was a term in the series for $E_0$ that is $\propto \log r_s$, and is non-analytic at $r_s = 0$. This holds so long the interaction doesn't cause any drastic changes to the system, such as a phase transition. \\
+
+\subsection{Random Phase Approximation}
+
+In the second quantization formalism, the fermionic field operators may be written in plane-wave basis as 
+
+$$
+    \Psi({\bf x}, t) = \frac{1}{\sqrt{\Omega}} \sum_{{\bf k} \in \Lambda} e^{i {\bf k} \cdot {\x}} {\bf c}_{{\bf k}}, \blanky \blanky \blanky \blanky 
+    \Psi^\dagger({\bf x}, t) = \frac{1}{\sqrt{\Omega}} \sum_{{\bf k} \in \Lambda} e^{-i {\bf k} \cdot {\x}} {\bf c}_{{\bf k}}^\dagger.
+$$
+
+The particle density $\rho({\bf x})$ at point ${\bf x}$ is given by 
+
+$$
+    \rho({\bf x}) = \sum_{i \in \mathds{N}} \delta({\bf x} - {\bf x}_i) \Rightarrow \rho({\bf x}) = \int_{\mathds{R}^3} d{\bf x} \blanky \Psi^\dagger({\bf x}) \bigg(\sum_{i \in \mathds{N}} \delta({\bf x} - {\bf x}_i)\bigg) \Psi({\bf x}) = \sum_{i \in \mathds{N} }\Psi^\dagger({\bf x}) \Psi({\bf x}). 
+$$
+
+Its Fourier transform is given by ${\rho_{{\bf q}}} = \sum_{{\bf k} \in \Lambda} {\bf c}_{{\bf k}+{\bf q}}^\dagger {\bf c}_{\bf k}$. Its physical meaning is straightforward: it gives rise to particle-hole pairs charge fluctuations around the Fermi surface. Since $\rho^\dagger = \rho$, it follows that $\rho_{{\bf q}}^\dagger = \rho_{-{\bf q}}$. \footnote{For example, the following four-body term may be recast as 
+
+$$
+\sum_{{\bf k, k'} \in \Lambda} {\bf c}_{{\bf k}-{\bf q}}^\dagger {\bf c}_{{\bf k}'+{\bf q}}^\dagger {\bf c}_{{\bf k}'} {\bf c}_{{\bf k}} = - \sum_{{\bf k'} \in \Lambda} {\bf n}_{{\bf k}'} + \rho_{{\bf q}} \rho_{-{\bf q}'}.
+$$}\\
+
+Now, the following question naturally arises. Under what conditions an interacting system, with Hamiltonian 
+
+$$
+    {\bf H} = \sum_{{\bf k} \in \Lambda} \varepsilon_{{\bf k}} {\bf c}_{{\bf k}}^\dagger {\bf c}_{{\bf k}} + \frac{1}{2} \sum_{{\bf q} \in \Lambda} {\bf V}_{{\bf q}} (\rho_{{\bf q}} \rho_{-{\bf q}} - N),
+$$
+
+and ground-state $\ket{\Omega}$, ${\bf H} \ket{\Omega} = \varepsilon_0 \ket{\Omega}$, can support density excitations associated with $\rho_{{\bf q}}$? Namely, these excitations are
+
+$$
+    {\bf H} \rho_{{\bf q}}^\dagger \ket{\Omega} = (\varepsilon_0 + \hbar \omega_{{\bf q}}) \rho_{{\bf q}}^\dagger \ket{\Omega}
+$$
+
+\blanky \\
+
+The previous equation may be rewritten as 
+
+\begin{equation} 
+\begin{split}
+    [{\bf H}, \rho_{\bf q}^\dagger] = \hbar \omega_{{\bf q}} \rho_{{\bf q}}^\dagger  \Rightarrow & \bigg[\sum_{{\bf k} \in \Lambda} \varepsilon_{{\bf k}} {\bf c}_{{\bf k}}^\dagger {\bf c}_{{\bf k}} + \frac{1}{2} \sum_{{\bf q} \in \Lambda} {\bf V}_{{\bf q}} (\rho_{{\bf q}} \rho_{-{\bf q}} - N), \rho_{\bf q}^\dagger \bigg] = \hbar \omega_{{\bf q}} \rho_{{\bf q}}^\dagger \\
+    & \bigg[\sum_{{\bf k} \in \Lambda} \varepsilon_{{\bf k}} {\bf c}_{{\bf k}}^\dagger {\bf c}_{{\bf k}}, \rho_{\bf q}^\dagger\bigg] + \frac{1}{2} \bigg[\sum_{{\bf q} \in \Lambda} {\bf V}_{{\bf q}} (\rho_{{\bf q}} \rho_{-{\bf q}} - N), \rho_{\bf q}^\dagger \bigg] = \\
+    & \sum_{{\bf k} \in \Lambda} \varepsilon_{{\bf k}} \bigg[ {\bf c}_{{\bf k}}^\dagger {\bf c}_{{\bf k}}, \rho_{\bf q}^\dagger\bigg] + \frac{1}{2} \sum_{{\bf q} \in \Lambda} {\bf V}_{{\bf q}} \cancel{\bigg[\rho_{{\bf q}} \rho_{-{\bf q}}, \rho_{\bf q}^\dagger\bigg]} = \\
+    & \sum_{{\bf k}, \mathfrak{k} \in \Lambda} \varepsilon_{{\bf k}} \bigg[ {\bf c}_{{\bf k}}^\dagger {\bf c}_{{\bf k}}, {\bf c}_{{\bf q}} {\bf c}_{{\bf \mathfrak{k} + q}}^\dagger \bigg] =  \\
+    &\sum_{{\bf k}, \mathfrak{k} \in \Lambda} \varepsilon_{{\bf k}} \bigg({\bf c}_{{\bf k}}^\dagger \cancel{[{\bf c}_{{\bf k}}, {\bf c}_{{\bf q}}]} {\bf c}_{{\bf \mathfrak{k} + q}}^\dagger + [{\bf c}_{{\bf k}}^\dagger, {\bf c}_{{\bf q}}] {\bf c}_{{\bf k}} {\bf c}_{{\bf k}}^\dagger + {\bf c}_{{\bf q}} {\bf c}_{{\bf k}}^\dagger [{\bf c}_{{\bf k}}, {\bf c}_{{\bf \mathfrak{k} + q}}^\dagger] + {\bf c}_{{\bf q}} \cancel{[{\bf c}_{{\bf k}}^\dagger, {\bf c}_{{\bf \mathfrak{k} + q}}^\dagger]} {\bf c}_{{\bf k}} \bigg) = \\
+    & \sum_{{\bf k} \in \Lambda} (\varepsilon_{{\bf k + q}} - \varepsilon_{{\bf k}}) {\bf c}_{{\bf {\bf k} + q}}^\dagger {\bf c}_{{\bf k}} = 
+\end{split}
+\end{equation}
+
+If $\rho_{{\bf q}}^\dagger$ actually creates an excitation of energy $\hbar \omega$, then 
+
+\begin{equation}
+\begin{split}
+    [{\bf H}, [{\bf H}, \rho_{\bf q}^\dagger]] = (\hbar \omega)^2 \rho_{{\bf q}}^\dagger \\
+    \Rightarrow (\hbar \omega)^2 \rho_{{\bf q}}^\dagger &= \sum_{{\bf k} \in \Lambda} (\varepsilon_{{\bf k + q}} - \varepsilon_{{\bf k}}) [{\bf H}, {\bf c}_{{\bf {\bf k} + q}}^\dagger {\bf c}_{{\bf k}}] = \sum_{{\bf k} \in \Lambda} (\varepsilon_{{\bf k + q}} - \varepsilon_{{\bf k}})^2 {\bf c}_{{\bf k + q}}^\dagger {\bf c}_{{\bf k}} \\
+    & \blanky \blanky \blanky \blanky+ \sum_{{\bf k}, {\bf q}' \in \Lambda} (\varepsilon_{{\bf k + q}} - \varepsilon_{{\bf k}}) \frac{V_{{\bf q}'}}{2} \bigg[({\bf c}_{{\bf {\bf k} + q - q'}}^\dagger {\bf c}_{{\bf k}} - {\bf c}_{{\bf k + q}}^\dagger {\bf c}_{{\bf {\bf k} + q'}}) \rho_{{\bf q}'}^\dagger + \rho_{{\bf q}'} ({\bf c}_{{\bf {\bf k} + q + q'}}^\dagger {\bf c}_{{\bf k}} - {\bf c}_{{\bf k + q}}^\dagger {\bf c}_{{\bf {\bf k} - q'}})\bigg] \\
+    &= \sum_{{\bf k} \in \Lambda} \bigg[ \frac{\hbar^2}{2m} (2 {\bf k} \cdot {\bf q} + {\bf q}^2)\bigg]^2 {\bf c}_{{\bf k}+{\bf q}}^\dagger {\bf c}_{{\bf k}} + \sum_{{\bf k}, {\bf q}' \in \Lambda} \frac{V_{\bf q'}}{2}\bigg[\frac{\hbar^2}{2m}(2 {\bf k}\cdot {\bf q} + {\bf q}^2) ({\bf c}_{{\bf {\bf k} + q - q'}}^\dagger {\bf c}_{{\bf k}} - {\bf c}_{{\bf k + q}}^\dagger {\bf c}_{{\bf {\bf k} + q'}}) \\ & \blanky \blanky \blanky \blanky - \frac{\hbar^2}{2m}(2 {\bf k}\cdot {\bf q} + {\bf q}^2) ({\bf c}_{{\bf {\bf k} + q + q'}}^\dagger {\bf c}_{{\bf k}} - {\bf c}_{{\bf k + q}}^\dagger {\bf c}_{{\bf {\bf k} - q'}})\bigg] \\
+    &= \sum_{{\bf k} \in \Lambda} \bigg[ \frac{\hbar^2}{2m} (2 {\bf k} \cdot {\bf q} + {\bf q}^2)\bigg]^2 {\bf c}_{{\bf k}+{\bf q}}^\dagger {\bf c}_{{\bf k}} + \sum_{{\bf q}' \in \Lambda} \frac{V_{\bf q'}}{2} \bigg[ \sum_{{\bf k} \in \Lambda}\frac{\hbar^2}{2m}(2 {\bf k}\cdot {\bf q} + {\bf q}^2) ({\bf c}_{{\bf {\bf k} + q - q'}}^\dagger {\bf c}_{{\bf k}} - {\bf c}_{{\bf k + q}}^\dagger {\bf c}_{{\bf {\bf k} + q'}}) \\ 
+    & \blanky \blanky \blanky \blanky - \sum_{{\bf k} \in \Lambda}\frac{\hbar^2}{2m}(2 {\bf k}\cdot {\bf q} + {\bf q}^2) ({\bf c}_{{\bf {\bf k} + q + q'}}^\dagger {\bf c}_{{\bf k}} - {\bf c}_{{\bf k + q}}^\dagger {\bf c}_{{\bf {\bf k} -
+    q'}})\bigg] \\
+    &= \sum_{{\bf k} \in \Lambda} \bigg[ \frac{\hbar^2}{2m} (2 {\bf k} \cdot {\bf q} + {\bf q}^2)\bigg]^2 {\bf c}_{{\bf k}+{\bf q}}^\dagger {\bf c}_{{\bf k}} \\
+    & + \sum_{{\bf q}' \in \Lambda} \frac{V_{\bf q'}}{2} \bigg[ \sum_{{\bf k} \in \Lambda}\frac{\hbar^2}{2m}(2 {\bf k}\cdot {\bf q} + {\bf q}^2) {\bf c}_{{\bf {\bf k} + q - q'}}^\dagger {\bf c}_{{\bf k}} - \frac{\hbar^2}{2m}(2 {\bf k}\cdot {\bf q} + {\bf q}^2) {\bf c}_{{\bf k + q}}^\dagger {\bf c}_{{\bf {\bf k} + q'}} \\
+    & \blanky \blanky \blanky \blanky - \sum_{{\bf k} \in \Lambda}\frac{\hbar^2}{2m}(2 {\bf k}\cdot {\bf q} + {\bf q}^2) {\bf c}_{{\bf {\bf k} + q + q'}}^\dagger {\bf c}_{{\bf k}} - \frac{\hbar^2}{2m}(2 {\bf k}\cdot {\bf q} + {\bf q}^2) {\bf c}_{{\bf k + q}}^\dagger {\bf c}_{{\bf {\bf k} - q'}}\bigg] \\
+    \end{split}
+\end{equation}
+
+\begin{equation}
+    \begin{split}
+ \blanky  
+&= \sum_{{\bf k} \in \Lambda} \bigg[ \frac{\hbar^2}{2m} (2 {\bf k} \cdot {\bf q} + {\bf q}^2)\bigg]^2 {\bf c}_{{\bf k}+{\bf q}}^\dagger {\bf c}_{{\bf k}} \blanky \blanky \blanky \blanky \blanky \blanky \textnormal{  let ${\bf k}' = {\bf k} + {\bf q}'$, ${\bf k}'' = {\bf k} - {\bf q}'$}\\
+ & \blanky \blanky \blanky \blanky + \sum_{{\bf q}' \in \Lambda} \frac{V_{\bf q'}}{2} \bigg[ \sum_{{\bf k} \in \Lambda}\frac{\hbar^2}{2m}(2 {\bf k}\cdot {\bf q} + {\bf q}^2) {\bf c}_{{\bf {\bf k} + q - q'}}^\dagger {\bf c}_{{\bf k}} - \sum_{{\bf k}' \in \Lambda}\frac{\hbar^2}{2m}(2 ({\bf k}' - {\bf q}')\cdot {\bf q} + {\bf q}^2) {\bf c}_{{\bf k' + q - q'}}^\dagger {\bf c}_{{\bf {\bf k}'}}\\ 
+ & \blanky \blanky \blanky \blanky - \sum_{{\bf k} \in \Lambda}\frac{\hbar^2}{2m}(2 {\bf k}\cdot {\bf q} + {\bf q}^2) {\bf c}_{{\bf {\bf k} + q + q'}}^\dagger {\bf c}_{{\bf k}} - \sum_{{\bf k}'' \in \Lambda}\frac{\hbar^2}{2m}(2 ({\bf k}'' + {\bf q}')\cdot {\bf q} + {\bf q}^2) {\bf c}_{{\bf k'' + q + q'}}^\dagger {\bf c}_{{\bf {\bf k}''}} \bigg] \\
+    \end{split}
+\end{equation}
+
+\begin{align}
+     \alignedbox{(\hbar \omega)^2 \rho_{{\bf q}}^\dagger}{= \sum_{{\bf k} \in \Lambda} \bigg[ \frac{\hbar^2}{2m} (2 {\bf k} \cdot {\bf q} + {\bf q}^2)\bigg]^2 {\bf c}_{{\bf k}+{\bf q}}^\dagger {\bf c}_{{\bf k}} + \sum_{{\bf q}' \in \Lambda} \frac{V_{\bf q'}}{2} \frac{\hbar^2 {\bf q} \cdot {\bf q}'}{m} \bigg(\rho_{{\bf q}' - {\bf q}} \rho_{{\bf q}'}^\dagger - \rho_{{-{\bf q}'}}^\dagger \rho_{-{\bf q} - {\bf q}'} \bigg).}
+     \label{RPA-basis equation}
+\end{align}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale = .5]{figs/Jellium model/RPA-fig.png} 
+    \caption{Consider a length-$L$ box. Then, $\rho_q$ measures the quantity approximately equal to the difference in the particle number in the two halves of the container. }
+    \label{fig:RPA-box}
+\end{figure}
+
+Now, in order to study \cref{RPA-basis equation}, note that $\rho_0$ is actually much larger than all the other components. It is just the average particle density in the system. Consider a box of length-$L$, shown in \cref{fig:RPA-box}, containing a large number of electrons of $\rho_0$ average density, then $\rho_0$'s first Fourier component is 
+
+$$
+    \int_{\Omega \subset \R^3} d{\bf x} \blanky \rho({\bf x}) e^{\frac{2i \pi x}{L}},
+$$
+
+will be approximately equal to the difference between the particle number in the left and right hand sides of the box, the gray area. The number difference will then be small, compared to the total number and so $\rho_0$ will prevail in the summation over ${\bf q}'$. Since the $({\bf q}' = 0)$-term is omitted, $\rho_0$ will only appear when ${\bf q}' = \pm {\bf q}$. The neglect of all other terms, when ${\bf q}' \neq \pm {\bf q}$ is known as the \textbf{random phase approximation} \footnote{An alternative interpretation for the RPA is as follows. Consider the first-quantized version of the density operator $\rho_{{\bf q} \in \Lambda} = \frac{1}{\Omega} \sum_{n \in \mathds{N}} e^{i {\bf q} \cdot {\bf x}_n}$, where ${\bf x}_n$ is the $n$-th's particles position. Then, $\rho_{{\bf q} \pm {\bf q}'}$ may be written in first quantized form as 
+
+$$
+    \rho_{{\bf q} \pm {\bf q}'} \frac{1}{\Omega} \sum_{n \in \mathds{N}} e^{i ({\bf q} \pm {\bf q}') \cdot {\bf x}_n}.
+$$
+
+Then, if the electrons are statistically randomly distributed in the system, the preceding sum only gives a finite result if ${\bf q} = \mp {\bf q'}$, since the sum involves random phases that add destructively. In RPA, \cref{RPA-basis equation} is approximated by keeping only terms with ${\bf q} = \mp {\bf q}'$. }.\\
+
+\underline{Plasma oscillations}
+
+Consider the case where ${\bf q}$ is small enough that, for the moment, the first term in \cref{RPA-basis equation} may be neglected and the second term approximated via RPA. In that case, 
+
+$$
+(\hbar \omega)^2 \rho_{{\bf q}}^\dagger = \frac{4\pi e^2}{q^2} \frac{\hbar^2 q^2}{m} (\rho_0 \rho_{{\bf q}}^\dagger + \rho_{{\bf q}}^\dagger \rho_0 ) \rightarrow \omega^2 = \frac{4\pi e^2 \rho_0}{m},
+$$
+
+which gives just the classical plasma frequency $\omega_P$. The contribution of the first term may be approximated by setting $k \sim k_F$ and $\langle 2 {\bf k}_F \cdot {\bf q} \rangle >> {\bf q}^2$. Averaging over all angles yields
+
+$$
+\langre ({\bf k}_F \cdot {\bf q})^2 \rangle \simeq \frac{1}{4\pi} 4\pi^2 k_F^2 q^2 \int_{-1}^{1} dx x^2 = 2\pi k_F^2 q^2, 
+$$
+
+which yield the plasmon dispersion relation
+
+$$
+\omega^2({\bf q}) = \omega_P^2 + \frac{2\pi \hbar^2 k_F^2}{3m^2} q^2 \simeq \omega_P + \frac{\pi v_F^2}{3\omega_P} q^2. 
+$$
+
+Thus, the relevant long-wavelength excitations are collective motions of the electron gas. Bohm and Pines suggested that electrons act as interacting particles through a bare Coulomb potential $\frac{4\pi e^2}{q^2}$ only for length scales less than an effective screening length, which may be taken to be the Thomas-Fermi distance, $\sim q_{\textnormal{TF}}^{-1}$. Below $q_{\textnormal{TF}}$, the interaction contribute only to the plasma oscillations. \\
+
+\subsection{Green Functions for Many-Body systems.}
+
+Green function techniques play a fundamental role in the treatment of many-body systems, for many properties of a many body system -eg. ground state energy, excitation spectra, response functions, electric and magnetic susceptibilities and thermodynamic quantities- can be derived from many-body Green functions.\\
+
+Consider the ground state $\ket{\Omega}$ of a system. At some time $t'$, a perturbation is enacted upon the system, said perturbation represented by a local operator ${\bf O}^\dagger({\bf x}, t)$, creating an initial state ${\bf O}^\dagger({\bf x}', t') \ket{\Omega}$. Thus, the system has been deviated from the initial some by some local excitations, a disturbance, and then this disturbance will evolve in space and time. Such a scenario describes typical local measurements done on a quantum many-particle system. Since an explicit time dependence is necessary for this formalism, the Heisenberg picture is useful. To determine physically interesting quantities, the quantum-mechanical amplitude to find the system in state ${\bf O}^\dagger({\bf x}', t') \ket{\Omega}$ at time $t > t'$ namely, 
+
+$$
+    \mathcal{A} = \bra{\Omega} {{\bf O}}({{\bf x}}, t) {{\bf O}}^\dagger({{\bf x}}', t') \ket{\Omega}.
+$$
+
+Many quantum-mechanical operators may be written in bilinear forms of the field operators themselves, $\hat{\Psi}({{\bf x}}, t)$. However, it turns out that correlation functions of the field operators are related to experiments such as photoemission and tunnelling spectroscopies, which involve extraction or injection of a single electron. These field correlation functions can be identified as propagators which satisfy the Green function equation. \\
+
+\subsubsection{The One-Particle Green Function of Many-Body Systems}
+
+\paragraph{Non-interacting Particle Propagator}
+
+Consider a particle in free space described by a single-particle time-independent Hamiltonian ${\bf H}_1$. Its eigenstates and eigenenergies are 
+
+$$
+    {\bf H}_1 \ket{\phi_n} = \varepsilon_n \ket{\phi_n}.
+$$
+
+In general, if a particle is in the $\ket{\phi}_i$-state, it will remain in that state forever. Instead, consider a system in a generic state $\ket{\psi_{\textnormal{trial}}}$. If the trial state is created at time $t'$, the wave-function at a later time $t$ is given by 
+
+$$
+    \ket{\psi(t)} = e^{-\frac{i {\bf H} (t-t')}{\hbar}} \ket{\psi_{\textnormal{trial}}} = \sum_{n} \ket{\psi_n} e^{-\frac{i \varepsilon_n (t-t')}{\hbar}} \bar{\phi_n}\ket{\psi_{\textnormal{trial}}}
 $$
 
 \clearpage
@@ -4080,3 +4314,4 @@ From \textbf{Advanced Quantum Condensed Matter Physics, One-Body, Many-Body and 
 
 
 \end{document}
+
