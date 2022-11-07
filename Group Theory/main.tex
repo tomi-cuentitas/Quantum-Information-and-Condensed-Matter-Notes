@@ -1,0 +1,102 @@
+\documentclass{homework}
+\author{Tomás Pérez}
+\class{Group Theory - Lecture Notes}
+\date{\today}
+\title{Theory \& Notes}
+
+\graphicspath{{./media/}}
+
+\begin{document} \maketitle
+
+\begin{df}
+A vector space $L$ over a field $\mathds{F}$, with an operation 
+
+$$
+    \begin{array}{c}
+         L \times L \rightarrow L \\
+         (x, y) \rightarrow [x,y],
+    \end{array}
+$$  
+
+called the bracket or commutator of $x$ and $y$, is called a Lie algebra over $\mathds{F}$ if the following axioms are satisfied
+
+\begin{itemize}
+    \item The bracket operation is bilinear,
+    \item $[x,x] = 0, \blanky \forall x \in L$,
+    \item $[x,[y,z]] = [y, [z,x]] = [z, [x,y]] = 0, \blanky \forall x,y,z \in L$
+\end{itemize},
+
+where the first two axioms imply the bracket's anticommutativity. \\
+\end{df}
+
+Two Lie algebras $\mathfrak{g}, \mathfrak{g}'$ are isomorphic if there exists a vector space isomorphism $\phi: \mathfrak{g} \rightarrow \mathfrak{g}'$, satisfying $\phi([x,y]) = [\phi(x), \phi(y)], \blanky \forall x,y \in \mathfrak{g}$. Similarly, a subspace $\mathfrak{k} \subset \mathfrak{g}$ is called a subalgebra if $[x,y] \in \mathfrak{k}, \blanky \forall x, y \in \mathfrak{k}$. Note that any Lie subalgebra is a Lie algebra in its own right, relative to the inherited operations. Note as well, that any non-zero element $x \in \mathfrak{g}$ defines a one-dimensional subalgebra $\mathds{F}x$, with trivial multiplications. \\
+
+If $V$ is a finite $n$-dimensional vector space over $\mathds{F}$, $\textnormal{End}(V)$ is the set of endomorphisms over $V$, being a $n^2$-dimensional vector space. Note that $\textnormal{End}(V)$ is a ring relative to the usual product operation. Imbued with the Lie bracket operation, $\textnormal{End}(V)$ is a Lie algebra over $\mathds{F}$, denoted by $\mathfrak{g}\mathfrak{l}(V) \simeq \textnormal{End}(V)$ and is the general linear algebra. If a basis for $V$ is fixed, thereby identifying $\linearalgebra(n, \mathds{F}) \simeq \lie(V)$, explicit calculations may be performed. In particular if the standard matrix basis $e_{ij}$ is chosen, such that 
+$e_{ij} e_{kl} = \delta_{jk} e_{il}$, it follows that 
+
+\begin{equation}
+    [e_{ij}, e_{kl}] = \delta_{jk} e_{il} - \delta_{li} e_{kj},,
+\end{equation}
+
+noticing that all coefficients are either 0 or $\pm 1$. \\
+
+All (simple) Lie algebras fall into four families, $\mathfrak{A}_{\ell}, \mathfrak{B}_{\ell},\mathfrak{C}_{\ell}, \mathfrak{D}_{\ell}$ ($\ell > 1$) are the classical algebras, for they correspond to certain classical linear group. In particular, for the last three families, let $\textnormal{char } \mathds{F} \neq 2$. 
+
+\begin{itemize}
+    \item $\mathfrak{A}_{\ell}$: let $\dim V = \ell + 1$. Denote by $\mathfrak{s}\mathfrak{l}(V), $ or $\mathfrak{s}\mathfrak{l}(\ell + 1, \mathds{F})$, the set of endomorphisms on $V$ with zero trace. Since $\Tr(xy) = \Tr(yx)$ and $\Tr(x+y) = \Tr(x) + \Tr(y)$, thus $\mathfrak{s}\mathfrak{l}(V) \subseteq \mathfrak{g}\mathfrak{l}(V)$. This algebra is the special linear algebra and is intimately connected to the special linear group $SL(V)$ of endomorphisms of unit determinant. \\
+    
+    What about its dimension? since  $\mathfrak{s}\mathfrak{l}(V)$ is a proper subalgebra of $\mathfrak{g}\mathfrak{l}(V)$, its dimension is at most $(\ell + 1)^2 - 1$. On the other hand, the number of linearly independent matrices of zero-trace can be readily found. For all $e_{ij}, \blanky i \neq j$ and all $h_i = e_{ii} - e_{i+1, i+1}$, with $1 \leq i \leq \ell$, yielding a total of $\ell + (\ell+1)^2 - (\ell + 1) $ matrices, which is the standard basis for $\mathfrak{s}\mathfrak{l}(V)$. \\
+    
+    \item $\mathfrak{C}_{\ell}$: let $\dim V = 2\ell$, with basis $(v_1, \cdots, v_{2\ell})$. Let the non-degenerate skew-symmetric form $f: V \rightarrow V$ defined by the matrix 
+    
+    $$
+        s = \left(\begin{array}{cc}
+           0 & \textnormal{i}\textnormal{d}_{\ell}  \\
+            - \textnormal{i}\textnormal{d}_{\ell} & 0 
+        \end{array}\right).
+    $$
+    
+    Let $\mathfrak{s}\mathfrak{p}(V)$, or $\mathfrak{s}\mathfrak{p}(2\ell, \mathds{F})$, the symplectic algebra, which by definition consists of all endomorphism $x: V \rightarrow V$ satisfying $f(x(v), w) = - f(v, x(w))$. This algebra is closed under the bracket operation. In matrix terms, the previous condition may be rewritten as 
+    
+    $$
+    x \in \symplecticalgebra(V) \blanky | \blanky   x = \left(\begin{array}{cc}
+           m & n\\
+           p & q 
+        \end{array}\right), m,n,p,q \in \linearalgebra(\ell, \mathds{F}) \land sx = -x^{\textnormal{T}} s \leftrightarrow \begin{array}{c}
+             n^{\textnormal{T}} = n  \\
+             p^{\textnormal{T}} = p \\
+             m^{\textnormal{T}} = -q
+        \end{array}.
+    $$
+    
+    This last condition fixes that $\Tr x = 0$. A basis for $\symplecticalgebra(2\ell, \mathds{F})$ can now be fixed. \\
+    
+    Consider all diagonal matrices $e_{ii} - e_{\ell + 1, \ell + 1}$, and adding to these all $e_{ij} - e_{\ell + j, \ell + j}$, with $1 \leq i \neq j \leq \ell$, which are $\ell^2 - \ell$ in number. For $n$, consider the matrices $e_{i, \ell + 1}$ and $e_{i, \ell + j} + e_{j, \ell + i}$, for ($1 \leq i < j \leq \ell)$, a total of $\ell + \frac{1}{2} \ell(\ell - 1)$, and similarly for positions in $p$. Adding up yields $\dim \symplecticalgebra(2\ell, \mathds{F}) = 2\ell^2 + \ell$. \\
+    
+    \item $\mathfrak{B}_{\ell}$: let $\dim V = 2\ell + 1$ be odd, and let $f$ be the non-degenerate symmetric bilinear form on $V$ whose matrix is 
+    
+    $$
+        s = \left(\begin{array}{ccc}
+           1 & 0 & 0 \\
+           0 & 0 & \textnormal{i}\textnormal{d}_{\ell}  \\
+           0 & \textnormal{i}\textnormal{d}_{\ell} & 0 
+        \end{array}\right).
+    $$
+    
+    The orthogonal algebra $\mathfrak{o}(V)$ or $\mathfrak{o}(2\ell +1, \mathds{F})$, consists on all endomorphisms of $V$ satisfying $f(x(v), w) = - f(v, x(w))$, the same requirement as for $\mathfrak{C}_{\ell}$. If $x$ is partitioned in the same way as $s$, say 
+    
+    $$
+        x = \left(\begin{array}{ccc}
+           a & b_1 & b_2 \\
+           c_1 & m & n \\
+           c_2 & p & q 
+        \end{array}\right) \Rightarrow sx = - x^{\textnormal{T}}s \leftrightarrow \begin{array}{cc}
+             &  \\
+             & 
+        \end{array}
+    $$
+    
+\end{itemize}
+
+\end{document}
+
