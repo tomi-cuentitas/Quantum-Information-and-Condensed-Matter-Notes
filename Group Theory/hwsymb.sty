@@ -1,0 +1,91 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{hwsymb}[2021/01/01 hwsymb]
+\usepackage{dsfont}
+\usepackage[noabbrev,nameinlink]{cleveref}
+\RequirePackage{amssymb, amsthm, amscd, graphicx}
+\usepackage{amsmath,times}
+\usepackage{physics}
+\usepackage{mathabx, bm, hyperref}
+%usepackage{kpfonts}
+\usepackage{multirow}
+\usepackage{ulem}
+\usepackage{cancel}
+\usepackage{xcolor}
+\usepackage{relsize}
+\newlength\dlf
+\newcommand\alignedbox[2]{
+  % #1 = before alignment
+  % #2 = after alignment
+  &
+  \begingroup
+  \settowidth\dlf{$\displaystyle #1$}
+  \addtolength\dlf{\fboxsep+\fboxrule}
+  \hspace{-\dlf}
+  \fcolorbox{red}{yellow}{$\displaystyle #1 #2$}
+  \endgroup
+}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+%\usepackage[textwidth = 15cm]{geometry} 
+\usepackage{lmodern, amssymb}
+\usepackage{mathtools}
+\usepackage{braket, relsize, nccmath} 
+\renewcommand\Set[1]{%
+\csname Set \endcsname{\mskip-\medmuskip#1\mskip-\medmuskip}}%
+\DeclareMathOperator{\disc}{disc}
+
+
+% new and renewed commands
+\renewcommand{\qedsymbol}{$_{\scriptstyle \substack{\sc{quod}\\\sc{erat}\\\sc{dem}\scalebox{0.53}{$\blacksquare$}}}$}
+% beamer does not define a \labelenumi therefore this can't be renewed.
+\def\labelenumi{\theenumi)} % to make (n) into n)
+
+% New enviroments
+\newtheorem{df}{Definition}
+\newtheorem{theo}{Theorem}
+
+% Deprecated Set Symbols
+\newcommand{\bC}{\bb{C}\PackageWarning{hwsymb}{\noexpand\bC is deprecated, use \noexpand\C instead}}
+\newcommand{\bR}{\bb{R}\PackageWarning{hwsymb}{\noexpand\bR is deprecated, use \noexpand\R instead}}
+\newcommand{\bQ}{\bb{Q}\PackageWarning{hwsymb}{\noexpand\bQ is deprecated, use \noexpand\Q instead}}
+\newcommand{\bZ}{\bb{Z}\PackageWarning{hwsymb}{\noexpand\bZ is deprecated, use \noexpand\Z instead}}
+\newcommand{\bN}{\bb{N}\PackageWarning{hwsymb}{\noexpand\bN is deprecated, use \noexpand\N instead}}
+
+% Symbols
+
+\newcommand{\linearalgebra}{\mathfrak{g}\mathfrak{l}}
+\newcommand{\symplecticalgebra}{\mathfrak{s}\mathfrak{l}}
+
+\newcommand{\bl}{\bm{\mathcal{L}}}
+\newcommand{\bmt}{\bm{\mathcal{T}}}
+\newcommand{\vds}{\mathds{V}}
+\newcommand{\br}{\bm {\mathcal{R}}}
+\newcommand{\summation}{\sum_{j=1}^{L-1}}
+\newcommand{\Hamiltonian}{{\bf H}}
+
+\newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
+\newcommand{\ctwo}{\mathds{C}^2}
+\newcommand{\xmeasure}{\int_{\R^3} d\x}
+\newcommand{\spinmeasure}{\sum_{\sigma_j \in \ctwo}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\transpose}{^{\textnormal{T}}}
+\newcommand{\Rb}{{\bf R}}
+\newcommand{\spin}{{\bf S}}
+\newcommand{\X}{{\bf X}}
+\newcommand{\x}{{\bf x}}
+\newcommand{\blanky}{\textnormal{ }}
+\newcommand{\seq}{\{{\bf X}_n\}_{n=1}^{\infty}}
+\newcommand{\seqY}{\{{\bf Y}_j\}_{j=1}^{n}}
+\newcommand{\variance}{\mathds{V}\textnormal{ar}}
+\newcommand{\cov}{\mathds{C}\textnormal{ov}}
+\newcommand{\n}{n \rightarrow \infty}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\Rp}{\mathds{R}_+}
+\newcommand{\R}{\mathds{R}}
+\newcommand{\prob}{\mathds{P}}
+\newcommand{\E}{\mathds{E}}
+\newcommand{\twobytwo}{2 \times 2}
+
+\newcommand{\tdis}{$t$-distribution }
+\newcommand{\chidis}{$\chi^2$-distribution }
