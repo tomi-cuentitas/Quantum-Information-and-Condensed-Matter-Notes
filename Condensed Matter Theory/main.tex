@@ -1004,37 +1004,6 @@ which commutes with each of the representation's generators. As a result, it mus
     Let $\mathds{V}$ be a $\mathds{C}$-vector space, associated with a finite-dimensional irreducible representation of an algebra $\mathfrak{A}$ over $\mathds{C}$. Then, let $\phi : \mathds{V} \rightarrow \mathds{V}$ be a homomorphism ie. $\phi(av) = a\phi(v), \forall a \in \mathfrak{A}, v \in \mathds{V}$. Then, $\phi = \lambda \textnormal{id}_{\mathds{V}}.$ \\
 \end{lemma}
 
-\paragraph{\textbf{Spin chain types}}
-
-Some of the most common examples of spin chains are treated as follows, 
-
-\begin{itemize}
-    \item The simplest example of a $SU(2)$-symmetric spin Hamiltonian is therefore the nearest-neighbour Heisenberg model, where 
-
-\begin{equation}
-    \Hamiltonian_{\mathds{X}\mathds{X}\mathds{X}} = -J \sum_{\langle ij \rangle} {\spin}_i \cdot {\spin}_j = -J \sum_{i=1}^{N} \bigg(\frac{1}{2} (\sigma_i^+ \sigma_{i+1}^{-} + \sigma_i^- \sigma_{i+1}^+) + \frac{1}{4} \sigma_i^z \sigma_{i+1}^z\bigg),
-\end{equation}
-
-where in the ferromagnetic case the diagonal terms in the Hamiltonian favour aligned spins, while in the antiferromagnetic case, the diagonal terms favour antialignement. The XXX-Hamiltonian commutes with the magnetization operator by construction. Note that Schur's lemma does not immediately apply since the magnetization operator is reducible. \\
-
-\item The XXZ model is a deformation of the Heisenberg model, breaking the $SU(2)$-model symmetry down to a $U(1)$-subgroup. The XXZ-hamiltonian reads
-
-\begin{equation}
-    \Hamiltonian_{\mathds{X}\mathds{X}\mathds{Z}} = - \sum_{\langle jk \rangle} (J_\perp (\spin_j^x \spin_k^x + \spin_j^y \spin_k^y) + J_z \spin_j^z \spin_k^z) = - \sum_{j=1}^{N} \bigg( J_\perp (\sigma_{j}^+ \sigma_{j+1}^- + \sigma_{j}^- \sigma_{j+1}^+) + \frac{\Delta}{2} \sigma_j^z \sigma_{j+1}^z \bigg),
-    \label{XXZ hamiltonian}
-\end{equation}
-
-which is the most general $U(1)$-symmetric nearest-neighbor interaction for spin-$\frac{1}{2}$ particles. \\
-
-Although this model is no longer $SU(2)$-symmetric, the magnetization operator commutes with the hamiltonian, thus generating a $U(1)$-symmetry. Even though the full $SU(2)$-symmetry is broken, the degrees of freedom are still typically referred to as spins. The sign of $J_z$ alone determines whether the model is ferromagnetic, $J_z > 0$, or antiferromagnetic, $J_z < 0$, since the sign of $J_\perp$ is unimportant in any bipartite lattice, redefining the states by changing the overall sign of the $\spin^x$ and $\spin^y$-operators on half the lattice sites, leaves the algebra unchanged but flips the sign of $J_\perp$. Therefore, the physically meaningful coupling is $\Delta = \frac{J_z}{|J_\perp|}$, so that $\Delta = \pm 1$ for the ferromagnetic and antiferromagnetic spin models, respectively. In the $\Delta \rightarrow \pm \infty$-limit, only the $J_z$ remains, and the model is effectively classical. For the ferromagnetic case $J_z > 0$, all the spins simply line up with the maximum value of ${\bf M}^z$. In the antiferromagnetic case, $\Delta \rightarrow -\infty$ on a bipartite lattice, the spins take their maximum opposite values on every other site. \\
-
-It is easy to check that this Hamiltonian commutes with the magnetization operator, and so preserves a $U(1)\times \mathds{Z}_2$-symmetry. In a classical notion, the $U(1)$-symmetry corresponds to rotations around the $z$-axis, while the $\mathds{Z}_2$ corresponds to flipping all the spins ${\spin_j^a \rightarrow -\spin_j^a}$. \\
-
-\item A still more general Hamiltonian is given by the XYZ-model, which only preserves the spin-flip symmetry. 
-\end{itemize}
-
-None of these Hamiltonians correspond to a quantum version of the Ising model. \\
-
 \paragraph{Thermodynamics of the Quantum Ising model}
 
 Consider the following quantum Ising model 
@@ -1112,770 +1081,42 @@ It is straightforward to see that there is no analytical function on $g$ which t
 
 Finally, note that in a finite lattice there is necessarily a non-zero energy gap between the ground state and the first excited state. However, this energy spacing can either remain finite o approach zero in the infinite lattice limit, the two cases being identified as having gapped or gapless energy spectrums, respectively. There is a non-zero energy gap $\Delta$ for all $g \neq g_c$, but it vanishes upon approaching $g_c$, producing a gapless spectrum at $g = g_c$. 
 
-
 \clearpage
 
-\paragraph{\textbf{Ferromagnets and antiferromagnets}}
+\section{Heisenberg Models}
 
-Unless geometric frustration is present, in classical systems, there is no significant difference between ferromagnets and antiferromagnets. Eg, with NN-interaction, geometric frustration occurs for lattices that are not bipartite. In a bipartite lattice, the sites can be divided into two sub-lattices such that nearest neighbours always belong to different sub-lattices. A nearest-neighbour antiferromagnetic interaction in a classical model on a bipartite lattice can typically be changed into a ferromagnetic one, by redefining the spin via a flip on all sites on one of the sub-lattices but not on the other (eg. $\uparrow \rightarrow \downarrow$ in the Ising model). The physics of such classical antiferromagnets is therefore essentially equivalent to that of the ferromagnets. \\
+\paragraph{\textbf{Spin chain types}}
 
-Antiferromagnetic quantum systems on non-bipartite lattices also exhibit interesting behaviour. But the interesting thing is that on bipartite lattices, there are a number of important differences between quantum ferromagnets and antiferromagnets. \\
-
-\paragraph{\textbf{Quantum Ferromagnets}}
-
-Consider the Heisenberg interaction $-J \vec{\spin}_1 \cdot \vec{\spin}_2$ across a single bond. For spin-$\frac{1}{2}$ particles, this is a simple $4 \times 4$-matrix acting on the computational basis $\mathcal{B} = \{\ket{\uparrow\uparrow}, \ket{\uparrow \downarrow}, \ket{\downarrow \uparrow}, \ket{\downarrow\downarrow}\}$, yielding 
-
-\begin{equation*} \vec{\spin}_1 \cdot \vec{\spin}_2 = \frac{1}{4} \left(\begin{array}{*{11}c}1 & 0 & 0 & 0 \\0 & -1 & 4 & 0 \\0 & 4 & -1 & 0\\0 & 0 & 0 & 1\\\end{array}\right)\end{equation*}
-
-Diagonalizing this matrix will yield its eigenvalues and its eigenvectors. Given the Clebsh-Gordan decomposition rule $\frac{1}{2} \otimes \frac{1}{2} = 0 \oplus 1$, these eigenvectors can be grouped into the $s=1$-triplet representation and the $s=0$-singlet representation. In effect,
-
-\begin{equation}
-    \begin{split}
-        \textnormal{triplet}: \ket{\uparrow \uparrow}, \frac{1}{\sqrt{2}} \bigg(\ket{\downarrow \uparrow} + \ket{\uparrow\downarrow}\bigg), \ket{\downarrow\downarrow}, \textnormal{ with } \lambda_i = -\frac{J}{4} \\
-        \textnormal{singlet}: \frac{1}{\sqrt{2}} \bigg(\ket{\downarrow \uparrow} - \ket{\uparrow\downarrow}\bigg), \textnormal{ with } \mu_i = +\frac{J}{4}
-    \end{split}
-\end{equation}
-
-It is simple to check that ${\bf K} = s(s+1)$ in both cases, and that while the singlet is annihilated by all three generators $\vec{\bf S}$, acting with ${\bf S}^+$ and ${\bf S}^-$ takes members of the triplet to each other. One important difference between the ferromagnetic ($J > 0$) and the antiferromagnetic ($J < 0$) models now arises,
+Some of the most common examples of spin chains are treated as follows, 
 
 \begin{itemize}
-    \item if $J>0$, there are multiple ground states for the ferromagnet, each member of the triplet having minimum energy $-J$,
-    \item but if $J<0$, the antiferromagnetic ground state, the singlet, is unique. Moreover, the antiferromagnetic ground state is invariant under the $SU(2)$-symmetry, whereas the ferromagnetic ground states are not. \\
+    \item The simplest example of a $SU(2)$-symmetric spin Hamiltonian is therefore the nearest-neighbour Heisenberg model, where 
+
+\begin{equation}
+    \Hamiltonian_{\mathds{X}\mathds{X}\mathds{X}} = -J \sum_{\langle ij \rangle} {\spin}_i \cdot {\spin}_j = -J \sum_{i=1}^{N} \bigg(\frac{1}{2} (\sigma_i^+ \sigma_{i+1}^{-} + \sigma_i^- \sigma_{i+1}^+) + \frac{1}{4} \sigma_i^z \sigma_{i+1}^z\bigg),
+\end{equation}
+
+where in the ferromagnetic case the diagonal terms in the Hamiltonian favour aligned spins, while in the antiferromagnetic case, the diagonal terms favour antialignement. The XXX-Hamiltonian commutes with the magnetization operator by construction. Note that Schur's lemma does not immediately apply since the magnetization operator is reducible. \\
+
+\item The XXZ model is a deformation of the Heisenberg model, breaking the $SU(2)$-model symmetry down to a $U(1)$-subgroup. The XXZ-hamiltonian reads
+
+\begin{equation}
+    \Hamiltonian_{\mathds{X}\mathds{X}\mathds{Z}} = - \sum_{\langle jk \rangle} (J_\perp (\spin_j^x \spin_k^x + \spin_j^y \spin_k^y) + J_z \spin_j^z \spin_k^z) = - \sum_{j=1}^{N} \bigg( J_\perp (\sigma_{j}^+ \sigma_{j+1}^- + \sigma_{j}^- \sigma_{j+1}^+) + \frac{\Delta}{2} \sigma_j^z \sigma_{j+1}^z \bigg),
+    \label{XXZ hamiltonian}
+\end{equation}
+
+which is the most general $U(1)$-symmetric nearest-neighbor interaction for spin-$\frac{1}{2}$ particles. \\
+
+Although this model is no longer $SU(2)$-symmetric, the magnetization operator commutes with the hamiltonian, thus generating a $U(1)$-symmetry. Even though the full $SU(2)$-symmetry is broken, the degrees of freedom are still typically referred to as spins. The sign of $J_z$ alone determines whether the model is ferromagnetic, $J_z > 0$, or antiferromagnetic, $J_z < 0$, since the sign of $J_\perp$ is unimportant in any bipartite lattice, redefining the states by changing the overall sign of the $\spin^x$ and $\spin^y$-operators on half the lattice sites, leaves the algebra unchanged but flips the sign of $J_\perp$. Therefore, the physically meaningful coupling is $\Delta = \frac{J_z}{|J_\perp|}$, so that $\Delta = \pm 1$ for the ferromagnetic and antiferromagnetic spin models, respectively. In the $\Delta \rightarrow \pm \infty$-limit, only the $J_z$ remains, and the model is effectively classical. For the ferromagnetic case $J_z > 0$, all the spins simply line up with the maximum value of ${\bf M}^z$. In the antiferromagnetic case, $\Delta \rightarrow -\infty$ on a bipartite lattice, the spins take their maximum opposite values on every other site. \\
+
+It is easy to check that this Hamiltonian commutes with the magnetization operator, and so preserves a $U(1)\times \mathds{Z}_2$-symmetry. In a classical notion, the $U(1)$-symmetry corresponds to rotations around the $z$-axis, while the $\mathds{Z}_2$ corresponds to flipping all the spins ${\spin_j^a \rightarrow -\spin_j^a}$. \\
+
+\item A still more general Hamiltonian is given by the XYZ-model, which only preserves the spin-flip symmetry. 
 \end{itemize}
 
-Additional insight comes from solving the Heisenberg model on a four-site chain, with its Hilbert space being 16-dimensional, by exploiting the model's inner symmetries. The magnetization operator ${\bf M}^z$ commutes with the Hamiltonian, which makes them simultaneously diagonalizable. For perioidic boundary conditions, the translational invariance plays a powerful role. The translation operator is defined by shifting the spins by one site modulo $N$, this is 
-\begin{equation}
-\begin{split}
-    \mathcal{T} : \mathfrak{A}_i \rightarrow \mathfrak{A}_j \\
-    \mathcal{T}^{-1} \vec{\bf S}_i \mathcal{T} = \vec{\spin}_{i+1}
-\end{split}
-\begin{array}{c}
-     \textnormal{ where } \mathfrak{A}_i, \mathfrak{A}_j \simeq \mathfrak{su}(2) \blanky \forall i,j. 
-\end{array}
-\end{equation}
+None of these Hamiltonians correspond to a quantum version of the Ising model. \\
 
-The Hamiltonian commutes with the translation operator when the boundary conditions are periodic, and commutes with the magnetization as well. Thus the Hamiltonian can be broken into blocks acting on states with a fixed eigenvalue of the traslation operator and of the magnetization. \\
-
-Since $\mathcal{T}^N = \mathds{1}$ for an $N$-site chain, the eigenvalues of $\mathcal{T}$ are $\lambda_i = e^{\frac{2\pi i n}{N}}, \forall n \in \mathds{Z}$, from which the corresponding momentum can be defined as $k = \frac{2\pi n}{N}$. Then, the following holds 
-$$
-    \sum_{n \in \mathds{Z}_{[0, N-1]}} e^{-\frac{2\pi i n}{N}} \mathcal{T}^n \ket{s} = \ket{s} + e^{-\frac{2\pi i}{N}} \ket{s} + \cdots + e^{-\frac{2\pi i (N-1)}{N}}\mathcal{T}^{N-1} \ket{s}.
-$$
-
-For example, for a four-site chain, the translational invariance diagonalizes the enire Hamiltonian save for $m=0$ and $k = 0$ or $k = \pi$, since the corresponding eigenstates are 
-
-\begin{equation}
-    \begin{split}
-        \ket{A} = \frac{1}{\sqrt{2}} \bigg({\uparrow\downarrow\uparrow\downarrow} + e^{-i\pi k} {\downarrow\uparrow\downarrow\uparrow}\bigg), \\
-        \ket{B} = \frac{1}{2}  \bigg(\ket{{\uparrow\uparrow\downarrow\downarrow}} + \ket{\downarrow \uparrow \uparrow \downarrow} + \cdots \bigg)
-    \end{split} \begin{array}{c}
-         \textnormal{with the hamiltonian} \\ \textnormal{ on these} \\ \textnormal{ $k=0$ and $k=\pi$} \\ \textnormal{states being }  
-    \end{array}-J \left(\begin{array}{cc}
-        -1 & \sqrt{2} \cos\left(\frac{\pi k}{2}\right)  \\
-        \sqrt{2} \cos\left(\frac{\pi k}{2}\right) & 0
-    \end{array}\right).
-\end{equation}
-
-These sector's eigenvalues are therefore $-J$ and $2J$ for $k=0$ and $J = 0$ for $k=\pi$. Again organising the eigenstates into $\mathfrak{su}(2)$-multiplets yield the energy levels divided by $-J$, as follows 
-
-\begin{equation}
-    \begin{split}
-        & \textnormal{quintuplet}: 1 \\
-        & \textnormal{triplets}: \cos(\pi k) (k \neq 0) \\
-        & \textnormal{singlets}: -2,0 \textnormal{ for } k=0, \pi \textnormal{ respectively}. 
-    \end{split}
-\end{equation}
-
-This $\mathfrak{su}(2)$-invariance allows for the construction of the entire multiplet once one of the states is known. \\
-
-As with the two-site chain, the ferromagnetic ground state is a multiplet, whereas the antiferromagnetic is a singlet. For a general $N$-site ferromagnet, the completely ferromagnetic states (all spins up or all spins down) are exact ground states of the Hamiltonian. This suggest using an order parameter for ferromagnetism. A ferromagnetic order parameter is simply the quantum analog of the magnetization, the expectation value of the $z$-component of the total spin is 
-
-$$
-    \bra{\textnormal{g.s.}} {\bf M}^z \ket{\textnormal{g.s.}} = \sum_{i=1}^N \textnormal{g.s.} \bra{\textnormal{g.s.}} {\bf S}_i^z \ket{\textnormal{g.s.}},
-$$
-
-which is not a particularly great order parameter, since it vanishes if there is symmetry under spin flip, as with the classical case. A better example is $\bra{\textnormal{g.s.}} ({\bf M}^z)^2 \ket{\textnormal{g.s.}}$. \\
-
-The completely ferromagnetically ordered states, ie. all spins up or all spins down, are both ${\bf M}^z$-eigenvalues with maximum magnitude of eigenvalues, namely $N^2$, and are ground states of the Hamiltonian as well. The antiferromagnetic situtation is different. The staggered magnetization, or the \textbf{Néel order parameter}, is commonly used to understand antiferromagnetic order. It can only be defined on bipartite lattices. For example, consider the odd-sites on a sublattice, and the even-sites on the other, then the Néel operator is 
-
-$$
-    \bm{\mathcal N} = \sum_{i=1}^N (-1)^i {\bf S}_i^z.
-$$
-
-A Néel state has $N^2$-eigenvalues under $\bm{\mathcal N}^2$, ie. the spins are spin up on one sublattice and spin down on the other, like the state $\ket{A}$ which has four sites. Note, however, that the Néel operator does not commute with Hamiltonian. Then, a Néel state is not an eigenstate of the Heisenberg Hamiltonian. This is a huge difference between ferromagnets and antiferromagnets, even on bipartite lattices, not just on geometrically frustrated ones. 
-
-For example, for a four-site chain and $J<0$, the ground state is a spin singlet and translationally invariant. The properties are thus quite typical of antiferromagnetic ground states. The diagonal terms are $J$ and $0$ for the translationally-invariant Néel state $\ket{A}$ and the other state, $\ket{B}$, respectively. This does indeed favour the Néel state. However, the off-diagonal terms in the Hamiltonian, mean \\
-
-\clearpage
-
-\paragraph{\textbf{Hamiltonian in terms of Projectors}}
-
-It is often useful to write a Hamiltonian as a sum of projection operators, especially if a form can be found where all the coefficients are positive. This can be done for both the Heisenberg ferromagnet and antiferromagnets, and greatly illuminates the distinction between the two. \\
-
-A projector is an idempotent operator, thus its eigenvalues can only be either zero or one. Any Hamiltonian which can be written in such a form, will non-negative eigenvalues. Let ${\bf P}^{(s)}$ be a projector onto spin-$s$ such that 
-
-\begin{itemize}
-    \item it gives 1 when acting on a collection of spins whose total spin is $s$, 
-    \item and 0 otherwise.
-\end{itemize}
-
-A projector onto $m$ spins can be built by taking product of the operators $(\sum_{i=1}^{m} \spin_i) \cdot (\sum_{i=1}^{m} \spin_i) - j(j+1)$. For example, there are two projectors, ${\bf P}^{(0)}$ and ${\bf P}^{(1)}$, acting on two spin-$\frac{1}{2}$ particles, since the following $SU(2)$ representations holds $\frac{1}{2} \otimes \frac{1}{2} = 0 \oplus 1$. Said projectors are given by 
-
-\begin{equation}
-    \begin{split}
-        &{\bf P}^{(1)} (\spin_1 + \spin_2) = \frac{1}{2} \bigg((\spin_1 + \spin_2) \cdot (\spin_1 + \spin_2)\bigg) \\
-        &{\bf P}^{(0)} (\spin_1 + \spin_2) = -\frac{1}{2} \bigg((\spin_1 + \spin_2) \cdot (\spin_1 + \spin_2) - 2\bigg).
-    \end{split}
-\end{equation}
-
-Note that ${\bf P}^{(1)} + {\bf P}^{(0)} = 1$, since all states belong to some $\mathfrak{s}\mathfrak{u}(2)$-multiplet. Since ${\spin} \cdot \spin = \frac{3}{4}$ for a spin-$\frac{1}{2}$ particle, 
-
-$$
-    {\bf P}^{(1)} (\spin_{i} + \spin_{i+1}) = \frac{3}{4} + \spin_1 \cdot \spin_2, \textnormal{ and }
-     {\bf P}^{(0)} (\spin_{i} + \spin_{i+1}) = \frac{1}{4} - \spin_1 \cdot \spin_2.
-$$
-
-Therefore, the spin-$\frac{1}{2}$ Heisenberg Hamiltonian can therefore be rewritten as a sum of projectors with positive weights in both the ferromagnetic and antiferromagnetic cases. 
-
-\begin{itemize}
-    \item In the ferromagnetic case, 
-          the ferromagnetic hamiltonian is a sum of projectors with positive coefficients,
-          
-          $$
-            {\bf H} = J \sum_{i=1}^N {\bf P}^{(0)}(\spin_i + \spin_{i+1}).
-          $$
-          
-          Each of these projectors annihilates any ferromagnetic ground state. This is obvious for the completely aligned states, since ${\bf P}^{(0)}$ annihilates any pair of spins that are the same. It is not as obviously true for other parts of the ferromagnetic ground-state multiplet, but follows from the facts that $\spin^\pm$ commutes with the Hamiltonian and act on the completely aligned state to give the rest of the multiplet. Thus, the ferromagnetic Heisenberg model is frustration free. \\
-          
-          \item The antiferromagnetic spin-$\frac{1}{2}$ Heisenberg Hamiltonian can also be written as a sum of projectors with positive coefficients. In effect, 
-          
-          $$
-            {\bf H} = -J \sum_{i=1}^N {\bf P}^{(1)}(\spin_i + \spin_{i+1}).
-          $$
-          
-          Here, however, there is no state annihilated by all the operators. This is simple to see by checking explicitly just for three spins in a row. Therefore, the Heisenberg Hamiltonian is not frustration free. 
-\end{itemize}
-
-\clearpage
-
-\subsection{Heisenberg Models}
-
-\subsubsection{Antiferromagnetic Ground States}
-
-Consider an $N$-lattice system with spin-$S$, with its Hamiltonian given by
-
-\begin{equation}
-    {\bf H} = {\bf H}^{zz} + {\bf H}^{xy}, \begin{array}{c}
-         {\bf H}^{zz} = \frac{1}{2} \sum_{ij \in \Lambda \subset Z^{d}} J_{ij} \spin_i^z \spin_j^z, \\  
-         \\
-         {\bf H}^{xy} = \frac{1}{4} \sum_{ij \in \Lambda \subset Z^{d}} J_{ij} (\spin_i^+ \spin_j^- + \spin_i^- \spin_j^+), \\  
-    \end{array}
-    \label{auerbach's HH hamiltonian}
-\end{equation}
-
-with $J_{ij} = J_{ji}$ has translational symmetry. Furthermore, this Hamiltonian is rotationally invariant, having an $SU(2)$ symmetry, since it commutes with all three components of the total spin. Thus, the eigenstates may be labelled by 
-
-\begin{equation}
-    \begin{array}{c}
-         \ket{\Phi} = \ket{\spin_{\textnormal{tot}}, M, \cdots},  \\
-         M = -\spin_{\textnormal{tot}}, - -\spin_{\textnormal{tot}} +1, \cdots,  -\spin_{\textnormal{tot}}, \\          \spin_{\textnormal{tot}} \leq NS, 
-    \end{array}
-\end{equation}
-
-where $M$ is the eigenvalue of the total magnetization, and where $\spin_{\textnormal{tot}}^2 = \spin_{\textnormal{tot}}(\spin_{\textnormal{tot}}+1)$ is the $SU(2)$-Casimir invariant. Note that, if the model is translationally invariant, the ${\bf k}$-momentum is also a good quantum number. \\
-
-\underline{The Antiferromagnet}
-
-The antiferromagnetic ground state is, in general, far more complicated than the ferromagnetic ground state. There are a series of theorems on the ground states, which hold for bipartite antiferromagnetic Hamiltonians. Consider two lattices, $A$ and $B$, then the staggered magnetization operator on these sublattices is given by 
-
-
-\begin{equation}
-    \spin^{\textnormal{stagg}} = \sum_{i \in A} \spin_{i}^z - \sum_{i \in B} \spin_{i}^z.
-\end{equation}
-
-The Ising configuration form the basis set 
-
-$$
-\prod_{i=1}^{N} \ket{S, m_{i}^\alpha}_{i} \begin{array}{c}
-     \textnormal{ where $\ket{S, m_i}_i$ is an eigenstate of $\spin_i^2, \spin_i^z$ } \\
-     \textnormal{ with eigenvalues $S(S+1), m_i$ respectively}.
-\end{array}
-$$
-
-The Néel state maximizes the staggered magnetization and is given by the Ising configuration
-
-\begin{align}
-    \ket{\Psi^{\textnormal{{Néel}}}} &= \prod_{i=1}^{N} \ket{S, \eta_i S_i}, & \eta_i &= \left\{\begin{array}{cc}
-        1 & i \in A  \\
-        -1 & i \in B
-    \end{array} \right.
-\end{align}
-
-Generally, the Néel state is not an eigenstate of the Hamiltonian, since the spin flip terms $\spin_i^+ \spin_j^-$
-connect the Néel state to other non-Néel Ising spin configurations. Now, it is convenient to rotate the spin axes on the $B$-sublattice about the $z$-axis, which amounts to the unitary transformation 
-
-\begin{equation}\begin{array}{c}
-     \spin_i^+ \rightarrow - \tilde{\spin}_i^+ \\
-     \spin_i^- \rightarrow - \tilde{\spin}_i^- \\
-     \spin_i^z \rightarrow + \tilde{\spin}_i^z, 
-\end{array}
-    \ket{S, m_i}_i \rightarrow \ket{S, \tilde{m}_i}_i = \left\{\begin{array}{cc}
-        \ket{S, m_i}_i & i \in A \\
-        (1-)^{S+m_i} \ket{S, m_i}_i & i \in B 
-    \end{array} \right., 
-    \label{HH_su2_rotation}
-\end{equation}
-
-where $\tilde{m}_i$ are eigenvalues of $\spin_i^z$ and $\tilde{\spin}_i^z$ on $A$ and $B$ sublattices, respectively. Retricting to a total magnetic spin number $M$, on which all wave functions can be expressed as, yields the following representation
-
-\begin{equation}
-    \ket{\Psi^M} = \sum_{\alpha} f_{\alpha}^M \ket{\tilde{\Psi}^M_{\alpha}}, \textnormal{ where } \ket{\tilde{\Psi}^M_{\alpha}} = \prod_{\sum_{i} \tilde{m}_i^\alpha = M} \ket{S, \tilde{m}_i^\alpha}. 
-\end{equation}
-
-Then, the following theorems, first presented by Marshall and then extended by Lieb and Mattis, arise
-
-\begin{tcolorbox}[title = Marshall's theorems]
-
-\begin{theo}
-    Consider the Hamiltonian given by \cref{auerbach's HH hamiltonian}, of a bipartite lattice with antiferromagnetic exchanges $J_{ij} \geq 0$ which connect two sublattices $A$ and $B$, such that any two sites of the lattic are connected by a sequence of finite exchanges between intermediary sties. In any allowed $M$-sector, the lowest energy state $\ket{\Psi^M_0}$ can be chosen to have positive-definite coefficients in the rotated Ising basis $\ket{\tilde{\Psi}^M_{\alpha}}$ ie.
-    
-    \begin{align}
-        \ket{\Psi^M_0} &= \sum_{\alpha} f_{\alpha}^M \ket{\tilde{\Psi}^M_{\alpha}}, & \{f_{\alpha}^M\}_{\alpha} > 0 \\
-        &= \sum_{\alpha} (-1)^{\Gamma(\alpha)} f_{\alpha}^M \ket{{\Psi}^M_{\alpha}}, & \Gamma(\alpha) = \sum_{i \in B} (S + m_i^\alpha).
-    \end{align}
-    \label{Marshall_theo_1}
-\end{theo}
-
-\begin{theo}
-The absolute ground state $\ket{\Omega}$, for equal size sublattices $A$ and $B$, is a single of total spin
-
-$$
-    {\spin}_{\textnormal{tot}} \ket{\Omega}= 0.
-$$
-\label{Marshall_theo_2}
-\end{theo}
-\end{tcolorbox}
-
-Note that not all total singlets obey the so-called Marshal sign criterion, and conversely not all Marshall sign-obeying states are singlets of the total spin. The ground state of the Heisenberg Hamiltonian must obey both conditions. \\
-
-\begin{proof}
-
-Consider an $SU(2)-$rotation, under which the spin operators and Ising basis transform as \cref{HH_su2_rotation}. The Heisenberg Hamiltonian then reads 
-
-\begin{equation}
-    \tilde{{\bf H}} = \tilde{{\bf H}}^{zz} + \tilde{{\bf H}}^{xy}, \begin{array}{c}
-        \tilde{{\bf H}}^{zz} = \sum_{ij \in \Lambda \subset Z^{d}} |J_{ij}| \spin_i^z \tilde{\spin}_j^z, \\  
-         \\
-        \tilde{{\bf H}}^{xy} = - \frac{1}{2} \sum_{ij \in \Lambda \subset Z^{d}} |J_{ij}| (\spin_i^+ \tilde{\spin}_j^- + \spin_i^- \tilde{\spin}_j^+), \\  
-    \end{array}
-    \label{auerbach's HH hamiltonian}
-\end{equation}
-
-wherein, in this new sublattice-rotated representation,
-
-\begin{equation*}
-    \begin{array}{cc}
-        \textnormal{the longitudinal term, $\tilde{{\bf H}}^{zz}$, is diagonal in } & \textnormal{and where the transverse   $\tilde{{\bf H}}^{xy}$ has} \\
-        \textnormal{the rotated Ising configuration } & \textnormal{ non-positive matrix elements} \\
-        \tilde{{\bf H}}^{zz}\ket{\tilde{\Phi}_{\alpha}} = e_{\alpha} \ket{\tilde{\Phi}_{\alpha}} &
-        \bra{\tilde{\Phi}_{\alpha}} \tilde{{\bf H}}^{xy}  \ket{\tilde{\Phi}_{\beta}} = -|K_{\alpha \beta}|.
-    \end{array}
-\end{equation*}
-
-Both of these matrix representations induce the following eigenvalue equation on the $f$-coefficients, 
-
-\begin{equation*}\begin{split}
-    \tilde{{\bf H}} \ket{\tilde{\Phi}_{\alpha}} = E \ket{\tilde{\Phi}_{\alpha}} \Rightarrow - \sum_{\beta} |K_{\alpha \beta}| f_{\beta} + e_{\alpha} f_{\alpha} = E f_{\alpha}. \\
-    \begin{array}{c}
-         \textnormal{Consider then the trial function} \\
-          \ket{\tilde{\Psi}} = \sum_{\alpha} |f_{\alpha}| \ket{\tilde{\Psi}_{\alpha}} \\
-          \textnormal{ whose energy is }
-    \end{array}
-    \bra{\tilde{\Omega}} \tilde{{\bf H}} \ket{\tilde{\Omega}} &=  \sum_{\alpha} e_{\alpha} |f_{\alpha}|^2 - \sum_{\alpha \beta} |K_{\alpha \beta}| |f_{\alpha}| |f_{\beta}| \\
-    & \leq \sum_{\alpha} e_{\alpha} |f_{\alpha}|^2 - \sum_{\alpha \beta} |K_{\alpha \beta}| f_{\alpha} f_{\beta} = E.
-\end{split}
-\end{equation*}
-
-This state must, therefore, also be a ground state and satisfy the eigenvalue equation 
-
-$$
-    - \sum_{\beta} |K_{\alpha \beta}| |f_{\beta}| + e_{\alpha} |f_{\alpha}| = E |f_{\alpha}|.
-$$
-
-The $\ket{\tilde{\Psi}}$-states are not eigenstates of the rotated Hamiltonian, except in the case in which $M = N S$ which is the case of a one-state space. Therefore, $e_{\alpha} > E, \blanky \forall \alpha$. Then, 
-
-\begin{equation}
-    \begin{split}
-    &(e_{\alpha} - E) f_{\alpha }= \sum_{\beta} |K_{\alpha \beta}| f_\beta \\
-    &(e_{\alpha} - E) |f_{\alpha}|= \sum_{\beta} |K_{\alpha \beta}| |f_\beta|  
-    \end{split} \Rightarrow \bigg|\sum_{\beta} |K_{\alpha \beta}| f_{\beta}\bigg| = \sum_{\beta} |K_{\alpha \beta}| |f_{\beta}| \Rightarrow f_{\beta} \geq 0.
-\end{equation}
-
-Thus, the trial state and the ground states are the same, upto phase factors: $\ket{\tilde{\Phi}_{\alpha}} = \pm \ket{\Omega}$. An even stronger condition on $f_{\beta}$ can be imposed.
-
-\begin{lemma}
-   $f_{\beta} > 0, \blanky \forall \beta$.
-\end{lemma}
-
-\begin{proof}
-In effect, any Ising configuration with total magnetization $M$ is connected to all other configurations in the same sector by successive application of the pairwise spin flip operator ${\bf K}_{\alpha \beta} \approx (\sum_{i,j} \spin_i^+ \tilde{\spin}_j^- + \spin_i^- \tilde{\spin}_j^+)_{\alpha \beta}$. Thus, if $f_{\alpha}$ vanishes for some $\alpha$, then $f_{\beta}$ must vanish for all other $\beta$ in the same $M$-sector. Since, by design, the ground state is such that in its expansions there is at least one non-zero coefficient, it follows that $f_{\beta} > 0$, $\forall{\beta}$, thus proving the first theorem. 
-\end{proof}
-
-\begin{corr}
-For any fixed $M$, $\ket{\Omega}$ is non-degenerate.
-\end{corr}
-
-\begin{proof}
-In effect, since all $f_{\beta}$s are non-zero, there cannot be an orthogonal state to $\ket{\Omega}$ that has only positive definite coefficients in said $M$ subspace. \\
-\end{proof}
-
-For \cref{Marshall_theo_2} to hold, the ground state of the $M$-sector must have minimally possible total spin, 
-
-\begin{lemma}
-   For a bipartite antiferromagnetic Heisenberg model, 
-   
-   $$
-   (\spin_{\textnormal{tot}})^2 \ket{\Psi^M} = M(M+1)\ket{\Psi^M}
-   $$
-\end{lemma}
-
-\begin{proof}
-Consider the infinite range Hamiltonian on a bipartite lattice with equal number of sites on the two sublattices, 
-
-$$
-    {\bf H}^{\infty} = J \sum_{\substack{
-    i \in A \\
-    j \in B}} \vec{\spin}_i \cdot \vec{\spin}_j = J \spin_{\textnormal{tot}}^A \cdot \spin_{\textnormal{tot}}^B
-$$
-
-This problem is thus trivially solvable, since it is a two spin problem using $\spin_{\textnormal{tot}} = \spin_{\textnormal{tot}}^A + \spin_{\textnormal{tot}}^B$, since $\spin_{\textnormal{tot}}^A \cdot \spin_{\textnormal{tot}}^B = \frac{1}{2} \bigg( \spin_{\textnormal{tot}}^2 - (\spin_{\textnormal{tot}}^A)^2 - (\spin_{\textnormal{tot}}^B)^2 \bigg)$.
-Therefore, the possible values of the total spin operators are 
-
-$$
-    \spin_{\textnormal{tot}}^A, \spin_{\textnormal{tot}}^B = 0, 1, \cdots, \frac{NS}{2},
-$$
-
-which for equal size sublattice means that 
-
-\begin{equation}
-    0 \leq \spin_{\textnormal{tot}} \leq NS.
-    \label{infinite_range_HH_total_spin}
-\end{equation}
-
-This infinite-range Hamiltonian's eigenvalues are then 
-
-\begin{equation}
-    E^{\infty} (\spin_{\textnormal{tot}}) = \frac{J}{2} \bigg[\spin_{\textnormal{tot}}(\spin_{\textnormal{tot}} + 1) - \spin_{\textnormal{tot}}^A(\spin_{\textnormal{tot}}^A+1) - \spin_{\textnormal{tot}}^B(\spin_{\textnormal{tot}}^B)\bigg],
-\end{equation}
-
-which are monotonically increasing with $\spin_{\textnormal{tot}}$, and since $\spin_{\textnormal{tot}} > M$, the ground state in a given $M$-sector has 
-
-$$
-\spin_{\textnormal{tot}} = M.
-$$
-
-Now, note that both the Heisenberg Hamiltonian and the infinite range Hamiltonian satisfy the requirements for the first of Marshall's theorems, \cref{Marshall_theo_1}, and thus their ground states have Marshall signs. Therefore, their overlap is non-zero, since it involves a sum over positive number, and these must have the same total spin quantum numbers. Therefore, the lowest energy state of ${\bf H}$ in the $M$-sector has spin $\spin_{\textnormal{tot}} = M$. Since all allowed values of total spin $\spin_{\textnormal{tot}}' > M$ have members in the sector with magnetization $M$, then the energy in terms of the total spin obeys 
-
-$$
-    \forall \spin_{\textnormal{tot}}' > \spin_{\textnormal{tot}} \Rightarrow E(\spin_{\textnormal{tot}}') > E(\spin_{\textnormal{tot}}),
-$$
-
-ie. the energy is a monotonically increasing function of the total spin. Now, consider the $(M=0)$-sector. This inequality proves that the ground state must have minimal possible total spin $\spin_{\textnormal{tot}}$ which is zero, according to \cref{infinite_range_HH_total_spin}. Thus concluding the proof of \cref{Marshall_theo_2}.
-\end{proof}
-\end{proof}
-
-\subsubsection{Ferromagnetic Ground States}
-
-\subsubsection{Half-Odd Integer Spin Chains}
-
-%%% LO DEL TWIST OPERATOR. 
-
-\clearpage
-
-\subsection{XXZ-model}
-
-Consider the $d=1$-XXZ-Heisenberg model, with its Hamiltonian (written in its longitudinal and transverse terms) as 
-
-\begin{equation}
-    \Hamiltonian_{\mathds{X}\mathds{X}\mathds{Z}} = J \sum_{n=1}^{N} \bigg( \frac{1}{2} (\spin^{+}_{n} \spin^{-}_{n+1} + \spin^{-}_{n} \spin^{+}_{n+1}) + \Delta \spin^{z}_{n} \spin_{n+1}^{z} \bigg),
-    %\label{XXZ hamiltonian}
-\end{equation}
-
-where the effect of the transverse part, for spin-$\frac{1}{2}$ particles, is nothing but to interchange up and down spins, $\ket{\uparrow\downarrow} \Leftrightarrow \ket{\downarrow\uparrow}$, upto a factor of $\frac{1}{2}$. This model has a number of symmetries, leading to good quantum numbers such as wave vector ${\bf q}$ (translation), ${\bf M}^z$ (rotation about $z$-axis), ${\bf S}_{\textnormal{tot}}$ (for general rotations, $|\Delta| = 1$) and parity (spin inversion). The most important link between theory and experiment are the spin correlation functions or response dynamical structure factors, which for a spin chain are defined as follows
-
-\begin{equation}
-    \begin{split}
-        \bm{\mathcal S}^{\alpha, \alpha}(q, \omega) = \sum_{n} \int dt e^{i(qn-\omega t)} \langle \spin_n^{\alpha} \spin_{0}^{\alpha}(t=0) \rangle, \\
-        \bm{\mathcal S}^{\alpha, \alpha}(q) = \sum_{n} e^{iqn} \langle {\bf S}_n^{\alpha} {\bf S}_{0}^{\alpha} \rangle = \frac{1}{2\pi} \int d\omega \blanky \bm{\mathcal S}^{\alpha, \alpha}(q, \omega),
-    \end{split}
-\end{equation}
-
-where $\bm{\mathcal S}(q, \omega)$ determines the cross-section for scattering experiments as well as line shapes in NMR and ESR experiments. A useful sum rule is the total intensity, obtained by integrating $\bm{\mathcal S}(q)$ over frequency and wave vector, 
-
-\begin{equation}
-    \frac{1}{4\pi^2} \int d\omega \bm{\mathcal S}^{\alpha, \alpha}(q, \omega) = \frac{1}{2 \pi} \int dq \bm{\mathcal S}^{\alpha, \alpha}(q) = \langle (\spin_0^\alpha)^2 \rangle,
-\end{equation}
-
-which is simply equal to $\frac{1}{3} \bm{\mathcal S}( \bm{\mathcal S}+ 1)$ in the isotropic case. \\
-
-The XXZ-Heisenberg chain is an important model to describe real material and is the most important paradigm of low-dimensional quantum magnetism, as it allows to introduce many scenarios, such as broken symmetry, the gapless Luttinger liquid, the Kosterlitz-Thouless phase transition, gapped and gapless excitation continua. Consider a Heisenberg XXZ chain supplemented by and external magnetic field. \\
-
-\paragraph{\textbf{Ferromagnetic phase: }}
-
-For $\Delta < -1$, the XXZ-chain is in the ferromagnetic Ising phase: the ground state is the saturated state, with all its spins aligned in either the $z$-direction or $-z$-direction. This entails that the classical ground state has magnetization ${\bf M}^z = \pm \frac{N}{2}$, where $N$ is the number of lattice sites. This is a phase with broken symmetry since the ground state does not exhibit the discrete symmetry of spin reflection $\spin^z \rightarrow -\spin^z$, under which the Hamiltonian is invariant. Furthermore, when an external magnetic field in the $z$-axis is considered, and additional term is included into the Hamiltonian, namely a Zeeman interaction 
-
-$$
-    {\bf H}_{\textnormal{Zeeman}} = - g \mu_B H \sum_{n} \spin^z.
-$$
-
-Since the XXZ-Hamiltonian commutes with the magnetization operator, the external magnetic field results in an additional energy contribution $-g \mu_B H {\bf M}^z$, without affecting the wave-functions. The symmetry under spin reflection is lifted and the saturated ground state is stabilized. The low-lying excited states in the ferromagnetic phase are magnons with the total spin quantum number ${\bf M}^z_{\textnormal{tot}} = \frac{1}{2} N - 1$ and the dispersion law, which is valid for general spin $S$
-
-\begin{equation}
-    \epsilon(q) = 2 J S (1-\cos(q) - (\Delta + 1)) + 2g \mu_B H S. 
-    \label{XXZ-spectrum}
-\end{equation}
-
-These states are exact eigenstates of the XXZ-Hamiltonian, In zero field, the excitation spectrum has a gap at $q=0$ of magnitude $|\Delta| - 1$ for $\Delta < -1$. At $\Delta = -1$, the discrete spin-reflection symmetry generalizes to a continuous rotation symmetry and the spectrum thus becomes gapless. This is a consequence of Goldstone's theorem: the breaking of a continuous symmetry in the ground state results in the emergence of a gapless excitation mode. Whereas the ground state exhibit long range order, the large phase space available to the low-lying excitations in 1D leads to exponential decay of correlations at arbitrarily small finite temperatures following the Theorem of Mermin and Wagner. \\
-
-%%% da hell are magnons??????
-
-Two interesting consequences of \cref{XXZ-spectrum} quickly arise, which can be generalized to any $XXZ$-type Hamiltonian conserving the total magnetization: 
-
-\begin{enumerate}
-    \item For sufficiently strong external magnetic field, the classical saturated state is forced to be the ground state for arbitrary value of $\Delta$ and the lowest excitations are exactly known. If the necessary magnetic fields are within experimentally accessible range, this can be used for an experimental determination of the exchange constants from the magnon dispersions (an example in 2D are recent neutron scattering experiments on $Cs_2 Cu Cl_4$. \\
-    \item The ferromagnetic ground state becomes unstable when the lows spin wave frequency becomes negative. This allows to determine eg. the boundary of the ferromagnetic phase for $\Delta > -1$ in an external field as $H = H_c$ with $g \mu_B H_c = \Delta + 1$. 
-\end{enumerate}
-
-\blanky \\
-
-\paragraph{\textbf{Néel phase:}}
-
-For $\Delta > +1$, the XXZ-chain is in the antiferromagnetic Ising or Néel phase with, in the thermodynamic limit, broken symmetry and one from 2 degenerate ground states, the $S=\frac{1}{2}$ remnants of the classical Néel states. The spatial period is $2a$, and the states are described in the reduced Brillouin zone with wave vectors $0 \leq q \leq \frac{\pi}{a}$. The ground states have zero magnetisation but finite sublattice magnetization, 
-
-$$
-{\bf N}^z = \sum_{n} (-1)^n \spin_n^z,
-$$
-
-and long range order in the corresponding correlation function. In contrast to the ferromagnet, however, quantum fluctuations prevent the order from being complete since the sublattice magnetization does not commute with the XXZ-Hamiltonian. For periodic boundary conditions and large but finite $N$, as in the situation in numerical approaches, the two ground states mix with energy separation $\propto e^{\textnormal{-const}\times N}$, as $N \rightarrow \infty$. Then invariance under translation by the original lattice constant $a$ is restored and the original Brillouin zone can be used, $\textnormal{BZ} = \{q | 0 \leq q \leq \frac{2\pi}{a}\}$. \\
-
-The elementary excitations in the antiferromagnetic Ising phase are described most clearly close to the Ising limit $\delta \rightarrow \infty$, starting from one of the two ideal Néel states: turning around one spin breaks two bonds and leads to a state with energy $\Delta$, degenerate with all state resulting from turning around an arbitrary number of subsequent spins. These states have total magnetization ${\bf M}^z = \pm 1$, response 0 for an odd, and response even number of turned spins. They are appropriately called two-domain wall states since each of the two broken bonds mediates between two different Néel states. They are appropriately called two-domain wall states, since each of the two broken bonds mediates between two different Néel states. The total number of these states is $N(N-1)$, 
-
-\begin{itemize}
-    \item there are $\frac{N^2}{4}$ states with total magnetization ${\bf M}^z= 1$ and ${\bf M}^z= -1$ (number of turned spins odd),
-    \item and $\frac{N^2}{2}-N$ states with null magnetization (number of spins turned even). 
-\end{itemize}
-
-These states are no more eigenstates when $\Delta^{-1}$ is finite, but for $\Delta^{-1} << 1$, they can be dealt with in perturbation theory, leading to the excitation spectrum in the first order in $\frac{1}{\Delta}$
-
-$$
-    \omega(q,k) = \Delta + 2 \cos q \cos 2\Phi = \epsilon \left(\frac{\epsilon}{2} + \Phi\right) + \epsilon \left(\frac{\epsilon}{2} - \Phi\right),
-$$
-
-with $\epsilon(k) = \frac{\Delta}{2} + \cos 2k$, where $q$ is the total momentum and takes values $q = \frac{2\pi \ell}{N}, \ell \in \mathds{Z}_{[1, \frac{N}{2}]}$, $\Phi$ is the wave vector related to the superposition of domain walls with different distances and for ${\bf M}^z = \pm 1$ takes values $\Phi = \frac{m\pi}{N+2}$ with $m \in \mathds{Z}_{[1, \frac{N}{2}]}$. $\Phi$ is, in essence, a relative momentum. \\ 
-
-%%% Página 8 y la figurita de las DWs.
-
-\clearpage
-
-\paragraph{\textbf{XY phase}}
-
-For $-1 < \Delta < 1$ and zero external field, the XXZ-chain undergoes an XY phase, characterized by uniaxial symmetry of the easy-plane type and a gapless excitation continuum. Whereas the full analysis of this phase for general $\Delta$, requires the use of bosonization and Bethe ansatz, a somewhat simpler approach is based on the mapping of $S = \frac{1}{2}$ spin operators in 1D to spinless fermions via the non-local Jordan Wigner transformations, wherein the mapping reads:
-
-\begin{align}
-    \spin_{n}^+ &= f_n^\dagger e^{i\pi \sum_{j = 1} f_p^\dagger f_p}, & {\bf S}_n^z &= f_n^\dagger f_n - \frac{1}{2}.
-\end{align}
-
-When a fermion is at site $n$, the spin projection is thus ${\bf S}_n^z = \pm \frac{1}{2}$. Thus, in terms of the fermionic operators, the XXZ-Hamiltonian reads 
-
-\begin{equation}
-    {\bf H}_{\mathds{X}\mathds{X}\mathds{Z}} = J \sum_{n} \bigg[ \frac{1}{2} (f_n^\dagger f_{n+1} + f_{n+1}^\dagger f_n) + \Delta \left(f_n^\dagger f_n - \frac{1}{2}\right) \left(f_{n+1}^\dagger f_{n+1} - \frac{1}{2}\right) - g\mu_B H \left(f_n^\dagger f_n - \frac{1}{2})\right) \bigg].
-    \label{XXZ fermionic hamiltonian}
-\end{equation}
-
-For general $\Delta$, the XXZ-chain is thus equivalent to an interacting 1D fermion system. In the $\Delta = 0$ case, this model simplifies itself to an integrable XX-chain, wherein the fermion chain becomes noninteracting and has a simpler analytical solution. \\
-
-\paragraph{XX-model: $\Delta = 0$ }
-%\subsection{XX-model}
-
-Consider the XX-Heisenberg model, with its Hamiltonian given in terms of the traditional $\frac{1}{2}$-spin operators ie. 
-
-\begin{equation}
-    {\bf H}_{\mathds{X}\mathds{X}} = J \sum_{i=1}^{L} ({\bf S}_{j}^{x} {\bf S}_{j+1}^{x} + {\bf S}_{j}^{y} {\bf S}_{j+1}^{y}) - \lambda \sum_{j=1}^{L} {\bf S}_{j}^{z},
-    \label{XX hamiltonian}
-\end{equation}
-
-which describes interacting spins in a one-dimensional chain, with periodic boundary conditions. \eqref{XX hamiltonian}'s first terms represents nearest neighbour interactions in the $x$ and $y-$directions  interactions, with $J$ being either positive or negative and quantifying the strength and type of interactions, while the second term represents a magnetic field of strength $\lambda$, applied in the $z$-direction of the spins. \\
-
-{\textbf{Exact solution}}
-
-In order to solve this problem, it is necessary to rewrite \eqref{XX hamiltonian} and apply a Jordan-Wigner transformation, mapping the spin problem into a fermionic problem. But first, it is convenient to write the spin-operators in terms of the raising and lowering $\mathfrak{su}(2)$-operators, ie.
-
-$$
-    \spin_j^{\pm} = \spin_j^{x} \pm i \spin_j^{y} \blanky \Rightarrow \blanky \begin{array}{c}
-         \spin_{j}^x = \frac{1}{2} (\spin_j^+ + \spin_j^-), \\
-          \\
-         \spin_{j}^y = \frac{1}{2i} (\spin_j^+ - \spin_j^-). 
-    \end{array} \Rightarrow {\bf H}_{\mathds{X}\mathds{X}\mathds{Z}} = \frac{J}{2} \sum_{i=1}^{L} ({\bf S}_{j}^{+} {\bf S}_{j+1}^{-} + {\bf S}_{j}^{-} {\bf S}_{j+1}^{+}) - \lambda \sum_{j=1}^{L} {\bf S}_{j}^{z}
-     \label{raising Hamiltonian}
-$$
-
-where the interacting terms in the first summation, flip neighboring spins if said spins are anti-aligned\footnote{In effect, consider for example, a two-spin problem. Then, the interaction term is given by 
-
-$$
-\spin_1^+ \spin_2^- + \spin_1^- \spin_2^+,
-$$
-
-and consider an anti-aligned state $\ket{\downarrow\uparrow}$. Then, the action of the previous two-spin operator over this state yields
-
-$$
-(\spin_1^+ \spin_2^- + \spin_1^- \spin_2^+) \ket{\downarrow\uparrow} = \ket{\uparrow\downarrow} + 0,
-$$
-
-since $\spin_1^- \spin_2^+$ destroys the state. Similarly, $(\spin_1^+ \spin_2^- + \spin_1^- \spin_2^+)\ket{\uparrow\downarrow} = \ket{\downarrow\uparrow}$. However, note that, should both spins be either up or down, the state remain invariant under the action of the two-spin operator. 
-
-\begin{align}
-    (\spin_1^+ \spin_2^- + \spin_1^- \spin_2^+) \ket{\downarrow\downarrow} = \ket{\downarrow\downarrow} \textnormal{ and } (\spin_1^+ \spin_2^- + \spin_1^- \spin_2^+) \ket{\uparrow\uparrow} = \ket{\uparrow\uparrow} 
-\end{align}}. In addition, the XX-Hamiltonian has a total magnetization symmetry, since the Hamiltonian given by \eqref{raising Hamiltonian} conmutes with the magnetization operator. \\
-
-Under the Jordan-Wigner map, nearest-neighbours spin flipping is translated into to nearest-neighbours fermionic hopping, ie. $\spin_{j}^{+} \spin_{j+1}^{-} = f_{j}^{\dagger} f_{j+1}$ and $\spin_{j}^{-} \spin_{j+1}^{+} = f_{j+1}^{\dagger} f_{j}$. However, due to the boundary conditions' periodicity, the XX-Hamiltonian cannot be rewritten as a fermionic model yet since (it will contain an additional boundary term), for example, the fermionic counterparts to the $\spin_{L}^{+} \spin_{1}^{-}$ interaction are highly non-local operators and are not desirable. Indeed, under the Jordan-Wigner mapping 
-
-\begin{equation*}
-    \spin_{L}^{+} \spin_{1}^{-} = f_L^\dagger \exp\bigg(-i\pi \sum_{\ell = 1}^{L-1} f_\ell^\dagger f_\ell \bigg) f_1 \Rightarrow \begin{array}{cc}
-       \spin_{L}^{+} \spin_{1}^{-} = \mathcal{Q} f_L^\dagger f_1 \\
-       \spin_{L}^{-} \spin_{1}^{+} = \mathcal{Q} f_1^\dagger f_L,
-    \end{array}
-\end{equation*}
-
-
-then \eqref{raising Hamiltonian} can be rewritten as 
-
-\begin{equation}
-    {\bf H}_{\mathds{X}\mathds{X}} = \frac{J}{2} \sum_{i=1}^{L-1} \bigg(f_{j}^{\dagger} f_{j+1} + f_{j+1}^{\dagger} f_j\bigg) - \lambda \sum_{j=1}^{L} \bigg(f_{j}^{\dagger} f_{j} - \frac{1}{2}\bigg) + \frac{J}{2} \mathcal{Q} (f_L^\dagger f_1 + f_1^\dagger f_L),
-    \label{fermionic no boundary}
-\end{equation}
-
-where the first term accounts for fermionic nearest-neighbour hopping, the second term accounts for the magnetic field, and the third term being the non-local boundary term. Note that this fermionic Hamiltonian hasn't got any type of boundary conditions, since the $L$-lattice site is disconnected in any way whatsoever from the first lattice site. Then, the standard procedure is to add and subtract terms from the Hamiltonian, so that the nearest-neighbour hopping term in \eqref{fermionic no boundary} can also have periodic boundary conditions, thus yielding 
-
-\begin{equation}
-    {\bf H}_{\mathds{X}\mathds{X}}  = \frac{J}{2} \sum_{i=1}^{L} \bigg(f_{j}^{\dagger} f_{j+1} + f_{j+1}^{\dagger} f_j\bigg) - \lambda \sum_{j=1}^{L} \bigg(f_{j}^{\dagger} f_{j} - \frac{1}{2}\bigg) + \frac{J}{2} (\mathcal{Q}-1) (f_L^\dagger f_1 + f_1^\dagger f_L),
-    \label{true fermionic hamiltonian}
-\end{equation}
-
-where now the fermionic hopping term has the standard boundary conditions. The third term, since it does not involve any type of summation over lattice sites, only contributes at $\mathcal{O}\bigg(\frac{1}{L}\bigg)$-order to any microscopic quantity. In the thermodynamic limit, this non-local term can be dropped, thus yielding an $\mathcal{O}(L)$-Hamiltonian given by 
-
-\begin{equation}
-    {\bf H}_{\mathds{X}\mathds{X}}  = \frac{J}{2} \sum_{i=1}^{L} \bigg(f_{j}^{\dagger} f_{j+1} + f_{j+1}^{\dagger} f_j - \lambda f_{j}^{\dagger} f_{j}\bigg) + \frac{\lambda L}{2},
-    \label{L-order fermionic hamiltonian}
-\end{equation}
-
-which is now fully cyclic and where its operators obey fermionic algebras. This Hamiltonian can then be diagonalized via a discrete Fourier transform on the fermionic operators 
-
-\begin{align}
-    f_j &= \frac{1}{\sqrt{L}} \sum_{\substack{k = {2\pi m/L}\\
-    m \in \mathds{Z}_{[1, L]} }}
-                  e^{ijk} d_k, & f_j^{\dagger} &=\frac{1}{\sqrt{L}}  \sum_{\substack{k = {2\pi m/L}\\
-    m \in \mathds{Z}_{[1, L]}}} e^{-ijk} d_k^{\dagger},
-\end{align}
-
-with the inverse transformation given by 
-
-\begin{align}
-    d_k &= \frac{1}{\sqrt{L}} \sum_{j=1}^{L}
-                  e^{-ikj} f_j &  d_k^{\dagger} &= \frac{1}{\sqrt{L}} \sum_{j=1}^{L}
-                  e^{ikj} f_j^{\dagger}.
-\end{align}
-
-Note that the $d_k$-operators follow the standard fermionic anticonmutation algebra. Note as well, that the $f_j$-vacuum state, defined such that $f_j \ket{0}_f = 0, \blanky \forall j$, is the same as the $d_k$-vacuum state, defined such that $d_j \ket{0}_d = 0, \blanky \forall k$, ie. $\ket{0}_f = \ket{0}_d$. Another important relationship is the Fourier transform's consistency condition, ie. 
-
-$$
-\sum_{j=1}^{L} e^{i(k-q)j} = L \delta_{kq}.
-$$
-
-Under the Fourier transform, \eqref{L-order fermionic hamiltonian}'s terms are mapped as follows 
-
-\begin{align*} 
-    \sum_{j=1}^{L} f_j^\dagger f_{j+1} &= \sum_{j=1}^{L} \frac{1}{L} \sum_{k, \blanky q} e^{-ikj} e^{iq(j+1)} d_k^\dagger d_q = \sum_{j=1}^{L} \frac{1}{L} \sum_{k, \blanky q} e^{i(q-k)j} e^{iq} d_k^\dagger d_q \\
-    &= \sum_{k, \blanky q} \frac{1}{L} e^{iq} \delta_{qk} d_k^\dagger d_q = \sum_{k} e^{ik} d_k^\dagger d_k \\
-    \sum_{j=1}^{L} f_{j+1}^\dagger f_{j} &=  \sum_{j=1}^{L} \frac{1}{L} \sum_{k, \blanky q} e^{-ik(j+1)} e^{iqj} d_k^\dagger d_q = \sum_{j=1}^{L} \frac{1}{L} \sum_{k, \blanky q} e^{i(q-k)j} e^{-ik} d_k^\dagger d_q \\
-    &= \sum_{k, \blanky q} \frac{1}{L} e^{-ik} \delta_{qk} d_k^\dagger d_q = \sum_{k} e^{-ik} d_k^\dagger d_k \\
-    \sum_{j=1}^{L} f_{j}^\dagger f_{j} &=  \sum_{j=1}^{L} \frac{1}{L} \sum_{k, \blanky q} e^{-ikj} e^{iqj} d_k^\dagger d_q = \sum_{j=1}^{L} \frac{1}{L} \sum_{k, \blanky q} e^{i(q-k)j}  d_k^\dagger d_q \\
-    &= \sum_{k, \blanky q} \frac{1}{L} \delta_{qk} d_k^\dagger d_q = \sum_{k} d_k^\dagger d_k \\ &\Rightarrow 
-    {\bf H}_{\mathds{X}\mathds{X}} = \frac{J}{2} \sum_{k} \bigg(e^{ik} d_{k}^{\dagger} d_{k} + e^{-ik} d_{k}^{\dagger} d_k - \lambda d_{k}^{\dagger} d_{k}\bigg) + \frac{\lambda L}{2} = \sum_{k} \bigg(J \cos k - \lambda \bigg)d_{k}^{\dagger} d_{k} + \frac{\lambda L}{2},
-\end{align*} 
-
-which can be rewritten as 
-
-\begin{align}
-    \alignedbox{{\bf H}_{\mathds{X}\mathds{X}}  }{= \sum_{k} \epsilon_k d_k^\dagger d_{k} + \frac{\lambda L}{2} \begin{array}{c}
-         \textnormal{ with the eigenvalues being given by } \epsilon_k = J \cos k - \lambda + \frac{\lambda L}{2} \\
-         \textnormal{ and the eigenvectors being given by } \ket{E_n} = \prod_{n}  (d_k^\dagger)^n, \\
-         \textnormal{                    with eigenvalue $E_n = \sum_{n} \epsilon_n $}  
-    \end{array}}
-\end{align}
-
-where $k = \frac{2\pi m}{L}, \blanky m = -\frac{L}{2} + 1, \cdots \frac{L}{2}, $ ie. $k \in (-\pi, \pi]$, this is called the first Brillouin zone. Thus the problem has been solved. As for its thermal properties, since this is a fermionic model, the fermions will obey the Fermi-Dirac distribution, ie. 
-
-\begin{equation}
-    \mathcal{N}_{jk} = \langle d_j^\dagger d_k \rangle_{\textnormal{th}} =  \frac{1}{1+e^{\beta \epsilon_k + \mu}} \delta_{jk} 
-\end{equation} \\
-
-\clearpage
-
-\textbf{Quantum Phase Transition}
-
-Note that each of the fermion states can be either occupied or vacant, corresponding to the dimension $2^N$ of the Hilbert space for $N$ spins with $S = \frac{1}{2}$. The ground state, the state with the lowest energy, has all levels with $\epsilon(k) \leq 0$ and can then be defined such that
-
-\begin{equation}
-    \bra{E_G} d_k^\dagger d_k \ket{E_G} = 1 \textnormal{ if } \epsilon_k \leq 0 \textnormal{ and } \bra{E_G} d_k^\dagger d_k \ket{E_G} = 0 \textnormal{ if } \epsilon_k > 0.
-\end{equation}
-
-Then the groundstate energy is given by 
-
-\begin{equation}
-    E_G = \sum_{k} \epsilon_k \bra{E_G} d_k^\dagger d_k \ket{E_G}.
-\end{equation}
-
-Now, there exists a momenta $k_F$ such that $\epsilon_{k_F} = 0$, with $k_F$ being the Fermi momentum, ie. $\epsilon_{k_f} = J \cos k_f - \lambda$. The previous equation depends both on the coupling strength $J$ and the magnetic field strength $\lambda$. From the previous equation some special cases arise, namely 
-
-\begin{itemize}
-    \item if $\lambda > J$, all fermions levels are occupied, which lead to maximum positive magnetization. This entails that $k_F = 0$.
-    \item If $\lambda < -J$, all fermion levels are vacant, leading to maximum negative magnetization. This implies a $k_F = \pi$ Fermi momentum.
-    \item If $|\lambda| \leq J$, the Fermi momentum is $k_F = \arccos \bigg(\frac{\lambda}{J}\bigg)$.
-\end{itemize}
-
-Therefore, the system groundstate will be defined by the following relations, 
-
-\begin{equation}
-    \begin{array}{c}
-         \bra{E_G} d_k^\dagger d_k \ket{E_G} = 1  \\
-         \\
-         \textnormal{ if } k \in [-\pi, -k_F] \cup [k_F, \pi],
-    \end{array} \textnormal{ and }  \begin{array}{c}
-         \bra{E_G} d_k^\dagger d_k \ket{E_G} = 0  \\
-         \\
-         \textnormal{ if } k \in [-k_F, k_F].
-    \end{array}
-\end{equation}
-
-Note that the periodic boundary conditions in spin space are modified by the Jordan-Wigner transformation, the boundary term in the Hamiltonian explicitly depends on the fermion number $L$ and leads to different Hamiltonians for the two subspaces of even or odd fermion number. For fixed fermion number, this reduces to different sets of allowed fermion momenta $k$, if the total number of spins $L$ is even, the allowed values of fermion momenta are given by $k_n = \frac{2 \pi m}{L}$, where the $m$-numbers are integer/half-odd integers if the number of fermions $L_f = {\bf M}^z + \frac{N}{2}$ is odd/even. The total momentum for the ground states is thus $p_F = L_f \pi$\footnote{The same two sets of $k$-values are found via the Bethe ansatz solution of the XXZ-chain. The complication of two different Hilbert spaces is avoided entirely with free boundar conditions, giving up translational symmetry.}.
-
-\blanky \\
-
-The total magnetization operator is defined as the sum of the $\spin_z$ operators, along the entire chain ie. ${\bf M}^z = \sum_{j=1} \spin^z_j$. Under the Jordan-Wigner transformation, $\spin^z_j = f_j^\dagger f_j - \frac{1}{2}$. In turn, these fermionic number operators can be mapped to fermionic number operators acting on momentum space, ie. $\sum_{j=1}^{L} f_j^\dagger f_j = \sum_k d_k^\dagger d_k$. This entails
-
-\begin{equation}
-    {\bf M}^z = \sum_{k} \bigg(d_k^\dagger d_k - \frac{1}{2}\bigg).
-\end{equation}
-
-Then the total magnetization operator's expectation value for the groundstate can be calculated. Given the system's fermionic nature, momentum eigenmodes are either occupied or unoccupied, contributing only one or zeros respectively. Then, this expectation value yields
-
-\begin{equation}
-    \bra{E_G} {{\bf M}^z} \ket{E_G} = \sum_{k=-\pi}^{-k_F} 1 + \sum_{k=k_F}^{\pi} 1 - \frac{1}{2} \sum_{k=-\pi}^{\pi} 1 \\
-    = \frac{1}{2} \bigg( \sum_{k=-\pi}^{-k_F} 1 + \sum_{k=k_F}^{\pi} 1 - \sum_{k = -k_F}^{k_F} 1  \bigg), \label{total magnetization ev}
-\end{equation}
-
-where the total magnetization expectation value is just half the difference of two competing summations, related to the negative and positive eigenmodes. Defining the total magnetization per site operator, ${{\bf m}}^z = \frac{1}{L} {\bf M}^z$. Now, as the chain gets progressively bigger, with more and more lattice sites, the summations in \eqref{total magnetization ev} can be approximated by Riemannian integrals, ie.
-
-\begin{equation*}
-    \sum_{k} f(k) = \frac{1}{\Delta k} \sum_{k} f(k) \Delta k \overset{L \rightarrow \infty}{\rightarrow} \frac{L}{2\pi}\int_{k \in \mathds{B}\mathds{Z}} dk f(k) \textnormal{ where } \Delta k = \frac{2\pi}{L}.
-\end{equation*}
-
-Using this trick, \eqref{total magnetization ev} can be rewritten as 
-
-\begin{align}
-    \langle {{\bf m}}^{z} \rangle_{G} &= \frac{1}{4\pi} \bigg(\int_{-\pi}^{-k_F} dk + \int_{k_F}^{\pi} dk - \int_{-k_F}^{k_F} dk \bigg) = \frac{1}{4\pi} \bigg(-k_F + \pi + \pi - k_F - k_F + k_F\bigg) \\
-    &= \frac{1}{2} - \frac{k_F}{\pi},
-\end{align}
-
-which yields the total magnetization per lattice site. Note that at $\lambda < J$, $k_F = \pi$ whereby there is total polarization ie. $\langle {{\bf m}}^{z} \rangle_{G} = -\frac{1}{2}$. Similarly, for $\lambda > J$, $k_F = 0$ and then $\langle {{\bf m}}^{z} \rangle_{G} = \frac{1}{2}$. However, if $|\lambda| \leq J$, then $k_F = \arccos\bigg(\frac{\lambda}{J}\bigg)$, which then yields a total magnetization per lattice site given by 
-\begin{equation} \langle {{\bf m}}^{z} \rangle_{G}  = \left\{
-    \begin{array}{cc}
-          \frac{1}{2} - \frac{1}{\pi}\arccos\bigg(\frac{\lambda}{J}\bigg)&  \textnormal{ if } |\lambda| \leq J  \\
-          \\
-          -\frac{1}{2} & \textnormal{ if } \lambda < -J  \\
-          \\
-          \frac{1}{2} & \textnormal{ if } \lambda > J  \\
-    \end{array} \right.
-\end{equation}
-
-Note that for $\lambda < J$, maximum negative magnetization is obtained, while for $\lambda > J$ maximum positive magnetization is obtained. Another interesting quantity is the total magnetic susceptibility, which can be written in terms of the total magnetization per lattice site as follows 
-
-\begin{align}
-    \chi = \bigg(\frac{\partial \langle {{\bf m}}^{z} \rangle_{G}}{\partial \lambda}\bigg) \Rightarrow \chi = \left\{ \begin{array}{cc} 
-         \frac{1}{J \pi \sqrt{1- \frac{\lambda^2}{J^2}}} \textnormal{ if } |\lambda| \leq J  \\
-         \\
-          0 \textnormal{ if } \lambda < -J \\ 
-         \\
-          0 \textnormal{ if } \lambda > J  \\
-              \end{array} \right., \label{}
-\end{align}
-
-which is divergent if $\lambda = J$. This shows that the XX-Heisenberg model has a second order (since there is no latent heat involved it can't be a first order phase transition) quantum phase transition, with an associated power law with a critical exponent.  \\
-
-Static correlation functions for the XX-model can be calculated for the discrete system, without taking the continuum limit. The longitudinal correlation function in the ground state is given by 
-
-$$
-\bra{0} {\spin}_n^z {\spin}_0^z \ket{0} = \left\{ \begin{array}{cc}
-     - \frac{1}{4} \bigg(\frac{2}{\pi n}\bigg)^2 & \textnormal{ for $n \in 2\mathds{N}+1$}  \\
-     0  & \textnormal{ for $ n \in 2\mathds{N}$} 
-\end{array} \right.
-$$
-
-The transverse correlation function is expressed as a product of two $\frac{n}{2} \times \frac{n}{2}$ determinants. An explicit expression is available only for the asymptotic behaviour 
-
-$$
-\bra{0} {\spin}_n^x {\spin}_0^x \ket{0} = \bra{0} {\spin}_n^y {\spin}_0^y \ket{0} \sim \frac{C}{\sqrt{n}}, \blanky C \approx 0.5884....
-$$
-
-Dynamic correlation functions cannot be obtained at the same level of rigour as static ones since they involve transitions between states in different Hilbert spaces (one for even and another for odd fermion number). \\
-
-Quantities of experimental relevance can be easily calculated from the exact expression for the free energy in terms of the basic fermion dispersion, 
-
-\begin{equation}
-    F = - L k_B T \bigg[\log 2 + \frac{2}{\pi} \int_{\mathds{R}_{[0, \frac{\pi}{2}]}} dk \log \cosh \left(\frac{\epsilon(k)}{2k_B T}\right)\bigg].
-\end{equation}
-
-An important quantity is the specific heat whose low-temperature behaviour is linear in $T$:
-
-$$
-C(T) \approx \frac{\pi T}{6 v_F}, \textnormal{ where } v_F = \frac{\partial \epsilon(k)}{\partial k}\bigg|_{k = k_F} = J \textnormal{ is the Fermi velocity.} 
-$$
-
-Low-lying excitations are also simply described in the fermion picture: they are either obtained by adding or removing fermions, thus changing the total magnetization by one unity and adding or removing the energy $\epsilon(k)$, or particle-hole excitations which do not change the total magnetization. Creating a particle-hole excitation involves moving a fermion with momentum $k_i$ inside the Fermi sea t o some momentum $k_f$, outside of the Fermi sea. It is clear that moving a fermion just across the Fermi point costs arbitrarily low energy since the excitation spectrum is gapless. It is easily seen that for a given total momentum $q = k_f - k_i$, a finite range of excitation energies is possible, thus the spectrum of particle-hole excitations is a continuum with the initial momentum $k=ki$ as an internal degree of freedom,
-
-$$
-    \omega(q,k) = \epsilon(k+q) - \epsilon(k).
-$$
-
-\blanky \\
-
-For $\Delta \neq 0$ the interacting fermion Hamiltonian can be treated in perturbation theory. From this approach, and more generally from the Bethe ansatz and field-theoretic methods, it is established that the behaviour for $-1 < \Delta < 1$ is qualitatively the same as the free fermion limit $\Delta = 0$: the excitation spectrum is gapless, a Fermi point exists and correlation functions show a power-law behaviour. The Heisenberg chain is in the XY regime, and thus is in a critical phase. The phase is equivalent to the so-called Tomonaga-Luttinger liquid. The fermion dispersion, upto first order in $\Delta$, is obtained by direct perturbation theory starting from the free fermion limit (in unit of $J$), 
-
-\begin{equation*}
-    \epsilon(k) = \Delta - \lambda + \cos q - \frac{2\Delta}{\pi} \Theta(1-\lambda) \bigg[\arccos \lambda - \frac{\cos q}{(1-\lambda^2)^{\frac{1}{2}}}\bigg].
-\end{equation*}
-
-\blanky \\
-
-For the more general XYZ-chain, wherein the Hamiltonian reads 
-\begin{equation}
-    \Hamiltonian_{\mathds{X}\mathds{Y}\mathds{Z}} = J \sum_{n=1}^{N} \bigg( (1+\gamma) \spin^{x}_{n} \spin^{x}_{n+1} + (1-\gamma) \spin^{y}_{n} \spin^{y}_{n+1} + \Delta \spin^{z}_{n} \spin_{n+1}^{z} \bigg) - \lambda \sum_{n=1}^{N} {\spin}_n,
-    %\label{XXZ hamiltonian}
-\end{equation}
-
-the rotational symmetry in the $xy$-plane is broken and a unique preferred direction in spin space exists: $\Delta = 0$ continues to result in a free fermion system, but the basic fermion dispersion acquires a gap and the ground state correlation functions $\bra{0}{\spin}_n^x{\spin}_0^x\ket{0}$
-develops long range order. \\
-
-\paragraph{\textbf{$\Delta \approx 1$: The isotropic Heisenberg Antiferromagnet}}
-
-The most interesting regime for the XXZ chain is $\Delta \approx 1$, ie. the vicinity of the Isotropic Heisenberg antiferromagnet (HAF), wherein the ground state energy is given by 
-
-$$
-    E_0 = - N J \log 2.
-$$
-
-\clearpage
-
-\subsection{Bethe ansatz}
+\subsubsection{Bethe ansatz for the XXX-model}
 
 \paragraph{\textbf{Heisenberg XXX-chain}}
 
@@ -2675,10 +1916,885 @@ or, equivalently,
     \alignedbox{{\bf H} \ket{u_1, \cdots u_M}}{= \sum_{k =1}^{\ell} \epsilon(u_k) \ket{u_1, \cdots u_M} \textnormal{ where } \epsilon(u_k) = - \frac{1}{2} \frac{1}{u_k^2 + \frac{1}{4}}},
 \end{align}
 
-which concludes the Bethe solution for the XXX Heisenberg chain.
+which concludes the Bethe solution for the XXX-Heisenberg chain.
 
 \clearpage 
 
+\subsection{XX-model}
+%\subsection{XX-model: $\Delta = 0$}
+%
+Consider the XX-Heisenberg model, with its Hamiltonian given in terms of the traditional $\frac{1}{2}$-spin operators ie. 
+
+\begin{equation}
+    {\bf H}_{\mathds{X}\mathds{X}} = J \sum_{i=1}^{L} ({\bf S}_{j}^{x} {\bf S}_{j+1}^{x} + {\bf S}_{j}^{y} {\bf S}_{j+1}^{y}) - \lambda \sum_{j=1}^{L} {\bf S}_{j}^{z},
+    \label{XX hamiltonian}
+\end{equation}
+
+which describes interacting spins in a one-dimensional chain, with periodic boundary conditions. \eqref{XX hamiltonian}'s first terms represents nearest neighbour interactions in the $x$ and $y-$directions  interactions, with $J$ being either positive or negative and quantifying the strength and type of interactions, while the second term represents a magnetic field of strength $\lambda$, applied in the $z$-direction of the spins. \\
+
+{\textbf{Exact solution}}
+
+In order to solve this problem, it is necessary to rewrite \eqref{XX hamiltonian} and apply a Jordan-Wigner transformation, mapping the spin problem into a fermionic problem. But first, it is convenient to write the spin-operators in terms of the raising and lowering $\mathfrak{su}(2)$-operators, ie.
+
+$$
+    \spin_j^{\pm} = \spin_j^{x} \pm i \spin_j^{y} \blanky \Rightarrow \blanky \begin{array}{c}
+         \spin_{j}^x = \frac{1}{2} (\spin_j^+ + \spin_j^-), \\
+          \\
+         \spin_{j}^y = \frac{1}{2i} (\spin_j^+ - \spin_j^-). 
+    \end{array} \Rightarrow {\bf H}_{\mathds{X}\mathds{X}\mathds{Z}} = \frac{J}{2} \sum_{i=1}^{L} ({\bf S}_{j}^{+} {\bf S}_{j+1}^{-} + {\bf S}_{j}^{-} {\bf S}_{j+1}^{+}) - \lambda \sum_{j=1}^{L} {\bf S}_{j}^{z}
+     \label{raising Hamiltonian}
+$$
+
+where the interacting terms in the first summation, flip neighboring spins if said spins are anti-aligned\footnote{In effect, consider for example, a two-spin problem. Then, the interaction term is given by 
+
+$$
+\spin_1^+ \spin_2^- + \spin_1^- \spin_2^+,
+$$
+
+and consider an anti-aligned state $\ket{\downarrow\uparrow}$. Then, the action of the previous two-spin operator over this state yields
+
+$$
+(\spin_1^+ \spin_2^- + \spin_1^- \spin_2^+) \ket{\downarrow\uparrow} = \ket{\uparrow\downarrow} + 0,
+$$
+
+since $\spin_1^- \spin_2^+$ destroys the state. Similarly, $(\spin_1^+ \spin_2^- + \spin_1^- \spin_2^+)\ket{\uparrow\downarrow} = \ket{\downarrow\uparrow}$. However, note that, should both spins be either up or down, the state remain invariant under the action of the two-spin operator. 
+
+\begin{align}
+    (\spin_1^+ \spin_2^- + \spin_1^- \spin_2^+) \ket{\downarrow\downarrow} = \ket{\downarrow\downarrow} \textnormal{ and } (\spin_1^+ \spin_2^- + \spin_1^- \spin_2^+) \ket{\uparrow\uparrow} = \ket{\uparrow\uparrow} 
+\end{align}}. In addition, the XX-Hamiltonian has a total magnetization symmetry, since the Hamiltonian given by \eqref{raising Hamiltonian} conmutes with the magnetization operator. \\
+
+Under the Jordan-Wigner map, nearest-neighbours spin flipping is translated into to nearest-neighbours fermionic hopping, ie. $\spin_{j}^{+} \spin_{j+1}^{-} = f_{j}^{\dagger} f_{j+1}$ and $\spin_{j}^{-} \spin_{j+1}^{+} = f_{j+1}^{\dagger} f_{j}$. However, due to the boundary conditions' periodicity, the XX-Hamiltonian cannot be rewritten as a fermionic model yet since (it will contain an additional boundary term), for example, the fermionic counterparts to the $\spin_{L}^{+} \spin_{1}^{-}$ interaction are highly non-local operators and are not desirable. Indeed, under the Jordan-Wigner mapping 
+
+\begin{equation*}
+    \spin_{L}^{+} \spin_{1}^{-} = f_L^\dagger \exp\bigg(-i\pi \sum_{\ell = 1}^{L-1} f_\ell^\dagger f_\ell \bigg) f_1 \Rightarrow \begin{array}{cc}
+       \spin_{L}^{+} \spin_{1}^{-} = \mathcal{Q} f_L^\dagger f_1 \\
+       \spin_{L}^{-} \spin_{1}^{+} = \mathcal{Q} f_1^\dagger f_L,
+    \end{array}
+\end{equation*}
+
+
+then \eqref{raising Hamiltonian} can be rewritten as 
+
+\begin{equation}
+    {\bf H}_{\mathds{X}\mathds{X}} = \frac{J}{2} \sum_{i=1}^{L-1} \bigg(f_{j}^{\dagger} f_{j+1} + f_{j+1}^{\dagger} f_j\bigg) - \lambda \sum_{j=1}^{L} \bigg(f_{j}^{\dagger} f_{j} - \frac{1}{2}\bigg) + \frac{J}{2} \mathcal{Q} (f_L^\dagger f_1 + f_1^\dagger f_L),
+    \label{fermionic no boundary}
+\end{equation}
+
+where the first term accounts for fermionic nearest-neighbour hopping, the second term accounts for the magnetic field, and the third term being the non-local boundary term. Note that this fermionic Hamiltonian hasn't got any type of boundary conditions, since the $L$-lattice site is disconnected in any way whatsoever from the first lattice site. Then, the standard procedure is to add and subtract terms from the Hamiltonian, so that the nearest-neighbour hopping term in \eqref{fermionic no boundary} can also have periodic boundary conditions, thus yielding 
+
+\begin{equation}
+    {\bf H}_{\mathds{X}\mathds{X}}  = \frac{J}{2} \sum_{i=1}^{L} \bigg(f_{j}^{\dagger} f_{j+1} + f_{j+1}^{\dagger} f_j\bigg) - \lambda \sum_{j=1}^{L} \bigg(f_{j}^{\dagger} f_{j} - \frac{1}{2}\bigg) + \frac{J}{2} (\mathcal{Q}-1) (f_L^\dagger f_1 + f_1^\dagger f_L),
+    \label{true fermionic hamiltonian}
+\end{equation}
+
+where now the fermionic hopping term has the standard boundary conditions. The third term, since it does not involve any type of summation over lattice sites, only contributes at $\mathcal{O}\bigg(\frac{1}{L}\bigg)$-order to any microscopic quantity. In the thermodynamic limit, this non-local term can be dropped, thus yielding an $\mathcal{O}(L)$-Hamiltonian given by 
+
+\begin{equation}
+    {\bf H}_{\mathds{X}\mathds{X}}  = \frac{J}{2} \sum_{i=1}^{L} \bigg(f_{j}^{\dagger} f_{j+1} + f_{j+1}^{\dagger} f_j - \lambda f_{j}^{\dagger} f_{j}\bigg) + \frac{\lambda L}{2},
+    \label{L-order fermionic hamiltonian}
+\end{equation}
+
+which is now fully cyclic and where its operators obey fermionic algebras. This Hamiltonian can then be diagonalized via a discrete Fourier transform on the fermionic operators 
+
+\begin{align}
+    f_j &= \frac{1}{\sqrt{L}} \sum_{\substack{k = {2\pi m/L}\\
+    m \in \mathds{Z}_{[1, L]} }}
+                  e^{ijk} d_k, & f_j^{\dagger} &=\frac{1}{\sqrt{L}}  \sum_{\substack{k = {2\pi m/L}\\
+    m \in \mathds{Z}_{[1, L]}}} e^{-ijk} d_k^{\dagger},
+\end{align}
+
+with the inverse transformation given by 
+
+\begin{align}
+    d_k &= \frac{1}{\sqrt{L}} \sum_{j=1}^{L}
+                  e^{-ikj} f_j &  d_k^{\dagger} &= \frac{1}{\sqrt{L}} \sum_{j=1}^{L}
+                  e^{ikj} f_j^{\dagger}.
+\end{align}
+
+Note that the $d_k$-operators follow the standard fermionic anticonmutation algebra. Note as well, that the $f_j$-vacuum state, defined such that $f_j \ket{0}_f = 0, \blanky \forall j$, is the same as the $d_k$-vacuum state, defined such that $d_j \ket{0}_d = 0, \blanky \forall k$, ie. $\ket{0}_f = \ket{0}_d$. Another important relationship is the Fourier transform's consistency condition, ie. 
+
+$$
+\sum_{j=1}^{L} e^{i(k-q)j} = L \delta_{kq}.
+$$
+
+Under the Fourier transform, \eqref{L-order fermionic hamiltonian}'s terms are mapped as follows 
+
+\begin{align*} 
+    \sum_{j=1}^{L} f_j^\dagger f_{j+1} &= \sum_{j=1}^{L} \frac{1}{L} \sum_{k, \blanky q} e^{-ikj} e^{iq(j+1)} d_k^\dagger d_q = \sum_{j=1}^{L} \frac{1}{L} \sum_{k, \blanky q} e^{i(q-k)j} e^{iq} d_k^\dagger d_q \\
+    &= \sum_{k, \blanky q} \frac{1}{L} e^{iq} \delta_{qk} d_k^\dagger d_q = \sum_{k} e^{ik} d_k^\dagger d_k \\
+    \sum_{j=1}^{L} f_{j+1}^\dagger f_{j} &=  \sum_{j=1}^{L} \frac{1}{L} \sum_{k, \blanky q} e^{-ik(j+1)} e^{iqj} d_k^\dagger d_q = \sum_{j=1}^{L} \frac{1}{L} \sum_{k, \blanky q} e^{i(q-k)j} e^{-ik} d_k^\dagger d_q \\
+    &= \sum_{k, \blanky q} \frac{1}{L} e^{-ik} \delta_{qk} d_k^\dagger d_q = \sum_{k} e^{-ik} d_k^\dagger d_k \\
+    \sum_{j=1}^{L} f_{j}^\dagger f_{j} &=  \sum_{j=1}^{L} \frac{1}{L} \sum_{k, \blanky q} e^{-ikj} e^{iqj} d_k^\dagger d_q = \sum_{j=1}^{L} \frac{1}{L} \sum_{k, \blanky q} e^{i(q-k)j}  d_k^\dagger d_q \\
+    &= \sum_{k, \blanky q} \frac{1}{L} \delta_{qk} d_k^\dagger d_q = \sum_{k} d_k^\dagger d_k \\ &\Rightarrow 
+    {\bf H}_{\mathds{X}\mathds{X}} = \frac{J}{2} \sum_{k} \bigg(e^{ik} d_{k}^{\dagger} d_{k} + e^{-ik} d_{k}^{\dagger} d_k - \lambda d_{k}^{\dagger} d_{k}\bigg) + \frac{\lambda L}{2} = \sum_{k} \bigg(J \cos k - \lambda \bigg)d_{k}^{\dagger} d_{k} + \frac{\lambda L}{2},
+\end{align*} 
+
+which can be rewritten as 
+
+\begin{align}
+    \alignedbox{{\bf H}_{\mathds{X}\mathds{X}}  }{= \sum_{k} \epsilon_k d_k^\dagger d_{k} + \frac{\lambda L}{2} \begin{array}{c}
+         \textnormal{ with the eigenvalues being given by } \epsilon_k = J \cos k - \lambda + \frac{\lambda L}{2} \\
+         \textnormal{ and the eigenvectors being given by } \ket{E_n} = \prod_{n}  (d_k^\dagger)^n, \\
+         \textnormal{                    with eigenvalue $E_n = \sum_{n} \epsilon_n $}  
+    \end{array}}
+\end{align}
+
+where $k = \frac{2\pi m}{L}, \blanky m = -\frac{L}{2} + 1, \cdots \frac{L}{2}, $ ie. $k \in (-\pi, \pi]$, this is called the first Brillouin zone. Thus the problem has been solved. As for its thermal properties, since this is a fermionic model, the fermions will obey the Fermi-Dirac distribution, ie. 
+
+\begin{equation}
+    \mathcal{N}_{jk} = \langle d_j^\dagger d_k \rangle_{\textnormal{th}} =  \frac{1}{1+e^{\beta \epsilon_k + \mu}} \delta_{jk} 
+\end{equation} \\
+
+\textbf{Quantum Phase Transition}. Note that each of the fermion states can be either occupied or vacant, corresponding to the dimension $2^N$ of the Hilbert space for $N$ spins with $S = \frac{1}{2}$. The ground state, the state with the lowest energy, has all levels with $\epsilon(k) \leq 0$ and can then be defined such that
+
+\begin{equation}
+    \bra{E_G} d_k^\dagger d_k \ket{E_G} = 1 \textnormal{ if } \epsilon_k \leq 0 \textnormal{ and } \bra{E_G} d_k^\dagger d_k \ket{E_G} = 0 \textnormal{ if } \epsilon_k > 0.
+\end{equation}
+
+Then the groundstate energy is given by 
+
+\begin{equation}
+    E_G = \sum_{k} \epsilon_k \bra{E_G} d_k^\dagger d_k \ket{E_G}.
+\end{equation}
+
+Now, there exists a momenta $k_F$ such that $\epsilon_{k_F} = 0$, with $k_F$ being the Fermi momentum, ie. $\epsilon_{k_f} = J \cos k_f - \lambda$. The previous equation depends both on the coupling strength $J$ and the magnetic field strength $\lambda$. From the previous equation some special cases arise, namely 
+
+\begin{itemize}
+    \item if $\lambda > J$, all fermions levels are occupied, which lead to maximum positive magnetization. This entails that $k_F = 0$.
+    \item If $\lambda < -J$, all fermion levels are vacant, leading to maximum negative magnetization. This implies a $k_F = \pi$ Fermi momentum.
+    \item If $|\lambda| \leq J$, the Fermi momentum is $k_F = \arccos \bigg(\frac{\lambda}{J}\bigg)$.
+\end{itemize}
+
+Therefore, the system groundstate will be defined by the following relations, 
+
+\begin{equation}
+    \begin{array}{c}
+         \bra{E_G} d_k^\dagger d_k \ket{E_G} = 1  \\
+         \\
+         \textnormal{ if } k \in [-\pi, -k_F] \cup [k_F, \pi],
+    \end{array} \textnormal{ and }  \begin{array}{c}
+         \bra{E_G} d_k^\dagger d_k \ket{E_G} = 0  \\
+         \\
+         \textnormal{ if } k \in [-k_F, k_F].
+    \end{array}
+\end{equation}
+
+Note that the periodic boundary conditions in spin space are modified by the Jordan-Wigner transformation, the boundary term in the Hamiltonian explicitly depends on the fermion number $L$ and leads to different Hamiltonians for the two subspaces of even or odd fermion number. For fixed fermion number, this reduces to different sets of allowed fermion momenta $k$, if the total number of spins $L$ is even, the allowed values of fermion momenta are given by $k_n = \frac{2 \pi m}{L}$, where the $m$-numbers are integer/half-odd integers if the number of fermions $L_f = {\bf M}^z + \frac{N}{2}$ is odd/even. The total momentum for the ground states is thus $p_F = L_f \pi$\footnote{The same two sets of $k$-values are found via the Bethe ansatz solution of the XXZ-chain. The complication of two different Hilbert spaces is avoided entirely with free boundar conditions, giving up translational symmetry.}.
+
+\blanky \\
+
+The total magnetization operator is defined as the sum of the $\spin_z$ operators, along the entire chain ie. ${\bf M}^z = \sum_{j=1} \spin^z_j$. Under the Jordan-Wigner transformation, $\spin^z_j = f_j^\dagger f_j - \frac{1}{2}$. In turn, these fermionic number operators can be mapped to fermionic number operators acting on momentum space, ie. $\sum_{j=1}^{L} f_j^\dagger f_j = \sum_k d_k^\dagger d_k$. This entails
+
+\begin{equation}
+    {\bf M}^z = \sum_{k} \bigg(d_k^\dagger d_k - \frac{1}{2}\bigg).
+\end{equation}
+
+Then the total magnetization operator's expectation value for the groundstate can be calculated. Given the system's fermionic nature, momentum eigenmodes are either occupied or unoccupied, contributing only one or zeros respectively. Then, this expectation value yields
+
+\begin{equation}
+    \bra{E_G} {{\bf M}^z} \ket{E_G} = \sum_{k=-\pi}^{-k_F} 1 + \sum_{k=k_F}^{\pi} 1 - \frac{1}{2} \sum_{k=-\pi}^{\pi} 1 \\
+    = \frac{1}{2} \bigg( \sum_{k=-\pi}^{-k_F} 1 + \sum_{k=k_F}^{\pi} 1 - \sum_{k = -k_F}^{k_F} 1  \bigg), \label{total magnetization ev}
+\end{equation}
+
+where the total magnetization expectation value is just half the difference of two competing summations, related to the negative and positive eigenmodes. Defining the total magnetization per site operator, ${{\bf m}}^z = \frac{1}{L} {\bf M}^z$. Now, as the chain gets progressively bigger, with more and more lattice sites, the summations in \eqref{total magnetization ev} can be approximated by Riemannian integrals, ie.
+
+\begin{equation*}
+    \sum_{k} f(k) = \frac{1}{\Delta k} \sum_{k} f(k) \Delta k \overset{L \rightarrow \infty}{\rightarrow} \frac{L}{2\pi}\int_{k \in \mathds{B}\mathds{Z}} dk f(k) \textnormal{ where } \Delta k = \frac{2\pi}{L}.
+\end{equation*}
+
+Using this trick, \eqref{total magnetization ev} can be rewritten as 
+
+\begin{align}
+    \langle {{\bf m}}^{z} \rangle_{G} &= \frac{1}{4\pi} \bigg(\int_{-\pi}^{-k_F} dk + \int_{k_F}^{\pi} dk - \int_{-k_F}^{k_F} dk \bigg) = \frac{1}{4\pi} \bigg(-k_F + \pi + \pi - k_F - k_F + k_F\bigg) \\
+    &= \frac{1}{2} - \frac{k_F}{\pi},
+\end{align}
+
+which yields the total magnetization per lattice site. Note that at $\lambda < J$, $k_F = \pi$ whereby there is total polarization ie. $\langle {{\bf m}}^{z} \rangle_{G} = -\frac{1}{2}$. Similarly, for $\lambda > J$, $k_F = 0$ and then $\langle {{\bf m}}^{z} \rangle_{G} = \frac{1}{2}$. However, if $|\lambda| \leq J$, then $k_F = \arccos\bigg(\frac{\lambda}{J}\bigg)$, which then yields a total magnetization per lattice site given by 
+\begin{equation} \langle {{\bf m}}^{z} \rangle_{G}  = \left\{
+    \begin{array}{cc}
+          \frac{1}{2} - \frac{1}{\pi}\arccos\bigg(\frac{\lambda}{J}\bigg)&  \textnormal{ if } |\lambda| \leq J  \\
+          \\
+          -\frac{1}{2} & \textnormal{ if } \lambda < -J  \\
+          \\
+          \frac{1}{2} & \textnormal{ if } \lambda > J  \\
+    \end{array} \right.
+\end{equation}
+
+Note that for $\lambda < J$, maximum negative magnetization is obtained, while for $\lambda > J$ maximum positive magnetization is obtained. Another interesting quantity is the total magnetic susceptibility, which can be written in terms of the total magnetization per lattice site as follows 
+
+\begin{align}
+    \chi = \bigg(\frac{\partial \langle {{\bf m}}^{z} \rangle_{G}}{\partial \lambda}\bigg) \Rightarrow \chi = \left\{ \begin{array}{cc} 
+         \frac{1}{J \pi \sqrt{1- \frac{\lambda^2}{J^2}}} \textnormal{ if } |\lambda| \leq J  \\
+         \\
+          0 \textnormal{ if } \lambda < -J \\ 
+         \\
+          0 \textnormal{ if } \lambda > J  \\
+              \end{array} \right., \label{}
+\end{align}
+
+which is divergent if $\lambda = J$. This shows that the XX-Heisenberg model has a second order (since there is no latent heat involved it can't be a first order phase transition) quantum phase transition, with an associated power law with a critical exponent.  \\
+
+Static correlation functions for the XX-model can be calculated for the discrete system, without taking the continuum limit. The longitudinal correlation function in the ground state is given by 
+
+$$
+\bra{0} {\spin}_n^z {\spin}_0^z \ket{0} = \left\{ \begin{array}{cc}
+     - \frac{1}{4} \bigg(\frac{2}{\pi n}\bigg)^2 & \textnormal{ for $n \in 2\mathds{N}+1$}  \\
+     0  & \textnormal{ for $ n \in 2\mathds{N}$} 
+\end{array} \right.
+$$
+
+The transverse correlation function is expressed as a product of two $\frac{n}{2} \times \frac{n}{2}$ determinants. An explicit expression is available only for the asymptotic behaviour 
+
+$$
+\bra{0} {\spin}_n^x {\spin}_0^x \ket{0} = \bra{0} {\spin}_n^y {\spin}_0^y \ket{0} \sim \frac{C}{\sqrt{n}}, \blanky C \approx 0.5884....
+$$
+
+Dynamic correlation functions cannot be obtained at the same level of rigour as static ones since they involve transitions between states in different Hilbert spaces (one for even and another for odd fermion number). \\
+
+Quantities of experimental relevance can be easily calculated from the exact expression for the free energy in terms of the basic fermion dispersion, 
+
+\begin{equation}
+    F = - L k_B T \bigg[\log 2 + \frac{2}{\pi} \int_{\mathds{R}_{[0, \frac{\pi}{2}]}} dk \log \cosh \left(\frac{\epsilon(k)}{2k_B T}\right)\bigg].
+\end{equation}
+
+An important quantity is the specific heat whose low-temperature behaviour is linear in $T$:
+
+$$
+C(T) \approx \frac{\pi T}{6 v_F}, \textnormal{ where } v_F = \frac{\partial \epsilon(k)}{\partial k}\bigg|_{k = k_F} = J \textnormal{ is the Fermi velocity.} 
+$$
+
+Low-lying excitations are also simply described in the fermion picture: they are either obtained by adding or removing fermions, thus changing the total magnetization by one unity and adding or removing the energy $\epsilon(k)$, or particle-hole excitations which do not change the total magnetization. Creating a particle-hole excitation involves moving a fermion with momentum $k_i$ inside the Fermi sea t o some momentum $k_f$, outside of the Fermi sea. It is clear that moving a fermion just across the Fermi point costs arbitrarily low energy since the excitation spectrum is gapless. It is easily seen that for a given total momentum $q = k_f - k_i$, a finite range of excitation energies is possible, thus the spectrum of particle-hole excitations is a continuum with the initial momentum $k=ki$ as an internal degree of freedom,
+
+$$
+    \omega(q,k) = \epsilon(k+q) - \epsilon(k).
+$$
+
+\blanky \\
+
+For $\Delta \neq 0$ the interacting fermion Hamiltonian can be treated in perturbation theory. From this approach, and more generally from the Bethe ansatz and field-theoretic methods, it is established that the behaviour for $-1 < \Delta < 1$ is qualitatively the same as the free fermion limit $\Delta = 0$: the excitation spectrum is gapless, a Fermi point exists and correlation functions show a power-law behaviour. The Heisenberg chain is in the XY regime, and thus is in a critical phase. The phase is equivalent to the so-called Tomonaga-Luttinger liquid. The fermion dispersion, upto first order in $\Delta$, is obtained by direct perturbation theory starting from the free fermion limit (in unit of $J$), 
+
+\begin{equation*}
+    \epsilon(k) = \Delta - \lambda + \cos q - \frac{2\Delta}{\pi} \Theta(1-\lambda) \bigg[\arccos \lambda - \frac{\cos q}{(1-\lambda^2)^{\frac{1}{2}}}\bigg].
+\end{equation*}
+
+\blanky \\
+
+For the more general XYZ-chain, wherein the Hamiltonian reads 
+\begin{equation}
+    \Hamiltonian_{\mathds{X}\mathds{Y}\mathds{Z}} = J \sum_{n=1}^{N} \bigg( (1+\gamma) \spin^{x}_{n} \spin^{x}_{n+1} + (1-\gamma) \spin^{y}_{n} \spin^{y}_{n+1} + \Delta \spin^{z}_{n} \spin_{n+1}^{z} \bigg) - \lambda \sum_{n=1}^{N} {\spin}_n,
+    %\label{XXZ hamiltonian}
+\end{equation}
+
+the rotational symmetry in the $xy$-plane is broken and a unique preferred direction in spin space exists: $\Delta = 0$ continues to result in a free fermion system, but the basic fermion dispersion acquires a gap and the ground state correlation functions $\bra{0}{\spin}_n^x{\spin}_0^x\ket{0}$
+develops long range order. \\
+
+\subsection{XXZ-model}
+
+Consider the $d=1$-XXZ-Heisenberg model, with its Hamiltonian (written in its longitudinal and transverse terms) as 
+
+\begin{equation}
+    \Hamiltonian_{\mathds{X}\mathds{X}\mathds{Z}} = J \sum_{n=1}^{N} \bigg( \frac{1}{2} (\spin^{+}_{n} \spin^{-}_{n+1} + \spin^{-}_{n} \spin^{+}_{n+1}) + \Delta \spin^{z}_{n} \spin_{n+1}^{z} \bigg),
+    %\label{XXZ hamiltonian}
+\end{equation}
+
+where the effect of the transverse part, for spin-$\frac{1}{2}$ particles, is nothing but to interchange up and down spins, $\ket{\uparrow\downarrow} \Leftrightarrow \ket{\downarrow\uparrow}$, upto a factor of $\frac{1}{2}$. This model has a number of symmetries, leading to good quantum numbers such as wave vector ${\bf q}$ (translation), ${\bf M}^z$ (rotation about $z$-axis), ${\bf S}_{\textnormal{tot}}$ (for general rotations, $|\Delta| = 1$) and parity (spin inversion). The most important link between theory and experiment are the spin correlation functions or response dynamical structure factors, which for a spin chain are defined as follows
+
+\begin{equation}
+    \begin{split}
+        \bm{\mathcal S}^{\alpha, \alpha}(q, \omega) = \sum_{n} \int dt e^{i(qn-\omega t)} \langle \spin_n^{\alpha} \spin_{0}^{\alpha}(t=0) \rangle, \\
+        \bm{\mathcal S}^{\alpha, \alpha}(q) = \sum_{n} e^{iqn} \langle {\bf S}_n^{\alpha} {\bf S}_{0}^{\alpha} \rangle = \frac{1}{2\pi} \int d\omega \blanky \bm{\mathcal S}^{\alpha, \alpha}(q, \omega),
+    \end{split}
+\end{equation}
+
+where $\bm{\mathcal S}(q, \omega)$ determines the cross-section for scattering experiments as well as line shapes in NMR and ESR experiments. A useful sum rule is the total intensity, obtained by integrating $\bm{\mathcal S}(q)$ over frequency and wave vector, 
+
+\begin{equation}
+    \frac{1}{4\pi^2} \int d\omega \bm{\mathcal S}^{\alpha, \alpha}(q, \omega) = \frac{1}{2 \pi} \int dq \bm{\mathcal S}^{\alpha, \alpha}(q) = \langle (\spin_0^\alpha)^2 \rangle,
+\end{equation}
+
+which is simply equal to $\frac{1}{3} \bm{\mathcal S}( \bm{\mathcal S}+ 1)$ in the isotropic case. \\
+
+The XXZ-Heisenberg chain is an important model to describe real material and is the most important paradigm of low-dimensional quantum magnetism, as it allows to introduce many scenarios, such as broken symmetry, the gapless Luttinger liquid, the Kosterlitz-Thouless phase transition, gapped and gapless excitation continua. Consider a Heisenberg XXZ chain supplemented by and external magnetic field. \\
+
+\paragraph{\textbf{Ferromagnetic phase: }}
+
+For $\Delta < -1$, the XXZ-chain is in the ferromagnetic Ising phase: the ground state is the saturated state, with all its spins aligned in either the $z$-direction or $-z$-direction. This entails that the classical ground state has magnetization ${\bf M}^z = \pm \frac{N}{2}$, where $N$ is the number of lattice sites. This is a phase with broken symmetry since the ground state does not exhibit the discrete symmetry of spin reflection $\spin^z \rightarrow -\spin^z$, under which the Hamiltonian is invariant. Furthermore, when an external magnetic field in the $z$-axis is considered, and additional term is included into the Hamiltonian, namely a Zeeman interaction 
+
+$$
+    {\bf H}_{\textnormal{Zeeman}} = - g \mu_B H \sum_{n} \spin^z.
+$$
+
+Since the XXZ-Hamiltonian commutes with the magnetization operator, the external magnetic field results in an additional energy contribution $-g \mu_B H {\bf M}^z$, without affecting the wave-functions. The symmetry under spin reflection is lifted and the saturated ground state is stabilized. The low-lying excited states in the ferromagnetic phase are magnons with the total spin quantum number ${\bf M}^z_{\textnormal{tot}} = \frac{1}{2} N - 1$ and the dispersion law, which is valid for general spin $S$
+
+\begin{equation}
+    \epsilon(q) = 2 J S (1-\cos(q) - (\Delta + 1)) + 2g \mu_B H S. 
+    \label{XXZ-spectrum}
+\end{equation}
+
+These states are exact eigenstates of the XXZ-Hamiltonian, In zero field, the excitation spectrum has a gap at $q=0$ of magnitude $|\Delta| - 1$ for $\Delta < -1$. At $\Delta = -1$, the discrete spin-reflection symmetry generalizes to a continuous rotation symmetry and the spectrum thus becomes gapless. This is a consequence of Goldstone's theorem: the breaking of a continuous symmetry in the ground state results in the emergence of a gapless excitation mode. Whereas the ground state exhibit long range order, the large phase space available to the low-lying excitations in 1D leads to exponential decay of correlations at arbitrarily small finite temperatures following the Theorem of Mermin and Wagner. \\
+
+%%% da hell are magnons??????
+
+Two interesting consequences of \cref{XXZ-spectrum} quickly arise, which can be generalized to any $XXZ$-type Hamiltonian conserving the total magnetization: 
+
+\begin{enumerate}
+    \item For sufficiently strong external magnetic field, the classical saturated state is forced to be the ground state for arbitrary value of $\Delta$ and the lowest excitations are exactly known. If the necessary magnetic fields are within experimentally accessible range, this can be used for an experimental determination of the exchange constants from the magnon dispersions (an example in 2D are recent neutron scattering experiments on $Cs_2 Cu Cl_4$. \\
+    \item The ferromagnetic ground state becomes unstable when the lows spin wave frequency becomes negative. This allows to determine eg. the boundary of the ferromagnetic phase for $\Delta > -1$ in an external field as $H = H_c$ with $g \mu_B H_c = \Delta + 1$. 
+\end{enumerate}
+
+\blanky \\
+
+\paragraph{\textbf{Néel phase:}}
+
+For $\Delta > +1$, the XXZ-chain is in the antiferromagnetic Ising or Néel phase with, in the thermodynamic limit, broken symmetry and one from 2 degenerate ground states, the $S=\frac{1}{2}$ remnants of the classical Néel states. The spatial period is $2a$, and the states are described in the reduced Brillouin zone with wave vectors $0 \leq q \leq \frac{\pi}{a}$. The ground states have zero magnetisation but finite sublattice magnetization, 
+
+$$
+{\bf N}^z = \sum_{n} (-1)^n \spin_n^z,
+$$
+
+and long range order in the corresponding correlation function. In contrast to the ferromagnet, however, quantum fluctuations prevent the order from being complete since the sublattice magnetization does not commute with the XXZ-Hamiltonian. For periodic boundary conditions and large but finite $N$, as in the situation in numerical approaches, the two ground states mix with energy separation $\propto e^{\textnormal{-const}\times N}$, as $N \rightarrow \infty$. Then invariance under translation by the original lattice constant $a$ is restored and the original Brillouin zone can be used, $\textnormal{BZ} = \{q | 0 \leq q \leq \frac{2\pi}{a}\}$. \\
+
+The elementary excitations in the antiferromagnetic Ising phase are described most clearly close to the Ising limit $\delta \rightarrow \infty$, starting from one of the two ideal Néel states: turning around one spin breaks two bonds and leads to a state with energy $\Delta$, degenerate with all state resulting from turning around an arbitrary number of subsequent spins. These states have total magnetization ${\bf M}^z = \pm 1$, response 0 for an odd, and response even number of turned spins. They are appropriately called two-domain wall states since each of the two broken bonds mediates between two different Néel states. They are appropriately called two-domain wall states, since each of the two broken bonds mediates between two different Néel states. The total number of these states is $N(N-1)$, 
+
+\begin{itemize}
+    \item there are $\frac{N^2}{4}$ states with total magnetization ${\bf M}^z= 1$ and ${\bf M}^z= -1$ (number of turned spins odd),
+    \item and $\frac{N^2}{2}-N$ states with null magnetization (number of spins turned even). 
+\end{itemize}
+
+These states are no more eigenstates when $\Delta^{-1}$ is finite, but for $\Delta^{-1} << 1$, they can be dealt with in perturbation theory, leading to the excitation spectrum in the first order in $\frac{1}{\Delta}$
+
+$$
+    \omega(q,k) = \Delta + 2 \cos q \cos 2\Phi = \epsilon \left(\frac{\epsilon}{2} + \Phi\right) + \epsilon \left(\frac{\epsilon}{2} - \Phi\right),
+$$
+
+with $\epsilon(k) = \frac{\Delta}{2} + \cos 2k$, where $q$ is the total momentum and takes values $q = \frac{2\pi \ell}{N}, \ell \in \mathds{Z}_{[1, \frac{N}{2}]}$, $\Phi$ is the wave vector related to the superposition of domain walls with different distances and for ${\bf M}^z = \pm 1$ takes values $\Phi = \frac{m\pi}{N+2}$ with $m \in \mathds{Z}_{[1, \frac{N}{2}]}$. $\Phi$ is, in essence, a relative momentum. \\ 
+
+%%% Página 8 y la figurita de las DWs.
+
+\clearpage
+
+\paragraph{\textbf{XY phase}}
+
+For $-1 < \Delta < 1$ and zero external field, the XXZ-chain undergoes an XY phase, characterized by uniaxial symmetry of the easy-plane type and a gapless excitation continuum. Whereas the full analysis of this phase for general $\Delta$, requires the use of bosonization and Bethe ansatz, a somewhat simpler approach is based on the mapping of $S = \frac{1}{2}$ spin operators in 1D to spinless fermions via the non-local Jordan Wigner transformations, wherein the mapping reads:
+
+\begin{align}
+    \spin_{n}^+ &= f_n^\dagger e^{i\pi \sum_{j = 1} f_p^\dagger f_p}, & {\bf S}_n^z &= f_n^\dagger f_n - \frac{1}{2}.
+\end{align}
+
+When a fermion is at site $n$, the spin projection is thus ${\bf S}_n^z = \pm \frac{1}{2}$. Thus, in terms of the fermionic operators, the XXZ-Hamiltonian reads 
+
+\begin{equation}
+    {\bf H}_{\mathds{X}\mathds{X}\mathds{Z}} = J \sum_{n} \bigg[ \frac{1}{2} (f_n^\dagger f_{n+1} + f_{n+1}^\dagger f_n) + \Delta \left(f_n^\dagger f_n - \frac{1}{2}\right) \left(f_{n+1}^\dagger f_{n+1} - \frac{1}{2}\right) - g\mu_B H \left(f_n^\dagger f_n - \frac{1}{2})\right) \bigg].
+    \label{XXZ fermionic hamiltonian}
+\end{equation}
+
+For general $\Delta$, the XXZ-chain is thus equivalent to an interacting 1D fermion system. In the $\Delta = 0$ case, this model simplifies itself to an integrable XX-chain, wherein the fermion chain becomes noninteracting and has a simpler analytical solution. \\
+
+\textbf{XY-Model}
+
+The $XY$-Heisenberg chain Hamiltonian is given by 
+
+\begin{equation}
+    {\bf H}_{\mathds{X}\mathds{Y}} = \sum_{j \in \Lambda} \bigg[(1+\gamma) \spin_{j}^x\spin_{j+1}^x + (1-\gamma) \spin_{j}^y\spin_{j+1}^y \bigg],
+\end{equation}
+
+where $\gamma$ is a parameter characterizing the degree of anisotropy in the $xy$-plane. The endpoint may be treated in two differenty, but physically reasonable ways, 
+
+\begin{enumerate}
+    \item as free ends, in which case the range of the summation index is $1 \leq i \leq N-1$, a situation convenient for discussing long-range order, 
+    \item or as a cyclic chain, in which $1 \leq i \leq N$ and $\vec{\spin}_{N+1} = \vec{\spin}_1$, being the most convenient chocice for calculating physical quantities other than the long-range order. \\
+\end{enumerate}
+
+The XY-model in exactly soluble for all values of $\gamma$. In particular, consider $\gamma \in \mathds{R}_{[-1,1]}$. As $\gamma \rightarrow 1$, both models tend to the Ising model in which the $x$-component of spin are completely ordered and the $y$-component and $z$-components are completely disordered. For $|\gamma| \neq 1$ both models are genuinely quantum mechanical because different components of $\vec{\spin}$. 
+
+\clearpage
+
+\paragraph{\textbf{$\Delta \approx 1$: The isotropic Heisenberg Antiferromagnet}}
+
+The most interesting regime for the XXZ chain is $\Delta \approx 1$, ie. the vicinity of the Isotropic Heisenberg antiferromagnet (HAF), wherein the ground state energy is given by 
+
+$$
+    E_0 = - N J \log 2.
+$$
+
+\clearpage
+
+
+\subsubsection{Antiferromagnetic Ground States}
+
+Consider an $N$-lattice system with spin-$S$, with its Hamiltonian given by
+
+\begin{equation}
+    {\bf H} = {\bf H}^{zz} + {\bf H}^{xy}, \begin{array}{c}
+         {\bf H}^{zz} = \frac{1}{2} \sum_{ij \in \Lambda \subset Z^{d}} J_{ij} \spin_i^z \spin_j^z, \\  
+         \\
+         {\bf H}^{xy} = \frac{1}{4} \sum_{ij \in \Lambda \subset Z^{d}} J_{ij} (\spin_i^+ \spin_j^- + \spin_i^- \spin_j^+), \\  
+    \end{array}
+    \label{auerbach's HH hamiltonian}
+\end{equation}
+
+with $J_{ij} = J_{ji}$ having translational symmetry. Furthermore, this Hamiltonian is rotationally invariant, having an $SU(2)$-symmetry, since it commutes with all three components of the total spin. Thus, the eigenstates may be labelled by 
+
+\begin{equation}
+    \begin{array}{c}
+         \ket{\Phi} = \ket{\spin_{\textnormal{tot}}, M, \cdots},  \\
+         M = -\spin_{\textnormal{tot}}, - -\spin_{\textnormal{tot}} +1, \cdots,  \spin_{\textnormal{tot}}, \\          \spin_{\textnormal{tot}} \leq NS, 
+    \end{array} \begin{array}{c}
+         \textnormal{ where $M$ is the eigenvalue of the total magnetization $\spin_{\textnormal{tot}}^z$,}
+         \\
+         \textnormal{ and where $\spin_{\textnormal{tot}}^2 = \spin_{\textnormal{tot}}(\spin_{\textnormal{tot}}+1)$ is the $SU(2)$-Casimir invariant. } \\
+         \textnormal{Note that, if the model is translationally invariant} \\
+         \textnormal{the ${\bf k}$-momentum is also a good quantum number.}
+    \end{array}
+\end{equation}
+
+\blanky \\
+
+The antiferromagnetic ground state is, in general, far more complicated than the ferromagnetic ground state. There are a series of theorems on the ground states, which hold for bipartite antiferromagnetic Hamiltonians. Consider two lattices, $A$ and $B$, then the staggered magnetization operator on these sublattices is given by 
+
+
+\begin{equation}
+    \spin^{\textnormal{stagg}} = \sum_{i \in A} \spin_{i}^z - \sum_{i \in B} \spin_{i}^z.
+\end{equation}
+
+The Ising configuration form the basis set 
+
+$$
+\prod_{i=1}^{N} \ket{S, m_{i}^\alpha}_{i} \begin{array}{c}
+     \textnormal{ where $\ket{S, m_i}_i$ is an eigenstate of $\spin_i^2, \spin_i^z$ } \\
+     \textnormal{ with eigenvalues $S(S+1), m_i$ respectively}.
+\end{array}
+$$
+
+In this bipartite system, the Néel state maximizes the staggered magnetization and is given by the Ising configuration
+
+\begin{align}
+    \ket{\Psi^{\textnormal{{Néel}}}} &= \prod_{i=1}^{N} \ket{S, \eta_i S_i}, & \eta_i &= \left\{\begin{array}{cc}
+        1 & i \in A  \\
+        -1 & i \in B
+    \end{array} \right.
+\end{align}
+
+Note that the Néel state may only be defined for bipartite states. Generally, this state is not an eigenstate of the Hamiltonian, since the spin flip terms $\spin_i^+ \spin_j^-$
+connect the Néel state to other (non-Néel) Ising spin configurations. Now, it is convenient to rotate the spin axes on the $B$-sublattice about the $z$-axis, which amounts to the unitary transformation 
+
+\begin{equation}\begin{array}{c}
+     \spin_i^+ \rightarrow - \tilde{\spin}_i^+ \\
+     \spin_i^- \rightarrow - \tilde{\spin}_i^- \\
+     \spin_i^z \rightarrow + \tilde{\spin}_i^z, 
+\end{array}
+    \ket{S, m_i}_i \rightarrow \ket{S, \tilde{m}_i}_i = \left\{\begin{array}{cc}
+        \ket{S, m_i}_i & i \in A \\
+        (1-)^{S+m_i} \ket{S, m_i}_i & i \in B 
+    \end{array} \right., 
+    \label{HH_su2_rotation}
+\end{equation}
+
+where $\tilde{m}_i$ are eigenvalues of $\spin_i^z$ and $\tilde{\spin}_i^z$ on $A$ and $B$ sublattices, respectively. By restricting the problem to an $M$-subspace, all wave functions may be rewritten as 
+
+\begin{equation}
+    \ket{\Psi^M} = \sum_{\alpha} f_{\alpha}^M \ket{\tilde{\Psi}^M_{\alpha}}, \textnormal{ where } \ket{\tilde{\Psi}^M_{\alpha}} = \prod_{\sum_{i} \tilde{m}_i^\alpha = M} \ket{S, \tilde{m}_i^\alpha}. 
+\end{equation}
+
+Then, the following theorems, first presented by Marshall and then extended by Lieb and Mattis, arise
+
+\begin{tcolorbox}[title = Marshall's theorems]
+
+\begin{theo}
+    Consider the Hamiltonian given by \cref{auerbach's HH hamiltonian}, of a bipartite lattice with antiferromagnetic exchanges $J_{ij} \geq 0$ which connect two sublattices $A$ and $B$. Said antiferromagnetic exchanges are such that any two lattice sites are connected by a sequence of finite exchanges between intermediary sites. In any allowed $M$-sector, the lowest energy state $\ket{\Psi^M_0}$ can be chosen to have positive-definite coefficients in the rotated Ising basis $\ket{\tilde{\Psi}^M_{\alpha}}$ ie.
+    
+    \begin{align}
+        \ket{\Psi^M_0} &= \sum_{\alpha} f_{\alpha}^M \ket{\tilde{\Psi}^M_{\alpha}}, & \{f_{\alpha}^M\}_{\alpha} > 0 \\
+        &= \sum_{\alpha} (-1)^{\Gamma(\alpha)} f_{\alpha}^M \ket{{\Psi}^M_{\alpha}}, & \Gamma(\alpha) = \sum_{i \in B} (S + m_i^\alpha).
+    \end{align}
+    \label{Marshall_theo_1}
+\end{theo}
+
+\begin{theo}
+The absolute ground state $\ket{\Omega}$, for equal size sublattices $A$ and $B$, is a singlet of zero total spin, this is 
+
+$$
+    {\spin}_{\textnormal{tot}} \ket{\Psi^M_0}= 0.
+$$
+\label{Marshall_theo_2}
+\end{theo}
+\end{tcolorbox}
+
+Note that not all total singlets obey the so-called Marshal sign criterion and, conversely, not all Marshall sign-obeying states are singlets of the total spin. The ground state of the Heisenberg Hamiltonian must, however, obey both conditions. \\
+
+\begin{proof}
+
+Consider an $SU(2)$-rotation, acting trivially on the first lattice and non-trivially in the second system. This is,
+
+$$
+    U \in SU(2) | U: (\mathfrak{s}\mathfrak{u}(2)_A) \times (\mathfrak{s}\mathfrak{u}(2)_B) \rightarrow (\mathfrak{s}\mathfrak{u}(2)_A) \times (\mathfrak{s}\mathfrak{u}(2)_B) \blanky \land \blanky \begin{array}{cc}
+        () &  \\
+         & 
+    \end{array}
+$$
+
+Consider an $SU(2)-$rotation, under which the spin operators and Ising basis transform as \cref{HH_su2_rotation}. The Heisenberg Hamiltonian in this new representation then reads 
+
+\begin{equation}
+    \tilde{{\bf H}} = \tilde{{\bf H}}^{zz} + \tilde{{\bf H}}^{xy}, \begin{array}{c}
+        \tilde{{\bf H}}^{zz} = \sum_{ij \in \Lambda \subset Z^{d}} |J_{ij}| \spin_i^z \tilde{\spin}_j^z, \\  
+         \\
+        \tilde{{\bf H}}^{xy} = - \frac{1}{2} \sum_{ij \in \Lambda \subset Z^{d}} |J_{ij}| (\spin_i^+ \tilde{\spin}_j^- + \spin_i^- \tilde{\spin}_j^+), \\  
+    \end{array}
+    \label{auerbach's HH hamiltonian}
+\end{equation}
+
+\begin{equation*}
+    \begin{array}{cc}
+    \textnormal{wherein, in this new sublattice-rotated representation,} \\
+        \textnormal{the longitudinal term, $\tilde{{\bf H}}^{zz}$, is diagonal in the rotated } & \textnormal{and where the transverse $\tilde{{\bf H}}^{xy}$ has non-positive } \\
+        \textnormal{Ising configuration: } \tilde{{\bf H}}^{zz}\ket{\tilde{\Psi}_{\alpha}} = e_{\alpha} \ket{\tilde{\Psi}_{\alpha}} & \textnormal{ matrix elements:} 
+        \bra{\tilde{\Psi}_{\alpha}} \tilde{{\bf H}}^{xy}  \ket{\tilde{\Psi}_{\beta}} = -|K_{\alpha \beta}|. \\
+    \end{array}
+\end{equation*}
+
+Both of these matrix representations induce the following eigenvalue equation on the $f$-coefficients, 
+
+\begin{equation*}\begin{split}
+    \tilde{{\bf H}} \ket{\tilde{\Psi}_{\alpha}} = E \ket{\tilde{\Psi}_{\alpha}} \Rightarrow - \sum_{\beta} |K_{\alpha \beta}| f_{\beta} + e_{\alpha} f_{\alpha} = E f_{\alpha}. \\
+    \begin{array}{c}
+         \textnormal{Consider then the trial function} \\
+          \ket{\tilde{\Omega}} = \sum_{\alpha} |f_{\alpha}| \ket{\tilde{\Psi}_{\alpha}} \\
+          \textnormal{ whose energy is }
+    \end{array}
+    \bra{\tilde{\Omega}} \tilde{{\bf H}} \ket{\tilde{\Omega}} &=  \sum_{\alpha} e_{\alpha} |f_{\alpha}|^2 - \sum_{\alpha \beta} |K_{\alpha \beta}| |f_{\alpha}| |f_{\beta}| \\
+    & \leq \sum_{\alpha} e_{\alpha} |f_{\alpha}|^2 - \sum_{\alpha \beta} |K_{\alpha \beta}| f_{\alpha} f_{\beta} = E,
+\end{split}
+\end{equation*}
+
+where the last equality holds if and only if all of the $f_{\alpha}$-coefficients are non-negative or all of the $f_{\alpha}$-coefficients are negative. This state must, therefore, also be a ground state and satisfy the eigenvalue equation 
+
+$$
+    - \sum_{\beta} |K_{\alpha \beta}| |f_{\beta}| + e_{\alpha} |f_{\alpha}| = E |f_{\alpha}|.
+$$
+
+In general, the $\ket{\tilde{\Psi}}$-states are not eigenstates of the rotated Hamiltonian, except in the case in which $M = NS$ which is the case of a one-state space. Therefore, $e_{\alpha} > E, \blanky \forall \alpha$. Then, 
+
+\begin{equation}
+    \begin{split}
+    &(e_{\alpha} - E) f_{\alpha }= \sum_{\beta} |K_{\alpha \beta}| f_\beta \\
+    &(e_{\alpha} - E) |f_{\alpha}|= \sum_{\beta} |K_{\alpha \beta}| |f_\beta|  
+    \end{split} \Rightarrow \bigg|\sum_{\beta} |K_{\alpha \beta}| f_{\beta}\bigg| = \sum_{\beta} |K_{\alpha \beta}| |f_{\beta}| \Rightarrow f_{\beta} \geq 0.
+\end{equation}
+
+Thus, the trial state and the ground states are the same, upto phase factors: $\ket{\tilde{\Omega}} = \pm \ket{\Psi^M_0}$. An even stronger condition on the $f_{\beta}$s can be imposed.
+
+\begin{lemma}
+   $f_{\beta} > 0, \blanky \forall \beta$.
+\end{lemma}
+
+\begin{proof}
+In effect, any Ising configuration with total magnetization $M$ is connected to all other configurations in the same sector by successive application of the pairwise spin flip operator ${\bf K}_{\alpha \beta} \approx (\sum_{i,j} \spin_i^+ \tilde{\spin}_j^- + \spin_i^- \tilde{\spin}_j^+)_{\alpha \beta}$. Thus, if $\exists \alpha: f_{\alpha} = 0$ , then $f_{\beta}$ must vanish for all other $\beta$ in the same $M$-sector. Since, by design, the ground state is such that in its expansions there is at least one non-zero coefficient, it follows that $f_{\beta} > 0$, $\forall{\beta}$, thus proving \cref{Marshall_theo_1}.
+\end{proof}
+
+\begin{corr}
+For any fixed $M$, $\ket{\Psi^M_0}$ is non-degenerate.
+\label{HH_non_degeneracy}
+\end{corr}
+
+\begin{proof}
+In effect, since all $f_{\beta}$s are non-zero, there cannot be an orthogonal state to $\ket{\Omega}$ that has only positive definite coefficients in said $M$ subspace. \\
+\end{proof}
+
+For \cref{Marshall_theo_2} to hold, the ground state of the $M$-sector must have minimally possible total spin, 
+
+\begin{lemma}
+   For a bipartite antiferromagnetic Heisenberg model, 
+   
+   $$
+   (\spin_{\textnormal{tot}})^2 \ket{\Psi^M} = M(M+1)\ket{\Psi^M}
+   $$
+\end{lemma}
+
+\begin{proof}
+Consider the infinite range Hamiltonian on a bipartite lattice with equal number of sites on the two sublattices, 
+
+$$
+    {\bf H}^{\infty} = J \sum_{\substack{
+    i \in A \\
+    j \in B}} \vec{\spin}_i \cdot \vec{\spin}_j = J \spin_{\textnormal{tot}}^A \cdot \spin_{\textnormal{tot}}^B
+$$
+
+This problem is thus trivially solvable, since it is a two spin problem using $\spin_{\textnormal{tot}} = \spin_{\textnormal{tot}}^A + \spin_{\textnormal{tot}}^B$, since $\spin_{\textnormal{tot}}^A \cdot \spin_{\textnormal{tot}}^B = \frac{1}{2} \bigg( \spin_{\textnormal{tot}}^2 - (\spin_{\textnormal{tot}}^A)^2 - (\spin_{\textnormal{tot}}^B)^2 \bigg)$.
+Therefore, the possible values of the total spin operators are 
+
+$$
+    \spin_{\textnormal{tot}}^A, \spin_{\textnormal{tot}}^B = 0, 1, \cdots, \frac{NS}{2},
+$$
+
+which for equal size sublattice means that 
+
+\begin{equation}
+    0 \leq \spin_{\textnormal{tot}} \leq NS.
+    \label{infinite_range_HH_total_spin}
+\end{equation}
+
+This infinite-range Hamiltonian's eigenvalues are then 
+
+\begin{equation}
+    E^{\infty} (\spin_{\textnormal{tot}}) = \frac{J}{2} \bigg[\spin_{\textnormal{tot}}(\spin_{\textnormal{tot}} + 1) - \spin_{\textnormal{tot}}^A(\spin_{\textnormal{tot}}^A+1) - \spin_{\textnormal{tot}}^B(\spin_{\textnormal{tot}}^B)\bigg],
+\end{equation}
+
+which are monotonically increasing with $\spin_{\textnormal{tot}}$, and since $\spin_{\textnormal{tot}} > M$, the ground state in a given $M$-sector has 
+
+$$
+\spin_{\textnormal{tot}} = M.
+$$
+
+Now, note that both the Heisenberg Hamiltonian and the infinite range Hamiltonian satisfy the requirements for the first of Marshall's theorems, \cref{Marshall_theo_1}, and thus their ground states have Marshall signs. Therefore, their overlap is non-zero, since it involves a sum over positive number, and these must have the same total spin quantum numbers. Therefore, the lowest energy state of ${\bf H}$ in the $M$-sector has spin $\spin_{\textnormal{tot}} = M$. Since all allowed values of total spin $\spin_{\textnormal{tot}}' > M$ have members in the sector with magnetization $M$, then the energy in terms of the total spin obeys 
+
+$$
+    \forall \spin_{\textnormal{tot}}' > \spin_{\textnormal{tot}} \Rightarrow E(\spin_{\textnormal{tot}}') > E(\spin_{\textnormal{tot}}),
+$$
+
+ie. the energy is a monotonically increasing function of the total spin. Now, consider the $(M=0)$-sector. This inequality proves that the ground state must have minimal possible total spin $\spin_{\textnormal{tot}}$ which is zero, according to \cref{infinite_range_HH_total_spin}. Thus concluding the proof of \cref{Marshall_theo_2}.
+\end{proof}
+\end{proof}
+
+\subsubsection{Ferromagnetic Ground States}
+
+For the ferromagnetic Heisenberg chains, a similar result can be proved. 
+
+\begin{corr}
+For the ferromagnetic model with non-positive charges, 
+
+$$
+{\bf H} = - \frac{1}{2} \sum_{ij} |J_{ij}| \vec{\spin}_i \cdot \vec{\spin}_j,
+$$
+
+the fully ferromagnetic state $\ket{\Psi^{\textnormal{FM}}}$ is a member of the ground state multiplet, where 
+
+$$
+    \ket{\Psi_0^{\textnormal{FM}}} = \prod_{i=1}^N \ket{S, S}_i.
+$$
+
+\end{corr}
+
+\begin{proof}
+
+Consider the ferromagnetic Heisenberg model, whose Hamiltonian may be explicitly written as 
+
+\begin{equation}
+     {\bf H} = {\bf H}^{zz} + {\bf H}^{xy}, \begin{array}{c}
+         {\bf H}^{zz} = -\frac{1}{2} \sum_{ij \in \Lambda \subset \mathds{Z}^{2}} |J_{ij}| \spin_i^z \spin_j^z, \\  
+         \\
+         {\bf H}^{xy} = -\frac{1}{4} \sum_{ij \in \Lambda \subset \mathds{Z}^{2}} |J_{ij}| (\spin_i^+ \spin_j^- + \spin_i^- \spin_j^+). \\  
+    \end{array}
+\end{equation}
+
+For a fixed $M$-subspace, all wave functions may be written in terms of Ising configurations which lie in said $M$-subspace, namely
+
+\begin{equation}
+    \ket{\Psi^M} = \sum_{\alpha} f_{\alpha}^M \ket{{\Psi}^M_{\alpha}}, \textnormal{ where } \ket{{\Psi}^M_{\alpha}} = \prod_{\sum_{i} {m}_i^\alpha = M} \ket{S, {m}_i^\alpha}. 
+\end{equation}
+
+Now, 
+
+\begin{itemize}
+    \item the longitudinal term, ${{\bf H}}^{zz}$, is diagonal in the Ising configurations, ${{\bf H}}^{zz}\ket{{\Psi}_{\alpha}} = e_{\alpha} \ket{{\Psi}_{\alpha}}$,
+    \item and where the transverse ${{\bf H}}^{xy}$ has non-negative $\bra{{\Psi}_{\alpha}} {{\bf H}}^{xy}  \ket{{\Psi}_{\beta}} = |K_{\alpha \beta}|$.
+\end{itemize}
+
+Consider the following ansatz, $\ket{\Omega} = \sum_{\alpha} |f_{\alpha}| \ket{\Psi}_{\alpha}$, whose energy is 
+
+\begin{equation}
+\begin{split}
+    \bra{\Omega} H \ket{\Omega} = & \sum_{\alpha} e_{\alpha} |f_{\alpha}|^2 + \sum_{\alpha \beta} |K_{\alpha \beta}| |f_{\alpha}| |f_{\beta}| \\
+    & \leq \sum_{\alpha} e_{\alpha} |f_{\alpha}|^2 + \sum_{\alpha \beta} |K_{\alpha \beta}| f_{\alpha} f_{\beta} = E \Rightarrow \textnormal{sgn}(f_{\alpha}) = \textnormal{sgn}(f_{\beta}), \forall \alpha, \beta. 
+\end{split}
+\end{equation}
+
+Without loss of generality, the $f_{\alpha}$-coefficients may be taken to be positive, with the extra, overall, sign to be associated with the Ising configurations. In effect, in general, the $\ket{{\Psi}}$-states are not  eigenstates of the Hamiltonian, except in the case in which $M = NS$ which is the case of a one-state space. Therefore, $e_{\alpha} > E, \blanky \forall \alpha$.
+Consider the infinite range ferromagnetic Hamiltonian on a bipartite lattice with equal number of sites on the two sublattices, 
+
+$$
+    {\bf H}^{\infty} = -J \sum_{\substack{
+    i \in A \\
+    j \in B}} \vec{\spin}_i \cdot \vec{\spin}_j = J \spin_{\textnormal{tot}}^A \cdot \spin_{\textnormal{tot}}^B
+$$
+
+Again, this problem is trivially solvable, since it is a two spin problem using $\spin_{\textnormal{tot}} = \spin_{\textnormal{tot}}^A + \spin_{\textnormal{tot}}^B$, since $\spin_{\textnormal{tot}}^A \cdot \spin_{\textnormal{tot}}^B = \frac{1}{2} \bigg( \spin_{\textnormal{tot}}^2 - (\spin_{\textnormal{tot}}^A)^2 - (\spin_{\textnormal{tot}}^B)^2 \bigg)$.
+Therefore, the possible values of the total spin operators are 
+
+$$
+    \spin_{\textnormal{tot}}^A, \spin_{\textnormal{tot}}^B = 0, 1, \cdots, \frac{NS}{2},
+$$
+
+which for equal size sublattice means that 
+
+\begin{equation}
+    0 \leq \spin_{\textnormal{tot}} \leq NS.
+    \label{infinite_range_HH_total_spin}
+\end{equation}
+
+This infinite-range Hamiltonian's eigenvalues are then 
+
+\begin{equation}
+    E^{\infty} (\spin_{\textnormal{tot}}) = -\frac{J}{2} \bigg[\spin_{\textnormal{tot}}(\spin_{\textnormal{tot}} + 1) - \spin_{\textnormal{tot}}^A(\spin_{\textnormal{tot}}^A+1) - \spin_{\textnormal{tot}}^B(\spin_{\textnormal{tot}}^B)\bigg],
+\end{equation}
+
+which are monotonically increasing with $\spin_{\textnormal{tot}}$, and since $\spin_{\textnormal{tot}} > M$, the ground state in a given $M$-sector has 
+
+$$
+\spin_{\textnormal{tot}} = M.
+$$
+\end{proof}
+
+As a member of a degenerate multiplet, this state spontaneously breaks the rotational symmetry of the Hamiltonian. This symmetry breaking is special in that the operator $\spin_{\textnormal{tot}}^z$ commutes with the Hamiltonian and, therefore, $M$ is a good quantum number (ie. it labels the eigenstates of ${\bf H}$). In this respect, the antiferromagnet differs from the ferromagnet. The staggered magnetization does not commute in general with the Hamiltonian. Spontaneous symmetry breaking, however, is still possible for the antiferromagnet in the strict thermodynamic limit. \\
+
+\subsubsection{Half-Odd Integer Spin Chains}
+
+As a Lie group, $SU(2)$ is the simply-convex three-sphere $\bm{\mathcal{S}}^3$. Thus, particle with half-odd integer spin, eg. electrons, have a peculiar quantum property: their wave functions acquires a minus sign under a $2\pi$-rotation about any spin axis. For localized systems, any particular direction in spin space, this effect is not noticeable. However, for low-dimensional systems, this zero-point fluctuations are large. Thus, interference effects due to these negative signs may become important. In fact, the antiferromagnetic one-dimensional Heisenberg model has different spectra for integer and half-odd integer spins. Thus the following theorem, due to Lieb, Schultz and Mattis, arises
+
+\begin{tcolorbox}[title = Lieb-Schultz-Mattis Theorem on Half-odd Integer Spin Chains]
+
+\begin{theo}
+Consider the antiferromagnetic Heisenberg spin chain, with $J > 0$ on a one dimensional chain with closed topology 
+
+\begin{equation}
+    {\bf H} = J \sum_{j=1}^N \spin_j \cdot \spin_{j+1} + J \spin_N \cdot \spin_1,
+\end{equation}
+
+where $N$ is even. For half-odd integer spin, there exists an excited state whose energy vanishes in the thermodynamic limit, $N \rightarrow \infty$.
+\end{theo}
+\end{tcolorbox}
+
+Let $\ket{\Psi_0}$ be the system's ground state and let the twist operator be 
+
+$$
+    \mathcal{O}^k = \exp \bigg(ik \sum_{j=1}^{N} j \spin_j^z\bigg),
+$$
+
+which incrementally rotates each spin in the $xy$-plane, such that between the first and last spin, the spin coordinates are rotated by $2\pi$ about the $z$-axis. Thus, the twisted state is constructed as 
+$$
+    \ket{\Psi_k} = \mathcal{O}^k \ket{\Psi_0}
+$$
+
+Two statements swiftly arise, 
+
+\begin{lemma}
+\label{HH_1_dimensional_twisted_state}
+   \begin{equation}
+       \bra{\Psi_k} \ket{\Psi_0} = 0 \textnormal{ and } \bigg[\bra{\Psi_k} {{\bf H}} \ket{\Psi_k} - E_0\bigg] \underset{N \rightarrow \infty}{\rightarrow} 0
+ \end{equation}
+\end{lemma}
+
+\begin{proof}
+In effect, consider a translation operator, defined by cyclically shifting the spins by one site modulo $N$, this is 
+
+\begin{equation}
+\begin{split}
+    &\mathcal{T} : \mathfrak{A}_i \rightarrow \mathfrak{A}_j \\
+    &\mathcal{T}^{-1} \vec{\bf S}_i \mathcal{T} = \vec{\spin}_{i+1}
+\end{split}
+\begin{array}{c}
+     \textnormal{ where } \mathfrak{A}_i, \mathfrak{A}_j \simeq \mathfrak{su}(2) \blanky \forall i,j. 
+\end{array}
+\end{equation}
+
+By construction, the Heisenberg Hamiltonian with closed boundary conditions commutes with the translation operator, $[{\bf H}, \mathcal{T}] = 0$.
+Then, if $\ket{\Psi_0}$ is an eigenstate of the Hamiltonian, so is $\mathcal{T} \ket{\Psi_0}$. Given $\ket{\Psi_0}$'s non-degeneracy, and guaranteed by \cref{HH_non_degeneracy}, and letting $k_0$ be the ground state lattice momentum, the following holds
+
+\begin{equation}
+\begin{split}
+    \mathcal{T} \ket{\Psi_0} = e^{i k_0} \ket{\Psi_0} 
+    \Rightarrow \bra{\Psi_0} \ket{\Psi_k} &= \bra{\Psi_0} \mathcal{O}^{k}\ket{\Psi_0} =  \bra{\Psi_0} \mathcal{T}^{-1} \mathcal{O}^{k} \mathcal{T} \ket{\Psi_0} \\
+    &= \bra{\Psi_0} \exp \bigg[-ikN \sum_{j=1}^{N} j \mathcal{T}^{-1} \spin_j^z \mathcal{T} \bigg] \ket{\Psi_0} \\
+    &= \bra{\Psi_0} \exp \bigg[-ikN \bigg( \sum_{j=1}^{N-1} j \spin_{j+1}^z + N \spin_1^z \bigg)\bigg) \ket{\Psi_0} \\
+    &= \bra{\Psi_0} e^{i k N  \spin_1^z}\exp \bigg[-ikN \bigg( \sum_{j=1}^{N-1} (j+1) \spin_{j+1}^z + \spin_{1}^z - \sum_{j=1}^{N}  \spin_{j+1}^z  \bigg)\bigg] \ket{\Psi_0} \\
+    &= \bra{\Psi_0} e^{i k N \spin_1^z} \exp \bigg(-ikN \bigg( \sum_{j=1}^{N} (j+1) \spin_{j+1}^z - \sum_{j=1}^{N}  \spin_{j+1}^z  \bigg)\bigg] \ket{\Psi_0} \\
+    &= \bra{\Psi_0} e^{i 2 \pi \spin_1^z} \mathcal{O}^k  \exp \bigg(- i k N \spin_{\textnormal{tot}}^z\bigg) \ket{\Psi_0} \\
+    &= \bra{\Psi_0} \mathcal{O}^{k} e^{ik \spin_1^z} \exp \bigg(-ikN \sum_{j=1}^{N} j \spin_j^z \bigg) \ket{\Psi_0} \\
+\end{split}
+\end{equation}
+
+This last equality is, in fact, zero by \cref{Marshall_theo_2}, the ground state has zero-total magnetization. Given that $\ket{\Psi_0}$ is a singlet, note that 
+
+\begin{equation}
+\begin{split}
+    {\bf S}_1^z &= \left(\begin{array}{cc}
+        \frac{1}{2} & 0  \\
+        0 & -\frac{1}{2} 
+    \end{array}\right) \begin{array}{c}
+        \Rightarrow e^{ik \spin_1^z} =  \left(\begin{array}{cc}
+       -1 & 0  \\
+        0 & -1
+    \end{array}\right) \textnormal{ iff } k \in 2\mathds{N}+1,   \\
+        e^{ik \spin_1^z}  = \left\{  \begin{array}{cc}
+              1 &  S = 0,1,2,\cdots \\
+              -1 &  S = \frac{1}{2},\frac{3}{2},\frac{5}{2},
+          \end{array} \right.
+    \end{array} \Rightarrow \mathcal{T}^{-1} \mathcal{O}^{k} \mathcal{T} = \left\{  \begin{array}{cc}
+              \mathcal{O}^{k} &  S = 0,1,2,\cdots \\
+              -\mathcal{O}^{k} &  S = \frac{1}{2},\frac{3}{2},\frac{5}{2},
+          \end{array} \right.
+\end{split}
+\end{equation}
+
+which then implies that $\bra{\Psi_0} \ket{\Psi_k} = - \bra{\Psi_0} \ket{\Psi_k} = 0$, thus proving the first proposition. The $\ket{\Psi_k}$-state energies are also readily calculated. In effect, given that the twist operator is a unitary rotation on the $xy$-plane, the following results arise 
+
+\begin{equation}
+\begin{split}
+     &\mathcal{O}^{k-1} \spin^x_n \mathcal{O}^{k} = \cos kn \spin_n^x + \sin kn \spin_n^y  \\
+     &\mathcal{O}^{k-1} \spin^y_n \mathcal{O}^{k} = \cos kn \spin_n^y - \sin kn \spin_n^x  \\
+     &\mathcal{O}^{k-1} \spin^z_n \mathcal{O}^{k} = \spin^z_n \\
+     \Rightarrow \bra{\Psi_k} {{\bf H}} \ket{\Psi_k} = & \bra{\Psi_0} \mathcal{O}^{k-1} {{\bf H}} \mathcal{O}^{k} \ket{\Psi_0} = \bra{\Psi_0} \mathcal{O}^{k-1} {{\bf H}} \mathcal{O}^{k} \ket{\Psi_0} \\
+     &= \bra{\Psi_0} \mathcal{O}^{k-1} \bigg( \frac{J}{2} \sum_{j \in \Lambda} \bigg(\spin_j^x \spin_{j+1}^x + \spin_j^y \spin_{j+1}^y + \spin_j^z \spin_{j+1}^z \bigg) \bigg) \mathcal{O}^{k} \ket{\Psi_0} \\
+     &= E_0 + \bra{\Psi_0} [\cos k - 1] \sum_{j=1}^N (\spin_j^x \spin_{j+1}^x + \spin_j^y \spin_{j+1}^y) + \sin k \sum_{j=1}^N (\spin_j^x \spin_{j+1}^y - \spin_j^y \spin_{j+1}^x) \ket{\Psi_0}, \\
+\end{split} 
+\end{equation}
+
+examining each term in the previous equation yields the following approximations
+
+\begin{equation}
+    \begin{array}{cc}
+     \Rightarrow [\cos k - 1] \bra{\Psi_0} \sum_{j=1}^N (\spin_j^x \spin_{j+1}^x + \spin_j^y \spin_{j+1}^y) \ket{\Psi_0} &  + \sin k \sum_{j=1}^N (\spin_j^x \spin_{j+1}^y - \spin_j^y \spin_{j+1}^x) \\
+     \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky = \bigg[-\frac{1}{2} \bigg(\frac{2\pi}{N}\bigg)^2 - \mathcal{O}(N^{-4})\bigg] \bra{\Psi_0} \sum_{j=1}^N (\spin_j^x \spin_{j+1}^x + \spin_j^y \spin_{j+1}^y) \ket{\Psi_0} & \blanky \blanky = -i \sin k \bra{\Psi_0} [\sum_{j} j \spin_j^z, {\bf H}]\ket{\Psi_0} \\
+     \leq \bigg(\frac{2\pi}{N}\bigg)^2 \frac{N}{2} + \mathcal{O}(N^{-3}) & = 0
+    \end{array}
+\end{equation}
+
+Thus, for $k = \frac{2\pi}{N}$, 
+
+$$
+    \bra{\Psi_k} {{\bf H}} \ket{\Psi_k} \leq E_0 + \frac{2\pi^2}{N},
+$$
+
+and then, there is no energy gap in the thermodynamic limit. Thus concluding \cref{HH_1_dimensional_twisted_state}'s proof.  
+\end{proof}
+
+However, note that in the thermodynamic limit, the admixture of the ground state and this low-lying excited state may break a symmetry of the Hamiltonian. This is the case for the ground state and the first excited state of the Majumdar-Gosh model, which are superpositions of dimer configurations, break lattice symmetry. An alternative scenario occurs in the nearest-neighbour Heisenberg model of spin half. dess Cloizeaux and Pearson have found that magnon excitations are gappless, said excitations not being spin waves since they are not small fluctuations about a ground state with broken spin symmetry. In contrast to spin-half chains, integer spin chains have a gap in the excitation spectrum, the Haldane gap. 
+
+\blanky \\
+
+The previous results can be readily extended to two and three-dimensional lattices. In effect, for the former, consider a square lattice of $N$ sites in the $x$-direction and $M \sim \mathcal{O}(N^\nu)$ sites in the $y$-direction, where $\nu \in \mathds{R}_{[0,1]}$, with a cyclic Hamiltonian, ie.
+
+$$
+\spin_{n, M+1} = \spin_{n, 1} \textnormal{ and } \spin_{N+1, m} = \spin_{1, m},
+$$
+
+ie. the lattice is wrapped on a two-dimensional torus $\mathds{T}^2$. Let the two-dimensional twisted operator  $\mathcal{O}^k$ be 
+
+$$
+    \mathcal{O}^k = \exp\bigg(ik \sum_{n, m} n \spin_{n, m}^z \bigg),
+$$
+
+which twists the $x$-direction sites by the same amount and the $y$-direction sites by another amount. The $\ket{\Psi_k}$-states construction and orthonormality follow directly from the one-dimensional case. In this case, there is no energy gap in the continuum limit,  
+
+$$
+    \bra{\Psi_k} {{\bf H}} \ket{\Psi_k} \leq E_0 + \frac{2\pi^2}{N^{1-\nu}}.
+$$
+
+Since the excitacion energy of exact low-lying states should not depend on the shape of the entire lattice, there should be no energy gap for an $(N \times N)$-lattice either. The $\ket{\Psi_k}$ state is, unfortunately, not sufficiently like an exact low-lying excited state to give this result. A similar extension to three-dimensional lattices swiftly follows. 
+
+\subsection{Disorder in Low Dimensions}
+
+\clearpage
 
 \subsection{Numerical solution to Fermionic models}
 
@@ -2807,6 +2923,149 @@ which can then be numerically solved.
 %
 
 \clearpage 
+
+
+\paragraph{\textbf{Ferromagnets and antiferromagnets}}
+
+Unless geometric frustration is present, in classical systems, there is no significant difference between ferromagnets and antiferromagnets. Eg, with NN-interaction, geometric frustration occurs for lattices that are not bipartite. In a bipartite lattice, the sites can be divided into two sub-lattices such that nearest neighbours always belong to different sub-lattices. A nearest-neighbour antiferromagnetic interaction in a classical model on a bipartite lattice can typically be changed into a ferromagnetic one, by redefining the spin via a flip on all sites on one of the sub-lattices but not on the other (eg. $\uparrow \rightarrow \downarrow$ in the Ising model). The physics of such classical antiferromagnets is therefore essentially equivalent to that of the ferromagnets. \\
+
+Antiferromagnetic quantum systems on non-bipartite lattices also exhibit interesting behaviour. But the interesting thing is that on bipartite lattices, there are a number of important differences between quantum ferromagnets and antiferromagnets. \\
+
+\paragraph{\textbf{Quantum Ferromagnets}}
+
+Consider the Heisenberg interaction $-J \vec{\spin}_1 \cdot \vec{\spin}_2$ across a single bond. For spin-$\frac{1}{2}$ particles, this is a simple $4 \times 4$-matrix acting on the computational basis $\mathcal{B} = \{\ket{\uparrow\uparrow}, \ket{\uparrow \downarrow}, \ket{\downarrow \uparrow}, \ket{\downarrow\downarrow}\}$, yielding 
+
+\begin{equation*} \vec{\spin}_1 \cdot \vec{\spin}_2 = \frac{1}{4} \left(\begin{array}{*{11}c}1 & 0 & 0 & 0 \\0 & -1 & 4 & 0 \\0 & 4 & -1 & 0\\0 & 0 & 0 & 1\\\end{array}\right)\end{equation*}
+
+Diagonalizing this matrix will yield its eigenvalues and its eigenvectors. Given the Clebsh-Gordan decomposition rule $\frac{1}{2} \otimes \frac{1}{2} = 0 \oplus 1$, these eigenvectors can be grouped into the $s=1$-triplet representation and the $s=0$-singlet representation. In effect,
+
+\begin{equation}
+    \begin{split}
+        \textnormal{triplet}: \ket{\uparrow \uparrow}, \frac{1}{\sqrt{2}} \bigg(\ket{\downarrow \uparrow} + \ket{\uparrow\downarrow}\bigg), \ket{\downarrow\downarrow}, \textnormal{ with } \lambda_i = -\frac{J}{4} \\
+        \textnormal{singlet}: \frac{1}{\sqrt{2}} \bigg(\ket{\downarrow \uparrow} - \ket{\uparrow\downarrow}\bigg), \textnormal{ with } \mu_i = +\frac{J}{4}
+    \end{split}
+\end{equation}
+
+It is simple to check that ${\bf K} = s(s+1)$ in both cases, and that while the singlet is annihilated by all three generators $\vec{\bf S}$, acting with ${\bf S}^+$ and ${\bf S}^-$ takes members of the triplet to each other. One important difference between the ferromagnetic ($J > 0$) and the antiferromagnetic ($J < 0$) models now arises,
+
+\begin{itemize}
+    \item if $J>0$, there are multiple ground states for the ferromagnet, each member of the triplet having minimum energy $-J$,
+    \item but if $J<0$, the antiferromagnetic ground state, the singlet, is unique. Moreover, the antiferromagnetic ground state is invariant under the $SU(2)$-symmetry, whereas the ferromagnetic ground states are not. \\
+\end{itemize}
+
+Additional insight comes from solving the Heisenberg model on a four-site chain, with its Hilbert space being 16-dimensional, by exploiting the model's inner symmetries. The magnetization operator ${\bf M}^z$ commutes with the Hamiltonian, which makes them simultaneously diagonalizable. For perioidic boundary conditions, the translational invariance plays a powerful role. The translation operator is defined by shifting the spins by one site modulo $N$, this is 
+\begin{equation}
+\begin{split}
+    \mathcal{T} : \mathfrak{A}_i \rightarrow \mathfrak{A}_j \\
+    \mathcal{T}^{-1} \vec{\bf S}_i \mathcal{T} = \vec{\spin}_{i+1}
+\end{split}
+\begin{array}{c}
+     \textnormal{ where } \mathfrak{A}_i, \mathfrak{A}_j \simeq \mathfrak{su}(2) \blanky \forall i,j. 
+\end{array}
+\end{equation}
+
+The Hamiltonian commutes with the translation operator when the boundary conditions are periodic, and commutes with the magnetization as well. Thus the Hamiltonian can be broken into blocks acting on states with a fixed eigenvalue of the traslation operator and of the magnetization. \\
+
+Since $\mathcal{T}^N = \mathds{1}$ for an $N$-site chain, the eigenvalues of $\mathcal{T}$ are $\lambda_i = e^{\frac{2\pi i n}{N}}, \forall n \in \mathds{Z}$, from which the corresponding momentum can be defined as $k = \frac{2\pi n}{N}$. Then, the following holds 
+$$
+    \sum_{n \in \mathds{Z}_{[0, N-1]}} e^{-\frac{2\pi i n}{N}} \mathcal{T}^n \ket{s} = \ket{s} + e^{-\frac{2\pi i}{N}} \ket{s} + \cdots + e^{-\frac{2\pi i (N-1)}{N}}\mathcal{T}^{N-1} \ket{s}.
+$$
+
+For example, for a four-site chain, the translational invariance diagonalizes the enire Hamiltonian save for $m=0$ and $k = 0$ or $k = \pi$, since the corresponding eigenstates are 
+
+\begin{equation}
+    \begin{split}
+        \ket{A} = \frac{1}{\sqrt{2}} \bigg({\uparrow\downarrow\uparrow\downarrow} + e^{-i\pi k} {\downarrow\uparrow\downarrow\uparrow}\bigg), \\
+        \ket{B} = \frac{1}{2}  \bigg(\ket{{\uparrow\uparrow\downarrow\downarrow}} + \ket{\downarrow \uparrow \uparrow \downarrow} + \cdots \bigg)
+    \end{split} \begin{array}{c}
+         \textnormal{with the hamiltonian} \\ \textnormal{ on these} \\ \textnormal{ $k=0$ and $k=\pi$} \\ \textnormal{states being }  
+    \end{array}-J \left(\begin{array}{cc}
+        -1 & \sqrt{2} \cos\left(\frac{\pi k}{2}\right)  \\
+        \sqrt{2} \cos\left(\frac{\pi k}{2}\right) & 0
+    \end{array}\right).
+\end{equation}
+
+These sector's eigenvalues are therefore $-J$ and $2J$ for $k=0$ and $J = 0$ for $k=\pi$. Again organising the eigenstates into $\mathfrak{su}(2)$-multiplets yield the energy levels divided by $-J$, as follows 
+
+\begin{equation}
+    \begin{split}
+        & \textnormal{quintuplet}: 1 \\
+        & \textnormal{triplets}: \cos(\pi k) (k \neq 0) \\
+        & \textnormal{singlets}: -2,0 \textnormal{ for } k=0, \pi \textnormal{ respectively}. 
+    \end{split}
+\end{equation}
+
+This $\mathfrak{su}(2)$-invariance allows for the construction of the entire multiplet once one of the states is known. \\
+
+As with the two-site chain, the ferromagnetic ground state is a multiplet, whereas the antiferromagnetic is a singlet. For a general $N$-site ferromagnet, the completely ferromagnetic states (all spins up or all spins down) are exact ground states of the Hamiltonian. This suggest using an order parameter for ferromagnetism. A ferromagnetic order parameter is simply the quantum analog of the magnetization, the expectation value of the $z$-component of the total spin is 
+
+$$
+    \bra{\textnormal{g.s.}} {\bf M}^z \ket{\textnormal{g.s.}} = \sum_{i=1}^N \textnormal{g.s.} \bra{\textnormal{g.s.}} {\bf S}_i^z \ket{\textnormal{g.s.}},
+$$
+
+which is not a particularly great order parameter, since it vanishes if there is symmetry under spin flip, as with the classical case. A better example is $\bra{\textnormal{g.s.}} ({\bf M}^z)^2 \ket{\textnormal{g.s.}}$. \\
+
+The completely ferromagnetically ordered states, ie. all spins up or all spins down, are both ${\bf M}^z$-eigenvalues with maximum magnitude of eigenvalues, namely $N^2$, and are ground states of the Hamiltonian as well. The antiferromagnetic situtation is different. The staggered magnetization, or the \textbf{Néel order parameter}, is commonly used to understand antiferromagnetic order. It can only be defined on bipartite lattices. For example, consider the odd-sites on a sublattice, and the even-sites on the other, then the Néel operator is 
+
+$$
+    \bm{\mathcal N} = \sum_{i=1}^N (-1)^i {\bf S}_i^z.
+$$
+
+A Néel state has $N^2$-eigenvalues under $\bm{\mathcal N}^2$, ie. the spins are spin up on one sublattice and spin down on the other, like the state $\ket{A}$ which has four sites. Note, however, that the Néel operator does not commute with Hamiltonian. Then, a Néel state is not an eigenstate of the Heisenberg Hamiltonian. This is a huge difference between ferromagnets and antiferromagnets, even on bipartite lattices, not just on geometrically frustrated ones. 
+
+For example, for a four-site chain and $J<0$, the ground state is a spin singlet and translationally invariant. The properties are thus quite typical of antiferromagnetic ground states. The diagonal terms are $J$ and $0$ for the translationally-invariant Néel state $\ket{A}$ and the other state, $\ket{B}$, respectively. This does indeed favour the Néel state. However, the off-diagonal terms in the Hamiltonian, mean \\
+
+\clearpage
+
+\paragraph{\textbf{Hamiltonian in terms of Projectors}}
+
+It is often useful to write a Hamiltonian as a sum of projection operators, especially if a form can be found where all the coefficients are positive. This can be done for both the Heisenberg ferromagnet and antiferromagnets, and greatly illuminates the distinction between the two. \\
+
+A projector is an idempotent operator, thus its eigenvalues can only be either zero or one. Any Hamiltonian which can be written in such a form, will non-negative eigenvalues. Let ${\bf P}^{(s)}$ be a projector onto spin-$s$ such that 
+
+\begin{itemize}
+    \item it gives 1 when acting on a collection of spins whose total spin is $s$, 
+    \item and 0 otherwise.
+\end{itemize}
+
+A projector onto $m$ spins can be built by taking product of the operators $(\sum_{i=1}^{m} \spin_i) \cdot (\sum_{i=1}^{m} \spin_i) - j(j+1)$. For example, there are two projectors, ${\bf P}^{(0)}$ and ${\bf P}^{(1)}$, acting on two spin-$\frac{1}{2}$ particles, since the following $SU(2)$ representations holds $\frac{1}{2} \otimes \frac{1}{2} = 0 \oplus 1$. Said projectors are given by 
+
+\begin{equation}
+    \begin{split}
+        &{\bf P}^{(1)} (\spin_1 + \spin_2) = \frac{1}{2} \bigg((\spin_1 + \spin_2) \cdot (\spin_1 + \spin_2)\bigg) \\
+        &{\bf P}^{(0)} (\spin_1 + \spin_2) = -\frac{1}{2} \bigg((\spin_1 + \spin_2) \cdot (\spin_1 + \spin_2) - 2\bigg).
+    \end{split}
+\end{equation}
+
+Note that ${\bf P}^{(1)} + {\bf P}^{(0)} = 1$, since all states belong to some $\mathfrak{s}\mathfrak{u}(2)$-multiplet. Since ${\spin} \cdot \spin = \frac{3}{4}$ for a spin-$\frac{1}{2}$ particle, 
+
+$$
+    {\bf P}^{(1)} (\spin_{i} + \spin_{i+1}) = \frac{3}{4} + \spin_1 \cdot \spin_2, \textnormal{ and }
+     {\bf P}^{(0)} (\spin_{i} + \spin_{i+1}) = \frac{1}{4} - \spin_1 \cdot \spin_2.
+$$
+
+Therefore, the spin-$\frac{1}{2}$ Heisenberg Hamiltonian can therefore be rewritten as a sum of projectors with positive weights in both the ferromagnetic and antiferromagnetic cases. 
+
+\begin{itemize}
+    \item In the ferromagnetic case, 
+          the ferromagnetic hamiltonian is a sum of projectors with positive coefficients,
+          
+          $$
+            {\bf H} = J \sum_{i=1}^N {\bf P}^{(0)}(\spin_i + \spin_{i+1}).
+          $$
+          
+          Each of these projectors annihilates any ferromagnetic ground state. This is obvious for the completely aligned states, since ${\bf P}^{(0)}$ annihilates any pair of spins that are the same. It is not as obviously true for other parts of the ferromagnetic ground-state multiplet, but follows from the facts that $\spin^\pm$ commutes with the Hamiltonian and act on the completely aligned state to give the rest of the multiplet. Thus, the ferromagnetic Heisenberg model is frustration free. \\
+          
+          \item The antiferromagnetic spin-$\frac{1}{2}$ Heisenberg Hamiltonian can also be written as a sum of projectors with positive coefficients. In effect, 
+          
+          $$
+            {\bf H} = -J \sum_{i=1}^N {\bf P}^{(1)}(\spin_i + \spin_{i+1}).
+          $$
+          
+          Here, however, there is no state annihilated by all the operators. This is simple to see by checking explicitly just for three spins in a row. Therefore, the Heisenberg Hamiltonian is not frustration free. 
+\end{itemize}
+
+\clearpage
 
 \section{Quantum Field-Therotic approach to Condensed Matter Physics}
 
@@ -4726,8 +4985,169 @@ Then, \cref{NR_GF_Jellium-like_model} may be rewritten in matrix notation as
     \bigg[(\mathfrak{G}^{(0)})^{-1} - \Sigma^{*}\bigg] \mathfrak{G} = \mathfrak{i}\mathfrak{d}_{\bm{\mathcal{F}}} \Rightarrow &  \alignedbox{\mathfrak{G} }{= \bigg[(\mathfrak{G}^{(0)})^{-1} - \Sigma^{*}\bigg]^{-1} = \mathfrak{G}^{(0)} + \mathfrak{G}^{(0)} \Sigma^{*} \mathfrak{G}},
 \end{align}
 
-which is the matrix form of the Dyson equations for the one-particle Green function, or the Dyson series. It will be shown that $\Sigma^{*}$ is the one-particle irreducible self-energy. 
+which is the matrix form of the Dyson equations for the one-particle Green function, or the Dyson series. It will be shown that $\Sigma^{*}$ is the one-particle irreducible self-energy. \\
 
+\paragraph{\textbf{Physical Interpretation of the One-particle Green function and the Self-Energy}}
+
+Let $\ket{\Omega}$ be the (normalized) system's ground state, such that the system's Green function can be written as 
+
+\begin{equation}
+    i \mathfrak{G}_{\alpha \beta} ({\bf x}t, {\bf x}'t') = {\bra{\Omega} \mathcal{T} [\hat{\psi}_{H \alpha}({\bf x}, t) \hat{\psi}^\dagger_{H \beta}({\bf x}', t')] \ket{\Omega}}.
+\end{equation}
+
+The complete set of eigenstates of the Hamiltonian, defined on the Fock space and thus containing any number of particles, is given by 
+
+\begin{equation*}
+    \begin{split}
+        &\sum_{n} \bra{\Psi_n}\ket{\Psi_n} = \textnormal{id}_{\bm{\mathcal{F}}}, \\
+        &e^{-i{\bf H} t} \ket{\Psi_n^N} = e^{-i E_n(N) t} \ket{\Psi_n^N}, \begin{array}{cc}
+             \textnormal{ where $\ket{\Psi_n^N}$ is the $n$-th eigenstate in the sub-Hilbert space for $N$ particles} \\
+              \textnormal{ with $E_n(N)$, its corresponding eigenvalue} 
+        \end{array} \\
+        &\Rightarrow i \mathfrak{G}_{\sigma \sigma'} ({\bf x}t, {\bf x}'t') = \sum_{n} \bigg[\begin{array}{c}
+             \Theta(t-t') e^{-i(E_n - E_0)(t-t')} \bra{\Psi_0} \psi_{\sigma}({\bf x}) \ket{\Psi_0} \bra{\Psi_0} \psi_{\sigma'}^\dagger({\bf x}') \ket{\Psi_0}\\
+             - \Theta(t-t') e^{-i(E_n - E_0)(t-t')} \bra{\Psi_0} \psi_{\sigma'}^\dagger({\bf x}')\ket{\Psi_0} \bra{\Psi_0} \psi_{\sigma}({\bf x}) \ket{\Psi_0}
+        \end{array}\bigg]
+     \end{split}
+\end{equation*}
+
+\begin{equation*}
+     \begin{split}
+        \Rightarrow \mathcal{F}[i \mathfrak{G}_{\sigma \sigma'} ({\bf x}t, {\bf x}'t')]({\bf x}; {\bf x}',\omega) = \int_{\R} d\tau \blanky e^{i\omega\tau}\mathfrak{G}_{\sigma \sigma'} ({\bf x}t, {\bf x}'t') \rightarrow & (-i) \int_{\R} d\tau \blanky e^{i\omega \tau} \Theta(\tau) e^{-i(E_n-E_0) \tau} \\
+        &= i \int_{\R} \frac{d\omega'}{2\pi i} \blanky \frac{1}{\omega'+i\eta} \int_{\mathds{R}} d\tau e^{i\omega \tau}e^{-i\omega' \tau} e^{- i(E_n - E_0)\tau} \\
+        &= \frac{1}{\omega - (E_n-E_0) + i\eta}.
+     \end{split}
+\end{equation*}
+
+Consider the first term of the matrix elements of the Green function, 
+
+$$
+\Theta(t-t') e^{-i(E_n - E_0)(t-t')} \bra{\Psi_0} \psi_{\sigma}({\bf x}) \ket{\Psi_0} \bra{\Psi_0} \psi_{\sigma'}^\dagger({\bf x}') \ket{\Psi_0}.
+$$
+
+Examination of this matrix element shows that the $\ket{\Psi_n}$-state must correspond to an excited state with $(N+1)$ particles, since $\ket{\Omega}$ is the ground stat for the $N$-body system. Consequently, its eigenvalue $E_n$ is the energy of an excited state of the $(N+1)$-particle system. It is denoted explicitly as $E_n \rightarrow E_{n}(N+1)$. Thus, the denominator in the Green function's Fourier transform can be written as 
+
+$$
+    E_n - E_0 \rightarrow E_n(N+1) - E_0(N).
+$$
+
+Similarly for the second term, the energies of the denominator read $E_0 - E_n \rightarrow E_0(N) - E_n(N-1)$, thus yielding the final result 
+
+\begin{equation}
+    \Rightarrow i \mathfrak{G}_{\sigma \sigma'} ({\bf x}t, {\bf x}'t') = \sum_{n}
+             \frac{\bra{\Psi_0} \psi_{\sigma}({\bf x}) \ket{\Psi_0} \bra{\Psi_0} \psi_{\sigma'}^\dagger({\bf x}') \ket{\Psi_0}}{\omega - (E_n(N+1)-E_0(N)) + i\eta} + \frac{\bra{\Psi_0} \psi_{\sigma'}^\dagger({\bf x}')\ket{\Psi_0} \bra{\Psi_0} \psi_{\sigma}({\bf x}) \ket{\Psi_0}}{\omega - (E_0(N)-E_N(N-1)) - i\eta}\bigg].
+\end{equation}
+
+The one-particle Green function's poles are precisely the one-particle excitations of the interacting system. The first term describes the excitations produced by adding one particle to the system, therefore defining particle excitations with energies above the chemical potential, namely 
+
+$$
+E_n (N+1) - E_0 = E_n (N+1) + E_0(N+1) + E_0(N+1) - E_0(N) = \epsilon_n (N+1) + \mu,
+$$
+
+where $E_0(N+1)$ is the ground state of the $(N+1)$-system. The quantity $E_0(N+1) - E_0(N)$ is identified with the chemical potential $\mu$, since the volume of the system is kept constant. Consequently, the energy difference $E_n(N+1) - E_0(N+1) = \epsilon_n (N+1)$ must be just the excitation energy of the $(N+1)$-system, provided $\epsilon_n (N+1)$ is non-negative. The second term describes the transition to a system with one particle less, with manifest hole excitations having energies below the chemical potential. The merger of hole and electron excitations in a single function is one of the notable advantages of the time-ordered Green function \footnote{An alternative identification may be given, in terms of the electron affinity and the ionization energy.}. \\
+
+\paragraph{Green Function for the Fermi Gas}
+
+Consider the Sommerfeld gas, for which all excited states 
+are known. The corresponding field operators are given by
+
+\begin{equation} \begin{split}
+    &\Psi({\bf x}, t) = \frac{1}{\sqrt{\Omega}} \sum_{\substack{{\bf k} \in \Lambda \\
+    \sigma \in \mathds{C}^2}} e^{i {\bf k} \cdot {\x}} {\bf c}_{{\bf k} \sigma}, \blanky \blanky \blanky \blanky 
+    \Psi^\dagger({\bf x}, t) = \frac{1}{\sqrt{\Omega}} \sum_{\substack{{\bf k} \in \Lambda \\
+    \sigma \in \mathds{C}^2}} e^{-i {\bf k} \cdot {\x}} {\bf c}_{{\bf k} \sigma}^\dagger. \\
+    &\Rightarrow \mathcal{M} = \bra{\Psi_0} \psi_{\sigma}({\bf x}) \ket{\Psi_n} \bra{\Psi_n} \psi_{\sigma'}^\dagger({\bf x}') \ket{\Psi_0} = & \frac{1}{\Omega} \sum_{{\bf k}, {\bf k}' \in \Lambda} e^{i {\bf k} \cdot {\bf x}} e^{-i {\bf k} \cdot {\bf x}'} \bra{\Psi_0} {{\bf c}}_{{\bf k} \sigma} \ket{\Psi_n} \bra{\Psi_n} {{\bf c}}_{{\bf k}' \sigma'}^\dagger \ket{\Psi_0} \\
+    & = \frac{1}{\Omega} \sum_{{\bf k}, {\bf k}' \in \Lambda} e^{i {\bf k} \cdot ({\bf x}-{\bf x}')} \bra{\Psi_0} {{\bf c}}_{{\bf k} \sigma} \ket{{\bf k} \sigma} \bra{{\bf k} \sigma} {{\bf c}}_{{\bf k} \sigma}^\dagger \ket{\Psi_0}.
+    \end{split}
+\end{equation}
+
+The translational invariance of the Sommerfeld gas leads to an $({\bf x}-{\bf x}')$-dependence, thus the spatiotemporal Fourier transformation of the Green function is 
+
+\begin{equation}
+    \mathfrak{G}_{\sigma \sigma'} ({\bf k}, \omega) = \delta_{\sigma \sigma'} \bigg[\frac{|\bra{\Psi_0} {{\bf c}}_{{\bf k} \sigma} \ket{{\bf k} \sigma}|^2}{\omega - \varepsilon_{\bf k} + i\eta} + \frac{|\bra{\Psi_0} {{\bf c}}^\dagger_{{\bf k} \sigma} \ket{\bar{{\bf k} \sigma}}|^2}{\omega - \varepsilon_{\bf k} - i\eta}\bigg],
+\end{equation}
+
+where $\ket{\bar{{\bf k} \sigma}} = {{\bf c}}_{{\bf k} \sigma}\ket{\Psi_0}$ represents the ground state with one particle at $\varepsilon_{{\bf k}}$ removed. The poles of the one-particle Green function are, thus, just the one-particle excitation energies for particles and holes, with the energies of particle states above the chemical potential, and the states for holes energies below the chemical potential, satisfying $\varepsilon_{{\bf k}} > 0$. Since the Sommerfeld's gas ground state is just the Fermi sea, $\ket{\Psi_0} = \prod_{|{\bf k}| < k_F, \sigma} {\bf c}^\dagger_{{\bf k} \sigma} \ket{0}$, then the following identities hold 
+
+\begin{align}
+    |\bra{\Psi_0} {{\bf c}}_{{\bf k} \sigma} \ket{{\bf k} \sigma}|^2 &= \Theta(|{\bf k}| - k_F), & |\bra{\Psi_0} {{\bf c}}^\dagger_{{\bf k} \sigma} \ket{\bar{{\bf k} \sigma}}|^2 &= \Theta( k_F - |{\bf k}|). 
+\end{align}\\
+
+\paragraph{\textbf{Spectral functions}}
+
+The spectral functions or spectral weights, $\mathcal{A}(\nu, \omega)$, are the quantum state resolution of a particle with a given energy $\omega$ or as the energy resolution for a particle in a given quantum number $\nu$. It quantifies how suitable the excitation created b adding or removing a particle in $\ket{\nu}$-state can be described by a free non-interacting particle or hole, respectively. \\
+
+In particular, let $\mathcal{A}^{+}({\bf k}, \omega)$ and $\mathcal{A}^{-}({\bf k}, \omega)$ be the spectral functions which quantify the probability of a particle (+) or a hole (-) with ${\bf k}$-momentum and $\omega$-energy to be in an exact eigenstate of the system with either $N+1$ or $N-1$ particles, respectively, and are defined as follows 
+
+\begin{equation}
+    \begin{split}
+        \mathcal{A}^{+}({\bf k}, \omega) = \frac{1}{\Omega} \sum_{n} |\bra{\Psi_0} {{\bf c}}_{{\bf k} \sigma} \ket{\Psi_0}|^2 \delta(\omega - [E_N(N+1) - E_0(N)]) \\
+        \mathcal{A}^{-}({\bf k}, \omega) = \frac{1}{\Omega} \sum_{n} |\bra{\Psi_0} {{\bf c}}_{{\bf k}\sigma}^\dagger \ket{\Psi_0}|^2 \delta(\omega - [E_0(N) - E_N(N+1)]),
+    \end{split}
+\end{equation}
+
+from which it is clear that 
+
+$$
+    \mathcal{A}^{+}({\bf k}, \omega) + \mathcal{A}^{-}({\bf k}, \omega) = \mathfrak{I}\mathfrak{m}[\mathfrak{G}({\bf k}, \omega)],
+$$ 
+
+where the spectral functions are manifestly both real and positive definite, which allows their interpretation as a probability to find a single particle excitation with energy $\omega$ and ${\bf k}$-momentum. Note as well that 
+
+$$
+    \int_{\mathds{R}} d\omega \blanky \mathcal{A}({\bf k}, \omega) = \bra{\Psi_0}\ket{\Psi_0} = 1.
+$$
+
+Thus, the spectral functions satisfy the probability rule and is thus a probability, irrespective from the Hamiltonian. These spectral functions include only the states involving one particle more or less in the system. Consequently, these specify the one-particle density of states resolved in momentum. It turns out that spectral functions are experimentally accesible with the techniques of angle-resolved photoemission spectroscopy (ARPES) and inverse photoemission spectroscopy. \\
+
+The density of states of one-particle excitations is obtained by summing over momenta,
+
+\begin{equation}
+    \mathcal{D}(\omega) = \sum_{{\bf k} \in \Lambda} \bigg[\mathcal{A}^{+}({\bf k}, \omega) + \mathcal{A}^{-}({\bf k}, \omega) \bigg],
+\end{equation}
+
+and covers states with energies both above and below the Fermi energy. The spectral functions are, in fact, related to the Green function as 
+
+\begin{equation}
+\begin{split}
+    \mathfrak{G}({\bf k}, \omega) =& \int_{\mathds{R}} d\omega' \blanky \bigg[ \frac{\mathcal{A}^{+}({\bf k}, \omega')}{\omega - \omega' + i\eta} + \frac{\mathcal{A}^{-}({\bf k}, \omega')}{\omega - \omega' - i\eta} \bigg] \\
+    &= \mathcal{P} \int_{\mathds{R}} d\omega' \blanky  \frac{\mathcal{A}^{+}({\bf k}, \omega')}{\omega - \omega' + i\eta} - i\pi \mathcal{A}^{+}({\bf k}, \omega'), \textnormal{ for } \omega > \mu = E_F,
+\end{split} 
+\end{equation}
+ 
+wherein Plemelj-Sokhotolksi's formula was used, $\frac{1}{\omega \pm i \eta} = \mathcal{P} \frac{1}{\omega} \mp i \pi \delta(\omega)$. The spectral functions' reality implies that 
+
+\begin{equation}
+    \begin{split}
+        &\mathcal{A}^{+}({\bf k}, \omega') = -\frac{1}{\pi} \mathfrak{I}\mathfrak{m}[\mathfrak{G}({\bf k}, \omega)] \Rightarrow \mathcal{D}(\omega) = -\frac{1}{\pi} \mathfrak{I}\mathfrak{m}[\mathfrak{G}({\bf x}, {\bf x}', \omega)]  \textnormal{ for } \omega > \mu  \\
+        &\mathcal{A}^{-}({\bf k}; \omega') = \frac{1}{\pi} \mathfrak{I}\mathfrak{m}[\mathfrak{G}({\bf k}, \omega)] \Rightarrow \mathcal{D}(\omega) = -\frac{1}{\pi} \mathfrak{I}\mathfrak{m}[\mathfrak{G}({\bf x}, {\bf x}'; \omega)]  \textnormal{ for } \omega < \mu.
+    \end{split}
+\end{equation}
+
+\textbf{Spectral signatures in the one-particle Green Function}. 
+
+Consider a non-interacting fermionic system. Its Green function may be written as 
+
+\begin{equation}
+    \mathfrak{G}({\bf k}, \omega) = \frac{1}{\Omega} \bigg[\frac{\Theta(|{\bf k}| - k_F)}{\omega - \varepsilon_0({\bf k}) + i \eta} + \frac{\Theta(k_F-|{\bf k}|)}{\omega - \varepsilon_0({\bf k}) - i \eta}\bigg] \Rightarrow \begin{array}{cc}
+        A_0^+({\bf k}, \omega) = \frac{1}{\Omega} \delta(\omega - \varepsilon_0({\bf k})) & \textnormal{ for } |{\bf k}| > k_F \\
+        A_0^-({\bf k}, \omega) = \frac{1}{\Omega} \delta(\omega - \varepsilon_0({\bf k})) & \textnormal{ for } |{\bf k}| < k_F,
+    \end{array}
+\end{equation}
+
+which shows that, for a non-interacting system, every single-particle state has unity weight, aside from a normalization factor. It confirms that all the weight is on the one-perticle, or hole, state. The excitation with energy $\omega$ can only happen by adding an electron, or a hole, to the $\ket{{\bf k}}$-state such that $\varepsilon_0({\bf k}) = \omega.$ \\
+
+In an interacting system, the Green function is given by 
+
+\begin{equation}
+    \mathfrak{G}({\bf k}, {\bf k}'; \omega) = \frac{1}{[\mathfrak{G}({\bf k}, \omega)]^{-1} - \Sigma^{*}({\bf k}, ({\bf k}'; \omega)}, \textnormal{ where } [\mathfrak{G}({\bf k}, \omega)]^{-1} = \omega - \varepsilon_0({\bf k}).
+\end{equation}
+ 
+Both $\mathfrak{G}$ and the self-energy $\Sigma^*$ are, in general, non-local function that depend on two spatial or momentum points. However, in the presence of systems with translational or periodic invariance, these become diagonal in momentum, thus the following equality holds 
+
+\begin{equation}
+    \mathfrak{G}({\bf k}, \omega) = \frac{1}{\omega - \varepsilon_0({\bf k}) - \Sigma^*({\bf k}, \omega)} = \frac{1}{\omega - \varepsilon_0({\bf k}) - \mathfrak{R}\mathfrak{e}[\Sigma^*({\bf k}, \omega)]- \mathfrak{I}\mathfrak{m}[\Sigma^*({\bf k}, \omega)]}  
+\end{equation}
 \clearpage
 
 \section{Linear Response Theory}
