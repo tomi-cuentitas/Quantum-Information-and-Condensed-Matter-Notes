@@ -98,5 +98,143 @@ All (simple) Lie algebras fall into four families, $\mathfrak{A}_{\ell}, \mathfr
     
 \end{itemize}
 
+\begin{df}
+Let $\mathfrak{g}$ be a Lie algebra over $\mathds{F}$ and let $V$ be a vector space over said field. A representation of $\mathfrak{g}$ on $V$ is a linear map
+
+$$
+   \rho: \mathfrak{g} \rightarrow \textnormal{End}(V), \textnormal{ such that } \rho([x,y]) = \rho(x)\rho(y) - \rho(y) \rho(x). 
+$$
+\end{df}
+
+\begin{tcolorbox}[title = Example]
+Let $\mathfrak{g}$ be the 3-dimensional subspace of $\textnormal{End}(\mathds{Q})$ spanned by 
+
+$$
+    {A}_1 = \left(\begin{array}{cc}
+        0 & 1 \\
+        0 & 0
+    \end{array}\right), \blanky {A}_2 = \left(\begin{array}{cc}
+        0 & 0 \\
+        1 & 0
+    \end{array}\right), \blanky {A}_3 = \left(\begin{array}{cc}
+        1 & 0 \\
+        0 & -1
+    \end{array}\right),
+$$
+
+and let $\rho$ be the linear map from $\mathds{g}$ into said space, spanned by the previous matrices, such that 
+
+$$
+    \rho(x) = A_1, \rho(y) = A_2, \rho(h) = A_3.
+$$
+
+Then, $\rho$ is an $\mathfrak{g}$-representation. Furthermore, the representation's kernel is 0, so $\mathfrak{g}$ is isomorphic to its image. Said representations are called faithful. \\
+\end{tcolorbox}
+
+\begin{df}
+Let $\mathfrak{g}$ be a Lie algebra. Define a map 
+
+$$
+    \textnormal{ad }: \mathfrak{g} \rightarrow \textnormal{End}(\mathfrak{g}) \textnormal{ such that } \textnormal{ad}(x)(y) = [x,y]. 
+$$
+
+This is a Lie algebra representation, with the $\textnormal{ad}$-map being called the adjoint representation.
+\end{df}
+
+\begin{df}
+Let $\mathfrak{g}$ be a Lie algebra. A subspace $\mathfrak{k} \subseteq \mathfrak{g}$ is a subalgebra if $[x,y] \in \mathfrak{k}, \blanky \forall x,y \in \mathfrak{k}$
+\end{df}
+
+\begin{df}
+Let $\mathfrak{g}$ be a Lie algebra. A subspace $\mathfrak{I}$ of $\mathfrak{g}$ is called an ideal if $[x,y] \in \mathfrak{I}, \forall x \in \mathfrak{g}, y \in \mathfrak{I}$. 
+\end{df}
+
+Let $\mathfrak{g}$ be a Lie algebra and let $\mathfrak{I}$ be an ideal on $\mathfrak{g}$ such that there is a subalgebra $\mathfrak{k} \subseteq \mathfrak{k}$ with the property that $\mathfrak{g} = \mathfrak{k} \oplus \mathfrak{I}$, ie. a direct sum of vector spaces. Then, $\mathfrak{g}$ is called the semidirect product of $\mathfrak{k}$ and $\mathfrak{I}$, denoted by $\mathfrak{g} =
+\mathfrak{k} \triangleright \mathfrak{I}$. A special case is the situation where $\mathfrak{k}$ is also an ideal of $\mathfrak{g}$. Then, $\mathfrak{g}$ is called the direct sum of $\mathfrak{k}$ and $\mathfrak{I}$, in which case $\mathfrak{g} = \mathfrak{k} \oplus \mathfrak{I}.$ \\
+
+\begin{df}
+Let $\mathfrak{g}$ be a Lie algebra. Then, the subspace 
+
+$$
+    Z(\mathfrak{g}) = \{x \in \mathfrak{g} \blanky |\blanky [x,y] = 0, \blanky \forall y \in \mathfrak{g}\},
+$$
+
+is called the centre of $\mathfrak{g}$.
+\end{df}
+
+The centre of a Lie algebra $\mathfrak{g}$ is an ideal in $\mathfrak{g}$. In particular, if $Z(\mathfrak{g}) \simeq \mathfrak{g}$, then $\mathfrak{g}$ is called abelian or commutative. \\
+
+\begin{df}
+Let $\mathfrak{g}$ be a Lie algebra and let $K$ be a subspace of $\mathfrak{g}$. Then
+
+$$
+    Z_{\mathfrak{g}}(K) = \{x \in \mathfrak{g} \blanky | \blanky [x,y] = 0, \blanky \forall y \in K\},
+$$
+
+is called the centraliser of $K$ in $\mathfrak{g}$. \\
+\end{df}
+
+If $K$ is an ideal of $\mathfrak{g}$, then $Z_{\mathfrak{g}}(K)$ will also be an ideal of $\mathfrak{g}$. This follows from the Jacobi identity. \\
+
+\begin{df}
+Let $K$ be a subspace of the Lie algebra $\mathfrak{g}$. Then, 
+
+$$
+    N_{\mathfrak{g}}(K) = \{x \in \mathfrak{g} \blanky | \blanky [x,y] \in K, \blanky \forall y \in K\},
+$$
+
+is called the normaliser of $K$ in $\mathfrak{g}$.
+\end{df}
+
+If $K_1$ and $K_2$ are $\mathfrak{g}$-subspaces, then $[K_1, K_2]$ denotes the subspace spanned by all $[x_1, x_2], \blanky x_1 \in {K}_1, x_2 \in  {K}_2$. 
+
+\begin{df}
+Let $\mathfrak{g}$ be a finite-dimensional Lie algebra. Then, set $\mathfrak{g}_{k+1} = [\mathfrak{g}, \mathfrak{g}]$ with $\mathfrak{g}_1 = \mathfrak{g}$ and let $s$ be the smallest integer such that $\mathfrak{g}_s = \mathfrak{g}_{s+1}$. The series 
+
+$$
+    \mathfrak{g}_1 \supset \mathfrak{g}_2 \supset \cdots \supset \mathfrak{g}_s,
+$$
+
+is the derived series of $\mathfrak{g}$.
+\end{df}
+
+A Lie algebra is called solvable if  the final term of its derived series is 0. If $\mathfrak{I}$ and $\mathfrak{J}$ are solvable ideals of $\mathfrak{g}$, then it can be proved that $\mathfrak{I} + \mathfrak{J}$ is also a solvable ideal of $\mathfrak{g}$. It follows then that if $\mathfrak{g}$ is a finite-dimensional Lie algebra, then it has maximal solvable ideal. This is called the solvable radical of $\mathfrak{g}$, $R(\mathfrak{g})$. \\
+
+\begin{df}
+Let $\mathfrak{g}$ be a finite-dimensional algebra. Set $\mathfrak{g}^1 = \mathfrak{g}$, and $\mathfrak{g}^{k+1} = [\mathfrak{g}, \mathfrak{g}^{k}]$ and let $t$ be the smallest integer such that $\mathfrak{g}^t = \mathfrak{g}^{t+1}$. The series 
+
+$$
+    \mathfrak{g}^1 \supset \mathfrak{g}^2 \supset \cdots \supset \mathfrak{g}^t,
+$$
+
+is called the lower central series of $\mathfrak{g}$.
+\end{df}
+
+A finite-dimensional Lie algebra $\mathfrak{g}$ is called nilpotent if $\mathfrak{g}^t = 0$. If $\mathfrak{I}$ and $\mathfrak{J}$ are nilpotent ideals of $\mathfrak{g}$, then it can be proved that so is $\mathfrak{I} + \mathfrak{J}$. It follows that a finite-dimensional Lie algebra $\mathfrak{L}$ has a largest nilpotent ideal. It is called the nilradical and it is denoted by $NR(\mathfrak{g})$. \\
+
+\begin{df}
+Let $\mathfrak{g}$ be a finite-dimensional Lie algebra. Set $Z_1 = Z(\mathfrak{g})$ and define ${Z}_{k+1}$ recursively by the relation ${Z}_{ k+1}/Z_{k} = Z(\mathfrak{g}/Z_k)$ and let $u$ be the smallest number such that $Z_u = Z_{u+1}$. Then, the series 
+
+$$
+    {Z}_1 \supset {Z}_2 \supset \cdots \supset {Z}_u,
+$$
+
+is called the upper central series of $\mathfrak{g}$. 
+\end{df}
+
+\begin{df}
+A Lie algebra $\mathfrak{g}$ is called semisimple if $R(\mathfrak{g}) = 0$. 
+\end{df}
+
+\begin{df} Cartan's criterion for semi-simplicity: 
+Let $\mathfrak{g}$ be a Lie algebra, with basis $\{x_1, \cdots, x_n\}$ and let $d = \det {\bf K}(x_i, x_j)$. If $d \neq 0$, then $\mathfrak{g}$ is semisimple. If $\mathfrak{g}$ is defined over a field of characteristic 0, then this is in turn implies $d \neq 0$. 
+\end{df}
+
+\begin{df}
+A Lie algebra $\mathfrak{g}$ is called simple if $\dim \mathfrak{g} > 1$ and it has no ideals except $0$ and $\mathfrak{g}$. 
+\end{df}
+
+Let $\mathfrak{g}$ be a Lie algebra. Then, $R(\mathfrak{g})$ can be only 0 or $\mathfrak{g}$. Suppose that $R(\mathfrak{g}) = \mathfrak{g}$, then $\mathfrak{g}$ is solvable and hence $[\mathfrak{g}, \mathfrak{g}]$ is an ideal of $\mathfrak{g}$ not equal to $\mathfrak{g}$ itself. It follows then that $[\mathfrak{g}, \mathfrak{g}] = 0$ so that $\mathfrak{g}$ is Abelian. But then every subspace of $\mathfrak{g}$ is an ideal, contradicting the fact that $\mathfrak{g}$ is simple. The conclusion is that $R(\mathfrak{g}) = 0$ and $\mathfrak{g}$ is semi-simple. 
+
 \end{document}
 
