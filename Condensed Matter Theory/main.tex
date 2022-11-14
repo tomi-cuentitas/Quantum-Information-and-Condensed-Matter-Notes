@@ -361,9 +361,11 @@ Thus the basic object classical statistical mechanics is the Boltzmann weight $\
 where $\mathcal{Z}_{\Lambda, \beta, N}$ is the partition function defined on the finite region $\Lambda \subset \mathds{Z}^d$, at inverse temperature $\beta$ with $N$ particles. The Boltzmann weight is defined by the requirement that the probabilities sum to one. Then, the two relevant ensemble partition functions can be defined, as follows
 
 \begin{align*}
-        \mathcal{Q}_{\Lambda, \beta, N} = \sum_{\eta \in \Omega_{\Lambda, N}} e^{-\beta {\bf H}({\bf n})} & \blanky & 
-        \Theta_{\Lambda, \beta, N} = \sum_{N} e^{\beta \mu N} \sum_{\eta \in \Omega_{\Lambda, N}} e^{-\beta {\bf H}({\bf n})} \\
-        \blanky & \textnormal{ where } \Omega_{\Lambda, N} = \{n \in \Omega_{\Lambda} | N_{\Lambda} (n) = N\} & \blanky
+\begin{array}{c}
+    \mathcal{Q}_{\Lambda, \beta, N} = \sum_{\eta \in \Omega_{\Lambda, N}} e^{-\beta {\bf H}({\bf n})} \\
+     \\
+    \Theta_{\Lambda, \beta, N} = \sum_{N} e^{\beta \mu N} \sum_{\eta \in \Omega_{\Lambda, N}} e^{-\beta {\bf H}({\bf n})} 
+\end{array} \textnormal{ where } \Omega_{\Lambda, N} = \{n \in \Omega_{\Lambda} | N_{\Lambda} (n) = N\} & \blanky
 \end{align*}
 
 
@@ -390,21 +392,20 @@ An $N$-site chain, with finite $N$, has a configuration space, which is a discre
     \item There are only interactions between pairs of sins located at neighbouring vertices. That is, it is assumed that the spins at two distinct vertices $i, j \in \Lambda$ interact if and only if the pair $\{i, j\}$ is an edge of the graph. \\
     
     \item The interaction favours agreement of spin values. In the simplest form of the Ising model, this is done in the simplest possible way: a pair of spins at the endpoints $i$ and $j$ of an edge, decreases the overall configuration's energy if they agree $\sigma_i = \sigma_j$ and increases if they differ. More precisely, the spins at the endpoints of the $\{i,j\}-$edge contributes to the total energy by an amount $
-        - \sigma_i \sigma_j.$ Therefore, configurations in which most pairs of neighbours are aligned to have smaller energy. 
+        - \sigma_i \sigma_j.$ Therefore, configurations in which most pairs of neighbours are aligned to have smaller energy. \\
     
     \item Spins align with the external magnetic field. Assume that a constant external magnetic field of $h \in \mathds{R}$ intensity, oriented along the same direction as the spins, acts on the system. Its interaction with the $i$-th spin contributes an     $
         -h \sigma_i $ to the total energy. That is, when the magnetic field is positive, the configurations with most of their spins equal to +1 have smaller energy. \\
 \end{enumerate}
 
-Then, the energy of a given configuration $\sigma$ is obtained by summing the interactions over all pairs and by adding the interaction of each spin with the external magnetic field, thus yielding the \textbf{Ising Hamiltonian}
+Then, the energy of a given configuration $\sigma \in \Omega_{\Lambda}$ is obtained by summing the interactions over all pairs and by adding the interaction of each spin with the external magnetic field, thus yielding the \textbf{Ising Hamiltonian}
 
 \begin{equation}
-    {\bf H}_{\Lambda; h}(\sigma) = - J \sum_{\substack{i,j \in \Lambda} \\
-    i \sim j} \sigma_i \sigma_j - h \sum_{i \in \Lambda} \sigma_i, \textnormal{ with } \sigma \in \Omega_{\Lambda}. 
+    {\bf H}_{\Lambda; h}(\sigma) = - J \sum_{\substack{i,j \in \Lambda \\
+    i \sim j}} \sigma_i \sigma_j - h \sum_{i \in \Lambda} \sigma_i.
 \end{equation}
 
-Since it favours local alignment of the spins, the Hamiltonian of the model is said to be ferromagnetic, which is not to say it behaves like a ferromagnet. The Gibbs measure/distribution is then denoted by 
-
+Since it favours local alignment of the spins, the Hamiltonian of the model is said to be \underline{ferromagnetic}, which is not to say it behaves like a ferromagnet. The Gibbs measure/distribution is then denoted by 
 \begin{equation}
     \begin{split}
         \prob_{\Lambda, \beta, h} :{\bf n} \in \Omega_{\Lambda}\rightarrow \R_{[0,1]} \textnormal{ where }
@@ -418,7 +419,9 @@ $$
     \prob_{\Lambda, \beta, 0} (-\sigma) = \prob_{\Lambda, \beta, 0}. 
 $$
 
-The model is then said to be invariant under global spin flip. When $h\neq0$, this symmetry no longer holds. Then the expectation of an observable $f : \Omega_\Lambda \rightarrow \mathds{R}$, under $\mu_{\Lambda, \beta, h}$, is denoted by $\langle f \rangle_{\Lambda, \beta, h}$. 
+The model is then said to be invariant under global spin flip. When $h\neq0$, this symmetry no longer holds. \\
+
+The expectation value of an observable $f : \Omega_\Lambda \rightarrow \mathds{R}$, under $\mu_{\Lambda, \beta, h}$, is denoted by $\langle f \rangle_{\Lambda, \beta, h}$. 
 The parameter $J$ is the coupling strength, if $J>0$ this models describes a ferromagnetic coupling, while $J<0$ describes an antiferromagnetic coupling. 
 From the partition function, the expectation values of physical quantities can be calculated. For example
 
@@ -452,11 +455,17 @@ From the partition function, the expectation values of physical quantities can b
 
 \clearpage
 
-\subsubsection{Exact solution to the Ising Models}
+\subsubsection{\textbf{Exact solution to the classical Ising Models}}
 
 Many quantum phase transition in $d$ dimensions are intimately connected to certain well-studied finite temperature phase transition in classical statistical mechanics models in $d+1$ dimensions. \\
 
-The $d=0$ single site quantum Ising and rotor models are then mapped to classical statistical mechanics models in $D=1$. These $D=1$ are very simple and do not have phase transitions. Nevertheless. it is quite useful to examine them thoroughly as they do have regions in which the correlation length $\zeta$ becomes very large. Furthermore, the properties of these regions are very similar to those in the vicinity of the phase transition points in higher dimension. In particular, the central ideas of the scaling limit and universality arise in this model. These classical models are equivalent to zero-dimensional quantum models, said mapping becoming exact in the scaling limit. \\
+\begin{tcolorbox}[colback = my-blue, title = Physical Context]
+
+The $d=0$ single site quantum Ising and rotor models are then mapped to classical statistical mechanics models in $D=1$. These $D=1$ are very simple and do not have phase transitions. Nevertheless. it is quite useful to examine them thoroughly as they do have regions in which the correlation length $\zeta$ becomes very large. Furthermore, the properties of these regions are very similar to those in the vicinity of the phase transition points in higher dimension. In particular, the central ideas of the scaling limit and universality arise in this model. These classical models are equivalent to zero-dimensional quantum models, said mapping becoming exact in the scaling limit. 
+
+\end{tcolorbox}
+
+\blanky \\
 
 \paragraph{\underline{Zero-dimensional Ising model}}
 
@@ -500,11 +509,10 @@ In terms of the free energy $F(K,h)$, defined as $\mathcal{Z}_{\Lambda, K, h} = 
 
 \blanky \\
 
-The thermal average of a particular spin can also be calculated, provided a soruce term of the form $h_1 s_1 + h_2 s_2$ is added in the Boltzmann weight, which couples the $i$
-th spin to its own independent field $h_i$. Then,
+The thermal average of a particular spin can also be calculated, provided a source term of the form $h_1 s_1 + h_2 s_2$ is added in the Boltzmann weight, which couples the $i$-th spin to its own independent field $h_i$. Then,
 
 \begin{align}
-    \mathcal{Z}_{\Lambda, K, h} &= \sum_{{\bf s} \in \Omega_\Lambda} e^{K s_1 s_2 + {\bf h} \cdot {\bf s}} = e^{-\beta F(K, {\bf h})} \\ \Rightarrow \langle s_i \rangle = & \frac{\partial [-\beta F(K,{\bf h})]}{\partial h_i} = \frac{\partial \log \mathcal{Z}_{\Lambda, K, h}}{\partial h_i} = \frac{1}{\mathcal{Z}_{\Lambda, K, h}} \frac{\partial \mathcal{Z}_{\Lambda, K, h}}{\partial h_i} .
+    \mathcal{Z}_{\Lambda, K, h} &= \sum_{{\bf s} \in \Omega_\Lambda} e^{K s_1 s_2 + {\bf h} \cdot {\bf s}} = e^{-\beta F(K, {\bf h})} \Rightarrow \langle s_i \rangle = \frac{\partial [-\beta F(K,{\bf h})]}{\partial h_i} = \frac{\partial \log \mathcal{Z}_{\Lambda, K, h}}{\partial h_i} = \frac{1}{\mathcal{Z}_{\Lambda, K, h}} \frac{\partial \mathcal{Z}_{\Lambda, K, h}}{\partial h_i} .
 \end{align}
 
 Taking the mixed derivative with respect to both $h_1$ and $h_2$ yields 
@@ -527,7 +535,7 @@ Similarly, if there are four spins coupled to four independent magnetic field $h
     \end{split}
 \end{equation}
 
-Since $h=0$ in the end, there will be no correlators with an odd number of spins. Note that the previous derivations are valid even if $s$ is replaced by some other variable, with eg. continuous values, coupled to the corresponding magnetic field in the Boltzmann weight, since the fact that $s = \pm 1$ was not used. The thermal averages may be computed in the case of non-zero zeros. In particular, if the field is uniform or zero. In that case, the $h_i$-derivatives are calculated and then set to $h_i = h$ or $0$, for all $i$. Then, for example, if there were a uniform external field $h$, the connected correlation function is 
+Since, at the end of the calculation, $h=0$, there will be no correlators with an odd number of spins. Note that the previous derivations are valid even if $s$ is replaced by some other variable, with eg. continuous values, coupled to the corresponding magnetic field in the Boltzmann weight, since the fact that $s = \pm 1$ was not used. The thermal averages may be computed in the case of non-zero zeros. In particular, if the field is uniform or zero. In that case, the $h_i$-derivatives are calculated and then set to $h_i = h$ or $0$, for all $i$. Then, for example, if there were a uniform external field $h$, the connected correlation function is 
 
 \begin{equation}
     \begin{split}
@@ -568,7 +576,7 @@ In the $(D=1)$-dimensional Ising model, the energy of a given configuration is g
 \end{equation}
 
 In said model, at a given $x$-value,
-there is only a single site, so that the system "evolves" from one spin to the next. \\
+there is only a single site, so that the system "evolves" from one spin to the next. This model, as it stands, is called ferromagnetic, since there is an overall minus sign and thus favours local spin alignment. The reader should be aware that the model may not behave like a ferromagnet. \\
 
 Given a one-dimensional Ising spin chain. Consider two nearest-neighbour sites in said chain, there are, then, four configurations on these two sites, $\ket{++}, \ket{+-}, \ket{-+}, \ket{--}$. The Boltzmann weights $\prob(\sigma_1 \sigma_2)$ for these four configurations are 
 
@@ -576,7 +584,7 @@ Given a one-dimensional Ising spin chain. Consider two nearest-neighbour sites i
     \prob(++) = \prob(--) = e^{\beta J} \textnormal{  and  } \prob(+-) = \prob(-+) = e^{-\beta J}.
 \end{equation}
 
-Now consider for example an Ising model on three sites, with the simplest boundary conditions, where both spins $\sigma_1$ and $\sigma_3$ are both fixed at specific values. Summing over all values of the middle spin $\sigma_2 = \pm 1$, the partition function with both end spins fixed is 
+Now, consider for example an Ising model on three sites, with the simplest boundary conditions, where both spins $\sigma_1$ and $\sigma_3$ are both fixed at specific values. Summing over all values of the middle spin $\sigma_2 = \pm 1$, the partition function with both end spins fixed is 
 
 \begin{equation}
     \sum_{\sigma_2 = \pm 1} \prob(+\sigma_2) \prob(\sigma_2+) = e^{2J} + e^{-2J}.
@@ -585,15 +593,15 @@ Now consider for example an Ising model on three sites, with the simplest bounda
 The general expression for the partition function of an $N$-site Ising model with fixed boundary conditions can be found to be 
 
 \begin{equation*}
-    \begin{array}{c}
-        \textnormal{If $N = 3$ then } \mathcal{Z}_3(\textnormal{fixed}) = \sum_{\sigma_2 = \pm 1} \prob(\sigma_1\sigma_2) \prob(\sigma_2\sigma_3).  \\
-        \\
-        \textnormal{If $N = 4$ then } \mathcal{Z}_4(\textnormal{fixed}) = \sum_{\substack{\sigma_2 = \pm 1\\
-    \sigma_3 = \pm 1}} \prob(\sigma_1\sigma_2) \prob(\sigma_2\sigma_3) \prob(\sigma_3\sigma_4). \\
-    \end{array}
+\begin{split}
+&\textnormal{ If $N = 3$ then } \mathcal{Z}_3(\textnormal{fixed}) =
+    \sum_{\sigma_2 = \pm 1} \prob(\sigma_1\sigma_2) \prob(\sigma_2\sigma_3).  \\
+&\textnormal{If $N = 4$ then } \mathcal{Z}_4(\textnormal{fixed}) = \sum_{\substack{\sigma_2 = \pm 1\\
+    \sigma_3 = \pm 1}} \prob(\sigma_1\sigma_2) \prob(\sigma_2\sigma_3) \prob(\sigma_3\sigma_4). 
+\end{split}
 \end{equation*}
 
-These expression look exactly like matrix multiplications, written out in terms of the matrix elements. The matrix being multiplied is called the transfer matrix and includes all the nearest-neighbour interactions. For the one-dimensional Ising model it is given by 
+These expressions look exactly like matrix multiplications, explicitly written out in terms of the matrix elements. The matrix being multiplied is called the \underline{transfer matrix} and includes all the nearest-neighbour interactions. For the one-dimensional classical Ising model it is given by 
 
 \begin{equation}
     \bm{\mathcal{T}} = \left( \begin{array}{cc}
@@ -605,6 +613,7 @@ These expression look exactly like matrix multiplications, written out in terms 
     \end{array}\right).
 \end{equation}
 
+The partition function for other systems, with different boundary conditions, can be readily calculated from the transfer matrix. 
 To compute the partition function with fixed boundaries conditions, from the transfer matrix, the boundary conditions are treated as vectors, on which the transfer $\bm{\mathcal{T}}$-matrix acts on. Here, the basis elements are the two spin values $+$ and $-$. These two vectors span a $\ctwo$-vector space. The partition function of an $N$-site system with fixed boundary conditions can be found out to be 
 
 \begin{itemize}
@@ -622,14 +631,14 @@ To compute the partition function with fixed boundaries conditions, from the tra
         $
 \end{itemize}
 
-Note that each time the transfer matrix is applied, it corresponds to adding one bond to the system. The transfer matrix now can easily be used to find analogous expressions for other boundary conditions. For example, \\
+Each time the transfer matrix is applied, it corresponds to adding one bond to the system. The transfer matrix can now be used to find analogous expressions for other boundary conditions. For example, \\
 
 \begin{itemize}
-    \item for free boundary conditions, allowing the extreme-most spins to take on all allowed values, the partition function is given by 
+    \item for \underline{free boundary conditions}, allowing the extreme-most spins to take on all allowed values, the partition function is given by 
     
     \begin{equation}
     \begin{split}
-     \mathcal{Z}_N(\textnormal{free}) &= \sum_{\substack{\sigma_1 = \pm 1\\
+     \mathcal{Z}_N(\textnormal{free}) = & \sum_{\substack{\sigma_1 = \pm 1\\
     \sigma_N = \pm 1}} \bra{\sigma_1} \bm{\mathcal{T}}^{N-1} \ket{\sigma_N} \\
     &=  \left(\begin{array}{cc}
         1 & 0 \\
@@ -641,7 +650,8 @@ Note that each time the transfer matrix is applied, it corresponds to adding one
     \end{array}\right) \bm{\mathcal{T}}^{N-1} \left(\begin{array}{c}
         0 \\
         1
-    \end{array}\right) + \left(\begin{array}{cc}
+    \end{array}\right) \\
+    &  \blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky + \left(\begin{array}{cc}
         0 & 1 \\
     \end{array}\right) \bm{\mathcal{T}}^{N-1} \left(\begin{array}{c}
         1 \\
@@ -664,7 +674,7 @@ Note that each time the transfer matrix is applied, it corresponds to adding one
     \label{Ising model - Free PF}
     \end{equation}
     
-    \item for periodic boundary conditions, where an extra interaction $-J \sigma_N \sigma_1$ is added to the energy, including a bond between the two most-extreme spins. In this case, the model is translation invariant, shifting all the spins by one site mod $N$ doesn't change the energy. The transfer $\bm{\mathcal{T}}$ must therefore evolve the first spin back to the $N$-th one. This is equivalent to having fixed boundary conditions on $(N+1)$-sites where $\sigma_{N+1} = \sigma_1$, and then summing over both possible values, thus yielding 
+    \item For \underline{periodic boundary conditions}, where an extra interaction $-J \sigma_N \sigma_1$ is added to the energy, including a bond between the two most-extreme spins. In this case, the model is translationally-invariant, shifting all the spins by one site mod $N$ doesn't change the energy. The transfer $\bm{\mathcal{T}}$ must therefore evolve the first spin back to the $N$-th one. This is equivalent to having fixed boundary conditions on $(N+1)$-sites where $\sigma_{N+1} = \sigma_1$, and then summing over both possible values, thus yielding 
     
     \begin{equation}
     \begin{split}
@@ -705,7 +715,7 @@ The usefulness of the transfer matrix in a $(D=1)$-dimensional system lies in th
 and given that the transfer matrix is hermitian, the eigenvalues are real. Then, the partition functions for the different boundary conditions can then be found
 
 \begin{itemize}
-    \item For the free case, the $\ket{\sigma_j}$-vectors can be decomposed in terms of the $\bm{\mathcal{T}}$-matrix's eigenvectors, which can be written as 
+    \item For the \underline{free case}, the $\ket{\sigma_j}$-vectors can be decomposed in terms of the $\bm{\mathcal{T}}$-matrix's eigenvectors, which can be written as 
     
     $$ 
      v_{\pm}= \frac{1}{2} \bigg(\left(\begin{array}{cc}
@@ -726,7 +736,7 @@ and given that the transfer matrix is hermitian, the eigenvalues are real. Then,
          \end{split}
      \end{equation}
      
-    \item For the periodic-boundary conditions, the partition function may be calculated as the sum of $\mathcal{Z}_N(++)$ and $\mathcal{Z}_N(--)$, which can be easily calculated from \cref{Ising model - T matrix diag}, as follows 
+    \item For the \underline{periodic-boundary conditions}, the partition function may be calculated as the sum of $\mathcal{Z}_N(++)$ and $\mathcal{Z}_N(--)$, which can be easily calculated from \cref{Ising model - T matrix diag}, as follows 
     
     \begin{equation}
     \begin{array}{c}
@@ -761,13 +771,13 @@ and given that the transfer matrix is hermitian, the eigenvalues are real. Then,
     
     From these, it is easy to see that partition functions with different boundary conditions are simply related, eg. $\mathcal{Z}_N(\textnormal{periodic}) = \mathcal{Z}_N(++) + \mathcal{Z}_N(--)$. Then, partition function for a system with the periodic boundary condition is given by 
     
-    \begin{equation*}
+    \begin{equation}
         \begin{split}
           \mathcal{Z}_N(\textnormal{periodic}) &= (2\cosh \beta J)^N + (2\sinh \beta J)^N \\
           &= (2\cosh \beta J)^N \bigg(1+ (2\tanh \beta J)^N\bigg) \\
           &\approx (2\cosh \beta J)^N \textnormal{ for } N >> 1. 
         \end{split}
-    \end{equation*}
+    \end{equation}
 \end{itemize}
 
 Note as well that the free energy per site is proportional to $\frac{\log \mathcal{Z}}{N}$, and is independent of boundary conditions when $N >> 1$. In effect, the free energy per site in the thermodynamic limit may be written as
@@ -781,7 +791,7 @@ Note as well that the free energy per site is proportional to $\frac{\log \mathc
 It is straight forward to compute the two-point function in terms of these partition functions. Consider the following special cases.
 
 \begin{itemize}
-    \item First, consider an Ising spin chain with free boundary conditions. Then, the two-point function between the two end-spins can be computed by summing over the four possible configurations. But these spins are opposite, then 
+    \item First, consider an Ising spin chain with \underline{free boundary conditions}. Then, the two-point function between the two end-spins can be computed by summing over the four possible configurations. But these spins are opposite, then 
 
 \begin{equation}
     \langle \sigma_1 \sigma_N \rangle = \frac{\mathcal{Z}_N(++) + \mathcal{Z}_N(--) - \mathcal{Z}_N(+-) - \mathcal{Z}_N(-+)}{\mathcal{Z}_{\textnormal{free}}} =
@@ -790,7 +800,7 @@ It is straight forward to compute the two-point function in terms of these parti
     
    which falls off exponentially with distance, so even for small distances, the end spins are effectively uncorrelated.
   \\
-   \item Now, consider an Ising chain with periodic boundary condtions. Then, the the two-point function between the $j$-th and the $i$-th spins, with $j>i$, may be written as
+   \item Now, consider an Ising chain with \underline{periodic boundary conditions}. Then, the the two-point function between the $j$-th and the $i$-th spins, with $j>i$, may be written as
 
     \begin{equation}
        \langle \sigma_j \sigma_i \rangle_{\textnormal{periodic}} =  \frac{2 \mathcal{Z}_{|j-i|}(++)\mathcal{Z}_{N-|j-i|}(--) + 2\mathcal{Z}_{|j-i|}(+-) \mathcal{Z}_{N-|j-i|}(-+)}{\mathcal{Z}_N{\textnormal{periodic}}},
@@ -805,10 +815,10 @@ The general two-point correlator is similar and is given by
     \langle \sigma_j \sigma_i \rangle_{j > i} = \frac{1}{\mathcal{Z}} \sum_{k} \sigma_j \sigma_i e^{\sum_{k} \beta J \sigma_k \sigma_{k+1}},
 \end{equation}
 
-which measures how likely $s_i$ and $s_j$ are, on average, to point in the same direction. In any ferromagnetic system, the average will be positive for a pair of neighbouring spins since the Boltzmann weight is biased toward parallel values. Surely, if a spin can influence its neighbours to be parallel to it, they in turn will act similarly on their own neighbours, therefore long-range correlations may be present. In addition, if there is an external magnetic field present, it will enhance this correlation further. Naturally, if $j>i$ it holds that 
+which measures how likely $\sigma_i$ and $\sigma_j$ are, on average, to point in the same direction. In any ferromagnetic system, the average will be positive for a pair of neighbouring spins since the Boltzmann weight is biased towards parallel, ie. aligned, values. Surely, if a spin can influence its neighbours to be parallel to it, they in turn will act similarly on their own neighbours, therefore long-range correlations may be present. In addition, if there is an external magnetic field present, it will enhance this correlation further. Naturally, if $j>i$ it holds that 
 
 $$
-\sigma_j \sigma_i = \sigma_i \sigma_j = \sigma_i \sigma_{i+1} \sigma_{i+1} \cdots \sigma_{j-1} \sigma_j = \mathfrak{t}_{i}\mathfrak{t}_{i+1}\cdots\mathfrak{t}_{j-1} \textnormal{ where } \mathfrak{t}_i = \sigma_{i+1}, 
+\sigma_j \sigma_i = \sigma_i \sigma_j = \sigma_i \sigma_{i+1} \sigma_{i+2} \cdots \sigma_{j-1} \sigma_j = \mathfrak{t}_{i}\mathfrak{t}_{i+1}\cdots\mathfrak{t}_{j-1} \textnormal{ where } \mathfrak{t}_i = \sigma_{i+1}, 
 $$
 
 then 
@@ -831,6 +841,7 @@ where the exponential has naturally factorized into a product over $i$.}. Then, 
 \begin{equation}
 \begin{array}{ccc}
     \langle \mathfrak{t} \rangle = \frac{1}{\mathcal{Z}}\sum_{\mathfrak{t} =  \pm 1} \mathfrak{t} e^{E\{\mathfrak{t}\}}\\
+    \\
     \langle \mathfrak{t} \rangle  = \frac{1 e^{\beta J} - 1 e^{-\cdot \beta J}}{e^{\beta J} +  e^{-\cdot \beta J}} = \tanh \beta J
 \end{array} \Rightarrow \langle \sigma_j \sigma_i \rangle = (\tanh \beta J)^{|j-i|} = \exp \bigg(|j-i| \log \tanh \beta J\bigg).
 \end{equation}
@@ -841,10 +852,56 @@ At any finite $\beta J$, since $\tanh \beta J < 1$, $\langle \sigma_j \sigma_i \
     \langle \sigma_j \sigma_i \rangle \sim e^{\frac{-|j-i|}{\zeta}} \textnormal{ where } \zeta = -\frac{1}{\log \tanh \beta J} \textnormal{ is the correlation length.}
 \end{equation}
 
-Thus, the one-dimensional Ising model is in a disordered phase for any non-zero temperature. The zero-temperature case is pathological, since there is no meaning of equilibrium in a zero-temperature classical system. 
+Thus, the one-dimensional Ising model is in a \textbf{disordered phase for any non-zero temperature}. The zero-temperature case is pathological, since there is no meaning of equilibrium in a zero-temperature classical system. 
 \\
 
 The $\langle \sigma_j \sigma_i \rangle$-correlator depends on just the difference in coordinates, ie. it presents translational invariance. This is not a generic result for a finite chain, but a peculiarity of this model in particular. In general, for an $N+1$-site chain, correlations between two spins will generally depend on where the two points are in relation to the ends. On the other hand, for $N\rightarrow\infty$-models, translational invariance is expected to hold for correlations of spins far from the ends. In order for translational invariance to hold for a finite system, periodic boundary conditions must be imposed on the system. In said case, correlation functions will now only depend on the difference between the two coordinates, but will not decay monotonically with separation since as one point start moving away from one extreme, it starts approaching the extreme spin from the other side. \\
+
+\clearpage
+
+\paragraph{\textbf{The Monte-Carlo method}}
+
+The partition function and two-point functions may be numerically calculated with the Monte-Carlo method. Consider the two point function, 
+
+\begin{equation}
+    \langle \sigma_i \sigma_j \rangle_{\Lambda, \beta, h} = \frac{\sum_{{\bm \sigma} \in \Omega_{\Lambda}} \sigma_i \sigma_j e^{-\beta {\bf H}_{\Lambda, \beta, h}({\bm \sigma})}}{\sum_{{\bm \sigma} \in \Omega_{\Lambda}} e^{-\beta {\bf H}_{\Lambda, \beta, h}({\bm \sigma})}} = \sum_{{\bm \sigma} \in \Omega_{\Lambda}} \sigma_i \sigma_j({\bm \sigma}) \prob_{\Lambda, \beta, h}{({\bm \sigma})},
+\end{equation}
+
+where $\sigma_i \sigma_j({\bm \sigma})$ is the value of $\sigma_i \sigma_j$ at the ${\bm \sigma} \in \Omega_{\Lambda}$ configuration. The Monte-Carlo method is useful for numerically computing multidimensional integrals or sums. Each configuration will occur at a rate proportional to its Boltzmann weight. Then, for each configuration, the value of $\sigma_i \sigma_j$ can be computed. Since the configurations are already weighted, the arithmetic average of these numbers will yield the weighted thermal average. From this correlation function, the correlation length $\varepsilon$ can be calculated. By the same method, any other quantity of interest may be calculated eg. the magnetization. This can be done for any problem with a real, positive, Boltzmann weight, not just for Ising models. One specific algorithm for calculating these weighted configurations is the \textbf{Metropolis Method}, as follows \\
+
+\begin{algorithm}[H]
+ \KwData{System's parameters: $J, h, \beta$}
+ \KwResult{}
+ Start with some configuration ${\bm \sigma}_i \in \Omega_{\Lambda}$ with energy $E_i$;\
+ \While{not at end of this document}{
+  Consider another configuration ${\bm \sigma}_j \in \Omega_{\Lambda}$ with energy $E_j$, obtained by changing some degrees of freedom\;
+  \eIf{ $E_j < E_i$}{
+   jump to $j$ with unit probability\;
+   }
+   {{
+    jump to $j$ with probability $e^{-\beta(E_j - E_i)}$
+  }}
+ }
+ \caption{Metropolis Algorithm}
+\end{algorithm}
+
+After a great number of iterations, the configurations appear with probabilities obeying 
+
+$$
+    \frac{p(i)}{p(j)} = e^{-\beta (E_i - E_j)}.
+$$
+
+In effect, the rate equation reads 
+
+\begin{equation*}
+    \frac{dp(i)}{dt} = -p(i) \sum_{j} R(i\rightarrow j) + \sum_{j} p(j) R(j\rightarrow i),
+\end{equation*}
+
+where $R(i\rightarrow j)$ is the rate of jumping from the $i$-th configuration to the $j$-th configuration and vice-versa. In equilibrium or steady state, $\dot{p(i)} = 0$. One way to impose such constrain on the right-hand side is by considering a detailed balance approach, to ensure that the contribution from every value $j$ is separately zero, rather than just the sum. It is necessary but not sufficient. In this case, this implies 
+
+\begin{equation}
+    \frac{p(i)}{p(j)} = \frac{R(i\rightarrow j)}{R(i\rightarrow j)}.
+\end{equation}
 
 \clearpage
 
@@ -895,53 +952,6 @@ Note that, this picture is oversimplified since different types of correlators c
 
 A common case in statistical mechanics occurs when, at temperatures much larger than any parameter with dimensions of energy - like $J$ in the Ising model-, one can effectively neglect the energy altogether. The partition function is then a sum over all allowed configurations with the same weight each. Then, the two-point function of any local operators vanishes quickly as they are brought apart (as long as non-local constraints are not present). The system is then in a disordered phase at sufficiently large temperatures. At low enough temperatures, the opposite occurs: since the Boltzmann weight is proportional to $e^{-E/T}$, the very low-energy configurations are much more likely. This can lead to order, the lowest-energy configurations have some regular pattern and so there is a non-vanishing local order parameter. When there is a disordered phase at high-temperature and an ordered phase at high temperature as well, there must be a phase transition in between. There are two categories of phase transitions, often referred to as first-order and continuous. In the latter case, correlators become algebraically decaying, and then the system is critical. In the former case, the system remains disordered at the phase transition and abruptly changes its behaviour. \\
 
-
-\paragraph{\textbf{The Monte-Carlo method}}
-
-The partition function and two-point functions may be numerically calculated with the Monte-Carlo method. Consider the two point function, 
-
-\begin{equation}
-    \langle \sigma_i \sigma_j \rangle_{\Lambda, \beta, h} = \frac{\sum_{{\bm \sigma} \in \Omega_{\Lambda}} \sigma_i \sigma_j e^{-\beta {\bf H}_{\Lambda, \beta, h}({\bm \sigma})}}{\sum_{{\bm \sigma} \in \Omega_{\Lambda}} e^{-\beta {\bf H}_{\Lambda, \beta, h}({\bm \sigma})}} = \sum_{{\bm \sigma} \in \Omega_{\Lambda}} \sigma_i \sigma_j({\bm \sigma}) \prob_{\Lambda, \beta, h}{({\bm \sigma})},
-\end{equation}
-
-where $\sigma_i \sigma_j({\bm \sigma})$ is the value of $\sigma_i \sigma_j$ at the ${\bm \sigma} \in \Omega_{\Lambda}$ configuration. The Monte-Carlo method is useful for numerically computing multidimensional integrals or sums. Each configuration will occur at a rate proportional to its Boltzmann weight. Then, for each configuration, the value of $\sigma_i \sigma_j$ can be computed. Since the configurations are already weighted, the arithmetic average of these numbers will yield the weighted thermal average. From this correlation function, the correlation length $\varepsilon$ can be calculated. By the same method, any other quantity of interest may be calculated eg. the magnetization. This can be done for any problem with a real, positive, Boltzmann weight, not just for Ising models. One specific algorithm for calculating these weighted configurations is the \textbf{Metropolis Method}, as follows \\
-
-\begin{algorithm}[H]
- \KwData{System's parameters: $J, h, \beta$}
- \KwResult{}
- Start with some configuration ${\bm \sigma}_i \in \Omega_{\Lambda}$ with energy $E_i$;\
- \While{not at end of this document}{
-  Consider another configuration ${\bm \sigma}_j \in \Omega_{\Lambda}$ with energy $E_j$, obtained by changing some degrees of freedom\;
-  \eIf{ $E_j < E_i$}{
-   jump to $j$ with unit probability\;
-   }
-   {{
-    jump to $j$ with probability $e^{-\beta(E_j - E_i)}$
-  }}
- }
- \caption{Metropolis Algorithm}
-\end{algorithm}
-
-After a great number of iterations, the configurations appear with probabilities obeying 
-
-$$
-    \frac{p(i)}{p(j)} = e^{-\beta (E_i - E_j)}.
-$$
-
-In effect, the rate equation reads 
-
-\begin{equation*}
-    \frac{dp(i)}{dt} = -p(i) \sum_{j} R(i\rightarrow j) + \sum_{j} p(j) R(j\rightarrow i),
-\end{equation*}
-
-where $R(i\rightarrow j)$ is the rate of jumping from the $i$-th configuration to the $j$-th configuration and vice-versa. In equilibrium or steady state, $\dot{p(i)} = 0$. One way to impose such constrain on the right-hand side is by considering a detailed balance approach, to ensure that the contribution from every value $j$ is separately zero, rather than just the sum. It is necessary but not sufficient. In this case, this implies 
-
-\begin{equation}
-    \frac{p(i)}{p(j)} = \frac{R(i\rightarrow j)}{R(i\rightarrow j)}.
-\end{equation}
-
-\clearpage
-
 \subsection{Quantum Spin Systems}
 
 %A general spin chain is a dynamical system. In particular, an $N$-site chain, with finite $N$, has a configuration space, which is a discrete space or also known as a 0-manifold.
@@ -981,8 +991,7 @@ where $R(i\rightarrow j)$ is the rate of jumping from the $i$-th configuration t
 
 %Note that if the degrees of freedom take on continuous values, or the model is defined in the continuum, then this sum is replaced by an integral. Note that, indeed, the probability of a given configuration increases as the energy gets lower, and conversely, that as the temperature gets higher and higher, the energies involved must get larger and larger to make a difference. Note as well that if all the energies are shifted by some constant $E_0$, the probabilities are left unchanged, since both the numerator and denominator are multiplied by the same constant, namely $e^{-\beta E_0}$. \\
 
-There is a deep correspondence between classical statistical mechanics and quantum statistical mechanics for spin-$\frac{1}{2}$ particles. In particular, the $d$-dimensional classical statistical mechanics problem may be mapped to a $d-1$-dimensional quantum statistical problem. The nature of the quantum variable will depend then on the nature of the classical variable. In general, the allowed values of the classical variable will correspond to the maximal set of simultanoes eigenvalues of the operators in the quantum problem (eg. $\sigma_z$). 
-
+There is a deep correspondence between classical statistical mechanics and quantum statistical mechanics for spin-$\frac{1}{2}$ particles. In particular, the $d$-dimensional classical statistical mechanics problem may be mapped to a $d-1$-dimensional quantum statistical problem. The nature of the quantum variable will depend then on the nature of the classical variable. In general, the allowed values of the classical variable will correspond to the maximal set of simultanoes eigenvalues of the operators in the quantum problem (eg. $\sigma_z$). \\
 
 The Hilbert space of a quantum spin is defined by choosing a representation for the spin operators. A representation of a Lie algebra is a set of three matrices satisfying the commutation relations of the $\mathfrak{su}(2)$-algebra. An \textbf{irreducible representation} is a set of matrices such that no unitary transformation $\mathcal{U} {\bf S}^{a} \mathcal{U}^\dagger$ block-diagonalizes all three matrices. It is known that for the $\mathfrak{su}(2)$-Lie algebra there is exactly one set (up to unitary transformations) of irreducible complex $n\times n$-matrices, for each integer $n$. It is customary to write $n=2s+1$ for all integers and half-integers $s$. A single spin-$s$ quantum particle at a fixed point in space therefore has a Hilbert space $\mathds{C}^{2s+1}$, so the matrices ${\bf S}^a$ are all $(2s+1)\times(2s+1)$. An orthonormal basis is given by the eigenstates of any one of the matrices. 
 
@@ -1004,7 +1013,7 @@ which commutes with each of the representation's generators. As a result, it mus
     Let $\mathds{V}$ be a $\mathds{C}$-vector space, associated with a finite-dimensional irreducible representation of an algebra $\mathfrak{A}$ over $\mathds{C}$. Then, let $\phi : \mathds{V} \rightarrow \mathds{V}$ be a homomorphism ie. $\phi(av) = a\phi(v), \forall a \in \mathfrak{A}, v \in \mathds{V}$. Then, $\phi = \lambda \textnormal{id}_{\mathds{V}}.$ \\
 \end{lemma}
 
-\paragraph{Thermodynamics of the Quantum Ising model}
+\paragraph{\textbf{Thermodynamics of the Quantum Ising model}}
 
 Consider the following quantum Ising model 
 
@@ -1083,14 +1092,14 @@ Finally, note that in a finite lattice there is necessarily a non-zero energy ga
 
 \clearpage
 
-\section{Heisenberg Models}
+\section{Ising and Heisenberg Models}
 
 \paragraph{\textbf{Spin chain types}}
 
 Some of the most common examples of spin chains are treated as follows, 
 
 \begin{itemize}
-    \item The simplest example of a $SU(2)$-symmetric spin Hamiltonian is therefore the nearest-neighbour Heisenberg model, where 
+    \item The simplest example of a $SU(2)$-symmetric spin Hamiltonian is therefore the XXX-nearest-neighbour Heisenberg model, where 
 
 \begin{equation}
     \Hamiltonian_{\mathds{X}\mathds{X}\mathds{X}} = -J \sum_{\langle ij \rangle} {\spin}_i \cdot {\spin}_j = -J \sum_{i=1}^{N} \bigg(\frac{1}{2} (\sigma_i^+ \sigma_{i+1}^{-} + \sigma_i^- \sigma_{i+1}^+) + \frac{1}{4} \sigma_i^z \sigma_{i+1}^z\bigg),
@@ -1116,11 +1125,15 @@ It is easy to check that this Hamiltonian commutes with the magnetization operat
 
 None of these Hamiltonians correspond to a quantum version of the Ising model. \\
 
-\subsubsection{Bethe ansatz for the XXX-model}
+\subsubsection{Quantum Ising Model}
 
-\paragraph{\textbf{Heisenberg XXX-chain}}
+\clearpage
 
-Consider a one-dimensional lattice with $N$ lattice sites and a $\frac{1}{2}$-spin particle positioned at every lattice site, which have a nearest neighbour spin-spin interaction. Each particles either has spin up or spin down, generating a two-dimensional local Hilbert space $\vds_n$. Strictly speaking there are two possible topologies for a one-dimensional chain, open or closed. Consider the XXX-Hamiltonian with closed topology, given by 
+\subsubsection{\textbf{Bethe ansatz for the XXX-model}}
+
+\paragraph{\textit{Heisenberg XXX-chain}}
+
+Consider a one-dimensional lattice with $N$ lattice sites and a $\frac{1}{2}$-spin particle positioned at every lattice site, which have a nearest neighbour spin-spin interaction. Each particles either has spin up or spin down, generating a two-dimensional local Hilbert space, $\vds_n$. Strictly speaking there are two possible topologies for a one-dimensional chain, open or closed. Consider the XXX-Hamiltonian with closed topology, given by 
 
 \begin{equation}
 \begin{split}
@@ -1129,10 +1142,13 @@ Consider a one-dimensional lattice with $N$ lattice sites and a $\frac{1}{2}$-sp
 \end{split}
 \end{equation}
 
-Note that $J < 0$ models a ferromagnetic state while $J > 0$ models an anti-ferromagnetic state. A ferromagnetic state refers to a state where all the spins are alligned while an anti-ferromagnetic state refers to a state where adjacent spins are anti-aligned within the domain. 
+Note that $J < 0$ models a ferromagnetic state while $J > 0$ models an anti-ferromagnetic state. A ferromagnetic state refers to a state where all the spins are alligned while an anti-ferromagnetic state refers to a state where adjacent spins are anti-aligned within the domain. \\
 
+\begin{tcolorbox}[colback = my-blue,title = Physical Context]
 
 The main point of the Bethe solution is that XXX Heisenberg Hamiltonian, which defines the model, can be expressed in terms of a complex-valued $\bm{\mathcal R}$-matrix which is a solution of the Yang-Baxter equation, thus leading to the model's integrability. The most convenient approach is to construct a transfer $\bm{\mathcal{T}}$-matrix -a one parameter commutative family of operators acting on the full state space of the Heisenberg spin chain. \\
+
+\end{tcolorbox}
 
 \paragraph{\textbf{Some fundamentals of Matrix Theory}}
 
@@ -1167,7 +1183,7 @@ For example, consider the orthogonal projector over $\mathcal{S}$, labelled $P_{
 \begin{split}
     A \in \textnormal{End}(\mathds{C}^n) &\rightarrow \exists! \left\{\begin{array}{cc}
         A_{\mathcal{S}} \in \textnormal{GL}(k, \mathds{C}),  &  A_{\mathcal{S}, \mathcal{S}^\perp} \in \textnormal{GL}(k \rightarrow n-k, \mathds{C}), \\
-        A_{\mathcal{S}^\perp, \mathcal{S}}  \in  \textnormal{GL}(n-k \rightarrow k, \mathds{C}), & A_{\mathcal{S}^\perp} \in \textnormal{GL}(n-k, \mathds{C}),
+        A_{\mathcal{S}^\perp, \mathcal{S}}  \in \textnormal{GL}(n-k \rightarrow k, \mathds{C}), & A_{\mathcal{S}^\perp} \in \textnormal{GL}(n-k, \mathds{C}),
     \end{array} \right\} / \\
    &A = \left( \begin{array}{cc}
        A_{\mathcal{S}} & A_{\mathcal{S}, \mathcal{S}^\perp}  \\
@@ -1179,9 +1195,9 @@ For example, consider the orthogonal projector over $\mathcal{S}$, labelled $P_{
     \end{split}
 \end{equation*}
 
-\textnormal{ } \\
+The main idea behind the lax-operator and $\bm{\mathcal{R}}$-operator methods is to find an operator, eg. a product-matrix, where each one of the matrices acts non-trivially only on a single Hilbert space $\vds \simeq \ctwo$. Said matrices can then be rewritten in the previous form. \\
 
-\paragraph{\textbf{The Lax operator}} Consider an XXX spin chain with $N$ sites and a corresponding Hilbert space given by 
+\paragraph{\textbf{The Lax operator}} Consider an XXX-spin chain with $N$ sites and a corresponding Hilbert space given by 
 
 \begin{align}
     \mathds{H} \simeq \bigotimes_{n=1}^{N} {\mathds{V}_n} \textnormal{ where } {\mathds{V}_n} \simeq \ctwo \begin{array}{c}
@@ -1738,7 +1754,7 @@ Then the fundamental commutation relation \eqref{fundamental commutation relatio
     \end{array}} \right) = {\bf 0} $},
 \]
 
-from which, it's been proven that $[\bm{\mathcal{T}}_{ij}(u_1), \bm{\mathcal{T}}_{ij}(u_2)] = 0, \blanky i,j = 1, 2$ as long as $a (u_1 - u_2) \neq 0$. From the other matrix-entries, it's immediately seen that 
+from which, it's been proven that $[\bm{\mathcal{T}}_{ij}(u_1), \bm{\mathcal{T}}_{ij}(u_2)] = 0, \blanky i,j = 1, 2$ as long as $a (u_1 - u_2) \neq 0$. From the other matrix-entries, after many long calculations, it can be seen that 
 
 $$
 a(u_1-u_2) B(u_1) A(u_2) = c(u_1-u_2) B(u_2) A(u_1) + b(u_1-u_2) A(u_2) B(u_1).  
@@ -1794,7 +1810,7 @@ The $B(u)$ operators can then be used to construct the Bethe state
 
 A priori, not all complex-valued sequences are allowed since the Bethe states must be eigenvectors of $A(u) + D(u)$, which yields some algebraic conditions. \\
 
-\paragraph{\textbf{Conditions on } $\{u_j\}_{j=1}^{M < N}$}
+\paragraph{\textbf{Conditions on } $\bigg\{u_j\bigg\}_{j=1}^{M < N}$}
 
 Consider the Bethe state given by \cref{bethe state}. Then, 
 
@@ -2214,7 +2230,11 @@ where $\bm{\mathcal S}(q, \omega)$ determines the cross-section for scattering e
 
 which is simply equal to $\frac{1}{3} \bm{\mathcal S}( \bm{\mathcal S}+ 1)$ in the isotropic case. \\
 
+\begin{tcolorbox}[colback = my-blue, title = Physical Context]
+
 The XXZ-Heisenberg chain is an important model to describe real material and is the most important paradigm of low-dimensional quantum magnetism, as it allows to introduce many scenarios, such as broken symmetry, the gapless Luttinger liquid, the Kosterlitz-Thouless phase transition, gapped and gapless excitation continua. Consider a Heisenberg XXZ chain supplemented by and external magnetic field. \\
+
+\end{tcolorbox}
 
 \paragraph{\textbf{Ferromagnetic phase: }}
 
@@ -2235,12 +2255,17 @@ These states are exact eigenstates of the XXZ-Hamiltonian, In zero field, the ex
 
 %%% da hell are magnons??????
 
-Two interesting consequences of \cref{XXZ-spectrum} quickly arise, which can be generalized to any $XXZ$-type Hamiltonian conserving the total magnetization: 
+\begin{tcolorbox}[colback = my-blue, title = Physical Context]
+
+Two interesting consequences of \cref{XXZ-spectrum} quickly arise, which can be generalized to any XXZ-type Hamiltonian conserving the total magnetization: 
 
 \begin{enumerate}
     \item For sufficiently strong external magnetic field, the classical saturated state is forced to be the ground state for arbitrary value of $\Delta$ and the lowest excitations are exactly known. If the necessary magnetic fields are within experimentally accessible range, this can be used for an experimental determination of the exchange constants from the magnon dispersions (an example in 2D are recent neutron scattering experiments on $Cs_2 Cu Cl_4$. \\
     \item The ferromagnetic ground state becomes unstable when the lows spin wave frequency becomes negative. This allows to determine eg. the boundary of the ferromagnetic phase for $\Delta > -1$ in an external field as $H = H_c$ with $g \mu_B H_c = \Delta + 1$. 
 \end{enumerate}
+
+
+\end{tcolorbox}
 
 \blanky \\
 
@@ -2292,10 +2317,12 @@ For general $\Delta$, the XXZ-chain is thus equivalent to an interacting 1D ferm
 
 \textbf{XY-Model}
 
-The $XY$-Heisenberg chain Hamiltonian is given by 
+\textit{\underline{Setting of the problem and the Jordan-Wigner Transformation.}} \\
+
+The XY-Heisenberg chain Hamiltonian is given by 
 
 \begin{equation}
-    {\bf H}_{\mathds{X}\mathds{Y}} = \sum_{j \in \Lambda} \bigg[(1+\gamma) \spin_{j}^x\spin_{j+1}^x + (1-\gamma) \spin_{j}^y\spin_{j+1}^y \bigg],
+    {\bf H}_{\mathds{X}\mathds{Y}} = \sum_{j \in \Lambda^{d=1}} \bigg[(1+\gamma) \spin_{j}^x\spin_{j+1}^x + (1-\gamma) \spin_{j}^y\spin_{j+1}^y \bigg],
 \end{equation}
 
 where $\gamma$ is a parameter characterizing the degree of anisotropy in the $xy$-plane. The endpoint may be treated in two differenty, but physically reasonable ways, 
@@ -2305,10 +2332,138 @@ where $\gamma$ is a parameter characterizing the degree of anisotropy in the $xy
     \item or as a cyclic chain, in which $1 \leq i \leq N$ and $\vec{\spin}_{N+1} = \vec{\spin}_1$, being the most convenient chocice for calculating physical quantities other than the long-range order. \\
 \end{enumerate}
 
-The XY-model in exactly soluble for all values of $\gamma$. In particular, consider $\gamma \in \mathds{R}_{[-1,1]}$. As $\gamma \rightarrow 1$, both models tend to the Ising model in which the $x$-component of spin are completely ordered and the $y$-component and $z$-components are completely disordered. For $|\gamma| \neq 1$ both models are genuinely quantum mechanical because different components of $\vec{\spin}$. 
+The XY-model in exactly soluble for all values of $\gamma$. In particular, consider $\gamma \in \mathds{R}_{[-1,1]}$. As $\gamma \rightarrow 1$, both models tend to the Ising model in which the $x$-component of spin are completely ordered and the $y$-component and $z$-components are completely disordered. For $|\gamma| \neq 1$ both models are genuinely quantum mechanical because different components of $\vec{\spin}$, present in the Hamiltonian, do not commute. The effect of the transverse terms (those with a $(1-\gamma)$-weight) is opposing the ordering of the $x$-components and to favour the ordering of the $y$-components. \\
+
+Hitherto, it has not been clear for the Heisenberg model, just how strong these two effects are  Thus, the following question arises,
+
+\begin{tcolorbox}
+For any particular positive value of $\gamma$, do the transverse terms either establish any long-range order among the $y$- and $z$-components or destroy the long-range order of the $x$-components (which would imply absence of long range order for the $y$- and $z$-components as well)? \\
+
+It turns out that for the XY-model, the transverse terms do neither until the limiting case $\gamma \rightarrow 0$, when these succeed in destroying the order of the $x$-components. 
+\end{tcolorbox}
+
+To solve the $\mathds{X}\mathds{Y}$-model, consider the following raising and lowering operators 
+
+\begin{equation} \begin{array}{cc}
+     {\bf a}_i^\dagger = \spin_i^x + i \spin_i^y \\ 
+     {\bf a}_i = \spin_{i}^x - i \spin_i^y
+\end{array} \Leftrightarrow
+\begin{array}{c}
+     \spin_i^x = \frac{1}{2} \bigg({\bf a}_i+{\bf a}_i^\dagger \bigg)\\
+     \\
+     \spin_i^y = \frac{1}{2i} \bigg({\bf a}_i-{\bf a}_i^\dagger\bigg)\\
+     \\
+     \spin_i^z = {\bf a}_i^\dagger {\bf a}_i - \frac{1}{2} \\,
+\end{array} \Rightarrow {\bf H}_{\gamma} = \frac{1}{2} \sum_{i} \bigg({\bf a}_i^\dagger {\bf a}_{i+1} + \gamma {\bf a}_i^\dagger {\bf a}_{i+1}^\dagger + {\bf a}_{i+1}^\dagger {\bf a}_i + \gamma {\bf a}_{i+1} {\bf a}_{i}  \bigg).
+\label{XY-Hamiltonian_new_form}
+\end{equation}
+
+\begin{equation*}
+    \begin{split}
+    \textnormal{ These operators partly resemble Fermi operators: } \{{\bf a}_i, {\bf a}_i^\dagger\} = 1, {\bf a}_i^2 = ({\bf a}_i^\dagger)^2 = 0, \\
+    \textnormal{ and partly resemble bosonic operators: } [{\bf a}_i^\dagger, {\bf a}_j] = [{\bf a}_i^\dagger, {\bf a}_j^\dagger] = [{\bf a}_i, {\bf a}_j] = 0, \blanky i \neq j.
+\end{split}
+\end{equation*}
+
+It is therefore not possible to diagonalize the quadratic form appearing in \cref{XY-Hamiltonian_new_form} directly with a canonical transformation, since principal axis transformations of the ${\bf a}$- and ${\bf a}^\dagger$-operators do not preserve this mixed set of canonical rules. However, it is possible to transform to a new set of variables that are strictly fermionic operators, and in terms of which the Hamiltonian is just as simple. This new operators are given by the Jordan-Wigner transformation
+
+\begin{equation}
+    \begin{array}{cc}
+         {\bf c}_i = e^{i\pi \sum_{j=1}^{i-1} {\bf a}_j^\dagger {\bf a}_j} {\bf a}_i & \Leftrightarrow {\bf a}_i = e^{i\pi \sum_{j=1}^{i-1} {\bf a}_j^\dagger {\bf c}_j} {\bf c}_i \\
+         {\bf c}_i^\dagger = {\bf a}_i^\dagger e^{-i\pi \sum_{j=1}^{i-1} {\bf a}_j^\dagger {\bf a}_j} & \Leftrightarrow {\bf a}_i^\dagger = {\bf c}_i^\dagger e^{-i\pi \sum_{j=1}^{i-1} {\bf a}_j^\dagger {\bf c}_j}
+    \end{array}, \textnormal{ such that } {\bf c}_i^\dagger {\bf c}_i = {\bf a}_i^\dagger {\bf a}_i 
+\end{equation}
+
+The ${\bf c}$- and ${\bf c}^\dagger$-operators are truly fermionic operators, this is they follow fermionic anti-commutation relations, 
+
+\begin{align}
+    \{{\bf c}_i, {\bf c}_j^\dagger\} &= \delta_{ij}, & \{{\bf c}_i, {\bf c}_j\} &= 0 & \{{\bf c}_i^\dagger, {\bf c}_j^\dagger\} = 0. 
+\end{align}
+
+Note that 
+
+\begin{equation}
+    e^{\pm i \pi \sum_{j = 1}^{m} {\bf a}_j^\dagger {\bf a}_j} = \prod_{j=n}^{m} e^{\pm i \pi {\bf a}_j^\dagger {\bf a}}. 
+\end{equation}
+
+Furthermore, given that ${\bf c}_i^\dagger {\bf c}_i$ is a well-defined hermitian occupation number having values $0$ or $1$, it follows 
+
+\begin{equation}
+\begin{split}
+    &e^{i\pi {\bf c}_j^\dagger {\bf c}_j} =  e^{-i\pi {\bf c}_j^\dagger {\bf c}_j} \Rightarrow e^{\pm i \pi {\bf a}_i^\dagger {\bf a}_i} = \sum_{\ell = 0}^{\infty} \frac{1}{\ell!} (\pi i)^\ell ({\bf a}_i^\dagger {\bf a}_i)^\ell = 1 + \sum_{\ell = 1}^\infty \frac{1}{\ell!} (\pm i\pi)^\ell {\bf a}_i^\dagger {\bf a}_i = 1 + (e^{\pm \pi i} - 1) {\bf a}_i^\dagger {\bf a}_i = 1 - 2{\bf a}_i^\dagger {\bf a}_i. \\
+\end{split}
+\end{equation}
+
+Note as well that
+
+\begin{equation}
+\begin{split}
+&\begin{array}{ccc}
+     \{{\bf a}_i, 1 - 2{\bf a}_i^\dagger {\bf a}_i\} = {\bf a}_i (1-2{\bf a}_i^\dagger {\bf a}_i) + (1-2{\bf a}_i^\dagger {\bf a}_i) {\bf a}_i &  & \{{\bf a}_i^\dagger, 1 - 2{\bf a}_i^\dagger {\bf a}_i\} = {\bf a}_i^\dagger (1-2{\bf a}_i^\dagger {\bf a}_i) + (1-2{\bf a}_i^\dagger {\bf a}_i) {\bf a}_i^\dagger \\
+     = {\bf a}_i - 2 {\bf a}_i {\bf a}_i^\dagger {\bf a}_i + {\bf a}_i - 2 {\bf a}_i^\dagger {\bf a}_i {\bf a}_i & & = {\bf a}_i^\dagger - 2 {\bf a}_i^\dagger {\bf a}_i^\dagger {\bf a}_i + {\bf a}_i^\dagger - 2 {\bf a}_i^\dagger {\bf a}_i {\bf a}_i^\dagger \\
+     = 2{\bf a}_i - 2 \cancelto{1}{\bigg({\bf a}_i {\bf a}_i^\dagger + {\bf a}_i^\dagger {\bf a}_i\bigg)} {\bf a}_i = 0 &  & = 2{\bf a}_i^\dagger - 2 {\bf a}_i^\dagger \cancelto{1}{\bigg( {\bf a}_i^\dagger {\bf a}_i + {\bf a}_i {\bf a}_i^\dagger}\bigg) = 0
+\end{array} \\
+\\
+&\Rightarrow \bigg[e^{\pm i \pi \sum_{\ell = n}^{m} {\bf a}_j^\dagger {\bf a}_j}, {\bf a}_i\bigg] = \bigg[e^{\pm i \pi \sum_{\ell = n}^{m} {\bf a}_j^\dagger {\bf a}_j}, {\bf a}_i^\dagger\bigg] = 0, \textnormal{ if } i \notin [n, m] \\
+&\Rightarrow \bigg\{e^{\pm i \pi \sum_{\ell = n}^{m} {\bf a}_j^\dagger {\bf a}_j}, {\bf a}_i\bigg\} = \bigg\{e^{\pm i \pi \sum_{\ell = n}^{m} {\bf a}_j^\dagger {\bf a}_j}, {\bf a}_i^\dagger\bigg\} = 0, \textnormal{ if } i \in [n, m]
+\end{split}
+\end{equation}
+
+For $i \leq i \leq N$,
+
+\begin{equation}
+    \begin{split}
+{\bf a}_i {\bf a}_{i+1}^\dagger =& e^{i\pi \sum_{j=1}^{i-1} {\bf a}_j^\dagger {\bf c}_j} {\bf c}_i  {\bf c}_{i+1}^\dagger e^{-i\pi \sum_{j=1}^{i} {\bf c}_j^\dagger {\bf a}_j} = {\bf c}_i  {\bf c}_{i+1}^\dagger e^{i\pi \sum_{j=1}^{i-1} {\bf c}_j^\dagger {\bf c}_j} e^{-i\pi \sum_{j=1}^{i} {\bf c}_j^\dagger {\bf c}_j} \\
+        &= {\bf c}_i e^{i \pi {\bf a}_i^\dagger {\bf a}_i} {\bf c}_{i+1}^\dagger = {\bf c}_i (1- 2{\bf c}_i^\dagger {\bf c}_i){\bf c}_{i+1}^\dagger = -(1- 2{\bf c}_i^\dagger {\bf c}_i) {\bf c}_i {\bf c}_{i+1}^\dagger = -{\bf c}_i^\dagger {\bf c}_{i+1} + 2{\bf c}_i^\dagger {\bf c}_i {\bf c}_i {\bf c}_{i+1}^\dagger  \\
+        &= -{\bf c}_i^\dagger {\bf c}_{i+1} = {\bf c}_{i+1}^\dagger {\bf c}_{i} \\
+        {\bf a}_{i+1} {\bf a}_{i}^\dagger &= ({\bf a}_i {\bf a}_{i+1}^\dagger)^\dagger = {\bf c}_i^\dagger {\bf c}_{i+1}.
+    \end{split}
+\end{equation}
+
+Then, two possible Hamiltonians arise, depending on which boundary condition has been imposed,
+
+\begin{itemize}
+    \item For free boundary conditions, the Hamiltonian reads 
+    
+    \begin{equation}
+        {\bf H}_{\gamma} = \frac{1}{2} \sum_{j = 1}^{N-1} \bigg[ {\bf c}_i^\dagger {\bf c}_{i+1} + {\bf c}_{i+1}^\dagger {\bf c}_{i} + \gamma ( {\bf c}_i^\dagger {\bf c}_{i+1}^\dagger +  {\bf c}_{i+1} {\bf c}_{i})\bigg],
+    \end{equation}
+    
+    \item whereas, for the cyclic chain, there are additional terms which couple the $N$-th spin to the first spin, namely 
+    \begin{equation}
+    \begin{split}
+        {\bf a}_N^\dagger {\bf a}_1 = - {\bf c}_N^\dagger {\bf c}_1 e^{i \pi \mathfrak{F}} \neq {\bf c}_N^\dagger {\bf c}_1 \longleftrightarrow {\bf a}_1^\dagger {\bf a}_N = - {\bf c}_1^\dagger {\bf c}_N e^{-i \pi \mathfrak{F}} \neq {\bf c}_1^\dagger {\bf c}_N \\
+        {\bf a}_N^\dagger {\bf a}_1^\dagger = - {\bf c}_1^\dagger {\bf c}_N e^{i \pi \mathfrak{F}} \neq {\bf c}_1^\dagger {\bf c}_N^\dagger \longleftrightarrow {\bf a}_1 {\bf a}_N= - {\bf c}_1 {\bf c}_N e^{-i \pi \mathfrak{F}} \neq {\bf c}_1 {\bf c}_N
+    \end{split} \textnormal{ where } \mathfrak{F} = \sum_{j=1}^{N} {\bf c}_j^\dagger {\bf c}_j = \sum_{i=1}^{N} \bigg({\bf S}_j^z + \frac{1}{2}\bigg),
+    \end{equation}
+    
+    yielding the following Hamiltonian 
+    
+    \begin{equation}
+        {\bf H}_{\gamma} = \frac{1}{2} \sum_{j = 1}^{N-1} \bigg[ {\bf c}_i^\dagger {\bf c}_{i+1} + {\bf c}_{i+1}^\dagger {\bf c}_{i} + \gamma ( {\bf c}_i^\dagger {\bf c}_{i+1}^\dagger +  {\bf c}_{i+1} {\bf c}_{i})\bigg] - \frac{1}{2} \bigg[{\bf c}_N^\dagger {\bf c}_1 + {\bf c}_1^\dagger {\bf c}_N + \gamma {\bf c}_N^\dagger {\bf c}_1^\dagger + \gamma {\bf c}_1 {\bf c}_N\bigg] (e^{i\pi \mathfrak{F}} + 1),
+    \end{equation}
+    
+    in which case the Hamiltonian, written in terms of the Fermi operators $({\bf c}, {\bf c}^\dagger)$, no longer has a simple cyclic stricture. For large-enough systems, the last term may be neglected, in which case the problem is known as "$c$-cyclic". Otherwise, as it stands now, the problem is called the "$a$-cyclic" problem. Both problems can be analytically solved, though the former is simple. 
+\end{itemize}
+
+\blanky \\
+
+In all cases, the Hamiltonian is a simple quadratic form in Fermi operators and can be exactly diagonalized. The particular simplicity of ${\bf H}_{\gamma}$ depends on the fact that the spins can be arranged in a definite order, that interacting occur only between neighbouring spins in this ordering, and that the $z$-compoentns of spin do not enter. If the interactions were to extend to $n$-nearest neighbours, ${\bf H}_{\gamma}$ would involve a polynomial of $2n$-order on the ${\bf c}$-operators. In two-dimensional models, it can be seen that any ordering and non-trivial scheme of interactions must lead to a Hamiltonian involving a polynomial roughly of $2N$-order for a system with $N^2$
+spins. \\
+
+\textit{\underline{Ground State Energy, Elementary Excitations and Free Energy. }}
+
+Consider the following quadratic form,
+
+\begin{equation}
+    \begin{split}
+        {\bf H} = \sum_{i,j} \bigg[{\bf c}_i^\dagger \mathcal{A}_{ij} {\bf c}_j + \frac{1}{2} \bigg({\bf c}_i^\dagger \mathcal{B}_{ij} {\bf c}_j^\dagger + {\bf c}_i \mathcal{B}_{ij}^{*} {\bf c}_j \bigg)  \bigg], 
+    \end{split}
+\end{equation}
+
+where the $({\bf c}, {\bf c}^\dagger)$-operators are fermionic in nature and where ${\bf H}$ is hermitian, which induces $\mathcal{A}$'s hermiticity and ${\mathcal{B}}$'s antisymmetric nature. For this section's purpose, they can be treated as real-valued matrices. 
 
 \clearpage
-
 \paragraph{\textbf{$\Delta \approx 1$: The isotropic Heisenberg Antiferromagnet}}
 
 The most interesting regime for the XXZ chain is $\Delta \approx 1$, ie. the vicinity of the Isotropic Heisenberg antiferromagnet (HAF), wherein the ground state energy is given by 
@@ -2318,7 +2473,6 @@ $$
 $$
 
 \clearpage
-
 
 \subsubsection{Antiferromagnetic Ground States}
 
@@ -2398,7 +2552,7 @@ where $\tilde{m}_i$ are eigenvalues of $\spin_i^z$ and $\tilde{\spin}_i^z$ on $A
 
 Then, the following theorems, first presented by Marshall and then extended by Lieb and Mattis, arise
 
-\begin{tcolorbox}[title = Marshall's theorems]
+%\begin{tcolorbox}[title = Marshall's theorems]
 
 \begin{theo}
     Consider the Hamiltonian given by \cref{auerbach's HH hamiltonian}, of a bipartite lattice with antiferromagnetic exchanges $J_{ij} \geq 0$ which connect two sublattices $A$ and $B$. Said antiferromagnetic exchanges are such that any two lattice sites are connected by a sequence of finite exchanges between intermediary sites. In any allowed $M$-sector, the lowest energy state $\ket{\Psi^M_0}$ can be chosen to have positive-definite coefficients in the rotated Ising basis $\ket{\tilde{\Psi}^M_{\alpha}}$ ie.
@@ -2418,7 +2572,7 @@ $$
 $$
 \label{Marshall_theo_2}
 \end{theo}
-\end{tcolorbox}
+%\end{tcolorbox}
 
 Note that not all total singlets obey the so-called Marshal sign criterion and, conversely, not all Marshall sign-obeying states are singlets of the total spin. The ground state of the Heisenberg Hamiltonian must, however, obey both conditions. \\
 
@@ -2615,7 +2769,7 @@ Consider the infinite range ferromagnetic Hamiltonian on a bipartite lattice wit
 $$
     {\bf H}^{\infty} = -J \sum_{\substack{
     i \in A \\
-    j \in B}} \vec{\spin}_i \cdot \vec{\spin}_j = J \spin_{\textnormal{tot}}^A \cdot \spin_{\textnormal{tot}}^B
+    j \in B}} \vec{\spin}_i \cdot \vec{\spin}_j = -J \spin_{\textnormal{tot}}^A \cdot \spin_{\textnormal{tot}}^B
 $$
 
 Again, this problem is trivially solvable, since it is a two spin problem using $\spin_{\textnormal{tot}} = \spin_{\textnormal{tot}}^A + \spin_{\textnormal{tot}}^B$, since $\spin_{\textnormal{tot}}^A \cdot \spin_{\textnormal{tot}}^B = \frac{1}{2} \bigg( \spin_{\textnormal{tot}}^2 - (\spin_{\textnormal{tot}}^A)^2 - (\spin_{\textnormal{tot}}^B)^2 \bigg)$.
@@ -2649,11 +2803,11 @@ As a member of a degenerate multiplet, this state spontaneously breaks the rotat
 
 \subsubsection{Half-Odd Integer Spin Chains}
 
-As a Lie group, $SU(2)$ is the simply-convex three-sphere $\bm{\mathcal{S}}^3$. Thus, particle with half-odd integer spin, eg. electrons, have a peculiar quantum property: their wave functions acquires a minus sign under a $2\pi$-rotation about any spin axis. For localized systems, any particular direction in spin space, this effect is not noticeable. However, for low-dimensional systems, this zero-point fluctuations are large. Thus, interference effects due to these negative signs may become important. In fact, the antiferromagnetic one-dimensional Heisenberg model has different spectra for integer and half-odd integer spins. Thus the following theorem, due to Lieb, Schultz and Mattis, arises
+As a Lie group, $SU(2)$ is the simply-convex three-sphere $\bm{\mathcal{S}}^3$. Thus, particle with half-odd integer spin, eg. electrons, have a peculiar quantum property: their wave functions acquires a minus sign under a $2\pi$-rotation about any spin axis. For localized systems, any particular direction in spin space, this effect is not noticeable. However, for low-dimensional systems, this zero-point fluctuations are large. Thus, interference effects due to these negative signs may become important. In fact, the antiferromagnetic one-dimensional Heisenberg model has different spectra for integer and half-odd integer spins. Thus the following theorem, due to Lieb, Schultz and Mattis, arises:
 
-\begin{tcolorbox}[title = Lieb-Schultz-Mattis Theorem on Half-odd Integer Spin Chains]
+%\begin{tcolorbox}[title = Lieb-Schultz-Mattis Theorem on Half-odd Integer Spin Chains]
 
-\begin{theo}
+\begin{theo} \textbf{\textnormal{Lieb-Schultz-Mattis Theorem on Half-odd Integer Spin Chains.}} 
 Consider the antiferromagnetic Heisenberg spin chain, with $J > 0$ on a one dimensional chain with closed topology 
 
 \begin{equation}
@@ -2662,7 +2816,7 @@ Consider the antiferromagnetic Heisenberg spin chain, with $J > 0$ on a one dime
 
 where $N$ is even. For half-odd integer spin, there exists an excited state whose energy vanishes in the thermodynamic limit, $N \rightarrow \infty$.
 \end{theo}
-\end{tcolorbox}
+%\end{tcolorbox}
 
 Let $\ket{\Psi_0}$ be the system's ground state and let the twist operator be 
 
@@ -2720,11 +2874,7 @@ This last equality is, in fact, zero by \cref{Marshall_theo_2}, the ground state
     {\bf S}_1^z &= \left(\begin{array}{cc}
         \frac{1}{2} & 0  \\
         0 & -\frac{1}{2} 
-    \end{array}\right) \begin{array}{c}
-        \Rightarrow e^{ik \spin_1^z} =  \left(\begin{array}{cc}
-       -1 & 0  \\
-        0 & -1
-    \end{array}\right) \textnormal{ iff } k \in 2\mathds{N}+1,   \\
+    \end{array}\right) \Rightarrow \begin{array}{c}
         e^{ik \spin_1^z}  = \left\{  \begin{array}{cc}
               1 &  S = 0,1,2,\cdots \\
               -1 &  S = \frac{1}{2},\frac{3}{2},\frac{5}{2},
@@ -2768,9 +2918,7 @@ $$
 and then, there is no energy gap in the thermodynamic limit. Thus concluding \cref{HH_1_dimensional_twisted_state}'s proof.  
 \end{proof}
 
-However, note that in the thermodynamic limit, the admixture of the ground state and this low-lying excited state may break a symmetry of the Hamiltonian. This is the case for the ground state and the first excited state of the Majumdar-Gosh model, which are superpositions of dimer configurations, break lattice symmetry. An alternative scenario occurs in the nearest-neighbour Heisenberg model of spin half. dess Cloizeaux and Pearson have found that magnon excitations are gappless, said excitations not being spin waves since they are not small fluctuations about a ground state with broken spin symmetry. In contrast to spin-half chains, integer spin chains have a gap in the excitation spectrum, the Haldane gap. 
-
-\blanky \\
+However, note that in the thermodynamic limit, the admixture of the ground state and this low-lying excited state may break a symmetry of the Hamiltonian. This is the case for the ground state and the first excited state of the Majumdar-Gosh model, which are superpositions of dimer configurations, break lattice symmetry. An alternative scenario occurs in the nearest-neighbour Heisenberg model of spin half. dess Cloizeaux and Pearson have found that magnon excitations are gappless, said excitations not being spin waves since they are not small fluctuations about a ground state with broken spin symmetry. In contrast to spin-half chains, integer spin chains have a gap in the excitation spectrum, the Haldane gap. \\
 
 The previous results can be readily extended to two and three-dimensional lattices. In effect, for the former, consider a square lattice of $N$ sites in the $x$-direction and $M \sim \mathcal{O}(N^\nu)$ sites in the $y$-direction, where $\nu \in \mathds{R}_{[0,1]}$, with a cyclic Hamiltonian, ie.
 
@@ -2790,11 +2938,7 @@ $$
     \bra{\Psi_k} {{\bf H}} \ket{\Psi_k} \leq E_0 + \frac{2\pi^2}{N^{1-\nu}}.
 $$
 
-Since the excitacion energy of exact low-lying states should not depend on the shape of the entire lattice, there should be no energy gap for an $(N \times N)$-lattice either. The $\ket{\Psi_k}$ state is, unfortunately, not sufficiently like an exact low-lying excited state to give this result. A similar extension to three-dimensional lattices swiftly follows. 
-
-\subsection{Disorder in Low Dimensions}
-
-\clearpage
+Since the excitacion energy of exact low-lying states should not depend on the shape of the entire lattice, there should be no energy gap for an $(N \times N)$-lattice either. The $\ket{\Psi_k}$ state is, unfortunately, not sufficiently like an exact low-lying excited state to give this result. A similar extension to three-dimensional lattices swiftly follows. \\
 
 \subsection{Numerical solution to Fermionic models}
 
@@ -3067,6 +3211,606 @@ Therefore, the spin-$\frac{1}{2}$ Heisenberg Hamiltonian can therefore be rewrit
 
 \clearpage
 
+\subsection{Disorder in Low Dimensions}
+
+Spontaneously broken symmetry is a general phenomenom in statistical mechanics and particle physics. It can occur at finite temperatures and when the order parameter does not commute with the Hamiltonian. For example, consider the spin density wave operator in the $z$-direction
+
+\begin{equation}
+    {\spin}_{{\bf q}}^z = \sum_{i \in \Lambda} e^{i {\bf q} \cdot {\bf x}_i } \spin_{i}^z,
+\end{equation}
+
+where ${\bf q}$ is the ordering wave vector. A symmetry breaking term is added to the rotationally invariant Hamiltonian ${\bf H}^0$ using an ordering field $h$, 
+
+\begin{equation}
+    {\bf H} = {\bf H}^0 - h {\spin}_{{\bf q}}^z. 
+\end{equation}
+
+Then, the magnetization per site is given by 
+
+$$
+    m_{{\bf q}}(h) = \frac{1}{N \mathcal{Z}} \Tr \bigg[e^{- \beta {\bf H}} {\spin}_{{\bf q}}^z\bigg], \textnormal{ where } \mathcal{Z} = \Tr \bigg[e^{- \beta {\bf H}} \bigg].
+$$
+
+In particular, this discussion is restricted to symmetric lattices under reflection about the origin, inducing ${\spin}_{{\bf q}}^z$'s hermiticity and $m_{{\bf q}}$-realness. At finite fields, $m_{{\bf q}}(h) > 0$, since the magnetization is induced by the ordering field. \\
+
+\begin{df}
+The system has spontaneously broken symmetry if it sustains a finite magnetization in the thermodynamic limit even if the ordering field is taken to zero from above, this is 
+
+$$ 
+   \lim_{h \rightarrow 0^+} \lim_{N \rightarrow \infty} m_{{\bf q}}(h, N, T) \neq 0.
+$$
+
+The order of limits is crucial in the previous definition. 
+\end{df}
+
+Spontaneously broken symmetries can be found in the absence of an ordering field by examining the two point correlation function,
+
+$$
+    S^{\alpha \alpha}({\bf q}) = \lim_{h \rightarrow 0^+} \frac{1}{N\mathcal{Z}} \Tr \bigg[e^{- \beta {\bf H}} {\spin}_{{\bf q}}^\alpha {\spin}_{{\bf -q}}^\alpha\bigg], \textnormal{ with } \alpha = \{x,y,z\}.
+$$
+
+In the absence of the ordering field, the correlations are isotropic in spin space, i.e., independent on the $\alpha$-direction. It can be shown that spontaneously broken symmetry at ${\bf q}$-momentum implies true long-range order in the two point correlation function,
+
+\begin{df} True-Long range order
+
+$$
+    \lim_{N \rightarrow \infty} \frac{S^{\alpha \alpha} ({\bf q})}{N} > 0 \Leftrightarrow \lim_{|{\bf x_i - x_j}| \rightarrow \infty} \lim_{N \rightarrow \infty} \langle \spin_i \cdot \spin_j \rangle \neq 0.  
+$$
+
+\end{df}
+
+This definition thus distinguishes the true-long range order from a quasi-long-range order, in which there is a power law decay of correlations at large distances. 
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=red!75!black,lowerbox=invisible, title = Spontaneously broken symmetry and true-long range order]
+
+Spontaneously broken symmetry implies true-long range order.
+
+\end{tcolorbox}
+
+\begin{proof}
+Given two operators acting on the Hilbert space of a quantum system, a scalar product between two operators ${\bf A}$ and ${\bf B}$ can be defined as 
+
+$$
+    ( {\bf A}, {\bf B} ) = \frac{1}{\mathcal{Z}} \sum_{\substack{{n,m}} \\
+                    E_n \neq E_m} \bra{n}{{\bf A}}^\dagger \ket{m}
+                    \bra{m} {{\bf B}} \ket{n} \bigg( \frac{e^{-\beta E_m} - e^{-\beta E_n}}{E_n - E_m} \bigg),
+$$
+
+where $\bigg\{E_n, \ket{n}\bigg\}$ are the energies and eigenstates of the Hamiltonian. This is a well-defined real-valued non-negative proper scalar product in the product Hilbert space, spanned by $\bigg\{\ket{n}\bigg\} \times \bigg\{\ket{n}\bigg\}$. Now, the Cauchy-Schwartz inequality establishes that 
+
+$$
+    |({\bf A}, {\bf B})|^2 \leq ({\bf A}, {\bf A}) ({\bf B}, {\bf B}), \textnormal{ or equivalently }
+    ({\bf A}, {\bf B}) \leq |{\bf A}| |{\bf B}|,
+$$
+
+where $|{\bf A}|$ is to be understood as $\sqrt{({\bf A},{\bf A})}$. But then, 
+
+\begin{equation}
+    \begin{split}
+        |(\vec{\spin}_{{\bf q}}, \vec{\spin}_{-{\bf q}})|^2 &\leq \frac{1}{2T} \langle \vec{\spin}_{{\bf q}} \cdot  \vec{\spin}_{-{\bf q}} + \vec{\spin}_{-{\bf q}} \cdot  \vec{\spin}_{{\bf q}} \rangle (\vec{\spin}_{-{\bf q}}, \vec{\spin}_{-{\bf q}}) \\
+        & \Rightarrow|(\vec{\spin}_{{\bf q}}, \vec{\spin}_{-{\bf q}})|^2 \leq \frac{1}{T} \langle \vec{\spin}_{{\bf q}} \cdot \vec{\spin}_{-{\bf q}} \rangle (\vec{\spin}_{-{\bf q}}, \vec{\spin}_{-{\bf q}}) \Rightarrow \langle \vec{\spin}_{{\bf q}} \cdot \vec{\spin}_{-{\bf q}} \rangle \geq T \frac{|(\vec{\spin}_{{\bf q}}, \vec{\spin}_{-{\bf q}})|^2}{(\vec{\spin}_{-{\bf q}}, \vec{\spin}_{-{\bf q}})} \geq N^2 |m_{\bf q}|^2. 
+    \end{split}
+\end{equation}
+
+EL PASO ANTERIOR NO ME CONVENCE 100\%.
+
+Now, consider a rotationally symmetric Hamiltonian. Taking the $h\rightarrow0^+$ limit yields
+
+\begin{equation}
+    \begin{split}
+        ss
+    \end{split}
+\end{equation}
+
+\end{proof}
+
+\paragraph{Mervin-Wagner theorem}
+
+For a system with an ordered ground state, thermally excited states reduce the spin correlations at finite temperatures, for both classical and quantum systems alike. When the temperature is much higher than the typical coupling energy scale $J$, the spin are expected to be uncorrelated at large distances and the magnetization $m_{{\bf q}}$ to vanish in the absence of an ordering field. This, thus, requires a phase transition at some temperature $T_c$ between the ordered and disordered phases. \\
+
+The ordered ground state of the Heisenberg model breaks a continuous $O(3)$ symmetry in spin-space. The spontaneous magnetization could be made to point anywhere on the $\mathcal{S}^2$-sphere by choosing the orientation of the ordering field in that direction. The consequences of this continuous symmetry are especially pronounced in lattices of low-dimensionality. In fact, it turns out, that for $d=1$ and $d=2$ dimensions, the phase transition occurs exactly at $T = 0$, i.e. thermal excitations disorder the spins at infinitesimally low temperatures. \\
+
+\begin{tcolorbox}[colback=LimeGreen, 
+title = Historical Note]
+
+In 1966, Hohenberg used the Bogoliubov's inequality to prove the absence of superfluidity at finite temperatures in one and two dimensions. Following the same approach, Mervin and Wagner showed that, for short-range spin models in one and two dimensions, there cannot be spontaneous ordering at any finite temperature. Said proof was initally valid for Heisenberg models only, but was then readily generalized to any system with a larger class of models with continuous symmetries. 
+
+\end{tcolorbox}
+
+\begin{theo}Mervin-Wagner's Theorem \\
+
+For the quantum Heisenberg model, 
+
+$$
+    {\bf H} = \frac{1}{2} \sum_{ij} J_{ij} \spin_i \cdot \spin_j - h {\spin}^z_{{\bf q}}, \begin{array}{c}
+         \textnormal{with short-range}  \\
+         \textnormal{interaction that obey}
+    \end{array} \bar{J} = \frac{1}{2N} \sum_{ij} |J_{ij}| |{{\bf x}_i - {\bf x}_j}| < \infty,
+$$
+
+there cannot be spontaneously broken spin symmetry at finite temperatures in one and two dimensions.
+\end{theo}
+
+\begin{proof}
+For ${\bf A} = {\bf B}$, this yields the square norm of ${\bf A}$ and yields ${\bf A}$'s susceptibility of the ${\bf A}$,
+
+$$
+    ( {\bf A}, {\bf A} )_{\textnormal{th}} = \Re R_{{\bf A}{\bf A}}(0) = \chi_{{\bf A} {\bf A}}.
+$$
+
+Let ${\bf C}$ be an operator such that 
+
+\begin{equation}
+    {\bf B} = [{\bf C}^\dagger, {\bf H}] \Rightarrow \begin{array}{c}
+         ({\bf A}, {\bf B}) = \langle [{\bf C}^\dagger, {\bf A}^\dagger] \rangle  \\
+         ({\bf A}, {\bf B}) = \langle [{\bf C}^\dagger, [{\bf H}, {\bf C}]] \rangle,
+    \end{array}
+\end{equation}
+
+and given that Since $\tanh x < x$, this yields the following inequality 
+
+\begin{align*}%\begin{split}
+   0 < \frac{e^{-\beta E_m} - e^{-\beta E_n}}{E_n - E_m} \leq \frac{1}{2T} \bigg(e^{-\beta E_m} + e^{-\beta E_n} \bigg) &\Rightarrow ( {\bf A}, {\bf A} )_{\textnormal{th}} \leq \frac{1}{2T} \langle {\bf A}^\dagger {\bf A} + {\bf A} {\bf A}^\dagger \rangle \\
+    &\Rightarrow |({\bf A}, {\bf B})|^2 \leq ({\bf A}, {\bf A})({\bf B}, {\bf B}) \\
+        & \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \leq \frac{1}{2T} \langle {\bf A}^\dagger  {\bf A} + {\bf A} {\bf A}^\dagger \rangle ({\bf B}, {\bf B}) \\
+\end{align*}
+\begin{equation}
+    \label{Pre_Bogoliubov_ineq}
+    \Rightarrow |\langle [{\bf C}^\dagger, {\bf A}^\dagger] \rangle|^2 \leq \frac{1}{2T} \langle {\bf A}^\dagger {\bf A} + {\bf A} {\bf A}^\dagger \rangle \langle [{\bf C}^\dagger, [{\bf H}, {\bf C}^\dagger]] \rangle,
+\end{equation}
+
+the last relation is Bogoliubov's inequality. In particular, consider the following two operators, $
+    {\bf C} = \spin^x_{{\bf k}} \textnormal{ and } {\bf A} = \spin_{{\bf -k-q}}^y$,
+then
+
+\begin{equation}
+    \begin{split}
+        &\frac{1}{2}\langle {\bf A}^\dagger {\bf A} + {\bf A} {\bf A}^\dagger \rangle = \langle \spin_{{\bf k+q}}^y \spin_{{\bf -k-q}}^y \rangle = N \spin^{yy}({\bf k + q}), \textnormal{ where $\spin^{yy}$ is the equal-time correlation function. } \\
+       & \langle [{\bf C}^\dagger, {\bf A}^\dagger] \rangle = \langle [ \spin^x_{-{\bf k}}, \spin_{{\bf k+q}}^y] \rangle = i \langle \spin_{{\bf q}}^z \rangle = iN m_{{\bf q}} \\
+       & \langle [{\bf C}^\dagger, [{\bf H}, {\bf C}^\dagger]] \rangle = N^{-1} \bigg \langle \langle [\spin^x_{-{\bf k}}, [{\bf H}, \spin^x_{{\bf k}}]] \rangle \bigg \rangle.
+    \end{split}
+\end{equation}
+
+Now, the Bogoliubov inequality reads 
+
+\begin{equation}
+    m_{{\bf q}}^2 \leq \frac{1}{T} \spin^{yy}({\bf k + q}) \bigg \langle [\spin^x_{-{\bf k}}, [{\bf H}, \spin^x_{{\bf k}}]] \bigg \rangle.
+\end{equation}
+
+The double Hamiltonian can be bounded using the Heisenberg Hamiltonian as follows, 
+
+\begin{equation}
+    \begin{split}
+        \bigg \langle [\spin^x_{-{\bf k}}, [{\bf H}, \spin^x_{{\bf k}}]] \bigg \rangle =& h m_{\bf q} + \frac{i}{N} \sum_{ij\ell \in \Lambda}\bigg \langle \bigg[\spin^x_{i}, [e^{i {\bf k} \cdot {\bf x_\ell - x_i}}J_{j\ell} (\spin_j^z \spin_\ell^y - \spin_\ell^y \spin)\bigg] \bigg  \rangle \\
+        &= h m_{\bf q} + \frac{1}{N} \sum_{j \ell \in \Lambda} J_{j \ell} \bigg( \cos {\bf k} ({\bf x}_j - {\bf x}_i) - 1\bigg) \langle \spin_j^y \spin_\ell^y + \spin_{J}^z \spin_\ell^z \rangle \\
+        & \leq h m_{\bf q} + \frac{|{\bf k}|^2}{2N} \sum_{j \ell \in \Lambda} |J_{j\ell}| |{\bf x}_j - {\bf x}_i|^2 |\langle \spin_j^y \spin_\ell^y + \spin_{J}^z \spin_\ell^z \rangle| \\
+        \\
+        \begin{array}{c}
+             \textnormal{ where an upper bound }  \\
+             \textnormal{ can be established } 
+        \end{array}
+        &|\langle \spin_j^y \spin_\ell^y + \spin_{J}^z \spin_\ell^z \rangle| \leq |\langle \spin_{i} \cdot \spin_{\ell}\rangle| \leq S(S+1) \begin{array}{c}
+             \textnormal{ by considering the maximal  }  \\
+             \textnormal{ eigenvalues of $(\spin_j + \spin_{\ell})^2$ }
+             \textnormal{ and $\spin_i^2$. }
+        \end{array} \\
+        \\
+        &\Rightarrow  \bigg \langle [\spin^x_{-{\bf k}}, [{\bf H}, \spin^x_{{\bf k}}]] \bigg \rangle \leq h m_{{\bf q}} + S(S+1) \bar{J} |{\bf k}|^2. \label{Bogoliubov inequality double comm}
+    \end{split}
+\end{equation}
+
+This double commutator contains dynamical information on the system, since it explicitly depends on the Hamiltonian. The previous finite bound thus holds only if $\bar{J}$ is itself finite, ie. the interactions decay sufficiently rapidly at large distances. All in all, combining all the previous approximations, the bound on $m_{\bf q}^2$ reads 
+
+\begin{equation}\begin{split}
+    &m_{\bf q}^2 \leq \frac{1}{T} \spin^{yy}({\bf k + q}) \bigg( h m_{{\bf q}} + S(S+1) \bar{J} |{\bf k}|^2 \bigg) \Rightarrow \spin^{yy}({\bf k + q}) \geq \frac{T m_{{\bf q}}^2}{h m_{{\bf q}} + S(S+1) \bar{J} |{\bf k}|^2 } \\
+    &\frac{1}{N} \sum_{{\bf k}} \spin^{yy}({\bf k + q}) \geq \frac{T m_{{\bf q}^2}}{h m_{{\bf q}} + S(S+1) \bar{J} |{\bf k}|^2 } \\
+    & \frac{1}{N} \sum_{i} \langle (\spin_i^y)^2 \rangle \geq \frac{T m_{{\bf q}^2}}{h m_{{\bf q}} + S(S+1) \bar{J} |{\bf k}|^2 } \\
+    & S(S+1) \geq \frac{T m_{{\bf q}}^2}{(2\pi)^d} \int_{0}^{\bar{k}} dk \blanky k^{d-1} \frac{1}{h m_{{\bf q}} + S(S+1) \bar{J} |{\bf k}|^2},
+\end{split}
+\end{equation}
+
+where, in the last equality, the sum over all momenta has been transformed into an integral and a lower bound has been estimated by choosing $\bar{k}$ to be smaller that the Brillouin zone edge wave vector. This yields an analytical estimate for the right-hand side f the previous relation
+
+\begin{equation}
+    S(S+1) \geq \left\{ \begin{array}{cc}
+         \frac{Tm_{\bf q}}{2\pi \sqrt{\bar{J} S(S+1)) hm_{{\bf q}}}} \arctan \bigg[\bar{k} \sqrt{\frac{\bar{J}S(S+1)}{hm_{{\bf q}}}}\bigg] \textnormal{ if } d = 1\\
+         \\
+         \frac{Tm_{\bf q}}{4\pi S(S+1) \bar{J}} \log \bigg[1 +  \frac{\bar{J}S(S+1) {\bar{k}}^2}{hm_{{\bf q}}}\bigg] \textnormal{ if } d = 2 
+    \end{array}\right. \Rightarrow m_{{\bf q}} \underset{h \rightarrow 0^+}{\leq} \left\{\begin{array}{cc}
+         c \frac{S(S+1) \bar{J}^{\frac{1}{3}}}{T^{\frac{2}{3}}} h^{\frac{1}{3}} \textnormal{ if } d = 1 \\
+         \\
+         \leq c \frac{S(S+1) \sqrt{\bar{J}}}{\sqrt{T}} \frac{1}{\sqrt{|\log h|}} \textnormal{ if } d=2
+    \end{array}\right.
+\end{equation}
+
+These two equations thus prove that the magnetization must vanish with the ordering field for all finite values of $T, S, \bar{J}$. Now, these bound do not depend on the lattice size. Then, these results hold in the thermodynamic limit. 
+\end{proof}
+
+This result holds for all $S$ and it holds for the classical $S$-independent limit of the Heisenberg model 
+
+\begin{equation}
+    {\bf H}^{\textnormal{cl}} = \frac{1}{2} \sum_{ij \in \Lambda} J_{ij}^{\textnormal{cl}} \hat{\Omega}_i \cdot \hat{\Omega}_j - h^{\textnormal{cl}} \hat{\Omega}_{{\bf q}}^z,
+\end{equation}
+
+where $\hat{\Omega}$ are c-number unit vectors. The correspondence between the quantum and classical Heisenberg models is as follow 
+
+\begin{align*}
+    J_{ij} S(S+1) &\rightarrow J^{\textnormal{cl}} & hS & \rightarrow h^{\textnormal{cl}} & \frac{m_{{\bf q}}}{S} & \rightarrow m_{{\bf q}}^{\textnormal{cl}}.
+\end{align*}
+
+Using these parameters eliminates $S$ from inequalities, thus the theorem holds for the classical model as well. \\
+
+In $d=3$-dimensions, the integral does not diverge for $h \rightarrow 0^+$. Therefore, it is possible to satisfy the inequality at some finite temperature. Therefore, spontaneous symmetry breaking and an ordered phase is expected at low temperatures in the three dimensions. \\
+
+\paragraph{\textbf{Quantum Disorder at $T = 0$}}
+
+Mervin-Wagner's theorem does not hold at zero temperature. Consider a quantum system in the presence of an infinitesimal ordering field, such that there is a unique ground state $\ket{0}$. At zero temperature, the expectation value for any operator is simply $\langle {\bf A} \rangle = \bra{0} {\bf A} \ket{0}$. The scalar product is then given by 
+$$
+    ({\bf A}, {\bf B}) = \Re \sum_{m \neq 0} \frac{\bra{0} {\bf A}^\dagger \ket{m} \bra{m} {\bf B} \ket{0}}{E_m - E_0}.
+$$
+
+Then, consider the previous choices for the ${\bf A}, {\bf B}$ and ${\bf C}$. The susceptibility is given by 
+
+\begin{equation}
+    \begin{split}
+        \chi^{yy}({\bf k}) = \frac{1}{N} (\spin_{{\bf k}}^y, \spin_{-{\bf k}}^y) = \frac{1}{N} \sum_{m \neq 0} \frac{|\bra{0}{\spin}^{y}_{{\bf k}} \ket{m}|^2 + |\bra{0}{\spin}^{y}_{-{\bf k}}  \ket{m}|^2}{E_m - E_0} \\
+        \Rightarrow m_{{\bf q}}^2 \leq& \chi^{yy}({\bf k+q}) \bigg[\spin^x_{-{\bf k}}, [{\bf H}, \spin^x_{{\bf k}}]\bigg] \\
+        &\leq \chi^{yy}[h m_{\bf q} + S(S+1) \bar{J} |{\bf k}|^2]
+    \end{split}
+\end{equation}
+
+where, in the last line, 
+\cref{Pre_Bogoliubov_ineq} and \cref{Bogoliubov inequality double comm} have been used, thus yielding the zero-temperature Bogoliubov inequality. Inverting this inequality and summing over the Brillouin zone reads
+
+\begin{equation}
+    \frac{m_{\bf q}^2}{(2\pi)^d} \int_{0}^{\bar{k}} dk \blanky \frac{k^{d-1}}{h m_{\bf q} + S(S+1) \bar{J} |{\bf k}|^2} \leq \frac{1}{N} \sum_{{\bf k}} \chi^{yy}({\bf k}).
+\end{equation}
+
+Therefore, if the right hand side is finite, $\frac{1}{N} \sum_{{\bf k}} \chi^{yy}({\bf k}) = C < \infty$, and $d=1$ or $d=2$, $m_{{\bf q}}$ must vanish with $h$ in order for the last equation to hold. In that case, there will be no long-range order at zero temperature. \\
+
+Furthermore, it can be proved that if there is a gap in the excitation spectrum, 
+
+$$
+    E_m - E_0 > \Delta, \blanky \forall m \neq 0,
+$$
+
+where $\Delta$ is independent of $h, N$, the ground state of Heisenberg model must be disordered. This gap induces a bound on the susceptibility, said bound given by the correlation function
+
+\begin{equation}
+    \chi^{yy}({\bf k}) \leq \frac{2}{N \Delta} \sum_{m} \bigg|\bra{0}\spin_{{\bf k}}^y \ket{m}\bigg|^2 = \frac{2 \spin^{yy}({\bf k})}{\Delta},
+\end{equation}
+
+and given that $\frac{1}{N} \sum_{{\bf k}} \spin^{yy}({\bf k}) \leq S(S+1) < \infty$ , the "finite-ness" condition of the susceptibility is satisfied. Here, the energy gap plays the role of temperature in the previous example. \\
+
+\begin{tcolorbox}[colback=my-blue, 
+title = Physical Context]
+
+As an example, the antiferromagnetic integer spin chains are known to exhibit the so-called \underline{Haldane gap} in their excitation spectrum. The Mermin-Wagner theorem at zero temperature implies that these models do not possess true long-range order in their ground states. In fact, the non-linear sigma model analysis predicts that their correlations exponentially decay at large distances. The converse statement (gapless excitations imply long-range order) is false. For example, the spin-half Heisenberg antiferromagnet in one dimension has gapless excitations but no long-range order at zero temperature. 
+
+\end{tcolorbox}
+
+\underline{Some interesting implications:}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=red!75!black,lowerbox=invisible, title = Long-range order and magnetic 
+susceptibility]
+
+Given that 
+
+$$
+\lim_{h \rightarrow 0^+} m_{{\bf q}} = -
+\lim_{h \rightarrow 0^-} m_{-{\bf q}},
+$$
+
+long-range order requires the divergence of the zero-frequency susceptibility 
+
+$$
+    \lim_{h, \omega \rightarrow 0^+} \chi^{zz}({\bf q}, \omega) = \infty.
+$$
+\end{tcolorbox}
+
+\begin{proof}
+
+In effect, the zero-frequency susceptibility is defined as 
+
+\begin{equation}
+\begin{split}
+     \chi^{zz}({\bf q}, \omega) = \frac{1}{N} (\spin^z_{\bf q}, \spin^z_{{\bf q}}) \Rightarrow& (\spin^z_{\bf q}, \spin^z_{-{\bf q}})  \leq \frac{1}{2T} \bigg \langle (\spin^z_{\bf q} \spin^z_{-{\bf q}}) + (\spin^z_{-\bf q}, \spin^z_{{\bf q}}) \bigg \rangle = \frac{1}{T} \langle \spin^z_{\bf q} \spin^z_{{\bf q}} \rangle \\
+     & \Rightarrow \langle \spin^z_{\bf q} \spin^z_{-{\bf q}} \rangle \geq T  (\spin^z_{\bf q}, \spin^z_{-{\bf q}}) \\
+     & \Rightarrow \frac{\langle \spin^z_{\bf q} \spin^z_{-{\bf q}} \rangle}{N} \geq {T}\chi^{zz}({\bf q}, \omega).
+     \label{long_range_infinite_chi_Exercise_1}
+\end{split}
+\end{equation}
+
+If the system has true-long range order, then it follows that the two-point correlator has a non-zero limit, in the thermodynamic limit, this is 
+
+$$
+\lim_{N\rightarrow \infty} \frac{S^{\alpha \alpha}({\bf q})}{N} > 0. 
+$$
+
+In particular, choose $\alpha = z$-direction, then the $S^{zz}({\bf q})$ correlator is given by 
+
+$$ 
+S^{zz}({\bf q}) = \lim_{h \rightarrow 0^+} \frac{1}{N\mathcal{Z}} \Tr \bigg[e^{- \beta {\bf H}} {\spin}_{{\bf q}}^z {\spin}_{{\bf -q}}^z\bigg], \textnormal{ with } \alpha = \{x,y,z\}.
+$$
+
+Then, consider \cref{long_range_infinite_chi_Exercise_1}
+
+\begin{equation}
+    \begin{split}
+        \frac{\langle \spin^z_{\bf q} \spin^z_{-{\bf q}} \rangle}{N} \geq {T}\chi^{zz}({\bf q}, \omega) \Rightarrow& \blanky
+        e^{-\beta {\bf H}}\frac{\langle \spin^z_{\bf q} \spin^z_{-{\bf q}} \rangle}{N} \geq e^{-\beta {\bf H}}{T}\chi^{zz}({\bf q}, \omega) 
+        \\
+        &\Rightarrow\frac{1}{\mathcal{Z}}\Tr \bigg[e^{-\beta {\bf H}}\frac{\langle \spin^z_{\bf q} \spin^z_{-{\bf q}} \rangle}{N}\bigg] \geq \frac{1}{\mathcal{Z}}\Tr \bigg[ e^{-\beta {\bf H}}\bigg{T}\chi^{zz}({\bf q}, \omega)\bigg]\\
+        %& \Rightarrow \lim_{h \rightarrow 0^+} \frac{1}{\mathcal{Z}}\Tr \bigg[e^{-\beta {\bf H}}\frac{\langle \spin^z_{\bf q} \spin^z_{-{\bf q}} \rangle}{N}\bigg] \geq \lim_{h \rightarrow 0^+} {T}\chi^{zz}({\bf q}, \omega) \cancelto{1}{\frac{1}{\mathcal{Z}}\Tr \bigg[e^{-\beta {\bf H}}\bigg]} \\
+        & \Rightarrow \lim_{N \rightarrow \infty}\lim_{h \rightarrow 0^+} \frac{1}{\mathcal{Z}}\Tr \bigg[\frac{\langle \spin^z_{\bf q} \spin^z_{-{\bf q}} \rangle}{N}\bigg] \geq \lim_{N \rightarrow \infty} \lim_{h \rightarrow 0^+} T \chi^{zz}({\bf q}, \omega) \\
+        & \Rightarrow \lim_{h \rightarrow 0^+} \frac{S^{zz}({\bf q})}{N} \geq \lim_{N \rightarrow \infty} \lim_{h \rightarrow 0^+} T \chi^{zz}({\bf q}, \omega)
+    \end{split}
+\end{equation}
+
+NO ME SALE :(
+\end{proof}
+
+\blanky \\
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=red!75!black,lowerbox=invisible, title = No broken spin symmetry for the Two-dimensional antiferromagnetic Heisenberg model]
+
+Marshall's theorem implies that there cannot be any broken spin symmetry for the Heisenberg antiferromagnet on a finite bipartite lattice with two equal size sublattices.
+
+\end{tcolorbox}
+
+\begin{proof}
+
+\end{proof}
+\subsection{Spin Representations}
+
+\paragraph{Holstein-Primakoff Bosons}
+
+The spin is a vector operator such that, in a broken symmetry phase, the expectation value of at least one of its components is non-zero. Thus, it is natural to describe the ordered phase in terms of small spin fluctuations about their expectation values. This is the main idea behind spin wave theory. Consider now the Holstein-Primakoff bosonic operator ${\bf b}$, which represents the three spin component operators, as follows 
+
+\begin{align}
+    \spin^+ &= \bigg(\sqrt{2 S - {\bf b}^\dagger {\bf b}}\bigg) {\bf b} & \spin^- &= {\bf b}^\dagger (\sqrt{2 S - {\bf b}^\dagger {\bf b}}) & \spin^z = S - {\bf b}^\dagger {\bf b}, 
+    \label{Holstein_Primakoff}
+\end{align}
+
+such that $[{\bf b}, {\bf b}^\dagger] = 1$. These spin operators, for their part, obey the standard $\mathfrak{s}\mathfrak{u}(2)$-spin commutation relations. The ${\bf b}$-Fock space is too large, but the physical subspace is spanned by the states 
+
+$$
+    \bigg\{\ket{n_{\bf b}}\bigg\}_S \bigg\{ \ket{0}, \ket{1}, \cdots, \ket{2S}\bigg\}.
+$$
+
+Spurious Fock states, ie. those with $\langle{{\bf b}^\dagger {\bf b}}_{\Psi} > 2S$, are eliminated by a projector ${\bf P}_S$. In this subspace, the $\mathfrak{s}\mathfrak{u}(2)$-Casimir invariant holds, $\spin^2 = S(S+1)$. Furthermore, note that these spin operators do not connect the physical and unphysical subspaces. \\
+
+The Holstein-Primakoff representation is useful to describe broken symmetry phases of the quantum Heisenberg model. The square root factors in \cref{Holstein_Primakoff} can be expanded in powers of $S^{-1}$,
+
+$$
+    \sqrt{2 S - {\bf b}^\dagger {\bf b}} = \sqrt{2S} \bigg(1 - \frac{({\bf b}^\dagger {\bf b})^2}{4S} - \frac{n^2}{32 S^2}\bigg),
+$$
+
+which is a semiclassical expansion of the spin fluctuations about the $z$-direction. Using this expansion into the Hamiltonian and preserving only quadratic terms, yields a non-interacting spin wave Hamiltonian, where the higher order terms introduce interactions between the spin waves. The truncation will, however, couple the physical and unphysical subspaces \footnote{
+
+\begin{tcolorbox}[colback=my-blue, 
+title = Physical Context]
+
+The low-order spin wave approximation has been found to be remarkably succesful in certain ordered phases of the Heisenberg ferromagnet and antiferromagnet. 
+
+\end{tcolorbox}
+
+}. \\
+
+\paragraph{\textbf{Schwinger Bosons}}
+
+The symmetric phases of the Heisenberg model are easier to describe using representations in which the rotational invariance of the Hamiltonian is manifested. Two Schwinger bosons, ${\bf a}, {\bf b}$, represent the spin operators as follows 
+
+\begin{align}
+    \spin^x + i \spin^y &= {\bf a}^\dagger {\bf b} & 
+    \spin^x - i \spin^y &= {\bf b}^\dagger {\bf a} & \spin^z &= \frac{1}{2} \bigg({\bf a}^\dagger {\bf a} - {\bf b}^\dagger {\bf b}\bigg).
+\end{align}
+
+These spin components satisfy the $\mathfrak{s}\mathfrak{u}(2)$-commutation relations as well. The spin magnitude $S$ defines the physical subspace, 
+
+\begin{equation}
+    \begin{split}
+         \bigg\{\ket{n_{\bf a}, n_{\bf b}} \blanky | \blanky n_{\bf a} + n_{\bf b} = 2S\bigg\}, \begin{array}{c}
+            \textnormal{ with the physical   subspace given }  \\
+            \textnormal{ by a projector ${\bf P}_S$  such that } \\         \end{array} \begin{array}{c}
+              {\bf P}_{S}({\bf a}^\dagger {\bf a} + {\bf b}^\dagger {\bf b} - 2S) = 0. \\ 
+              \\
+              \spin^2 {\bf P}_S = S(S+1) {\bf P}_S.
+         \end{array}
+     \label{Schwinger_boson_projector}
+    \end{split}
+\end{equation}
+
+where the last relation indicates that the spin magnitude is well defined in the projected (physical) subspace. The spin states are given by 
+
+\begin{equation}
+    \ket{S, m} = \frac{({\bf a}^\dagger)^{S+m}}{\sqrt{(S+m)!}} \frac{({\bf b}^\dagger)^{S-m}}{\sqrt{(S-m)!}} \ket{0}, 
+\end{equation}
+
+where $\ket{S,m}$ labels the Casimir invariant's and the $z$-spin component eigenvalues and where $\ket{0}$ is the Schwinger bosons vacuum. For example, the spin-$\frac{1}{2}$ states are given by 
+
+$\ket{\uparrow} = {\bf a}^\dagger \ket{0}$ and $\ket{\downarrow} = {\bf b}^\dagger \ket{0}$. 
+
+\begin{tcolorbox}[colback=my-blue, title = Physical Context]
+
+Schwinger bosons are useful for calculating matrix elements matrix elements of spin operators. Since they do not contain square oots (in constrast to Holstein-Primakoff bosons), the matrix elements of spin operators between Fock states factorize as for free bosons. However, this does not necessarily simplify the calculation of spin correlations in non-Fock wavefunctions. The local constrains on the Hilbert space introduce correlations between the $a$ and $b$ occupation numbers. \\
+
+A generalization to the spin-$\frac{1}{2}$ representation to $N$ flavours defines the generators of $SU(N)$ as generalized spins. The large-$N$ generalizations are amenable to simple mean field theories which are controlled by the small parameter $\frac{1}{N}$. The large-$N$ mean field theories are described by effectively non-interacting Bose quasiparticles, where correlations between different flavours are ignored.
+
+\end{tcolorbox}
+
+\blanky\\
+
+The Schwinger bosons and the Holstein-Primakoff bosons are closely related. In effect, by eliminating the $a$-boson using the constraint, the correspondence is found to be 
+
+\begin{equation}
+    \begin{array}{ccc}
+         \textnormal{Schwinger } & \leftrightarrow & \textnormal{Holstein-Primakoff} \\
+         {\bf b} & \leftrightarrow & {\bf b}\\
+         {\bf a} & \leftrightarrow & \sqrt{2S - {\bf b}^\dagger {\bf b}}.
+    \end{array}
+\end{equation}
+
+While Schwinger bosons provide a symmetric representation in spin space, Holstein-Primakoff bosons single out the $\spin^z$ direction, which defines their vacuum. Therefore, these two representations lend themselves to different approximation schemes: Holstein-Primakoff for the broken symmetry phases and Schwinger for the symmetry phases. \\
+
+\paragraph{Spin Coherent States}
+
+Spin coherent states are a family of spin states created by applying the rotation operator $\mathcal{R}$ to the maximally polarized state $\ket{S,S}$,
+
+\begin{equation}
+\begin{split}
+    \ket{\hat{\Omega}} =& \mathcal{R}(\chi, \theta, \varphi) \ket{S,S} \\
+    &= e^{i\spin^z \varphi} e^{i \spin^y \theta} e^{i \spin^x} \ket{S,S},
+\end{split}
+\end{equation}
+
+where the unit vector 
+
+\begin{equation}
+    \hat{\Omega} = (\sin \theta \cos \phi, \sin \theta \sin \varphi, \cos \theta),
+\end{equation}
+
+parametrizes the spin coherent state. Note that these $\mathcal{R}$-transformations form a group, $SU(2)$ precisely, and are parametrized by the Euler angles $\varphi, \theta, \chi$. There is a gauge freedom, since $\chi$ can be arbitrarily defined. The two independent variables are thus the $\theta$-angle, the latitute, and $\varphi$-angle, the longitude, which are within the domains 
+
+$$
+    \{\theta \in [0, \pi], \blanky \phi \in [-\pi, \pi) \}.
+$$
+
+The spin coherent states are not orthogonal, since 
+
+$$
+    \bra{\Omega} \ket{\Omega'} = \bigg(\frac{1+\hat{\Omega} \cdot \hat{\Omega'}}{2}\bigg)^S e^{-iS\phi},
+$$
+
+where $\psi$ is a function on the six Euler angles. For references, check \cite{assa}. \\
+
+Spin coherent states are not orthogonal, as seen by the preceding relation, but they do span the space of states of spin $S$. The measure of integration over the grou parameters is defined as 
+
+\begin{equation}
+    \frac{2S+1}{4\pi} \hat{\Omega} = \frac{2S+1}{4\pi} d\theta \sin \theta d\phi.
+\end{equation}
+
+This is the Haar measure of the $SU(2)$-Lie group. Using this measure, the resolution of identity is provided by the integral
+
+\begin{equation}
+    \begin{split}
+        \frac{2S+1}{4\pi} \int_{\mathcal{S}^3} d\hat{\Omega} \blanky \ket{\hat{\Omega}} \bra{\hat{\Omega}} %= \frac{2S+1}{2} \int_{-1}^{1} d\cos \theta \blanky \sum_{m} \bigg(\frac{1+\cos \theta}{2}\bigg)^{S+m} \bigg(\frac{1-\cos \theta}{2}\bigg)^{S-m} \frac{(2S)!}{(S+m)! (S-m)!} \ket{S,m}\bra{S,m} \\
+        &= \sum_{m} \ket{S,m}\bra{S,m} = \textnormal{id}_{SU(2)},
+    \end{split}
+\end{equation}
+
+thus the coherent states form an overcomplete basis. Another useful relation can be proven in the same fashion 
+
+\begin{equation}
+    \frac{(S+1)(2S+1)}{4\pi} \int_{\mathcal{S}^3} d\hat{\Omega} \blanky {\hat{\Omega}}^\alpha \ket{\hat{\Omega}} \bra{\hat{\Omega}} = \spin^{\alpha}, \blanky \alpha = x,y,z.
+\end{equation}
+
+The previous relations can be readily extended to many spins. In effect, consider an $N$-site lattice. The many spin coherent states are products of single spin states, 
+
+\begin{equation}
+\begin{split}
+    &\ket{\hat{\Omega}} = \prod_{i=1}^N \ket{\hat{\Omega}_i}, \begin{array}{c}
+         \textnormal{ whose overlap }  \\
+         \textnormal{ is now given by}
+    \end{array} \bra{\hat{\Omega}}\ket{\hat{\Omega'}} = \prod_{i} \bigg(\frac{1 + \hat{\Omega} \cdot \hat{\Omega}'}{2} \bigg)^S e^{-iS \sum_{i} \psi[\hat{\Omega}_i, \hat{\Omega'}_i]}. \\
+    & \begin{array}{c}
+         \textnormal{ The resolution of the identity }  \\
+         \textnormal{ the identity in the product space is } 
+    \end{array} \int_{\otimes SU(2)} d\hat{\Omega}_i \blanky \frac{2S+1}{4\pi} \bra{\hat{\Omega}} \ket{\hat{\Omega}} = \textnormal{id}_{\otimes SU(2)}. \\
+    & \begin{array}{c}
+         \textnormal{ The spin correlations of any wave}  \\
+         \textnormal{ function $\ket{\Psi}$ can be computed } \\
+         \textnormal{ via the integral }
+    \end{array} \frac{\bra{\Psi} \spin_i \cdot \spin_j \ket{\Psi}}{\bra{\Psi} \ket{\Psi}} = \frac{(S+1 - \delta_{ij})(S+1)}{\mathcal{Z}} \int_{\otimes SU(2)} d\hat{\Omega}_i |\Psi[\hat{\Omega}]|^2 \hat{\Omega}_i \cdot \hat{\Omega}_j, \\
+    & \blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky \blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky \blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky \textnormal{ with } \mathcal{Z} = \int_{\otimes SU(2)} d\hat{\Omega}_i |\Psi[\hat{\Omega}]|^2,
+\end{split}
+\end{equation}
+
+where note that the representation $\Psi[\hat{\Omega}] = \bra{\Psi}\ket{\hat{\Omega}}$ is continuous. Furthermore, all spin operators can be represented by differential operators. Spin coherent states can then be used to evaluate the trace of any operator. If $\ket{n}$ is any orthonormal basis, then it
+
+\begin{equation} \begin{split}
+    \Tr {{\bf O}} =& \sum_{n} \bra{n}{{\bf O}}\ket{n} = \bigg(\frac{2S+1}{4\pi}\bigg)^2 \int_{\mathcal{S}^3} d\hat{\Omega}  \int_{\mathcal{S}^3} d\hat{\Omega'} \blanky \sum_{n} \bra{n}\ket{\hat{\Omega}} \bra{\hat{\Omega}}{{\bf O}}\ket{\hat{\Omega'}} \bra{\hat{\Omega'}} \ket{n} \\
+    &= \frac{2S+1}{4\pi }\int_{\mathcal{S}^3} d\hat{\Omega} \blanky \bra{\hat{\Omega}}{{\bf O}}\ket{\hat{\Omega}}.
+\end{split}
+\label{multi_spin_coherent_states}
+\end{equation}
+
+The coherent states elucidate the correspondence between classical and quantum spins. The classical limit is achieved when $S\rightarrow\infty$. In that limit, the overlap of different coherent states vanishes exponentially with $S$, as can be seen from the first identity of \cref{multi_spin_coherent_states}. The expectation values of spin operators are functions of unit vectors, exactly like classical spins. Quantum effects are therefore associated with the non-orthogonality of coherent states, which also implies a finite width of $\Psi[\hat{\Omega}]$ in $\hat{\Omega}$-space. \\
+
+\clearpage
+
+\section{Variational Wave Functions and Parent Hamiltonians}
+
+\blanky \\
+
+\begin{tcolorbox}[colback = my-blue, title = Physical Context]
+
+The ground state for most non-ferromagnetic Heisenberg models are not known. Even those that are known in analytical form, such as the Bethe solution in one dimension, require numerical simulation computations for their spin correlations. Variational wave functions provide an educated guess for the ground state. Physical insight can be gained by a variational calculation, where the energy is minimized with respect to a chosen set of parameters. The variational approach go further beyond the regimes of any particular expansion scheme -semiclassical, large-$N$, or others. \\
+
+A fundamental idea behind the Variational approach is that of the parent Hamiltonian. This is the Hamiltonian for which a particular wave function happens to be the exact ground state. Although the Hamiltonian may differ from the physical model by extra interactions, it serves to enhance the understanding of the system by bringing into light the relation between interactions and ground state correlations. \\
+
+\end{tcolorbox}
+
+\blanky \\
+
+\paragraph{\textbf{Valence Bond States}}
+
+The valence bond states are variational wave functions for antiferromagnetic Heisenberg models, having been studied extensively i nthe context of quantum magnetism and high-temperature superconductivity. Their general form is 
+
+\begin{equation}
+    \ket{\{c_{\alpha}\}, S} = \sum_{\alpha} c_{\alpha} \ket{\alpha}, \begin{array}{c}
+         \textnormal{ where $c_{\alpha}$ are the variational parameters and }  \\
+         \ket{\alpha} = \prod_{i,j \in \Lambda_{\alpha}} \bigg({\bf a}_i^\dagger {\bf b}_i^\dagger - {\bf b}_i^\dagger {\bf a}_i^\dagger \bigg) \ket{0},
+    \end{array}
+    \label{Valence_bond_states}
+\end{equation}
+
+where ${\bf a}_i, {\bf b}_i$ are Schwinger bosons on the $i$-th site, and where $\Lambda_{\alpha}$ is a particular configuration of the (ij)-bonds on the lattice. The condition on $\Lambda_{\alpha}$ is that precisely $2S$ bonds will emanate from each site. In certain cases, the sum on 
+\cref{Valence_bond_states} is dominated by a finite number of configurations in the large lattice limit\footnote{
+
+The cases where there are macroscopicaly many configurations were denoted \underline{resonanting valence bonds states} (RVB) by Anderson.
+
+}. \\
+
+From inspection of \cref{Valence_bond_states}, it is clear that all bond operators ${\bf a}_i^\dagger {\bf b}_i^\dagger - {\bf b}_i^\dagger {\bf a}_i^\dagger$ are invariant under global spin rotations, making $\ket{\{c_{\alpha}\}, S}$ a singlet of total spin. A special class of valence bond states is given by 
+
+\begin{equation}
+    \ket{\hat{u}, S} = \sum_{\alpha} \bigg(\prod_{(ij) \in \alpha} u_{ij}\bigg) \ket{\alpha},
+    \label{special_class_Valence_bond_states }
+\end{equation}
+
+wherein there are upto $\frac{N(N-1)}{2}$ independent variational parameters $u_{ij}$, with $N$ being the number of lattice sites. Furthermore, if the bond parameters are both bipartite and positive, this is 
+
+\begin{equation}
+    u_{ij} = \left\{\begin{array}{c}
+       u_{ij} > 0  \textnormal{ if } \begin{array}{c}
+            i \in A  \\
+            j \in B
+       \end{array}  \\
+       0 \textnormal{ if $i,j$ are on the same sublattice}
+    \end{array}\right.,
+\end{equation}
+
+then the $\ket{\hat{u}, S}$-states obey the Marshall sign criterion \cref{Marshall_theo_1}, as required for the ground state of a bipartite Heisenberg antiferromagnet. 
+
+\clearpage 
+
+A Schwinger boson mean field state is defined as 
+
+\begin{equation}
+    \ket{\hat{u}} = \exp \bigg[\frac{1}{2} \sum_{ij} u_{ij} \bigg({\bf a}_i^\dagger {\bf b}_i^\dagger - {\bf b}_i^\dagger {\bf a}_i^\dagger\bigg)\bigg], \textnormal{ with } u_{ij} = -u_{ji}.
+    \label{Schwinger_mean_field_state}
+\end{equation}
+
+Such states are generated by the Schwinger boson mean field theory of the Heisenberg antiferromagnet, which will be reviewed later on. The $\ket{\hat{u}}$-state contains contributions of different spin sizes at all sites, and therefore is not a bona fide spin state. It can be transformaed, by a Bogoliubov transformation on the Schwinger bosons, into a factorizable Fock state, which is in fact a vacuum of the transformed bosons. Moreover, the correlations of the mean field states can be evaluated analytically. The valence bond state, given by \cref{special_class_Valence_bond_states }, can be constructed from \cref{Schwinger_mean_field_state} via a projection. Said projection is given by the operator defined in \cref{Schwinger_boson_projector},
+
+$$
+    \ket{\hat{u}, S} = \mathbf{P}_S \ket{\hat{u}},
+$$
+
+where the projected state is non-factorizable, due to correlations introduced by ${\bf P}_S$, said correlation being much easier to evaluate in $\ket{\hat{u}}$ -the Schwinger boson mean field state- than in the special class of valence bond states, $\ket{\hat{u}, S}$.  
+
+\clearpage
 \section{Quantum Field-Therotic approach to Condensed Matter Physics}
 
 \subsection{Mean field theory}
@@ -3074,7 +3818,7 @@ Therefore, the spin-$\frac{1}{2}$ Heisenberg Hamiltonian can therefore be rewrit
 \textbf{From "Many Body Quantum Theory in Condensed Matter Physics" by Henrik Bruus and Karsten Flensberg.}
 
 The physics of interacting particles is often very complicated because the motion of the individual particles depend on the position of all other, thus these variables become correlated. This is clearly the case for a system of charged particles interacting by Coulomb forces, such as eg. the electron gas. There, the probability to find two electrons in close proximity is expected to be small due to the strong repulsive interaction. Consequently, due to these correlation effects, there is a suppressed density in the neighbourhood of every electron, and there is a correlation hole. 
-Nevertheless, in spite of these complications, there a re a number of cases where a more crude treatment, not fully including the correlations, gives a good physical model. In these cases, it suffices to include correlations o the average. This means that the effect of the other particles is included as a mean density (or mean field), leaving an effective single particle problem, which is solvable. These mean fields are chosen so that they minimize the free energy, which in turn, ensures that the method is self-consistent. This method is called mean field theory, which allows to neglect detailed dynamics and time-dependent second quantization methods. \\
+Nevertheless, in spite of these complications, there are a number of cases where a more crude treatment, not fully including the correlations, gives a good physical model. In these cases, it suffices to include correlations o the average. This means that the effect of the other particles is included as a mean density (or mean field), leaving an effective single particle problem, which is solvable. These mean fields are chosen so that they minimize the free energy, which in turn, ensures that the method is self-consistent. This method is called mean field theory, which allows to neglect detailed dynamics and time-dependent second quantization methods. \\
 
 First, consider a system with two types of particles, described by operators ${\bf a}_\nu, {\bf b}_{\mu}$, respectively. In this model, the only interactions present are those between different kind of particles. The Hamiltonian then reads
 
@@ -3441,7 +4185,7 @@ Thus, yielding two equations
 Let, 
 
 \begin{align*}
-    \zeta &= \frac{{\bar n}_{\uparrow}-{\bar n}_{\downarrow}}{{\bar n}}, & \gamma = \frac{2m U n^{\frac{1}{3}}}{(3\pi^2)^{\frac{3}{2}} \hbar^2}, & {\bar n} &= {\bar n}_{\uparrow} + {\bar n}_{\downarrow},
+    \zeta &= \frac{{\bar n}_{\uparrow}-{\bar n}_{\downarrow}}{{\bar n}}, & \gamma &= \frac{2m U n^{\frac{1}{3}}}{(3\pi^2)^{\frac{3}{2}} \hbar^2}, & {\bar n} &= {\bar n}_{\uparrow} + {\bar n}_{\downarrow},
 \end{align*}
 
 then, by subtracting the two equations,
@@ -3527,9 +4271,17 @@ The previous equation's physical meaning is that, by forcing a phase gradient on
 
 In the normal state of metals, a current is always associated with a non-equilibrium state, where energy is constantly dissipated from the driving source and absorbed in the conductor. Of course, there is an energy cost for the system to carry the current, but as long as this cost is smaller than the alternative which is to go out of the superconducting state, the current carrying state is chosen. The critical current is reaches when the energies are equal, and then the superconductor goes into the normal state. Thus, when a phase gradient is imposed to a system, wherein the energy is assumed to depend on phase differences on a macroscopic scale, it unavoidably leads to the conclusion that the system will carry a dissipationless current in order to minimize the energy cost of the phase gradient. Finally, it should be noted that the appearance of the excitation gap is not the reason for the superconductivity itself. The superconductivity arises from the lack of gauge invariance, and in fact gapless superconductors do exist. \\
 
+\clearpage
+
 \underline{Microscopic theory:} 
 
-Historical context: the understanding that superconductivity was closely related to the electron-phonon coupling was clear from the 1950's onwards, where the isotope effect was discovered. Also the idea that superconductivity was somehow similar to the Bose-Einstein condensate, with the bosons being electron pairs, had been tried and in fact was the underlying idea of London's theory in 1935. However, only in 1956 Cooper showed that the Fermi surface of the normal mental state was unstable towards formation of bound pairs of electrons. Subsequently in 1957, when the superconducting state was derived using a variation wavefunction by BCS were the principles fully understood. It turns out that the phonon mediante electron-electron interaction, in fact has a range in frequency and momentum space where it is negative, ie. attracitive. This happens for energy exchanges of order the Debye energy, $\omega_D$, for metals is much smaller than the Fermi energy $\omega_D << E_F$. Furthermore, from the Cooper instability, it follows that the photon-mediated interactions tends to pair electrons with opposite spin and momentum. \\
+An alternative picture of superconductivity can be given, the so-called Bardeen-Cooper-Schrieffer theory.
+
+\begin{tcolorbox}[colback = LimeGreen, title = Historical Context:]
+
+The understanding that superconductivity was closely related to the electron-phonon coupling was clear from the 1950's onwards, where the isotope effect was discovered. Also the idea that superconductivity was somehow similar to the Bose-Einstein condensate, with the bosons being electron pairs, had been tried and in fact was the underlying idea of London's theory in 1935. However, only in 1956 Cooper showed that the Fermi surface of the normal mental state was unstable towards formation of bound pairs of electrons. Subsequently in 1957, when the superconducting state was derived using a variation wavefunction by BCS were the principles fully understood. It turns out that the phonon mediante electron-electron interaction, in fact has a range in frequency and momentum space where it is negative, ie. attracitive. This happens for energy exchanges of order the Debye energy, $\omega_D$, for metals is much smaller than the Fermi energy $\omega_D << E_F$. Furthermore, from the Cooper instability, it follows that the photon-mediated interactions tends to pair electrons with opposite spin and momentum.
+
+\end{tcolorbox}
 
 \blanky \\
 
@@ -3559,7 +4311,8 @@ The mean field assumption made by BCS is that the pair operator has a finite exp
 
 which is quadratic in electron operators and should be readily solvable. It is however unusual in that terms ${\bf c}^\dagger {\bf c}^\dagger$ and ${\bf c} {\bf c}$ both appear. Said Hamiltonian can then be solved via a Bogoliubov transformation. Note that ${\bf H}_{\textnormal{BCS}}^{\textnormal{MFT}}$ may be rewritten in $\mathds{C}^2$-matrix form 
 
-\begin{align}
+\begin{equation}
+\begin{split}
     {\bf H}_{\textnormal{BCS}}^{\textnormal{MFT}} &= \sum_{{\bf k}} \left( \begin{array}{cc}
         {\bf c}_{{\bf k}\uparrow}^\dagger & {\bf c}_{-{\bf k}\downarrow} \\ 
     \end{array} \right) \left(\begin{array}{cc}
@@ -3570,7 +4323,8 @@ which is quadratic in electron operators and should be readily solvable. It is h
         {\bf c}_{-{\bf k}\uparrow} 
     \end{array} \right) + \sum_{{\bf k}} \varepsilon_{{\bf k}} + \sum_{{\bf k} {\bf k'}} \mathfrak{V}_{{\bf k} {\bf k'}} \langle {\bf c}_{{\bf k} \uparrow}^\dagger {\bf c}_{-{\bf k} \downarrow}^\dagger \rangle \langle {\bf c}_{{\bf k} \downarrow} {\bf c}_{-{\bf k} \uparrow} \rangle \\
     &= \sum_{{\bf k}} {\bf A}_{{\bf k}}^\dagger {\bf H}_k {\bf A}_{{\bf k}} + \tr {\bf H},
-\end{align}
+\end{split}
+\end{equation}
 
 where 
 
@@ -3818,13 +4572,13 @@ The bosonic coherent states have some interesting consequences, namely
     \item The coherent states form an over complete basis
     
     $$
-    \mathds{1} = \int_{\mathds{C}} \frac{dz^* dz}{\pi} \ket{z} \bra{z}.
+    \textnormal{id}_{\mathcal{F}} = \int_{\mathds{C}} \frac{dz^* dz}{\pi} \ket{z} \bra{z}.
     $$
     
     The trace of an operator acting on the bosonic coherent states can be written as 
     
     $$
-        \Tr {\bf A} = \sum_n \bra{n} {{\bf A}} \ket{n} = \int \frac{dz^* dz}{\pi} \ket{z} \bra{z} e^{-|z|^2} \bra{z}{\bf A}\ket{z}.
+        \Tr {{\bf A}} = \sum_n \bra{n} {{\bf A}} \ket{n} = \int \frac{dz^* dz}{\pi} \ket{z} \bra{z} e^{-|z|^2} \bra{z}{{\bf A}}\ket{z}.
     $$
     
     \item The action of ${\bf b}^\dagger$ on a coherent state $\ket{z}$ reads
@@ -4028,6 +4782,8 @@ $$
     \end{itemize}
 \end{itemize}
 
+\clearpage
+
 \textbf{\underline{Properties of Fermionic coherent states}}
 
 A fermionic coherent state is then defined as 
@@ -4229,6 +4985,8 @@ Thus, the $3N$-dimensional real symmetric and positive defined matrix ${{{\bf A}
 &\Rightarrow \mathcal{Z}(J) = e^{\frac{1}{2} {{\bf J}}^{\textnormal{T}} {\bf A}^{-1} {\bf J}} \prod_{i=1}^{N} \int_{\mathds{R}} dy \blanky e^{-\frac{y^2 D_{ii}}{2}} = ^{\frac{1}{2} {{\bf J}}^{\textnormal{T}} {\bf A}^{-1} {\bf J}} \sqrt {\frac {(2\pi )^{N}}{\det A}}
     \end{split}
 \end{equation}
+
+\clearpage
 
 \item \textbf{Complex variables}: 
 
@@ -4838,7 +5596,7 @@ where \begin{itemize}
     where the minus sign arises from the anticommutation of the fermionic field operators. \\
 \end{itemize}
 
-\cref{SR-1particle-GF}'s one-particle nature is due to the fact that it represents a propagator of a particle created at ${\bf x}', t'$ with quantum numbers $\beta$, and annihilated at ${\bf x}, t$ with quantum numbers $\alpha$. Note, however, that these so-called single-particle Green functions are truly many-body objects since they describe the propagation of a single particle obeying the full many-body Hamiltonian and therefore contain all effects of interactions with the other particles in the system. \\
+Now, \cref{SR-1particle-GF}'s one-particle nature is due to the fact that it represents a propagator of a particle created at ${\bf x}', t'$ with quantum numbers $\beta$, and annihilated at ${\bf x}, t$ with quantum numbers $\alpha$. Note, however, that these so-called single-particle Green functions are truly many-body objects since they describe the propagation of a single particle obeying the full many-body Hamiltonian and therefore contain all effects of interactions with the other particles in the system. \\
 
 Depending on the problem at hand, there are a number of useful Green functions. The greater and lesser Green functions are defined as 
 
@@ -4872,7 +5630,7 @@ For compactness, $\bra{\Omega} \ket{\Omega} = 1$. Note that, from these definiti
 
 As a many-body correlation function, a Green function conveys only part of the full information available in the many-body wavefunctions of the system, but it provides the relevant information for the problem at hand. \\
 
-\paragraph{Equations of Motion for the One-particle Green function}
+\paragraph{\textit{Equations of Motion for the One-Particle Green function}}
 
 Consider a system with Hamiltonian, 
 
@@ -4908,7 +5666,7 @@ $$
 
 is a two-particle Green function. Then, the dynamics of a one-particle Green function becomes coupled to that of a two-particle Green function. This two-particle Green function's dynamic will become coupled to a three-particle Green function and so on. Unless the couplings terminate at a reasonable order, there is an infinite hierarchy of equations and corresponding Green functions. \\
 
-\paragraph{Equations of Motion and Microscopic Self-Interaction}
+\paragraph{\textit{Equations of Motion and Microscopic Self-Interaction}}
 
 Consider the many-electron Hamiltonian
 
@@ -4987,7 +5745,7 @@ Then, \cref{NR_GF_Jellium-like_model} may be rewritten in matrix notation as
 
 which is the matrix form of the Dyson equations for the one-particle Green function, or the Dyson series. It will be shown that $\Sigma^{*}$ is the one-particle irreducible self-energy. \\
 
-\paragraph{\textbf{Physical Interpretation of the One-particle Green function and the Self-Energy}}
+\paragraph{\textit{Physical Interpretation of the One-particle Green function and the Self-Energy}}
 
 Let $\ket{\Omega}$ be the (normalized) system's ground state, such that the system's Green function can be written as 
 
@@ -5046,7 +5804,7 @@ $$
 
 where $E_0(N+1)$ is the ground state of the $(N+1)$-system. The quantity $E_0(N+1) - E_0(N)$ is identified with the chemical potential $\mu$, since the volume of the system is kept constant. Consequently, the energy difference $E_n(N+1) - E_0(N+1) = \epsilon_n (N+1)$ must be just the excitation energy of the $(N+1)$-system, provided $\epsilon_n (N+1)$ is non-negative. The second term describes the transition to a system with one particle less, with manifest hole excitations having energies below the chemical potential. The merger of hole and electron excitations in a single function is one of the notable advantages of the time-ordered Green function \footnote{An alternative identification may be given, in terms of the electron affinity and the ionization energy.}. \\
 
-\paragraph{Green Function for the Fermi Gas}
+\paragraph{\textit{Green Function for the Fermi Gas}}
 
 Consider the Sommerfeld gas, for which all excited states 
 are known. The corresponding field operators are given by
@@ -5055,8 +5813,13 @@ are known. The corresponding field operators are given by
     &\Psi({\bf x}, t) = \frac{1}{\sqrt{\Omega}} \sum_{\substack{{\bf k} \in \Lambda \\
     \sigma \in \mathds{C}^2}} e^{i {\bf k} \cdot {\x}} {\bf c}_{{\bf k} \sigma}, \blanky \blanky \blanky \blanky 
     \Psi^\dagger({\bf x}, t) = \frac{1}{\sqrt{\Omega}} \sum_{\substack{{\bf k} \in \Lambda \\
-    \sigma \in \mathds{C}^2}} e^{-i {\bf k} \cdot {\x}} {\bf c}_{{\bf k} \sigma}^\dagger. \\
-    &\Rightarrow \mathcal{M} = \bra{\Psi_0} \psi_{\sigma}({\bf x}) \ket{\Psi_n} \bra{\Psi_n} \psi_{\sigma'}^\dagger({\bf x}') \ket{\Psi_0} = & \frac{1}{\Omega} \sum_{{\bf k}, {\bf k}' \in \Lambda} e^{i {\bf k} \cdot {\bf x}} e^{-i {\bf k} \cdot {\bf x}'} \bra{\Psi_0} {{\bf c}}_{{\bf k} \sigma} \ket{\Psi_n} \bra{\Psi_n} {{\bf c}}_{{\bf k}' \sigma'}^\dagger \ket{\Psi_0} \\
+    \sigma \in \mathds{C}^2}} e^{-i {\bf k} \cdot {\x}} {\bf c}_{{\bf k} \sigma}^\dagger
+    \end{split}
+\end{equation}
+
+\begin{equation}
+    \begin{split}
+    \Rightarrow \mathcal{M} = \bra{\Psi_0} \psi_{\sigma}({\bf x}) \ket{\Psi_n} \bra{\Psi_n} \psi_{\sigma'}^\dagger({\bf x}') \ket{\Psi_0} = & \frac{1}{\Omega} \sum_{{\bf k}, {\bf k}' \in \Lambda} e^{i {\bf k} \cdot {\bf x}} e^{-i {\bf k} \cdot {\bf x}'} \bra{\Psi_0} {{\bf c}}_{{\bf k} \sigma} \ket{\Psi_n} \bra{\Psi_n} {{\bf c}}_{{\bf k}' \sigma'}^\dagger \ket{\Psi_0} \\
     & = \frac{1}{\Omega} \sum_{{\bf k}, {\bf k}' \in \Lambda} e^{i {\bf k} \cdot ({\bf x}-{\bf x}')} \bra{\Psi_0} {{\bf c}}_{{\bf k} \sigma} \ket{{\bf k} \sigma} \bra{{\bf k} \sigma} {{\bf c}}_{{\bf k} \sigma}^\dagger \ket{\Psi_0}.
     \end{split}
 \end{equation}
@@ -5073,7 +5836,7 @@ where $\ket{\bar{{\bf k} \sigma}} = {{\bf c}}_{{\bf k} \sigma}\ket{\Psi_0}$ repr
     |\bra{\Psi_0} {{\bf c}}_{{\bf k} \sigma} \ket{{\bf k} \sigma}|^2 &= \Theta(|{\bf k}| - k_F), & |\bra{\Psi_0} {{\bf c}}^\dagger_{{\bf k} \sigma} \ket{\bar{{\bf k} \sigma}}|^2 &= \Theta( k_F - |{\bf k}|). 
 \end{align}\\
 
-\paragraph{\textbf{Spectral functions}}
+\paragraph{\textit{Spectral functions}}
 
 The spectral functions or spectral weights, $\mathcal{A}(\nu, \omega)$, are the quantum state resolution of a particle with a given energy $\omega$ or as the energy resolution for a particle in a given quantum number $\nu$. It quantifies how suitable the excitation created b adding or removing a particle in $\ket{\nu}$-state can be described by a free non-interacting particle or hole, respectively. \\
 
@@ -5124,6 +5887,8 @@ wherein Plemelj-Sokhotolksi's formula was used, $\frac{1}{\omega \pm i \eta} = \
     \end{split}
 \end{equation}
 
+\blanky \\
+
 \textbf{Spectral signatures in the one-particle Green Function}. 
 
 Consider a non-interacting fermionic system. Its Green function may be written as 
@@ -5146,8 +5911,350 @@ In an interacting system, the Green function is given by
 Both $\mathfrak{G}$ and the self-energy $\Sigma^*$ are, in general, non-local function that depend on two spatial or momentum points. However, in the presence of systems with translational or periodic invariance, these become diagonal in momentum, thus the following equality holds 
 
 \begin{equation}
-    \mathfrak{G}({\bf k}, \omega) = \frac{1}{\omega - \varepsilon_0({\bf k}) - \Sigma^*({\bf k}, \omega)} = \frac{1}{\omega - \varepsilon_0({\bf k}) - \mathfrak{R}\mathfrak{e}[\Sigma^*({\bf k}, \omega)]- \mathfrak{I}\mathfrak{m}[\Sigma^*({\bf k}, \omega)]}  
+    \mathfrak{G}({\bf k}, \omega) = \frac{1}{\omega - \varepsilon_0({\bf k}) - \Sigma^*({\bf k}, \omega)} = \frac{1}{\omega - \varepsilon_0({\bf k}) - \mathfrak{R}\mathfrak{e}[\Sigma^*({\bf k}, \omega)]- \mathfrak{I}\mathfrak{m}[\Sigma^*({\bf k}, \omega)]},
 \end{equation}
+
+where $\Sigma^*({\bf k}, \omega)$ could be a messy complex function, but its real part modifies, or renormalizes, the non-interacting dispersion $\varepsilon_0({\bf k}$, while its imaginary part replaces the delta function of the pole with a finite width profile, a Lorentzian line shape. \\
+
+It turns out that the imaginary part accounts for a finite lifetime in the $({\bf k}, \omega)$-state, and arises from electron-electron interactions, electron-phonon interactions or other scattering events. Furthermore, only states close to the Fermi surface are relevant, and for such states, scattering events due to electron-electron interactions lead to quadratic contribution to the line broadening, namely $-\Im \Sigma^*({\bf k}, \omega) \propto (\omega - E_f)^2$. In effect, consider for simplicity $E_F = 0$. Since here the interest lies only in the low-energy excitations close to the Fermi level, a Taylor-expansion of $\varepsilon({\bf k}) = \varepsilon_{0}({\bf k}) + \Re \Sigma^*({\bf k}, \omega)$ around $k = k_F$ and $\omega = E_F = 0$. In particular, if only linear terms $\mathcal{O}(\Delta {\bf k})$ are retained,
+
+\begin{equation}
+    \varepsilon({\bf k}) = \varepsilon_{0}({\bf k}) + \Re \Sigma^*({\bf k}, \omega) = \bigg[\frac{k_F}{m} + \frac{\partial \Re \Sigma^*}{\partial k}\bigg|_{k=k_F}\bigg] \Delta {\bf k} + \frac{\partial \Re \Sigma^*}{\partial \omega}\bigg|_{\omega = 0},
+\end{equation}
+
+where the derivatives are taken along a direction perpendicular to the Fermi surface. Substituing this result in the previous equation for the interacting Green function, yields an approximation valid for small $\omega$ and $\Delta {\bf k}$ of the form,
+
+\begin{equation}
+     \mathfrak{G}({\bf k}, \omega) = \frac{\mathcal{Z}}{\omega - \varepsilon({\bf k})},
+\end{equation}
+
+which formally resembles the expression for $ \mathfrak{G}^{0}$, with a few modifications, 
+
+\begin{itemize}
+    \item Here, the spectral weight factor is 
+    $$
+     \mathcal{Z} = \bigg(1 - \frac{\partial \Re \Sigma^*}{\partial \omega}\bigg|_{\omega = 0}\bigg)^{-1},
+    $$
+    
+    \item with a mass renormalization given by 
+    
+    $$ 
+        \varepsilon_0({\bf k}) = (k-k_F) \frac{k_F}{m} \Rightarrow \varepsilon({\bf k}) = (k-k_F) \frac{k_F}{m^*},
+    $$
+    
+    such that 
+    
+    $$
+        \frac{m^*}{m} = \frac{1}{\mathcal{Z}} \bigg(1 + \nabla_{{\bf k}} \Re \Sigma^*\bigg|_{k=k_F}\bigg)^{-1},
+    $$
+    
+    which indicates that the dispersion relation has been changed by the interactions. Therefore, a different mass from one of the independent particles emerges. This renormalization is consistent with experimental results for fermionic systems, as for example in the measurements of electronic specific heat of Fermi liquids. \\
+\end{itemize}
+
+A particle whose lifetime becomes finite and/or its energy gets renormalized is referred to as a quasiparticle, in order to differentiate from its kind in a non-interacting environment. The quasiparticle consists of the original real, individual particle, plus a cloud of disturbed neighbours interacting with it. It behaves very much like a real particle but with an effective mass and a lifetime. \\
+
+\textbf{Particle lifetime in the vicinity of a Fermi surface}
+
+Consider the consequences of injecting a quasiparticle into a state above, but close to the Fermi surface, 
+
+$$
+    \varepsilon = E_F + \delta \epsilon, {\bf k}, \textnormal{ where } k > k_F, \frac{\delta \epsilon}{E_F} << 1.
+$$
+
+The quasiparticle is expected to be scattered by particles in the Fermi sea, with $(\varepsilon' < E_F, k' < k_F)$. Since all states in the Fermi sea are occupied, both particles should be scattered to states outside the Fermi sea. Momentum conservation implies that $p^{\mu} + p^{'\mu} = p^{\mu}_f + p^{'\mu}_f$. The scattering rate $\gamma_{\bf k}$ is expected to be proportional to the accesible phase space, namely 
+
+\begin{equation} \begin{split}
+    \gamma_{\bf k} \propto & \int_{\mathds{R}^3} d{\bf k'} \int_{\mathds{R}^3} d{\bf k}_{f} \int_{\mathds{R}^3} d{\bf k'}_{f} \blanky \delta({\bf k} + {\bf k'} - {\bf k}_f - {\bf k}'_{f}) \\
+    & \propto \int_{-\infty}^{E_F} d \varepsilon' \mathcal{D}(\varepsilon') \int_{E_F}^{\infty} d\varepsilon_{f} \mathcal{D}(\varepsilon_f) \int_{E_F}^{\infty} d\varepsilon'_{f}  \blanky \mathcal{D}(\varepsilon'_f) \delta(\varepsilon + \varepsilon' - \varepsilon_f - \varepsilon'_f) \\
+    & \sim \mathcal{D}^{3}(E_F) (\delta \varepsilon)^2.
+\end{split}
+\end{equation}
+
+Since $\gamma \approx (\varepsilon - E_F)^2$ in the vicinity of the Fermi energy implies that the existence of the Fermi surface allows quasiparticles to become more clearly defined as the Fermi surface is approached. Furthermore, the lifetime becomes infinite on the Fermi surface itself, since $\gamma$ has a sign change as it crosses the Fermi surface. The same phase space argument reveals that the particle lifetime approaches zero as the quasiparticle's energy distances from the vicinity of the Fermi surface. The immediate implication is that particles injected into a state with $\varepsilon >> E_F$ are unstable and will immediately scatter into other states, leaving no trace of coherent information about its propagation, ie. its propagation is incoherent. There are no poles in the Green function for such scattering events. Note that fermions close to the Fermi surface will scatter very little, allowing for a qualitatively correct non-interacting treatment, which is a truly remarkable consequence. Many experimentally measurable properties are recorded at low temperatures, and thus essentially involve fermions at or near the Fermi surface. These properties are not qualitatively changed by electron-electron interactions. \\
+
+\textbf{Spectral manifestations of Particle Lifetime}
+
+So far, interparticle interactions are responsible for replacing the ideal delta function in the spectral function with a broadened profile. Said interaction are expected to redistribute the spectral weight, due to the energy exchanges between the injected particle and the quasiparticles in the systems. Traditionally, the interactions of interest are electron-phonon and electron-electron interactions. Consider a system which, for simplicity, has only a single electronic state with energy $\varepsilon({\bf k})$ close to the Fermi energy $E_F$, with an inverse lifetime or line-broadening given by 
+
+$$
+    \Gamma_{{\bf k}} = \mathcal{Z} C_{{\bf k}} (\varepsilon({\bf k} - E_F)^2,
+$$
+
+where $C_{{\bf k}}$ is a proportionality constant. Then,
+
+\begin{equation}
+\mathfrak{G}({\bf k}, \omega) = {\frac{\mathcal{Z}}{\omega - \varepsilon({\bf k}) + i \Gamma_{{\bf k}}}}_{\underbrace{\mathfrak{G}_{\textnormal{coh}}({\bf k}, \omega)}} + \mathfrak{G}_{\textnormal{incoh}}({\bf k}, \omega).
+\end{equation}
+
+Here $\mathfrak{G}_{\textnormal{incoh}}$ contains the rest of the spectrum, describing incoherent scattering events that have no corresponding poles. In constrast, $\mathfrak{G}_{\textnormal{coh}}$, the coherent term corresponds to a coherently propagating particle at least for times $t < \frac{1}{\Gamma_{{\bf k}}}$. To confirm this fact, consider the Fourier transform $\mathfrak{G}_{\textnormal{coh}}({\bf k}, \omega)$ to study its time evolution
+
+\begin{equation}
+    {\mathfrak{G}_{\textnormal{coh}}({\bf k}, t)} = \int_{\mathds{R}} d\omega e^{-i\omega t} \blanky {\frac{\mathcal{Z}}{\omega - \varepsilon({\bf k}) + i \Gamma_{{\bf k}}}} \sim \mathcal{Z} \exp \bigg(-i[\varepsilon({\bf k}) - i \Gamma_{\bf k}] t\bigg),
+\end{equation}
+
+where the integral has been performed using Jordan's theorem, considering $t > 0$ and $\Gamma_{{\bf k}} > 0$, so that the contour integral can be performed in the lower half-plane. Thus, the coherent part evolves as a decaying plane wave with $\frac{1}{\Gamma}$-lifetime, with a particle weight given by the pole residue $\mathcal{Z}$, the quasiparticle weight. When $\mathcal{Z}$ vanishes, the electron quasiparticle disappears. \\
+
+ $\mathfrak{G}_{\textnormal{coh}}$ can be rewritten as 
+ 
+\begin{equation} \begin{split}
+    \mathfrak{G}_{\textnormal{coh}} = \frac{\mathcal{Z}\bigg(\omega - \varepsilon({\bf k}) - i \Gamma-{{\bf k}}\bigg)}{(\omega - \varepsilon({\bf k})^2 + \Gamma_{{\bf k}}^2} \Rightarrow \mathcal{A}^{+}_{\textnormal{coh}}({\bf k}, \omega) = - \frac{1}{\pi} \Im \mathfrak{G}_{\textnormal{coh}}({\bf k}, \omega) \rightarrow \frac{\mathcal{
+   Z} \frac{\Gamma_{{\bf k}}}{\pi}}{(\omega - \varepsilon({\bf k})^2 + \Gamma_{{\bf k}}^2}
+   \label{Fermi_liquids_valid_approx}
+\end{split}
+\end{equation}
+
+\begin{figure}
+    \centering
+    \subfloat[\centering ]{{\includegraphics[scale=0.7]{figs/1p_Green_function_interacting/interacting_regime_spectral_function_one.png} }}
+    \qquad
+    \subfloat[\centering ]{{\includegraphics[scale=0.7]{figs/1p_Green_function_interacting/interacting_regime_spectral_function_two.png}}}
+    \caption{\small Fig. A: Spectral function for a particle in a non-interacting system (black delta function) and of the corresponding quasiparticle after turning on interactions (gray filled curve). Notice the shift in energy and the linewidth broadening. \\
+    Fig. B: Typical spectral function for a quasiparticle displaying its coherent component and the coherent background. } 
+    \label{figs:1p_Green_f_(in)coh}
+\end{figure}
+
+Naturally, the full spectral function may be written as $ \mathcal{A}^{+}({\bf k}, \omega) = \mathcal{A}^{+}_{\textnormal{coh}}({\bf k}, \omega) +  \mathcal{A}^{+}_{\textnormal{incoh}}({\bf k}, \omega) $, which is schematically represented in \cref{figs:1p_Green_f_(in)coh}. The contributions from the coherent terms appear as a Lorentzian line shape, while the background arises from the incoherent part. If the quasiparticle weight vanishes, then the background only manifests itself in the spectral function. \\
+
+The coherent terms of the spectral function have the following features:
+
+\begin{enumerate}
+    \item It has a Lorentzian profile peaked at $\varepsilon({\bf k})$. 
+    \item The single-particle energies are renormalized, $\varepsilon_0 ({\bf k}) \rightarrow \varepsilon ({\bf k})$. 
+    \item Its width is given by the inverse of the lifetime. 
+    \item Its magnitude is proportional to the quasiparticle weight $\mathcal{Z}$, a positive number between 0 and 1. 
+    \item The area under the peak has decreased, from $1$ and $\mathcal{Z}$.
+\end{enumerate}
+
+The incoherent terms, in contrasst, presents a continuum, not a peak. It must be present if $\mathcal{Z} \neq 1$, in order to satisfy the sum rule/normalization of the spectral function. A similar result is obtained for the hole spectral function, wherein $\Gamma < 0$. \\
+
+\begin{tcolorbox}[colback=my-blue, 
+title = Physical Context]
+
+Fermionic systems for which the previously laid picture holds are called Fermi liquids, its theory phenomenologically developed by Landau (1957), and in the subsequent years a microscopic formulation with the help of many-body perturbation theory was developed as well. \\
+
+The identification and investigation of interacting fermionic systems which do not obey Fermi liquid theory is an important research area in modern many-body physics. Such non-Fermi liquids have, by definition, spectral functions which cannot be approximated by \cref{Fermi_liquids_valid_approx} and, therefore, cannot be understood in terms of a picture of non-interacting fermions. A prominent example of a non-Fermi liquid is the so-called Luttinger fermions, which occur in one-dimension.  
+\end{tcolorbox}
+
+\subsection{\textbf{Quantum Field Theory and Feynmann Rules}}
+
+\paragraph{\textit{{Perturbation theory and Feynmann Diagrams}}}
+
+In the definition of the Green function, the average values is taken with respect to the Heisenberg ground-state vector, $\ket{\psi_H}$, which is time-independent and very complicated for interacting systems, and no exact solution is achievable. The strategy is to set 
+
+$$
+    \ket{\psi_H} = \ket{\psi_I (0)} = \mathcal{S}^\dagger(t,0) \ket{\psi_I (t)},
+$$
+
+and use the time $t \rightarrow -\infty$ to interpolate the non-interacting ground state with the aid of the principle of adiabatic switching on. \\
+
+\paragraph{The concept of Adiabaticity in Quantum Mechanics} \\
+
+The construct of adiabaticity plays an important role in quantum many-body theory, by paving a path to understand a many-body problem, even when there is only an approximate solution. \\
+
+In order to examine the usefulness of adibaticity, consider a many-body quantum system with Hamiltonian ${\bf H} = {\bf H}_0 + {\bf H}$, for which no exact solution of its ground state $\ket{\Psi_g}$ can be obtained but the exact ground state for ${\bf H}_0$, labelled as $\ket{\Phi_g}$, is known. To connect the two systems, the ${\bf H}_0$-Hamiltonian is ever present, with ground state $\ket{\Phi_g}$, and adiabatically slowly turn on ${\bf H}'$ until the total Hamiltonian is reached. This can be done by setting 
+
+\begin{equation}
+    {\bf H}(t) = {\bf H} + \lambda(t) {\bf H}', \textnormal{ where } \lambda(t) = e^{-\eta |t|} \textnormal{ and } \eta > 0, \textnormal{ is arbitrary small, }
+    \label{Adiabatic_switching_on}
+\end{equation}
+
+\begin{figure}
+    \centering
+    \subfloat[\centering ]{{\includegraphics[scale=0.8]{figs/1p_Green_function_interacting/adiabatic_evol_no_phase_tr.png} }}
+    \qquad
+    \subfloat[\centering ]{{\includegraphics[scale=0.8]{figs/1p_Green_function_interacting/adiabatic_evol_phase_tr.png}}}
+    \caption{\small  Fig a): Adiabatic evolution of a discrete spectrum within the symmetry subspace of the ground state. The ground state can be adiabatically evolved all the way to $\lambda = 1$, from $\ket{\Phi_g}$ to $\ket{\Psi_g}$. Fig b): Adiabatic evolution of the Hilbert space with $\lambda$. A phase transition occurs at $\lambda = \lambda_c$, where an excited state of the unperturbed Hamiltonian, with a symmetry different from that of the ground state, crosses below the ground state. } 
+    \label{figs:adiabatic_evols}
+\end{figure}
+
+and varying $-\infty \leq t \rightarrow 0$. The efficacy of this approach hinges on whether $\ket{\Phi_g}$ has the same basic symmetries as $\ket{\Psi_g}$, ie. if these share the same quantum number labels. There are two possible paths for an adiabatic switching of a many-body system, diagramatically shown in figure \cref{figs:adiabatic_evols}:
+
+\begin{enumerate}
+    \item \textit{The ground-state symmetry remains invariant throughout the adiabatic evolution, } as $\lambda$ increases from 0 to 1. In such cases, the corresponding evolution of the energy spectrum, within the symmetry subspace of the ground state. In \cref{figs:adiabatic_evols}, subfigure a), a discrete spectrum with a series of avoided crossing, from $\lambda = 0$ to $\lambda = 1$, is shown. These crossings are avoided since the states have the same symmetries. The avoided crossing arise since an intersection of two levels having the same symmetry is removed because, in general, the off-diagonal matrix elements between the two states will not vanish, and thus will give rise to mutual repulsion. 
+    \item \underline{The ground-state symmetry changes during the evolution due to a crossing of}
+    
+    \underline{ an energy level with different symmetry}, as shown in \cref{figs:adiabatic_evols}, subfigure b). In this case, it is possible for the energy levels of states with different symmetries to cross, since selection rules give vanishing matrix elements between the states, and thus prevent them from mixing. This scenarios leads to an adiabatic evolution, where a level crossing actually occurs at some $\lambda = \lambda_c$. Within such scenario, and excited state $\ket{\Phi}$ of the unperturbed Hamiltonian, with a symmetry different from that of the ground state $\ket{\Psi_g}$, may cross at $\lambda_c$ to a lower energy than the ground state, resulting in a symmetry change of the ground state. A simple example is when a ferromagnetic ground state becomes stabilized by interactions, however, in this case a continuous rotational symmetry of the spin is broken (ie. spontaneous symmetry breaking).  \\ 
+\end{enumerate}
+
+Thus, the switching-on procedure may become troublesome. Specially if it leads to instabilities at some critical value $\lambda = \lambda_c$. The presence of a $\lambda_c$ ushers a phase transition whereby the ground state changes its symmetry. If the transition is non-analytic, it signals a quantum critical transition initiated at a quantum critical point. \\
+
+In many cases of interesent, there is no symmetry-changing phase transition as the perturbation Hamiltonian is turned on, and the procedure of adiabatic evolution can be used to turn on the interaction and to analytically evolve the ground state from $\ket{\Phi_g}$ to $\ket{\Psi_g}$. The adiabatic concept, together with the Gell-Mann-Low theorem, are key elements to perturbation theory. \\
+
+\paragraph{Gell-Mann-Low Theorem}
+
+\blanky \\
+
+\begin{tcolorbox}[colback = my-blue, title = Physical Context]
+
+In a 1951 seminal paper, Murray Gell-Mann and Francis Low used the adiabatic construct to establish the connection between the interacting and non-interacting Green functions, in the famous Gell-Mann-Low theorem. 
+
+\end{tcolorbox}
+
+The ground state $\ket{\Psi_0}$, which appears in the definition of the Green function of the interacting system, must be a time independent state in the Heisenberg picture. So far, only expectation values about the non-interacting ground state $\ket{\Phi_0}$ can be calculated. Thus, a path is needed to connect the states of the exactly solvable unperturbed Hamiltonian ${\bf H}_0$ with the ones of the full Hamiltonian. For this purpose, consider the time-dependent Hamiltonian given by \cref{Adiabatic_switching_on}, which allows for the adiabatic switching on:
+
+\begin{itemize}
+    \item For $|t|\rightarrow \infty$, the Hamiltonian reduces to ${\bf H}_0$. 
+    \item At $t=0$, it becomes the interacting problem of interest.
+    \item In the $\eta \rightarrow 0$-limit, the interaction is switched on adiabatically.
+\end{itemize}
+
+The scattering operator, in this context, is thus defined as 
+
+\begin{equation}
+    \mathcal{S}_{\eta}(t, t_0) = \sum_{n = 0}^{\infty} \frac{1}{n!} (-i)^{n} \int_{t_0}^{t} dt_1 \cdots \int_{t_0}^{t} dt_n \blanky e^{-\eta (|t_1| + \cdots + |t_n|)} \mathcal{T} [{\bf H}_{I}(t_1) \cdots {\bf H}_{I}(t_n)].
+\end{equation}
+
+As $t_0 \rightarrow - \infty$, the effect of the interaction vanishes and the problem reduces to that of the unperturbed Hamiltonian, 
+
+$$
+    t_0 \rightarrow -\infty \Longleftrightarrow \left\{\begin{array}{cc}
+         {\bf H}_0 \ket{\Psi_0} = E^{(0)} \ket{\Psi_0}  \\
+         \ket{\Psi_I(t_0)} \rightarrow \ket{\Psi_0}. 
+    \end{array}\right.
+$$
+
+Now, recall the relation among state vector in different pictures, 
+
+$$
+    \ket{\Psi_H} = \ket{\Psi_S(t=0)} = \ket{\Psi_I (t=0)},
+$$
+
+where $t=0$ corresponds to the fully interacting Hamiltonian. In particular, the following relation between the Heisenberg and interaction state vectors is found 
+
+$$
+    \ket{\Psi_H} = \ket{\Psi_I (0)} = \mathcal{S}_{\eta}(0, - \infty) \ket{\Psi_0}. 
+$$
+
+The previous equation gives the relationship between the eigenstates of the non-interacting system with those of the fully interacting one, albeit via the adiabatic switching process. Then, the following theorem arises \\
+
+\begin{theo} \textbf{\textnormal{Gell-Mann-Low theorem}}
+
+In the absence of any symmetry breaking transition, and in the $(\eta \rightarrow 0)$-limit, $\mathcal{S}_{\eta} \rightarrow \mathcal{S}_I$, and provides the right solution. To be more precise, let $\ket{\Psi_0}$ be an eigenstate of the unperturbed Hamiltonian ${\bf H_0}$ with energy $E^{(0)}$, and consider the interacting Hamiltonian given by
+
+$$
+    {\bf H} = {\bf H} + g e^{-\eta |t|} {\bf H}',
+$$
+
+which effectively interpolates between ${\bf H}$ and ${\bf H}_0$ in the limit $\eta \rightarrow 0$ and $|t|\rightarrow 0$. Let $\mathcal{S}_{\eta}$ denote the evolution operator in the interaction limit. Then, in the $(\eta \rightarrow 0)$-limit,
+
+$$
+    \ket{\Psi_{\eta}^{(\pm)}} = \frac{\mathcal{S}(0, \pm\infty) \ket{\Psi_0}}{\bra{\Psi_0} \mathcal{S}(0, \pm\infty) \ket{\Psi_0}},
+$$
+
+exists, is well defined with the $ \ket{\Psi_{\eta}^{(\pm)}}$-states being the eigenstates of the full Hamiltonian.
+
+\end{theo}
+
+\begin{proof}
+
+In effect, let the coupling constant be $g = e^{\eta \theta}$ and consider the Dyson expansion of the evolution operator. From Schr\"odinger's equation for the time evolution operator, it is known that 
+
+$$
+    i \partial_{t_1} \mathcal{S}_{\eta}(t_1,t_2) = {\bf H} \mathcal{S}_{\eta}(t_1,t_2), \textnormal{ with } \mathcal{S}_{\eta}(t_2,t_2) = \textnormal{id}, 
+$$
+
+and the adjoint Schr\"odinger equation establishes that 
+
+$$
+-i \partial_{t_1} \mathcal{S}_{\eta}(t_1,t_2) = \mathcal{S}_{\eta}(t_1,t_2) {\bf H}(t_1). 
+$$
+
+Then, formally 
+
+$$
+    \mathcal{S}_{\eta}(t_1,t_2) = \textnormal{id} - i \int_{t_2}^{t_1}dt' \blanky ({\bf H}_0 + e^{-\eta (|t'| - \theta)} {\bf H}') \mathcal{S}_{\eta}(t',t_2).
+$$
+
+
+Then, for $t_2 \leq t_1 \leq 0$ and with $\tau = t' + \theta$, it follows that 
+
+\begin{equation}
+    \begin{split}
+        \mathcal{S}_{\eta}(t_1,t_2) = \textnormal{id} - i \int_{\theta + t_2}^{\theta + t_1}dt' \blanky ({\bf H}_0 + e^{\eta \tau} {\bf H}') \mathcal{S}_{\eta}(\tau - \theta,t_2) \\
+        \Rightarrow \partial_{\theta} \mathcal{S}_{\eta}(t_1,t_2) \equiv \eta \partial_{g} \mathcal{S}_{\eta}(t_1,t_2) =& \partial_{t_1} \mathcal{S}_{\eta}(t_1,t_2) + \partial_{t_2}\mathcal{S}_{\eta}(t_1,t_2) \\
+        &= {\bf H}(t_1) \mathcal{S}_{\eta}(t_1,t_2) - \mathcal{S}_{\eta}(t_1,t_2) {\bf H}(t_2).
+    \end{split}
+    \label{Gell_Mann_Low}
+\end{equation}
+
+The corresponding equation in the interaction picture can be obtained from the previous equation by pre-multiplying both sides with $e^{i {\bf H} t_1}$ and post-multiplying with $e^{i {\bf H} t_2}$ and using the definition of the interaction picture, namely that 
+
+$$
+    \mathcal{S}_{\eta, I}(t_1,t_2) = e^{i {\bf H_0} t_1} \mathcal{S}_{\eta}(t_1,t_2) e^{i {\bf H_0} t_2}. 
+$$
+
+The other case, in which $t_2 \geq t_1 \geq 0$, can be obtained in a similar fashion, yielding an additional global minus sign in front of the commutator. The mixed-sign case is not of interest here. Then, using the definition of the $\ket{\Psi_{\eta}^{(\pm)}}$ and employing \cref{Gell_Mann_Low}
+
+\begin{equation}
+    \begin{split}
+        &\bigg({\bf H}_{\eta}(t=0) - E_0 \pm i \eta g \partial_{g} \bigg) \mathcal{S}_{\eta, I}(0,\pm \infty) \ket{\Psi_0} = 0. \\
+        &\Rightarrow \mp i \eta g \partial_{g} \mathcal{S}_{\eta, I}(0,\pm \infty) \ket{\Psi_{\eta}^{(\pm)}}= ({\bf H}_{\eta} - E_0)  \mathcal{S}_{\eta, I}(0,\pm \infty) \ket{\Psi_{\eta}^{(\pm)}}\\
+        &\Rightarrow \mp i \eta g \partial_{g} \ket{\Psi_0}= \frac{({\bf H} - E_0) \mathcal{S}_{\eta}(t_1,t_2) \ket{\Psi_0} }{ \bra{\Psi_0} \mathcal{S}_{\eta}(t_1,t_2) \ket{\Psi_0}} - \frac{\mathcal{S}_{\eta}(t_1,t_2) \ket{\Psi_0}}{ \bra{\Psi_0} \mathcal{S}_{\eta}(t_1,t_2) \ket{\Psi_0}} \bra{\Psi_0} ({\bf H} - E_0) \mathcal{S}_{\eta}(t_1,t_2) \ket{\Psi_0}  \\
+\\
+\Rightarrow \mp i \eta g \partial_{g} \ket{\Psi_0} &= ({{\bf H}} - E_0) \ket{\Psi_{\eta}^{(\pm)}} -  \bra{\Psi_{\eta}^{(\pm)}} \bra{\Psi_0} {{\bf H}} - E_0  \ket{\Psi_{\eta}^{(\pm)}} \\
+&= [{{\bf H}} -\mathcal{E}^{(\pm)}] \ket{\Psi_{\eta}^{(\pm)}},
+    \end{split}
+\end{equation}
+
+where $\mathcal{E}^{(\pm)} = E_0 + \bra{\Psi_0} {{\bf H}} - {{\bf H}}_0  \ket{\Psi_{\eta}^{(\pm)}}$. In the $\eta \rightarrow 0^+$-limit, by assumption, $g \partial_{g} \ket{\Psi_{\eta}^{(\pm)}}$ is finite. Then, it is clear that $\ket{\Psi_{\eta}^{(\pm)}}$ is an eigenstate of the full Hamiltonian, completing the proof. 
+
+\end{proof}
+
+\blanky \\
+
+\paragraph{One-particle Green functions as a power series in the interaction}
+
+The Gell-Mann-Low theorem connects the eigenstates of the non-interacting system with those of the fully interacting one, with the aid of the interaction picture. The Heisenberg operators, appearing in the Green function, remain to be related to those in the corresponding interaction picture. \\
+
+To that end, consider the relationship between operators in the Heisenberg and interaction pictures,
+
+\begin{equation}
+    {\bf O}_{H}(t) = e^{i {\bf H} t} {\bf O}_{S} e^{-i {\bf H} t} = e^{i {\bf H} t} e^{-i {\bf H}_0 t} {\bf O}_{I} e^{i {\bf H}_0 t} e^{-i {\bf H} t}.
+\end{equation}
+
+Furthermore, the states in the interaction picture are given by 
+
+\begin{equation}
+    \ket{\Psi_I(t)} = e^{i{\bf H}_0 t} e^{-i {\bf H}t} \ket{\Psi_I(0)} = \mathcal{S}_{I}(t,0) \ket{\Psi_I(0)}.
+\end{equation}
+
+Then, 
+
+\begin{equation}
+    {\bf O}_{H}(t) = \mathcal{S}_{I}(0,t) {\bf O}_{I}(t) \mathcal{S}_{I}(t,0). 
+\end{equation}
+
+With these ingredients, the product of two Heisenberg operators, in the interaction picture, reads
+
+\begin{equation}
+    \begin{split}
+        {\bf O}_{H}(t) {\bf O}_{H}(t_1) =& \mathcal{S}_{I}(0,t) {\bf O}_{I}(t) \mathcal{S}_{I}(t,0)  \mathcal{S}_{I}(0,t_1) {\bf O}_{I}(t_1) \mathcal{S}_{I}(t_1,0) \\
+        &= \mathcal{S}_{I}(0,t) {\bf O}_{I}(t) \mathcal{S}_{I}(t,t_1) {\bf O}_{I}(t_1) \mathcal{S}_{I}(t_1,0).
+    \end{split}
+\end{equation}
+
+Then, the Green function in terms of interaction-picture operators reads
+
+\begin{equation}
+\begin{split}
+    i \mathfrak{G}(x; x') &= \bra{\Psi_H} \mathcal{T} [\psi_{H}(x) \psi^\dagger_{H}(x')] \ket{\Psi_H} \\
+    &= \frac{\bra{\Phi_0} \mathcal{S}_I(\infty, 0) \mathcal{T} [\mathcal{S}_I(0, t) \psi_{I}(x) \mathcal{S}_I(t, t') \psi_{I}(x') \mathcal{S}_I(t', 0) ] \mathcal{S}_I(0, -\infty)\ket{\Phi_0}}{\bra{\Phi_0} \mathcal{S}_I(\infty, 0)\mathcal{S}_I(0, -\infty)\ket{\Phi_0}},
+\end{split}
+\end{equation}
+
+where $x \equiv ({\bf x}, t, \sigma)$ for compactness. The $(\psi_H, \psi_H^\dagger)$-Heisenberg operators have been replaced by their interaction-picture conterparts, which simply evolve under the action of the unperturbed Hamiltonian ${\bf H}_0$. The ground state of the interaction problem $\ket{\Psi_0}$ has been replaced by the non-interacting one, $\ket{\Phi_0}$. Furthermore, since the evolution operations $\mathcal{S}$ form a semigroup, all evolution operators in the preceding equation can be combined into a single $\mathcal{S}$, for the time-ordering operator takes care of the proper time ordering anyhow, thus yielding 
+
+\begin{equation}
+\begin{split}
+     i \mathfrak{G}^{\sigma \sigma'}({\bf x}, t; {\bf x}', t') &= \frac{\bra{\Phi_0}  \mathcal{T} [\mathcal{S}_I(-\infty, \infty) \psi_{I \sigma}({\bf x}, t)\psi_{I \sigma'}({\bf x}', t')]\ket{\Phi_0}}{\bra{\Phi_0} \mathcal{S}_I(\infty, -\infty)\ket{\Phi_0}} \\
+     &= \sum_{n=0}^{\infty} \frac{1}{n!} (-i)^n \int_{-\infty}^{\infty} dt_1 \cdots \int_{-\infty}^{\infty} dt_n \blanky \frac{\bra{\Phi_0} \mathcal{T} [{\bf H}_{I}(t_1) \cdots {\bf H}_{I}(t_n) \psi_{I \sigma}({\bf x}, t)\psi_{I \sigma'}({\bf x}', t')]\ket{\Phi_0}}{\bra{\Phi_0} \mathcal{S}_I(\infty, -\infty)\ket{\Phi_0}},
+\end{split}
+\end{equation}
+
+where the one-particle Green function is now explicitly written as an expansion in powers of the perturbation ${\bf H}_I$. For this reformulation to be useful, a method is needed to mitigate taking expectation values of large numbers of operators in a non-interacting sytem. This procedure is systematized with the application of Wick's theorem and simplified with the aid of Feynmann diagrams. \\
+
+\paragraph{Wick's Theorem: Normal ordering and contractions}
+
 \clearpage
 
 \section{Linear Response Theory}
@@ -5330,5 +6437,7 @@ From \textbf{Advanced Quantum Condensed Matter Physics, One-Body, Many-Body and 
 
 
 
+\bibliography{citations.bib}
+\bibliographystyle{abbrv}
 \end{document}
 
