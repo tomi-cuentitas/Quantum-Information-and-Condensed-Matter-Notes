@@ -10,6 +10,8 @@
 \usepackage{multirow}
 \usepackage{ulem}
 \usepackage{cancel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tcolorbox}
 \usepackage{xcolor}
 \usepackage{relsize}
 \usepackage{calligra, unicode-math}
@@ -37,6 +39,7 @@
 \newtheorem{df}{Definition}
 \newtheorem{lemma}{Lemma}
 \newtheorem{theo}{Theorem}
+\newtheorem{corr}{Corollary}
 
 % Deprecated Set Symbols
 \newcommand{\bC}{\bb{C}\PackageWarning{hwsymb}{\noexpand\bC is deprecated, use \noexpand\C instead}}
@@ -62,11 +65,30 @@
 \newcommand{\summation}{\sum_{j=1}^{L-1}}
 \newcommand{\Hamiltonian}{{\bf H}}
 
-\newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
+\makeatletter
+\newcommand{\exterior}[1]{\mathop{\mathpalette\exterior@{#1}}}
+\newcommand{\exterior@}[2]{%
+  % raise to the baseline
+  \raisebox{\depth}{%
+  % select the script size relative to the current font
+  \fontsize{\sf@size}{0}%
+  % nullify the math surround
+  \m@th
+  % typeset \bigwedge, but using \textstyle in displays
+  $\ifx#1\displaystyle\textstyle\else#1\fi\bigwedge$}%
+  % the exponent, a bit nearer to the symbol
+  ^{\mspace{-2mu}#2}%
+  % remove the \scriptspace
+  \kern-\scriptspace
+}
+\makeatother
 
+\newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
+\newcommand{\wedgeprod}{\mathsans{\mupLambda}}
 \newcommand{\ctwo}{\mathds{C}^2}
 \newcommand{\xmeasure}{\int_{\R^3} d\x}
 \newcommand{\spinmeasure}{\sum_{\sigma_j \in \ctwo}}
+\definecolor{my-blue}{cmyk}{0.80, 0.13, 0.14, 0.04, 1.00}
 \newcommand{\M}{\mathcal{M}}
 \newcommand{\transpose}{^{\textnormal{T}}}
 \newcommand{\Rb}{{\bf R}}
