@@ -38,8 +38,117 @@
 % New enviroments
 \newtheorem{df}{Definition}
 \newtheorem{lemma}{Lemma}
+\newtheorem*{remark}{Remark}
 \newtheorem{theo}{Theorem}
 \newtheorem{corr}{Corollary}
+
+\usepackage{ifmtarg}% http://ctan.org/pkg/ifmtarg
+\usepackage{xifthen}% http://ctan.org/pkg/xifthen
+\usepackage{environ}% http://ctan.org/pkg/environ
+\usepackage{multido}% http://ctan.org/pkg/multido
+\usepackage{lipsum}% http://ctan.org/pkg/lipsum
+
+\makeatletter%
+\newcommand{\theoremhang}{% top theorem decoration
+  \begingroup%
+  \setlength{\unitlength}{.005\linewidth}% \linewidth/200
+    \begin{picture}(0,0)(1.5,0)%
+      \linethickness{0.45pt} \color{black!50}%
+      \put(-3,2){\line(1,0){206}}% Top line
+      \multido{\iA=2+-1,\iB=50+-10}{5}{% Top hangs
+        \color{black!\iB}%
+        \put(-3,\iA){\line(0,-1){1}}% Top left hang
+        \put(203,\iA){\line(0,-1){1}}% Top right hang
+      }%
+    \end{picture}%
+  \endgroup%
+}%
+\newcommand{\theoremhung}{% bottom theorem decoration
+  \nobreak
+  \begingroup%
+    \setlength{\unitlength}{.005\linewidth}% \linewidth/200
+    \begin{picture}(0,0)(1.5,0)%
+      \linethickness{0.45pt} \color{black!50}%
+      \put(-3,0){\line(1,0){206}}% Bottom line
+      \multido{\iA=0+1,\iB=50+-10}{5}{% Bottom hangs
+        \color{black!\iB}%
+        \put(-3,\iA){\line(0,1){1}}% Bottom left hang
+        \put(203,\iA){\line(0,1){1}}% Bottom right hang
+      }%
+    \end{picture}%
+  \endgroup%
+}%
+
+\newcounter{theorem}
+\renewcommand{\thetheorem}{\arabic{theorem}}
+\NewEnviron{theorem}[1][]{%
+    \par\noindent\theoremhang\par\nobreak\noindent%\addvspace{-.5ex}
+    \refstepcounter{theorem}\postdisplaypenalty=10000 %
+    {\sffamily\bfseries\upshape Theorem \thetheorem\@ifnotmtarg{#1}{\ (#1)}}\ \ \itshape\ignorespaces%
+    \BODY % Typeset theorem body/content
+    \par\addvspace{-1ex}\nobreak\noindent\theoremhung\par\addvspace{.4ex}%
+}
+
+\usepackage[framemethod=default,
+skipabove=\topskip,
+skipbelow=\topskip,
+]{mdframed}
+\usepackage{lipsum}
+
+\newcounter{theor}[section]
+\newcommand*\Mydefinitionheader[1]{%
+  \@afterindentfalse
+   {\parindent \z@
+         \setlength{\parfillskip}{\z@ plus 1fil}%
+         \mdraggedtitle\nobreak%
+         \makebox[\linewidth][l]{%
+          \hspace*{-1\mdf@innerleftmargin@length}%
+          \rlap{\color{white}%
+               \hspace*{-1\mdf@middlelinewidth@length}%
+               \rule[\mdf@middlelinewidth@length]%
+                    {\dimexpr\linewidth+1\mdf@innerleftmargin@length%
+                      +\mdf@innerrightmargin@length
+                      +2\mdf@middlelinewidth@length\relax}%
+                     {\dimexpr\ht\strutbox+.3333em
+                        \relax}%
+               }%
+          \rlap{\color{blue!20}%
+                \rule{\dimexpr\linewidth+\mdf@innerleftmargin@length%
+                        +\mdf@innerrightmargin@length\relax}%
+                     {\mdf@middlelinewidth@length}}%
+          \hspace*{-1\mdf@middlelinewidth@length}%
+          \tikz[remember picture,baseline]\node[,draw = none, text = black,
+                     fill = blue!20,]
+                     {\mdf@frametitlefont\strut Definition~\thedef#1};\relax%
+         }%
+    \par\kern.5\baselineskip}%
+  \@afterheading}
+
+\newenvironment{theor}[1][]{%
+   \let\mdframedtitleenv\Mydefinitionheader%
+   \stepcounter{theor}%
+   \ifstrempty{#1}{\mdfsetup{frametitle={\strut}}}{\mdfsetup{frametitle={:~#1}}}%
+   \begin{mdframed}[innertopmargin=0pt,linecolor=blue!20,linewidth=2pt,topline=false,]%
+   }{\end{mdframed}}
+   
+  \newtheoremstyle{mydef}
+{\topsep}{\topsep}%
+{}{}%
+{\bfseries}{}
+{\newline}
+{%
+  \rule{\textwidth}{0.4pt}\\*%
+  \thmname{#1}~\thmnumber{#2}\thmnote{\ -\ #3}.\\*[-1.5ex]%
+  \rule{\textwidth}{0.4pt}}%
+
+\theoremstyle{mydef}
+\newtheorem{definition}{Definition}
+
+\usepackage{mathtools}
+\usepackage{pst-node, auto-pst-pdf}
+
+\DeclarePairedDelimiterX\Dirbraket[3]{\langle}{\rangle}%
+{#1\,\delimsize\vert\,\mathopen{}#2\,\delimsize\vert\,\mathopen{}#3} 
 
 % Deprecated Set Symbols
 \newcommand{\bC}{\bb{C}\PackageWarning{hwsymb}{\noexpand\bC is deprecated, use \noexpand\C instead}}
