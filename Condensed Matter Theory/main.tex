@@ -4,6 +4,8 @@
 \date{\today}
 \title{Theory \& Notes}
 
+\usepackage{float}
+
 \graphicspath{{./media/}}
 
 \begin{document} \maketitle
@@ -819,9 +821,9 @@ The general two-point correlator is similar and is given by
 
 which measures how likely $\sigma_i$ and $\sigma_j$ are, on average, to point in the same direction. In any ferromagnetic system, the average will be positive for a pair of neighbouring spins since the Boltzmann weight is biased towards parallel, ie. aligned, values. Surely, if a spin can influence its neighbours to be parallel to it, they in turn will act similarly on their own neighbours, therefore long-range correlations may be present. In addition, if there is an external magnetic field present, it will enhance this correlation further. Naturally, if $j>i$ it holds that 
 
-$$
-\sigma_j \sigma_i = \sigma_i \sigma_j = \sigma_i \sigma_{i+1} \sigma_{i+2} \cdots \sigma_{j-1} \sigma_j = \mathfrak{t}_{i}\mathfrak{t}_{i+1}\cdots\mathfrak{t}_{j-1} \textnormal{ where } \mathfrak{t}_i = \sigma_{i+1}, 
-$$
+\begin{equation*}
+    \sigma_j \sigma_i = \sigma_i \sigma_j = \sigma_i \sigma_{i+1} \sigma_{i+2} \cdots \sigma_{j-1} \sigma_j = \mathfrak{t}_{i}\mathfrak{t}_{i+1}\cdots\mathfrak{t}_{j-1} \textnormal{ where } \mathfrak{t}_i = \sigma_{i+1}, 
+\end{equation*}
 
 then 
 
@@ -1251,14 +1253,11 @@ The algebraic Bethe ansatz' basic tool is the lax operator $\bm{\mathcal{L}}$, w
 \begin{equation}
     \begin{array}{c}
          \bm{\mathcal{L}} : \mathds{V}_n \otimes \mathds{V}_a \rightarrow \mathds{V}_n \otimes \mathds{V}_a \\
-         \\
          \bm{\mathcal{L}}_{n, a} = u(\mathds{1}_n \otimes \mathds{1}_a) + i \sum_{\alpha} \spin_n^\alpha \otimes \sigma_{a}^\alpha, \blanky \forall n \leq N \\
          %= u^{\mu} {S}_{\nu} \sigma^{\nu} \textnormal{ where $u^{\mu} = (u, i,i,i)$}
     \end{array} \begin{array}{c}
          \textnormal{ where $\mathds{1}_n$ and $\spin_n^\alpha$ act on $\mathds{V}_n $} \\
-         \\
-         \textnormal{ while $\mathds{1}_a$ and $\spin_a^\alpha$ act upon $\mathds{V}_a$ and where the}\\
-         \\
+         \textnormal{ while $\mathds{1}_a$ and $\spin_a^\alpha$ act upon $\mathds{V}_a$ and where the}       \\
          \textnormal{ complex-valued $u$-parameter is the spectral parameter.}
     \end{array}
     \label{lax operator}
@@ -1269,7 +1268,7 @@ The algebraic Bethe ansatz' basic tool is the lax operator $\bm{\mathcal{L}}$, w
 
 \begin{equation}
     \begin{split}
-    \bm{\mathcal{L}}_{n, a} &= u(\mathds{1}_n \otimes \mathds{1}_a) + i \sum_{\alpha} \spin_n^\alpha \otimes \sigma_{a}^\alpha \\
+    \bm{\mathcal{L}}_{n, a} &= u(\mathds{1}_n \otimes \mathds{1}_a) + i \sum_{\alpha} \spin_n^\alpha \otimes \sigma_{a}^\alpha 
     %&= u \left(\begin{array}{cc}
     %    \mathds{1}_n & 0  \\
     %    0 & \mathds{1}_a 
@@ -1283,7 +1282,7 @@ The algebraic Bethe ansatz' basic tool is the lax operator $\bm{\mathcal{L}}$, w
     %    1 & 0  \\
     %    0 & -1
     %\end{array}\right)_a \\
-    &= \left(\begin{array}{cc}
+    = \left(\begin{array}{cc}
        u \mathds{1}_n + i \spin^{z}_{n} & i \spin^{x}_{n} + \spin^{y}_{n} \\
        i \spin^{x}_{n} - \spin^{y}_{n}  & u \mathds{1}_n - i \spin^{z}_{n}
     \end{array}\right)_a = \left(\begin{array}{cc}
@@ -1322,12 +1321,13 @@ which is a $2 \times 2$-matrix in the auxiliary space $\mathds{V}_a$ and the mat
     &= \left(\begin{array}{cc}
        \mathds{1}_n + \sigma^{z}_{n} &  \sigma^{x}_{n} - i\sigma^{y}_{n} \\
        \sigma^{x}_{n} + i\sigma^{y}_{n}  & \mathds{1}_n - \sigma^{z}_{n}
-    \end{array}\right)_a = \left(\begin{array}{cccc}
-        1 & 0 & 0 & 0   \\
-        0 & 0 & 1 & 0   \\
-        0 & 1 & 0 & 0   \\
-        0 & 0 & 0 & 1
-    \end{array}\right)
+    \end{array}\right)_a = 
+    %\left(\begin{array}{cccc}
+    %    1 & 0 & 0 & 0   \\
+    %    0 & 0 & 1 & 0   \\
+    %    0 & 1 & 0 & 0   \\
+    %    0 & 0 & 0 & 1
+    %\end{array}\right)
     \end{split}
 \end{equation}} acts on both the physical and auxiliary systems.
 \end{df}
@@ -1374,8 +1374,7 @@ The permutation operator indeed permutes the factors in the tensor product the f
 
 \begin{equation}
     \bm{\mathcal{P}}_{n, a} (\x \otimes {\bf y} ) = {\bf y} \otimes \x \textnormal{ and } \bm{\mathcal{P}}_{n, a} ( {\bf y} \otimes \x) = \x \otimes {\bf y}.
-\end{equation}}
-. 
+\end{equation}} 
     \end{array}
 \end{equation*}
 
@@ -2269,7 +2268,7 @@ The XXZ-Heisenberg chain is an important model to describe real material and is 
 
 \blanky \\
 
-\paragraph{\textbf{Ferromagnetic phase: }}
+\subsubsection{\textbf{Ferromagnetic phase: }}
 
 Consider a Heisenberg XXZ chain supplemented by and external magnetic field. For $\Delta < -1$, the XXZ-chain is in the ferromagnetic Ising phase: the ground state is the saturated state, with all its spins aligned in either the $z$-direction or $-z$-direction. This entails that the classical ground state has magnetization ${\bf M}^z = \pm \frac{N}{2}$, where $N$ is the number of lattice sites. This is a phase with broken symmetry since the ground state does not exhibit the discrete symmetry of spin reflection $\spin^z \rightarrow -\spin^z$, under which the Hamiltonian is invariant. Furthermore, when an external magnetic field in the $z$-axis is considered, and additional term is included into the Hamiltonian, namely a Zeeman interaction 
 
@@ -2302,7 +2301,7 @@ Two interesting consequences of \cref{XXZ-spectrum} quickly arise, which can be 
 
 \blanky \\
 
-\paragraph{\textbf{Néel phase:}}
+\subsubsection{\textbf{Néel phase:}}
 
 For $\Delta > +1$, the XXZ-chain is in the antiferromagnetic Ising or Néel phase with, in the thermodynamic limit, broken symmetry and one from 2 degenerate ground states, the $S=\frac{1}{2}$ remnants of the classical Néel states. The spatial period is $2a$, and the states are described in the reduced Brillouin zone with wave vectors $0 \leq q \leq \frac{\pi}{a}$. The ground states have zero magnetisation but finite sublattice magnetization, 
 
@@ -2331,7 +2330,7 @@ with $\epsilon(k) = \frac{\Delta}{2} + \cos 2k$, where $q$ is the total momentum
 
 \clearpage
 
-\paragraph{\textbf{XY phase}}
+\subsubsection{\textbf{XY phase}}
 
 For $-1 < \Delta < 1$ and zero external field, the XXZ-chain undergoes an XY phase, characterized by uniaxial symmetry of the easy-plane type and a gapless excitation continuum. Whereas the full analysis of this phase for general $\Delta$, requires the use of bosonization and Bethe ansatz, a somewhat simpler approach is based on the mapping of $S = \frac{1}{2}$ spin operators in 1D to spinless fermions via the non-local Jordan Wigner transformations, wherein the mapping reads:
 
@@ -2350,7 +2349,7 @@ For general $\Delta$, the XXZ-chain is thus equivalent to an interacting 1D ferm
 
 \textbf{XY-Model}
 
-\textit{\underline{Setting of the problem and the Jordan-Wigner Transformation.}} \\
+\paragraph{\textit{\underline{Setting of the problem and the Jordan-Wigner Transformation.}}} 
 
 The XY-Heisenberg chain Hamiltonian is given by 
 
@@ -2477,7 +2476,7 @@ Then, two possible Hamiltonians arise, depending on which boundary condition has
         {\bf H}_{\gamma} = \frac{1}{2} \sum_{j = 1}^{N-1} \bigg[ {\bf c}_i^\dagger {\bf c}_{i+1} + {\bf c}_{i+1}^\dagger {\bf c}_{i} + \gamma ( {\bf c}_i^\dagger {\bf c}_{i+1}^\dagger +  {\bf c}_{i+1} {\bf c}_{i})\bigg] - \frac{1}{2} \bigg[{\bf c}_N^\dagger {\bf c}_1 + {\bf c}_1^\dagger {\bf c}_N + \gamma {\bf c}_N^\dagger {\bf c}_1^\dagger + \gamma {\bf c}_1 {\bf c}_N\bigg] (e^{i\pi \mathfrak{F}} + 1),
     \end{equation}
     
-    in which case the Hamiltonian, written in terms of the Fermi operators $({\bf c}, {\bf c}^\dagger)$, no longer has a simple cyclic stricture. For large-enough systems, the last term may be neglected, in which case the problem is known as "$c$-cyclic". Otherwise, as it stands now, the problem is called the "$a$-cyclic" problem. Both problems can be analytically solved, though the former is simple. 
+    in which case the Hamiltonian, written in terms of the Fermi operators $({\bf c}, {\bf c}^\dagger)$, no longer has a simple cyclic stricture. For large-enough systems, the last term may be neglected, in which case the problem is known as "$c$-cyclic". Otherwise, as it stands now, the problem is called the "$a$-cyclic" problem. Both problems can be analytically solved, though the former is simple. \\
 \end{itemize}
 
 \begin{tcolorbox}[colback = yellow, title = Physical Context]
@@ -2487,7 +2486,7 @@ In effect,
 
 \begin{equation}
     \begin{split}
-        \spin_i^z = \frac{1}{2} [{\bf a}_i^\dagger, {\bf a}_i] = {\bf a}_i^\dagger {\bf a}_i - \frac{1}{2} = {\bf c}_i^\dagger {\bf c}_i - \frac{1}{2}, \\
+        \spin_i^z = \frac{1}{2} [{\bf a}_i^\dagger, {\bf a}_i] = {\bf a}_i^\dagger {\bf a}_i - \frac{1}{2} = {\bf c}_i^\dagger {\bf c}_i - \frac{1}{2}, \quad 
         \spin^z = \sum_{i} \spin_i^z = \sum_{i} {\bf c}_i^\dagger {\bf c}_i - \frac{N}{2}
     \end{split}
 \end{equation}
@@ -2502,7 +2501,7 @@ spins.
 
 \clearpage
 
-\textit{\underline{Ground State Energy, Elementary Excitations and Free Energy. }}
+\paragraph{\textit{\underline{Ground State Energy, Elementary Excitations and Free Energy. }}} 
 
 \begin{itemize}
     \item Antiferromagnetic case and anisotropic general case:
@@ -2634,16 +2633,18 @@ where $k = \frac{2\pi m}{N}$ and $m = -\frac{N}{2}, \cdots, 0, 1, \cdots, \frac{
 
 \begin{figure}
     \centering
-    \includegraphics[scale = .5, left]{figs/XY_HH_model/XY_S=0.5_HH_model_energies.png}
-    \caption{Energies of the elementary excitations in the $\textnormal{XY}_{S=\frac{1}{2}}$ Heisenberg model, as function of the wave vector for three different degrees of anisotropy. Retrieved from \cite{LIEB1961407}}
-    \label{fig:XY_S=0.5_HH_model_energies}
+    \subfloat[\centering ]{{\includegraphics[scale=0.45]{figs/XY_HH_model/XY_S=0.5_HH_model_energies.png}}}
+    \qquad
+    \subfloat[\centering ]{{\includegraphics[scale=0.45]{figs/XY_HH_model/XY_excitation_spectrum.png}}}
+    \caption{Fig. A: Energies of the elementary excitations in the $\textnormal{XY}_{S=\frac{1}{2}}$ Heisenberg model, as function of the wave vector for three different degrees of anisotropy. Retrieved from \cite{LIEB1961407}. Fig. B: Excitation spectra for the XY model for different anisotropy values $\gamma$. The \textcolor{red}{red} curve corresponds to the isotropic case $\gamma = 0$ - where the spectrum is gapless - and the \textcolor{blue}{blue} curve corresponds to the anisotropic case of $\gamma = 0.2$, where a gap appears.}
+    \label{fig:XY_S=0.5_HH_model_energies} 
 \end{figure}
 
 Consider $N$ such that $\frac{N}{4} \notin \mathds{Z}$, hence $\Lambda_k \neq 0$. The sign of $\Lambda_k$ is arbitrary and can be taken to be positive. This corresponds to a particle-hole picture for the $\eta$-particles, where the ground states has no elementary fermions and the fermion excitations, both above and below the Fermi surface,\footnote{\begin{tcolorbox}[colback = yellow, title = Physical Context]
 
 The Fermi surface consists of two points, $k = \frac{\pi}{2}$. The alternate picture in which all excitations are particles, which in the isotropic case is an up-spin $\ket{\uparrow}$, can be obtained by letting $\Lambda_k$ have the sign of $\Lambda_k$. The Fermi sea would then be defined by $|k| > \frac{\pi}{2}.$ However, the particle-hole picture is preferred. 
 
-\end{tcolorbox}} have positive energies. The energy excitations for this model can be visualized in \cref{fig:XY_S=0.5_HH_model_energies}. Only in the isotropic case $(\gamma = 0)$ there is no energy gap.\\
+\end{tcolorbox}} have positive energies. The energy excitations for this model can be visualized in \cref{fig:XY_S=0.5_HH_model_energies}-(a). Only in the isotropic case $(\gamma = 0)$ there is no energy gap.\\
 
 The ground state is defined as the state with no elementary excitations, thus 
 
@@ -2673,16 +2674,7 @@ In the thermodynamic limit, the preceding sum can be replaced by an integral, yi
     \end{split} 
 \end{equation} 
 
-where $\mathcal{E}(\cdot)$ is one of the complete elliptic integrals. The $\frac{E_0}{N}$-quantity is analytic and goes smoothly between the $(\gamma=0)$- and $(\gamma=1)$-limiting cases. \\
-
-\begin{figure}
-    \centering
-    \includegraphics[scale = .5, left]{figs/XY_HH_model/XY_excitation_spectrum.png}
-    \caption{Excitation spectra for the XY model for different anisotropy values $\gamma$. The \textcolor{red}{red} curve corresponds to the isotropic case, $\gamma=0$ -where the spectrum is gapless- and the \textcolor{blue}{blue} curve corresponds to the anisotropic case of $\gamma = 0.2$, where a gap appears. }
-    \label{fig:XY_modeL_excitation_spectra}
-\end{figure}
-
-In the thermodynamic limit $N \rightarrow \infty$, there are always gapless excitations near $k = \pm \frac{\pi}{2}$. These have a dispersion, $k = \pm \frac{\pi}{2} + q$, $\Lambda_k = |\sin q| \approx q$ as $q \rightarrow 0$. In \cref{fig:XY_modeL_excitation_spectra} plots of the excitation spectra are shown for different values of $\gamma$. \\
+where $\mathcal{E}(\cdot)$ is one of the complete elliptic integrals. The $\frac{E_0}{N}$-quantity is analytic and goes smoothly between the $(\gamma=0)$- and $(\gamma=1)$-limiting cases. In the thermodynamic limit $N \rightarrow \infty$, there are always gapless excitations near $k = \pm \frac{\pi}{2}$. These have a dispersion, $k = \pm \frac{\pi}{2} + q$, $\Lambda_k = |\sin q| \approx q$ as $q \rightarrow 0$. In \cref{fig:XY_S=0.5_HH_model_energies}-(b) plots of the excitation spectra are shown for different values of $\gamma$. \\
 
 \begin{tcolorbox}[colback = yellow, title = Physical Context]
 
@@ -2728,11 +2720,52 @@ where $\alpha = \log 2$. Neither case exhibits any singular behaviour as a funct
     \item Antiferromagnetic case, isotropic case:
 \end{itemize}
 
-In the isotropic case, the mathematical treatment is simpler than that of the general case. Using translational invariance, the eigenvectors and eigenvalues of the ${\mathcal{A}}$-matrix are 
+In the isotropic case, the mathematical treatment is simpler than that of the general anisotropic case. Since some of the eigenenergies will be negative, it is convenient to introduce an additional transformation, which reads
+
+\begin{equation} 
+ \begin{split}
+      \begin{array}{cc}
+         \bm{\zeta}_k = \eta_k & \textnormal{ if } \Lambda_{k} \geq 0,\\
+         \bm{\zeta}_k = -\eta_k & \textnormal{ if } \Lambda_{k} < 0.
+    \end{array} \Rightarrow {\bf H}_c =& \sum_{k, \Lambda_k \geq 0} \Lambda_k \bm{\zeta}_k^\dagger \bm{\zeta}_k + \sum_{k, \Lambda_k < 0} \Lambda_k \bm{\zeta}_k\bm{\zeta}_k^\dagger \\
+    &= \sum_{k} |\Lambda_k| \bm{\zeta}_k^\dagger \bm{\zeta}_k - \sum_{k, \Lambda_k < 0} |\Lambda_k| \\
+    &= \sum_{k} |\Lambda_k| \bigg( \bm{\zeta}_k^\dagger \bm{\zeta}_k - \frac{1}{2} \bigg),
+ \end{split}
+\end{equation}
+
+where $\Tr {\bf A} = \sum_{k} \Lambda_k = 0$ was used. Here, the $\bm{\zeta}_k$-particles are fermionic in nature, thus the ground state satisfies $\bm{\zeta}_k\ket{0} = 0, \quad \forall k$, with the $\bm{\zeta}_k^\dagger$-operator generating elementary fermionic excitations with $|Lambda_k|$-energy above the ground state. Using translational invariance, the eigenvectors and eigenvalues of the ${\mathcal{A}}$-matrix are 
 
 \begin{equation}
     \phi_{kj} = \frac{1}{\sqrt{N}} e^{ikj}, \blanky \Lambda_k = \cos k, \textnormal{ with } k = \frac{2\pi n}{N} \textnormal{ for } -\frac{N}{2} \leq n \leq \frac{N}{2} - 1.
 \end{equation}
+
+Hence, in the thermodynamic limit $N\rightarrow \infty$ there are always gapless excitations near the Fermi sphere, $k = \pm \frac{\pi}{2}$. These have a dispersion $k = \pm \frac{\pi}{2} + q$ with $\epsilon(k) = |\sin q| \approx |q|$ as $q \rightarrow 0$. The ground state energy per spin becomes 
+
+\begin{equation*}
+    \frac{U}{N} = - \frac{1}{N} \sum_{k} \frac{|\Lambda_k|}{2} \rightarrow -\int_{-\pi}^{\pi} \frac{dk}{4\pi} |\cos k| = - \frac{1}{\pi}.
+\end{equation*}
+
+Consider the $(N \in 2\mathds{N} \blanky \land \blanky \frac{N}{4} \notin \mathds{Z})$-case, so that the ground state is non-degenerate. In said case, the ground state of ${\bf H}_c$ is an exact eigenstate of ${\bf H}$ with the same eigenvalue. At any rate, the ground state is - at most - four-times degenerate. Then, the ground state spin properties read 
+
+\begin{equation}
+    \begin{split}
+        &\spin^z = \sum_{i} {\bf c}_i^\dagger {\bf c}_i - \frac{N}{2} = \sum_{k} \eta_k^\dagger \eta_k - \frac{N}{2} = \sum_{k, \Lambda_k \geq 0} \bm{\zeta}_k^\dagger \bm{\zeta}_k + \sum_{k, \Lambda_k < 0} \bm{\zeta}_k\bm{\zeta}_k^\dagger - \frac{N}{2} \\
+        &= \sum_{k, \Lambda_k \geq 0} \bm{\zeta}_k^\dagger \bm{\zeta}_k + \sum_{k, \Lambda_k < 0} (1- \bm{\zeta}_k^\dagger\bm{\zeta}_k) - \frac{N}{2} \\
+        &= \sum_{k} \textnormal{sgn}(\Lambda_k) \bm{\zeta}_k^\dagger\bm{\zeta}_k + \sum_{k, \Lambda_k < 0} 1 - \frac{N}{2}
+    \end{split}
+\end{equation}
+
+Thus, for excitations with $|k| < \frac{\pi}{2}$ carry $\spin^z = 1$ and for excitations with $|k| > \frac{\pi}{2}$ carry $\spin^z = -1$ 
+
+\begin{equation}
+    \begin{split}
+        \Rightarrow \begin{array}{cc}
+             \textnormal{ The total spin of the ground state is } \spin^z \ket{\Omega} = \bigg(\sum_{k, \Lambda_k < 0} 1-\frac{N}{2}\bigg) \ket{\Omega} = 0,
+        \end{array} 
+    \end{split}
+\end{equation}
+
+ie. the ground state is non-degenerate and carries zero total spin, as in the full Heisenberg model. \\
 
 \begin{itemize}
     \item Ferromagnetic case
@@ -2741,11 +2774,21 @@ In the isotropic case, the mathematical treatment is simpler than that of the ge
 The previous results can be trivially generalized to the case of ferromagnetic coupling, wherein the Hamiltonian reads 
 
 \begin{equation}
-    {\bf H}_{\textnormal{ferro}} = - {\bf H} \approx 
+    {\bf H}_{\textnormal{ferro}} = - {\bf H} \approx -{\bf H}_c = \sum_{k} -|\Lambda_k| \bigg( \bm{\zeta}_k^\dagger \bm{\zeta}_k - \frac{1}{2} \bigg) = \sum_{k} |\Lambda_k| \bigg( \bm{\zeta}_k\bm{\zeta}_k^\dagger - \frac{1}{2} \bigg).
 \end{equation}
 
+Notice that the new, ferromagnetic, ground state now satisfies $\bm{\zeta}_k^\dagger \ket{0_F} = 0, \quad \forall k$. Hence, the ferromagnetic ground state can be obtained from the antiferromagnetic ground state by turning on all excitations, and the ferromagnetic excitations are obtained by removing the antiferromagnetic ones. In particular, the ground state energy and the excitation spectrum are the same as in the ferromagnetic case. The ground state is still non-degenerate and has zero total spin. 
 
-\underline{Short- and long-range order in the Ground state}
+\begin{equation}
+    \begin{split}
+        \spin^z \ket{0_F}=& \bigg( \sum_{k} \textnormal{sgn}(\Lambda_k) \bm{\zeta}_k^\dagger\bm{\zeta}_k + \sum_{k, \Lambda_k < 0} 1 - \frac{N}{2}\bigg) \ket{0_F} = \bigg( \sum_{k} \textnormal{sgn}(\Lambda_k) \bm{\zeta}_k^\dagger\bm{\zeta}_k + \sum_{k, \Lambda_k < 0} 1 - \frac{N}{2} \bigg)\ket{0_F} \\
+        &= \bigg(\sum_{k, \Lambda_k \geq 0} 1 - \frac{N}{2}\ket{0_F} \bigg) = 0.
+    \end{split}
+\end{equation}
+
+This is in clear contrast to the full ferromagnetic Heisenberg model, where the ground state is greatly degenerate, with one of the ground states carrying $\spin^z = \frac{N}{2}$. \\
+
+\paragraph{\textit{\underline{Short- and long-range order in the Ground state}}} 
 
 The long-range order for the Heisenberg model is often defined in terms of two sublattices\footnote{In the case of a linear one-dimensional chain, these sublattices may be defined to be, one corresponding to all even sites and the other one corresponding to all odd sites.}. It is taken to be the preponderance of spins up to spins down on one of the sublattices or viceversa.
 
@@ -3190,6 +3233,7 @@ ie. the energy is a monotonically increasing function of the total spin. Now, co
 For the ferromagnetic Heisenberg chains, a similar result can be proved. 
 
 \begin{corr}
+\label{Ferromagnetic_Marshall_theo}
 For the ferromagnetic model with non-positive charges, 
 
 $$
@@ -3367,12 +3411,12 @@ which then implies that $\bra{\Psi_0} \ket{\Psi_k} = - \bra{\Psi_0} \ket{\Psi_k}
 
 \begin{equation}
 \begin{split}
-     &\mathcal{O}^{k-1} \spin^x_n \mathcal{O}^{k} = \cos kn \spin_n^x + \sin kn \spin_n^y  \\
-     &\mathcal{O}^{k-1} \spin^y_n \mathcal{O}^{k} = \cos kn \spin_n^y - \sin kn \spin_n^x  \\
-     &\mathcal{O}^{k-1} \spin^z_n \mathcal{O}^{k} = \spin^z_n \\
-     \Rightarrow \bra{\Psi_k} {{\bf H}} \ket{\Psi_k} = & \bra{\Psi_0} \mathcal{O}^{k-1} {{\bf H}} \mathcal{O}^{k} \ket{\Psi_0} = \bra{\Psi_0} \mathcal{O}^{k-1} {{\bf H}} \mathcal{O}^{k} \ket{\Psi_0} \\
+     \mathcal{O}^{k-1} \spin^x_n \mathcal{O}^{k} = \cos kn \spin_n^x + \sin kn \spin_n^y  \\
+     \mathcal{O}^{k-1} \spin^y_n \mathcal{O}^{k} = \cos kn \spin_n^y - \sin kn \spin_n^x  \\
+     \mathcal{O}^{k-1} \spin^z_n \mathcal{O}^{k} = \spin^z_n \Rightarrow \bra{\Psi_k} {{\bf H}} \ket{\Psi_k} =& \bra{\Psi_0} \mathcal{O}^{k-1} {{\bf H}} \mathcal{O}^{k} \ket{\Psi_0} = \bra{\Psi_0} \mathcal{O}^{k-1} {{\bf H}} \mathcal{O}^{k} \ket{\Psi_0} \\
      &= \bra{\Psi_0} \mathcal{O}^{k-1} \bigg( \frac{J}{2} \sum_{j \in \Lambda} \bigg(\spin_j^x \spin_{j+1}^x + \spin_j^y \spin_{j+1}^y + \spin_j^z \spin_{j+1}^z \bigg) \bigg) \mathcal{O}^{k} \ket{\Psi_0} \\
-     &= E_0 + \bra{\Psi_0} [\cos k - 1] \sum_{j=1}^N (\spin_j^x \spin_{j+1}^x + \spin_j^y \spin_{j+1}^y) + \sin k \sum_{j=1}^N (\spin_j^x \spin_{j+1}^y - \spin_j^y \spin_{j+1}^x) \ket{\Psi_0}, \\
+     &= E_0 + \bra{\Psi_0} [\cos k - 1] \sum_{j=1}^N (\spin_j^x \spin_{j+1}^x + \spin_j^y \spin_{j+1}^y) + \\
+     \blnky \blanky \blanky \blanky \sin k \sum_{j=1}^N (\spin_j^x \spin_{j+1}^y - \spin_j^y \spin_{j+1}^x) \ket{\Psi_0}, 
 \end{split} 
 \end{equation}
 
@@ -4021,7 +4065,7 @@ Then, consider \cref{long_range_infinite_chi_Exercise_1}
         \frac{\langle \spin^z_{\bf q} \spin^z_{-{\bf q}} \rangle}{N} \geq {T}\chi^{zz}({\bf q}, \omega) \Rightarrow& \blanky
         e^{-\beta {\bf H}}\frac{\langle \spin^z_{\bf q} \spin^z_{-{\bf q}} \rangle}{N} \geq e^{-\beta {\bf H}}{T}\chi^{zz}({\bf q}, \omega) 
         \\
-        &\Rightarrow\frac{1}{\mathcal{Z}}\Tr \bigg[e^{-\beta {\bf H}}\frac{\langle \spin^z_{\bf q} \spin^z_{-{\bf q}} \rangle}{N}\bigg] \geq \frac{1}{\mathcal{Z}}\Tr \bigg[ e^{-\beta {\bf H}}\bigg{T}\chi^{zz}({\bf q}, \omega)\bigg]\\
+        &\Rightarrow\frac{1}{\mathcal{Z}}\Tr \bigg[e^{-\beta {\bf H}}\frac{\langle \spin^z_{\bf q} \spin^z_{-{\bf q}} \rangle}{N}\bigg] \geq \frac{1}{\mathcal{Z}}\Tr \bigg[ e^{-\beta {\bf H}}\bigg{T}\chi^{zz}({\bf q}, \omega)\bigg]\\ 
         %& \Rightarrow \lim_{h \rightarrow 0^+} \frac{1}{\mathcal{Z}}\Tr \bigg[e^{-\beta {\bf H}}\frac{\langle \spin^z_{\bf q} \spin^z_{-{\bf q}} \rangle}{N}\bigg] \geq \lim_{h \rightarrow 0^+} {T}\chi^{zz}({\bf q}, \omega) \cancelto{1}{\frac{1}{\mathcal{Z}}\Tr \bigg[e^{-\beta {\bf H}}\bigg]} \\
         & \Rightarrow \lim_{N \rightarrow \infty}\lim_{h \rightarrow 0^+} \frac{1}{\mathcal{Z}}\Tr \bigg[\frac{\langle \spin^z_{\bf q} \spin^z_{-{\bf q}} \rangle}{N}\bigg] \geq \lim_{N \rightarrow \infty} \lim_{h \rightarrow 0^+} T \chi^{zz}({\bf q}, \omega) \\
         & \Rightarrow \lim_{h \rightarrow 0^+} \frac{S^{zz}({\bf q})}{N} \geq \lim_{N \rightarrow \infty} \lim_{h \rightarrow 0^+} T \chi^{zz}({\bf q}, \omega)
@@ -4556,8 +4600,6 @@ However, the existence of an energy gap $\Delta^{\textnormal{SMA}}$ in the singl
 
 does not imply the existence of a true gap for the exact eigenergies $E_{\alpha}$. \\
 
-\clearpage
-
 \paragraph{\textbf{Goldstone's Theorem in Condensed Matter Physics}}
 
 The \cref{Goldstone_Single_mode_approx_ineq}'s inequality serves not to prove the existence of a gap in the excitation spectrum, but rather to disprove its existence ie. it can be used to prove gaplessness. Thus, the lattice-version of the Goldstone theroem can be used on the Heisenberg model. \\
@@ -4715,7 +4757,18 @@ The spin coherent resolution identity is given by \cref{spin_coherent_resol_id},
 \end{split}
 \end{equation}
 
-where, in the second line a total of $N_{\epsilon}$ \cref{spin_coherent_resol_id} identities were introduced and labelled as $\hat{\Omega'}_i$, where $\hat{\Omega}_\tau = (\sin \theta_\tau \cos \phi_\tau, \sin \theta_\tau \sin \varphi_\tau, \cos \theta_\tau) = (\Omega_i_\tau$ and where $\bm{\mathcal{H}}(\tau)$ is a "classical Hamiltonian". In the last line, the $\hat{\Omega'}_{i}$s were identified with $\hat{\Omega}_{i-\epsilon}$. Let $\hat{\bm{\Omega}}(\beta) = \hat{\bm{\Omega}}(0)$. \\
+where, in the second line a total of $N_{\epsilon}$ \cref{spin_coherent_resol_id}-
+identities were introduced and labelled as 
+$\hat{\Omega'}_i$, where $\hat{\Omega}_\tau 
+= (\sin \theta_\tau \cos \phi_\tau, \sin 
+\theta_\tau \sin \varphi_\tau, \cos 
+\theta_\tau) = (\Omega_i_\tau$ and where 
+$\bm{\mathcal{H}}(\tau)$ is a "classical 
+Hamiltonian". In the last line, the 
+$\hat{\Omega'}_{i}$s were identified with 
+$\hat{\Omega}_{i-\epsilon}$. Let 
+$\hat{\bm{\Omega}}(\beta) = 
+\hat{\bm{\Omega}}(0)$. \\
 
 A priori, $\hat{\bm{\Omega}}(\tau)$ is an arbitrary discrete function on $\tau$. Though unjustified, it may be taken to be a continuous and differentiable function in the $(N_{\epsilon}\rightarrow\infty)$-limit, in such a way that 
 
@@ -4941,7 +4994,7 @@ yielding the semiclassical spectrum $\{E_{\alpha}^{\textnormal{sc}}\}$. Since tw
 
 \section{\textbf{Spin Wave Theory}}
 
-\paragraph{Spin Waves: Path Integral Approachs}
+\subsubsection{Spin Waves: Path Integral Approachs}
 
 \blanky \\
 
@@ -4960,10 +5013,10 @@ $$
 The expectation value of this Hamiltonian in the coherent state representation, 
 
 \begin{equation}
-    {\bf H}[\hat{\Omega}] = \bra{\hat{\Omega}} {\bf H} \ket{\hat{\Omega}} = \frac{S^2}{2} \sum_{ij} J_{ij} \hat{\Omega}_i \cdot \hat{\Omega}_j.
+    {\bf H}[\hat{\Omega}] = \bra{\hat{\Omega}} {{\bf H}} \ket{\hat{\Omega}} = \frac{S^2}{2} \sum_{ij} J_{ij} \hat{\Omega}_i \cdot \hat{\Omega}_j.
 \end{equation}
 
-The classical ground states of the Hamiltonian depend on the details of the coupling constants $J_ij$. Given the model's O(3)-symmetry, global spin rotations generate a continous manifold of degenerate ground states. Certain models have additional ground state degeneracies due to frustration. Frustration occurs when no configuration can minimize all individual bond interactions simultaneously. Degeneracies that are not related to symmetries of the Hamiltonian are usually lifted by thermal and quantum fluctuations. In the literature, this is often referred to \underline{order due to disorder}. \\
+The classical ground states of the Hamiltonian depend on the details of the coupling constants $J_{ij}$. Given the model's O(3)-symmetry, global spin rotations generate a continous manifold of degenerate ground states. Certain models have additional ground state degeneracies due to frustration. Frustration occurs when no configuration can minimize all individual bond interactions simultaneously. Degeneracies that are not related to symmetries of the Hamiltonian are usually lifted by thermal and quantum fluctuations. In the literature, this is often referred to \underline{order due to disorder}. \\
 
 The basic assumption of spin wave theory is that, for any chosen classical ground state manifold $\hat{\Omega}^{\textnormal{cl}}$, the partition function and Green functions can be expanded about it using the saddle-point expansion, controlled by the size of the spin $S$. \\
 
@@ -5028,6 +5081,7 @@ where \cref{Berry_phase_semiclassical_variation} was used in the second equality
          P = \frac{\partial^2 \bm{\mathcal{H}}^{(2)}}{\partial {\bf p} \partial {\bf q}}\bigg|_{{\bf q} = {\bf p} = 0}.
     \end{array}
     \end{split}
+    \label{spin_wave_path_integral_quadratic_form_matrix_form}
 \end{equation}
 
 Here $\bm{\mathcal{H}}^{(2)}$ is a dynamical matrix of coupled harmonic oscillators, where $K$ and $M$ are the mass and force constant matrices and where $P$ couples coordinates and momenta. Combining the previous expressions, the small coefficient contribution to the action is yielded,
@@ -5058,6 +5112,7 @@ The spin-wave modes $(q_{{\bf k}, \alpha}, p_{{\bf k}, \alpha})$ and spin wave f
         -i\omega + P^{\textnormal{T}} & M^{-1} 
     \end{array}\bigg)\bigg|_{\omega = \omega_{{\bf k}, \alpha}}.
 \end{split}
+\label{spin_wave_path_int_small_osc_approx}
 \end{equation}
 
 The harmonic spin waves are non-interacting bosons. Their eigenmodes and energies allows for the calculation of all thermodynamic averages and dynamical response functions. In particular, the spin-wave correction to the free energy is given by 
@@ -5103,6 +5158,7 @@ Then, the Green function in bosonic coherent representation is given by
          \frac{1}{2} (K-M^{-1}) -iP & \frac{1}{2} (K+M^{-1}).
     \end{array}\right)
 \end{split}
+\label{spin_wave_path_int_bosonic_cohr_rep}
 \end{equation}
 
 This Hamiltonian containts both normal (ie. $z^* z$) terms as well as anomalous (eg. $z^* z^*$ and $zz$) terms. Using the real-to-imaginary-time transformation, $t' \rightarrow -i\tau, t \rightarrow -i\beta$, the path-integral representation for the Green function is transformed into a partition function, as was anticipated in \cref{spin_wave_theoretic_wave_partition_func}. The spin-wave contribution to the partition function, defined in \cref{spin_wave_theoretic_wave_generating_func_and_phase_func}, is 
@@ -5120,9 +5176,284 @@ This Hamiltonian containts both normal (ie. $z^* z$) terms as well as anomalous 
         0 & -i\omega_n
     \end{array}\right) - \tilde{\bm{\mathcal{H}}}^{(2)} \bigg]^{-1}, \quad \omega_n = \frac{2n\pi}{\beta}. 
 \end{split}
+\label{spin_wave_path_int_partition_function}
 \end{equation}
 
-Wherein, $\omega_n$ are the Bose-Matsubara frequences. 
+Wherein, $\omega_n$ are the Bose-Matsubara frequences. A second-quantized bosonic Hamiltonian can be obtained from \cref{spin_wave_path_int_bosonic_cohr_rep}, yielding 
+
+\begin{equation}
+    \bm{\mathcal{H}}^{(2)} = \frac{1}{2} \left(\begin{array}{cc}
+        {\bf b}^\dagger & {\bf b} 
+    \end{array}\right) {\bf H} \left(\begin{array}{cc}
+         \frac{1}{2} (K+M^{-1}) & \frac{1}{2} (K+M^{-1}) + iP  \\
+         \frac{1}{2} (K-M^{-1}) -iP & \frac{1}{2} (K+M^{-1}).
+    \end{array}\right) \left(\begin{array}{c}
+        {\bf b}^\dagger \\
+        {\bf b} 
+    \end{array}\right) + E'_0,
+    \label{spin_wave_path_int_bosonic_Hamiltonian}
+\end{equation}
+
+which contains both normal and anomalous terms, with $E'_0$ an unknown constat. The problem with \cref{spin_wave_path_int_partition_function} is that there is no prescription for the ordering of the $({\bf b}, {\bf b}^\dagger)$-operators in the $\bm{\mathcal{H}}^{(2)}$-quadratic form, hence the ambiguity of the constant $E'_0$. \\
+
+The techniques developed in \cref{spin_wave_path_int_small_osc_approx}-\cref{spin_wave_path_int_bosonic_Hamiltonian} are of general use, since these determine the spin wave modes of any Heisenberg model once the classical ground state $\hat{\Omega}^{\textnormal{cl}}$ has been specified. In the following sections, the simplest models of nearest-neighbour interaction Heisenberg ferromagnets and antiferromagnets are considered for $d = 1,2,3$-dimensional lattices are to be considered: 
+
+\begin{equation}
+    \begin{split}
+        {\bf H} =& \pm |J| S^2 \sum_{\langle ij \rangle} \hat{\Omega_i} \cdot \hat{\Omega_j} \\
+        &= J S^2 \sum_{\langle ij \rangle} \bigg[ \cos \theta_i \cos \theta_j + \sin \theta_i \sin \theta_j \cos(\phi_i - \phi_j) \bigg].
+    \end{split}
+    \label{spin_wave_path_integral_Heisenberg_Ham}
+\end{equation}
+
+The spin-wave expansions of these Hamiltonians are simple since their classical ground states are either uniform ferromagnets or Néel antiferromagnets. \\
+
+\paragraph{The Ferromagnet}
+
+Assuming a spin-wave expansion of the path-integral is valid for the ordered classical ground state of the Heisenberg ferromagnet, the spin can be polarized (either with a small magnetic field of with the appropriate boundary conditions) to point in the $x$-direction, ie.
+
+\begin{equation}
+    \hat{\Omega}^{\textnormal{cl}} = (\theta^{\textnormal{cl}}, \phi^{\textnormal{cl}}) = (\frac{\pi}{2}, 0), \textnormal{ with the fluctuations parameterized by } \begin{array}{cc}
+        q_i = \phi_i  \\
+        p_i = S \cos \theta_i.
+    \end{array}
+\end{equation}
+
+The ferromagnetic Hamiltonian, with $-|J|$, written in \cref{spin_wave_path_integral_Heisenberg_Ham}, can be expanded for small $\theta, \phi$, yielding a second order quadratic form on the $(q, p)$-coordinates as follows
+
+\begin{equation}
+    {\bf H} \approx - \frac{Nz}{2} |J| S^2 + \frac{1}{2} |J| S^2 \sum_{ \langle ij \rangle } \bigg[ \frac{(p_i - p_j)^2}{S^2} + (q_i - q_j)^2\bigg], \textnormal{ where } \begin{array}{cc}
+         \textnormal{ this expression is valid for } \begin{array}{cc}
+              |\cos \theta| << 1  \\
+              |\phi_i| << \pi,
+         \end{array} \\
+         \textnormal{ $N$ is the number of sites and where } \\
+         \textnormal{$z = 2d$ is the coordination number in $d$-dimensions.}
+    \end{array}
+\end{equation}
+
+From \cref{spin_wave_path_integral_quadratic_form_matrix_form}'s nested relations, the $K, M^{-1}, P$ submatrices can be easily found. In particular for a one-dimensional system, it yields 
+
+\begin{equation}
+\begin{split}
+     K_{ij} =& \frac{\partial^2 \bm{\mathcal{H}}^{(2)}}{\partial {q}_i \partial { q}_{i+1}}\bigg|_{{\bf q} = {\bf p} = 0} = \frac{1}{2} |J|S^2 \frac{\partial^2 \bm{\mathcal{H}}^{(2)}}{\partial {q}_i \partial { q}_j} (q_i - q_{i+1})^2 \bigg|_{{\bf q} = {\bf p} = 0} \\
+     &= \frac{1}{2} |J|S^2 \frac{\partial}{\partial {\bf q}_j} \bigg(
+     2 q_i \delta_{ij} - 2(q_i \delta_{j, i+1} + q_{i+1} \delta_{ij}) + 2 q_{i+1} \delta_{j, i+1}
+     \bigg) \bigg|_{{\bf q} = {\bf p} = 0} \\
+     &= \frac{1}{2} |J|S^2 \bigg(
+     2 q\delta_{ij} - 2(\delta_{j, i+1} + \cancel{\delta_{i, i+1} \delta_{ij}}) + \cancel{2 \delta_{i,i+1} \delta_{j, i+1}}
+     \bigg) = - z |J| S^2 \nabla^2_{i, i}^2, \quad \textnormal{ where } \nabla^2_{i, i} = \frac{1}{z} (\delta_{i, i+1} - \delta_{ij}) \\
+     \\
+     M_{ij}^{-1} =& \frac{\partial^2 \bm{\mathcal{H}}^{(2)}}{\partial {p}_i \partial { p}_{i+1}}\bigg|_{{\bf q} = {\bf p} = 0} = \frac{1}{2} |J| \frac{\partial^2 \bm{\mathcal{H}}^{(2)}}{\partial {p}_i \partial {p}_j} (p_i - p_{i+1})^2 \bigg|_{{\bf q} = {\bf p} = 0} \\
+     &= \frac{1}{2} |J|\frac{\partial}{\partial {\bf q}_j} \bigg(
+     2 q_i \delta_{ij} - 2(p_i \delta_{j, i+1} + p_{i+1} \delta_{ij}) + 2 p_{i+1} \delta_{j, i+1}
+     \bigg) \bigg|_{{\bf q} = {\bf p} = 0} \\
+     &= \frac{1}{2} |J|S^2 \bigg(
+     2 q\delta_{ij} - 2(\delta_{j, i+1} + \cancel{\delta_{i, i+1} \delta_{ij}}) + \cancel{2 \delta_{i,i+1} \delta_{j, i+1}}
+     \bigg) = - z |J| \nabla^2_{i, i}^2, \quad \textnormal{ where } \nabla^2_{i, i} = \frac{1}{z} (\delta_{i, i+1} - \delta_{ij}) \\
+     \\
+     P = 0.
+\end{split}
+\end{equation}
+
+These relations hold only for the one-dimensional lattice, but they are easily generalized to $d > 1$-dimensional lattices, yielding 
+
+\begin{align}
+\begin{array}{cc}
+      K_{ij} = -z |J| S^2 \nabla^2_{ij}, \\
+      M_{ij}^{-1} = - z|J| \nabla^2_{ij}, \\
+      P = 0
+\end{array}, \nabla^2_{ij} = \frac{1}{z} \sum_{\eta}(\delta_{i+\eta, j} - \delta_{ij}),
+\label{spin_wave_path_integral_ferromagnet_submatrices}
+\end{align}
+
+where $\eta$ are the nearest-neighbour vectors and where $\nabla_{ij}^2$ is the lattice laplacian, its eigenvalues given by 
+
+\begin{equation}
+\begin{split}
+    \nabla^2_{{\bf k}} =& \frac{1}{N} \sum_{ij} e^{- i({\bf k}({\bf x}_i - {\bf x}_j)} \nabla_{ij}^2 \\
+    &= \frac{1}{z} \sum_{\eta} (e^{i {\bf k} \eta} - 1) \equiv \gamma_{{\bf k}} - 1,
+\end{split}
+\end{equation}
+
+which defines a tight-binding function $\gamma_{{\bf k}}$. Using \cref{spin_wave_path_integral_ferromagnet_submatrices} 's relations in \cref{spin_wave_path_int_small_osc_approx} yields the following matrix 
+
+\begin{equation}
+   \det \left(\begin{array}{cc}
+         -z |J| S^2 (\gamma_{{\bf k}} - 1) & i \omega_{{\bf k}}  \\
+         -i \omega_{{\bf k}} & -z |J| (\gamma_{{\bf k}} - 1)
+    \end{array}\right). = 0 \Rightarrow \omega_{{\bf k}} \equiv z |J| S (1- \gamma_{{\bf k}}). 
+    \label{spin_wave_path_integral_spin_wave_modes}
+\end{equation}
+
+Thus, the spin wave is described by a time dependent precession of all spins about the $x$-direction with $\omega_{{\bf k}}$-angular frequency. \\
+
+\paragraph{The Antiferromagnet}
+
+In the antiferromagnetic case, the path integral can be expanded about the classical Néel state, which can be made to point in the $\pm x$-direction for the $A,B$ sublaticces respectively, without loss of generality, with coordinates 
+
+\begin{equation}
+    (\theta_i^{\textnormal{cl}}, \phi_i^{\textnormal{cl}}) = \left\{ \begin{array}{cc}
+        \bigg(\frac{\pi}{2}, 0\bigg) & i \in A \\
+        \bigg(\frac{\pi}{2}, -\pi\bigg) & i \in B
+    \end{array} \right.
+\end{equation}
+
+wherein the singularity of the vector potential is assumed to be far from both 
+the $+x$- and $-x$-directions, eg. only at the south pole. The small fluctuactions are then 
+
+\begin{equation}
+    q_i = \left\{ \begin{array}{cc}
+         \phi_i & i \in A\\
+         \phi_i + \pi & i \in B
+    \end{array} \right., \quad p_i = S \cos \theta_i. 
+\end{equation}
+
+The second order expansion of the antiferromagnetic $(+ |J|)$ Hamiltonian \cref{spin_wave_path_integral_Heisenberg_Ham} is given by 
+
+\begin{equation}
+    {\bf H} \approx - \frac{Nz}{2} |J| S^2 + \frac{1}{2} |J| S^2 \sum_{ \langle ij \rangle } \bigg[ \frac{(p_i + p_j)^2}{S^2} + (q_i - q_j)^2\bigg] + \mathcal{O}(p^3, q^3).
+\end{equation}
+
+The mass and force constants matrices, which will be simultaneously diagonalized in Fourier space and allow for the determination of the spin wave spectrum of the spin-wave spectrum, are given by 
+
+\begin{equation}
+\begin{split}
+    &M_{ij}^{-1} = z J (\nabla^2_{ij} + 2\delta_{ij}) \quad,  K_{ij} = -z J S^2 \nabla^2_{ij} \quad, P = 0. \\
+    &M_{{\bf k}}^{-1} = zJ (1 + \gamma_{{\bf k}}), \quad K_{{\bf k}} = z J S^2 (1- \gamma_{{\bf k}}). \\
+    \\
+    &\Rightarrow \det \left(\begin{array}{cc}
+        -z |J| S^2 (1- \gamma_{{\bf k}}) & i\omega_{{\bf k}}  \\
+        -i \omega_{{\bf k}} & z |J| (1 + \gamma_{{\bf k}}) 
+    \end{array}\right) = 0 \rightarrow \omega_{{\bf k}} = z J S \sqrt{1-\gamma_{{\bf k}}^2} \sim c |{\bf k} - {\bf k}_c|, 
+\end{split}
+\end{equation} 
+
+where ${\bf k}_c = 0, \pi \mathds{1}_{N}$. The spin-wave velocity for a cubic lattice in $d$ dimensions is $c = \sqrt{d} JS$. The antiferromagnetic spin waves are unit vectors which precess about the classical directions $\pm x$. Furthermore, the spin precess in opposite directions on the two sublattices. Unlike ferromagnetic spin waves, given by \cref{spin_wave_path_integral_spin_wave_modes}, there are two degenerate antiferromagnetic spin wave modes whose frequencies vanish as ${\bf k} \rightarrow 0$ and ${\bf k} \rightarrow \pi \mathds{1}_N$. \\
+
+\subsubsection{Spin Waves: Holstein-Primakoff Approach}
+
+Low-order spin waves can be written as non-interacting bosons. For a quantitative quantum theory, the correct order of bosonic operators in the Hamiltonian is needed. To that end, generalized Holstein-Primakoff bosons can be used to represent the quantum model. Consider an arbitrary classical configuration $\hat{\Omega}^{\textnormal{cl}}$ which minimizes ${\bf H}[\hat{\Omega}]$. Using $\hat{\Omega}^{\textnormal{cl}}$, three basis vectors can be defined at every site, $({\bf e}^1, {\bf e}^2, \hat{\Omega}^{\textnormal{cl}})$, such that 
+
+$$
+    {\bf e}^1 \times {\bf e}^2 = \hat{\Omega}^{\textnormal{cl}}_i.
+$$
+
+In this coordinate frame, the raising and lowering operators are defined 
+
+\begin{equation}
+    \spin^{\pm} = \spin \cdot {\bf e}^1 \pm i \spin \cdot {\bf e}^2.
+\end{equation}
+
+With respect to this triad of basis vectors, the spin components can be represented by HP-bosons 
+
+\begin{equation}
+    \spin^+ = \sqrt{2S - {\bf n}_b} \blanky  {\bf b}, \quad \spin^- = {\bf b}^\dagger \sqrt{2S - {\bf n}_b}, \quad \spin \cdot \hat{\Omega}^{\textnormal{cl}} = -{\bf n}_b + S.
+    \label{spin_wave_HP_spin_bosons}
+\end{equation}
+
+This representation is exact in the Hilbert subspace of ${\bf n}_b \leq S$. However, the square-root function represents an infinite power series of number operators multiplied by $\frac{1}{S}$-factors. The truncation of the series to low order can be justified if one can show, a posteriori, that $\langle {\bf n}_b \rangle << 2S$, ie. that the spin fluctuations about the classical directions are small. 
+Next, the spin operator in the Hamiltonian are substituted by the spin operators written in \cref{spin_wave_HP_spin_bosons}. Terms upto quadratic order in the bosons constitute the spin wave Hamiltonian. \\
+
+\paragraph{The Ferromagnet}
+
+Consider a Heisenberg ferromagnet whose classical direction, without loss of generality, is chosen to be the $z$-direction and substitute the HP-operators into the ferromagnetic Hamiltonian, 
+
+\begin{equation}
+    \begin{split}
+        {\bf H} =& - |J| \sum_{\langle ij \rangle} \spin-i \cdot \spin_j \\
+        &= - S^2 |J| N \frac{z}{2} - |J| \sum_{\langle ij \rangle} \bigg[ S {\bf b}_i^\dagger \sqrt{1 - \frac{{\bf n}_i}{2S}} \sqrt{1 - \frac{n_j}{2S}} {\bf b}_j - \frac{1}{2} S ({\bf n}_i + {\bf n_j}) + \frac{1}{2} {\bf n}_i \cdot {\bf n}_j \bigg]. \\
+        &= - S^2 |J| N \frac{z}{2} + {\bf H}_1 + {\bf H}_2 + \mathcal{O}\bigg(\frac{1}{S}\bigg), \textnormal{ where } \begin{array}{cc}
+             {\bf H}_1 = \sum_{{\bf k}} \omega_{{\bf k}} {\bf b}_{{\bf k}}^\dagger {\bf b}_{{\bf k}} \textnormal{ where ${\bf b}_{{\bf k}} = \frac{1}{\sqrt{N}} \sum_{i} e^{-i {\bf k} \cdot {\bf x}_i} {\bf b}_i$}  \\
+             \\
+             {\bf H}_2 = \frac{|J|}{4} \sum_{\langle ij  \rangle} \bigg[ {\bf b}_i {\bf b}_j ({\bf b}_i - {\bf b}_j)^2 + ({\bf b}_i^\dagger - {\bf b}_j^\dagger)^2 {\bf b}_i {\bf b}_j\bigg]
+        \end{array},
+    \end{split} 
+    \label{spin_wave_HP_ferromagnet_Hamiltonian}
+\end{equation}
+
+with 
+
+$$
+    \omega_{{\bf k}} = S |J| z \bigg(1-\frac{1}{z} \sum_{j, \langle ij \rangle} e^{i({\bf x}_j - {\bf x}_i) \cdot {\bf k}}\bigg) = S |J| z (1 - \gamma_{{\bf k}}),
+$$
+
+which agrees with \cref{spin_wave_path_integral_spin_wave_modes}. In the previous expression for the Hamiltonian, \cref{spin_wave_HP_ferromagnet_Hamiltonian}, ${\bf H}_1$ describes non-interacting spin waves with dispersion $\omega_{{\bf k}}$, ${\bf H}_2$ and the higher-order terms describe interactions between spin waves, which can be treated by perturbation theory or by mean field approximations. At $T = 0$, it is clear from \cref{spin_wave_HP_ferromagnet_Hamiltonian} that the energy is equal to the classical energy 
+
+$$
+    E_0 = - S^2 |J| N \frac{z}{2}.
+$$
+
+This is in agreement with \cref{Ferromagnetic_Marshall_theo}, which states that the ground state of the quantum ferromagnet is the classical ground state. \\
+
+The long-wavelength limit of the ferromagnetic spin wave dispersion vanishes as 
+
+\begin{equation}
+    \omega_{{\bf k}} \sim S |J| |{\bf k}|^2. 
+    \label{spin_wave_HP_ferromagnet_dispersion_relation}
+\end{equation}
+   
+This is the \textbf{gapless Goldstone mode}, which is a 
+consequence of the broken symmetry of the ferromagnetic 
+ground state, as stated in \cref{Goldstone_theo}. The 
+Goldstone mode dominates the low-temperature and 
+long-wavelength correlations of the ferromagnet. The 
+lowest-order corrections to the ground state magnetization at finite temperatures is given by 
+
+\begin{equation}
+    \begin{split}
+        \Delta m_0 =& \frac{1}{N} \langle \spin^z_{\textnormal{tot}} - S \rangle \\
+        &= - \langle {\bf n}_i \rangle = -\frac{1}{N} \sum_{{\bf k}} {\bf n}_{{\bf k}}, \begin{array}{cc}
+             \textnormal{ where the Bose-Einstein }  \\
+             \textnormal{ occupation number is }
+        \end{array} {\bf n}_{{\bf k}} = \frac{1}{e^{\beta \omega_{{\bf k}}} - 1}. 
+    \end{split}
+    \label{spin_wave_HP_ferromagnet_magnetization_correction}
+\end{equation}
+
+The asymptotic low-$T$ behaviour of the sum given in  \cref{spin_wave_HP_ferromagnet_magnetization_correction} can be found by introducing a small infrared cutoff $k_0$. Consider an additional, small but, finite momentum $\bar{k} > k_0$ as well, which is well inside the region where \cref{spin_wave_HP_ferromagnet_dispersion_relation} holds, ie. 
+
+$$
+    \omega_{\bar{k}} << T << |J| S.
+$$
+
+The sum in \cref{spin_wave_HP_ferromagnet_magnetization_correction} can be broken into two regions, one with $k_0 < |{\bf k}| < \bar{k}$ and $|{\bf k}| \geq {\bar{k}}$ and find that 
+
+\begin{equation}
+    \Delta m_0 \approx - \int_{k_0}^{\bar{k}} \frac{dk k^{d-1}}{(2\pi)^d} \frac{T}{J S k^2} - \frac{1}{N} \sum_{{\bf k} > \bar{k}} \frac{1}{e^{\beta \omega_{{\bf k}}} - 1}.
+\end{equation}
+
+For $T > 0$ and $d = 1,2$, the first integral diverges at low $k_0$ as 
+
+\begin{equation}
+    \Delta m_0 \approx \left\{ \begin{array}{cc}
+        -\frac{t}{k_0} + \cdots & d=1 \\
+        t \log k_0 + \cdots & d=2
+    \end{array}\right., \quad t = \frac{T}{JS},
+\end{equation}
+
+but with the second sum being finite, having no infrared singularity. The most 
+important conclusion emerging from the previous equation's result is that the 
+magnetization correction due to fluctuations diverges as the infrared cutoff 
+$k_0$ vanishes in one and two dimensions. Therefore, for the $d=1,2$-dimensional cases, the basic assumption that the spin fluctuations $\langle (\spin_i^z - 
+S)^2 \rangle$ are small, turns out to be wrong. Thus, the truncation of the 
+expansion of the HP-operators at low orders is unjustified. The breakdown of 
+spin wave theory is consistent with Mermin-Wagner's theorem, \cref{Mervin-Wagner}, which rules out a finite spontaneous magnetization in $(d=1,2)$-dimensions at all non-zero temperatures. \\
+
+In $d = 3$ dimensions, there are no infrared divergences. The leading temperature dependent of $M$ can be calculated by writing the Bose function as a geometric sum and integrating over momenta up to infinity as follows, 
+
+\begin{equation}
+\begin{split}
+    \Delta m_0^{d=3} =& - \int_{k_0}^{\bar{k}} \frac{dk k^2}{2\pi^2} \blanky \sum_{n=1}^{\infty} e^{-\frac{nk^2}{t}} [1+\mathcal{O}(t)] \\
+    &= - \frac{1}{8} \bigg( \frac{t}{\pi} \bigg)^{\frac{3}{2}} \sum_{n=1}^{\infty} n^{-\frac{3}{2}} =  - \frac{1}{8} \bigg( \frac{t}{\pi} \bigg)^{\frac{3}{2}} \zeta\bigg(\frac{3}{2}\bigg),
+\end{split}
+\end{equation}
+
+where $\zeta$ is the Riemann zeta function. THus, in three-dimensions the leading temperature correction to the ordered moment is proportional to $-T^{\frac{3}{2}}$. \\
+
+\paragraph{The Antiferromagnet}
+
+
 
 \clearpage
 
@@ -5999,7 +6330,7 @@ Formally, let ${\bf V}$ be an $n$-dimensional complex vector space with basis $\
 \begin{equation}
 \begin{split}
     \Lambda({\bf V}) &= \mathds{C} \oplus {\bf V} \oplus ({\bf V} \land {\bf V}) \oplus ({\bf V} \land {\bf V} \land {\bf V}) \oplus \cdots \oplus (\exterior{n} {\bf V}) \\
-    &= \mathds{C} \oplus \bigoplus{k=1}^{n} \exterior{k} {\bf V},
+    &= \mathds{C} \oplus \bigoplus_{k=1}^{n} \exterior{k} {\bf V},
 \end{split}
 \end{equation}
 
@@ -6558,7 +6889,7 @@ This results, shown in \cref{figs:jellium} (right), shows that the electron gas 
 
 \blanky \\
 
-\paragraph{\textbf{Hartree-Fock approximation as a Mean-Field Theory}} \blanky \\
+\paragraph{\textbf{Hartree-Fock approximation as a Mean-Field Theory}} \label{First_order_Hartree_Fock}\blanky \\
 
 Consider the electronic Hamiltonian given by 
 \cref{pre-HF-jellium H}. The goal is to write an effective two-body Hamiltonian, which takes into account the average effects of the interactions. Therefore, the four-Fermi interaction is replaced with a sum of all possible two-body terms
@@ -7210,7 +7541,7 @@ wherein Plemelj-Sokhotolksi's formula was used, $\frac{1}{\omega \pm i \eta} = \
 Consider a non-interacting fermionic system. Its Green function may be written as 
 
 \begin{equation}
-    \mathfrak{G}({\bf k}, \omega) = \frac{1}{\Omega} \bigg[\frac{\Theta(|{\bf k}| - k_F)}{\omega - \varepsilon_0({\bf k}) + i \eta} + \frac{\Theta(k_F-|{\bf k}|)}{\omega - \varepsilon_0({\bf k}) - i \eta}\bigg] \Rightarrow \begin{array}{cc}
+    \mathfrak{G}_0({\bf k}, \omega) = \frac{1}{\Omega} \bigg[\frac{\Theta(|{\bf k}| - k_F)}{\omega - \varepsilon_0({\bf k}) + i \eta} + \frac{\Theta(k_F-|{\bf k}|)}{\omega - \varepsilon_0({\bf k}) - i \eta}\bigg] \Rightarrow \begin{array}{cc}
         A_0^+({\bf k}, \omega) = \frac{1}{\Omega} \delta(\omega - \varepsilon_0({\bf k})) & \textnormal{ for } |{\bf k}| > k_F \\
         A_0^-({\bf k}, \omega) = \frac{1}{\Omega} \delta(\omega - \varepsilon_0({\bf k})) & \textnormal{ for } |{\bf k}| < k_F,
     \end{array}
@@ -7222,6 +7553,7 @@ In an interacting system, the Green function is given by
 
 \begin{equation}
     \mathfrak{G}({\bf k}, {\bf k}'; \omega) = \frac{1}{[\mathfrak{G}({\bf k}, \omega)]^{-1} - \Sigma^{*}({\bf k}, ({\bf k}'; \omega)}, \textnormal{ where } [\mathfrak{G}({\bf k}, \omega)]^{-1} = \omega - \varepsilon_0({\bf k}).
+    \label{Feynmann_diags_spectral_functions}
 \end{equation}
  
 Both $\mathfrak{G}$ and the self-energy $\Sigma^*$ are, in general, non-local function that depend on two spatial or momentum points. However, in the presence of systems with translational or periodic invariance, these become diagonal in momentum, thus the following equality holds 
@@ -7363,7 +7695,7 @@ $$
 
 and use the time $t \rightarrow -\infty$ to interpolate the non-interacting ground state with the aid of the principle of adiabatic switching on. \\
 
-\paragraph{The concept of Adiabaticity in Quantum Mechanics} \\
+\paragraph{The concept of Adiabaticity in Quantum Mechanics} 
 
 The construct of adiabaticity plays an important role in quantum many-body theory, by paving a path to understand a many-body problem, even when there is only an approximate solution. \\
 
@@ -7637,19 +7969,19 @@ At first glance, it may seem that the normal ordering is ambiguous, since the (+
 
 Consider for example a product of two operators, 
 
-\begin{equation}
+\begin{equation*}
     \begin{split}
         {\bf A}_1 {\bf A}_2 &= ({\bf A}_1^+ + {\bf A}_1^-)({\bf A}_2^+ + {\bf A}_2^-) \\
         &= {\bf A}_{1}^{+} {\bf A}_{2}^{+} + {\bf A}_{1}^{-} {\bf A}_{2}^{+} + {\bf A}_{1}^{+} {\bf A}_{2}^{-} + {\bf A}_{1}^{-} {\bf A}_{2}^{-} \\
         &= \bm{\mathcal{N}} [{\bf A}_1 {\bf A}_2] + \{{\bf A}_1^-, {\bf A}_2^+\}.
     \end{split}
-\end{equation}
+\end{equation*}
 
 The vanishing of the expectation value of a normally ordered product implies 
 
-\begin{equation}
+\begin{equation*}
     \{{\bf A}_1^-, {\bf A}_2^+\} = \bra{\Psi_g} {\bf A}_1 {\bf A}_2 \ket{\Psi_g},
-\end{equation}
+\end{equation*}
 
 which is a c-number, the \underline{contraction} of the two operators, denoted ${\bf A}_1^c {\bf A}_2^c$. 
 
@@ -7695,9 +8027,9 @@ The following identity can be proved from Wick's theorem\footnote{
 
 Using the previous corollary, it is trivial that 
 
-\begin{equation}
+\begin{equation*}
     \bra{\Psi_g} 1234 \ket{\Psi_g} = \langle 12 \rangle \langle 34 \rangle - \langle 13 24 \rangle + \langle 14 \rangle \langle 23 \rangle.
-\end{equation}
+\end{equation*}
 
 \end{tcolorbox}
 
@@ -7774,7 +8106,7 @@ For systems where $\ket{\Psi_g}$ has a definite number of particles, the anomalo
 Consider the perturbation expansion of the Green function, given by \cref{GF_perturbation_exp} and consider only terms linear on the interaction Hamiltonian ${\bf H}_I$, ie. 
 
 \begin{equation}
-    i \mathfrak{G}_{\sigma \sigma'} \rightarrow i \mathfrak{G}_{\sigma \sigma'}^{(0)} + i \mathfrak{G}_{\sigma \sigma'}^{(1)}, \textnormal{ with } \begin{array}[c]
+    i \mathfrak{G}_{\sigma \sigma'} \rightarrow i \mathfrak{G}_{\sigma \sigma'}^{(0)} + i \mathfrak{G}_{\sigma \sigma'}^{(1)}, \textnormal{ with } \begin{array}[cc]
         i \mathfrak{G}_{\sigma \sigma'}^{(1)} \propto -i \int_{\mathds{R}} dt \blanky \bra{\Psi_0} \mathcal{T} [{\bf H}_I(t_1) \psi_{I \sigma}({\bf x}, t) \psi^\dagger_{I \sigma'}({\bf x}', t')] \ket{\Psi_0} \\
         \\
         {\bf H}_I = \frac{1}{2} \int_{\mathds{R}^6} d{\bf x}_1 d{\bf x}_2 \blanky \psi^\dagger_{\sigma_1}({\bf x}_1) \psi^\dagger_{\sigma_2}({\bf x}_2) V(|{\bf x}_1 - {\bf x}_2|) \psi_{\sigma_2'}({\bf x}_2) \psi_{ \sigma_1'}({\bf x}_1).
@@ -7878,43 +8210,324 @@ As a general rule, if two operators occur at equal time, they should be normal o
     \mathfrak{G}^{(0)}({\bf x}, {\bf x}'; t = 0) \equiv \lim_{\epsilon^{-}} \mathfrak{G}_{\sigma \sigma'}^{(0)}({\bf x}, {\bf x}'; t + \epsilon)
 \end{equation}
 
-\subsubsection{Perturbation Expansion and Feynmann Diagrams in different representations}
+\subsubsection{The Feynmann Rules}
 
-Perturbation theory expansions can become quite convoluted, such that a succint description of the different contributions is desirable. This is achieved using Feynmann diagrams, which represent, in a compact form, the different contribution obtainted from Wick decompositions. Formally, a Green function $\mathfrak{G}$
-can be represented by an infinite sum of Feynmann diagrams, each term of the sum corresponding to a decomposition of $\mathfrak{G}$ into contracted products. For example, the perturbation expansion of \cref{GreenFunc_expansion_Hamiltonians}-\cref{first_order_contractions} generates six diagrams, but not all are different. \\
+The Feynmann rules allows for the calculation of the $n$-th-order term in the perturbation expansion of the Green function, which can be formulated in both direct space and in momentum space. The rules read
 
 \begin{itemize}
-    \item Example of the diagramatic Representations in $({\bf x},t)$-space.
+    \item Draw all topologically distinct connected diagrams with $n$ interaction (wavy) lines $V$ and $2n+1$ Green function $\mathfrak{G}^{(0)}$ solid lines. 
+    \item Each wavy line corresponds to the interaction written in \cref{first_order_perturb_Green_function} (its Fourier transform in $({\bf k}-\omega)$-basis.
+    \item Vertex and line labelling: 
+    \begin{itemize}
+        \item ${\bf x -t}$-basis: Each vertex is labelled by a point in spacetime $x_i$; each solid line represents a Green function $\mathfrak{G}^{(0)}(x,x')$, running from $x'$ to $x$.
+        \item ${\bf k}-\omega$-basis: a direction is assigned to each interaction line; associated directed momentum and frequency are added to each line (both solid and wavy) and conservation of energy and momentum is imposed at each vertex. 
+    \end{itemize}
+    \item All internal variables are integrated over spacetime or frequency space. 
+    \item Each diagram carries a $(-1)^L$-factor, where $L$ is the number of closed fermion loops in the diagram.
+    \item Each diagram contributes to $\mathfrak{G}$ a factor 
+
+    $$
+        -i \bigg(\frac{-i}{\hbar}\bigg)^n i^{2n+1} = \bigg(\frac{i}{\hbar}\bigg)^n 
+    $$
 \end{itemize}
 
-Consider the first order expansion of the Green function, given in \cref{first_order_perturb_Green_function}.
+\blanky \\
 
-\begin{enumerate}
-    \item The full Green function is represented by a double line, and an arrow which indicates the direction of time propagation. 
-    
-    \item The perturbation Hamiltonian written in \cref{GreenFunc_expansion_Hamiltonians} can be diagramatically represented as follows, 
-    
-    \begin{figure}[H]
-        \centering
-        \includegraphics[scale = .25]
-        {figs/Feynmann_diagrams/Feynmann_diags_first_order_GF.png}
-        \caption{Graph representing the interaction vertices}\label{fig:Feynmann_diags_first_order_GF}
-    \end{figure}
-    
-    where
-    
-    \begin{itemize}
-        \item the wavy line represents the instantaneous Coulomb interaction between two vertices, with two field operators at one vertex and two at the other.
-        \item Destruction operators are represented by the lines ending ad 
-    \end{itemize}
-    
-    
-    
-\end{enumerate}
+\begin{itemize}
+    \item Feynmann rules for the first-order expansion in space-time representation
+\end{itemize}
 
+From this rules, the resulting diagrams for the first-order expansion of the Green function, shown in \cref{first_order_perturb_Green_function}-\cref{first_order_contractions}, read as follows
+
+\begin{equation}
+\begin{split}
+   & \includegraphics[valign = c, scale = .3]{figs/Feynmann_diagrams/Feynmann_diags_first_order_diag1.png} \textcolor{red}{\longleftrightarrow} \left\{\begin{array}{c}
+         i\mathfrak{G}^{(x,x_1);(0)}_{\sigma \sigma_1} i\mathfrak{G}^{(x_1,x');(0)}_{\sigma'_1 \sigma'}
+         i\mathfrak{G}^{(x_2,x_2);(0)}_{\sigma'_2 \sigma_2} \\
+         i\mathfrak{G}^{(x,x_2);(0)}_{\sigma \sigma_2} i\mathfrak{G}^{(x_2,x');(0)}_{\sigma'_2 \sigma'}
+         i\mathfrak{G}^{(x_1,x_1);(0)}_{\sigma'_1 \sigma_2}
+    \end{array} \right., \blanky \blanky 
+    \includegraphics[valign = c, scale = .3]{figs/Feynmann_diagrams/Feynmann_diags_first_order_diag4.png} \textcolor{green}{\longleftrightarrow}
+         i\mathfrak{G}^{(x,x');(0)}_{\sigma \sigma'} i\mathfrak{G}^{(x_1,x_1);(0)}_{\sigma'_1 \sigma_1}
+         i\mathfrak{G}^{(x_2,x_2);(0)}_{\sigma'_2 \sigma_2}
+         \\ 
+    & \includegraphics[valign = c, scale = .3]{figs/Feynmann_diagrams/Feynmann_diags_first_order_diag2.png} \textcolor{blue}{\longleftrightarrow} \left\{\begin{array}{c}
+         i\mathfrak{G}^{(x,x_1);(0)}_{\sigma \sigma_1} i\mathfrak{G}^{(x_1,x_2);(0)}_{\sigma'_1 \sigma_2}
+         i\mathfrak{G}^{(x_2,x');(0)}_{\sigma'_2 \sigma'}   \\
+         i\mathfrak{G}^{(x,x_2);(0)}_{\sigma \sigma_2} i\mathfrak{G}^{(x_2,x_1);(0)}_{\sigma'_2 \sigma_1}
+         i\mathfrak{G}^{(x_1,x');(0)}_{\sigma'_1 \sigma'}  
+    \end{array} \right., \blanky \blanky \includegraphics[valign = c, scale = .3]{figs/Feynmann_diagrams/Feynmann_diags_first_order_diag3.png} \textcolor{yellow}{\longleftrightarrow}
+         i\mathfrak{G}^{(x,x');(0)}_{\sigma \sigma'} i\mathfrak{G}^{(x_1,x_2);(0)}_{\sigma'_1 \sigma_2}
+         i\mathfrak{G}^{(x_2,x_1);(0)}_{\sigma'_2 \sigma_1}
+\end{split}
+\label{first_order_contraction_Feynmann_diags}
+\end{equation}
+
+The \textcolor{red}{first} and \textcolor{blue}{third} diagrams, the ones with red and blue arrows, depict a pair of Green function products, which have identical graphs but with ${\bf x}_1$ and ${\bf x}_2$ interchanged and said graphs are connected. In the \textcolor{blue}{third} diagram, the one with the blue arrow, an exchange occurs in the contraction with ${\bf x}$, whereas the ${\bf x'}$-point has the same contraction. First, the injected electron travels to point ${\bf x}_1, t_1$ where it interacts with another electron at point ${\bf x}_2, t_2$. This electron at ${\bf x}_2, t_2$ then travels to the finish point, where it is taken out, with another electron at ${\bf x}_1, t_1$ travelling to ${\bf x}_2, t_2$ in order to leave the system in the same state it started. Consequently, such diagrams are referred to as exchange diagrams. In the \textcolor{red}{first} and \textcolor{green}{third} diagrams, there are lines starting and ending at the same vertex, thus closing a fermion loop. These describe scattering events at $({\bf x}_i, t_i)$, represented by a Green function $\mathfrak{G}^{({\bf x_i, x_i});(0)}$. These can be thought of as spontaneous creation and re-annihilation of a particle. Recall that when these arise from an interaction Hamiltonian ${\bf H}_I$, the prescription is to interpret them as 
+
+$$
+    \lim_{\epsilon \rightarrow 0} \mathfrak{G}_{\sigma'_1 \sigma_1} ({\bf x}_1, t_1; {\bf x}_1, t_1+\epsilon),
+$$
+
+and represent electronic densities. \\
+
+In this representation, the diagrams have a nice physical interpretation. The Green function $\mathfrak{G}({\bf x}, t; {\bf x}',t')$ is the probability amplitude for a particle to get from the ${\bf x}'$-point, at $t'$-time, to ${\bf x}$-point at $t$-time. The Feynmann expansion thus states that the electron can get between these two points in all possible ways, weighted by the appropriate amplitude, with the zero-th order Feynmann graph being the direct graph. \\
+
+\begin{itemize}
+    \item Feynmann rules for the first-order expansion in momentum representation.
+\end{itemize}
+
+The interaction Hamiltonian can be written as 
+
+\begin{equation}
+    {\bf H}_I = \frac{1}{\Omega}\sum_{{\bf k}_1, {\bf k}'_1, {\bf q}} \frac{V({\bf q)}}{2} {\bf c}_{{\bf k}_1 - {\bf q}}^\dagger {\bf c}_{{\bf k}_2 + {\bf q}}^\dagger {\bf c}_{{\bf k}_2}{\bf c}_{{\bf k}_1}.
+\end{equation}
+
+The only difference between momentum space and realspace is that integrations are carried out over internal momenta, rather than internal position, with momentum being conserved at each vertex, where an interaction links two points at equal time. \\
+
+With the aid of such basic diagrammatic representation, a depiction can be given for the interacting Green function, which can be diagramatically represented by a double line with an arrow, ie. 
+
+\begin{equation}
+    \mathfrak{G}({\bf k}, t-t') = \includegraphics[valign = c, scale = .3]{figs/Feynmann_diagrams/Feynmann_diags_first_order_exact_GF_doublearrow.png} = \mathfrak{G}^{(0)} + \mathfrak{G}^{(1)} + \mathfrak{G}^{(2)} + \cdots,
+\end{equation}
+
+considering perturbation terms upto quadractic order in the interaction Hamiltonian, $\mathcal{O}({\bf H}_I^2)$:
+
+\begin{itemize}
+    \item \underline{Zero-th order} The zero-th order expansion yields the following diagramatic representation
+
+    \begin{equation}
+        \includegraphics[valign = c, scale = .4]{figs/Feynmann_diagrams/Feynmann_diags_first_order_exact_GF_doublearrow_zero_order.png}, \begin{array}{cc}
+             \textnormal{namely, that the particle with ${\bf k}$-momentum injected } \\
+             \textnormal{ at $t_1$-time travels unperturbed until it is extracted}\\
+             \textnormal{ at $t$-time, without suffering any scattering effects.} 
+        \end{array}
+    \end{equation}
+
+\item \underline{First-order terms}: the first order terms can then be 
+interpreted as suffering a single scattering event. From \cref{first_order_contractions} there are a total of six first-order terms contributing to $\mathfrak{G}^{(1)}$, which can be represented by six diagrams. Consider, eg., the first pairing, 
+
+\begin{equation}
+\begin{split}
+    &\bigg \langle \bm{\mathcal{T}} \bigg[ 
+    \overbrace{
+    {\bf c}_{{\bf k}}(t) {\bf c}_{{\bf k}_1 - {\bf q}}^\dagger(t_1)
+    } \overbrace{
+    {\bf c}_{{\bf k}_2 + {\bf q}}(t_1)^\dagger {\bf c}_{{\bf k}_2}(t_1) 
+    } \overbrace{
+    {\bf c}_{{\bf k}_1}(t_1) {\bf c}_{{\bf k}}^\dagger(t')
+    }
+    \bigg]\bigg \rangle_{{\Phi_0}}\\
+    \\
+    \Rightarrow \mathfrak{G}_{a}^{(1)} ({\bf k}, t-t') =& -\frac{1}{\Omega} \int_{\mathds{R}} dt \blanky \sum_{{\bf k}_1, {\bf k}'_1, {\bf q}} \frac{V({\bf q)}}{2} \bm{\mathcal{T}} \bigg[ \begin{array}{ccc}
+         \overbrace{
+    {\bf c}_{{\bf k}}(t) {\bf c}_{{\bf k}_1 - {\bf q}}^\dagger(t_1)
+    } & \overbrace{
+    {\bf c}_{{\bf k}_2 + {\bf q}}(t_1)^\dagger {\bf c}_{{\bf k}_2}(t_1) 
+    } & \overbrace{
+    {\bf c}_{{\bf k}_1}(t_1) {\bf c}_{{\bf k}}^\dagger(t')
+    } \\
+    {\bf k}_1 - {\bf q} = {\bf k} & {\bf k}_2 = {\bf k_2} + {\bf q} & {\bf k}_1 ? {\bf k}
+    \end{array} \\
+    &= \frac{i}{\Omega} \int_{\mathds{R}} dt \blanky \sum_{{\bf k}_2} \mathfrak{G}^{(0)}({\bf k}, t- t_1)  \mathfrak{G}^{(0)}({\bf k}_2, 0^-)  \mathfrak{G}^{(0)}({\bf k}, t_1 - t') \\
+    &= \includegraphics[valign = c, scale 
+= .4]{figs/Feynmann_diagrams/Feynmann_diags_first_order_exact_GF_doublearrow_first_order_first_term.png}
+\end{split}
+\end{equation}
+
+The six first-order diagrams then are isomorphic to those shown in \cref{first_order_contraction_Feynmann_diags}. 
+In fact, only the labels change yielding 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = .5]{figs/Feynmann_diagrams/Feynmann_diags_first_order_k_space_Feynmann_diags_all.png}
+    \caption{All six first-order Feynmann diagrams in momentum representation, derived from the six Wick contraction shown in \cref{first_order_contractions}.}
+\end{figure}
+
+An examination of the diagrams reveals that there are two pairs of identical diagrams and two disconnected diagrams. \\
+
+\item \underline{Second-order terms}
+
+The second order terms involve 
+
+\begin{equation}
+    \bigg \langle \bm{\mathcal{T}} \bigg[ {\bf c}_{{\bf k}}(t) {\bf H}_I(t_1){\bf H}_I(t_2) {\bf c}_{{\bf k}}(t_1)
+    \bigg]\bigg \rangle_{{\Phi_0}},
+\end{equation}
+
+whose diagrams contain five fermionic lines with two interaction, yielding -in principle- 5! = 120 Wick contractions, each represented by a diagram. However, some of these diagrams will be identical to other ones. \\
+
+\end{itemize}
+
+From these cases, it is clear that some redundacies arise in the diagramatic expansion of the Dyson series, since many contractions appear to correspond to the same graph. \\
+
+\paragraph{\textit{Redundancies and Simplfications in the Diagrammatic Expansions}}
+
+There are multiple causes for redundancies in the Feynmann expansion. For example, a third-order expansion of the Green function has, in principle, 7! = 5040 possible Wick contractions. An identification of diagrammatic redundancies among these contractions is then of the utmost importance. Some ways in which to account for redundancies are treated as follows,
+
+\begin{itemize}
+    \item Permutation of interaction lines: first, consider three interaction lines which occur at $t_1, t_2, t_3$-times. It is obvious that there 3! = 6 equivalent Wick contractions, equivalent in the sense that these can be obtained from permutations. Such contractions will yield the exact same product of Green functions with identical diagrams but with different labels. But, since integrations are carried out over all internal lines, albeit at different orders, their interchange is irrelevant. Therefore, in general, in an $n$-line diagram, a $\frac{1}{n!}$-factor is associated with terms of order $n$, namely 
+
+    $$
+        S(\infty, -\infty) = \sum_{n=0}^{\infty} \frac{i^n}{n!} \mathcal{T} \int_{\mathds{R}} 
+        dt_1 \cdot \int_{\mathds{R}} dt_n {\bf H}_I(t_1) \cdots {\bf H}_I(t_n).
+    $$
+
+    This $\frac{1}{n!}$ thus cancels itself out with the $n!$ symmetry factor for each diagram. \\
+
+    \item Reversal symmetry of an interaction line: Each individual interaction line, in the momentum-time representation, has a direction, with two possible orientations. In the position-time representation, internal variables ${\bf x}_i$, ${\bf x}_j$, at the vertices, may be interchanged. In either case, such operation will yield diagrams having the same topology. Integrating over these internal variables will yield the same value for the contribution of each diagrams. This entails that, for each interaction line, there is a factor of $V({\bf q})$, instead of $\frac{V({\bf q})}{2}$ that appears in the Hamiltonian. \\
+
+    \item Multiplicative factors: the fact that any contraction term of order $n$ has $n$ interaction lines, and $2n+1$ Green functions, implies that the corresponding $n$th-order diagram must be associated with a factor $i^n$. \\
+
+    \item Transposition of fermionic operators: Correct Green function operator ordering requires operator switching and gives rise to a factor of $-1$. 
+    Furthermore, there is a $(-1)^L$-factor associated with diagrams with $L$ closed fermionic loops. 
+    
+\end{itemize}
+
+So far the denominator of \cref{first_order_perturb_Green_function} has been ignored. Upto first order in the interaction Hamiltonian it gives, 
+
+\begin{equation}
+    \begin{split}
+        \bra{\Psi_0} S(\infty, -\infty) \ket{\Psi_0} \sim&
+        \bra{\Psi_0} \ket{\Psi_0} - \frac{i}{\hbar} \int_{\mathds{R}} dt_1 \blanky \bra{\Psi_0} T {\bf H}_I(t_1) \ket{\Psi_0} \\
+        &= 1 - \frac{i}{\hbar} \int_{\mathds{R}} d^4 x_1 d^4 x_2 V_{\sigma_1 \sigma_2 \sigma'_1 \sigma'_2}^{(x, x')} \blanky \bra{\Psi_0} \mathcal{T} 
+        \psi_{\sigma_1}^\dagger(x_1)
+        \psi_{\sigma_2}^\dagger(x_2)
+        \psi_{\sigma'_2}(x_2)
+        \psi_{\sigma'_1}(x_1)
+        \ket{\Psi_0} = F_0 + F_1
+    \end{split}     
+\end{equation}
+
+These diagrams do not have external fermionic lines, and consequently its diagrams are closed ones. Terms in the series $\bra{\Psi_0} S(\infty, -\infty) \ket{\Psi_0}$ are called \textbf{vacuum polarization terms}, which have corresponding vacuum polarization diagrams of the closed type. Some contractions of the interaction Hamiltonian in the $n$th-order perturbative expansion do not link the external fermionic points ${\bf c}(t)$ and ${\bf c}^\dagger(t')$. Such contractions correspond to diagrams having disconnected closed components. It can be shown that there exists a factorization that separates the disconnected closed-type components from connected ones. This cancellation theorem demonstrations that, in such factorization, the closed diagrams in the denominator exactly cancel the disconnected counterpart diagrmas of the pertubation expansion in the numerator. This means that the Green function is then given by the sum of all connected diagrams as 
+
+\begin{equation}
+    \begin{split}
+        i \mathfrak{G}_{\sigma \sigma'}^{(x,x')} = \sum_{n=0}^{\infty} \frac{1}{n!} \bigg(\frac{-i}{\hbar}\bigg)^n \int_{\mathds{R}} dt_1 \cdots \int_{\mathds{R}} dt_n \blanky \bra{\Phi_0} \mathcal{T} [ {\bf H}_I(t_1) \cdots {\bf H}_I(t_n) \psi_{H \sigma}({\bf x}, t) \psi_{H \sigma'}^\dagger({\bf x}', t_1)]\ket{\Phi_0}_{\textnormal{connected}}.
+    \end{split}
+\end{equation}
+
+\blanky \\
+
+\subsubsection{Infinite Sums: Dyson Series and Self-Energy}
+
+It turns out that some diagrams can be constructed by linking diagrams which appear in lower-order expansion with a fermionic line $\mathfrak{G}^{(0)}$. In order words, there are second- and higher-order diagrams which can be decomposed into first-order diagrams. This suggests that identifying \underline{building blocks}, or \underline{irreducible} or \underline{proper} diagrams is useful, since all other diagrams can be generated from this one. \\
+
+An irreducible diagram can be defined as one which cannot be disconnected into two parts by cutting a single internal electron line. If a diagram is not irreducible, it is said to be reducible. Some examples of second-order diagrams reducibles diagrams are 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = .5]{figs/Feynmann_diagrams/reducible_feynmann_diags.png}
+\end{figure}
+
+which consist of linked first-order direct and exchange diagrams. All of these can be cut into two diagrams along the dashed line. \\
+
+An irreducibe self-energy diagram (ISED) is defined as the diagram obtained by removing external lines from an irreducible diagram. Equivalently, the ISED's mathematical expression is obtained by deleting two factors of $\mathfrak{G}^{(0)}$ due to external lines. The total ISED sum can be represented as follows 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = .5]{figs/Feynmann_diagrams/irreducible_self_energy.png}
+    \label{Feynmann_diags_ISED_sum}
+\end{figure}
+
+Then, the complete one-particle interacting Green function can be recovered by reconstructing the clipped diagrams as 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale 
+ = .5]{figs/Feynmann_diagrams/feynmann_diags_dyson_equation.png}
+\end{figure}
+
+which is the Dyson equation. The appearance of the double line on the right-hand side indicates the self-consistent nature of this equation. The diagrammatic expression of the Dyson equations' main advantage is that it can be terminated at any order and still only include certain classes of diagrams. In many cases, the application of perturbation theory requires summation over whole classes of diagrams in order to obtain meaningful and reliable results, eg. divergences of perturbation terms in the interacting electron gas can be removed by performing an infinite sum of the terms arising from two particular diagrams, the Hartree or direct diagram and the exchange or Fock diagram. 
+\\
+
+In this case, the Hartree term in particular has ${\bf q} = 0$ due to momentum conservation and is cancelled by the background interaction. The Fock-term gives rise to a non-trivial contribution, 
+
+\begin{equation}
+\begin{split}
+    &i\mathfrak{G}_{\textnormal{Fock}}^{(1\textnormal{-st order})} = i \mathfrak{G}^{(0)}({\bf k}, \omega) \int \frac{d\varepsilon}{2\pi} \frac{1}{\Omega} \sum_{{\bf q}} V({\bf q}) \mathfrak{G}^{(0)}({\bf k-q}, \omega - \varepsilon)  \mathfrak{G}^{(0)}({\bf k}, \omega) \equiv \Sigma^{*}_F({\bf k}, \omega) = \includegraphics[valign = c]{figs/Feynmann_diagrams/feynmann_diags_Fock_term_first_order.png} \\
+    &i\mathfrak{G}_{\textnormal{Fock}}^{(2\textnormal{-nd order})} \approx \mathfrak{G}^{(0)}({\bf k}, \omega) \Sigma^{*}_F({\bf k}, \omega) \mathfrak{G}^{(0)}({\bf k}, \omega) \Sigma^{*}_F({\bf k}, \omega) \mathfrak{G}^{(0)}({\bf k}, \omega) = \includegraphics[valign = c, scale = .4]{figs/Feynmann_diagrams/feynmann_diags_Fock_term_second_order.png} \\
+\end{split}
+\end{equation}
+
+%%%% #### this is how you create an environment for an image to the left of text ya twat #### %%%%
+%\noindent\begin{minipage}{0.3\textwidth}% adapt widths of minipages to your needs
+%\includegraphics[width=\linewidth]{figs/Feynmann_diagrams/feynmann_diags_Fock_term_complete_summation.png}
+%\end{minipage}
+%\hfill%
+%\begin{minipage}{0.6\textwidth}\raggedright
+
+%Then, in order to calculate this exact contribution \\
+%all higher-order terms must be included. These \\
+%higher-order terms include repetitions of this sequence
+%\end{minipage}
+
+\begin{wrapfigure}{l}{0.3\textwidth}
+\includegraphics[scale = .5]{figs/Feynmann_diagrams/feynmann_diags_Fock_term_complete_summation.png}
+\end{wrapfigure} 
+
+Then, in order to calculate this exact contribution all higher-order terms must be included. These higher-order terms include repetitions of this precise sequence, generating an infinite series, the \textbf{Dyson series}, which involves terms as 
+
+\begin{equation}
+    \begin{split}
+        & \includegraphics[scale = .5, valign = c]{figs/Feynmann_diagrams/feynmann_diags_Dyson_equation_complete.png} \\
+        &= \mathfrak{G}^{(0)}({\bf k}, \omega) \sum_{n=0}^{\infty} \bigg(\Sigma^{*}({\bf k}, \omega)\mathfrak{G}^{(0)}({\bf k}, \omega)\bigg)^n \\
+        &= \frac{\mathfrak{G}^{(0)}({\bf k}, \omega)}{1-\Sigma^{*}_F({\bf k}, \omega) \mathfrak{G}^{(0)}({\bf k}, \omega)} = \frac{1}{[\mathfrak{G}^{(0)}({\bf k}, \omega)]^{-1} - \Sigma^{*}_F({\bf k}, \omega)}, \\
+        & \textnormal{ which, by inserting the explicit form of the non-interactive Green function in \cref{Feynmann_diags_spectral_functions}} \\
+        & \textnormal{namely, $\mathfrak{G}^{(0)} = (\omega - \varepsilon({\bf k}))^{-1}$ ,yields }
+        \mathfrak{G}({\bf k}, \omega) = \frac{1}{\omega - \varepsilon({\bf k}) - \Sigma_F^{*}({\bf k}, \omega) \pm i\eta}.
+    \end{split}
+\end{equation}
+
+$\Sigma_F^{*}({\bf k}, \omega)$ is the self-energy of the interacting electron gas, obtained by carrying out the summation, a process known as renormalization. In general, as in \cref{Feynmann_diags_ISED_sum}, the self-energy is identified with the sum of all proper diagrams coming from all orders of perturbation, namely the ones which cannot be split into parts by breaking fermion lines. \\
+
+To obtain the complete interacting Green function, these self-energy diagrams must be augmented with external fermion lines at their vertices, with one line carrying ${\bf k}$-momentum and $\omega$-energy to the first vertex, and the other carrying them away from the last vertex. The Dyson series allows for the recasting the Green function in a form in which it can be identified with that of the non-interacting counterpart but with a renormalized spectrum, 
+$$
+    \varepsilon^{(0)}({\bf k}) \rightarrow \varepsilon({\bf k}) = \varepsilon^{(0)}({\bf k}) + \Re \Sigma^{*}({\bf k}, \omega).
+$$
+
+\blanky \\
+
+\subsubsection{Recasting the Hartree-Fock Approach}
+
+The Hartree-Fock approach may be reinterpreted from a field-theoretic perspective using the Feynmann-Dyson perturbative approach. This approach can be viewed as a nonperturbative expansion in the sense that the Green function will contain all powers in the interaction, but will only contain a selected class of diagrams. \\
+
+\paragraph{Self-energy in the Hartree-Fock Self-Consistent Approximation}
+
+Diagramatically, the one-particle Green function up to first-order is given by 
+
+\begin{equation}
+    \begin{split}
+        \mathfrak{G} &= \longrightarrow +  \includegraphics[scale = .3, ]{figs/Feynmann_diagrams/Hartree_fock_diags.png} \\
+        &= \mathfrak{G}^{(0)} + \mathfrak{G}^{(0)} \Sigma \mathfrak{G}^{(0)}, \textnormal{ with the corresponding self-energy expansion given by } \includegraphics[scale = .15, valign = c]{figs/Feynmann_diagrams/Hartree_fock_diags.png}.
+    \end{split}
+    \label{HF_RPA_first_order_self_energy_expansion}
+\end{equation}
+
+Terminating the perturbation expansion at first order yields the Hartree-Fock approximation, discussed in \cref{First_order_Hartree_Fock}. By going beyond this approximation, using Dyson's equation, yields 
+
+\begin{equation}
+    \begin{split}   
+    &\includegraphics[scale = .45, valign = c]{figs/Hartree-Fock-RPA/HFRPA_Dyson_eq.png} \\
+    &\mathfrak{G} = \mathfrak{G}^{(0)} + \mathfrak{G}^{(0)} \Sigma_{\textnormal{HF}}\mathfrak{G}. 
+    \end{split}
+\end{equation}
+
+By iteration, a Green function with the interaction restricted to Hartree-Fock terms can be constructed, ie. via the HF self-energy but extended to all orders. Consider \cref{first_order_contraction_Feynmann_diags}, wherein all contractions for a first-order approximation to the Green function where carried out. Restricting these terms to only those which arise from the self-energy diagrams, written in 
+\cref{HF_RPA_first_order_self_energy_expansion}, yields
+
+\begin{equation}
+    \begin{split}
+        i \mathfrak{G}^{(1)}_{\sigma \sigma'} = \frac{i}{\hbar} \sum_{\substack{\sigma_1 \sigma'_1 \\
+        \sigma_2 \sigma'_2}} V_{\sigma_1\sigma_2}^{\sigma'_2\sigma'_1}(x_1,x_2) i \mathfrak{G}^{(x_1, x_2); (0)}_{\sigma\sigma_1} \bigg[ i i \mathfrak{G}^{(x_1,x_2); (0)}_{\sigma'_1\sigma_2}
+        \mathfrak{G}^{(x_2, x'); (0)}_{\sigma'_2\sigma'} 
+         -
+        i \mathfrak{G}^{(x_1,x'); (0)}_{\sigma'_1\sigma'} 
+        i \mathfrak{G}^{(x_2, x_2); (0)}_{\sigma'_2\sigma_2} \bigg]
+    \end{split}
+\end{equation}
 
 \clearpage
-
 \section{Linear Response Theory}
 
 Linear response theory is an extremely widely used concept in physics, stating that the response to a weak external perturbation is proportional to the perturbation, and therefore the quantity of interest is the proportionality constant. The physical question to ask is thus: supposing some perturbation $H'$, what is the measured consequence for an observable quantity ${\bf A}$. In other words, what is $\langle {\bf A} \rangle$ to linear order in $H'$? 
