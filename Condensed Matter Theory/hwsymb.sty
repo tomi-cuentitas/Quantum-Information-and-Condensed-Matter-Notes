@@ -1,5 +1,10 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{hwsymb}[2021/01/01 hwsymb]
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\numberwithin{equation}{section}
 \usepackage{dsfont}
 \usepackage[noabbrev,nameinlink]{cleveref}
 \RequirePackage{amssymb, amsthm, amscd, graphicx}
@@ -14,6 +19,15 @@
 \usepackage{tcolorbox}
 \usepackage{xcolor}
 \usepackage{relsize}
+
+%usepackage[pass,showframe]{geometry}% just to show the page margins %\usepackage[demo]{graphicx}% remove demo option in actual document\usepackage[pass,showframe]{geometry}% just to show the page margins
+
+\usepackage{mwe} % for blindtext and example-image-a in example
+\usepackage{wrapfig}
+
+\usepackage[demo]{graphicx}% remove demo option in actual document
+
+\usepackage{simpler-wick}
 \usepackage{calligra, unicode-math}
 \newlength\dlf
 \newcommand\alignedbox[2]{
