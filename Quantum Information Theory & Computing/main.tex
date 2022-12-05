@@ -98,9 +98,281 @@ where the most common choice for the logarithm base is $a=2$, with the unit of i
 
 \clearpage
 
-\section{Theory of Open Quantum Systems}
+\section{The Theory of Open Quantum Systems}
 
-\paragraph{\textbf{Probability measures on a Hilbert space}}
+\subsection{Formal Definition of a Stochastic Process}
+
+A stochastic process is a family of rando variables $\{\bf X(t)\}_{t \in T}$ depending on a parameter $t \in T$, which in most physical situations plays the role of the time variable. 
+
+\clearpage
+
+\subsection{Quantum Master Equation}
+
+In this section the dynamics of an open quantum system are discussed. 
+
+\begin{tcolorbox}[colback = yellow, title = Physical Context]
+
+In contrast to closed quantum systems, the quantum dynamics of  an open system cannot, in general, be represented in terms of a unitary time evolution. In many cases, the appropriate object of study is the density operator. Thus, the need of an appropriate equation of motion on the density operator arises. 
+
+\end{tcolorbox}
+
+\subsection{Projection Operator techniques }
+
+The laws describing the dynamics of open quantum systems can be derived from the unitary dynamics of the total system. In general, the reduction of the degrees of freedom in the effective description of the open system results in non-Markovian behaviour. A general framework to derive exact equations of motion for an open system is provided by projection operator techniques. \\
+
+The basic idea underlying the application of projection operator techniques to open quantum systems is to regard the operation of tracing over the enviroment as a formal projection $\rho \mapsto \bm{\mathcal{P}} \rho$ in the state space of the total system, such that $\bm{\mathcal{P}}^2  =\bm{\mathcal{P}}$ and the total density matrix $\bm{\mathcal{P}} \rho$ is said to be the relevant part of the density $\rho$ of the total system. Correspondingly, one defines a projection $\rho \mapsto \bm{\mathcal{Q}}\rho$ as the irrelevant part, with $\bm{\mathcal{P}} + \bm{\mathcal{Q}} = \mathfrak{i}\mathfrak{d}$. Hence, the aim is to derive a closed equation of motion for the relevant part $\bm{\mathcal{P}} \rho$. There are two variants of projection operator techniques, the 
+
+\begin{itemize}
+    \item Nakajima-Zwanzig equation, 
+    \item and the time-convolutionless technique. 
+\end{itemize}
+
+Both methods lead to an exact equation of motion for the relevant part $\bm{\mathcal{P}} \rho$. In the case of the Nakajima-Zwanzig method, this is an integro-differential equation involving a retarded time integration over the history of the reduced system, while the time-convolutionless equation of motion provides a first-order differential equation which is local in time with respect to the strength of the system-environment coupling. It thus supports an investigation of non-Markovian effects beyond the Born approximation. To each order in the coupling, the equation of motion involves a time-dependent but local generator. \\
+
+\subsubsection{\textbf{The Nakajima-Zwanzig Projection Operator technique}}
+
+Consider an open system $S$ coupled to an environment $B$. The dynamics of the density matrix $\rho(t)$ of the combined system is specified by some microscopic Hamiltonian of the form ${\bf H} = {\bf H}_0 + \alpha {\bf H}_I$, where ${\bf H}_0$ generates the uncoupled time evolution of the system, where the environment Hamiltonian ${\bf H}_I$ describes their interaction, and where $\alpha$ is a dimensionless expansion parameter. In the interaction represention, the equation of motion for the density matrix reads 
+
+\begin{equation}
+    \frac{\partial \rho(t)}{\partial t} = - i \alpha [{\bf H}_I, \rho(t)] \equiv \alpha \bm{\mathcal{L}}(t) \rho(t),
+    \begin{array}{c}
+         \textnormal{ with the interaction picture representation }  \\
+         \textnormal{ of the interaction Hamiltonian defined as } 
+    \end{array}{\bf H}_I (t) = e^{i{\bf H}_0 t} {\bf H}_I e^{-i{\bf H}_0 t},
+    \label{Proj_ev_Liouville}
+\end{equation}
+
+with the Liouville superoperator denoted by $\bm{\mathcal{L}}$. \\
+
+\paragraph{\textit{Projection Operators}}
+
+In order to derive an exact equation of motion for the reduced density matrix $\rho_S$ of the open system it is convenient to define a super-operator $\bm{\mathcal{P}}$, its action defined as 
+
+\begin{equation}
+    \rho \mapsto \bm{\mathcal{P}}\rho = \Tr_{B} \{\rho\} \otimes \rho_{B} = \rho_S \otimes \rho_B, \begin{array}{cc}
+         \textnormal{ for some fixed $\rho_B$-state of the environment, }  \\
+         \textnormal{ with $\Tr_{B} \rho_B = 1$. }
+    \end{array}
+\end{equation}
+
+This superoperator project on the relevant part of the density matrix $\rho$ in the sense that $\bm{\mathcal{P}}\rho$ gives the complete information required to reconstruct the reduced density matrix $\rho_S$ of the open system. Accordingly, a complementary superoperator $\bm{\mathcal{Q}}$
+
+\begin{equation}
+    \bm{\mathcal{Q}}\rho = \rho - \bm{\mathcal{P}}\rho,
+\end{equation}
+
+may be introduced, which projects on the irrelevant part of the density matrix. The superoperators $\bm{\mathcal{P}}, \bm{\mathcal{Q}}$ are maps in the state space of the combined system, that is in the space of density matrices of the total Hilbert space $\mathds{H} = \mathds{H}_A \otimes \mathds{H}_B$, obeying the following properties, 
+
+\begin{equation}
+    \bm{\mathcal{P}} + \bm{\mathcal{Q}} = \mathfrak{i}\mathfrak{d}_{\mathds{H}}, \quad,
+    \begin{array}{cc}
+        \bm{\mathcal{P}}^2 = \bm{\mathcal{P}} \\
+        \bm{\mathcal{Q}}^2 = \bm{\mathcal{Q}} \\
+         \bm{\mathcal{P}} \bm{\mathcal{Q}} =  \bm{\mathcal{Q}} \bm{\mathcal{P}} = 0
+    \end{array}
+\end{equation}
+
+The $\rho_B$ represents an arbitrary, but known, enviromental state, called the reference state. The choice of the $\rho_B$ strongly depends on the specific application. Typically, it is taken to be the stationary Gibbs state of the environment. In particular, it may also be assumed that the odd moments of the interaction Hamiltonian with respect to the reference state vanish, 
+
+\begin{equation}
+    \Tr_{B} \bigg({\bf H}_I(t_1){\bf H}_I(t_2) \cdots {\bf H}_I(t_{2n+1}) \rho_B \bigg) = 0 \Longrightarrow \bm{\mathcal{P}} \bm{\mathcal{L}}(t_1) \bm{\mathcal{L}}(t_2) \cdots \bm{\mathcal{L}}(t_{2n+1}) \bm{\mathcal{P}} = 0, \blanky n \in \mathds{N}_{{\{0}\}}.
+\end{equation} 
+
+Upto now, no demands on the initial condition nor of its factorization is made. \\
+
+\paragraph{\textit{The Nakajima-Zwanzig equation}}
+
+By applying the projection operators $(\bm{\mathcal{P}}, \bm{\mathcal{Q}})$ to the Liouville-von Neumann equation 
+\cref{Proj_ev_Liouville} and by invoking the time independence of the reference state, the following set of coupled differential equations for the relevant and irrelevant parts of the density matrix is obtained
+
+\begin{equation}
+    \begin{split}
+        &\frac{\partial}{\partial t} \bm{\mathcal{P}}\rho(t) = \bm{\mathcal{P}} \frac{\partial}{\partial t} \rho(t) = \alpha \bm{\mathcal{P}} \bm{\mathcal{L}} \rho(t) \\
+        &\frac{\partial}{\partial t} \bm{\mathcal{Q}}\rho(t) = \bm{\mathcal{Q}} \frac{\partial}{\partial t} \rho(t) = \alpha \bm{\mathcal{Q}} \bm{\mathcal{L}} \rho(t) 
+    \end{split}
+\end{equation}
+
+Inserting the identity operator $\mathfrak{i}\mathfrak{d}_{\mathds{H}} = \bm{\mathcal{P}} + \bm{\mathcal{Q}}$ between the Liouville operator and the density matrix yields
+
+\begin{equation*}
+\begin{array}{cc}
+    \begin{split}
+        \frac{\partial}{\partial t} \bm{\mathcal{P}}\rho(t) &= \alpha \bm{\mathcal{P}} \bm{\mathcal{L}} \rho(t) \\
+        &= \alpha \bm{\mathcal{P}} \bm{\mathcal{L}} \mathfrak{i}\mathfrak{d}_{\mathds{H}} \rho(t) \\
+        &= \alpha \bm{\mathcal{P}} \bm{\mathcal{L}} \bm{\mathcal{P}} \rho(t) + \alpha \bm{\mathcal{P}} \bm{\mathcal{L}} \bm{\mathcal{Q}} \rho(t) \\
+    \end{split} & \begin{split}
+        \frac{\partial}{\partial t} \bm{\mathcal{Q}}\rho(t) &= \alpha \bm{\mathcal{P}} \bm{\mathcal{L}} \rho(t) \\
+        &= \alpha \bm{\mathcal{Q}} \bm{\mathcal{L}} \mathfrak{i}\mathfrak{d}_{\mathds{H}} \rho(t) \\
+        &= \alpha \bm{\mathcal{Q}} \bm{\mathcal{L}} \bm{\mathcal{P}} \rho(t) + \alpha \bm{\mathcal{Q}} \bm{\mathcal{L}} \bm{\mathcal{Q}} \rho(t)
+    \end{split}
+    \label{Nakajima_Zwanzig_operators_diff_eqs}
+\end{array}
+\end{equation*}
+
+In order to get a single closed equation for the relevant part of the density matrix, the previous second equation is solved, with its formal solution given by 
+
+\begin{equation}
+    \bm{\mathcal{Q}} \rho(t) = \mathfrak{G}(t,t_0) \bm{\mathcal{Q}} \rho(t_0) + \alpha \int_{t_0}^{t} ds \blanky \mathfrak{G}(t,s) \bm{\mathcal{Q}} \bm{\mathcal{L}}(s) \bm{\mathcal{P}} \rho(s), \textnormal{ with } \mathfrak{G}(t,s) = \mathcal{T} \exp \bigg[\int_{t_0}^{t} ds' \blanky \bm{\mathcal{Q}} \bm{\mathcal{L}}(s')\bigg],
+    \label{Green_propagator_Nakajima_Zwanzing}
+\end{equation}
+
+where $\mathfrak{G}(t,s)$ is a propagator, with $\mathcal{T}$ being the usual chronological time ordering operator. It orders any product of super-operators such that the time arguments increase from right to left. Naturally, the propagator satisfies the differential equation 
+
+\begin{equation}
+    \frac{\partial}{\partial t}\mathfrak{G}(t,s) = \alpha \bm{\mathcal{Q}} \bm{\mathcal{L}}(t) \mathfrak{G}(t,s), \quad \textnormal{ with } \mathfrak{G}(s,s) = \mathfrak{i}\mathfrak{d}_{\mathds{H}}.
+\end{equation}
+
+Inserting this expression for the irrelevant part of the density matrix into the equation of motion for the relevant part yields the desired exact equation for the time evolution of the relevant density matrix,
+
+\begin{equation}
+    \frac{\partial}{\partial t} \bm{\mathcal{P}}\rho(t) = \alpha \bm{\mathcal{P}} \bm{\mathcal{L}} \bm{\mathcal{P}} \rho(t) + \alpha \bm{\mathcal{P}}  \bm{\mathcal{L}}(t) \mathfrak{G}(t, t_0)  \bm{\mathcal{Q}} \rho(t_0) + \alpha^2 \int_{t_0}^{t} ds \blanky \bm{\mathcal{P}} \bm{\mathcal{L}}(t) \mathfrak{G}({t},t) \bm{\mathcal{Q}} \bm{\mathcal{L}}(s) \bm{\mathcal{P}} \rho(s).  
+    \label{Nakajima_Zwanzig_exact}
+\end{equation}
+
+This is the Nakajima-Zwanzig equation, and is an exact equation for the relevant degrees of freedom of the reduced system. The right-hand side involves an inhomogeneous term, namely the second one $\bm{\mathcal{P}}  \bm{\mathcal{L}}(t) \mathfrak{G}(t, t_0)  \bm{\mathcal{Q}} \rho(t_0)$, depending on the initial condition at time $t_0$ and an integral over the past history of thee system in the $\mathds{R}_{[t, t_0]}$ interaval. It thus completely describes non-Markovian memory effects of the reduced dynamics. Furthermore, if 
+
+$$
+    \Tr_{B} \bigg({\bf H}_T \rho_B \bigg) = 0
+$$
+
+the first term in \cref{Nakajima_Zwanzig_exact}, namely $\alpha \bm{\mathcal{P}} \bm{\mathcal{L}} \bm{\mathcal{P}} \rho(t)$, is zero, allowing for the Nakajima-Zwanzig equation to be recast into a simplified version, 
+
+\begin{equation}
+\begin{split}
+     & \blanky {\frac{\partial}{\partial t} \bm{\mathcal{P}}\rho(t)}{=  \alpha \bm{\mathcal{P}}  \bm{\mathcal{L}}(t) \mathfrak{G}(t, t_0)  \bm{\mathcal{Q}} \rho(t_0) + \int_{t_0}^{t} ds \blanky \mathfrak{K}(t,s) \bm{\mathcal{P}} \rho(s)} , \\
+     & \mathfrak{K}(t,s) = \alpha^2 \bm{\mathcal{P}} \bm{\mathcal{L}}(t) \mathfrak{G}({t},s) \bm{\mathcal{Q}} \bm{\mathcal{L}}(s),
+     \label{Nakajima_Zwanzing_simplified_v1}
+\end{split}
+\end{equation}
+
+where the convolution or memory kernel $\mathfrak{K}(t,s)$ represents a super-operator in the relevant subspace. This integro-differential equation is exact and holds for all initial conditions and for almost all arbitrary systems and interactions. 
+
+The Nakajima-Zwanzig equation is usually as difficult to solve as the Liouville equation which describes the dynamics of the entire system. This means that perturbative expansions are needed in order to discuss the relevant dynamics, in such a way that analytical or numerical computations become tractable. Obviously, the equation may be expanded in the $\alpha$-coupling constant, ie. in powers of the interaction Hamiltonian ${\bf H}_1$. Alternatively, it may be expanded around $t$ in powers of the memory time, ie. in the width of the $\mathfrak{K}(t,s)$-kernel. The markovian description is yielded in the limit in which  $\mathfrak{K}(t,s) \approx \delta(t-s)$ ie. in the absence of memory effects. Sometimes, it might also be convenient to perform a perturbative expansion for the Laplace transform $\rho_{S}(t)$ in the Schr\"odinger picture. \\
+
+Furthermore, consider the following two particular conditions. First, that $ \Tr_{B} \bigg({\bf H}_T \rho_B \bigg) = 0$ and a factorized initial condition, $\rho(t_0) = \rho_S(t_0) \otimes \rho_B$. Thus, $\bm{\mathcal{P}}\rho(t_0) = \rho(t_0)$ and $\bm{\mathcal{Q}}\rho(t_0)=0$, cancelling the inhomogeneous term in the Nakajima-Zwanzig \cref{Nakajima_Zwanzing_simplified_v1} and yielding 
+
+\begin{equation}
+\begin{split}
+    \frac{\partial}{\partial t} \bm{\mathcal{P}}\rho(t) &= \int_{t_0}^{t} ds \blanky \mathfrak{K}(t,s) \bm{\mathcal{P}} \rho(s), \quad \mathfrak{K}(t,s) = \alpha^2 \bm{\mathcal{P}} \bm{\mathcal{L}}(t) \mathfrak{G}({t},s) \bm{\mathcal{Q}} \bm{\mathcal{L}}(s) + \mathcal{O}(\alpha^3), \\
+    & \begin{array}{cc}
+         \textnormal{ A $\mathcal{O}(\alpha^2)$-order approximation can be obtained from a perturbative expansion of the $\mathfrak{G}$-propagator. }  \\
+         \textnormal{Hence To zero order in the coupling strength $\alpha$, the propagator reads } \mathfrak{G}(t,s) = \mathfrak{i}\mathfrak{d}_{\mathds{H}} + \mathcal{O}(\alpha), \textnormal{ with the } \\
+         \textnormal{ $\mathfrak{K}$-kernel given by } \mathfrak{K}(t,s) = \alpha^2 \bm{\mathcal{P}} \bm{\mathcal{L}}(t) \bm{\mathcal{Q}} \bm{\mathcal{L}}(s) + \mathcal{O}(\alpha^3) 
+    \end{array}\\
+    \\
+    & = \alpha^2 \int_{t_0}^{t} ds \blanky \bm{\mathcal{P}} \bm{\mathcal{L}}(t) \bm{\mathcal{Q}} \bm{\mathcal{L}}(s) \bm{\mathcal{P}}\rho(s), \textnormal{ where $\bm{\mathcal{P}} \bm{\mathcal{L}} \bm{\mathcal{P}} = 0$ since $\Tr_{B} \bigg({\bf H}_T \rho_B \bigg) = 0$. } \\
+    &= \alpha^2 \int_{t_0}^{t} ds \blanky \bm{\mathcal{P}} \bm{\mathcal{L}}(t) ( \bm{\mathcal{L}}(s) - \bm{\mathcal{P}} \bm{\mathcal{L}}(s)) \Tr_{B}(\rho) \otimes \rho_B \\
+    &= \alpha^2 \int_{t_0}^{t} ds \blanky \bm{\mathcal{P}} \bm{\mathcal{L}}(t)  \bm{\mathcal{L}}(s) \Tr_{B}(\rho) \otimes \rho_B - \bm{\mathcal{P}} \bm{\mathcal{L}}(t)s \bm{\mathcal{P}} \bm{\mathcal{L}}(s) \Tr_{B}(\rho) \otimes \rho_B \textnormal{ \textcolor{red}{ Acá hay algo raro en el Heinz-Pettrucione, p. 468. }} \\
+    &= -\alpha^2 \int_{t_0}^{t} ds \blanky \Tr_{B} \bigg[{\bf H}_I(t), [{\bf H}_I(s), \rho_S \otimes \rho_B]\bigg],
+\end{split}
+\end{equation}
+
+which yields the Born-approximation of the master equation. \\
+
+This approach to non-Markoviann dynamics of open quantum dynamics has some practical disadvantages, for the perturbative approximation of the memory kernel simplifies the derivation of the equations of motion but not their structure. The approximate equation is another integro-differential equation, whose numerical solution may be quite involved. \\
+
+\subsubsection{\textbf{The time-convolutionless projection operator method}}
+
+In practice, the time convolution in the memory kernel of the Nakajima-Zwanzig equation is difficult to treat but it can be taken out of the master equation. This is achieved through a  method developed by Shibata \textit{et. al.}, which yields a systematic expansion of the dynamics of the system of interest in terms of the coupling strength. \\
+
+\paragraph{\textit{The time-local master equation}}
+
+The main idea of the time-convolutionless projection operator technique is to eliminate the dependence of the future time evolution on the history of the system from the Nakajima-Zwanzig master equation and thus to derive an exact master equation for the open system which is local in time. The procedure is as follows: consider  \cref{Green_propagator_Nakajima_Zwanzing}, wherein $\rho(s)$ is replaced by the expression
+
+\begin{equation}
+    \rho(s) = \tilde{\mathfrak{G}}(t,s) (\bm{\mathcal{P}} + \bm{\mathcal{Q}}) \rho(t), \begin{array}{cc}
+         \textnormal{ where $\tilde{\mathfrak{G}}(t,s)$ is the backward propagator of the composite system,  } \\
+         \textnormal{ie. the inverse of the unitary time evolution of the total system, given by } \tilde{\mathfrak{G}}(t,s)
+    \end{array}
+    \label{TCPO_rho_backward_propagator}
+\end{equation}
+
+Formally, this $\tilde{\mathfrak{G}}$ propagator can be written as 
+
+\begin{equation}
+    \tilde{\mathfrak{G}}(t,s) = \mathcal{T}_{\leftarrow} \exp \bigg[- \alpha \int_{s}^t ds' \blanky \mathcal{L}(s')\bigg], \quad \textnormal{ where $\mathcal{T}_{\leftarrow}$ is the antichronological time ordering. }
+\end{equation}
+
+Using \cref{TCPO_rho_backward_propagator} in \cref{{Green_propagator_Nakajima_Zwanzing}} yields a modified expression for the irrelevant part of the density matrix, ie. 
+
+\begin{equation}
+\begin{split}
+    &\bm{\mathcal{Q}}\rho(t) = \mathfrak{G}(t,t_0) \bm{\mathcal{Q}}\rho(t_0) + \alpha \int_{t_0}^t ds \blanky \mathfrak{G}(t,s) \bm{\mathcal{Q}} \mathcal{L}(s) \bm{\mathcal{P}}\tilde{\mathfrak{G}}(t,s) (\bm{\mathcal{P}} + \bm{\mathcal{Q}}) \rho(t) \\
+    &\textnormal{ Introducing the superoperator } \bm{\Sigma}(t) = \alpha \int_{t_0}^{t} ds \blanky \mathfrak{G}(t,s) \bm{\mathcal{Q}} \mathcal{L}(s) \bm{\mathcal{P}} \tilde{\mathfrak{G}}(t,s),
+\begin{array}{cc}
+     \textnormal{ which allows the previous expression}  \\
+     \textnormal{ to be rewritten as } 
+\end{array} \\
+    & [1- \bm{\Sigma}(t)]\bm{\mathcal{Q}}\rho(t) = \mathfrak{G}(t,t_0) \bm{\mathcal{Q}}\rho(t_0) + \bm{\Sigma}(t) \bm{\mathcal{P}}\rho(t),
+\end{split}
+\end{equation}
+
+where note that superoperator $\bm{\Sigma}(t)$ contains both kinds of propagators, $\mathfrak{G}$ and $\tilde{\mathfrak{G}}$, so that it doesn't specify a well-defined chronological order. It has some obvious properties, $\bm{\Sigma}(t = 0) = \bm{\Sigma}(t)\bigg|_{\alpha = 0} = 0$. Hence, $1 - \bm{\Sigma}(t)$ may be inverted for:
+
+\begin{itemize}
+    \item not too large couplings,
+    \item and in any case for small $t_0$. 
+\end{itemize}
+
+Then, 
+
+\begin{equation}
+    \bm{\mathcal{Q}}\rho(t) = [1-\bm{\Sigma}(t)]^{-1} \mathfrak{G}(t,t_0) \bm{\mathcal{Q}}\rho(t_0) + [1-\bm{\Sigma}(t)]^{-1}  \bm{\Sigma}(t) \bm{\mathcal{P}}\rho(t). 
+    \label{TCL_irrelevant_part_eq}
+\end{equation}
+
+This equation states that the irrelevant part $\bm{\mathcal{Q}}\rho(t)$ of the density matrix can, in principle, be determined from the knowledge of the relevant part $\bm{\mathcal{P}}\rho(t)$ at $t$-time from the initial condition $\bm{\mathcal{Q}}\rho(t_0)$.
+
+Note as well that the dependence on the past history of the relevant part, present in the Nakajima-Zwanzig equation, has thus be removed by introducing the exact backwards propagator $\tilde{\mathfrak{G}}(t,s)$. For strong couplings and/or large $(t-t_0)$-times, it may happen that the previous equation does not give a unique solution for the irrelevant part $\bm{\mathcal{Q}}\rho(t)$, since in those cases the inverse $[1-\bm{\Sigma}(t)]^{-1}$ does not exist. To complete the derivation of the exact-time-convolutionless (TCL) form of the master equation, inserting  \cref{TCL_irrelevant_part_eq} into \cref{Nakajima_Zwanzig_operators_diff_eqs} yields 
+
+\begin{equation}
+\begin{split}
+    \frac{\partial}{\partial t} \bm{\mathcal{P}}\rho(t) &= \alpha \bm{\mathcal{P}} \bm{\mathcal{L}} \bm{\mathcal{P}} \rho(t) + \alpha \bm{\mathcal{P}} \bm{\mathcal{L}} \bm{\mathcal{Q}} \rho(t) \\
+    &= \alpha \bm{\mathcal{P}} \bm{\mathcal{L}} \bm{\mathcal{P}} \rho(t) + \alpha \bm{\mathcal{P}} \bm{\mathcal{L}} \bigg[[1-\bm{\Sigma}(t)]^{-1} \mathfrak{G}(t,t_0) \bm{\mathcal{Q}}\rho(t_0) + [1-\bm{\Sigma}(t)]^{-1}  \bm{\Sigma}(t) \bm{\mathcal{P}}\rho(t) \bigg] \\
+    &= \alpha \bm{\mathcal{P}} \bm{\mathcal{L}} \bm{\mathcal{P}} \rho(t) + \alpha \bm{\mathcal{P}} \bm{\mathcal{L}} [1-\bm{\Sigma}(t)]^{-1} \mathfrak{G}(t,t_0) \bm{\mathcal{Q}}\rho(t_0) + \alpha \bm{\mathcal{P}} \bm{\mathcal{L}}  [1-\bm{\Sigma}(t)]^{-1}  \bm{\Sigma}(t) \bm{\mathcal{P}}\rho(t) \\
+    &= \alpha \bm{\mathcal{P}} \bm{\mathcal{L}}\bigg( 1 +  [1-\bm{\Sigma}(t)]^{-1}  \bm{\Sigma}(t) \bigg)\bm{\mathcal{P}}\rho(t) + \alpha \bm{\mathcal{P}} \bm{\mathcal{L}} [1-\bm{\Sigma}(t)]^{-1} \mathfrak{G}(t,t_0) \bm{\mathcal{Q}}\rho(t_0) \\
+    &= \alpha \bm{\mathcal{P}} \bm{\mathcal{L}}\bigg( [1-\bm{\Sigma}(t)]^{-1} [1-\bm{\Sigma}(t)] +  [1-\bm{\Sigma}(t)]^{-1} \bm{\Sigma}(t) \bigg)\bm{\mathcal{P}}\rho(t) + \alpha \bm{\mathcal{P}} \bm{\mathcal{L}} [1-\bm{\Sigma}(t)]^{-1} \mathfrak{G}(t,t_0) \bm{\mathcal{Q}}\rho(t_0) \\
+    &= \alpha \bm{\mathcal{P}} \bm{\mathcal{L}} [1-\bm{\Sigma}(t)]^{-1}\bigg( 1-\cancel{\bm{\Sigma}(t) + \bm{\Sigma}(t)} \bigg)\bm{\mathcal{P}}\rho(t) + \alpha \bm{\mathcal{P}} \bm{\mathcal{L}} [1-\bm{\Sigma}(t)]^{-1} \mathfrak{G}(t,t_0) \bm{\mathcal{Q}}\rho(t_0) \\
+    &= \alpha \bm{\mathcal{P}} \bm{\mathcal{L}}[1-\bm{\Sigma}(t)]^{-1}\bm{\mathcal{P}}\rho(t) + \alpha \bm{\mathcal{P}} \bm{\mathcal{L}} [1-\bm{\Sigma}(t)]^{-1} \mathfrak{G}(t,t_0) \bm{\mathcal{Q}}\rho(t_0) \\
+    &= \bm{\mathcal{K}} \bm{\mathcal{P}}\rho(t) + \bm{\mathcal{I}}(t) \bm{\mathcal{Q}}\rho(t_0), \quad \textnormal{ where } \begin{array}{cc}
+       \bm{\mathcal{K}} = \alpha \bm{\mathcal{P}} \bm{\mathcal{L}}[1-\bm{\Sigma}(t)]^{-1}\bm{\mathcal{P}}  &  \\
+       \bm{\mathcal{I}} = \alpha \bm{\mathcal{P}} \bm{\mathcal{L}} [1-\bm{\Sigma}(t)]^{-1} \mathfrak{G}(t,t_0) \bm{\mathcal{Q}} & 
+    \end{array},
+    \label{TCL_final_eq}
+\end{split}
+\end{equation}
+
+where, in the last line, the $\bm{\mathcal{K}}$-superoperator is the time-local generator, or the \textbf{TCL generator}, and where the $\bm{\mathcal{I}}$-superoperator is an inhomogeneity. 
+This equation of motion is exact and local in time. Although, the $\bm{\mathcal{K}}$- and $\bm{\mathcal{I}}$-superoperators are, in general, extremely complicated objects, \cref{TCL_final_eq} can be used as a starting point of a systematic approximation method by expanding these superoperators in powers of the $\alpha$-coupling strength. 
+
+\begin{tcolorbox}[colback = cyan, title = Literature Review]
+
+In \ref{Nestmann_et_al_TCLME}, in section II titled "\textbf{THE TCL MASTER EQUATION}", an alternative but similar expression is obtained for \cref{TCL_irrelevant_part_eq}, in which the first term is omitted, namely that 
+
+$$
+    \bm{\mathcal{Q}}\rho(t) = [1-\bm{\Sigma}(t)]^{-1}  \bm{\Sigma}(t) \bm{\mathcal{P}}\rho(t). 
+$$
+
+Although not explicitly stated, it might be the case that it was assumed that $\Tr_{B} ({\bf H}_T \rho_B) = 0$, which would imply that $\bm{\mathcal{P}} \bm{\mathcal{L}}\bm{\mathcal{P }}= 0$
+
+\textcolor{red}{PENSAR BIEN: ¿si la traza sobre el baño térmica de H*rhoB es cero, por qué PLP = 0 también?!}
+
+\end{tcolorbox}
+
+\blanky \\
+
+\paragraph{\textit{Perturbative expansion of the TCL generator}}
+
+The TCL-generator superoperator only exists when it is possible to invert the $[1- \bm{\Sigma}(t)]$-operator. Assuming this is the case, this object can be written as a geometric series 
+
+\begin{equation}
+    [1- \bm{\Sigma}(t)]^{-1} = \sum_{n=0}^{\infty} [ \bm{\Sigma}(t)]^n. 
+\end{equation}
+
+\iffalse
+%\section{Cuentitas for the cuentitas god}
+
+%\paragraph{\textbf{Probability measures on a Hilbert space}}
 
 Consider a fixed orthonormal basis $\{\phi_n\} \subset \mathds{H}$, then any other $\psi \in \mathds{H}$ may be decomposed as 
 
@@ -165,7 +437,169 @@ $$
 \prod_{n} d{\bf a}'_n d{\bf b}'_n = |\det \tilde U| \prod_{n} d{\bf a}_n d{\bf b}_n = \prod_{n} d{\bf a}_n d{\bf b}_n,
 $$
 
-thus proving the unitary invariance of the volume element. 
+thus proving the unitary invariance of the volume element. \\
 
+We may extend this result to a more general $\tilde{U}$
+
+$$
+    \tilde{U} = \left( \begin{array}{cc}
+        A  & - C \\
+        C  &  A
+    \end{array}
+    \right),
+$$
+
+provided $|\det \tilde{U}| = 1$ and $C^\dagger = -C$. 
+\fi
+
+\clearpage
+
+\section{Coherent state: Theory and some applications}
+
+Retrieved from \ref{Zhang_cohr_states}. \\
+
+\begin{definition}
+
+The coherent states $\ket{\alpha}$ are eigenstates of the harmonic-oscillator annihilation operator ${\bf a}$,
+
+\begin{equation}
+    {\bf a} \ket{\alpha} = \alpha \ket{\alpha}, \quad \alpha \in \mathds{C}.
+\end{equation}
+
+\end{definition}
+
+\begin{definition}
+
+The coherent states can be obtained via the application of a displacement operator ${\bf D}(\alpha)$ on the vacuum state of the harmonic oscillator, 
+
+\begin{equation}
+    \ket{\alpha} = {\bf D}(\alpha)\ket{0}, \quad \textnormal{ with } {\bf D}(\alpha) = \exp^{\alpha {\bf a}^\dagger - \alpha^* {\bf a}}. 
+\end{equation}
+
+\end{definition}
+
+\begin{definition}\label{def_cohr_states_min_Delta}
+
+The coherent states $\ket{\alpha}$ are quantum states with minimum-uncertainty relationship, 
+
+\begin{equation}
+    (\Delta {\bf p})^2 (\Delta {\bf q})^2 = \frac{1}{2^2}, \quad \textnormal{where } \begin{array}{cc}
+        {\bf q} = \frac{{\bf a}+{\bf a}^\dagger}{\sqrt{2}}  \\
+        {\bf p} = \frac{{\bf a}-{\bf a}^\dagger}{i\sqrt{2}}.
+    \end{array}
+\end{equation}
+
+\end{definition}
+
+\begin{remark}
+
+Note that \cref{def_cohr_states_min_Delta} is by no means unique, since it doesn't impose a unique solution for $(\Delta {\bf p}, \Delta {\bf q})$. Such non-uniqueness gives rise to the so-called squeezed states. For field-coherent states, $\Delta {\bf p} = \Delta {\bf q} = \frac{1}{2}$. 
+
+\end{remark}
+
+\begin{tcolorbox}[title = Physical Context, colback = yellow]
+
+Glauber's original approach was entirely motivated by the physical consideration of factorizing to all orders the electromagnetic field correlations. To this end, the field coherent state formulation arises by using the harmonic-oscillator algebra. Naturally, not all physical systems are describable by the harmonic oscillators. Hence, the need to generalize these field coherent states to other systems, with may posses different dynamical properties. 
+
+\end{tcolorbox}
+
+\blanky \\
+
+\paragraph{\textit{Hamiltonian structure of the field system}}
+
+In the context of quantum optics, the Hamiltonian of the system which mediates the interaction between an atomic system and the electromagnetic field is given by 
+
+\begin{equation}
+    {\bf H} = \sum_{k} \hbar \omega_k {\bf a}_k^\dagger {\bf a}_k + \sum_{\alpha} \varepsilon \sigma_0^{(\alpha)} + \sum_{k, \alpha} \gamma_{k \sigma} \bigg[ \frac{\sigma_+^{(\alpha})}{\sqrt{N}} {\bf a}_k + \frac{\sigma_-^{(\alpha})}{\sqrt{N}} {\bf a}_k^\dagger \bigg], \textnormal{ where } \begin{array}{c}
+         \textnormal{$\hbar \omega_k$ is the energy of the $k$-field mode, }  \\
+         \textnormal{$\gamma_{k\sigma}$ are the coupling coefficients} \\
+         \textnormal{between the atomic system and the } \\
+         \textnormal{ electromagnetic field.}
+    \end{array}
+    \label{Atom_EM_field_Hamiltonian}
+\end{equation}
+
+One of the crucial assumptions made in the construction of this Hamiltonian is that each of the $N$ atoms, labelled by the $\alpha$-index, is a two-level system and therefore its dynamical variables are the usual $\mathfrak{s}\mathfrak{u}(2)$-spin operators. In most case, the coupling strength $\gamma_{k\sigma}$ is treated as a single constant $\gamma$. Furthermore, the atomic system is regarded as a classical source, hence the second term in \cref{Atom_EM_field_Hamiltonian} is treated as a $c$-number, leaving the simplified Hamiltonian as 
+
+\begin{equation}
+\begin{split}
+     {\bf H}^F =& \sum_{k} \hbar \omega_k {\bf a}_k^\dagger {\bf a}_k + \sum_{\alpha} \langle \varepsilon \sigma_0^{(\alpha)} \rangle + \gamma \sum_{k, \alpha} \bigg[\frac{\langle \sigma_+^{(\alpha)} \rangle}{\sqrt{N}} {\bf a}_k + \frac{\langle \sigma_-^{(\alpha)} \rangle}{\sqrt{N}} {\bf a}_k^\dagger\bigg] \\ 
+     &= \sum_{k} \hbar\omega_k {\bf a}_k^\dagger {\bf a}_k + \sum_{k} (\lambda_k(t) {\bf a}_k^\dagger + \lambda_{k}^{*}(t) {\bf a}_k) + \textnormal{cte.}\\
+     &= \sum_{k} {\bf H}_k^F + \textnormal{cte}, \textnormal{ where } {\bf H}_k^F = \hbar\omega_k {\bf a}_k^\dagger {\bf a}_k +  (\lambda_k(t) {\bf a}_k^\dagger + \lambda_{k}^{*}(t) {\bf a}_k) = {\bf H}_0 + {\bf H}_{{\textnormal{inter}}},
+     \label{Atom_EM_field_Effective_Hamiltonian}
+\end{split}
+\end{equation}
+
+where ${\bf H}_0$ mimics the free electromagnetic field and where ${\bf H}_{\textnormal{inter}}$ describes the interaction between the electromagnetic field and the external time-dependent source. Thus, the system is modelled as a harmonic-oscillator system in an external fiedl. Starting from this semiclassical Hamiltonian, a field coherent state formalism can be constructed in an elegant manner, via a group-theoretical approach. \\
+
+\paragraph{\textit{Group-theoretic construction of the field coherent states}}
+
+A general algorithm can be described for constructing coherent states for arbitrary Lie groups, as follows.
+
+\begin{enumerate}
+    \item Input from the Hamiltonian: \\
+          Based on the Hamiltonian of the system, given by \cref{Atom_EM_field_Effective_Hamiltonian}, the following three immediate properties arise:
+          
+          \begin{enumerate}
+              \item Algebraic structure: In the single-mode field, the \cref{Atom_EM_field_Effective_Hamiltonian}'s Hamiltonian is a linear combination of harmonic-oscillator operators ${\bf a}^\dagger, {\bf a}, {\bf n} \equiv {\bf a}^\dagger {\bf a}$, and the identity operator ${\mathfrak{i}\mathfrak{d}}$. These operators $\{{\bf a}^\dagger, {\bf a}, {\bf n}, \mathfrak{i}\mathfrak{d}\}$ obey the following commutation relations:
+              
+              \begin{equation}
+              \begin{split}
+                  [{\bf n}, {\bf a}^\dagger] = {\bf a}^\dagger, \quad [{\bf n}, \mathfrak{i}\mathfrak{d}] = 0,  \\
+                  [{\bf n}, {\bf a}] = - {\bf a}, \quad [{\bf a}, \mathfrak{i}\mathfrak{d}] = 0,  \\
+                  [{\bf a}, {\bf a}^\dagger] = \mathfrak{i}\mathfrak{d} \quad [{\bf a}^\dagger, \mathfrak{i}\mathfrak{d}] = 0.  \\
+              \end{split}
+              \end{equation}
+              
+              The set of operators $\{{\bf a}^\dagger, {\bf a}, {\bf n}, \mathfrak{i}\mathfrak{d}\}$ spans a Lie algebra, denoted as the Heisenberg $\mathfrak{h}_4$-algebra- The corresponding Lie group is the well known Heisenberg-Weyl $H_4$ group. \\
+              
+              \item The Hilbert space: The Hilbert-Fock space of $H_4$       is spanned by the number eigenstates            $\{\ket{n}\}_{n \in \mathds{N}}$ with 
+                    
+                    \begin{align}
+                        {\bf n} \ket{n} &= n \ket{n} & \ket{n} = \frac{({\bf a}^\dagger)^n}{\sqrt{n!}} \ket{0}.
+                    \end{align}
+                    
+            \item Extremal State: Since ${\bf H}_0$ is proportional to      the particle ${\bf n}$-operator, the energy            eigenstates of ${\bf H}_0$ are $\ket{n}$: 
+            
+            $$
+                {\bf H}_0 \ket{n} = \hbar \omega n \ket{n}. 
+            $$
+            
+            Therefore, the ground state of the Hamiltonian is the field vacuum state $\ket{0}$, the extremal state. \\
+              
+          \end{enumerate}
+         
+         \item Three steps to the coherent states: Coherent states can be obtained from three steps, as follows
+         
+         \begin{enumerate}
+             \item The stability subgroup: This is the subgroup which leaves the extremal state invariant. For $H_4$, this is $U(1) \otimes U(1)$ with an algebra spanned by $\{{\bf n}, \mathfrak{i}\mathfrak{d}\}$. The stability subgroup consists of all operations $h$ of the form
+                    
+                    $$
+                        h = e^{i(\delta {\bf n} + \phi \mathfrak{i}\mathfrak{d})} \Rightarrow h \ket{0} = e^{i\varphi} \ket{0}.
+                    $$
+            
+            \item The coset space: The coset space with respect to the       stability subgroup will provide the operators to    
+                  construct the coherent states. In the $H_4$-group example, with the stability subgroup $U(1)\otimes U(1)$, the coset space $\frac{H_4}{U(1)\otimes U(1)}$ is the set of elements $\Omega$ providing a unique deccomposition for any element $g \in H_4$, 
+                  
+                  $$
+                   \frac{H_4}{U(1)\otimes U(1)} = \{ D \blanky | \blanky g = Dh, h \in U(1)\otimes U(1), \forall g \in H_4\}.
+                  $$
+                  
+                  A typical coset representative in the coset space is 
+                  
+                  $$
+                    D(\alpha) = \exp(\alpha {\bf a}^\dagger - \alpha^{*} {\bf a}), \quad \alpha \in \mathds{C}.
+                  $$
+                  
+                  The argument in the exponential operator is anti-hermitian and corresponds to a finite transformation in the complex plane, $c \overset{D}{\rightarrow} c + \alpha$.
+                  
+                  
+         \end{enumerate}
+         
+         
+\end{enumerate}
+
+\bibliography{citations.bib}
+\bibliographystyle{abbrv}
 \end{document}
 
