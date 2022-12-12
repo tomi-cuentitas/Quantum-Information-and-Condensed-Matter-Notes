@@ -4103,7 +4103,21 @@ $$
     \bigg\{\ket{n_{\bf b}}\bigg\}_S \bigg\{ \ket{0}, \ket{1}, \cdots, \ket{2S}\bigg\}.
 $$
 
-Spurious Fock states, ie. those with $\langle{{\bf b}^\dagger {\bf b}}_{\Psi} > 2S$, are eliminated by a projector ${\bf P}_S$. In this subspace, the $\mathfrak{s}\mathfrak{u}(2)$-Casimir invariant holds, $\spin^2 = S(S+1)$. Furthermore, note that these spin operators do not connect the physical and unphysical subspaces. \\
+such that $[{\bf b}, {\bf b}^\dagger] = 1$. These spin operators, for their part, obey the standard $\mathfrak{s}\mathfrak{u}(2)$-spin commutation relations. The ${\bf b}$-Fock space is too large, but the physical subspace is spanned by the states 
+
+$$
+    \bigg\{\ket{n_{\bf b}}\bigg\}_S \bigg\{ \ket{0}, \ket{1}, \cdots, \ket{2S}\bigg\}.
+$$
+
+In this mapping, the vacuum states has spin of $+S$ in the $z-$direction and each Holstein-Primakoff boson represents a spin-1 moment in the $-z$-direction, thereby they represent a perturbation from the classical ferromagnetic ground state, while the antiferromagnetic case being more complicated. With this physical picture in mind, the $(\sqrt{2S-{\bf b}^\dagger {\bf b}})$-factor -present in both the raising and lowering spin operators- limits the number of bosons on a given site to $2S$, since the $z$-projection of the spin moment at a given site must be between $-S$ and $+S$. \\
+
+Spurious Fock states, ie. those with $\langle{{\bf b}^\dagger {\bf b}}\rangle_{\Psi} > 2S$, are eliminated by a projector ${\bf P}_S$. In this subspace, the $\mathfrak{s}\mathfrak{u}(2)$-Casimir invariant holds, $\spin^2 = S(S+1)$. Furthermore, note that these spin operators do not connect the physical and unphysical subspaces. Furthermore, at low temperatures ($\beta^{-1} << J$, with $J$ being the exchange energy), the number of perturbations about the classical ground state is very small $\langle {\bf n} \rangle << S$, a linear approximation can be performed
+
+\begin{align}
+    \spin^z &= S - {\bf b}^\dagger {\bf b}, & \spin^+ &\approx {\bf b} \sqrt{2S} & \spin^- &\approx {\bf b}^\dagger \sqrt{2S}.
+\end{align}
+
+\blanky \\
 
 The Holstein-Primakoff representation is useful to describe broken symmetry phases of the quantum Heisenberg model. The square root factors in \cref{Holstein_Primakoff} can be expanded in powers of $S^{-1}$,
 
@@ -5449,11 +5463,232 @@ In $d = 3$ dimensions, there are no infrared divergences. The leading temperatur
 \end{split}
 \end{equation}
 
-where $\zeta$ is the Riemann zeta function. THus, in three-dimensions the leading temperature correction to the ordered moment is proportional to $-T^{\frac{3}{2}}$. \\
+where $\zeta$ is the Riemann zeta function. Thus, in three-dimensions the leading temperature correction to the ordered moment is proportional to $-T^{\frac{3}{2}}$. \\
 
 \paragraph{The Antiferromagnet}
 
+Consider the classical Néel state, which is chosen to be in the $z$- and $-z$-directions on the $A$ and $B$ sublattices, respectively. The rotated spin $\tilde{\spin}$ are defined as 
 
+\begin{equation}
+    j \in B, \quad \begin{array}{c}
+         \tilde{\spin}_j^z = - \spin_j^z  \\
+         \tilde{\spin}_j^x = \spin_j^x \\
+         \tilde{\spin}_j^y = - \spin_j^y 
+    \end{array} \Rightarrow \left\{ \begin{array}{cc}
+         \textnormal{Sublattice A : } \begin{array}{cc}
+              \spin^z_i = S - {\bf b}_i^\dagger {\bf b}_i  \\
+              \spin^+_i = \sqrt{2S - {\bf b}_i^\dagger {\bf b}_i} \blanky {\bf b}_i \\
+              \spin^-_i = {\bf b}_i^\dagger\sqrt{2S - {\bf b}_i^\dagger {\bf b}_i} 
+         \end{array}\\
+         \\
+         \textnormal{Sublattice B : }  \begin{array}{cc}
+              \spin^z_i = {\bf b}_i^\dagger {\bf b}_i - S  \\
+              \spin^+_i = {\bf b}_i^\dagger\sqrt{2S - {\bf b}_i^\dagger {\bf b}_i} \\
+              \spin^-_i = \sqrt{2S - {\bf b}_i^\dagger {\bf b}_i} \blanky {\bf b}_i 
+         \end{array}
+    \end{array} \right.
+\end{equation}
+
+It is clear that the $\tilde{\spin}^\alpha$ obey the same commutation relations as $\spin^\alpha$ and therefore can be represented by Holstein-Primakoff bosons. Using the sublattice-rotated representation, the antiferromagnetic Hamiltonian reads
+
+\begin{equation}
+\begin{split}
+    {\bf H} =& + |J| \sum_{\langle ij \rangle} \spin_i^z \cdot \tilde{\spin}_j^z + \frac{|J|}{2} \sum_{\langle ij \rangle} \bigg( \spin_i^+ \tilde{\spin}_j^+ + \spin_i^- \tilde{\spin}_j^- \bigg) \\
+    &= + |J| \sum_{\langle ij \rangle} \spin_i^z \cdot \tilde{\spin}_j^z + \frac{|J|}{2} \sum_{\langle ij \rangle} \bigg( \spin_i^+ {\spin}_j^- + \spin_i^- {\spin}_j^+ \bigg) 
+\end{split}
+\end{equation}
+
+Using the Holstein-Primakoff representation given by \cref{spin_wave_HP_spin_bosons} for $\spin$ on the $A$-sublattice and $\tilde{\spin}$ on the $B$-sublattice, one obtains 
+
+\begin{equation}
+    \begin{split}
+    {\bf H} =& + |J| \sum_{\langle ij \rangle} 
+    \bigg[ 
+    (S - {\bf b}_i^\dagger {\bf b}_i)({\bf b}_j^\dagger {\bf b}_j - S)
+    \bigg] \\
+    & \blanky \blanky \blanky \blanky + 
+    \frac{|J|}{2} \sum_{\langle ij \rangle} 
+    \bigg[ 
+    (\sqrt{2S - {\bf b}_i^\dagger {\bf b}_i} \blanky {\bf b}_i)(\sqrt{2S - {\bf b}_j^\dagger {\bf b}_j} \blanky {\bf b}_j ) 
+    + 
+    ({\bf b}_i^\dagger\sqrt{2S - {\bf b}_i^\dagger {\bf b}_i} ) ({\bf b}_i^\dagger\sqrt{2S - {\bf b}_j^\dagger {\bf b}_j})
+    \bigg] \\
+    &= + |J| \sum_{\langle ij \rangle} 
+    \bigg[ 
+    S {\bf b}_j^\dagger {\bf b}_j - S^2 + S{\bf b}_i^\dagger {\bf b}_i + {\bf b}_i^\dagger {\bf b}_i {\bf b}_j^\dagger {\bf b}_j
+    \bigg] \\
+    & \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky + 
+    {S|J|} \sum_{\langle ij \rangle} 
+    \bigg[  
+    \bigg(1-\frac{{\bf n}_i}{4S}\bigg) {\bf b}_i 
+    \bigg(1-\frac{{\bf n}_j}{4S}\bigg) {\bf b}_j 
+    + 
+     {\bf b}_i^\dagger \bigg(1-\frac{{\bf n}_i}{4S}\bigg)
+     {\bf b}_j^\dagger \bigg(1-\frac{{\bf n}_j}{4S}\bigg)
+    \bigg] \\
+    &= + |J| \sum_{\langle ij \rangle} 
+    \bigg[ 
+    S {\bf n}_j + S {\bf n}_i - S^2 + {\bf n}_i {\bf n}_j 
+    \bigg] \\ 
+    & \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky + 
+    {S|J|} \sum_{\langle ij \rangle} 
+    \bigg[  
+    {\bf b}_i{\bf b}_j - {\bf b}_i \frac{{\bf n}_j}{4S} {\bf b}_j - \frac{{\bf n}_i}{4S} {\bf b}_i {\bf b}_j + \frac{{\bf n}_i}{4S} {\bf b}_i \frac{{\bf n}_j}{4S} {\bf b}_j 
+    + 
+    {\bf b}_i^\dagger{\bf b}_j^\dagger - {\bf b}_i^\dagger{\bf b}_j^\dagger \frac{{\bf n}_j}{4S} - {\bf b}_i^\dagger \frac{{\bf n}_j}{4S} {\bf b}_j^\dagger + {\bf b}_i^\dagger \frac{{\bf n}_i}{4S}{\bf b}_j^\dagger\frac{{\bf n}_j}{4S}
+    \bigg] \\
+    &= -\frac{S^2 |J| N z}{2} + J S z\sum_{\langle ij \rangle} 
+    \bigg[
+    {\bf n}_i + \frac{1}{2} 
+    \bigg(
+    {\bf b}_i {\bf b}_i + {\bf b}_i^\dagger {\bf b}_i^\dagger \bigg)
+    \bigg] \\
+    & \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky + \frac{-|J|}{4} \sum_{\langle ij \rangle} 
+    \bigg[
+    {\bf b}_i {\bf b}_j^\dagger {\bf b}_j {\bf b}_j 
+    - {\bf b}_i^\dagger {\bf b}_i {\bf b}_i {\bf b}_j + {\bf b}_i^\dagger {\bf b}_j^\dagger {\bf b}_j^\dagger {\bf b}_j - {\bf b}_i^\dagger {\bf b}_j^\dagger {\bf b}_j {\bf b}_j^\dagger - \cancelto{\mathcal{O}(S^{-1})}{\frac{{\bf n}_i}{4S} {\bf b}_i \frac{{\bf n}_j}{4S}} {\bf b}_j - \cancelto{\mathcal{O}(S^{-1})}{{\bf b}_i^\dagger \frac{{\bf n}_i}{4S}{\bf b}_j^\dagger\frac{{\bf n}_j}{4S}}
+    \bigg] \\
+    \end{split}
+\end{equation}
+
+the first term is the classical ground-state energy of the antiferromagnet and contains the antiferromagnetic magnon dispersion relation, 
+
+\begin{equation}
+    {\bf H}_1 = J S z\sum_{\langle ij \rangle} 
+    \bigg[
+    {\bf n}_i + \frac{1}{2} 
+    \bigg(
+    {\bf b}_i {\bf b}_i + {\bf b}_i^\dagger {\bf b}_i^\dagger \bigg)
+    \bigg] 
+\end{equation}
+
+The sum over nearest neighbours can be rewritten as a sum over the displacement vector $\bm{\delta}_{i}$ between neighbouring spin, such that the ${\bf b}_{i + \bm{\delta}_i}$ annihilates a boson at the $B$-site with position ${\bf x}_i + \bm{\delta}_i$, thus yielding the following Hamiltonian in momentum space:
+
+\begin{equation}
+\begin{split}
+    {\bf H}_1 =& J S z \frac{1}{N/2} \frac{1}{2} \sum_{i \in A} \sum_{{\bm{\delta}, {\bf k k'}}} \bigg[ {\bf n}_i + \bigg(e^{i {\bf k} \cdot {\bf x}_i}\ e^{i {\bf k}' \cdot ({\bf x}_i + \bm{\delta}_i)} {\bf b}_{\bf k} {\bf b}_{\bf k'} + e^{-i {\bf k} \cdot {\bf x}_i}\ e^{-i {\bf k}' \cdot ({\bf x}_i + \bm{\delta}_i)} {\bf b}_{\bf k}^\dagger {\bf b}_{\bf k'}^\dagger \bigg) \bigg] \\
+    &= J S z \frac{1}{2} \sum_{i} \sum_{{\bm{\delta}, {\bf k k'}}} 
+    \bigg[ 
+    {\bf n}_i + \bigg( \sum_{i \in A}
+    \cancelto{\delta_{{\bf k',-k}}}{e^{i ({\bf k + k'}) \cdot {\bf x}_i}} e^{i {\bf k}' \cdot
+    \bm{\delta}_i} {\bf b}_{\bf k} {\bf b}_{\bf k'} 
+    +
+    \sum_{i \in A}
+    \cancelto{\delta_{{\bf k',-k}}}{e^{-i ({\bf k+k'}) \cdot {\bf x}_i}} e^{-i {\bf k}' \cdot \bm{\delta}_i} {\bf b}_{\bf k}^\dagger {\bf b}_{\bf k'}^\dagger
+    \bigg)
+    \bigg]  \\
+    &= JSz \sum_{{\bf k}} \bigg[ e^{i {\bf k}' \cdot
+    \bm{\delta}_i} {\bf b}_{{\bf k}}^\dagger {\bf b}_{{\bf k}} + \frac{\gamma_{{\bf k}}}{2} \bigg( e^{-i {\bf k}' \cdot
+    \bm{\delta}_i}{\bf b}_{{\bf k}}^\dagger {\bf b}_{-{\bf k}}^\dagger + e^{i {\bf k}' \cdot
+    \bm{\delta}_i}{\bf b}_{{\bf k}} {\bf b}_{-{\bf k}}\bigg) \bigg], \quad \textnormal{ with } \gamma = \frac{1}{z} \sum_{\bm{\delta}} e^{i {\bf k} \cdot
+    \bm{\delta}}. \\
+    \\
+    &\Rightarrow {\bf H} = -\frac{S^2 |J| N z}{2} + {\bf H}_1 + {\bf H}_2 + \mathcal{O}\bigg(\frac{1}{S}\bigg), \quad \begin{array}{cc}
+         {\bf H}_1 = JSz \sum_{{\bf k}} \bigg[ {\bf b}_{{\bf k}}^\dagger {\bf b}_{{\bf k}} + \frac{\gamma_{{\bf k}}}{2} ({\bf b}_{{\bf k}}^\dagger {\bf b}_{-{\bf k}}^\dagger + {\bf b}_{{\bf k}} {\bf b}_{-{\bf k}}) \bigg]  \\
+         {\bf H}_2 = - \frac{J}{4} \sum_{\langle ij \rangle} \bigg[{\bf b}_i^\dagger ({\bf b}_j^\dagger + {\bf b}_i)^2 {\bf b}_j + {\bf b}_i ({\bf b}_j^\dagger + {\bf b}_i)^2 {\bf b}_j^\dagger\bigg].
+    \end{array}
+\end{split}
+\end{equation}
+
+where $N/2$ is the number of sublattice A and sublattice B sites, and with $\sum_{i} e^{i ({\bf k+k'}) \cdot {\bf x}_i} = \frac{N}{2} \delta_{{\bf k',-k}}$. Now ${\bf H}_1$ is a quadratic Hamiltonian which includes normal and anomalous terms, but can be diagonalized via a Bogoliubov transformation, as follows 
+
+\begin{equation}
+    \left( \begin{array}{c}
+     \alpha_{{\bf k}} \\
+     \beta_{{\bf k}}^\dagger
+\end{array} \right) = \left(\begin{array}{cc}
+   u_{{\bf k}}  & -v_{{\bf k}} \\
+   -v_{{\bf k}}  & u_{{\bf k}}
+\end{array} \right) \left(\begin{array}{c}
+   {\bf b}_{{\bf k}}   \\
+    {\bf b}^\dagger_{-{\bf k}} 
+\end{array} \right), u^2_{{\bf k}} - v^2_{{\bf k}} = 1,
+\begin{array}{cc}
+     \textnormal{ which preserves  } \\
+     \textnormal{ the commutation relations }
+\end{array} \begin{array}{c}
+     \textnormal{[}\alpha_{{\bf k}}, \alpha^\dagger_{{\bf k}'}\textnormal{]} = \textnormal{[}\beta_{{\bf k}}, \beta^\dagger_{{\bf k}'}\textnormal{]} = \delta_{{\bf k k'}} \\
+     \textnormal{[}\alpha_{{\bf k}}, \alpha_{{\bf k}'}\textnormal{]} = [\beta_{{\bf k}}, \beta_{{\bf k}'}\textnormal{]} = 0 \\
+     \textnormal{[}\alpha_{{\bf k}}, \beta_{{\bf k}'}\textnormal{]} = \textnormal{[}\alpha_{{\bf k}}, \alpha_{{\bf k}'}\textnormal{]} = 0
+\end{array}
+\end{equation} 
+
+With the inverse transformation given by 
+\begin{equation}
+    \left( \begin{array}{c}
+     {\bf b}_{{\bf k}} \\
+     {\bf b}_{{\bf -k}}^\dagger
+\end{array} \right) = \left(\begin{array}{cc}
+   u_{{\bf k}} & v_{{\bf k}} \\
+   v_{{\bf k}} & u_{{\bf k}}
+\end{array} \right) \left(\begin{array}{c}
+   \alpha_{{\bf k}}\\
+   \beta_{{\bf k}}^\dagger
+\end{array} \right) \Rightarrow \begin{array}{c}
+     {\bf b}_{{\bf k}} = u_{{\bf k}} \alpha_{{\bf k}}  + v_{{\bf k}} \beta_{{\bf k}}^\dagger \\
+     {\bf b}_{{\bf -k}}^\dagger = v_{{\bf k}} \alpha_{{\bf k}}  + u_{{\bf k}} \beta_{{\bf k}}^\dagger
+\end{array}
+\end{equation}
+
+Then,
+
+\begin{equation}
+    \begin{split}
+        {\bf H}_1 =& JSz \sum_{{\bf k}} \bigg[ {\bf b}_{{\bf k}}^\dagger {\bf b}_{{\bf k}} + \frac{\gamma_{{\bf k}}}{2} ({\bf b}_{{\bf k}}^\dagger {\bf b}_{-{\bf k}}^\dagger + {\bf b}_{{\bf k}} {\bf b}_{-{\bf k}}) \bigg] \\
+        &= JSz \sum_{{\bf k}} \bigg[
+        (u_{{\bf k}} \alpha_{{\bf k}}^\dagger + v_{{\bf k}} \beta_{{\bf k}})(u_{{\bf k}} \alpha_{{\bf k}} + v_{{\bf k}} \beta_{{\bf k}}^\dagger) + v_{{\bf k}}^2 
+        + \frac{\gamma_{{\bf k}}}{2} 
+        \left( \begin{array}{cc}
+             (u_{{\bf k}} \alpha_{{\bf k}}^\dagger + v_{{\bf k}} \beta_{{\bf k}}) (v_{{\bf k}} \alpha_{{\bf k}}  + u_{{\bf k}} \beta_{{\bf k}}^\dagger) \\
+             \blanky \blanky \blanky + (u_{{\bf k}} \alpha_{{\bf k}} + v_{{\bf k}} \beta_{{\bf k}}^\dagger) (v_{{\bf k}} \alpha_{{\bf k}}^\dagger + u_{{\bf k}} \beta_{{\bf k}})
+        \end{array}
+        \right)
+        \bigg] \\
+        &= JSz \sum_{{\bf k}} \bigg[
+        u^2_{{\bf k}} \alpha^\dagger_{{\bf k}} \alpha_{{\bf k}} + v^2_{{\bf k}} \beta^\dagger_{{\bf k}} \beta_{{\bf k}} + u_{{\bf k}} v_{{\bf k}} \bigg(\alpha^\dagger_{{\bf k}} \beta^\dagger_{{\bf k}} + \beta^\dagger_{{\bf k}} \alpha^\dagger_{{\bf k}} \bigg) + v_{{\bf k}}^2  \\
+        & \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky + \frac{\gamma_{{\bf k}}}{2} \left(\begin{array}{cc} 
+            u_{{\bf k}} v_{{\bf k}} \alpha^\dagger_{{\bf k}} \alpha_{{\bf k}} + u^2_{{\bf k}} \alpha^\dagger_{{\bf k}} \beta^\dagger_{{\bf k}} + v^2 \beta_{{\bf k}} \alpha_{{\bf k}} + u_{{\bf k}} v_{{\bf k}} \beta_{{\bf k}} \beta^\dagger_{{\bf k}} \\
+            \blanky \blanky \blanky \blanky + u_{{\bf k}} v_{{\bf k}} \alpha_{{\bf k}} \alpha^\dagger_{{\bf k}} + u^2_{{\bf k}} \alpha_{{\bf k}} \beta_{{\bf k}} + v^2_{{\bf k}} \beta^\dagger_{{\bf k}} \alpha^\dagger_{{\bf k}} + u_{{\bf k}} v_{{\bf k}} \beta^\dagger_{{\bf k}} \beta_{{\bf k}}
+        \end{array}\right)
+        \bigg] \\
+        &= JSz \sum_{{\bf k}} \left[
+        \begin{array}{cc}
+             (u^2_{{\bf k}} + \gamma_{{\bf k}} u_{{\bf k}} v_{{\bf k}} )\alpha^\dagger_{{\bf k}} \alpha_{{\bf k}} + (v_{{\bf k}}^2 + \gamma_{{\bf k}} u_{{\bf k}} v_{{\bf k}})\beta^\dagger_{{\bf k}} \beta{{\bf k}}  \\
+             \blanky \blanky \blanky \blanky + u_{{\bf k}} v_{{\bf k}} \bigg(\alpha^\dagger_{{\bf k}} \beta^\dagger_{{\bf k}} + \beta^\dagger_{{\bf k}} \alpha^\dagger_{{\bf k}} \bigg) + 2 \gamma_{{\bf k}} u_{{\bf k}} v_{{\bf k}} + v_{{\bf k}}^2  +  \frac{\gamma_{{\bf k}}}{2} \bigg(u^2_{{\bf k}} \alpha^\dagger_{{\bf k}} \beta^\dagger_{{\bf k}} + v^2 \beta_{{\bf k}} \alpha_{{\bf k}} + u^2_{{\bf k}} \alpha_{{\bf k}} \beta_{{\bf k}} + v^2_{{\bf k}} \beta^\dagger_{{\bf k}} \alpha^\dagger_{{\bf k}} \bigg)
+        \end{array}
+        \right] \\
+        &= JSz \sum_{{\bf k}} \left[
+        \begin{array}{cc}
+             (u^2_{{\bf k}} + \gamma_{{\bf k}} u_{{\bf k}} v_{{\bf k}} )\alpha^\dagger_{{\bf k}} \alpha_{{\bf k}} + (v_{{\bf k}}^2 + \gamma_{{\bf k}} u_{{\bf k}} v_{{\bf k}})\beta^\dagger_{{\bf k}} \beta{{\bf k}}  \\
+             \blanky \blanky \blanky \blanky 
+             + (u_{{\bf k}} v_{{\bf k}} + \gamma_{{\bf k}} u_{{\bf k}}^2 + \gamma_{{\bf k}} v_{{\bf k}}^2)\alpha^\dagger_{{\bf k}} \beta^\dagger_{{\bf k}} + (u_{{\bf k}} v_{{\bf k}} + \gamma_{{\bf k}} u_{{\bf k}}^2 + \gamma_{{\bf k}} v_{{\bf k}}^2) \alpha_{{\bf k}} \beta_{{\bf k}} + v_{{\bf k}}^2 + 2 \gamma_{{\bf k}} u_{{\bf k}} v_{{\bf k}}
+        \end{array}
+        \right] \\
+        &=  JSz \sum_{{\bf k}} \left[
+        \begin{array}{cc}
+             (u^2_{{\bf k}} + \gamma_{{\bf k}} u_{{\bf k}} v_{{\bf k}} )\alpha^\dagger_{{\bf k}} \alpha_{{\bf k}} + (v_{{\bf k}}^2 + \gamma_{{\bf k}} u_{{\bf k}} v_{{\bf k}})\beta^\dagger_{{\bf k}} \beta{{\bf k}}  \\
+             \blanky \blanky \blanky \blanky 
+             + (u_{{\bf k}} v_{{\bf k}} + \gamma_{{\bf k}} u_{{\bf k}}^2 + \gamma_{{\bf k}} v_{{\bf k}}^2)(\alpha^\dagger_{{\bf k}} \beta^\dagger_{{\bf k}} + \alpha_{{\bf k}} \beta_{{\bf k}}) + 2 \gamma_{{\bf k}} u_{{\bf k}} v_{{\bf k}} + v^2_{{\bf k}}
+        \end{array}
+        \right]
+    \end{split}
+\end{equation}
+
+Hence, in order for this Hamiltonian to be diagonal, the $u, v$-coefficients must be such that the net antidiagonal coefficient is zero, ie. such that 
+
+\begin{equation}
+    u_{{\bf k}} v_{{\bf k}} + \gamma_{{\bf k}} u_{{\bf k}}^2 + \gamma_{{\bf k}} v_{{\bf k}}^2 = 0, \quad \Rightarrow \begin{array}{cc}
+         u^2_{{\bf k}} = \frac{1}{2} \bigg(\frac{1}{\sqrt{1 - \gamma_{{\bf k}}^2} } + 1\bigg)  \\
+         v^2_{{\bf k}} = \frac{1}{2} \bigg(\frac{1}{\sqrt{1 - \gamma_{{\bf k}}^2} } - 1\bigg)  \\
+         u_{{\bf k}}v_{{\bf k}}  = - \frac{1}{2} \frac{\gamma_{{\bf k}}}{\sqrt{1-\gamma_{{\bf k}}^2}},
+    \end{array}
+\end{equation}
+
+which leaves the classical Hamiltonian in diagonal form, ie.
+
+\begin{equation}
+    {\bf H}_1 = JSz \sum_{{\bf k}} \bigg[ (u^2_{{\bf k}} + \gamma_{{\bf k}} u_{{\bf k}} v_{{\bf k}} )\alpha^\dagger_{{\bf k}} \alpha_{{\bf k}} + (v_{{\bf k}}^2 + \gamma_{{\bf k}} u_{{\bf k}} v_{{\bf k}})\beta^\dagger_{{\bf k}} \beta_{{\bf k}} + 2 \gamma_{{\bf k}} u_{{\bf k}} v_{{\bf k}} + v^2_{{\bf k}} \bigg]
+\end{equation}
 
 \clearpage
 
@@ -5466,10 +5701,11 @@ where $\zeta$ is the Riemann zeta function. THus, in three-dimensions the leadin
 \begin{tcolorbox}[colback = yellow, title = Physical Context]
 
 The physics of interacting particles is often very complicated because the motion of the individual particles depend on the position of all other, thus these variables become correlated. This is clearly the case for a system of charged particles interacting by Coulomb forces, such as eg. the electron gas. There, the probability to find two electrons in close proximity is expected to be small due to the strong repulsive interaction. Consequently, due to these correlation effects, there is a suppressed density in the neighbourhood of every electron, and there is a correlation hole. 
-Nevertheless, in spite of these complications, there are a number of cases where a more crude treatment, not fully including the correlations, gives a good physical model. In these cases, it suffices to include correlations o the average. This means that the effect of the other particles is included as a mean density (or mean field), leaving an effective single particle problem, which is solvable. These mean fields are chosen so that they minimize the free energy, which in turn, ensures that the method is self-consistent. This method is called mean field theory, which allows to neglect detailed dynamics and time-dependent second quantization methods. \\
+Nevertheless, in spite of these complications, there are a number of cases where a more crude treatment, not fully including the correlations, gives a good physical model. In these cases, it suffices to include correlations o the average. This means that the effect of the other particles is included as a mean density (or mean field), leaving an effective single particle problem, which is solvable. These mean fields are chosen so that they minimize the free energy, which in turn, ensures that the method is self-consistent. This method is called mean field theory, which allows to neglect detailed dynamics and time-dependent second quantization methods. 
 
 \end{tcolorbox}
 
+\blanky \\
 
 First, consider a system with two types of particles, described by operators ${\bf a}_\nu, {\bf b}_{\mu}$, respectively. In this model, the only interactions present are those between different kind of particles. The Hamiltonian then reads
 
@@ -6546,6 +6782,10 @@ thus leading to the following matrix element
  \end{split}
 \end{equation}
 
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=yellow!10!white,colframe=red!75!black,lowerbox=invisible]
+
 with the following integrals arising for a particular $\ket{\gamma}$-state
 
 \begin{equation}
@@ -6599,7 +6839,7 @@ $
 \frac{\bra{\bm{\zeta}} {{\bf N}} \ket{\bm{\zeta}}}{\bra{\bm{\zeta}} \ket{\bm{\zeta}}}.
 $
 
-\blanky \\
+\clearpage
 
 \subsection{Gaussian Integrals}
  
@@ -6733,7 +6973,8 @@ or, for the more general integral given by \cref{Grassmannian gaussian integral}
 \begin{equation}
     \mathcal{Z}(\bm{\zeta}^\star,\bm{\zeta}) = \det(\bf A) e^{-\bm{\zeta}^\star {\bf A}^{-1} \bm{\zeta}}. 
 \end{equation}
-\clearpage
+
+\blanky \\
 
 \subsection{Photons: coupling to electrons}
 
@@ -6772,20 +7013,15 @@ since the velocity is already a small quantity. Differentiating this with respec
 Consider the Hamiltonian 
 
 \begin{equation}
-    {\bf H}= {\bf H}_{+} + {\bf H}_{+e} + {\bf H}_{e}, \textnormal{ where}
-    \begin{array}{c}
-         {\bf H}_+ = \frac{1}{2} \int_{\mathds{R}^6} d{\bf x} d{\bf x}' \blanky \rho_{+}({\bf x}) \rho_{+}({\bf x}') \frac{e^{-\mu |{\bf x}-{\bf x}'|}}{|{\bf x} - {\bf x}'|} = \frac{e^2}{2} \bigg(\frac{N}{\Omega}\bigg)^2 \int_{\mathds{R}^3} d{\bf x}' \int_{\mathds{R}^3} \frac{e^{-{\mu} r}}{r} = \frac{4\pi e^2 N^2}{2\mu^2\Omega}\\
-         {\bf H}_{+e} = - e\sum_{i} \int_{\mathds{R}^3} d{\bf x} \blanky \rho_{+}({\bf x}) \frac{e^{-\mu |{\bf x}-{\bf x}_i|}}{|{\bf x}-{\bf x}_i|} = -\frac{e^2 N}{\Omega} \sum_{i} \int_{\mathds{R}^3} d{\bf x} \frac{e^{-\mu |{\bf x}-{\bf x}_i|}}{|{\bf x}-{\bf x}_i|} = - \frac{e^2 N^2}{\Omega} \frac{4\pi}{\mu^2}
-    \end{array}
+\begin{split}
+    {\bf H}= {\bf H}_{+} + {\bf H}_{+e} + {\bf H}_{e}, \textnormal{ where } 
+         & {\bf H}_+ = \int_{\mathds{R}^6} \frac{d{\bf x} d{\bf x}'}{2} \blanky \rho_{+}({\bf x}) \rho_{+}({\bf x}') \frac{e^{-\mu |{\bf x}-{\bf x}'|}}{|{\bf x} - {\bf x}'|} = \bigg(\frac{eN}{\sqrt{2}\Omega}\bigg)^2 \int dr d\theta \int_{\mathds{R}^3} \frac{e^{-{\mu} r}}{r} = \frac{4\pi e^2 N^2}{2\mu^2\Omega}\\
+         &{\bf H}_{+e} = - e\sum_{i} \int_{\mathds{R}^3} d{\bf x} \blanky \rho_{+}({\bf x}) \frac{e^{-\mu |{\bf x}-{\bf x}_i|}}{|{\bf x}-{\bf x}_i|} = -\frac{e^2 N}{\Omega} \sum_{i} \int_{\mathds{R}^3} d{\bf x} \frac{e^{-\mu |{\bf x}-{\bf x}_i|}}{|{\bf x}-{\bf x}_i|} = - \frac{e^2 N^2}{\Omega} \frac{4\pi}{\mu^2}\\
+         &{\bf H}_e = \sum_{i} \frac{{\bf p}^2}{2m_e} + \frac{e^2}{2} \sum_{i\neq j}\frac{e^{-\mu |{\bf x}-{\bf x}_i|}}{|{\bf x}-{\bf x}_i|}, \underset{\longrightarrow}{\textnormal{2nd Quant.}} {\bf T} = \sum_{i} \frac{\hbar^2 k_i^2}{2m_e} {\bf c}_i^\dagger {\bf c}_i,
+\end{split}
 \end{equation}
 
-and consider the electron Hamilton
-
-\begin{equation}
-    {\bf H}_e = \sum_{i} \frac{{\bf p}^2}{2m_e} + \frac{e^2}{2} \sum_{i\neq j}\frac{e^{-\mu |{\bf x}-{\bf x}_i|}}{|{\bf x}-{\bf x}_i|}, \underset{\longrightarrow}{\textnormal{2nd Quant.}} {\bf T} = \sum_{i} \frac{\hbar^2 k_i^2}{2m_e} {\bf c}_i^\dagger {\bf c}_i,
-\end{equation}
-
-since the single -electron wavefunctions are just plane waves, with the matrix element for the two-electron repulsion given by 
+where ${\bf H}_+$ is the positive background Hamiltonian, where ${\bf H}_{+e}$ is the electron-positive background Hamiltonian and ${\bf H}_e$ is the electron Hamiltonian. Consider in particular the electron Hamiltonian ${\bf H}_e$, whose second-quantization form is so since the single-electron wavefunctions are just plane waves, with the matrix element for the two-electron repulsion given by 
 
 \begin{equation}
     \begin{split}
@@ -6830,7 +7066,16 @@ $$
 
 \paragraph{\textbf{The Wigner crystal}}
 
-In the small-density limit, the Coulomb energy become dominant and therefore it is more appropriate to start from the ground state of the interaction term than from that of the kinetic energy. Wigner argued that the free electron-like Fermi sphere ground state could become unstable to an insulating lattice of localized electrons when the electron density becomes sufficiently small. This leads to a purely classical problem. Namely, to calculate the lowest-energy configuration of charged particles immersed into a homogeneous background of opposite charge. This problem was first addressed by Wigner in 1934 as that of an inverted alkali metal, and he argued that at low enough densities the electrons would form a crystal. A consistent theory has of course to take into account the kinetic energy, leading to zero-point fluctuations of the electrons around their equilibrium positions. As the lattice constant decreases, these fluctuations become more and more important, until the Wigner crystal melts. Numerical simulations indicate this happens for $r_s \sim 100$. In fact, a two-dimensional Wigner crystal with a triangular structure has actually been observed for a very low-density electron system ($r_s\sim 10^4$) dispersed over the surface of liquid helium. \\
+In the small-density limit, the Coulomb energy become dominant and therefore it is more appropriate to start from the ground state of the interaction term than from that of the kinetic energy. Wigner argued that the free electron-like Fermi sphere ground state could become unstable to an insulating lattice of localized electrons when the electron density becomes sufficiently small. This leads to a purely classical problem. Namely, to calculate the lowest-energy configuration of charged particles immersed into a homogeneous background of opposite charge. 
+
+
+\begin{tcolorbox}[colback = LimeGreen, title = Historical Context]
+
+This problem was first addressed by Wigner in 1934 as that of an inverted alkali metal, and he argued that at low enough densities the electrons would form a crystal. A consistent theory has of course to take into account the kinetic energy, leading to zero-point fluctuations of the electrons around their equilibrium positions. As the lattice constant decreases, these fluctuations become more and more important, until the Wigner crystal melts. Numerical simulations indicate this happens for $r_s \sim 100$. In fact, a two-dimensional Wigner crystal with a triangular structure has actually been observed for a very low-density electron system ($r_s\sim 10^4$) dispersed over the surface of liquid helium. 
+
+\end{tcolorbox}
+
+\blanky \\
 
 The first-order energy correction is given by 
 
@@ -8519,7 +8764,7 @@ By iteration, a Green function with the interaction restricted to Hartree-Fock t
 \begin{equation}
     \begin{split}
         i \mathfrak{G}^{(1)}_{\sigma \sigma'} = \frac{i}{\hbar} \sum_{\substack{\sigma_1 \sigma'_1 \\
-        \sigma_2 \sigma'_2}} V_{\sigma_1\sigma_2}^{\sigma'_2\sigma'_1}(x_1,x_2) i \mathfrak{G}^{(x_1, x_2); (0)}_{\sigma\sigma_1} \bigg[ i i \mathfrak{G}^{(x_1,x_2); (0)}_{\sigma'_1\sigma_2}
+        \sigma_2 \sigma'_2}} V_{\sigma_1\sigma_2}^{\sigma'_2\sigma'_1}(x_1,x_2) i \mathfrak{G}^{(x_1, x_2); (0)}_{\sigma\sigma_1} \bigg[ i \mathfrak{G}^{(x_1,x_2); (0)}_{\sigma'_1\sigma_2}
         \mathfrak{G}^{(x_2, x'); (0)}_{\sigma'_2\sigma'} 
          -
         i \mathfrak{G}^{(x_1,x'); (0)}_{\sigma'_1\sigma'} 
@@ -8527,10 +8772,302 @@ By iteration, a Green function with the interaction restricted to Hartree-Fock t
     \end{split}
 \end{equation}
 
+Now, consider the following properties 
+
+\begin{itemize}
+    \item The non-interacting Green function is diagonal in spin $\mathfrak{G}_{\sigma \sigma'}^{(0)} = \delta_{\sigma \sigma'} \mathfrak{G}^{(0)}$.
+    \item The interaction is assumed to be spin independent and instantaneous $V_{\sigma_1 \sigma_2 \sigma'_2 \sigma'_1} \sim \delta_{\sigma_1 \sigma'_1}^{\sigma_2 \sigma'_2} \delta(t_1-t_2)$.
+    \item The free fermion Green function in position representation is as follows, 
+    
+\begin{equation}
+    \begin{split}
+        \langle \mathcal{T} [\Psi({\bf x},t) \Psi^\dagger({\bf x}_1, t_1)] \rangle_{\Psi_0} =& \sum_{{\bf k} {\bf k}_1} \phi_{{\bf k}}({\bf x})\phi^{*}_{{\bf k}_1}({\bf x}_1) \langle \mathcal{T} [{\bf c}_{{\bf k}}(t) {\bf c}_{{\bf k}_1}^\dagger(t_1)] \rangle_{\Phi_0} \\
+        &= \sum_{{\bf k} {\bf k}_1} \phi_{{\bf k}}({\bf x})\phi^{*}_{{\bf k}_1}({\bf x}_1) \langle \mathcal{T} [{\bf c}_{{\bf k}} {\bf c}_{{\bf k}_1}^\dagger] \rangle_{\Phi_0} e^{-i(\varepsilon_{{\bf k}}t - {\varepsilon}_{{\bf k}_1} t_1)} \\
+        &= \sum_{{\bf k}} \phi_{{\bf k}}({\bf x})\phi^{*}_{{\bf k}_1}({\bf x}_1) \delta_{{\bf k} {\bf k}_1} e^{-i\varepsilon_{{\bf k}}(t-t_1)} = \delta({\bf x} - {\bf x}_1) \delta(t-t_1). 
+    \end{split}
+\end{equation}
+
+\item With the equal space-time Green function being 
+
+\begin{equation}
+    i \bar{\mathfrak{G}}^{(0)}(x_2, x_2^+) = - {\bf n}^{(0)}(x_2),
+\end{equation}
+
+        ie. the density per spin of the non-interacting system. 
+\end{itemize}
+
+Then,
+
+\begin{equation}
+    \begin{split}
+         i \mathfrak{G}^{(1)}_{\sigma \sigma'} =& \frac{i}{\hbar} \sum_{\substack{\sigma_1 \sigma'_1 \\
+        \sigma_2 \sigma'_2}} V_{\sigma_1\sigma_2}^{\sigma'_2\sigma'_1}(x_1,x_2) i \mathfrak{G}^{(x_1, x_2); (0)}_{\sigma\sigma_1} \bigg[ i \mathfrak{G}^{(x_1,x_2); (0)}_{\sigma'_1\sigma_2}
+        \mathfrak{G}^{(x_2, x'); (0)}_{\sigma'_2\sigma'} 
+         -
+        i \mathfrak{G}^{(x_1,x'); (0)}_{\sigma'_1\sigma'} 
+        i \mathfrak{G}^{(x_2, x_2); (0)}_{\sigma'_2\sigma_2} \bigg] \\
+        &=\frac{i}{\hbar} \sum_{\substack{\sigma_1 \sigma'_1 \\
+        \sigma_2 \sigma'_2}} V_{\sigma_1\sigma_2}^{\sigma'_2\sigma'_1}(x_1,x_2) i \mathfrak{G}^{(x_1, x_2); (0)} \delta_{\sigma \sigma_1} \bigg[ i \mathfrak{G}^{(x_1,x_2); (0)} \delta_{\sigma'_1\sigma_2}
+        \mathfrak{G}^{(x_2, x'); (0)} \delta_{\sigma'_2\sigma'} 
+         -
+        i \mathfrak{G}^{(x_1,x'); (0)}\delta_{\sigma'_1\sigma'} 
+        i \mathfrak{G}^{(x_2, x_2); (0)}\delta_{\sigma'_2\sigma_2} \bigg] \\
+        &=\frac{i}{\hbar} \sum_{\substack{\sigma_1 \sigma'_1 \\
+        \sigma_2 \sigma'_2}} \bigg[\begin{array}{cc}
+            V(|{\bf x}_1 - {\bf x}_2|)\delta_{\sigma_1\sigma_2} \delta_{\sigma'_2\sigma'_1} i \delta({\bf x}_1 - {\bf x}_2) \delta(t_1-t_2)\delta_{\sigma \sigma_1}i \mathfrak{G}^{(x_1,x_2); (0)} \delta_{\sigma'_1\sigma_2}
+            \mathfrak{G}^{(x_2, x'); (0)} \delta_{\sigma'_2\sigma'} \\
+             \blanky \blanky \blanky \blanky       - V(|{\bf x}_1 - {\bf x}_2|)\delta_{\sigma_1\sigma_2} \delta_{\sigma'_2\sigma'_1} i \delta({\bf x}_1 - {\bf x}_2) \delta(t_1-t_2)\delta_{\sigma \sigma_1}
+                i \mathfrak{G}^{(x_1,x'); (0)}\delta_{\sigma'_1\sigma'} 
+                i \mathfrak{G}^{(x_2, x_2); (0)}\delta_{\sigma'_2\sigma_2} 
+        \end{array} \bigg] \\
+        &= \frac{i}{\hbar} \bigg[\begin{array}{cc}
+            V(|{\bf x}_1 - {\bf x}_2|)\delta_{\sigma \sigma'} \delta({\bf x}_1 - {\bf x}_2) \delta(t_1-t_2) i \bar{\mathfrak{G}}^{(x_2,x_2^+); (0)} 
+            i \mathfrak{G}^{(x_2, x'); (0)} \\
+             \blanky \blanky \blanky \blanky - V(|{\bf x}_1 - {\bf x}_2|)\delta_{\sigma \sigma'} i \delta({\bf x}_1 - {\bf x}_2) \delta(t_1-t_2) 
+                i \mathfrak{G}^{(x_1,x'); (0)} i \mathfrak{G}^{(x_2, x_2); (0)} 
+                \end{array} \bigg] \\
+        %\\
+        %& \Sigma^{*}_{\sigma \sigma'} =  - \frac{1}{\hbar} \delta(t-t') \bigg[-\delta({\bf x} - {\bf x}') (2S+1) \int_{\mathds{R}^3} d{\bf x}_2 \blanky {\bf n}(x_2) V(|{\bf x}- {\bf x}_2|) - V(|{\bf x} - {\bf x'}|) i \mathfrak{G}({\bf x}, t; {\bf x}', t')\bigg]         \\
+    \end{split}
+\end{equation}
+
+where $2S+1$ accounts for the sum over spin. Consequently, the integral in the first self-energy term is just the Coulomb interaction of the fermionic test particle with all the particles of the systemm. The unphysical self-interaction is cancelled by its counterpart in the Fock term. The self-consistency built into the Hartree-Fock theory allows for the replacing of non-interacting Green functions $\mathfrak{G}^{(0)}$ with similar diagrams for the interacting Green function $\mathfrak{G}$
+
+\begin{equation}
+\begin{split}
+    &\Sigma^{*}_{\textnormal{HF}}(x,x') =  - \frac{1}{\hbar} \delta(t-t') \bigg[-\delta({\bf x} - {\bf x}') (2S+1) \int_{\mathds{R}^3} d{\bf x}_2 \blanky {\bf n}(x_2) V(|{\bf x}- {\bf x}_2|) - V(|{\bf x} - {\bf x'}|) i \mathfrak{G}({\bf x}, t; {\bf x}', t')\bigg]
+        \\
+    & \includegraphics[scale = .5, valign = c]{figs/Hartree-Fock-RPA/HFRPA_irreducible_self_energy.png},
+\end{split}
+\end{equation}
+
+Note that $\Sigma_{\textnormal{HF}}^{*}$ is frequency independent, since it depends on $\delta(t-t_1)$. It is purely real, which manifests the Hartree-Fock approximation as a ${\bf k}$-dependent shift in the non-interacting energy poles. \\
+
+\subsubsection{The Two-Particle Green Function and RPA}
+
+The Hartree-Fock approach, as a first-order approximation, does not give an adequate account of the density-density response function for the interacting electron gas. These shortfalls are the consequence of the long interaction range of the Coulomb potential, which gives rise  to an infrared divergence because of the $\frac{1}{q^2}$-behaviour. To make progress, higher-order diagrams and their approximations are to be considered. Moreover, screening effects that reduce the long-range nature of the Coulomb interaction arise. 
+
+\begin{wrapfigure}{l}{0.2\textwidth}
+\includegraphics[scale = .4]{figs/Hartree-Fock-RPA/HFRPA_fermionic_bubble.png}
+\end{wrapfigure} 
+
+In these higher-order diagrams, a new element appears: the fermionic bubble, also called a polarization loop.  \\
+
+\blanky \\
+
+\paragraph{A disgression on Diagram Scaling}
+
+Consider the self-energy diagrams of $n$-th order in the Fourier $({\bf k}, \omega)$ representation. They contain
+
+\begin{itemize}
+    \item $n$ interaction lines,
+    \item $2n$ vertices 
+    \item and $2n-1$ fermionic lines. 
+\end{itemize}
+
+All of these quantities have distinct energy scalings, which can be written in terms of $k_F$ as follows:
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{ |p{5cm}||p{5cm}|p{4cm}|  }
+ \hline
+ \multicolumn{3}{|c|}{Scalings of different diagram elements} \\
+ \hline
+ \textbf{Quantity} & \textbf{Per component} & \textbf{ Total} \\
+ \hline
+ Fermionic lines & $k_F^{-2}$ & $(k_F^{-2})^{2n-1}$\\
+ Internal lines & $k_F^5$ & $(k_F^5)^n$ \\
+ Coulomb interaction & $k_F^{-2}$ & $(k_F^{-2})^n$\\
+ \hline
+\end{tabular}
+ \label{diagram_elements_scalings}
+\end{table}
+
+Integration is carried out over $n$ internal momenta, each with three components, and $n$ internal energies. However, given the conservation of momenta at each vertex, there are $2n$ constraints, reducing the number of independent variables to $n$. 
+
+Scaling up all energies and momenta in terms of $k_F$, for a diagram of order $n$ yields,
+
+\begin{equation}
+    (k_F^5)^n \times (k_F^{-2})^{2n-1} \times (k_F^{-2})^{n} = k_F^{-(n-2)} \propto r_s^{(n-2)}
+\end{equation}
+
+Thus, if $r_S < 1$, it follows that $\Sigma^{*(n+1)} \leq \Sigma^{*(n)}$.
+
+As previously stated, quasiparticles can only be defined near the Fermi surface and that is precisely where Green functions assume large amplitudes, namely, for $k \simeq k_F$. Thus, configurations where all momenta appearing in the self-energy fermionic lines are close to $k_F$ contribute significantly. Consider the following two diagrams. \\
+  
+\begin{wrapfigure}{l}{0.2\textwidth}
+\includegraphics[scale = .4]{figs/Hartree-Fock-RPA/HFRPA_second_order_self_energy_diagram_1.png}
+\end{wrapfigure} 
+
+First, consider this second-order self-energy diagram. For small-enough $q$, it turns out $V^2(q) \approx {q^{-4}}$, and that the summation over ${\bf k}_1$, with $k_1 \simeq k_F$, is unconstrained over a shell of width $2q$. Such a second-order diagram diverges. \\
+
+\blanky \\
+
+In contrast,
+
+\begin{wrapfigure}{l}{0.2\textwidth}
+\includegraphics[scale = .4]{figs/Hartree-Fock-RPA/HFRPA_second_order_self_energy_diagram_2.png}
+\end{wrapfigure} 
+
+in this second-order diagram, for small-enough $q$ and $|{\bf k - q - k}_1|$ in the interaction lines, the phase space for $k_1 \simeq k_F$ becomes severely restricted. \\
+
+\blanky \\
+
+It can thus be inferred that, because of this relatively large difference of phase space volume over which $k_1 \simeq k_F$, the contribution of the first diagram dwarfs that of the second diagram, ie. that $
+    \frac{\Sigma^{*}(a)}{\Sigma^{*}(b)} >> 1.  $ 
+This argument can be extended to higher-order diagrams and ascertain that the dominant diagram, in any order, will be the one with maximum phase space volume for all internal momenta to have $k_i \simeq k_F$, and that will be the case when the internal momenta are least constrained to be in the vicinity of the Fermi surface. These diagrams have the highest-degree of divergence, namely, that the highest power of $q^{-2} \rightarrow q^{-2n}$. These dominant diagrams are called \textbf{bubble} or \textbf{ring} diagrams. 
+
+Note that, although the contribution of each individual diagram diverges, their Dyson infinite sum in the high-density regime $r_S < 1$ gives a finite result. This inference describes the screening of the Coulomb potential by free electrons, giving rise to a Yukawa potential, and is the basis for the random phase approximation. \\
+
+\clearpage
+
+\paragraph{Density-Density Correlation Function}
+
+Consider the density-density Green function, ie. the two-particle Green function, defined as 
+
+\begin{equation}
+\begin{split}
+    \Pi({\bf q},t) =& i \bigg \langle \textnormal{GS} \bigg | \mathcal{T} \bigg[\rho_{\sigma}({\bf q},t) \rho_{\sigma}(-{\bf q},0)\bigg] \bigg | \textnormal{GS} \bigg \rangle, \textnormal{ where } \begin{array}{cc}
+        \ket{\textnormal{GS}} \textnormal{ is the ground state } \\
+        \rho({\bf q},t) = \sum_{{\bf k} \sigma} {\bf c}_{{\bf k} \sigma}^\dagger(t) {\bf c}_{{{\bf k+q} \sigma}}(t)
+    \end{array} \\
+    &= i \sum_{{\substack{ {\bf k k'}
+    \\
+    \sigma \sigma'
+    }}} \langle \textnormal{GS} \bigg | \mathcal{T} \bigg[ 
+      {\bf c}_{{\bf k} \sigma}^\dagger(t) 
+      {\bf c}_{{{\bf k+q} \sigma}}(t)
+      {\bf c}_{{\bf k}' \sigma'}^\dagger(0) {\bf c}_{{{\bf k'-q} \sigma'}}(0)
+    \bigg] \bigg | \textnormal{GS} \bigg \rangle.
+\end{split}
+\label{HFRPA_density_density_gf}
+\end{equation}
+
+This quantity describes the propagation of a particle-hole pair created at time 0: 
+
+\begin{itemize}
+    \item the particle is created in the state $\ket{{\bf k'} \sigma'}$,
+    \item and the hole is created by annihilating a particle in the $\ket{{\bf k' - q} \sigma'}$.
+    \item The pair is ultimately annihilated in states $\ket{{\bf k} \sigma}$ and $\ket{{\bf k +q} \sigma}$ at time t. 
+\end{itemize}
+
+By analogy to the case of the single-particle Green function, this propagator will therefore have poles at energies corresponding to stable particle-hole excitations of the system. The summation over ${\bf k}, {\bf k'}$ describes the propagation of a superposition of many particle-hole exxcitations. Such superpositions are, in fact, collective excitations. This is, in essence, a density fluctuation, so that \cref{HFRPA_density_density_gf} is also called the density-fluctuation propagator. For an interacting system, the perturbative expansion reads
+
+\begin{equation}
+    \Pi({\bf q},t) = i \frac{\bra{\Phi_0} \mathcal{T} \bigg[ \rho_{\sigma}({\bf q},t) \rho_{\sigma}(-{\bf q},0)\mathcal{S}(\infty, -\infty) \bigg] \ket{\Phi_0}}{\bra{\Phi_0} \mathcal{S}(\infty, -\infty) \ket{\Phi_0}}
+    \label{HFRPA_Density_density_gf_expansion}
+\end{equation}
+
+with all quantities appearing in the interaction representation, and all expectation values being taken with respect to the non-interacting ground state, allowing for analog diagrammatic rules previously derived for any order in the perturbation expansion, including vacuum elimination. \\
+
+\paragraph{Excitations spectrum of the Non-Interacting System}
+
+Consider the zero-th-order in the perturbative expansion given by \cref{HFRPA_Density_density_gf_expansion}, $\Pi_0({\bf q}, t)$, which is just th two-particle correlation function of the non-interacting system. $\Pi_0({\bf q}, t)$ provides information about the excitation spectrum of the Sommerfeld-Fermi gas, with a fixed number of particles $N$, which can be done using Wick's theorem. There are two possible contractions 
+
+\begin{align}
+    \langle \mathcal{T} \bigg[\wick{ \c1 {\bf c}_{{\bf k}\sigma}^\dagger(t) \c1 {\bf c}_{{{\bf k+q}\sigma}}(t)} \wick{\c1 {\bf c}^\dagger_{{\bf k'}\sigma'}(0) \c1 {\bf c}_{{\bf k'-q}\sigma'}(0) } \bigg] \rangle, \quad \langle \mathcal{T} \bigg[\wick{ \c1 {\bf c}_{{\bf k}\sigma}^\dagger(t) \c2 {\bf c}_{{{\bf k+q}\sigma}}(t) \c2 {\bf c}^\dagger_{{\bf k'}\sigma'}(0) \c1 {\bf c}_{{\bf k'-q}\sigma'}(0) }\bigg] \rangle
+\end{align}
+
+The first contraction requires ${\bf q} = 0$ for it to be non-zero, yielding 
+
+\begin{equation}
+    \bigg(\sum_{{\bf k} \sigma} \langle {\bf c}_{{\bf k}\sigma}^\dagger {\bf c}_{{{\bf k}\sigma}} \rangle\bigg)\bigg(\sum_{{\bf k}' \sigma'} {\bf c}_{{\bf k'}\sigma'}^\dagger {\bf c}_{{{\bf k'}\sigma'}} \rangle \bigg) \propto N^2.
+\end{equation}
+
+It describes the self-correlation of the uniform electron density and can be ignored. Thus, there is only one possible contraction. Using the definition $\mathfrak{G}^{(0)} = -i \langle \mathcal{T} {\bf c} {\bf c}^\dagger \rangle$ and performing three fermionic swaps, the zero-th-order density-density correlation function reads 
+
+\begin{equation}
+    \begin{split}
+    \Pi_0({\bf q}, t) =& i \sum_{{\bf k} \sigma} \mathfrak{G}^{(0)}_{\sigma}({\bf k+q}, t) \mathfrak{G}^{(0)}_{\sigma}({\bf k}, -t) \\
+    &= \includegraphics[valign = c, scale = .4]{figs/Hartree-Fock-RPA/HFRPA_density_density_corr_func_diagram.png}, \begin{array}{cc}
+         \textnormal{ where the ${\bf q}$-momentum is an external one, whereas the ${\bf k}$-momentum }  \\
+         \textnormal{ is an internal momentum, which together with an internal spin are summed over.}
+    \end{array}
+    \end{split}
+\end{equation}
+
+Note that a hole can be thought of as an electron propagating backward in time, which is the reason such diagram is known as a particle-hole loop, or a polarization loop. Now, consider the Fourier transform with respect to time in order to work out the momentum-energy representation of the density-density correlator, which will yield a convolution in energy 
+
+\begin{equation}
+\begin{split}
+    \Pi_0({\bf q}, \omega) =& \int_{-\infty}^{\infty} dt \blanky e^{i\omega t} \Pi_0({\bf q}, \omega) = i \sum_{{\bf q}, \sigma} \int \frac{d\varepsilon}{2\pi} \blanky \mathfrak{G}_{\sigma}^{(0)}({\bf k}, \varepsilon)  \mathfrak{G}_{\sigma}^{(0)}({\bf k+q}, \varepsilon+\omega)\\
+    &= \sum_{{\bf k} \sigma} \int \frac{d\varepsilon}{2\pi i} \frac{1}{\varepsilon - \varepsilon_{{\bf k}} + i \eta \textnormal{sgn}(\varepsilon_{{\bf k}})} \frac{1}{\varepsilon + \omega - \varepsilon_{{\bf k+q}} + i \eta \textnormal{sgn}(\varepsilon_{{\bf k+q}})} \\
+    &= -2 \sum_{{\bf k} \sigma} \bigg[ \frac{\Theta(-\varepsilon_{{\bf k+q}}) \Theta(\varepsilon_{{\bf k})}}{\omega - \varepsilon_{{\bf k+q}} + \varepsilon_{{\bf k}} + i\eta} - \frac{\Theta(\varepsilon_{{\bf k+q}}) \Theta(-\varepsilon_{{\bf k})}}{\omega - \varepsilon_{{\bf k+q}} + \varepsilon_{{\bf k}} - i\eta}\bigg],
+\end{split}
+\label{HFRPA_first_term_density_density_corr}
+\end{equation}
+
+where in the last step the integral was carried out in the complex plane. Note that both $\varepsilon_{{\bf k+q}}$ and $\varepsilon_{{\bf k}}$ have the same sign, so that they are both positive/negative, the poles in the complex $\varepsilon$-plane are either in the lower or upper half-plane. 
+Taking the contour in the pole-free half, and noting the asymptotic value of the integral is $\mathcal{O}(\varepsilon^{-2})$, yields zero. The integral is non-zero if  $\varepsilon_{{\bf k+q}}$ and $\varepsilon_{{\bf k}}$ have opposite signs, thus yielding the last line. 
+
+The physical interpretation of the $\Theta$-functions is straightforward, 
+
+\begin{itemize}
+    \item For $\Theta(-\varepsilon_{{\bf k}})$, it follows that $n_p = {\bf n}_{\bf k}^{0}$ ie. a particle in the Fermi sea.
+    \item In contrast, for $\Theta(\varepsilon_{{\bf k}})$, it follows that $n_p = 1-{\bf n}_{\bf k}^{0}$ ie. a hole outside the Fermi sea.
+\end{itemize}
+
+Consequently, \cref{HFRPA_first_term_density_density_corr}'s first term is the retarded propagator whilst the second term is the advanced propagator. Furthermore the retarded propagator of a particle-hole pair, with $|{\bf k+q}| > k_F$ and $|{\bf k}|<k_F$, correspond to a positive excitation energy, $\omega_{{\bf q}} = \varepsilon_{{\bf k+q}} - \varepsilon_{{\bf k}} > 0$. \\
+
+\paragraph{The Dynamical Form Factor}
+
+The imaginary part of $\Pi_0$ is the dynamical form factor,
+
+\begin{equation}
+    \begin{split}
+        \mathcal{S}_{0}({\bf q}, \omega) =& \frac{1}{\pi} \Im{\Pi_0({\bf q}, \omega)} \\
+        &= 2 \int \frac{d{\bf k}}{(2\pi)^3} {\bf n}^{0}({\bf k}) \bigg(1-{\bf n}^{0}({\bf k+q})\bigg) \delta(\omega - \varepsilon_{{\bf k+q}} + \varepsilon_{{\bf k}}).
+    \end{split}
+\end{equation}
+
+Hence, a non-zero ${\bf n}^{0}$ implies that the $\ket{{\bf k} \cdots}$-state is occupied and that an excitation of the particle in it will leave behind a hole, while a null ${\bf n}^{0}({\bf k+q})$ indicates an empty state that can be filled with a particle of $({\bf k+q})$-momentum. Conservation of energy thus implies that the dynamical form factor provides information about \underline{real} or \underline{absorbative processes}. This is just a manifestation of all possible particle-hole pairs that carry ${\bf q}$-momentum and satisfy energy conservation, since it defines the real excitations of the Fermi gas.
+
+In order to determine the spectrum, one must inspect the energy-conserving delta function
+
+\begin{equation}
+    0 \leq \omega = \frac{q^2}{2m} + {\bf v_k} \cdot {\bf q} \Rightarrow \begin{array}{cc}
+         \omega_{\textnormal{max}} = \frac{q^2}{2m} + v_F q & q \leq 2k_F \\
+         \omega_{\textnormal{min}} = \frac{q^2}{2m} - v_F q & q \geq 2k_F
+    \end{array}.
+\end{equation}
+
+\begin{wrapfigure}{l}{0.2\textwidth}
+\includegraphics[scale = .3]{figs/Hartree-Fock-RPA/HFRPA_Fermi_gas_excitation_spectrum.png}
+\end{wrapfigure}  
+
+The electron-hole excitation spectrum is a strip between two parabolas, ie. the gray area shown in this figure. Then, at a fixed ${\bf q}$, the dynamical form factor gives a wide range of allowed energies. It is then clear that these are \underline{incoherent excitations} for particle-hole events, an excitation in the $\ket{{\bf q}, \omega}$-state can immediately decay into excitations with energies lower than $\omega$, but with same ${\bf q}$-momentum for the Sommerfeld gas. 
+
+This is in clear contrast with the coherent single-particle excitation events manifest in the corresponding spectral function,
+
+\begin{equation}
+    A({\bf k}, \omega) = \delta[\omega - \varepsilon({\bf k})]. 
+\end{equation}
+
+\blanky \\
+
+\paragraph{Virtual Excitations and Lindhard functions}
+
+If the energy conservation condition is not realized, the corresponding contribution is \underline{reactive}, not dissipative, and it only appears in the real part of the density-density correlation function. The intermediate state is only virtual. In effect, consider the real part of the zero-th-order density-density correlator function given by \cref{HFRPA_first_term_density_density_corr}, which can be written as 
+
+\begin{equation}
+    \Re{\Pi_0({\bf q}, \omega)} =& 2 \int \frac{d{\bf k}}{(2\pi)^3} \blanky \frac{{\bf n}^{(0)}({\bf k}) - {\bf n}^{(0)}({\bf k+q})}{\omega - \varepsilon_{{\bf k+q}} + \varepsilon_{{\bf k}}},
+\end{equation}
+
+where $\mathcal{D}(\varepsilon_F)$ is the density of states at $\varepsilon_F$ and where $F(\tilde{q}, \tilde{\omega})$ is the Lindhard function. The previous relationship carries information about the probability and phase of all possible virtual processes. \\
+
+\paragraph{Interacting Systems and the Random Phase Approximation (RPA)}
+
+\begin{itemize}
+    \item Irreducible Polarization Bubble
+\end{itemize}
+
+By analogy to the treatment of the self-energy, 
+
+
 \clearpage
 \section{Linear Response Theory}
 
-Linear response theory is an extremely widely used concept in physics, stating that the response to a weak external perturbation is proportional to the perturbation, and therefore the quantity of interest is the proportionality constant. The physical question to ask is thus: supposing some perturbation $H'$, what is the measured consequence for an observable quantity ${\bf A}$. In other words, what is $\langle {\bf A} \rangle$ to linear order in $H'$? 
+Linear response theory is an extremely widely used concept in physics, stating that the response to a weak external perturbation is proportional to the perturbation, and therefore the quantity of interest is the proportionality constant. The physical question to ask is thus: supposing some perturbation $H'$, what is the measured consequence for an observable quanntity ${\bf A}$. In other words, what is $\langle {\bf A} \rangle$ to linear order in $H'$? 
 
 Among the numerous physical application of the linear response formalism, one can mention charge and spin susceptibilities of eg. electron systems due to external electric or magnetic fields. Responses to external mechanical forces or vibrations can also be calculated using the same formalism. \\
 
