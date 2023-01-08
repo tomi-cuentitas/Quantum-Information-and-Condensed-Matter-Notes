@@ -1,0 +1,55 @@
+Consider a Hamiltonian ${\bf H}(g)$, whose degrees of freedom reside on the sites of a lattice $\Lambda \subseteq \mathds{Z}^d$, and which varies a function of a dimensionless coupling $g$. Then,
+
+\begin{itemize}
+    \item for the case of a finite lattice, the ground state energy will be, in general, a smooth, analytic function of $g$, $\varepsilon_{\Omega} (g) \in C^{\omega}(\Lambda) $. The main exception comes from the case when $g$ couples only to a conserved quantity, ie.
+    
+    $$
+        {\bf H}(g) = {\bf H}_0 + g {\bf H}_1 \textnormal{ where } [{\bf H}_0, {\bf H}_1] = 0.  
+    $$
+    
+    This entails that these Hamiltonians can be simultaneously diagonalized and so, the eigenfunctions are independent of $g$ even though the eigenvalues vary with $g$\footnote{Two complex-valued matrices ${\bf A}, {\bf B}$ are simultaneously diagonalizable if and only if there exists a single matrix $P \in \textnormal{GL}(\mathds{C})$ which diagonalizes them both at the same time. Then, if $[{\bf H}_0, g{\bf H}_1] = 0$, then the $P$-matrix must be independent of $g$. Since $P$ is constructed from eigenvectors, this implies that the eigenvectors themselves do not depend on $g$, but the eigenvalues of the individual matrices might.}. Then, there may be a level crossing where an excited level becomes the ground state at $g = g_c$, creating a point of non-analyticity of the ground state energy as a function of $g$. \\
+    
+    \item For an infinite lattice, the possibilities are richer. An avoided level-crossing between the ground and an excited state in a finite lattice could become progressively sharper as the lattice size increases, leading to a non-analyticity at $g = g_c$ in the infinite-lattice limit. Any point of non-analyticity in the ground state energy of the infinite lattice system as a quantum phase transtion. The non-analyticity could be either the limiting case of an avoided level crossing, or an actual level crossing, the first situation being the most common. The phase transition is usually accompanied by a qualitative change in the nature of the correlations in the ground state. \\
+\end{itemize}
+
+In particular, second order quantum phase transitions are transtions at which the characteristic energy scale of fluctuations above the ground state vanishes as $g \rightarrow g_c$. Let $\Delta$ be the scale characterizing some significant spectral density of fluctuations at zero temperature for $g \neq g_c$. Thus, $\Delta$ could be the energy of the lowest excitation above the ground state. If this is non-zero (ie. there is an energy gap $\Delta)$, or if there are excitations at arbitrarily low energies in the infinite lattice limit (ie. the energy spectrum is gapless), $\Delta$ is the scale at which there is a qualitative change in the nature of the frequency spectrum from its lowest frequency to its higher frequency behaviour. In most cases, it is the case that 
+
+$$
+    \Delta_{\pm} \underset{g \rightarrow g_c^{\pm}}{\sim} J |g-g_c|^{zv},  \begin{array}{c}
+         \textnormal{ where $J$ is the energy scale of a characteristic microscopic coupling, }  \\
+         \textnormal{ and where $zv$ is the critical phase exponent, which is universal.} 
+    \end{array}
+$$
+
+A critical phase exponent is independent of most of the microscopic details of the ${\bf H}(g)$-Hamiltonian. The previous behaviour holds both for $g > g_c$ and $g < g_c$ with the same value of the exponent $zv$, but with different non-universal constant of proportionality. In addition to a vanishing energy scale, second order quantum phase transitions invariably have a diverging characteristic length scale $\zeta$, which could be the length scale determining the exponential decay of equal time correlations in the ground state or the length scale at which some characteristic crossover occurs to the correlation at the longest distances. This length diverges as 
+
+$$
+\zeta^{-1} \sim \Lambda |g-g_c|^{v}, \begin{array}{c}
+         \textnormal{ where $v$ is a critical exponent, }  \\
+         \textnormal{ and where $\Lambda$ is an inverse length scale ("a momentum}\\\textnormal{ cutoff") of order the inverse lattice spacing.} 
+    \end{array}.
+$$
+
+The ratio of the exponents for energy and length is $z$, the dynamic critical exponent: the characteristic energy scale vanishes as the $z$-th power of the characteristic inverse length scale 
+
+$$
+    \Delta \sim \zeta^{-z}.
+$$
+
+It is important to notice that the previous discussion concerns only the ground state of the system. Thus, quantum phase transitions occur only at zero temperature. Since all experiments are at necessarily non-zero temperature, a central task of the theory of quantum phase transitions is to describe the consequences of this $T=0$-singularity on physical properties at $T > 0$. It turns out that working outward from the critical point $g = g_c$, and $T=0$, is a powerful way of understanding and describing the thermodynamic properties of numerous systems over a broad range of values $|g-g_c|$ and $T$\footnote{Indeed, in many cases it is not even necessary that the system of interest ever have its microscopic coupling reach a value such that $g=g_c$, since it can be very useful to develop a theory based on a physically inaccessible coupling and to develop a description based in the deviation $|g- g_c|.$}. \\
+
+\paragraph{\textbf{Quantum versus classical phase transitions}}
+
+There are two important possibilities for the $T > 0$ phase diagram of a system near a quantum critical point, 
+\begin{itemize}
+    \item either the thermodynamic singularity is present only at zero temperature and all $T>0$ properties are analytic as a function of $g$ near $g = g_c$,
+    \item or there is a curve of $T>0$ second order phase transitions (this is a line at which the thermodynamic free energy is not analytic) which terminates at the $T=0$-quantum critical point, $g = g_c$.
+\end{itemize}
+
+In particular, for the second kind of transitions, in the vicinity of such curve, the typical frequency at which the important long distance degrees of freedom fluctuate, $\omega_{\textnormal{typ}}$, satisfies 
+
+$$
+\hbar \omega_{\textnormal{typ}} << k_B T.
+$$
+
+Under these conditions, the classical description can be applied to the important degrees of freedom. Consequently, the ultimate critical singularity along the line of $T>0$ is ultimately described by the theory of second order classical phase transitions. In said classical systems, the phase transitions are driven only by thermal fluctuations, as classical systems usually freeze into a fluctuationless ground state at $T=0$. In contrast, quantum systems have fluctuations driven by the Heisenberg uncertainty principle even in the ground state, and these can drive interesting phase transitions at zero temperature. The $T>0$ region, in the vicinity of a quantum critical point, therefore offers a fascinating interplay o both quantum and thermal fluctuations. 
