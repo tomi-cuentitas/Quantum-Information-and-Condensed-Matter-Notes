@@ -1,0 +1,1094 @@
+\section{\textbf{Spin Wave Theory}}
+
+\subsection{\textbf{Spin Path Integrals}}
+
+Path integrals provide formal expressions which, in general without a known closed analytic form, lead to useful approximation schemes, such as generating asymptotic expansions and to formulate mean field theories. 
+
+The spin coherent states path integral describes quantum spins in terms of time-dependent histories of unit vectors, thus providing a connection between the classical and quantum phenomena. \\
+
+\paragraph{Construction of the path-integrals}
+
+Spin coherent states can be used to construct a path integral representation of the Heisenberg model, with its generating functional in imaginary time being 
+
+\begin{equation}
+\begin{split}
+    \mathcal{Z}[j] =& \Tr \mathcal{T}_{\tau} \exp \bigg(-\int_{0}^\beta d\tau \blanky {\bf H}(\tau)\bigg)  \\
+    &= \lim_{N \rightarrow \infty} \Tr \mathcal{T}_{\tau} \prod_{n=0}^{N_{\epsilon} - 1} [1-\epsilon {\bf H}(\tau_n)],
+\end{split} \begin{array}{cc}
+         \textnormal{ where $\mathcal{T}_\tau$ is the time-ordering operator, $\epsilon = \frac{\beta}{N_{\epsilon}}$,}  \\
+         \textnormal{  and where $\tau_n = n \epsilon$ is the discrete imaginary time} \\
+         \textnormal{ and where the generating Hamiltonian includes source } \\
+         \textnormal{ currents ${\bf H}(\tau) = {\bf H} - \sum_{i, \alpha} j_i^\alpha(\tau) \spin_i^\alpha$, for $\tau \in [0, \beta).$}
+    \end{array}
+\end{equation}
+
+The spin coherent resolution identity is given by \cref{spin_coherent_resol_id}, wherein the spin operators in the spin coherent states are given by \cref{spin_coherent_resol_spin_ops}. Using these identities, the generating functional may be rewritten as a tridimensional integral
+
+\begin{equation}
+\begin{split}
+    \mathcal{Z}[j] =& \lim_{N \rightarrow \infty} \Tr \mathcal{T}_{\tau} \prod_{n=0}^{N_{\epsilon} - 1} [1-\epsilon {\bf H}(\tau_n)] \\
+    &= \int \bigg(d\hat{\Omega}_0 d\hat{\Omega}_\epsilon \cdots d\hat{\Omega}_{N_{\epsilon} - 1} \bigg) \blanky \bra{\hat{\Omega}_0 \hat{\Omega}_\epsilon \cdots \hat{\Omega}_{N_{\epsilon} - 1}}  \mathcal{T}_{\tau} [1-\epsilon {\bf H}(\tau_0)] [1-\epsilon {\bf H}(\tau_\epsilon)] \cdots [1-\epsilon {\bf H}(\tau_{N_\epsilon - 1})] \ket{\hat{\Omega}_0 \hat{\Omega}_\epsilon \cdots \hat{\Omega}_{N_{\epsilon} - 1}} \\
+    &= \int \bigg(d\hat{\Omega}_0 d\hat{\Omega}_\epsilon \cdots d\hat{\Omega}_{N_{\epsilon} - 1} \bigg) \blanky \bra{\hat{\Omega}_0 \hat{\Omega}_\epsilon \cdots \hat{\Omega}_{N_{\epsilon} - 1}} \\
+    &  \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \times \mathcal{T}_{\tau} [1-\epsilon {\bf H}(\tau_0)] \textnormal{id}_{SU(2)} [1-\epsilon {\bf H}(\tau_\epsilon)]  \textnormal{id}_{SU(2)} \cdots \textnormal{id}_{SU(2)} [1-\epsilon {\bf H}(\tau_{N_\epsilon - 1})] \textnormal{id}_{SU(2)} \ket{\hat{\Omega}_0 \hat{\Omega}_\epsilon \cdots \hat{\Omega}_{N_{\epsilon} - 1}} \\
+    &= \int \bigg(d\hat{\Omega}_0 d\hat{\Omega}_\epsilon \cdots d\hat{\Omega}_{N_{\epsilon} - 1} \bigg) \blanky \bigg \langle{\hat{\Omega}_0 \hat{\Omega}_\epsilon \cdots  \hat{\Omega}_{N_{\epsilon} - 1}} \bigg| \\
+    &  \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \times \mathcal{T}_{\tau} \int d\hat{\Omega'}_0 \ket{\hat{\Omega'}_0} \bra{\hat{\Omega'}_0} [1-\epsilon {\bf H}(\tau_0)] \int d\hat{\Omega'}_1 \ket{\hat{\Omega'}_1} \bra{\hat{\Omega'}_1} [1-\epsilon {\bf H}(\tau_\epsilon)] \int d\hat{\Omega'}_2 \ket{\hat{\Omega'}_2} \bra{\hat{\Omega'}_2} \cdots \\
+    & \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \times \int d\hat{\Omega'}_{N_\epsilon - 1} \ket{\hat{\Omega'}_{N_\epsilon - 1}} \bra{\hat{\Omega'}_{N_\epsilon -1}}  [1-\epsilon {\bf H}(\tau_{N_\epsilon})] \int d\hat{\Omega'}_{{N_{\epsilon}}} \ket{\hat{\Omega'}_{N_\epsilon}}  \langle \hat{\Omega'}_{N_\epsilon} \bigg| \bigg {\hat{\Omega}_0 \hat{\Omega}_\epsilon \cdots \hat{\Omega}_{N_{\epsilon} - 1}}  \bigg \rangle \\
+    %&= \int \bigg( \prod_{\kappa = 0}^{N_{\epsilon} -1 } d\hat{\Omega}_{\kappa} \times \prod_{\kappa = 0}^{N_{\epsilon}} d\hat{\Omega'}_{\kappa}) \bigg \langle {\hat{\Omega'}_\epsilon \cdots \hat{\Omega'}_{N_{\epsilon} - 1}}  
+    %\hat{\Omega}_{N_{\epsilon}} \bigg | \prod_{\ell = 1}^{N_{\epsilon}} \bra{\hat{\Omega}_{\epsilon \ell}} [1- \epsilon {\bf H}(\ell \epsilon)]  \ket{\hat{\Omega}_{\epsilon \kappa'}} \bigg| \bigg {\hat{\Omega}_0 \hat{\Omega}_\epsilon \cdots \hat{\Omega}_{N_{\epsilon} - 1}}  \bigg \rangle \\
+    &= \lim_{N_{\epsilon} \rightarrow \infty} \int \bigg( \prod_{r, i} {{\Omega}}_{i \tau} \bigg) \blanky \prod_{\tau = \epsilon}^{\beta} \bigg\langle \hat{\bm{\Omega}}(\tau) \bigg| \hat{\bm{\Omega}}(\tau - \epsilon) \bigg\rangle [1 - \epsilon \bm{\mathcal{H}}(\tau)], \textnormal{ where } \begin{array}{cc}
+         \hat{\bm{\Omega}} = (\hat{{\Omega}}_1, \cdots, \hat{{\Omega}}_N)  \\
+         \\
+         \bm{\mathcal{H}}(\tau) = \frac{\bra{\hat{\Omega}(\tau)} {{\bf H}}(\tau) \ket{\hat{\Omega}(\tau - \epsilon)}}{\bra{\hat{\Omega(\tau)}} \ket{\hat{\Omega(\tau - \epsilon)}}}
+    \end{array} \\
+    \label{generating_function_and_cl_hammiltonian}
+\end{split}
+\end{equation}
+
+where, in the second line a total of $N_{\epsilon}$ \cref{spin_coherent_resol_id}-
+identities were introduced and labelled as 
+$\hat{\Omega'}_i$, where $\hat{\Omega}_\tau 
+= (\sin \theta_\tau \cos \phi_\tau, \sin 
+\theta_\tau \sin \varphi_\tau, \cos 
+\theta_\tau) = (\Omega_i_\tau$ and where 
+$\bm{\mathcal{H}}(\tau)$ is a "classical 
+Hamiltonian". In the last line, the 
+$\hat{\Omega'}_{i}$s were identified with 
+$\hat{\Omega}_{i-\epsilon}$. Let 
+$\hat{\bm{\Omega}}(\beta) = 
+\hat{\bm{\Omega}}(0)$. \\
+
+A priori, $\hat{\bm{\Omega}}(\tau)$ is an arbitrary discrete function on $\tau$. Though unjustified, it may be taken to be a continuous and differentiable function in the $(N_{\epsilon}\rightarrow\infty)$-limit, in such a way that 
+
+\begin{equation}
+    \frac{\hat{{\Omega}}_i(\tau + \epsilon) - \hat{{\Omega}}_i(\tau)}{\epsilon} = \hat{{\Omega}}_i(\tau) + \mathcal{O}(\epsilon),
+\end{equation}
+
+holds. The implicit assumption is that the generating functional is dominated by smooth paths, ie. $|\hat{{\Omega}}| < \infty$. This turns out to be unjustified. By ignoring discontinuous paths, information is lost about the ordering of operators in the quantum Hamiltonian. For this reason, path integral results must be checked against operator methods, which do not suffer from ordering ambiguities. The overlap between coherent states, given in the first line of \cref{multi_coherent_states_identities}, induces the following representation for the overlap between coherent states at nearby timesteps, to leading order in $\epsilon$, as 
+
+\begin{equation}
+    \bigg\langle \hat{\bm{\Omega}}(\tau) \bigg| \hat{\bm{\Omega}}(\tau - \epsilon) \bigg\rangle = \exp \bigg(-i S \epsilon \sum_{i} \dot{\phi}_i \cos (\theta_i(\tau)) + \dot{\chi_i}\bigg),
+\end{equation}
+
+where $\chi(\tau)$ is an arbitrary gauge convention. Furthermore, the classical Hamiltonian, which is multiplied by $\epsilon$, can be evaluated at equal times, $\bm{\mathcal{H}}[\hat{\Omega}(\tau)] \rightarrow {\bra{\hat{\Omega}(\tau)}} {{\bf H}} (\tau) \ket{\hat{\Omega}(\tau)}$. The $(N_{\epsilon} \rightarrow \infty)$-limit will transform \cref{generating_function_and_cl_hammiltonian} int a path integral, as follow
+
+\begin{equation}
+    \begin{split}
+        &\mathcal{Z}[j] = \oint \mathcal{D} \hat{\Omega}(\tau) e^{- \tilde{\mathcal{S}}[\hat{\Omega}]} \\
+        & \tilde{\mathcal{S}}[\hat{\Omega}] = -iS \sum_{i} \omega[\hat{\Omega}_i] + \int_{0}^{\beta} \bm{\mathcal{H}}[\hat{\Omega}(\tau)]
+    \end{split} \textnormal{ with the integration measure } \mathcal{D} \hat{\Omega}(\tau) = \lim_{N_{\epsilon}\rightarrow \epsilon} \prod_{i,n}  d \hat{\Omega}_i(\tau_n),
+    \label{spin_wave_theoretic_wave_generating_func_and_phase_func}
+\end{equation}
+
+where, in the first and second lines, the Hamiltonian was exponentiated and higher-order terms in $\epsilon$ were discarded and the formal continuum limit was taken. The $\oint$-notation reflects the system's periodic boundary conditions. For the $\chi_i(\tau) = 0$, the $\omega$-functional depends on the history of a single spin as follows
+
+\begin{equation}
+    \omega[\hat{\Omega}] = -\int_{0}^\beta d\tau \blanky \dot{\phi} \cos \theta = - \int_{\phi_0}^{\phi_0} d\phi \blanky \cos \theta_\phi,
+\end{equation}
+
+which implies that $\omega$ is geometric: it depends on the trajectory of $\hat{\Omega}_i(\tau)$ on the 3-sphere and not on its explicit time dependence. The $(S\omega)$-functional is called the \underline{Berry phase} of the spin history, since it describes the phase acquired by a spin that aligns with an adiabatically rotation external magnetic field which is parallel to $\hat{\Omega}_i(\tau)$\footnote{
+
+The Berry phase measure the area enclosed by the $\hat{\Omega}(\tau)$-path on the unit three-sphere. A path increment $d\hat{\Omega}$ is connected to the north pole by longitudes $\phi$ and $\phi + d\phi$. This area increment is a triangle on the sphere whose area is given by $d\omega' = (1-\cos \theta) d\phi$. Thus, the are enclosed by this closed orbit, parametrized by $\theta(\tau), \phi(\tau)$is given by 
+
+$$
+    \omega' = \int_0^\beta d\tau \blanky \dot{\phi}(1-\cos \theta).
+$$
+
+Therefore, $\omega'$ is the area enclosed on the left on the counterclockwise orbit $\{\hat{\Omega}(\tau)\}_0^\beta$. The $(\omega' = \omega)$-identity holds if $\phi(\beta)$ doesn't cross the "date line boundary" $\pm \pi$. \\
+
+It is useful to express the $\omega$-Barry phase in a gauge invariant form, ie. without specifying any parametrization on the sphere. Consider then a vector potential ${\bf A}(\hat{\Omega})$ such that 
+
+$$
+    \omega = \int_{0}^{\beta} d\tau \blanky {\bf A}(\hat{\Omega}) \dot{\hat{\Omega}},
+$$
+
+where $\dot{\hat{\Omega}}$ is a unit magnetic monopole vector potential, whose line integral over the $\{\hat{\Omega}(\tau)\}_0^\beta$-orbit is equal to the solid angle $\omega$ subtended by that orbit. By Stokes' theorem, this vector potential satisfies 
+
+\begin{equation}
+    \nabla \times {\bf A} \cdot \hat{\Omega} = \varepsilon^{\alpha\beta\gamma} \partial_{{\hat{\Omega}^\alpha}} A^\beta \hat{\Omega}^\gamma = 1,
+\end{equation}
+
+allowing for different gauge choices for the vector potential. For futher discussion on this point and the Dirac string, see \cite{assa} page 105. \\
+
+}. \\
+
+\paragraph{The Green Function}
+
+The Green function, which describes the real-time evolution at zero-temperature, is given by the matrix element of the evolution operator between two coherent states, 
+
+\begin{equation}
+    \mathfrak{G}(\hat{\Omega}_0, \hat{\Omega}_t; t) = \bra{\hat{\Omega}_t} \mathcal{T}_{t'} \exp \bigg(-i \int_{0}^{t} dt' \blanky {\bf H}(t')\bigg) \ket{\hat{\Omega}_0},
+\end{equation}
+
+whose path integral representation can be found in close analogy to that obtained for the generating $\mathcal{Z}$-functional by replacing the imaginary time $\tau$-variable with the real time $t$,
+
+\begin{equation*}
+    \tau \rightarrow it' \textnormal{ and } t' \in [0,t],
+\end{equation*}
+
+and the $[0,t]$-interval is discretized into $N_{\epsilon}$-timesteps of $\epsilon$-width. This procedure yields the formal expression, 
+
+\begin{equation}
+    \mathfrak{G}(t) = \int_{\hat{\Omega}_0}^{\hat{\Omega}_t} \mathcal{D} \hat{\Omega}(t') \blanky e^{i \mathcal{S}[\hat{\Omega}]}, \textnormal{ where } \mathcal{S}[\hat{\Omega}] = \int_{0}^{t} dt' \blanky \bigg(S \sum_{i} {\bf A} \cdot \dot{\hat{\Omega}} - \bm{\mathcal{H}}[\hat{\Omega}(t'), t'] \bigg).
+\end{equation}
+
+Here $\mathcal{S}[\hat{\Omega}]$ is the real-time action. \\
+
+\paragraph{The large-$S$ expansion} 
+
+The spin coherent path integrals are useful starting points for deriving semiclassical approximations, wherein coordinates are simply unit vectors ie. classical spins. The quantum effects enter through their real or imaginary time dependence. Consider the classical Hamiltonian $\bm{\mathcal{H}}$, which is the result obtained by scaling the parameters of ${\bf H}[\hat{\Omega}]$ such that these are independent of $S$. By considering the $(S \rightarrow \infty)$-limit, all time-dependent paths with $\dot{\hat{\Omega}} \neq 0$ are suppresed by the rapid oscillations of the Berry phase factor. Thus, a classical partition function is obtained 
+
+\begin{equation}
+    \mathcal{Z} \underset{S \rightarrow \infty}{\sim} \mathcal{Z}' \int \mathcal{D}\hat{\Omega} \blanky e^{-\beta \bm{\mathcal{H}}[\hat{\Omega}]},
+    \label{spin_wave_theoretic_wave_partition_func}
+\end{equation}
+
+where $\mathcal{Z}'$ includes normalization factors and higher-order quantum corrections and where the integral represents the generating functional for the classical Hamiltonian. This allows for the use of $S$ as the control parameter for a systematic asymptotic expansion for the Green function. This semiclassical expansion introduces quantum corrections to the classical theory. The first step is to rescale the time variable 
+
+\begin{align}
+    \tau &\rightarrow S\tau = \tilde{\tau} & \beta & \rightarrow S\beta = \bar{\beta}.
+\end{align}
+
+The classical inverse temperature $\beta$ is taken to be independent of $S$, allowing for scaling $S$ out of action, yielding 
+
+\begin{equation}
+    \mathcal{Z}(\bar{\beta}) = \oint \mathcal{D}\hat{\Omega}[\tau] \blanky \exp \bigg( - S \mathcal{S}^{\textnormal{cl}}[\hat{\Omega}(\bar{\tau}), \bar{\beta}]\bigg), \textnormal{ with } \mathcal{S}^{\textnormal{cl}} = \int_{0}^{\beta} d\bar{\tau} \blanky \bigg(i \sum_{i} {\bf A} \cdot \dot{\hat{\Omega}} + {\bf H}^{\textnormal{cl}}[\hat{\Omega}(\tau)]\bigg).
+\end{equation}
+
+Using the method of steepest descent on $\mathcal{Z}$, using $S$ as a large parameter, yields 
+
+\begin{equation}
+    \mathcal{Z} \sim \sum_{\alpha} \exp \bigg(-S \mathcal{S}^{\textnormal{cl}}[\hat{\Omega}(\bar{\tau}), \bar{\beta}]\bigg)\mathcal{Z}'_{\alpha}, \begin{array}{cc}
+         \textnormal{ with the saddle } \\
+         \textnormal{ point equations } 
+    \end{array}\frac{\delta \mathcal{S}^{\textnormal{cl}}}{\delta \hat{\Omega}}\bigg|_{\hat{\Omega} = \hat{\Omega}^{\textnormal{cl}, \alpha}}. 
+ \end{equation}
+
+These saddle point equations yield the prefactors $\mathcal{Z}'_{\alpha}$, which contain subdominant corrections in powers of $S^{-1}$. These can be evaluated by expanding the fluctuation integrals, 
+
+\begin{equation}
+    \mathcal{Z}'_{\alpha} = \oint \mathcal{D}\delta \hat{\Omega} \exp\bigg[ -S \bigg(\mathcal{S}^{\textnormal{cl}}[\hat{\Omega}^{\textnormal{cl}}] - \mathcal{S}^{\textnormal{cl}}[\hat{\Omega}^{\textnormal{cl}, \alpha}] \bigg) \bigg], \textnormal{ where } \delta \hat{\Omega} = \hat{\Omega} - \hat{\Omega}^{\textnormal{cl}, \alpha}. 
+\end{equation}
+
+\blanky \\
+
+\paragraph{Semiclassical Dynamics}
+
+The large-$S$ expansion of the Green function requires a rescaling $t \rightarrow St = \bar{t}$, which yields
+
+\begin{equation}
+        \mathfrak{G}(\bar{t}) = \int_{\hat{\Omega}_0}^{\hat{\Omega}_{\bar{t}}} \mathcal{D} {\hat{\Omega}}(\bar{t'}) \blanky \exp \bigg(i S \mathcal{S}^{\textnormal{cl}} {\hat{\Omega}}\bigg), \textnormal{ with } \mathcal{S}^{\textnormal{cl}} = \int_{0}^{\bar{t}} d\bar{t'} \blanky \bigg(\sum_{i} {\bf A} \cdot \dot{\hat{\Omega}} - \bm{\mathcal{H}}[{\hat{\Omega}}(\bar{t'})]\bigg),
+\end{equation}
+
+The Green function is dominated by time-dependent paths $\hat{\Omega}_{\textnormal{cl}}(t')$, which extremize the action. Henceforth, let $\bar{t} \rightarrow t$ and employ the method of steepest descents, which yields a sum over saddle points 
+
+\begin{equation}
+    \mathfrak{G} \sim \sum_{\alpha} \exp \bigg(i S \mathcal{S}[\hat{\Omega}^{\textnormal{cl}, \alpha}, \bar{t}]\bigg) \mathfrak{G}'_{\alpha}, \begin{array}{cc}
+         \textnormal{ where the $\hat{\Omega}_{\textnormal{cl}}(t')$-paths } \\
+         \textnormal{ are determined by } \\
+         \textnormal{ the saddle-point equations} 
+    \end{array} \frac{\delta}{\delta \hat{\Omega}} \mathcal{S}[\hat{\Omega}]\bigg|_{\hat{\Omega}^{\textnormal{cl}, \alpha}} = 0 \begin{array}{cc}
+         \textnormal{ subject to boundary conditions}  \\
+         \hat{\Omega}^{\textnormal{cl}, \alpha} = \hat{\Omega}_0 \\
+         \hat{\Omega}^{\textnormal{cl}, \alpha}(t) = \hat{\Omega}_t.
+    \end{array}
+\end{equation}
+
+The variation of the Berry phase part of the action is given by 
+
+\begin{equation}
+    \begin{split}
+        \delta\omega[\hat{\Omega}] =& \int_0^t dt' \blanky \delta({\bf A} \cdot \dot{\hat{\Omega}}) \\
+        &= \int_{0}^{t} dt' \blanky \bigg[\frac{\partial A^\alpha}{\partial \hat{\Omega}^\beta} \delta\hat{\Omega}^\beta \dot{\hat{\Omega}}^\alpha + A^\alpha \frac{d}{dt} \delta \hat{\Omega}^\alpha + \frac{\partial A^\alpha}{\partial \hat{\Omega}^\beta} \dot{\hat{\Omega}}^\beta \delta \hat{\Omega}^\alpha - \frac{\partial A^{\alpha}}{\partial \hat{\Omega}^\beta} \dot{\hat{\Omega}}^\beta \delta \hat{\Omega}^\alpha\bigg] \\
+        &= \int_{0}^{t} dt' \blanky \frac{\partial A^{\alpha}}{\partial \hat{\Omega}^\beta} \epsilon^{\alpha \beta \gamma} (\dot{\hat{\Omega}} \times \delta \hat{\Omega})_{\gamma} + \cancelto{0}{\int_{0}^{t} dt' \frac{d}{dt'} \bigg({\bf A} \cdot \delta\hat{\Omega}\bigg)} \\
+        &= \int_{0}^{t} dt' \blanky {\hat{\Omega}} \cdot (\dot{\hat{\Omega}} \times \delta \hat{\Omega}),
+        \label{Berry_phase_semiclassical_variation}
+    \end{split}
+\end{equation}
+
+where the integral over the total time derivative cancels itself out since the endpoints are fixed. Given that $\delta{\hat{\Omega}} \cdot \hat{\Omega} = \dot{\hat{\Omega}} \cdot \hat{\Omega} = 0$ and $\dot{\hat{\Omega}} \times \delta \hat{\Omega} || \hat{\Omega}$. From these, the Euler-Lagrange equations of motion are thus obtained 
+
+\begin{equation}
+    \begin{split}
+        \frac{\delta}{\delta \hat{\Omega}} \mathcal{S}[\hat{\Omega}] \bigg|_{\hat{\Omega}^{\textnormal{cl}, \alpha}} =& 0 = \int_{0}^{t}
+        \frac{\delta}{\delta \hat{\Omega}} \bigg[\sum_{i} {\bf A} \cdot \dot{\hat{\Omega}} - \bm{\mathcal{H}}[{\hat{\Omega}}(\bar{t'})]\bigg] \\
+        &= \delta \omega[\hat{\Omega}] - \int_0^t dt' \blanky \frac{\delta \bm{\mathcal{H}}[\hat{\Omega}({t'})]}{\delta \hat{\Omega}} \\
+        &= \int_0^t dt' \blanky \bigg[{\hat{\Omega}} \cdot (\dot{\hat{\Omega}} \times \delta \hat{\Omega}) - \frac{\partial \bm{\mathcal{H}} [\hat{\Omega}({t'})]}{\partial \hat{\Omega}} \delta \hat{\Omega}\bigg] \\
+        &= \int_0^t dt' \blanky \bigg[ \bigg({\hat{\Omega}} \times \dot{\hat{\Omega}} - \frac{\partial \bm{\mathcal{H}} [\hat{\Omega}({t'})]}{\partial \hat{\Omega}}\bigg )  \delta \hat{\Omega}\bigg] \Longrightarrow {\hat{\Omega}}^{\textnormal{cl}} \times \dot{\hat{\Omega}}^{\textnormal{cl}} - \frac{\partial \bm{\mathcal{H}} [\hat{\Omega}^{\textnormal{cl}}]}{\partial \hat{\Omega}} = 0 \\
+        \Rightarrow \dot{\hat{\Omega}}^{\textnormal{cl}}_i (t') = \hat{\Omega}^{\textnormal{cl}} \times \frac{\partial \bm{\mathcal{H}} [\hat{\Omega}^{\textnormal{cl}}]}{\partial \hat{\Omega}_i(t')}\bigg|_{\hat{\Omega}^{\textnormal{cl}}}.
+    \end{split}
+\end{equation}
+
+The last equation describes a system of classical rotators in the fast-top-limit, ie. when the rotator's internal rotational energy is much larger than the typical inter-rotator interaction energy. The right-hand side of the second row is the torque applied to rotator $\hat{\Omega_i}$, which changes its direction but not its magnitude. Using this equation of motion, it is clear that the Hamiltonian is a constant of motion on the classical path 
+
+\begin{equation}
+    \begin{split}
+        \frac{d \bm{\mathcal{H}} [\hat{\Omega}^{\textnormal{cl}} (t')] }{dt} &= \sum_{i} \frac{\partial \bm{\mathcal{H}}}{\partial \hat{\Omega}_i^{\textnormal{cl}}(t')} \cdot \dot{\hat{\Omega}}_i^{\textnormal{cl}}(t') \\
+        &= \sum_{i} \frac{\partial \bm{\mathcal{H}}}{\partial \hat{\Omega}_i^{\textnormal{cl}}(t')} \cdot \bigg[ \hat{\Omega}^{\textnormal{cl}} \times \frac{\partial \bm{\mathcal{H}} [\hat{\Omega}^{\textnormal{cl}}]}{\partial \hat{\Omega}_i(t')}\bigg|_{\hat{\Omega}^{\textnormal{cl}}} \bigg] = 0,
+    \end{split}
+\end{equation}
+
+thus ensuring conservation of energy $\bm{\mathcal{H}} [\hat{\Omega}^{\textnormal{cl}} (t')] = \bm{\mathcal{H}} [\hat{\Omega}^{\textnormal{cl}}_0]$ along the classical trajectory. A problem arises however, in that the equations of motion are first order in time, but the solution must satisfy two boundary conditions at $t' = 0$ and at $t' = t$. This is impossible for almost all boundary conditions (eg. when $\bm{\mathcal{H}} [\hat{\Omega}_{t}] = \bm{\mathcal{H}} [\hat{\Omega}_0]$). Klauder has suggested a way to overcome this problem by including second-order transistent terms of $\mathcal{O}(\epsilon)$-order in the classical equations of motion. This allows one to solve a second-order equation, with fixed boundary conditions, and calculate the classical action and at the end, take the $(\epsilon \rightarrow 0)$-limit. \\
+
+\paragraph{Semiclassical spectrum}
+
+The energy dependent Green's function is defined as 
+
+\begin{equation*}\begin{split}
+    \mathfrak{G}(\hat{\Omega}_0, \hat{\Omega}_t; E) = i \int_{\mathds{R}_+} dt \blanky \mathfrak{G}(\hat{\Omega}_0, \hat{\Omega}_t; t) e^{i(E+i0^+)t}, \begin{array}{cc}
+         \textnormal{with its spectral } \\
+         \textnormal{function $\Gamma(E)$ being } 
+         \end{array}
+        \Gamma(E) &= \int d\hat{\Omega}_0 \blanky \mathfrak{G}(\hat{\Omega}_0, \hat{\Omega}_t; E) \\
+        &= \sum_{\alpha} \frac{1}{E-E_{\alpha}{ + i0^+}},
+    \end{split}
+\end{equation*}
+
+where the poles of $\Gamma(E)$ are the eigenenergies $\{E_{\alpha}\}_{\alpha}$ of the Hamiltonian. The path  representation\footnote{This present derivation is shaky on mathematical grounds. A much more robust formalization using the path integral method was derived by Gutzwiller, and his formula is widely used in quantizing Hamiltonians with chaotic classical dynamics.} of the spectral function has the additional $d\hat{\Omega}_0$- and $dt$-integrations. The classical paths have $\mathcal{t}^E$-duration, which is determined by the saddle-point approximation for the $dt$-interal, 
+
+\begin{equation}
+    \frac{\partial\mathcal{S}[\hat{\Omega}]\bigg|_{\hat{\Omega}^{\textnormal{cl}}}}{\partial  \hat{\Omega}}\bigg|_{t = t^E} + E = 0. 
+\end{equation}
+
+Since the Berry phase term $\omega$ is geometric and doesn't depend on $t^E$, it follows that 
+
+\begin{equation}
+    \bm{\mathcal{H}}[\hat{\Omega}^{\textnormal{cl}}] = E, \quad \mathcal{S}(t^E) + Et^E = \sum_{i} \omega[\hat{\Omega_i}].
+\end{equation}
+
+Consider then a periodic orbit $\hat{\Omega}^{E, \alpha}$ of $E$-energy which is traversed once. The saddle point equation for the trace over $\hat{\Omega}_0$ implies that 
+$\dot{\hat{\Omega}} = \dot{\hat{\Omega}}(t^E)$. Therefore, $\Gamma$ is given by summing over all repetitions of this periodic orbit $\hat{\Omega}^{E, \alpha}$,
+
+\begin{equation}
+    \begin{split}
+        \Gamma &\sim \sum_{\alpha} \sum_{n} \exp \bigg(in S \sum_{i} \omega[\hat{\Omega}^{E, \alpha}]\bigg) \\
+        &= \sum_{\alpha} \frac{\exp \bigg(in S \sum_{i} \omega[\hat{\Omega}^{E, \alpha}]\bigg)}{1-\exp \bigg(in S \sum_{i} \omega[\hat{\Omega}^{E, \alpha}]\bigg)}
+    \end{split}
+\end{equation}
+
+By comparing this expression to the resolvent function's one, the semiclassical spectrum can be obtained from its poles, $E_{\alpha}$, which are determined by the Bohr-Sommerfeld quantization condition 
+
+\begin{equation}
+    \sum_{i} \omega[\hat{\Omega}_i^{E, \alpha}] = \frac{2n\pi}{S},
+\end{equation}
+
+yielding the semiclassical spectrum $\{E_{\alpha}^{\textnormal{sc}}\}$. Since two functions are the same, upto a constant, if they share the same poles and residues, then for energies $E_{\alpha}^{\textnormal{sc}}$ that are order one (ie. $n = \mathcal{O}(S)$), then the quantum spectrum may be approximated by its semiclassical counterpart,
+
+\begin{equation}
+    E_{\alpha} = E_{\alpha}^{\textnormal{sc}} + \mathcal{O}\bigg(\frac{1}{S}\bigg).
+\end{equation}
+
+\clearpage
+
+\subsection{\textbf{Spin Wave Theory}}
+
+\subsubsection{Spin Waves: Path Integral Approachs}
+
+\blanky \\
+
+\begin{tcolorbox}[colback = yellow, title = Physical Context]
+
+The low-order harmonic spin wave expansion of the quantum Heisenberg model allows for a physically appealing treatment of the \textcolor{red}{long-range ordered phases}, \underline{since the quantum effects enter as real or imaginary}\underline{ time dependent fluctuations about the classical ground}
+
+\underline{state}. The spin wave modes and dispersions are obtained from the linearized classical equations of motion. To lowest order in $\frac{1}{S}$, spin waves are independent harmonic oscillators which can be semiclassically quantized. A great advantage of this approach is that it can be followed for any frustrated Heisenberg model with a complicated ground state. The path-integral, however, suffers from the ambiguity in operator ordering due to the continuous definition of the time derivative in the kinetic term. 
+
+\end{tcolorbox}
+
+Consider the quantum Heisenberg Hamiltonian 
+
+$$
+    {\bf H} = \frac{1}{2} \sum_{i,j} J_{ij} \spin_i \cdot \spin_j. 
+$$
+
+The expectation value of this Hamiltonian in the coherent state representation, 
+
+\begin{equation}
+    {\bf H}[\hat{\Omega}] = \bra{\hat{\Omega}} {{\bf H}} \ket{\hat{\Omega}} = \frac{S^2}{2} \sum_{ij} J_{ij} \hat{\Omega}_i \cdot \hat{\Omega}_j.
+\end{equation}
+
+The classical ground states of the Hamiltonian depend on the details of the coupling constants $J_{ij}$. Given the model's O(3)-symmetry, global spin rotations generate a continous manifold of degenerate ground states. Certain models have additional ground state degeneracies due to frustration. Frustration occurs when no configuration can minimize all individual bond interactions simultaneously. Degeneracies that are not related to symmetries of the Hamiltonian are usually lifted by thermal and quantum fluctuations. In the literature, this is often referred to \underline{order due to disorder}. \\
+
+The basic assumption of spin wave theory is that, for any chosen classical ground state manifold $\hat{\Omega}^{\textnormal{cl}}$, the partition function and Green functions can be expanded about it using the saddle-point expansion, controlled by the size of the spin $S$. \\
+
+Consider two transverse unit vectors at each site of the lattice, $\hat{\phi}_i, \hat{\theta_i}$, which describe the azimuthal and longitudinal directions at $\hat{\Omega}^{\textnormal{cl}}$, 
+
+$$
+    \hat{\Omega}^{\textnormal{cl}}_i = \hat{\phi}_i \times \hat{\theta}_i. 
+$$
+
+The spin fluctuations $\delta\hat{\Omega} = \hat{\Omega} - \hat{\Omega}^{\textnormal{cl}}$ are parametrized by two sets of variables given by the projections, 
+
+\begin{equation} \begin{split}
+    &{\bf q} = \{q_i\}_{i=1}^{N} \equiv \{\delta\hat{\Omega}_i \cdot \hat{\phi}_i\}_{i=1}^{N} \\
+    &{\bf p} = \{p_i\}_{i=1}^{N} \equiv \{S\delta\hat{\Omega}_i \cdot \hat{\theta}_i\}_{i=1}^{N}. 
+\end{split}
+\end{equation}
+
+If the path is dominated by small fluctuations $|\delta\hat{\Omega}| < 1$, the spin-state measure may be replaced by the phase space measure,
+
+\begin{equation}
+    \mathcal{D} \delta\hat{\Omega} \rightarrow \nu \mathcal{D}{\bf q} \mathcal{D}{\bf p}, \textnormal{ with } \nu = \bigg(\frac{2S+1}{4\pi S}\bigg)^{N_{\epsilon} N},
+\end{equation}
+
+where $N_{\epsilon}$ is the number of timesteps and thus, $\nu$ is formally infinite normalization constant. Thus, a phase-space path integral is yielded 
+
+\begin{equation}
+    \mathfrak{G} \propto e^{i \mathcal{S}[\hat{\Omega}^{\textnormal{cl}}]} \int \mathcal{D}{\bf q} \mathcal{D}{\bf p} \blanky \exp \bigg[\frac{iS}{2} \int_{0}^t dt' \blanky \left( \begin{array}{cc}
+          {\bf q} & {\bf p}
+    \end{array}\right) \bm{\mathcal{L}}^{(2)} \left( \begin{array}{c}
+          {\bf q} \\
+          {\bf p}
+    \end{array}\right)\bigg] [1+ \mathcal{O}({\bf p}, {\bf q})^3],
+    \label{phase_space_spin_wave_path_int}
+\end{equation}
+
+where $ \bm{\mathcal{L}}^{(2)}$ is the spin wave lagrangian matrix, expanded about a fixed ground state configuration $\hat{\Omega}^{\textnormal{cl}}$. The cubic and higher-order fluctuations introduce corrections, which are higher in order in $S^{-1}$. Since the classical ground state configuration is, by definition, stationary $\frac{d \hat{\Omega}^{\textnormal{cl}}}{dt} = 0$, the lowest order contribution to the Berry phase is 
+
+\begin{equation}
+\begin{split}
+    S \sum_{i}\omega_i \approx& S \sum_{i} \int_{0}^{t} dt' \blanky \bigg(\hat{\Omega}^{\textnormal{cl}} \cdot \delta\hat{\Omega} \times \delta \hat{\Omega} \bigg) \\
+    &= \frac{1}{2} \int_{0}^{t} dt \blanky ({\bf p} \cdot \dot{{\bf q}} - {\bf q} \cdot \dot{{\bf p}}),
+\end{split}
+\end{equation}
+
+where \cref{Berry_phase_semiclassical_variation} was used in the second equality in the first line. This implies that ${\bf q}$ and ${\bf p}$ play the role of coordinates and canonical momenta, respectively. The second-order expansion of the Hamiltonian yields the spin wave Hamiltonian matrix 
+
+\begin{equation}
+    \begin{split}
+        &{\bf H} - {\bf H}[\hat{\Omega}^{\textnormal{cl}}] \approx \frac{1}{2} \left(\begin{array}{cc}
+          {\bf q} & {\bf p}
+    \end{array}\right) \bm{\mathcal{H}}^{(2)} \left( \begin{array}{c}
+          {\bf q} \\
+          {\bf p}
+    \end{array}\right), \\
+    &\textnormal{ where } \begin{array}{ccc}
+         \bm{\mathcal{H}}^{(2)} = \left(\begin{array}{cc}
+         K & P  \\
+         P^{\textnormal{T}} & M^{-1} 
+    \end{array}\right) \\
+         \textnormal{ with } K = \frac{\partial^2 \bm{\mathcal{H}}^{(2)}}{\partial {\bf q} \partial {\bf q}}\bigg|_{{\bf q} = {\bf p} = 0}, & 
+         M^{-1} = \frac{\partial^2 \bm{\mathcal{H}}^{(2)}}{\partial {\bf p} \partial {\bf p}}\bigg|_{{\bf q} = {\bf p} = 0}, & 
+         P = \frac{\partial^2 \bm{\mathcal{H}}^{(2)}}{\partial {\bf p} \partial {\bf q}}\bigg|_{{\bf q} = {\bf p} = 0}.
+    \end{array}
+    \end{split}
+    \label{spin_wave_path_integral_quadratic_form_matrix_form}
+\end{equation}
+
+Here $\bm{\mathcal{H}}^{(2)}$ is a dynamical matrix of coupled harmonic oscillators, where $K$ and $M$ are the mass and force constant matrices and where $P$ couples coordinates and momenta. Combining the previous expressions, the small coefficient contribution to the action is yielded,
+
+\begin{equation}
+    \mathcal{S}^{(2)} \approx \mathcal{S}_0 + \int_{0}^t dt' \blanky \left(\begin{array}{cc}
+          {\bf q} & {\bf p}
+    \end{array}\right) \bm{\mathcal{L}}^{(2)} \left( \begin{array}{c}
+          {\bf q} \\
+          {\bf p}
+    \end{array}\right), \textnormal{ where } \bm{\mathcal{L}}^{(2)} = - \left(\begin{array}{cc}
+        K & \partial_{t} + P \\
+        - \partial_{t} + P^{\textnormal{T}} & M^{-1} 
+    \end{array}\right).
+\end{equation}
+
+If $\hat{\Omega}^{\textnormal{cl}}$, and thus $\bm{\mathcal{L}}^{(2)}$, are periodic on the lattice, the spin-wave can be labelled by ${\bf k}$-momentum and band index $\alpha$. 
+The spin-wave modes $(q_{{\bf k}, \alpha}, p_{{\bf k}, \alpha})$ and spin wave frequencies can be obtained by solving the classical equations of motion for small oscillations, namely 
+
+\begin{equation}
+\begin{split}
+     \frac{\delta \mathcal{S}^{(2)} ({\bf p}, {\bf q})}{\delta \hat{\Omega}} = \bm{\mathcal{L}}^{(2)}  \left(\begin{array}{c}
+         q_{{\bf k}, \alpha}  \\
+         p_{{\bf k}, \alpha} 
+    \end{array}\right) e^{-i \omega_{{\bf k}, \alpha} t}, \quad 
+    \det \bigg(\begin{array}{cc}
+        K & i\omega + P  \\
+        -i\omega + P^{\textnormal{T}} & M^{-1} 
+    \end{array}\bigg)\bigg|_{\omega = \omega_{{\bf k}, \alpha}}.
+\end{split}
+\label{spin_wave_path_int_small_osc_approx}
+\end{equation}
+
+The harmonic spin waves are non-interacting bosons. Their eigenmodes and energies allows for the calculation of all thermodynamic averages and dynamical response functions. In particular, the spin-wave correction to the free energy is given by 
+
+\begin{equation}
+    F^{(2)} = -\frac{1}{\beta} \log \det \bm{\mathcal{L}}^{(2)} = T \sum_{{\bf k}, \alpha} \log \sinh \frac{\omega_{{\bf k}, \alpha}}{2T}. 
+\end{equation}
+
+The spin-wave variables can be mapped to Bose coherent $({\bf z}, {\bf z}^{*})$ variables, which transform the phase-space path integral \cref{phase_space_spin_wave_path_int} into a bosonic coherent state path integral, as follows 
+
+\begin{equation}
+\begin{split}
+    &\left(\begin{array}{c}
+         {\bf z}_{i}(\tau)  \\
+         {\bf z}^{*}_{i}(\tau) 
+    \end{array}\right) = \frac{1}{\sqrt{2}} \left(\begin{array}{cc}
+         1 & i \\
+         1 & -i 
+    \end{array}\right)
+    \left(\begin{array}{c}
+         q_{i}(\tau)  \\
+         p_{i}(\tau) 
+    \end{array}\right)., \quad \mathcal{D}{\bf p}\mathcal{D}{\bf q} = \mathcal{D}^2{\bf z}, \\
+    &\textnormal{ The kinetic term is } \frac{1}{2} \int_{0}^{t} dt \blanky ({\bf p} \cdot \dot{{\bf q}} - {\bf q} \cdot \dot{{\bf p}}) = \frac{1}{2} \int_{0}^{t} dt \blanky ({\bf z}^{*}\dot{{\bf z}} - {\bf z}\dot{{\bf z}^{*}}).
+\end{split}
+\end{equation}
+
+Then, the Green function in bosonic coherent representation is given by 
+
+\begin{equation}
+\begin{split}
+    &\mathfrak{G} = \int \mathcal{D}^2 {\bf z} \blanky \exp \bigg[\frac{i}{2} \int_{0}^{t} dt'({\bf z}^{*}\dot{{\bf z}} - {\bf z}\dot{{\bf z}^{*}}) - {\bf H}[{\bf z}^{*}, {\bf z}] \bigg], \begin{array}{cc}
+         \textnormal{ where the }  \\
+         \textnormal{ bosonic Hamiltonian is } 
+    \end{array} {\bf H}[{\bf z}^{*}, {\bf z}] \approx \frac{1}{2} \left(\begin{array}{cc}
+          {\bf z} & {\bf z}^{*}
+    \end{array}\right) \tilde{\bm{\mathcal{H}}}^{(2)} \left( \begin{array}{c}
+          {\bf z} \\
+          {\bf z}^{*}
+    \end{array}\right) \\
+    & \tilde{\bm{\mathcal{H}}}^{(2)} = \left(\begin{array}{cc}
+         \frac{1}{2} (K+M^{-1}) & \frac{1}{2} (K+M^{-1}) + iP  \\
+         \frac{1}{2} (K-M^{-1}) -iP & \frac{1}{2} (K+M^{-1}).
+    \end{array}\right)
+\end{split}
+\label{spin_wave_path_int_bosonic_cohr_rep}
+\end{equation}
+
+This Hamiltonian containts both normal (ie. $z^* z$) terms as well as anomalous (eg. $z^* z^*$ and $zz$) terms. Using the real-to-imaginary-time transformation, $t' \rightarrow -i\tau, t \rightarrow -i\beta$, the path-integral representation for the Green function is transformed into a partition function, as was anticipated in \cref{spin_wave_theoretic_wave_partition_func}. The spin-wave contribution to the partition function, defined in \cref{spin_wave_theoretic_wave_generating_func_and_phase_func}, is 
+
+\begin{equation}
+\begin{split}
+    \mathcal{Z}' \approx& \oint \mathcal{D}^2 {\bf z}_\omega \blanky \exp \bigg\{-\beta \sum_{\omega_n} \bigg[i \omega_n {\bf z}^* {\bf z} - \frac{1}{2} \left(\begin{array}{cc}
+          {\bf z} & {\bf z}^{*}
+    \end{array}\right) \tilde{\bm{\mathcal{H}}}^{(2)} \left( \begin{array}{c}
+          {\bf z} \\
+          {\bf z}^{*}
+    \end{array}\right) \bigg]\bigg\} \\
+    &= \prod_n \det \bigg[\left(\begin{array}{cc}
+        i \omega_n & 0  \\
+        0 & -i\omega_n
+    \end{array}\right) - \tilde{\bm{\mathcal{H}}}^{(2)} \bigg]^{-1}, \quad \omega_n = \frac{2n\pi}{\beta}. 
+\end{split}
+\label{spin_wave_path_int_partition_function}
+\end{equation}
+
+Wherein, $\omega_n$ are the Bose-Matsubara frequences. A second-quantized bosonic Hamiltonian can be obtained from \cref{spin_wave_path_int_bosonic_cohr_rep}, yielding 
+
+\begin{equation}
+    \bm{\mathcal{H}}^{(2)} = \frac{1}{2} \left(\begin{array}{cc}
+        {\bf b}^\dagger & {\bf b} 
+    \end{array}\right) {\bf H} \left(\begin{array}{cc}
+         \frac{1}{2} (K+M^{-1}) & \frac{1}{2} (K+M^{-1}) + iP  \\
+         \frac{1}{2} (K-M^{-1}) -iP & \frac{1}{2} (K+M^{-1}).
+    \end{array}\right) \left(\begin{array}{c}
+        {\bf b}^\dagger \\
+        {\bf b} 
+    \end{array}\right) + E'_0,
+    \label{spin_wave_path_int_bosonic_Hamiltonian}
+\end{equation}
+
+which contains both normal and anomalous terms, with $E'_0$ an unknown constat. The problem with \cref{spin_wave_path_int_partition_function} is that there is no prescription for the ordering of the $({\bf b}, {\bf b}^\dagger)$-operators in the $\bm{\mathcal{H}}^{(2)}$-quadratic form, hence the ambiguity of the constant $E'_0$. \\
+
+The techniques developed in \cref{spin_wave_path_int_small_osc_approx}-\cref{spin_wave_path_int_bosonic_Hamiltonian} are of general use, since these determine the spin wave modes of any Heisenberg model once the classical ground state $\hat{\Omega}^{\textnormal{cl}}$ has been specified. In the following sections, the simplest models of nearest-neighbour interaction Heisenberg ferromagnets and antiferromagnets are considered for $d = 1,2,3$-dimensional lattices are to be considered: 
+
+\begin{equation}
+    \begin{split}
+        {\bf H} =& \pm |J| S^2 \sum_{\langle ij \rangle} \hat{\Omega_i} \cdot \hat{\Omega_j} \\
+        &= J S^2 \sum_{\langle ij \rangle} \bigg[ \cos \theta_i \cos \theta_j + \sin \theta_i \sin \theta_j \cos(\phi_i - \phi_j) \bigg].
+    \end{split}
+    \label{spin_wave_path_integral_Heisenberg_Ham}
+\end{equation}
+
+The spin-wave expansions of these Hamiltonians are simple since their classical ground states are either uniform ferromagnets or Néel antiferromagnets. \\
+
+\paragraph{The Ferromagnet}
+
+Assuming a spin-wave expansion of the path-integral is valid for the ordered classical ground state of the Heisenberg ferromagnet, the spin can be polarized (either with a small magnetic field of with the appropriate boundary conditions) to point in the $x$-direction, ie.
+
+\begin{equation}
+    \hat{\Omega}^{\textnormal{cl}} = (\theta^{\textnormal{cl}}, \phi^{\textnormal{cl}}) = (\frac{\pi}{2}, 0), \textnormal{ with the fluctuations parameterized by } \begin{array}{cc}
+        q_i = \phi_i  \\
+        p_i = S \cos \theta_i.
+    \end{array}
+\end{equation}
+
+The ferromagnetic Hamiltonian, with $-|J|$, written in \cref{spin_wave_path_integral_Heisenberg_Ham}, can be expanded for small $\theta, \phi$, yielding a second order quadratic form on the $(q, p)$-coordinates as follows
+
+\begin{equation}
+    {\bf H} \approx - \frac{Nz}{2} |J| S^2 + \frac{1}{2} |J| S^2 \sum_{ \langle ij \rangle } \bigg[ \frac{(p_i - p_j)^2}{S^2} + (q_i - q_j)^2\bigg], \textnormal{ where } \begin{array}{cc}
+         \textnormal{ this expression is valid for } \begin{array}{cc}
+              |\cos \theta| << 1  \\
+              |\phi_i| << \pi,
+         \end{array} \\
+         \textnormal{ $N$ is the number of sites and where } \\
+         \textnormal{$z = 2d$ is the coordination number in $d$-dimensions.}
+    \end{array}
+\end{equation}
+
+From \cref{spin_wave_path_integral_quadratic_form_matrix_form}'s nested relations, the $K, M^{-1}, P$ submatrices can be easily found. In particular for a one-dimensional system, it yields 
+
+\begin{equation}
+\begin{split}
+     K_{ij} =& \frac{\partial^2 \bm{\mathcal{H}}^{(2)}}{\partial {q}_i \partial { q}_{i+1}}\bigg|_{{\bf q} = {\bf p} = 0} = \frac{1}{2} |J|S^2 \frac{\partial^2 \bm{\mathcal{H}}^{(2)}}{\partial {q}_i \partial { q}_j} (q_i - q_{i+1})^2 \bigg|_{{\bf q} = {\bf p} = 0} \\
+     &= \frac{1}{2} |J|S^2 \frac{\partial}{\partial {\bf q}_j} \bigg(
+     2 q_i \delta_{ij} - 2(q_i \delta_{j, i+1} + q_{i+1} \delta_{ij}) + 2 q_{i+1} \delta_{j, i+1}
+     \bigg) \bigg|_{{\bf q} = {\bf p} = 0} \\
+     &= \frac{1}{2} |J|S^2 \bigg(
+     2 q\delta_{ij} - 2(\delta_{j, i+1} + \cancel{\delta_{i, i+1} \delta_{ij}}) + \cancel{2 \delta_{i,i+1} \delta_{j, i+1}}
+     \bigg) = - z |J| S^2 \nabla^2_{i, i}^2, \quad \textnormal{ where } \nabla^2_{i, i} = \frac{1}{z} (\delta_{i, i+1} - \delta_{ij}) \\
+     \\
+     M_{ij}^{-1} =& \frac{\partial^2 \bm{\mathcal{H}}^{(2)}}{\partial {p}_i \partial { p}_{i+1}}\bigg|_{{\bf q} = {\bf p} = 0} = \frac{1}{2} |J| \frac{\partial^2 \bm{\mathcal{H}}^{(2)}}{\partial {p}_i \partial {p}_j} (p_i - p_{i+1})^2 \bigg|_{{\bf q} = {\bf p} = 0} \\
+     &= \frac{1}{2} |J|\frac{\partial}{\partial {\bf q}_j} \bigg(
+     2 q_i \delta_{ij} - 2(p_i \delta_{j, i+1} + p_{i+1} \delta_{ij}) + 2 p_{i+1} \delta_{j, i+1}
+     \bigg) \bigg|_{{\bf q} = {\bf p} = 0} \\
+     &= \frac{1}{2} |J|S^2 \bigg(
+     2 q\delta_{ij} - 2(\delta_{j, i+1} + \cancel{\delta_{i, i+1} \delta_{ij}}) + \cancel{2 \delta_{i,i+1} \delta_{j, i+1}}
+     \bigg) = - z |J| \nabla^2_{i, i}^2, \quad \textnormal{ where } \nabla^2_{i, i} = \frac{1}{z} (\delta_{i, i+1} - \delta_{ij}) \\
+     \\
+     P = 0.
+\end{split}
+\end{equation}
+
+These relations hold only for the one-dimensional lattice, but they are easily generalized to $d > 1$-dimensional lattices, yielding 
+
+\begin{align}
+\begin{array}{cc}
+      K_{ij} = -z |J| S^2 \nabla^2_{ij}, \\
+      M_{ij}^{-1} = - z|J| \nabla^2_{ij}, \\
+      P = 0
+\end{array}, \nabla^2_{ij} = \frac{1}{z} \sum_{\eta}(\delta_{i+\eta, j} - \delta_{ij}),
+\label{spin_wave_path_integral_ferromagnet_submatrices}
+\end{align}
+
+where $\eta$ are the nearest-neighbour vectors and where $\nabla_{ij}^2$ is the lattice laplacian, its eigenvalues given by 
+
+\begin{equation}
+\begin{split}
+    \nabla^2_{{\bf k}} =& \frac{1}{N} \sum_{ij} e^{- i({\bf k}({\bf x}_i - {\bf x}_j)} \nabla_{ij}^2 \\
+    &= \frac{1}{z} \sum_{\eta} (e^{i {\bf k} \eta} - 1) \equiv \gamma_{{\bf k}} - 1,
+\end{split}
+\end{equation}
+
+which defines a tight-binding function $\gamma_{{\bf k}}$. Using \cref{spin_wave_path_integral_ferromagnet_submatrices} 's relations in \cref{spin_wave_path_int_small_osc_approx} yields the following matrix 
+
+\begin{equation}
+   \det \left(\begin{array}{cc}
+         -z |J| S^2 (\gamma_{{\bf k}} - 1) & i \omega_{{\bf k}}  \\
+         -i \omega_{{\bf k}} & -z |J| (\gamma_{{\bf k}} - 1)
+    \end{array}\right). = 0 \Rightarrow \omega_{{\bf k}} \equiv z |J| S (1- \gamma_{{\bf k}}). 
+    \label{spin_wave_path_integral_spin_wave_modes}
+\end{equation}
+
+Thus, the spin wave is described by a time dependent precession of all spins about the $x$-direction with $\omega_{{\bf k}}$-angular frequency. \\
+
+\paragraph{The Antiferromagnet}
+
+In the antiferromagnetic case, the path integral can be expanded about the classical Néel state, which can be made to point in the $\pm x$-direction for the $A,B$ sublaticces respectively, without loss of generality, with coordinates 
+
+\begin{equation}
+    (\theta_i^{\textnormal{cl}}, \phi_i^{\textnormal{cl}}) = \left\{ \begin{array}{cc}
+        \bigg(\frac{\pi}{2}, 0\bigg) & i \in A \\
+        \bigg(\frac{\pi}{2}, -\pi\bigg) & i \in B
+    \end{array} \right.
+\end{equation}
+
+wherein the singularity of the vector potential is assumed to be far from both 
+the $+x$- and $-x$-directions, eg. only at the south pole. The small fluctuactions are then 
+
+\begin{equation}
+    q_i = \left\{ \begin{array}{cc}
+         \phi_i & i \in A\\
+         \phi_i + \pi & i \in B
+    \end{array} \right., \quad p_i = S \cos \theta_i. 
+\end{equation}
+
+The second order expansion of the antiferromagnetic $(+ |J|)$ Hamiltonian \cref{spin_wave_path_integral_Heisenberg_Ham} is given by 
+
+\begin{equation}
+    {\bf H} \approx - \frac{Nz}{2} |J| S^2 + \frac{1}{2} |J| S^2 \sum_{ \langle ij \rangle } \bigg[ \frac{(p_i + p_j)^2}{S^2} + (q_i - q_j)^2\bigg] + \mathcal{O}(p^3, q^3).
+\end{equation}
+
+The mass and force constants matrices, which will be simultaneously diagonalized in Fourier space and allow for the determination of the spin wave spectrum of the spin-wave spectrum, are given by 
+
+\begin{equation}
+\begin{split}
+    &M_{ij}^{-1} = z J (\nabla^2_{ij} + 2\delta_{ij}) \quad,  K_{ij} = -z J S^2 \nabla^2_{ij} \quad, P = 0. \\
+    &M_{{\bf k}}^{-1} = zJ (1 + \gamma_{{\bf k}}), \quad K_{{\bf k}} = z J S^2 (1- \gamma_{{\bf k}}). \\
+    \\
+    &\Rightarrow \det \left(\begin{array}{cc}
+        -z |J| S^2 (1- \gamma_{{\bf k}}) & i\omega_{{\bf k}}  \\
+        -i \omega_{{\bf k}} & z |J| (1 + \gamma_{{\bf k}}) 
+    \end{array}\right) = 0 \rightarrow \omega_{{\bf k}} = z J S \sqrt{1-\gamma_{{\bf k}}^2} \sim c |{\bf k} - {\bf k}_c|, 
+    \label{spin_wave_pre_HP_naive_freq_antiferromagnet}
+\end{split}
+\end{equation} 
+
+where ${\bf k}_c = 0, \pi \mathds{1}_{N}$. The spin-wave velocity for a cubic lattice in $d$ dimensions is $c = \sqrt{d} JS$. The antiferromagnetic spin waves are unit vectors which precess about the classical directions $\pm x$. Furthermore, the spin precess in opposite directions on the two sublattices. Unlike ferromagnetic spin waves, given by \cref{spin_wave_path_integral_spin_wave_modes}, there are two degenerate antiferromagnetic spin wave modes whose frequencies vanish as ${\bf k} \rightarrow 0$ and ${\bf k} \rightarrow \pi \mathds{1}_N$. \\
+
+\subsubsection{Spin Waves: Holstein-Primakoff Approach}
+
+Low-order spin waves can be written as non-interacting bosons. For a quantitative quantum theory, the correct order of bosonic operators in the Hamiltonian is needed. To that end, generalized Holstein-Primakoff bosons can be used to represent the quantum model. Consider an arbitrary classical configuration $\hat{\Omega}^{\textnormal{cl}}$ which minimizes ${\bf H}[\hat{\Omega}]$. Using $\hat{\Omega}^{\textnormal{cl}}$, three basis vectors can be defined at every site, $({\bf e}^1, {\bf e}^2, \hat{\Omega}^{\textnormal{cl}})$, such that 
+
+$$
+    {\bf e}^1 \times {\bf e}^2 = \hat{\Omega}^{\textnormal{cl}}_i.
+$$
+
+In this coordinate frame, the raising and lowering operators are defined 
+
+\begin{equation}
+    \spin^{\pm} = \spin \cdot {\bf e}^1 \pm i \spin \cdot {\bf e}^2.
+\end{equation}
+
+With respect to this triad of basis vectors, the spin components can be represented by HP-bosons 
+
+\begin{equation}
+    \spin^+ = \sqrt{2S - {\bf n}_b} \blanky  {\bf b}, \quad \spin^- = {\bf b}^\dagger \sqrt{2S - {\bf n}_b}, \quad \spin \cdot \hat{\Omega}^{\textnormal{cl}} = -{\bf n}_b + S.
+    \label{spin_wave_HP_spin_bosons}
+\end{equation}
+
+This representation is exact in the Hilbert subspace of ${\bf n}_b \leq S$. However, the square-root function represents an infinite power series of number operators multiplied by $\frac{1}{S}$-factors. The truncation of the series to low order can be justified if one can show, a posteriori, that $\langle {\bf n}_b \rangle << 2S$, ie. that the spin fluctuations about the classical directions are small. 
+Next, the spin operator in the Hamiltonian are substituted by the spin operators written in \cref{spin_wave_HP_spin_bosons}. Terms upto quadratic order in the bosons constitute the spin wave Hamiltonian. \\
+
+\paragraph{The Ferromagnet}
+
+Consider a Heisenberg ferromagnet whose classical direction, without loss of generality, is chosen to be the $z$-direction and substitute the HP-operators into the ferromagnetic Hamiltonian, 
+
+\begin{equation}
+    \begin{split}
+        {\bf H} =& - |J| \sum_{\langle ij \rangle} \spin_i \cdot \spin_j \\
+        &= - S^2 |J| N \frac{z}{2} - |J| \sum_{\langle ij \rangle} \bigg[ S {\bf b}_i^\dagger \sqrt{1 - \frac{{\bf n}_i}{2S}} \sqrt{1 - \frac{n_j}{2S}} {\bf b}_j - \frac{1}{2} S ({\bf n}_i + {\bf n_j}) + \frac{1}{2} {\bf n}_i \cdot {\bf n}_j \bigg]. \\
+        &= - S^2 |J| N \frac{z}{2} + {\bf H}_1 + {\bf H}_2 + \mathcal{O}\bigg(\frac{1}{S}\bigg), \textnormal{ where } \begin{array}{cc}
+             {\bf H}_1 = \sum_{{\bf k}} \omega_{{\bf k}} {\bf b}_{{\bf k}}^\dagger {\bf b}_{{\bf k}} \textnormal{ where ${\bf b}_{{\bf k}} = \frac{1}{\sqrt{N}} \sum_{i} e^{-i {\bf k} \cdot {\bf x}_i} {\bf b}_i$}  \\
+             \\
+             {\bf H}_2 = \frac{|J|}{4} \sum_{\langle ij  \rangle} \bigg[ {\bf b}_i {\bf b}_j ({\bf b}_i - {\bf b}_j)^2 + ({\bf b}_i^\dagger - {\bf b}_j^\dagger)^2 {\bf b}_i {\bf b}_j\bigg]
+        \end{array},
+    \end{split} 
+    \label{spin_wave_HP_ferromagnet_Hamiltonian}
+\end{equation}
+
+with 
+
+$$
+    \omega_{{\bf k}} = S |J| z \bigg(1-\frac{1}{z} \sum_{j, \langle ij \rangle} e^{i({\bf x}_j - {\bf x}_i) \cdot {\bf k}}\bigg) = S |J| z (1 - \gamma_{{\bf k}}),
+$$
+
+which agrees with \cref{spin_wave_path_integral_spin_wave_modes}. In the previous expression for the Hamiltonian, \cref{spin_wave_HP_ferromagnet_Hamiltonian}, ${\bf H}_1$ describes non-interacting spin waves with dispersion $\omega_{{\bf k}}$, ${\bf H}_2$ and the higher-order terms describe interactions between spin waves, which can be treated by perturbation theory or by mean field approximations. At $T = 0$, it is clear from \cref{spin_wave_HP_ferromagnet_Hamiltonian} that the energy is equal to the classical energy 
+
+$$
+    E_0 = - S^2 |J| N \frac{z}{2}.
+$$
+
+This is in agreement with \cref{Ferromagnetic_Marshall_theo}, which states that the ground state of the quantum ferromagnet is the classical ground state. \\
+
+The long-wavelength limit of the ferromagnetic spin wave dispersion vanishes as 
+
+\begin{equation}
+    \omega_{{\bf k}} \sim S |J| |{\bf k}|^2. 
+    \label{spin_wave_HP_ferromagnet_dispersion_relation}
+\end{equation}
+   
+This is the \textbf{gapless Goldstone mode}, which is a 
+consequence of the broken symmetry of the ferromagnetic 
+ground state, as stated in \cref{Goldstone_theo}. The 
+Goldstone mode dominates the low-temperature and 
+long-wavelength correlations of the ferromagnet. The 
+lowest-order corrections to the ground state magnetization at finite temperatures is given by 
+
+\begin{equation}
+    \begin{split}
+        \Delta m_0 =& \frac{1}{N} \langle \spin^z_{\textnormal{tot}} - S \rangle \\
+        &= - \langle {\bf n}_i \rangle = -\frac{1}{N} \sum_{{\bf k}} {\bf n}_{{\bf k}}, \begin{array}{cc}
+             \textnormal{ where the Bose-Einstein }  \\
+             \textnormal{ occupation number is }
+        \end{array} {\bf n}_{{\bf k}} = \frac{1}{e^{\beta \omega_{{\bf k}}} - 1}. 
+    \end{split}
+    \label{spin_wave_HP_ferromagnet_magnetization_correction}
+\end{equation}
+
+The asymptotic low-$T$ behaviour of the sum given in  \cref{spin_wave_HP_ferromagnet_magnetization_correction} can be found by introducing a small infrared cutoff $k_0$. Consider an additional, small but, finite momentum $\bar{k} > k_0$ as well, which is well inside the region where \cref{spin_wave_HP_ferromagnet_dispersion_relation} holds, ie. 
+
+$$
+    \omega_{\bar{k}} << T << |J| S.
+$$
+
+The sum in \cref{spin_wave_HP_ferromagnet_magnetization_correction} can be broken into two regions, one with $k_0 < |{\bf k}| < \bar{k}$ and $|{\bf k}| \geq {\bar{k}}$ and find that 
+
+\begin{equation}
+    \Delta m_0 \approx - \int_{k_0}^{\bar{k}} \frac{dk k^{d-1}}{(2\pi)^d} \frac{T}{J S k^2} - \frac{1}{N} \sum_{{\bf k} > \bar{k}} \frac{1}{e^{\beta \omega_{{\bf k}}} - 1}.
+\end{equation}
+
+For $T > 0$ and $d = 1,2$, the first integral diverges at low $k_0$ as 
+
+\begin{equation}
+    \Delta m_0 \approx \left\{ \begin{array}{cc}
+        -\frac{t}{k_0} + \cdots & d=1 \\
+        t \log k_0 + \cdots & d=2
+    \end{array}\right., \quad t = \frac{T}{JS},
+\end{equation}
+
+but with the second sum being finite, having no infrared singularity. The most 
+important conclusion emerging from the previous equation's result is that the 
+magnetization correction due to fluctuations diverges as the infrared cutoff 
+$k_0$ vanishes in one and two dimensions. Therefore, for the $d=1,2$-dimensional cases, the basic assumption that the spin fluctuations $\langle (\spin_i^z - 
+S)^2 \rangle$ are small, turns out to be wrong. Thus, the truncation of the 
+expansion of the HP-operators at low orders is unjustified. The breakdown of 
+spin wave theory is consistent with Mermin-Wagner's theorem, \cref{Mervin-Wagner}, which rules out a finite spontaneous magnetization in $(d=1,2)$-dimensions at all non-zero temperatures. \\
+
+In $d = 3$ dimensions, there are no infrared divergences. The leading temperature dependent of $M$ can be calculated by writing the Bose function as a geometric sum and integrating over momenta up to infinity as follows, 
+
+\begin{equation}
+\begin{split}
+    \Delta m_0^{d=3} =& - \int_{k_0}^{\bar{k}} \frac{dk k^2}{2\pi^2} \blanky \sum_{n=1}^{\infty} e^{-\frac{nk^2}{t}} [1+\mathcal{O}(t)] \\
+    &= - \frac{1}{8} \bigg( \frac{t}{\pi} \bigg)^{\frac{3}{2}} \sum_{n=1}^{\infty} n^{-\frac{3}{2}} =  - \frac{1}{8} \bigg( \frac{t}{\pi} \bigg)^{\frac{3}{2}} \zeta\bigg(\frac{3}{2}\bigg),
+\end{split}
+\end{equation}
+
+where $\zeta$ is the Riemann zeta function. Thus, in three-dimensions the leading temperature correction to the ordered moment is proportional to $-T^{\frac{3}{2}}$. \\
+
+\paragraph{The Antiferromagnet}
+
+Consider the classical Néel state, which is chosen to be in the $z$- and $-z$-directions on the $A$ and $B$ sublattices, respectively. The rotated spin $\tilde{\spin}$ are defined as 
+
+\begin{equation}
+    j \in B, \quad \begin{array}{c}
+         \tilde{\spin}_j^z = - \spin_j^z  \\
+         \tilde{\spin}_j^x = \spin_j^x \\
+         \tilde{\spin}_j^y = - \spin_j^y 
+    \end{array} \Rightarrow \left\{ \begin{array}{cc}
+         \textnormal{Sublattice A : } \begin{array}{cc}
+              \spin^z_i = S - {\bf b}_i^\dagger {\bf b}_i  \\
+              \spin^+_i = \sqrt{2S - {\bf b}_i^\dagger {\bf b}_i} \blanky {\bf b}_i \\
+              \spin^-_i = {\bf b}_i^\dagger\sqrt{2S - {\bf b}_i^\dagger {\bf b}_i} 
+         \end{array}\\
+         \\
+         \textnormal{Sublattice B : }  \begin{array}{cc}
+              \spin^z_i = {\bf b}_i^\dagger {\bf b}_i - S  \\
+              \spin^+_i = {\bf b}_i^\dagger\sqrt{2S - {\bf b}_i^\dagger {\bf b}_i} \\
+              \spin^-_i = \sqrt{2S - {\bf b}_i^\dagger {\bf b}_i} \blanky {\bf b}_i 
+         \end{array}
+    \end{array} \right.
+\end{equation}
+
+It is clear that the $\tilde{\spin}^\alpha$ obey the same commutation relations as $\spin^\alpha$ and therefore can be represented by Holstein-Primakoff bosons. Using the sublattice-rotated representation, the antiferromagnetic Hamiltonian reads
+
+\begin{equation}
+\begin{split}
+    {\bf H} =& + |J| \sum_{\langle ij \rangle} \spin_i^z \cdot \tilde{\spin}_j^z + \frac{|J|}{2} \sum_{\langle ij \rangle} \bigg( \spin_i^+ \tilde{\spin}_j^+ + \spin_i^- \tilde{\spin}_j^- \bigg) \\
+    &= + |J| \sum_{\langle ij \rangle} \spin_i^z \cdot \tilde{\spin}_j^z + \frac{|J|}{2} \sum_{\langle ij \rangle} \bigg( \spin_i^+ {\spin}_j^- + \spin_i^- {\spin}_j^+ \bigg) 
+\end{split}
+\end{equation}
+
+Using the Holstein-Primakoff representation given by \cref{spin_wave_HP_spin_bosons} for $\spin$ on the $A$-sublattice and $\tilde{\spin}$ on the $B$-sublattice, one obtains 
+
+\begin{equation}
+    \begin{split}
+    {\bf H} =& + |J| \sum_{\langle ij \rangle} 
+    \bigg[ 
+    (S - {\bf b}_i^\dagger {\bf b}_i)({\bf b}_j^\dagger {\bf b}_j - S)
+    \bigg] \\
+    & \blanky \blanky \blanky \blanky + 
+    \frac{|J|}{2} \sum_{\langle ij \rangle} 
+    \bigg[ 
+    (\sqrt{2S - {\bf b}_i^\dagger {\bf b}_i} \blanky {\bf b}_i)(\sqrt{2S - {\bf b}_j^\dagger {\bf b}_j} \blanky {\bf b}_j ) 
+    + 
+    ({\bf b}_i^\dagger\sqrt{2S - {\bf b}_i^\dagger {\bf b}_i} ) ({\bf b}_i^\dagger\sqrt{2S - {\bf b}_j^\dagger {\bf b}_j})
+    \bigg] \\
+    &= + |J| \sum_{\langle ij \rangle} 
+    \bigg[ 
+    S {\bf b}_j^\dagger {\bf b}_j - S^2 + S{\bf b}_i^\dagger {\bf b}_i + {\bf b}_i^\dagger {\bf b}_i {\bf b}_j^\dagger {\bf b}_j
+    \bigg] \\
+    & \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky + 
+    {S|J|} \sum_{\langle ij \rangle} 
+    \bigg[  
+    \bigg(1-\frac{{\bf n}_i}{4S}\bigg) {\bf b}_i 
+    \bigg(1-\frac{{\bf n}_j}{4S}\bigg) {\bf b}_j 
+    + 
+     {\bf b}_i^\dagger \bigg(1-\frac{{\bf n}_i}{4S}\bigg)
+     {\bf b}_j^\dagger \bigg(1-\frac{{\bf n}_j}{4S}\bigg)
+    \bigg] \\
+    &= + |J| \sum_{\langle ij \rangle} 
+    \bigg[ 
+    S {\bf n}_j + S {\bf n}_i - S^2 + {\bf n}_i {\bf n}_j 
+    \bigg] \\ 
+    & \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky + 
+    {S|J|} \sum_{\langle ij \rangle} 
+    \bigg[  
+    {\bf b}_i{\bf b}_j - {\bf b}_i \frac{{\bf n}_j}{4S} {\bf b}_j - \frac{{\bf n}_i}{4S} {\bf b}_i {\bf b}_j + \frac{{\bf n}_i}{4S} {\bf b}_i \frac{{\bf n}_j}{4S} {\bf b}_j 
+    + 
+    {\bf b}_i^\dagger{\bf b}_j^\dagger - {\bf b}_i^\dagger{\bf b}_j^\dagger \frac{{\bf n}_j}{4S} - {\bf b}_i^\dagger \frac{{\bf n}_j}{4S} {\bf b}_j^\dagger + {\bf b}_i^\dagger \frac{{\bf n}_i}{4S}{\bf b}_j^\dagger\frac{{\bf n}_j}{4S}
+    \bigg] \\
+    &= -\frac{S^2 |J| N z}{2} + J S z\sum_{\langle ij \rangle} 
+    \bigg[
+    {\bf n}_i + \frac{1}{2} 
+    \bigg(
+    {\bf b}_i {\bf b}_i + {\bf b}_i^\dagger {\bf b}_i^\dagger \bigg)
+    \bigg] \\
+    & \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky + \frac{-|J|}{4} \sum_{\langle ij \rangle} 
+    \bigg[
+    {\bf b}_i {\bf b}_j^\dagger {\bf b}_j {\bf b}_j 
+    - {\bf b}_i^\dagger {\bf b}_i {\bf b}_i {\bf b}_j + {\bf b}_i^\dagger {\bf b}_j^\dagger {\bf b}_j^\dagger {\bf b}_j - {\bf b}_i^\dagger {\bf b}_j^\dagger {\bf b}_j {\bf b}_j^\dagger - \cancelto{\mathcal{O}(S^{-2})}{\frac{{\bf n}_i}{4S} {\bf b}_i \frac{{\bf n}_j}{4S}} {\bf b}_j - \cancelto{\mathcal{O}(S^{-2})}{{\bf b}_i^\dagger \frac{{\bf n}_i}{4S}{\bf b}_j^\dagger\frac{{\bf n}_j}{4S}}
+    \bigg] \\
+    \end{split}
+\end{equation}
+
+the first term is the classical ground-state energy of the antiferromagnet and contains the antiferromagnetic magnon dispersion relation, 
+
+\begin{equation}
+    {\bf H}_1 = J S z\sum_{\langle ij \rangle} 
+    \bigg[
+    {\bf n}_i + \frac{1}{2} 
+    \bigg(
+    {\bf b}_i {\bf b}_i + {\bf b}_i^\dagger {\bf b}_i^\dagger \bigg)
+    \bigg] 
+\end{equation}
+
+The sum over nearest neighbours can be rewritten as a sum over the displacement vector $\bm{\delta}_{i}$ between neighbouring spin, such that the ${\bf b}_{i + \bm{\delta}_i}$ annihilates a boson at the $B$-site with position ${\bf x}_i + \bm{\delta}_i$, thus yielding the following Hamiltonian in momentum space:
+
+\begin{equation}
+\begin{split}
+    {\bf H}_1 =& J S z \frac{1}{N/2} \frac{1}{2} \sum_{i \in A} \sum_{{\bm{\delta}, {\bf k k'}}} \bigg[ {\bf n}_i + \bigg(e^{i {\bf k} \cdot {\bf x}_i}\ e^{i {\bf k}' \cdot ({\bf x}_i + \bm{\delta}_i)} {\bf b}_{\bf k} {\bf b}_{\bf k'} + e^{-i {\bf k} \cdot {\bf x}_i}\ e^{-i {\bf k}' \cdot ({\bf x}_i + \bm{\delta}_i)} {\bf b}_{\bf k}^\dagger {\bf b}_{\bf k'}^\dagger \bigg) \bigg] \\
+    &= J S z \frac{1}{2} \sum_{i} \sum_{{\bm{\delta}, {\bf k k'}}} 
+    \bigg[ 
+    {\bf n}_i + \bigg( \sum_{i \in A}
+    \cancelto{\delta_{{\bf k',-k}}}{e^{i ({\bf k + k'}) \cdot {\bf x}_i}} e^{i {\bf k}' \cdot
+    \bm{\delta}_i} {\bf b}_{\bf k} {\bf b}_{\bf k'} 
+    +
+    \sum_{i \in A}
+    \cancelto{\delta_{{\bf k',-k}}}{e^{-i ({\bf k+k'}) \cdot {\bf x}_i}} e^{-i {\bf k}' \cdot \bm{\delta}_i} {\bf b}_{\bf k}^\dagger {\bf b}_{\bf k'}^\dagger
+    \bigg)
+    \bigg]  \\
+    &= JSz \sum_{{\bf k}} \bigg[ {\bf b}_{{\bf k}}^\dagger {\bf b}_{{\bf k}} + \frac{\gamma_{{\bf k}}}{2} \bigg( e^{-i {\bf k}' \cdot
+    \bm{\delta}_i}{\bf b}_{{\bf k}}^\dagger {\bf b}_{-{\bf k}}^\dagger + e^{i {\bf k}' \cdot
+    \bm{\delta}_i}{\bf b}_{{\bf k}} {\bf b}_{-{\bf k}}\bigg) \bigg], \quad \textnormal{ with } \gamma_{{\bf k}} = \frac{1}{z} \sum_{\bm{\delta}} e^{i {\bf k} \cdot
+    \bm{\delta}}. \\
+    &\Rightarrow {\bf H} = -\frac{S^2 |J| N z}{2} + {\bf H}_1 + {\bf H}_2 + \mathcal{O}\bigg(\frac{1}{S}\bigg), \quad \begin{array}{cc}
+         {\bf H}_1 = JSz \sum_{{\bf k}} \bigg[ {\bf b}_{{\bf k}}^\dagger {\bf b}_{{\bf k}} + \frac{\gamma_{{\bf k}}}{2} ({\bf b}_{{\bf k}}^\dagger {\bf b}_{-{\bf k}}^\dagger + {\bf b}_{{\bf k}} {\bf b}_{-{\bf k}}) \bigg]  \\
+         {\bf H}_2 = - \frac{J}{4} \sum_{\langle ij \rangle} \bigg[{\bf b}_i^\dagger ({\bf b}_j^\dagger + {\bf b}_i)^2 {\bf b}_j + {\bf b}_i ({\bf b}_j^\dagger + {\bf b}_i)^2 {\bf b}_j^\dagger\bigg].
+    \end{array}
+\end{split}
+\end{equation}
+
+where $N/2$ is the number of sublattice A and sublattice B sites, and with $\sum_{i} e^{i ({\bf k+k'}) \cdot {\bf x}_i} = \frac{N}{2} \delta_{{\bf k',-k}}$. Now ${\bf H}_1$ is a quadratic Hamiltonian which includes normal and anomalous terms, but can be diagonalized via a Bogoliubov transformation, as follows 
+
+\begin{equation}
+    \left( \begin{array}{c}
+     \alpha_{{\bf k}} \\
+     \beta_{{\bf k}}^\dagger
+\end{array} \right) = \left(\begin{array}{cc}
+   u_{{\bf k}}  & -v_{{\bf k}} \\
+   -v_{{\bf k}}  & u_{{\bf k}}
+\end{array} \right) \left(\begin{array}{c}
+   {\bf b}_{{\bf k}}   \\
+    {\bf b}^\dagger_{-{\bf k}} 
+\end{array} \right), u^2_{{\bf k}} - v^2_{{\bf k}} = 1,
+\begin{array}{cc}
+     \textnormal{ which preserves  } \\
+     \textnormal{ the commutation relations }
+\end{array} \begin{array}{c}
+     \textnormal{[}\alpha_{{\bf k}}, \alpha^\dagger_{{\bf k}'}\textnormal{]} = \textnormal{[}\beta_{{\bf k}}, \beta^\dagger_{{\bf k}'}\textnormal{]} = \delta_{{\bf k k'}} \\
+     \textnormal{[}\alpha_{{\bf k}}, \alpha_{{\bf k}'}\textnormal{]} = [\beta_{{\bf k}}, \beta_{{\bf k}'}\textnormal{]} = 0 \\
+     \textnormal{[}\alpha_{{\bf k}}, \beta_{{\bf k}'}\textnormal{]} = \textnormal{[}\alpha_{{\bf k}}, \alpha_{{\bf k}'}\textnormal{]} = 0
+\end{array}
+\end{equation} 
+
+With the inverse transformation given by 
+\begin{equation}
+    \left( \begin{array}{c}
+     {\bf b}_{{\bf k}} \\
+     {\bf b}_{{\bf -k}}^\dagger
+\end{array} \right) = \left(\begin{array}{cc}
+   u_{{\bf k}} & v_{{\bf k}} \\
+   v_{{\bf k}} & u_{{\bf k}}
+\end{array} \right) \left(\begin{array}{c}
+   \alpha_{{\bf k}}\\
+   \beta_{{\bf k}}^\dagger
+\end{array} \right) \Rightarrow \begin{array}{c}
+     {\bf b}_{{\bf k}} = u_{{\bf k}} \alpha_{{\bf k}}  + v_{{\bf k}} \beta_{{\bf k}}^\dagger, \blanky \blanky {\bf b}_{{\bf k}}^\dagger = u_{{\bf k}} \alpha_{{\bf k}}^\dagger + v_{{\bf k}} \beta_{{\bf k}} \\
+     {\bf b}_{{\bf -k}}^\dagger = v_{{\bf k}} \alpha_{{\bf k}}  + u_{{\bf k}} \beta_{{\bf k}}^\dagger, \blanky \blanky {\bf b}_{{-\bf k}} = v_{{\bf k}} \alpha_{{\bf k}}^\dagger + u_{{\bf k}} \beta_{{\bf k}}
+\end{array}
+\end{equation}
+
+Then,
+
+\begin{equation}
+    \begin{split}
+        {\bf H}_1 =& JSz \sum_{{\bf k}} \bigg[ {\bf b}_{{\bf k}}^\dagger {\bf b}_{{\bf k}} + \frac{\gamma_{{\bf k}}}{2} ({\bf b}_{{\bf k}}^\dagger {\bf b}_{-{\bf k}}^\dagger + {\bf b}_{{\bf k}} {\bf b}_{-{\bf k}}) \bigg] \\
+        &= JSz \sum_{{\bf k}} \bigg[
+        (u_{{\bf k}} \alpha_{{\bf k}}^\dagger + v_{{\bf k}} \beta_{{\bf k}})(u_{{\bf k}} \alpha_{{\bf k}} + v_{{\bf k}} \beta_{{\bf k}}^\dagger) + v_{{\bf k}}^2 
+        + \frac{\gamma_{{\bf k}}}{2} 
+        \left( \begin{array}{cc}
+             (u_{{\bf k}} \alpha_{{\bf k}}^\dagger + v_{{\bf k}} \beta_{{\bf k}}) (v_{{\bf k}} \alpha_{{\bf k}}  + u_{{\bf k}} \beta_{{\bf k}}^\dagger) \\
+             \blanky \blanky \blanky + (u_{{\bf k}} \alpha_{{\bf k}} + v_{{\bf k}} \beta_{{\bf k}}^\dagger) (v_{{\bf k}} \alpha_{{\bf k}}^\dagger + u_{{\bf k}} \beta_{{\bf k}})
+        \end{array}
+        \right)
+        \bigg] \\
+        &= JSz \sum_{{\bf k}} \bigg[
+        u^2_{{\bf k}} \alpha^\dagger_{{\bf k}} \alpha_{{\bf k}} + v^2_{{\bf k}} \beta^\dagger_{{\bf k}} \beta_{{\bf k}} + u_{{\bf k}} v_{{\bf k}} \bigg(\alpha^\dagger_{{\bf k}} \beta^\dagger_{{\bf k}} + \beta^\dagger_{{\bf k}} \alpha^\dagger_{{\bf k}} \bigg) + v_{{\bf k}}^2  \\
+        & \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky + \frac{\gamma_{{\bf k}}}{2} \left(\begin{array}{cc} 
+            u_{{\bf k}} v_{{\bf k}} \alpha^\dagger_{{\bf k}} \alpha_{{\bf k}} + u^2_{{\bf k}} \alpha^\dagger_{{\bf k}} \beta^\dagger_{{\bf k}} + v^2 \beta_{{\bf k}} \alpha_{{\bf k}} + u_{{\bf k}} v_{{\bf k}} \beta_{{\bf k}} \beta^\dagger_{{\bf k}} \\
+            \blanky \blanky \blanky \blanky + u_{{\bf k}} v_{{\bf k}} \alpha_{{\bf k}} \alpha^\dagger_{{\bf k}} + u^2_{{\bf k}} \alpha_{{\bf k}} \beta_{{\bf k}} + v^2_{{\bf k}} \beta^\dagger_{{\bf k}} \alpha^\dagger_{{\bf k}} + u_{{\bf k}} v_{{\bf k}} \beta^\dagger_{{\bf k}} \beta_{{\bf k}}
+        \end{array}\right)
+        \bigg] \\
+        &= JSz \sum_{{\bf k}} \left[
+        \begin{array}{cc}
+             (u^2_{{\bf k}} + \gamma_{{\bf k}} u_{{\bf k}} v_{{\bf k}} )\alpha^\dagger_{{\bf k}} \alpha_{{\bf k}} + (v_{{\bf k}}^2 + \gamma_{{\bf k}} u_{{\bf k}} v_{{\bf k}})\beta^\dagger_{{\bf k}} \beta{{\bf k}}  \\
+             \blanky \blanky \blanky \blanky + u_{{\bf k}} v_{{\bf k}} \bigg(\alpha^\dagger_{{\bf k}} \beta^\dagger_{{\bf k}} + \beta^\dagger_{{\bf k}} \alpha^\dagger_{{\bf k}} \bigg) + 2 \gamma_{{\bf k}} u_{{\bf k}} v_{{\bf k}} + v_{{\bf k}}^2  +  \frac{\gamma_{{\bf k}}}{2} \bigg(u^2_{{\bf k}} \alpha^\dagger_{{\bf k}} \beta^\dagger_{{\bf k}} + v^2 \beta_{{\bf k}} \alpha_{{\bf k}} + u^2_{{\bf k}} \alpha_{{\bf k}} \beta_{{\bf k}} + v^2_{{\bf k}} \beta^\dagger_{{\bf k}} \alpha^\dagger_{{\bf k}} \bigg)
+        \end{array}
+        \right] \\
+        &= JSz \sum_{{\bf k}} \left[
+        \begin{array}{cc}
+             (u^2_{{\bf k}} + \gamma_{{\bf k}} u_{{\bf k}} v_{{\bf k}} )\alpha^\dagger_{{\bf k}} \alpha_{{\bf k}} + (v_{{\bf k}}^2 + \gamma_{{\bf k}} u_{{\bf k}} v_{{\bf k}})\beta^\dagger_{{\bf k}} \beta_{{\bf k}}  \\
+             \blanky \blanky \blanky \blanky 
+             + (u_{{\bf k}} v_{{\bf k}} + \gamma_{{\bf k}} u_{{\bf k}}^2 + \gamma_{{\bf k}} v_{{\bf k}}^2)\alpha^\dagger_{{\bf k}} \beta^\dagger_{{\bf k}} + (u_{{\bf k}} v_{{\bf k}} + \gamma_{{\bf k}} u_{{\bf k}}^2 + \gamma_{{\bf k}} v_{{\bf k}}^2) \alpha_{{\bf k}} \beta_{{\bf k}} + v_{{\bf k}}^2 + 2 \gamma_{{\bf k}} u_{{\bf k}} v_{{\bf k}}
+        \end{array}
+        \right] \\
+        &=  JSz \sum_{{\bf k}} \left[
+        \begin{array}{cc}
+             (u^2_{{\bf k}} + \gamma_{{\bf k}} u_{{\bf k}} v_{{\bf k}} )\alpha^\dagger_{{\bf k}} \alpha_{{\bf k}} + (v_{{\bf k}}^2 + \gamma_{{\bf k}} u_{{\bf k}} v_{{\bf k}})\beta^\dagger_{{\bf k}} \beta_{{\bf k}}  \\
+             \blanky \blanky \blanky \blanky 
+             + (u_{{\bf k}} v_{{\bf k}} + \gamma_{{\bf k}} u_{{\bf k}}^2 + \gamma_{{\bf k}} v_{{\bf k}}^2)(\alpha^\dagger_{{\bf k}} \beta^\dagger_{{\bf k}} + \alpha_{{\bf k}} \beta_{{\bf k}}) + 2 \gamma_{{\bf k}} u_{{\bf k}} v_{{\bf k}} + v_{{\bf k}}^2
+        \end{array}
+        \right]
+    \end{split}
+\end{equation}
+
+Hence, in order for this Hamiltonian to be diagonal, the $u, v$-coefficients must be such that the net antidiagonal coefficient is zero, ie. such that 
+
+\begin{equation}
+    u_{{\bf k}} v_{{\bf k}} + \gamma_{{\bf k}} u_{{\bf k}}^2 + \gamma_{{\bf k}} v_{{\bf k}}^2 = 0, \quad \Rightarrow \begin{array}{cc}
+         u^2_{{\bf k}} = \frac{1}{2} \bigg(\frac{1}{\sqrt{1 - \gamma_{{\bf k}}^2} } + 1\bigg)  \\
+         v^2_{{\bf k}} = \frac{1}{2} \bigg(\frac{1}{\sqrt{1 - \gamma_{{\bf k}}^2} } - 1\bigg)  \\
+         u_{{\bf k}}v_{{\bf k}}  = - \frac{1}{2} \frac{\gamma_{{\bf k}}}{\sqrt{1-\gamma_{{\bf k}}^2}},
+    \end{array}
+\end{equation}
+
+which leaves the classical Hamiltonian in diagonal form\footnote{
+\textcolor{red}{Evidentemente tengo un error acá en la cuenta porque lo que realmente da es simétrico en los betas y alpha}
+}, ie.
+
+\begin{equation}
+\begin{split}
+     {\bf H}_1 =& JSz \sum_{{\bf k}} \bigg[ (u^2_{{\bf k}} + \gamma_{{\bf k}} u_{{\bf k}} v_{{\bf k}} )\alpha^\dagger_{{\bf k}} \alpha_{{\bf k}} + (v_{{\bf k}}^2 + \gamma_{{\bf k}} u_{{\bf k}} v_{{\bf k}})\beta^\dagger_{{\bf k}} \beta_{{\bf k}} + 2 \gamma_{{\bf k}} u_{{\bf k}} v_{{\bf k}} + v^2_{{\bf k}} \bigg] \\
+     &= JSz \sum_{{\bf k}} \sqrt{1-\gamma^2_{{\bf k}}} (\alpha^\dagger_{{\bf k}} \alpha_{{\bf k}} + \beta^\dagger_{{\bf k}} \beta{{\bf k}}) - Jz \sum_{{\bf k}} \bigg(1- \sqrt{1-\gamma^2_{{\bf k}}}\bigg),
+\end{split}
+\end{equation}
+
+which agrees with \cref{spin_wave_pre_HP_naive_freq_antiferromagnet}. The previous result for the antiferromagnet, unlike the ferromagnet, states that ${\bf H}_1$ has a quantum zero-point energy of size 
+
+\begin{equation}
+    E'_0 = E_0 - \bigg(-\frac{z}{2} N |J| S^2\bigg) = \frac{1}{2} \sum_{{\bf k}} |J| Sz \bigg(1- \sqrt{1-\gamma^2_{{\bf k}}}\bigg),
+\end{equation}
+
+wherein $E'_0 < 0$, i.e. quantum fluctuations reduce the energy of the antiferromagnet. This entails that the classical Néel state is not the quantum antiferromagnet's true ground state. This can be understood by considering the simplest case of a Heisenberg antiferromagnetic spin chain, a one-dimensional two-site lattice. While the classical ground state has $(-JS^2)$-energy, the quantum energy is considerably lower, standing at $-JS(S+1)$. \\
+
+The ground state of the quantum antiferromagnet is the vacuum of the ${(\alpha, \beta)}$-bosons. The Bogoliubov transformation thus introduces arbitrary numbers of Holstein-Primakoff bosons in the ground state. Directly in terms of spins, this means that the ground state admixes configurations with arbitrary numbers of spin-flips relative to the Néel state. This reduces the long-range Néel order at zero temperature. \\
+
+Near ${\bf k} = 0$ and near ${\bf k} = \vec{\pi} = \pi \mathds{1}_{L}$, the spin-wave spectrum vanishes as 
+
+\begin{equation}
+    \omega_{{\bf k}} \sim \left\{
+    \begin{array}{cc}
+         JS \sqrt{2z} |{\bf k}| & |{\bf k}| \simeq 0 \\
+         JS \sqrt{2z} |{\bf k} - \vec{\pi}| & |{\bf k} - \vec{\pi}| \simeq 0 
+    \end{array}
+    \right.,
+\end{equation}
+
+with the order parameter being the staggered (Néel) magnetization. Its low-order corrections are given by ${\bf H}_1$ and read, 
+
+\begin{equation}
+    \begin{split}
+        \Delta m_0^s =& \frac{1}{N} \langle \sum_{i} e^{i \vec{\pi} \cdot {\bf x}_i} \spin_i^z \rangle - S = - \frac{1}{N} \langle \sum_{i} {\bf b}_i^\dagger {\bf b}_i \rangle \\
+        &= \frac{1}{2} - \frac{1}{N} \sum_{{\bf k}} \bigg({\bf n}_{{\bf k}} + \frac{1}{2} \bigg) \frac{1}{\sqrt{1-\gamma_{{\bf k}}^2}} \Rightarrow \Delta m_0 \sim \left\{
+        \begin{array}{cc}
+             \frac{c_1}{k_0} & d=1 \\
+             -c_2 + t \log k_0 & d=2 \\
+             -c_3 + c_3' t^2 & d=3
+        \end{array}
+        \right., \textnormal{ where } \begin{array}{cc}
+             c_d = \frac{1}{2N} \sum_{{\bf k}} \frac{1}{\sqrt{1 - \gamma_{{\bf k}^2}}}-1, & d = 2,3 \\
+             c_3' = 6^{-5/2}/2 \\
+             t = \frac{T}{|J| S \sqrt{d}},
+        \end{array} 
+    \end{split}
+\end{equation}
+
+where, in the last line, a truncation of the Holstein-Primakoff expansion upto quadratic order was employed and is justified only when $\Delta m_0^s << S$. The leading infrared singularities in $\Delta m_0^s$ at low-temperatures is evaluated by expanding the Bose function near ${\bf \omega}_{\bf k} \approx$ and by using $k_0$ as a momentum cut-off, truncating the sum near ${\bf k} \approx 0, \vec{\pi}$. \\
+
+As in the case of the Heisenberg ferromagnet, the truncation of the Holstein-Primakoff expansion is only justified when true-long-range order, see \cref{true_long_range_order_def} for the definition of true long-range order, is present and when $\Delta m_0^s << S$. Note that the staggered magnetization correction diverges, in the $k_0 \rightarrow 0$ limit for a one-dimensional system, signalling the failure of spin-wave theory and no long-range order in the ground state. Moreover, note that the existence of long-range order in the ground state for the $(d=2,3)$-dimensional models depends on the relative sizes of $c'$ and $S$. A three-dimensional model is the lowest dimension where long-range spin order can possibly exist at finite temperatures. \\
+
+\begin{tcolorbox}[colback = yellow, title = Physical Context]
+
+It turns out that the absence of long-range order in the $d$-dimensional quantum model is related to the Mermin-Wagner theorem for the classical Heisenberg model in $d+1$ dimensions at finite temperatures. 
+
+\end{tcolorbox}
+
+\clearpage
+
+\subsubsection{The Continuum Approximation}
+
+In the previous sections, the spin-wave theory was derived in a semi-classical expansion of the spin path integral. Spin wave theory, however, is not applicable to the disordered (or "rotationally symmetric") phases of the Heisenberg model, since it assumes that the O(3) symmetry is spontaneously broken. However, Mermin-Wagner's \cref{Mervin-Wagner} states that there can be no spontaneously broken symmetry at finite temperatures in one and two dimensions. Moreover, for the Heisenberg antiferromagnet, there can be no long-range spin order even at zero temperature. 
+
+The first interesting question to arise is: can one use the semiclassical approximation in the absence of spontaneously broken symmetries? 
+
+\begin{itemize}
+    \item The answer is yes. A short-range classical Hamiltonian is sensitive mostly to short-range correlations. Thus, for the Heisenberg antiferromagnet, the important configurations in the semiclassical (large-$S$) limit (ie. the semiclassical configurations) have at least short-range antiferromagnetic order. 
+    At longer length scales, the semiclassical configurations can deviated largely from the Néel state. Thus, instead of breaking the rotational symmetry of the path integral as in the "n\"aive" spin-wave theory (which could yield incorrect results), the short-length scale fluctuations can be eliminated and thus keep the full rotational symmetry of the long-wavelength semiclassical modes. \\
+\end{itemize}
+
+Consider the imaginary-time path integral given by \cref{spin_wave_theoretic_wave_generating_func_and_phase_func} and consider the antiferromagnetic Hamiltonian, 
+
+$$
+    {\bf H}[\hat{\Omega}] = \bra{\hat{\Omega}} {{\bf H}} \ket{\hat{\Omega}} = \frac{S^2}{2} \sum_{ij} J_{ij} \hat{\Omega}_i \cdot \hat{\Omega}_j.
+$$
+
+Without loss of generality, one can restrict the discussion to cubic $d$-dimensional lattices with lattice-constant $a$, number of sites $N$ and even number of sites in each dimension, wherein the $J_{ij}$-constants have full lattice symmetry. For the classical Hamiltonian ${\bf H}[\hat{\Omega}]$, this gives rise to a Néel ground state. Furthermore, the $J_{ij}$-constants are assumed to be short-range, see \cref{Mervin-Wagner}
+for further reference. \\
+
+\paragraph{Haldane's Mapping}
+
+\blanky \\
+
+\begin{tcolorbox}[title = Physical Context, colback = yellow]
+
+The Haldane's mapping is the correspondence between the effective long-wavelength action of the quantum $d$-dimensional Heisenberg antiferromagnet into the $(d+1)$-dimensional nonlinear sigma model (NLSM). 
+
+\end{tcolorbox}
+
+The essence of the Haldane map is the separation between the short- and long-length scale fluctuations via suitable choice of coordinates. In effect, consider two continuous vector fields $\hat{{\bf n}}$, ${\bf L}$ which parameterize the spins as follows,
+
+\begin{equation}
+    \hat{\Omega}_i = \eta_i \hat{{\bf n}}({\bf x}_i) \sqrt{1 - \bigg|\frac{{\bf L}({\bf x}_i)}{S}\bigg|^2} + \frac{{\bf L}({\bf x}_i)}{S}, \textnormal{ where } \begin{array}{cc}
+         \textnormal{ $\eta_i = e^{i {\bf X}_i \cdot \vec{\pi}}$ has opposite}  \\
+         \textnormal{ signs on the sublattices}
+    \end{array}
+    \label{NLSM_coordinate_transform}
+\end{equation}
+
+and where $\hat{{\bf n}}$ is the \underline{unimodoluar Néel field}, such that $|\hat{{\bf n}}({\bf X}_i)| =1$, and where ${\bf L}$ is the \underline{transverse canting field}, which is chosen to obey ${\bf L}({\bf x}_i) \cdot \hat{{\bf n}}({\bf x}_i) = 0$. 
+
+In the previous definition, at first glance, it may seem that the two independent degrees of freedom per site, $(\theta_i, \phi_i)$, have been replaced with four variables, six degrees degrees of freedom for $({\bf n}_i , {\bf L}_i)$
+minus the two constraints. This discrepancy is readily resolved by fixing the total number of Fourier components in the integration measure
+
+\begin{equation}
+\begin{split}
+    \mathcal{D} \hat{\Omega} = \prod_{{\bf q} \leq \Lambda_{\textnormal{BZ}}} &d\hat{\bf n}_{{\bf q}} d{\bf L}_{{\bf q}} \Delta({\bf L} \cdot \hat{\bf n}) \mathcal{J}[\hat{\bf n}, {\bf L}], \\
+    &\textnormal{ where } \left\{ \begin{array}{cc}
+             \textnormal{$J$ is the Jacobian of the transformation given by \cref{NLSM_coordinate_transform} } \\ 
+             \textnormal{where the Fourier transform reads } 
+             {\bf X}_{{\bf q}} = \sum_{i} e^{-i {\bf q}\cdot{\bf X}_i} {\bf X}({\bf x}_i), \blanky {\bf X} = \hat{n}, {\bf L}, \cdots, \\
+             \textnormal{ and where $\Lambda_{\textgoth{BZ}}$ is the spherical Brillouin zone radius, chosen such that } 
+             2N = 4 \sum{{\bf q} \leq \Lambda_{\textnormal{BZ}}}.
+    \end{array}\right.
+    \label{NLSM_measure_unit}
+\end{split}
+\end{equation}
+
+The left- and right-hand sides of the definition of the spherical Brillouin one radius count the effective degrees of freedom, for the left- and right-hand sides of \cref{NLSM_measure_unit} respectively. \\
+
+In the short-range ordered phases, $\mathcal{Z}$ is dominated by configurations with sizeable antiferromagnetic correlations for distances below the $\varepsilon$-correlation length. For large $\frac{\varepsilon}{a}$, it can be assumed that the intermediate momentum cutoff scale $\Lambda$ is much smaller than the microscopic momenta, but also much larger than the inverse correlation length; In more mundane terms, that
+
+$$
+    \zeta^{-1} << \Lambda << \begin{array}{cc}
+         \Lambda_{\textgoth{BZ}} \\
+         {2\pi}/{R_J}
+    \end{array},
+$$
+
+where $R_J$ is the characteristic range of $J_{ij}$. The previous requirements are equivalent to assuming that the dominant configurations in the path integral are \textit{slowly varying} on the scale of $\Lambda^{-1}$, or that these configurations have negligible Fourier components for $|\hat{\bf n}_{|{\bf q}| > \Lambda} << 1$. 
