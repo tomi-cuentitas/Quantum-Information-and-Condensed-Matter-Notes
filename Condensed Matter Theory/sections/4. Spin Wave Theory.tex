@@ -1,5 +1,3 @@
-\section{\textbf{Spin Wave Theory}}
-
 \subsection{\textbf{Spin Path Integrals}}
 
 Path integrals provide formal expressions which, in general without a known closed analytic form, lead to useful approximation schemes, such as generating asymptotic expansions and to formulate mean field theories. 
@@ -1061,7 +1059,7 @@ The essence of the Haldane map is the separation between the short- and long-len
     \label{NLSM_coordinate_transform}
 \end{equation}
 
-and where $\hat{{\bf n}}$ is the \underline{unimodoluar Néel field}, such that $|\hat{{\bf n}}({\bf X}_i)| =1$, and where ${\bf L}$ is the \underline{transverse canting field}, which is chosen to obey ${\bf L}({\bf x}_i) \cdot \hat{{\bf n}}({\bf x}_i) = 0$. 
+and where $\hat{{\bf n}}$ is the \underline{unimodular Néel field}, such that $|\hat{{\bf n}}({\bf X}_i)| =1$, and where ${\bf L}$ is the \underline{transverse canting field}, chosen to obey ${\bf L}({\bf x}_i) \cdot \hat{{\bf n}}({\bf x}_i) = 0$. 
 
 In the previous definition, at first glance, it may seem that the two independent degrees of freedom per site, $(\theta_i, \phi_i)$, have been replaced with four variables, six degrees degrees of freedom for $({\bf n}_i , {\bf L}_i)$
 minus the two constraints. This discrepancy is readily resolved by fixing the total number of Fourier components in the integration measure
@@ -1082,13 +1080,102 @@ minus the two constraints. This discrepancy is readily resolved by fixing the to
 
 The left- and right-hand sides of the definition of the spherical Brillouin one radius count the effective degrees of freedom, for the left- and right-hand sides of \cref{NLSM_measure_unit} respectively. \\
 
-In the short-range ordered phases, $\mathcal{Z}$ is dominated by configurations with sizeable antiferromagnetic correlations for distances below the $\varepsilon$-correlation length. For large $\frac{\varepsilon}{a}$, it can be assumed that the intermediate momentum cutoff scale $\Lambda$ is much smaller than the microscopic momenta, but also much larger than the inverse correlation length; In more mundane terms, that
+In the short-range ordered phases, $\mathcal{Z}$ is dominated by configurations with sizeable antiferromagnetic correlations for distances below the $\varepsilon$-correlation length. For large $\frac{\varepsilon}{a}$, it can be assumed that the intermediate momentum cutoff scale $\Lambda$ is much smaller than the microscopic momenta, but also much larger than the inverse correlation length; in more mundane terms, that
 
-$$
+\begin{equation}
     \zeta^{-1} << \Lambda << \begin{array}{cc}
          \Lambda_{\textgoth{BZ}} \\
          {2\pi}/{R_J}
     \end{array},
+    \label{NLSM_inequalities}
+\end{equation}
+    
+where $R_J$ is the characteristic range of $J_{ij}$. The previous requirements are equivalent to assuming that the dominant configurations in the path integral are \textit{slowly varying} on the scale of $\Lambda^{-1}$, or that these configurations have negligible Fourier components for $|\hat{\bf n}_{|{\bf q}| > \Lambda} << 1$. In these regimes, the cubic Brillouin zone of the lattice can be replaced by the spherical zone written in \cref{NLSM_measure_unit}. 
+
+Moreover, $|\hat{\bf n}_{|{\bf q}| > \Lambda} << 1$ is consistent with assuming that the canting field is small, namely that 
+
+$$
+\bigg|\frac{{\bf L}_i}{S}\bigg| \Rightarrow \begin{array}{cc}
+     \textnormal{ which implies that, upto leading order } \mathcal{O}\bigg(\frac{{\bf L}}{S}\bigg)  \\
+     \textnormal{ the Jacobian in \cref{NLSM_measure_unit} is constant}
+\end{array} \mathcal{J} \approx S^{-N}.
 $$
 
-where $R_J$ is the characteristic range of $J_{ij}$. The previous requirements are equivalent to assuming that the dominant configurations in the path integral are \textit{slowly varying} on the scale of $\Lambda^{-1}$, or that these configurations have negligible Fourier components for $|\hat{\bf n}_{|{\bf q}| > \Lambda} << 1$. 
+The assumption of a slowly varying ${\bf L}$-field in space is not needed. The main assumption is encapsulated in the existence of a wave vector scale $\Lambda$. The theory's self-consistency, in particular that of this assumption, must be checked by evaluating $\varepsilon(\Lambda)$ and by verifying that the inequality, written in \cref{NLSM_inequalities}, holds. \\
+
+\paragraph{The Continuum Hamiltonian}
+
+The Heisenberg Hamiltonian can then be written in terms of the $(\hat{\bf n}, {\bf L})$-fields. Upto quadratic order $\mathcal{O}\bigg(\frac{{\bf L}}{S}\bigg)^2$, the interactions read
+
+\begin{equation}
+    \begin{split}
+        \hat{\Omega}_i \cdot \hat{\Omega}_j = &
+        \bigg[ \eta_i \hat{{\bf n}}({\bf x}_i) \sqrt{1 - \bigg|\frac{{\bf L}({\bf x}_i)}{S}\bigg|^2} + \frac{{\bf L}({\bf x}_i)}{S}\bigg] \cdot \bigg[ \eta_j \hat{{\bf n}}({\bf x}_j) \sqrt{1 - \bigg|\frac{{\bf L}({\bf x}_j)}{S}\bigg|^2} + \frac{{\bf L}({\bf x}_j)}{S}\bigg] \\
+        & \approx 
+        \bigg[ \eta_i \hat{{\bf n}}({\bf x}_i)
+        \bigg(
+        1 - \frac{1}{2} \bigg|\frac{{\bf L}({\bf x}_i)}{S}\bigg|^2\bigg) + \frac{{\bf L}({\bf x}_i)}{S}\bigg] \cdot 
+        \bigg[ \eta_j \hat{{\bf n}}({\bf x}_j)
+        \bigg(
+        1 - \frac{1}{2} \bigg|\frac{{\bf L}({\bf x}_j)}{S}\bigg|^2 \bigg) + \frac{{\bf L}({\bf x}_j)}{S}
+        \bigg] \\
+        & \approx 
+        \bigg[ \eta_i \hat{{\bf n}}({\bf x}_i)
+        - \eta_i \hat{{\bf n}}({\bf x}_i) \frac{1}{2} \bigg|\frac{{\bf L}({\bf x}_i)}{S}\bigg|^2 + \frac{{\bf L}({\bf x}_i)}{S}\bigg] \cdot 
+        \bigg[ \eta_j \hat{{\bf n}}({\bf x}_j) - \eta_j \hat{{\bf n}}({\bf x}_j) \frac{1}{2} \bigg|\frac{{\bf L}({\bf x}_j)}{S}\bigg|^2 + \frac{{\bf L}({\bf x}_j)}{S}
+        \bigg] \\
+        &\approx \eta_i \eta_j \hat{{\bf n}}({\bf x}_i) \cdot \hat{{\bf n}}({\bf x}_j) - \eta_i \eta_j \hat{{\bf n}}({\bf x}_i) \cdot \hat{{\bf n}}({\bf x}_j) \frac{1}{2} \bigg|\frac{{\bf L}({\bf x}_j)}{S}\bigg|^2 + \eta_i \hat{{\bf n}}({\bf x}_i) \cdot \frac{{\bf L}({\bf x}_j)}{S} \\
+        & \blanky \blanky \blanky \blanky 
+        - \eta_i \hat{{\bf n}}({\bf x}_i) \frac{1}{2} \bigg|\frac{{\bf L}({\bf x}_i)}{S}\bigg|^2 \cdot \eta_j \hat{{\bf n}}({\bf x}_j) 
+        %+ \mathcal{O}\bigg(\frac{{\bf L}}{S}\bigg)^4 
+        - \eta_i \hat{{\bf n}}({\bf x}_i) \frac{1}{2} \bigg|\frac{{\bf L}({\bf x}_i)}{S}\bigg|^2 \cdot \frac{{\bf L}({\bf x}_j)}{S} \\
+        & \blanky \blanky \blanky \blanky + \frac{{\bf L}({\bf x}_i)}{S} \cdot \eta_j \hat{{\bf n}}({\bf x}_j) 
+        - \frac{{\bf L}({\bf x}_i)}{S} \cdot \eta_j \hat{{\bf n}}({\bf x}_j) \frac{1}{2} \bigg|\frac{{\bf L}({\bf x}_j)}{S}\bigg|^2
+        + \frac{{\bf L}({\bf x}_i)}{S} \cdot  \frac{{\bf L}({\bf x}_j)}{S} + \mathcal{O}\bigg(\frac{{\bf L}}{S}\bigg)^4 \\
+    \end{split}
+\end{equation}
+
+\begin{equation}
+    \begin{split}
+        &\approx \frac{\eta_i \eta_j}{2} \bigg(\cancelto{1}{\hat{{\bf n}}({\bf x}_i)^2} + \cancelto{1}{\hat{{\bf n}}({\bf x}_j)^2} - (\hat{{\bf n}}({\bf x}_i) - \hat{{\bf n}}({\bf x}_j))^2\bigg) + \frac{1}{S} \bigg(\eta_i {\bf L}_j \cdot\hat{{\bf n}}({\bf x}_i) + \eta_j {\bf L}_i \cdot\hat{{\bf n}}({\bf x}_j) \bigg) \\
+        & \blanky \blanky \blanky \blanky + \frac{1}{S^2} \bigg({\bf L}_i  \cdot {\bf L}_j - \frac{1}{2} \eta_i \eta_j (\cancelto{1}{\hat{{\bf n}}({\bf x}_i)^2} + \cancelto{1}{\hat{{\bf n}}({\bf x}_j)^2} - (\hat{{\bf n}}({\bf x}_i) - \hat{{\bf n}}({\bf x}_j)^2)) ({\bf L}_i^2 + {\bf L}_j^2) \bigg) \\
+        &\approx \eta_i \eta_j + \frac{\eta_i \eta_j}{2} \bigg(\hat{{\bf n}}({\bf x}_i) - \hat{{\bf n}}({\bf x}_j)^2\bigg) + \frac{1}{S^2} \bigg({\bf L}_i  \cdot {\bf L}_j - \frac{1}{2} \eta_i \eta_j \hat{{\bf n}}({\bf x}_i) \cdot \hat{{\bf n}}({\bf x}_j) ({\bf L}_i^2 + {\bf L}_j^2) \bigg) \\
+        & \blanky \blanky \blanky \blanky + \frac{1}{S} \bigg(\eta_i {\bf L}_j \cdot\hat{{\bf n}}({\bf x}_i) + \eta_j {\bf L}_i \cdot\hat{{\bf n}}({\bf x}_j) \bigg) + \mathcal{O}(|{\bf L}|^2 |\hat{{\bf n}}({\bf x}_i)-\hat{{\bf n}}({\bf x}_j)|) 
+    \end{split}
+\end{equation}
+
+The differences between Néel fields can be approximated by derivatives 
+
+\begin{equation}
+    |\hat{{\bf n}}({\bf x}_i)-\hat{{\bf n}}({\bf x}_j)| \approx \partial_{\ell} \hat{{\bf n}}({\bf x}) x_{ij}^{\ell} + \frac{1}{2} (\partial_{\ell k}^2 \hat{{\bf n}}({\bf x})) x_{ij}^{\ell} x_{ij}^{k}, \begin{array}{cc}
+         \textnormal{ where ${\bf x}_{ij} = {\bf x}_i - {\bf x}_j $, and where the summation is}  \\
+         \textnormal{  repeated over spatial indices, $\ell, k = 1, \cdots, d$.}
+    \end{array}
+\end{equation}
+
+From this and using \cref{NLSM_inequalities}, it is readily apparent that higher-order derivatives are higher order power in the small parameter $\Lambda R_J << 1$. \\
+
+The first derivative cancels out in the cross terms by the symmetry of the Hamiltonian, which leads to the $\mathcal{O}(S^{-1})$-terms being negligible. In effect,
+
+\begin{equation}
+    \begin{split}
+        \sum_{ij} \eta_i {\bf L}_j \cdot\hat{{\bf n}}({\bf x}_i) \approx& \sum_{ij} \eta_i J_{ij} {\bf L}_j \bigg[ \hat{{\bf n}}({\bf x}) +  \partial_{\ell} \hat{{\bf n}}({\bf x}) x_{ij}^{\ell} + \frac{1}{2} (\partial_{\ell k}^2 \hat{{\bf n}}({\bf x})) x_{ij}^{\ell} x_{ij}^{k} \bigg] \\
+        &\approx \frac{1}{2} \sum_{ij} \partial_{\ell k}^2 \hat{{\bf n}}({\bf x})) x_{ij}^{\ell} x_{ij}^{k} \sim \mathcal{O}(\Lambda R_J)^2, \textnormal{ which are negligible. }
+    \end{split}
+\end{equation}
+
+The lattice sums can then be replaced by integrals, following the prescription
+
+\begin{equation}
+    \sum_{i} F_i \rightarrow a^{-d} \int d^d x \sum_{i} \delta({\bf x} - {\bf x}_i) F({\bf x}),
+\end{equation}
+
+leading to the continuum representation for the Hamiltonian, which reads
+
+\begin{equation}
+    {\bf H} \approx E_{0}^{\textnormal{cl}} + \frac{1}{2} \int d^d x \bigg[\rho_s \sum_{\ell} |\partial_{\ell} \hat{{\bf n}}({\bf x}))|^2 + \int d^d x' ({\bf L}_x \chi_{xx'}^{-1} {\bf L}_{x'})\bigg], \begin{array}{cc}
+         E_{0}^{\textnormal{cl}} = \frac{S^2}{2} \sum_{ij} J_{ij} \eta_i \eta_j, \blanky
+         \rho_S = - \frac{S^2}{2dNa^d} \sum_{ij} J_{ij} \eta_i \eta_j |{\bf x}_i - {\bf x}_j|^2, \\
+         \chi_{{\bf x,x'}}^{-1} = \frac{1}{Na^d} \sum_{ij} J_{ij} \bigg[\delta({\bf x-x}_i)\delta({\bf x'-x}_j) - \delta({\bf x'-x}) \delta({\bf x-x}_i) \eta_i \eta_j \bigg].
+    \end{array}
+\end{equation}
