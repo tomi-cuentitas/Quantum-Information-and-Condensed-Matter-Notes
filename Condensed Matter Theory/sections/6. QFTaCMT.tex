@@ -1145,7 +1145,7 @@ $
 
 \clearpage
 
-\subsection{Gaussian Integrals}
+\subsubsection{Gaussian Integrals}
  
 Quantum mechanical actions, commonly encountered in many-body path integral formalism, frequently involve exponential or complex or Grassmann variables. For quadratic-form actions, these integrals are simple generalizations of Gaussian integrals. 
 
@@ -3634,7 +3634,7 @@ for fermions\footnote{Note that the Matsubara function is a function of the time
 with a similar result holding for $\tau_2 > \tau_1$, with the condition $-\beta < \tau < \beta$ needed in order to assure the convergence.
 }. \\
 
-An important property of the Matsubara function is that it is periodic for bosons and antiperiodic for fermions over an interval $\beta$, ie. 
+An important property of the Matsubara functions is that it is periodic for bosons and antiperiodic for fermions over an interval $\beta$, ie. 
 
 \begin{equation}
     \textgoth{G}_{{\bf A} {\bf B}}(\tau) = 
@@ -3644,3 +3644,142 @@ An important property of the Matsubara function is that it is periodic for boson
     \end{array} \right., \textnormal{ for $\tau >(<)0$}
 \end{equation}
 
+This antiperiodicity of the Matsubara-Green function for the fermionic case, can be used to extend the definition of the Matsubara function $\textgoth{G}_{{\bf AB}}(\tau)$ to the entire imaginary time axis. An important type of Matsubara-Green function are the single-particle fermionic correlation functions $\textgoth{G}$, defined as 
+
+\begin{equation}
+    \begin{split}
+        \textgoth{G}_{\sigma \sigma'}({\bf x}, \tau; {\bf x}', \tau') = - \bigg\langle \mathcal{T}_{\tau} \bigg[\psi_{\sigma}({\bf x}, \tau) \psi^\dagger_{\sigma'}({\bf x}', \tau')\bigg] \bigg\rangle \textnormal{ in real space}.
+ \end{split}
+ \end{equation}
+ 
+\blanky \\
+
+Consider for instance the Hamiltonian of a non-interacting fermionic system, which reads 
+
+\begin{equation}
+    {\bf H} = \sum_{\mu} \varepsilon_{\mu} {\bf c}_{\mu}^\dagger {\bf c}_{\mu}, 
+\begin{array}{cc}
+    \textnormal{ where $\varepsilon_{\lambda} = E_{\lambda} - \mu$ is the one-particle } \\
+    \textnormal{energy shifted by the chemical potential.}
+\end{array}
+\end{equation}
+
+Its corresponding Matsubara function is 
+
+\begin{equation}
+\begin{split}
+    \textgoth{G}_{\lambda \lambda'}(\tau - \tau') =
+    &= - \bigg \langle \mathcal{T}_{\tau} {\bf c}_{\lambda}(\tau) {\bf c}_{\lambda'}^\dagger(\tau') \bigg \rangle \\
+    &= - \frac{1}{\mathcal{Z}} \Tr e^{-\beta {\bf H}} \bigg[\Theta(\tau - \tau') {\bf c}_{\lambda}(\tau) {\bf c}_{\lambda'}^\dagger(\tau') - \Theta(\tau' - \tau) {\bf c}_{\lambda'}^\dagger(\tau') {\bf c}_{\lambda}(\tau) \bigg], \textnormal{ with } \begin{array}{cc}
+         {\bf c}_{\lambda}(\tau) = e^{-\varepsilon_{\lambda} \tau} {\bf c}_{\lambda}(0) \\
+         {\bf c}_{\lambda}^\dagger(\tau) = e^{\varepsilon_{\lambda} \tau} {\bf c}_{\lambda}^\dagger(0)
+    \end{array} \\
+    &= - \frac{1}{\mathcal{Z}} \Tr \bigg[
+    \Theta(\tau - \tau') 
+    e^{\varepsilon_{\lambda'} \tau'-\varepsilon_{\lambda} \tau} {\bf c}_{\lambda} {\bf c}_{\lambda'}^\dagger
+    - \Theta(\tau' - \tau) 
+    e^{\varepsilon_{\lambda'} \tau' - \varepsilon_{\lambda} \tau} {\bf c}_{\lambda'}^\dagger {\bf c}_{\lambda}
+    \bigg] \\
+    &= - \frac{1}{\mathcal{Z}} \Tr e^{-\beta {\bf H}}
+    \bigg[
+    \Theta(\tau - \tau') 
+    e^{\varepsilon_{\lambda'} \tau'-\varepsilon_{\lambda} \tau} {\bf c}_{\lambda} {\bf c}_{\lambda'}^\dagger
+    - \Theta(\tau' - \tau) 
+    e^{\varepsilon_{\lambda'} \tau' - \varepsilon_{\lambda} \tau} {\bf c}_{\lambda'}^\dagger {\bf c}_{\lambda}
+    \bigg], \\
+    & \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \textnormal{ where } \begin{array}{cc}
+         \langle {\bf c}_{\lambda'}^\dagger {\bf c}_{\lambda} \rangle = \delta_{\lambda \lambda'} {\bf n}_{\mathfrak{F}}(\varepsilon_{\lambda}) = \frac{1}{e^{\beta \varepsilon_{\lambda}} + 1} \\
+         \\
+         \langle {\bf c}_{\lambda} {\bf c}_{\lambda'}^\dagger \rangle = \delta_{\lambda \lambda'} ( 1 - {\bf n}_{\mathfrak{F}}(\varepsilon_{\lambda}) )
+    \end{array}  \\
+    &= -  
+    \bigg[
+    \Theta(\tau - \tau') 
+    e^{\varepsilon_{\lambda'} \tau'-\varepsilon_{\lambda} \tau} \langle {\bf c}_{\lambda} {\bf c}_{\lambda'}^\dagger \rangle
+    - \Theta(\tau' - \tau) 
+    e^{\varepsilon_{\lambda'} \tau' - \varepsilon_{\lambda} \tau} \langle {\bf c}_{\lambda'}^\dagger {\bf c}_{\lambda} \rangle
+    \bigg] \\
+    &= - \delta_{\lambda \lambda'} e^{\varepsilon_{\lambda} (\tau'-\tau)}
+    \bigg[
+    \Theta(\tau - \tau') 
+    \langle {\bf c}_{\lambda} {\bf c}_{\lambda}^\dagger \rangle
+    - \Theta(\tau' - \tau) 
+     \langle {\bf c}_{\lambda}^\dagger {\bf c}_{\lambda} \rangle
+    \bigg] \\
+    &= - \delta_{\lambda \lambda'} e^{\varepsilon_{\lambda} (\tau'-\tau)}
+    \bigg[ (1 - {\bf n}_{\mathfrak{F}}(\varepsilon_{\lambda}))
+    \Theta(\tau - \tau') 
+    - {\bf n}_{\mathfrak{F}}(\varepsilon_{\lambda}) \Theta(\tau' - \tau) 
+    \bigg].
+    \end{split} 
+\end{equation}
+
+\begin{equation}
+    \begin{array}{cc}
+         \textnormal{This result can be generalized to include the}  \\
+         \textnormal{bosonic non-interacting case as well, yielding}
+    \end{array} 
+    \begin{array}{cc}
+         \textgoth{G}_{\lambda \lambda'}(\tau - \tau') = \delta_{\lambda \lambda'} \textgoth{G}_{\lambda}(\tau - \tau'), \\
+         \textgoth{G}_{\lambda}(\tau) = e^{\varepsilon_{\lambda} \tau}
+    \bigg[ (1 \pm {\bf n}_{\mathfrak{F}, \mathfrak{B}}(\varepsilon_{\lambda}))
+    \Theta(\tau) 
+    \pm {\bf n}_{\mathfrak{F}, \mathfrak{B}}(\varepsilon_{\lambda}) \Theta(- \tau) 
+    \bigg]
+    \end{array}
+\end{equation}
+
+For further references\footnote{In effect, these identities can be easily derived for both the fermionic and bosonic case as follows,  
+    \begin{equation}
+        \begin{split}
+            \langle {\bf c}_{\lambda'}^\dagger {\bf c}_{\lambda} \rangle &= \frac{\Tr \exp(-\beta {\bf H}) {\bf c}_{\lambda'}^\dagger {\bf c}_{\lambda} }{\Tr \exp(-\beta {\bf H})} = \frac{\Tr \blanky {\bf c}_{\lambda} \exp(-\beta {\bf H}) {\bf c}_{\lambda'}^\dagger}{\Tr \exp(-\beta {\bf H})} = \frac{\Tr \blanky {\bf c}_{\lambda} \exp(-\beta {\bf H}) {\bf c}_{\lambda'}^\dagger
+            \exp(-\beta {\bf H})
+            \exp(\beta {\bf H})
+            }{\Tr \exp(-\beta {\bf H})}
+            \\
+            &= \frac{\Tr \exp(-\beta {\bf H}) {\bf c}_{\lambda}{\bf c}_{\lambda'}^\dagger(\beta)
+            }{\Tr \exp(-\beta {\bf H})} = e^{-\beta \varepsilon_{\lambda}} \langle {\bf c}_{\lambda}{\bf c}_{\lambda'}^\dagger \rangle =  e^{-\beta \varepsilon_{\lambda}} \bigg(
+            \delta_{\lambda\lambda'} \mp \langle {\bf c}_{\lambda'}^\dagger {\bf c}_{\lambda} \rangle
+            \bigg) \Rightarrow \langle {\bf c}_{\lambda'}^\dagger {\bf c}_{\lambda} \rangle = \frac{1}{e^{\beta \varepsilon_{\lambda}} \pm 1} = {\bf n}_{\mathfrak{F}, \mathfrak{B}},
+        \end{split}
+    \end{equation} 
+    
+    ie. yielding the Fermi and Bose statistics, respectively. 
+    }, check \cref{Toda_Kubo_Statistica_mechanics, Ming_Che_Chang_Matsubara}. \\
+    
+\paragraph{Fourier Transform of the Matsubara Functions: Fourier series in Imaginary Time}
+
+The Fourier transform of the Matsubara-Green function ${\textgoth{G}_{{\bf AB}}}(\tau)$ to the frequency domain. It can be proven that the Matsubara-Green function is periodic with period $2\beta$ on the interval $\tau \in \mathds{R}_{[-{\beta}, \beta]}$. In effect, using the Matsubara-Green function's symmetry property twice yields
+
+\begin{equation}
+    {\textgoth{G}_{{\bf AB}}}(-\beta) = \mp {\textgoth{G}_{{\bf AB}}}(0) = (\mp)^2 {\textgoth{G}_{{\bf AB}}}(\beta) =  {\textgoth{G}_{{\bf AB}}}(\beta). 
+\end{equation}
+
+Hence, a discrete Fourier series can be written, 
+
+\begin{equation}
+\begin{split}
+    &{\textgoth{G}_{{\bf AB}}}(\tau) = \frac{1}{\beta} \sum_{n \in \mathds{Z}} e^{-\frac{in\pi\tau}{\beta}} {\textgoth{G}_{{\bf AB}}}(n) \Longleftrightarrow {\textgoth{G}_{{\bf AB}}}(n) = \frac{1}{2} \int_{-\beta}^{\beta} d\tau \blanky e^{\frac{in\pi\tau}{\beta}} {\textgoth{G}_{{\bf AB}}}(\tau) \\
+    &\textnormal{Employing the previous symmetry property yields a simplified transform, }\\
+    {\textgoth{G}_{{\bf AB}}}(n) &= \frac{1}{2} \int_{-\beta}^{\beta} d\tau \blanky e^{\frac{in\pi\tau}{\beta}} {\textgoth{G}_{{\bf AB}}}(\tau) = \frac{1}{2} \int_{-\beta}^{0} d\tau \blanky e^{\frac{in\pi\tau}{\beta}} {\textgoth{G}_{{\bf AB}}}(\tau) + \frac{1}{2} \int_{0}^{\beta} d\tau \blanky e^{\frac{in\pi\tau}{\beta}} {\textgoth{G}_{{\bf AB}}}(\tau) \\
+    &= e^{-in\pi} \frac{1}{2} \int_{0}^{\beta} d\tau \blanky e^{\frac{in\pi\tau}{\beta}} {\textgoth{G}_{{\bf AB}}}(\tau + \beta) + \frac{1}{2} \int_{0}^{\beta} d\tau \blanky e^{\frac{in\pi\tau}{\beta}} {\textgoth{G}_{{\bf AB}}}(\tau) \\
+    &= \frac{1}{2} \bigg(1 \mp e^{-in\pi}\bigg) \int_{0}^{\beta} d\tau \blanky e^{\frac{in\pi\tau}{\beta}} {\textgoth{G}_{{\bf AB}}}(\tau) \\
+    &\Rightarrow {\textgoth{G}_{{\bf AB}}}(n) = \int_{0}^{\beta} d\tau \blanky e^{\frac{in\pi\tau}{\beta}} {\textgoth{G}_{{\bf AB}}}(\tau), \left\{ \begin{array}{cc}
+        n \in 2\mathds{N} \textnormal{ for fermions, }   \\
+        n \in 2\mathds{N}+1 \textnormal{ for bosons. }
+    \end{array} \right.\\
+\end{split}
+\end{equation}
+
+Furthermore, it is convenient to separate the Fourier transforms of the Green-Matsubara functions for bosons and fermions as follows,
+
+\begin{equation}
+    \begin{split}
+        &{\textgoth{G}_{{\bf AB}}}(i\Omega_n) = \int_{0}^{\beta} d\tau \blanky e^{i \Omega_n \tau} {\textgoth{G}_{{\bf AB}}}(\tau), \quad \Omega_n = \frac{(2n+1)\pi}{\beta} \textnormal{ for fermions.} \\
+        &{\textgoth{G}_{{\bf AB}}}(i\omega_n) = \int_{0}^{\beta} d\tau \blanky e^{i \omega_n \tau} {\textgoth{G}_{{\bf AB}}}(\tau), \quad \Omega_n = \frac{2n\pi}{\beta} \textnormal{ for bosons.}
+    \end{split}
+\end{equation}
+
+It is custom to call both $i\Omega_n, i\omega_n$ as Matsubara frequencies. Note the temperature appears only in the Matsubara frequencies via $\beta$. \\
+
+\paragraph{Analytic Continuation for the Matsubara and Green Functions}
