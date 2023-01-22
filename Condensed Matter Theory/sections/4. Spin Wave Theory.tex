@@ -81,6 +81,7 @@ where, in the first and second lines, the Hamiltonian was exponentiated and high
 
 \begin{equation}
     \omega[\hat{\Omega}] = -\int_{0}^\beta d\tau \blanky \dot{\phi} \cos \theta = - \int_{\phi_0}^{\phi_0} d\phi \blanky \cos \theta_\phi,
+    \label{spin_wave_theoretic_wave_barry_phase}
 \end{equation}
 
 which implies that $\omega$ is geometric: it depends on the trajectory of $\hat{\Omega}_i(\tau)$ on the 3-sphere and not on its explicit time dependence. The $(S\omega)$-functional is called the \underline{Berry phase} of the spin history, since it describes the phase acquired by a spin that aligns with an adiabatically rotation external magnetic field which is parallel to $\hat{\Omega}_i(\tau)$\footnote{
@@ -343,7 +344,7 @@ where $ \bm{\mathcal{L}}^{(2)}$ is the spin wave lagrangian matrix, expanded abo
 
 \begin{equation}
 \begin{split}
-    S \sum_{i}\omega_i \approx& S \sum_{i} \int_{0}^{t} dt' \blanky \bigg(\hat{\Omega}^{\textnormal{cl}} \cdot \delta\hat{\Omega} \times \delta \hat{\Omega} \bigg) \\
+    S \sum_{i}\omega_i \approx& S \sum_{i} \int_{0}^{t} dt' \blanky \bigg(\hat{\Omega}^{\textnormal{cl}} \cdot \delta\dot{\hat{\Omega}} \times \delta \hat{\Omega} \bigg) \\
     &= \frac{1}{2} \int_{0}^{t} dt \blanky ({\bf p} \cdot \dot{{\bf q}} - {\bf q} \cdot \dot{{\bf p}}),
 \end{split}
 \end{equation}
@@ -1090,9 +1091,9 @@ In the short-range ordered phases, $\mathcal{Z}$ is dominated by configurations 
     \label{NLSM_inequalities}
 \end{equation}
     
-where $R_J$ is the characteristic range of $J_{ij}$. The previous requirements are equivalent to assuming that the dominant configurations in the path integral are \textit{slowly varying} on the scale of $\Lambda^{-1}$, or that these configurations have negligible Fourier components for $|\hat{\bf n}_{|{\bf q}| > \Lambda} << 1$. In these regimes, the cubic Brillouin zone of the lattice can be replaced by the spherical zone written in \cref{NLSM_measure_unit}. 
+where $R_J$ is the characteristic range of $J_{ij}$. The previous requirements are equivalent to assuming that the dominant configurations in the path integral are \textit{slowly varying} on the scale of $\Lambda^{-1}$, or that these configurations have negligible Fourier components for $|\hat{\bf n}_{|{\bf q}| > \Lambda}| << 1$. In these regimes, the cubic Brillouin zone of the lattice can be replaced by the spherical zone written in \cref{NLSM_measure_unit}. 
 
-Moreover, $|\hat{\bf n}_{|{\bf q}| > \Lambda} << 1$ is consistent with assuming that the canting field is small, namely that 
+Moreover, $|\hat{\bf n}_{|{\bf q}| > \Lambda}| << 1$ is consistent with assuming that the canting field is small, namely that 
 
 $$
 \bigg|\frac{{\bf L}_i}{S}\bigg| \Rightarrow \begin{array}{cc}
@@ -1138,8 +1139,8 @@ The Heisenberg Hamiltonian can then be written in terms of the $(\hat{\bf n}, {\
 \begin{equation}
     \begin{split}
         &\approx \frac{\eta_i \eta_j}{2} \bigg(\cancelto{1}{\hat{{\bf n}}({\bf x}_i)^2} + \cancelto{1}{\hat{{\bf n}}({\bf x}_j)^2} - (\hat{{\bf n}}({\bf x}_i) - \hat{{\bf n}}({\bf x}_j))^2\bigg) + \frac{1}{S} \bigg(\eta_i {\bf L}_j \cdot\hat{{\bf n}}({\bf x}_i) + \eta_j {\bf L}_i \cdot\hat{{\bf n}}({\bf x}_j) \bigg) \\
-        & \blanky \blanky \blanky \blanky + \frac{1}{S^2} \bigg({\bf L}_i  \cdot {\bf L}_j - \frac{1}{2} \eta_i \eta_j (\cancelto{1}{\hat{{\bf n}}({\bf x}_i)^2} + \cancelto{1}{\hat{{\bf n}}({\bf x}_j)^2} - (\hat{{\bf n}}({\bf x}_i) - \hat{{\bf n}}({\bf x}_j)^2)) ({\bf L}_i^2 + {\bf L}_j^2) \bigg) \\
-        &\approx \eta_i \eta_j + \frac{\eta_i \eta_j}{2} \bigg(\hat{{\bf n}}({\bf x}_i) - \hat{{\bf n}}({\bf x}_j)^2\bigg) + \frac{1}{S^2} \bigg({\bf L}_i  \cdot {\bf L}_j - \frac{1}{2} \eta_i \eta_j \hat{{\bf n}}({\bf x}_i) \cdot \hat{{\bf n}}({\bf x}_j) ({\bf L}_i^2 + {\bf L}_j^2) \bigg) \\
+        & \blanky \blanky \blanky \blanky + \frac{1}{S^2} \bigg({\bf L}_i  \cdot {\bf L}_j - \frac{1}{2} \eta_i \eta_j (\cancelto{1}{\hat{{\bf n}}({\bf x}_i)^2} + \cancelto{1}{\hat{{\bf n}}({\bf x}_j)^2} - (\hat{{\bf n}}({\bf x}_i) - \hat{{\bf n}}({\bf x}_j))^2 ({\bf L}_i^2 + {\bf L}_j^2) \bigg) \\
+        &\approx \eta_i \eta_j - \frac{\eta_i \eta_j}{2} \bigg(\hat{{\bf n}}({\bf x}_i) - \hat{{\bf n}}({\bf x}_j)^2\bigg) + \frac{1}{S^2} \bigg({\bf L}_i  \cdot {\bf L}_j - \frac{1}{2} \eta_i \eta_j \bigg(\hat{{\bf n}}({\bf x}_i) - \hat{{\bf n}}({\bf x}_j)\bigg)^2 ({\bf L}_i^2 + {\bf L}_j^2) \bigg) \\
         & \blanky \blanky \blanky \blanky + \frac{1}{S} \bigg(\eta_i {\bf L}_j \cdot\hat{{\bf n}}({\bf x}_i) + \eta_j {\bf L}_i \cdot\hat{{\bf n}}({\bf x}_j) \bigg) + \mathcal{O}(|{\bf L}|^2 |\hat{{\bf n}}({\bf x}_i)-\hat{{\bf n}}({\bf x}_j)|) 
     \end{split}
 \end{equation}
@@ -1160,7 +1161,7 @@ The first derivative cancels out in the cross terms by the symmetry of the Hamil
 \begin{equation}
     \begin{split}
         \sum_{ij} \eta_i {\bf L}_j \cdot\hat{{\bf n}}({\bf x}_i) \approx& \sum_{ij} \eta_i J_{ij} {\bf L}_j \bigg[ \hat{{\bf n}}({\bf x}) +  \partial_{\ell} \hat{{\bf n}}({\bf x}) x_{ij}^{\ell} + \frac{1}{2} (\partial_{\ell k}^2 \hat{{\bf n}}({\bf x})) x_{ij}^{\ell} x_{ij}^{k} \bigg] \\
-        &\approx \frac{1}{2} \sum_{ij} \partial_{\ell k}^2 \hat{{\bf n}}({\bf x})) x_{ij}^{\ell} x_{ij}^{k} \sim \mathcal{O}(\Lambda R_J)^2, \textnormal{ which are negligible. }
+        &\approx \frac{1}{2} \sum_{ij} (\partial_{\ell k}^2 \hat{{\bf n}}({\bf x})) x_{ij}^{\ell} x_{ij}^{k} \sim \mathcal{O}(\Lambda R_J)^2, \textnormal{ which are negligible. }
     \end{split}
 \end{equation}
 
@@ -1172,10 +1173,194 @@ The lattice sums can then be replaced by integrals, following the prescription
 
 leading to the continuum representation for the Hamiltonian, which reads
 
-\begin{equation}
-    {\bf H} \approx E_{0}^{\textnormal{cl}} + \frac{1}{2} \int d^d x \bigg[\rho_s \sum_{\ell} |\partial_{\ell} \hat{{\bf n}}({\bf x}))|^2 + \int d^d x' ({\bf L}_x \chi_{xx'}^{-1} {\bf L}_{x'})\bigg], \begin{array}{cc}
+\begin{equation}\begin{split}
+    {\bf H}  &= \frac{S^2}{2}\sum_{ij} J_{ij} \bigg[\eta_i \eta_j - \frac{\eta_i \eta_j}{2} \bigg(\hat{{\bf n}}({\bf x}_i) - \hat{{\bf n}}({\bf x}_j)\bigg)^2 + \frac{1}{S^2} \bigg({\bf L}_i  \cdot {\bf L}_j - \frac{1}{2} \eta_i \eta_j (\hat{{\bf n}}({\bf x}_i) - \hat{{\bf n}}({\bf x}_j))^2 ({\bf L}_i^2 + {\bf L}_j^2) \bigg) \\
+    &= \frac{S^2}{2} \sum_{ij} J_{ij} \eta_i \eta_j  - \frac{S^2}{2} \sum_{ij} J_{ij} \frac{\eta_i \eta_j}{2} \frac{1}{Na^d} \int d^d x \blanky \sum_{\ell} |\partial_{\ell} \hat{\bf n}({\bf x})| ||{\bf x}^2||
+    %||{\bf x}_i - {\bf x}_j ||^2 
+    + \frac{J_{ij}}{2} \frac{1}{a^d} \int d^d x \int d^d x' \sum_{ij} \delta({\bf x}-{\bf x}_i) \delta({\bf x}-{\bf x}_j) {\bf L}_{\bf x} \cdot {\bf L}_{\bf x'} \\
+       & \blanky \blanky \blanky \blanky + \frac{J_{ij}}{2} \frac{1}{a^d} \int d^d x \int d^d x'\sum_{ij} \eta_i \eta_j \delta({\bf x-x'}) \delta({\bf x}-{\bf x}_i) \\
+    &= \frac{S^2}{2} \sum_{ij} J_{ij} \eta_i \eta_j - \frac{S^2}{2d N a^d}  \sum_{ij} J_{ij} \eta_i \eta_j ||{\bf x}||^2 \\
+       & \blanky \blanky \blanky \blanky + \int \frac{d^dx d^d x'}{2} \sum_{ij} J_{ij} {\bf L}_{\bf x} \bigg[\delta({\bf x-x}_i)\delta({\bf x'-x}_j) - \delta({\bf x'-x}) \delta({\bf x-x}_i) \eta_i \eta_j \bigg] {\bf L}_{{\bf x}'}\\
+    &= E_{0}^{\textnormal{cl}} + \int \frac{d^d x}{2} \left[\begin{array}{c}
+         \rho_s \sum_{\ell} |\partial_{\ell} \hat{{\bf n}}({\bf x})|^2 \\
+         \blanky \blanky \blanky + \int d^d x' ({\bf L}_{\bf x }\chi_{xx'}^{-1} {\bf L}_{{\bf x}'})
+    \end{array}\right], \begin{array}{cc}
          E_{0}^{\textnormal{cl}} = \frac{S^2}{2} \sum_{ij} J_{ij} \eta_i \eta_j, \blanky
          \rho_S = - \frac{S^2}{2dNa^d} \sum_{ij} J_{ij} \eta_i \eta_j |{\bf x}_i - {\bf x}_j|^2, \\
-         \chi_{{\bf x,x'}}^{-1} = \frac{1}{Na^d} \sum_{ij} J_{ij} \bigg[\delta({\bf x-x}_i)\delta({\bf x'-x}_j) - \delta({\bf x'-x}) \delta({\bf x-x}_i) \eta_i \eta_j \bigg].
+         \chi_{{\bf x,x'}}^{-1} = \frac{1}{Na^d} \sum_{ij} J_{ij} \bigg[\delta({\bf x-x}_i)\delta({\bf x'-x}_j) - \delta({\bf x'-x}) \delta({\bf x-x}_i) \eta_i \eta_j \bigg],
     \end{array}
+\end{split}
 \end{equation}
+
+where $E_0^{\textnormal{cl}}$ is the classical energy, $\rho_S$ is the stiffness constant and where $\chi_{{\bf x,x'}}^{-1}$ is the inverse susceptibility. In Fourier space, the canting field term is given by 
+
+\begin{equation}
+    \int d^d x \int d^d x' {\bf L}_x \chi_{xx'}^{-1} {\bf L}_{x'} = \int_{q \leq \Lambda_{\mathfrak{BZ}}} \frac{d^dq}{(2\pi)^d} {\bf L}_{\bf q} \chi({\bf q})^{-1} {\bf L}_{\bf -q}, \textnormal{ where } \begin{array}{cc}
+         \chi({\bf q}) = \frac{1}{J({\bf q}) - J(\vec{\pi})}  \\
+         J({\bf q}) = \sum_{j} e^{i {\bf q} \cdot {\bf x}_{ij}} J_{ij}.
+    \end{array}
+    \label{NLSM_fourier_integral_canting_fields_susceptibility}
+\end{equation}
+
+\blanky \\
+
+\paragraph{The Kinetic Term}
+
+The Kinetic Barry phase term in the spin path integral is given by \cref{spin_wave_theoretic_wave_barry_phase}, reading 
+
+\begin{equation}
+    -iS \sum_{i} \omega_i = -iS \int_{0}^\beta d\tau \sum_{i} {\bf A}(\hat{\Omega}_i) \cdot{\hat{\Omega}}_i.
+\end{equation}
+
+It is convenient to consider a inversion-symmetric vector potential, i.e. a vector potential such that ${\bf A}(\hat{\Omega}) = {\bf A}(-\hat{\Omega})$, such as 
+
+$$
+   {\bf A} = -\frac{\cos \theta}{\sin \theta} \hat{\phi}.
+$$
+
+Then, expanding the kinetic Berry phase in terms of the Néel and canting fields yields
+
+\begin{equation}
+    \begin{split}
+        -iS \sum_{i} \omega_i =& - iS \sum_{i} \eta_i \omega\bigg[\hat{\bf n}_i + \eta_i \frac{{\bf L}_i}{S}\bigg] = -iS \sum_{i} \eta_i \omega[\hat{{\bf n}}_i] + \frac{\delta \omega}{\delta \hat{{\bf n}}_i} \frac{{\bf L}_i}{S} \\
+        &=  -iS \sum_{i} \bigg[\eta_i \omega[\hat{{\bf n}}_i] + \frac{\delta}{\delta \hat{{\bf n}}_i} \int_{0}^{\beta} d\tau \blanky \hat{\Omega} \cdot (\dot{\hat{\Omega}} \times \delta \hat{\Omega}) \bigg]\\
+        &=  -iS \sum_{i} \bigg[\eta_i \omega[\hat{{\bf n}}_i] + \frac{\delta}{\delta \hat{{\bf n}}_i} \int_{0}^{\beta}
+        \bigg( \hat{{\bf n}}_i + \eta_i \frac{{\bf L}_i}{S} \bigg) \cdot \bigg\{
+        \bigg( \partial_{\tau}{\hat{{\bf n}}}_i + \eta_i \frac{\partial_{\tau}{{\bf L}}_i}{S}\bigg) \times 
+        \bigg( \delta\hat{\bf n}_i + \eta_i \frac{\delta{\bf L}_i}{S}\bigg) \bigg\}\bigg]\\
+        &= -i \Gamma - i \int_{0}^{\beta} d\tau \blanky \sum_{i} \hat{{\bf n}}_i \times \partial_{\tau} \hat{{\bf n}}_i \cdot {\bf L}_i, \quad \textnormal{ where } \Gamma[\hat{{\bf n}}] = S \sum_{i} \eta_i \omega[\hat{{\bf n}}_i]
+        \label{NLSM_kinetic_term}
+    \end{split}
+\end{equation}
+
+Here, $\Gamma$ is a topological Berry phase associated with the Néel field $\hat{{\bf n}}$. In the rotationally symmetric phases, interference between Berry phases can give rise to dramatic consequences on ground state degeneracy and low-energy spectrum. \\
+
+\paragraph{Partition Function and Correlations}
+
+The second term in \cref{NLSM_kinetic_term} couples the canting field to $\hat{\bf n} \times \partial_{\tau}\hat{\bf n}$, implying that said fields are canonical conjugates, akin to the $\frac{1}{2} ({\bf p} \cdot \dot{\bf q} - {\bf q} \cdot \dot{\bf p})$ in \cref{phase_space_spin_wave_path_int}. 
+The constraint $\delta({\bf L} \cdot \hat{{\bf n}})$ is automatically satisfied in the second term of \cref{NLSM_kinetic_term}. From these, the partition function can be obtained from \cref{spin_wave_theoretic_wave_generating_func_and_phase_func} via Gaussian integration 
+
+\begin{equation} \begin{split}
+    \mathcal{Z}[j] =& \int \mathcal{D} \hat{\Omega}(\tau) \exp\bigg[ -iS \sum_{i} \omega[\hat{\Omega}_i] + \int_{0}^{\beta} \bm{\mathcal{H}}[\hat{\Omega}(\tau)] \bigg] \\
+    &=  \int \mathcal{D} \hat{\Omega}(\tau) e^{i \Gamma[\hat{{\BF n}}]}\exp 
+        \bigg[ - i \int_{0}^{\beta} d\tau \bigg( \sum_{i} \hat{{\bf n}}_i \times \partial_{\tau} \hat{{\bf n}}_i \cdot {\bf L}_i +
+        E_{0}^{\textnormal{cl}} + \int \frac{d^d x}{2}         
+         \rho_s \sum_{\ell} |\partial_{\ell} \hat{{\bf n}}({\bf x})|^2 + \int d^d x' ({\bf L}_{\bf x }\chi_{xx'}^{-1} {\bf L}_{{\bf x}'}) \bigg) 
+    \bigg] \\
+    &= \int \mathcal{D} \hat{{\bf n}} e^{i \Gamma[\hat{{\BF n}}]}\exp \bigg( - \int_{0}^{\beta} d\tau \int_{\Lambda} d^d x \frac{\rho_s}{2} \sum_{\ell=1}^{d} |\partial_{\ell} \hat{{\bf n}}({\bf x})|^2 \bigg) \\
+    & \blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky \times \underbrace{\int_{\Lambda_{\mathfrak{BZ}}} \mathcal{D} {\bf L}^{\perp} \exp \bigg[
+    - \int_{0}^{\beta} d\tau \int_{\Lambda} d^d x \frac{d^d q}{(2\pi)^d} (\hat{{\bf n}} \times \partial_{\tau} \hat{{\bf n}})_{-{\bf q}} \cdot {\bf L}_{\bf q} - \frac{1}{2}\int_{\Lambda} \frac{d^d q}{(2\pi)^d} \chi^{-1}({\bf q}) {\bf L}_{{\bf q}} \cdot {\bf L}_{{-\bf q}} 
+    \bigg]}_{{\propto \exp\bigg[-\frac{1}{2} \int d\tau \int^\Lambda \frac{d^d q}{(2\pi)^d} \chi({\bf q}) (\hat{{\bf n}} \times \partial_{\tau} \hat{{\bf n}})_{{\bf q}} \cdot (\hat{{\bf n}} \times \partial_{\tau} \hat{{\bf n}})_{-{\bf q}})
+    \bigg]}}\\
+\end{split}
+\end{equation}
+
+Inspecting \cref{NLSM_fourier_integral_canting_fields_susceptibility}, is it readily apparent that the variation of $\chi({\bf q})$ is small on the scale of $\Lambda$, allowing itself to be replaced by its zero-momentum-limit. First, note that 
+
+\begin{equation}
+    \begin{split}
+        |\hat{\bf n}({\bf x}) \times \partial_{\tau} \hat{\bf n}({\bf x})|^2 =& \delta^{ij} (\hat{\bf n}({\bf x}) \times \partial_{\tau} \hat{\bf n}({\bf x}))^{i} (\hat{\bf n}({\bf x}) \times \partial_{\tau} \hat{\bf n}({\bf x}))^j \\
+        &= \delta^{ij} (\epsilon_{abi} \hat{\bf n}_a \partial_{\tau} \hat{\bf n}_b) (\varepsilon^{cdj} \hat{\bf n}_c \partial_{\tau} \hat{\bf n}_d) \\
+        &= \epsilon_{abi} \epsilon^{cdj} 
+        \bigg(
+        \hat{\bf n}_a \hat{\bf n}_c \partial_{\tau} \hat{\bf n}_b \partial_{\tau} \hat{\bf n}_d
+        \bigg) \\
+        &= (\delta^{c}_{a} \delta^{d}_{b} - \delta^{d}_{a} \delta^{c}_{b})\bigg(
+        \hat{\bf n}_a \hat{\bf n}_c \partial_{\tau} \hat{\bf n}_b \partial_{\tau} \hat{\bf n}_d
+        \bigg) \\
+        &= \delta^{c}_{a} \delta^{d}_{b} \hat{\bf n}_a \hat{\bf n}_c \partial_{\tau} \hat{\bf n}_b \partial_{\tau} \hat{\bf n}_d
+        - \delta^{d}_{a} \delta^{c}_{b}\hat{\bf n}_a \hat{\bf n}_c \partial_{\tau} \hat{\bf n}_b \partial_{\tau} \hat{\bf n}_d \\
+        &= \cancelto{1}{\hat{\bf n}_a \hat{\bf n}^a} \partial_{\tau} \hat{\bf n}_b \partial_{\tau} \hat{\bf n}^b - \overset{?}{\hat{\bf n}_a \hat{\bf n}_b \partial_{\tau} \hat{\bf n}^b \partial_{\tau} \hat{\bf n}^a} = |\partial_{\tau} \hat{\bf n}_b|^2.
+     \end{split}
+\end{equation}
+
+Hence, the underbraced term in the previous equation for the partition function, allows it to be rewritten as a local interaction on the unimodular fields, 
+
+\begin{equation}
+\begin{split}
+    \propto \exp\bigg[-\frac{1}{2} \int d\tau \int^\Lambda & \frac{d^d q}{(2\pi)^d} \chi({\bf q}) (\hat{{\bf n}} \times \partial_{\tau} \hat{{\bf n}})_{{\bf q}} \cdot (\hat{{\bf n}} \times \partial_{\tau} \hat{{\bf n}})_{-{\bf q}})
+    \bigg] \\
+    & \approx \exp \bigg[
+    -\frac{1}{2} \int_{0}^{\beta} d\tau \int_{\Lambda} d^dx \blanky \chi_0 |\partial_{\tau} \hat{{\bf n}}|^2 \bigg], \quad \textnormal{ where } \chi_0 = a^{-d} \chi(0),
+\end{split}
+\end{equation}
+
+and where $\int_{\Lambda} d^{d} x$ is understood to contain only the Fourier components of the integrand which obey $|{\bf q}| \leq \Lambda$. Hence, the partition function can be written as 
+
+\begin{equation}
+    \mathcal{Z} \propto \int_{\Lambda} \mathcal{D} \hat{{\bf n}} e^{i \Gamma[\hat{{\bf n}}]} \exp \bigg[
+    -\frac{1}{2} \int_{0}^{\beta} d\tau \int_{\Lambda} d^d x \bigg(
+    \chi_0 |\partial_{\tau} \hat{\bf n}|^2 + \rho_s \sum_{\ell = 1}^{d} |\partial_{\ell} \hat{\bf n}|^2
+    \bigg)
+    \bigg].
+\end{equation}
+
+This can be expressed in a more compact form, by defining the spin wave velocity $c = \sqrt{\rho_s \chi_0^{-1}}$, and by defining a special coordinate system,
+
+\begin{equation}
+    (x_1, \cdots, x_d, c\tau) \rightarrow (x_1, \cdots, x_{d+1}),
+\end{equation}
+
+which allows the action of $\mathcal{Z}$ of the Non-linear sigma model NLSM in $(d+1)$-dimensions to be written in terms of Berry phases as,
+
+\begin{equation}
+    \begin{split}
+        &\mathcal{Z} \propto \int_{\Lambda} \mathcal{D}\hat{{\bf n}} \blanky e^{i\Gamma} \exp \bigg(- \int d^{d+1}x \blanky \mathcal{L}^{d+1}_{\textnormal{NLSM}}\bigg), \quad \mathcal{L}^{D}_{\textnormal{NLSM}} = \frac{\Lambda^{D-2}}{2f_D} \sum_{\mu = 1}^{D} \partial_{\mu} \hat{{\bf n}} \cdot \partial_{\mu} \hat{{\bf n}},
+    \end{split}, \quad \begin{array}{cc}
+         |\hat{{\bf n}}({\bf x})| = 1,  \\
+         {\bf x} \in \mathds{R}^d. 
+    \end{array}
+        \label{NLSM_partition_func}
+\end{equation}
+
+upto to normalization constants and where $f = (c/\rho_s) \Lambda^{D-2}$ is a dimensionless coupling constant. Using \cref{NLSM_partition_func}, several observables of physical relevance can be calculated, eg. 
+
+\begin{itemize}
+    \item the spin correlation function for the Heisenberg antiferromagnet at long-distances and at low temperature can be easily calculated as 
+
+    \begin{equation}
+         \langle \spin_i^{\alpha} \spin_{j}^{\alpha}(\tau) \rangle_d \approx \frac{e^{i \vec{\pi} ({\bf x}_i -{\bf x}_j)} S^2}{N \mathcal{Z}} \int_{\Lambda} \mathcal{D} \hat{{\bf n}} \blanky  e^{i\Gamma} \exp \bigg(- \int_0^{c\beta} dx^{d+1} \int d^dx \blanky \mathcal{L}^{d+1}_{\textnormal{NLSM}}\bigg) \hat{\bf n}^{\alpha}(0,0) \hat{\bf n}^{\alpha}({\bf x}_j,c\tau),
+        \end{equation}
+
+\item  with  the imaginary-time ground state correlations of the            quantum Heisenberg antiferromagnet given by  
+        
+        \begin{equation}
+            \frac{1}{\mathcal{Z}} \sum_{m} |\bra{\Psi_0} \hat{\bf n}(0) \ket{\Psi_0}|^2 e^{-(E_m - E_0)\tau} = \langle \hat{\bf n}^{\alpha}(0,0) \hat{\bf n}^{\alpha}(0,c\tau) \rangle.
+            \label{NLSM_ground_state_corrs}
+        \end{equation}
+\end{itemize}
+ \blanky \\
+ 
+ The NLSM is rotationally symmetryic in spacetime. If the correlations exponentially-decay at large distances with $\varepsilon$-correlation length, the imaginary time decay period is given by $\varepsilon/c$. According to \cref{NLSM_ground_state_corrs}, the lowest excitation energy $\Delta$ determines the fastest decay rate, hence 
+ 
+ $$
+    \Delta = \min_{m} E_m - E_0 \approx \frac{c}{\varepsilon}.
+ $$
+
+If $\Delta$ does not vanish with the size of the system, it is a thermodynamically meaningful gap in the excitation spectrum called \underline{Haldane's gap}. \\
+
+In the absence of topological $\Gamma$-Berry phases, the ground state of the quantum antiferromagnet is described by the classical energy of the $(d+1)$-dimensional NLSM, where $f$ is a coupling constant of the classical problem. At finite, but low, $\beta^{-1}$-temperature, the quantum antiferromagnet is thus mapped onto the NLSM on a slab of finite width $c\beta$ in the imaginary-time dimension. 
+
+Caution must be taken, in that the Haldane mapping is valid under the restrictive conditions imposed by \cref{NLSM_inequalities}, which can be achieved in the $(S>>1)$-limit. In said regime, the large-S semiclassical limit corresponds to the weak coupling $(f<<1)$-limit of the NLSM. \\
+
+\subsubsection{NonLinear Sigma Model: Weak Coupling}
+
+The NonLinear Sigma model in $d$-dimension emerges as the continuum approximation to the quantum Heisenberg antiferromagnet in $(d-1)$-dimensions, with additional Berry phases, wherein the partition function is given by \cref{NLSM_partition_func} and where $\Lambda$ is a momentum cutoff, i.e. the shortest wavelength included in the $\mathcal{D}\hat{{\bf n}}$-field. \\
+
+\paragraph{The Lattice Regularization}
+
+Note that \cref{NLSM_partition_func}'s path integral is not well-defined until a regularization procedure is established. Hence, consider a $d$-dimensional classical Heisenberg model on a cubic-lattice, with $N$ sites and lattice constant $a$. Its partition function reads 
+
+\begin{equation}
+    \mathcal{Z}_{\textnormal{CMH}} = \int \prod_{i=1}^{N} d\hat{\Omega}_i \blanky \exp \bigg(\frac{\bar{J}}{T} \sum_{\langle ij \rangle} \hat{\Omega}_i \cdot \hat{\Omega}_j\bigg), \begin{array}{c}
+         \textnormal{ where the continuum} \\
+         \textnormal{limit of $\mathcal{Z}_{\textnormal{CMH}}$ is } \\
+         \textnormal{given by the substitutions } 
+    \end{array}
+    \blanky \hat{\Omega}_i  \rightarrow \eta_i \hat{{\bf n}}({\bf x}_i), \textnormal{ with } \eta_i = \left\{\begin{array}{cc}
+              1 & \textnormal{ferromagnet } \\
+              e^{i {\bf X}_i \vec{\pi}} & \textnormal{antiferromagnet }
+         \end{array}  \right.
+\end{equation}
+
+
