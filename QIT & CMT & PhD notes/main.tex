@@ -180,6 +180,67 @@ which, if true, implies that $\mathds{R}_{[0,1]}$ is not connected, which is fal
 
 Furthermore, any one of the above implies that, given any two points $p, q \in M$, there exists a length-minimizing geodesic connecting these two points. \\
 
+\section{On the geometry of Gaussian Manifolds}
+
+Bosonic and fermionic quantum systems with $N$ modes can be constructed from $N$ creation or annihilation operators, 
+
+\begin{equation}
+    \zeta \overset{{\bf a}, {\bf a}^\dagger}{=} ({\bf a}_1, \cdots, {\bf a}_N, {\bf a}_1^\dagger, \cdots, {\bf a}_N^\dagger),
+    \begin{array}{cc}
+         \textnormal{ which satisfy the } \\
+         \textnormal{ commutation relations }
+    \end{array}
+    \begin{array}{cc}
+         [{\bf a}_i, {\bf a}_j] = [{\bf a}_i^{\dagger}, {\bf a}_j^{\dagger}] = 0, [{\bf a}_i, {\bf a}_j^\dagger] = \delta_{ij}, \textnormal{ for bosons}, \\
+         \{{\bf a}_i, {\bf a}_j\} = \{{\bf a}_i^{\dagger}, {\bf a}_j^{\dagger}\} = 0, \{{\bf a}_i, {\bf a}_j^\dagger\} = \delta_{ij}, \textnormal{ for fermions}.
+    \end{array}
+\end{equation}
+
+In contrast to this set of $N$ creation and annihilation operators, one may choose instead, a basis of $2N$ Hermitian operators, the quadratures, which read
+
+\begin{equation}
+    \zeta \overset{{\bf a}, {\bf a}^\dagger}{=} ({\bf q}_1, \cdots, {\bf q}_N, {\bf p}_1, \cdots, {\bf p}_N), \textnormal{ with } \begin{array}{cc}
+         {\bf a}_i = \frac{{\bf q}_i + i {\bf p}_i}{\sqrt{2}}  \\
+         \\
+         {\bf a}_i^\dagger = \frac{{\bf q}_i - i {\bf p}_i}{\sqrt{2}}  \\
+    \end{array} \textnormal{ with } \begin{array}{cc}
+         [{\bf q}_i, {\bf q}_j] = [{\bf p}_i, {\bf p}_j] = 0, [{\bf q}_i, {\bf p}_j] = i\delta_{ij} \\ 
+         \{{\bf q}_i, {\bf q}_j\} = \{{\bf p}_i, {\bf p}_j\} = \delta_{ij}, [{\bf q}_i, {\bf p}_j] = 0.
+    \end{array}
+\end{equation}
+
+In the fermionic case, these operators are called Majorana modes. \\
+
+Gaussian states are uniquely specified by their two-point correlation function in the fundamental operators $\var{\zeta}$. For any state $\rho$, the expectation value of an ${\bf O}$-operators is given by $\langle {\bf O} \rangle = \Tr \rho {\bf O}$. It is useful to separately consider the symmetrized and anti-symmetrized part of these correlations, given by two real bilinear forms
+
+\begin{equation}
+    \mathcal{G}^{ab} = \langle \zeta^a \zeta^b + \zeta^b \zeta^a \rangle, \quad \Omega^{ab} = -i \langle \zeta^a \zeta^b - \zeta^b \zeta^a \rangle, \textnormal{ with } z^a = \langle \zeta^a \rangle = 0. 
+\end{equation}
+
+\begin{itemize}
+    \item For bosons, the \underline{symplectic form} $\Omega$ is fixed by canonical commutation relations (CCR), with the positive-definite \underline{metric} $\mathcal{G}$ containing the physical correlations. 
+    \item For fermions, the situation is reversed, with $\mathcal{G}$ fixed by canonical anti-commutation relations (CAR) and $\Omega$ describing the physical correlations. 
+\end{itemize}
+
+\clearpage
+
+\paragraph{Chain map of the Hierarchical sets} 
+
+\blanky \\
+
+Here we show the chain map of the Hierarchical sets ${\mathcal{B}}^{\ell}$ and \\
+their corresponding K\"ahler submanifolds ${\mathcal{V}}^{\ell}$ as an almost-commutative diagram
+
+\begin{tikzcd}[cells={nodes={minimum height=3em}}]
+\mathcal{B}^{\ell = 0} \arrow[d, "f_0"]\arrow[r, "\subset"] 
+& \mathcal{B}^{\ell = 1} \arrow[r,"\subset"] \arrow[d, "f_1"] 
+& \cdots \arrow[r,"\subset"]\arrow[d,"f_s"] & \mathcal{B}^{\ell = \gamma-1} \arrow[r, "\subseteq"]\arrow[d,"f_{\gamma-1}"] 
+& \mathcal{B}^{\ell = \gamma} \arrow[d,"f_\gamma"] \\
+\mathcal{V}S^{\ell = 0} \arrow[r, "\subset"] & \mathcal{V}^{\ell = 1} \arrow[r,"\subset"] & \cdots \arrow[r, "\subset"] & \mathcal{V}^{\ell = \gamma-1} \arrow[r, "\subseteq"] & \mathcal{V}^{\ell = \gamma }
+\end{tikzcd}
+
+where the total length of the bounded chain map is $\gamma + 3$, with $\gamma = \dim{{\cal G}(\mathds{H})}$. 
+
 \section{Cuentitas}
 
 Density operators can either describe pure or mixed states, which are deffined as follows 
@@ -461,7 +522,7 @@ $$
 e^{J}=e^{\lambda _{1}}e^{N_{a_{1}}}\oplus e^{\lambda _{2}}e^{N_{a_{2}}}\oplus \cdots \oplus e^{\lambda _{n}}e^{N_{a_{n}}}.
 $$
 \end{tcolorbox}}. By construction, it is clear that the natural choice for the 
-tangent space $T_\rho \mathcal{M}$ is $\mathfrak{H}\mathfrak{s}^{\dagger}(\hilbert^{\otimes N})$
+tangent space $T_\rho \mathcal{M}$ is $\mathfrak{H}\mathfrak{s}^{\dagger}(\hilbert^{\otimes N})$, making this a Hilbert manifold
 
 $$
     T_\rho \mathcal{M} \simeq \mathfrak{H}\mathfrak{s}^{\dagger}(\hilbert^{\otimes N}),
@@ -765,5 +826,135 @@ where
     
 \end{proof}
 
+\clearpage
+
+\section{Resúmen}
+
+Sea $\mathcal{C}(\mathds{H}) = \{ \rho \in \textnormal{GL}(N, \mathds{C}) | \blanky
+\blanky \rho^\dagger = \rho, 
+\blanky \rho \geq 0, \blanky \textnormal{Tr } \rho = 1 \},$ el conjunto de todas las matrices densidad. Este espacio tiene la estructura de una variedad de Kahler $(\mathcal{C}(\mathds{H}), g, J)$, donde tanto $g$ como $J$ deben ser evaluadas localmente. Resolver el problema 
+
+$$
+    \frac{d\rho}{dt}
+    = [{\bf H}, \rho(t)]\bigg|_{\rho(t) \in \mathcal{C}(\mathds{H}), \forall t},
+$$
+
+es un problema NP-hard, intractable para un espacio de Hilbert con dimensión mayor a $2^{N}, N = 15$ configuraciones. Una forma de obtener soluciones aproximadas a la dinámica es considerar estados gaussianos. \\
+
+Sea un sistema dinámico cuántico cerrado (sin interacciones con el exterior) cuyo estado inicial es 
+
+$$
+\rho_0 = e^{-{\bf K}} \textnormal{ con ${\bf K} \in \mathfrak{H}\mathfrak{s}^\dagger(\hilbert^{\otimes N})$} \Longleftrightarrow {\bf K} = - \log \rho
+$$
+
+donde $\mathfrak{H}\mathfrak{s}^\dagger(\hilbert^{\otimes N})$ es el conjunto de todos los operadores Hilbert-Schmidt, iie. de traza finita, que sean hermíticos; dicho espacio imbuído con el producto interno de Hilbert-Schmidt $\langle A, B \rangle_{\textnormal{HS}} = \Tr A^\dagger B$. En tales condiciones, la ecuación diferencial sobre $\rho$ se convierte en una ecuación diferencial sobre ${\bf K}$ mismo.
+
+$$
+i \frac{d {\bf K}}{dt} =  [{\bf K}, \rho]
+$$
+
+Luego, si se considera una base, ortonormal respecto a este producto interno, $\ell$-dimensional de operadores $\mathfrak{B}_{ME}$, la exponencial de combinaciones lineales de estos operadores da origen a una variedad gaussiana denotada por $\bm{\mathcal{S}}_{ME}( \mathfrak{B}_{ME})$
+
+\begin{equation}
+    \rho(t) \in \bm{\mathcal{S}}_{ME}( \mathfrak{B}_{ME}) \begin{array}{c}
+         \textnormal{which in turn implies that the ${\bf K}$-operator } \\
+         \textnormal{ can be uniquely decomposed,} \\
+         \textnormal{upto phase factors, as } 
+    \end{array}
+    {\bf K} = \sum_{\mu}^{\ell} \phi^{\mu}(t) \bm{\mathcal{O}}_{\mu},
+\end{equation}
+
+Luego de algunas cuentas, resulta que la evolución puede ser reescrita como
+
+\begin{equation}
+        \begin{split} {\frac{d\phi^{\alpha}}{dt}}{= \sum_{\mu} \bm{\mathcal{H}}_{\alpha \mu} \phi^{\mu}},
+            \end{split}
+    \end{equation}
+
+donde $\bm{\mathcal{H}}_{\alpha \mu} = ({\bf O}_\alpha, [{\bf H}, {\bf O}_{\mu}])$ y tal que 
+
+\begin{align*}
+    \bm{\mathcal{H}} : \mathfrak{H}\mathfrak{s}^\dagger(\hilbert^{\otimes N}) & \times \mathfrak{H}\mathfrak{s}^\dagger(\hilbert^{\otimes N}) \rightarrow \mathds{C}^{\dim \times \dim} \\
+    & (\bm{\mathcal{H}})_{\mu \nu} = ({\bf O}_{\nu}, [{\bf H}, {\bf O}_{\nu}]).
+\end{align*}
+
+La solución a (19) es simple pues esta matriz $\bm{\mathcal{H}}$ es constante
+
+$$
+\phi^\alpha(t) = \sum_{\beta} (e^{\mathcal{H} t})_{\alpha \beta} \phi_0^\beta \Rightarrow \rho(t) = e^{\sum_{\alpha} \phi(t)_{\alpha} {\bf O}^\alpha}
+$$
+
+La gracia del método que innovamos con Mauricio es que no necesito todos los operadores de la base enorme, puedo poner algunos y obtener buenos resultados. Un método muy eficiente dee construir una base es a partir de un operador semilla ${\bf O}$ y sus commutadores
+
+$$
+    \mathfrak{B}_{ME} = \{{\bf O}, [H, {\bf O}], [H, [H, {\bf O}]] \cdot..., [H, \cdots[ {\bf O}]\cdots]\} = \{[H, {\bf O}]^{\land n}\}_{n=0}^{\ell},
+$$
+
+es decir esta base la armo con el operador semilla, el primer conmutador con el Hamiltoniano del sistema, el segundo conmutador y así sucesivamente todo lo que yo quiera. Y esta base la puedo calcular muy rápidamente con el algoritmo de Strassen para sistemas de mucha dimensión, ya que al fin y al cabo es multiplicar matrices. \\
+
+Las dos preguntas no triviales que me surgieron que pueden ser tratadas con el análisis matricial son:
+
+\begin{enumerate}
+    \item  Primero estimar el error en la aproximación. Claramente si elijo una base a partir de cierto operador semilla y agarro la misma base con más elementos, voy a obtener mejores resultados. Pero me gustaría ver si es posible estimar el error y la rapidez de convergencia, capaz a partir de estudiar los autovalores de $\bm{\mathcal{H}}$.
+    
+    \item La otra es elaborar un criterio para elegir el operador semilla inicial. Por ejemplo, en algunos casos simples he visto, heurísticamente, que si agarro un operador $A$ con $n$ conmutadores y agarro otro operador $B$ con $m$ conmutadores, de forma tal que $m < n$, sucede que (dependiendo de la elección de los operadores semilla), la base que tiene menos operadores puede dar mejores resultados que la otra; lo cual me pareció muy interesante. 
+\end{enumerate}
+
+\clearpage
+
+\section{Resultados del Algoritmo}
+
+\paragraph{Longitud de la cadena variable}
+
+\begin{itemize}
+    \item First case
+\end{itemize}
+
+Consider the $\mathds{X}\mathds{X}$-Heisenberg Hamiltonian. At $T_{\rho_{\textnormal{ref}}} = 2T_{\rho_{0}} = 2 \times 10^{-1} K$, with a basis, reference state and occupation list given by
+
+\begin{align}
+    &\mathfrak{B} = [\mathfrak{i}\mathfrak{d}, {\bf H}, [{\bf H}, \cdot]^{\land s=4}(\spin_1)] \\
+    & \rho_ref = e^{-\beta_{\textnormal{ref}} \spin_1^x}\\
+    & ({\bf K}_0)_i = [0, 0, .5, 0,0,0].
+\end{align}    
+
+\begin{figure}[H]
+        \centering
+        \includegraphics[scale = .45, left]{figs/Variable Length/avgs_ev_proj_ev_var_lengths_processed=5_items.png}
+    \caption{Averages for a variable-length spin chain.}
+    \label{fig:Feynmann_diags_first_order_GF}
+    \end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = .45, left]{figs/Variable Length/metrics_proj_ev_var_lengths_processed=5_items.png}\caption{Metrics for a variable-length spin chain.}
+    \label{fig:my_label}
+\end{figure}
+
+\paragraph{Temperatura de referencia variable}
+
+
+For a spin chain of length $N = 2$, with a basis, reference state and occupation list given by
+
+\begin{align}
+    &\mathfrak{B} = [\mathfrak{i}\mathfrak{d}, {\bf H}, [{\bf H}, \cdot]^{\land s=4}(\spin_1)] \\
+    & \rho_{\textnormal{ref}} = e^{-\beta_{\textnormal{ref}} \spin_1^x}\\
+    & ({\bf K}_0)_i = [0, 0, .5, 0,0,0].
+\end{align}    
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = .25]{figs/Variable Temp/avgs_ev_proj_ev_var_temps_processed=4_itemsXX.png}
+    \caption{Avgs}
+    \label{fig:my_label}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = .25]{figs/Variable Temp/metrics_proj_ev_var_temps_processed=4_itemsXX.png}
+    \caption{Caption}
+    \label{fig:my_label}
+\end{figure}
 
 \end{document}
+
