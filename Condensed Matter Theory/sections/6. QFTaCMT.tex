@@ -3660,7 +3660,7 @@ Consider for instance the Hamiltonian of a non-interacting fermionic system, whi
     {\bf H} = \sum_{\mu} \varepsilon_{\mu} {\bf c}_{\mu}^\dagger {\bf c}_{\mu}, 
 \begin{array}{cc}
     \textnormal{ where $\varepsilon_{\lambda} = E_{\lambda} - \mu$ is the one-particle } \\
-    \textnormal{energy shifted by the chemical potential.}
+    \textnormal{energy shifted by the chemical potential.} \label{Matsubara_Green_Non_interacting_fermion_Hamiltonian}
 \end{array}
 \end{equation}
 
@@ -3711,7 +3711,7 @@ Its corresponding Matsubara function is
     \Theta(\tau - \tau') 
     - {\bf n}_{\mathfrak{F}}(\varepsilon_{\lambda}) \Theta(\tau' - \tau) 
     \bigg].
-    \end{split} 
+    \end{split} \label{Matsubara_Green_Non_interacting_fermion_Matsubara_function}
 \end{equation}
 
 \begin{equation}
@@ -3783,3 +3783,128 @@ Furthermore, it is convenient to separate the Fourier transforms of the Green-Ma
 It is custom to call both $i\Omega_n, i\omega_n$ as Matsubara frequencies. Note the temperature appears only in the Matsubara frequencies via $\beta$. \\
 
 \paragraph{Analytic Continuation for the Matsubara and Green Functions}
+
+\begin{wrapfigure}{l}{0.3\textwidth}
+\includegraphics[scale = .5]{figs/Matsubara_Green_Functions/Matsubara_Green_complex_freq_space.png}
+\end{wrapfigure} 
+
+It turns out that the Matsubara and Green functions are manifstations of the same analytic function $\textgoth{F}_{{\bf AB}}(z)$ in the complex-frequency plane: in the upper half-plane, it is equal to ${\textgoth{G}_{{\bf AB}}}(i\omega_n)$ on the imaginary axis and $\mathfrak{G}^{R}_{{\bf AB}}(\omega)$ on the real axis, while in the lower complex-plane, the advanced Green function emerges on the real axis. 
+
+Hence, determination of one of the two guarantees that the other must follow as well by analytic continuation, which amounts to stating 
+
+\begin{equation}
+    \mathfrak{G}_{{\bf AB}}^R(\omega) = \textgoth{G}_{{\bf AB}}(i\omega_n \rightarrow \omega + i \eta), \textnormal{ where $\eta$ is a positive and infinitesimal constant}.
+\end{equation}
+
+Some interesting properties of the Matsubara function are enumerated, as follows 
+
+\begin{enumerate}
+    \item $\textgoth{G}_{{\bf AB}}(\tau)$ is periodic along the imaginary-time axis,
+    \item $\textgoth{G}_{{\bf AB}}(\tau)$ does not have any statistical factor, eg. ${\bf n}_{\mathfrak{B}}(\omega)$ nor ${\bf n}_{\mathfrak{F}}(\omega)$, on the imaginary-frequency axis. The information on statistical probabilities implicitly enters through the so-called Matsubara frequency sums. 
+    \item The Matsubara function is based on a thermal equilibrium theory. We note that, in some cases, the $(T \rightarrow 0)$-limit of a thermal equilibrium can be different from results obtained from a $T = 0$ analysis. Note that the $(T \rightarrow 0)$-formalism is designed to get the true ground state, including the prediction of equal thermal occupation for degenerate states, whereas a $T = 0$ analysis may identify only one of the available degenerate states, or because adiabatic turning on of the interaction may miss state crossings or a phase transition and land in an excited state. 
+\end{enumerate}
+
+The Matsubara approach provides an expedient recipe for obtaining its Green function counterparts. It is convenient to use the Lehmann representation to establish the relation between the two functions  $\textgoth{G}_{{\bf AB}}(\tau)$ and $\mathfrak{G}^R_{{\bf AB}}(\tau)$, whereby earlier results for the zero-temperature retarded single-particle Green function can be extended to finite temperatures as 
+
+\begin{equation}
+    \begin{split}
+        \mathfrak{G}_{{\bf AB}}(\omega) &= - \frac{i}{\mathcal{Z}} \int_{\mathds{R}} dt \blanky e^{i\omega t}\textgoth{G}_{{\bf AB}}(t) = - \frac{i}{\mathcal{Z}} \int_{\mathds{R}} dt \blanky e^{i\omega t} \bigg \langle e^{-\beta {\bf H}} \mathcal{T} [{\bf A}(t) {\bf B}(0)] \bigg \rangle \\
+        &= - \frac{i}{\mathcal{Z}} \int_{\mathds{R}} dt \blanky e^{i\omega t} \bigg \langle e^{-\beta {\bf H}} 
+        \bigg[
+        \Theta(t) {\bf A}(t) {\bf B}(0) - 
+        \Theta(-t) {\bf B}(0) {\bf A}(t)
+        \bigg] \bigg \rangle
+    \end{split}
+\end{equation}
+
+\footnotesize
+\begin{equation*}\begin{array}{c}
+    \begin{array}{ccc}
+        \begin{split}
+         - \frac{i}{\mathcal{Z}} &\int_{\mathds{R}} dt \blanky e^{i\omega t} \bigg \langle e^{-\beta {\bf H}} 
+        \Theta(t) {\bf A}(t) {\bf B}(0)\bigg \rangle \\
+        &= - \frac{i}{\mathcal{Z}} \int_{\mathds{R}} dt \blanky e^{i\omega t} \bigg \langle e^{-\beta {\bf H}} 
+        \Theta(t) e^{\frac{i}{\hbar} {\bf H} t}{\bf A}(0)e^{-\frac{i}{\hbar} {\bf H} t} {\bf B}(0)\bigg \rangle
+        \\
+        &= - \frac{i}{\mathcal{Z}} \int_{\mathds{R}^+} dt \blanky e^{i\omega t} \Tr \bigg[e^{-\beta {\bf H}} 
+        e^{\frac{i}{\hbar} {\bf H} t}{\bf A} e^{-\frac{i}{\hbar} {\bf H} t} {\bf B}\bigg] \\
+        &= - \frac{i}{\mathcal{Z}} \int_{\mathds{R}^+} dt \blanky e^{i\omega t} \sum_{\lambda \lambda'} \bra{\lambda} e^{-\beta {\bf H}} 
+        e^{\frac{i}{\hbar} {\bf H} t}{\bf A} \ket{\lambda'} \bra{\lambda'} e^{-\frac{i}{\hbar} {\bf H} t} {\bf B}  \ket{\lambda} \\
+        &= - \frac{i}{\mathcal{Z}} \int_{\mathds{R}^+} dt \blanky e^{i\omega t} \sum_{\lambda \lambda'} e^{-\beta \varepsilon_{\lambda}} e^{\frac{i}{\hbar} \varepsilon_{\lambda} t} {\bf A}_{\lambda \lambda'} e^{-\frac{i}{\hbar} \varepsilon_{\lambda'} t} {\bf B}_{\lambda' \lambda}\\
+        &= \frac{1}{\mathcal{Z}} \sum_{\lambda \lambda'} \frac{
+        \bra{\lambda} {\bf A} \ket{\lambda'} \bra{\lambda'} {\bf B} \ket{\lambda}}{\omega + \varepsilon_{\lambda} - \varepsilon_{\lambda'} + i\eta} e^{-\beta \varepsilon_\lambda}\\
+        \end{split}
+        & &
+       \begin{split} 
+        \frac{i}{\mathcal{Z}} &\int_{\mathds{R}} dt \blanky e^{i\omega t} \bigg \langle e^{-\beta {\bf H}} 
+        \Theta(-t) {\bf B}(0) {\bf A}(t) \bigg \rangle &= - \frac{i}{\mathcal{Z}} \int_{\mathds{R}} dt \blanky e^{i\omega t} \bigg \langle e^{-\beta {\bf H}} 
+        \Theta(t) e^{\frac{i}{\hbar} {\bf H} t}{\bf A}(0)e^{-\frac{i}{\hbar} {\bf H} t} {\bf B}(0)\bigg \rangle
+        \\
+        &= \frac{i}{\mathcal{Z}} \int_{\mathds{R}} dt \blanky e^{i\omega t} \bigg \langle e^{-\beta {\bf H}} 
+        \Theta(-t) {\bf B}(0) e^{\frac{i}{\hbar} {\bf H} t}{\bf A}(0)e^{-\frac{i}{\hbar} {\bf H} t}\bigg \rangle
+        \\
+        &= \frac{i}{\mathcal{Z}} \int_{\mathds{R}^-} dt \blanky e^{i\omega t} \Tr \bigg[e^{-\beta {\bf H}} 
+        {\bf B}  e^{\frac{i}{\hbar} {\bf H} t}{\bf A} e^{-\frac{i}{\hbar} {\bf H} t}\bigg] \\
+        &= \frac{i}{\mathcal{Z}} \int_{\mathds{R}^-} dt \blanky e^{i\omega t} \sum_{\lambda \lambda'} \bra{\lambda} e^{-\beta {\bf H}} {\bf B} 
+        e^{+\frac{i}{\hbar} {\bf H} t}\ket{\lambda'} \bra{\lambda'} e^{-\frac{i}{\hbar} {\bf H} t} {\bf A}  \ket{\lambda} \\
+        &= \frac{i}{\mathcal{Z}} \int_{\mathds{R}^-} dt \blanky e^{i\omega t} \sum_{\lambda \lambda'} e^{-\beta \varepsilon_{\lambda'}} e^{\frac{i}{\hbar} \varepsilon_{\lambda'} t} {\bf B}_{\lambda \lambda'} e^{-\frac{i}{\hbar} \varepsilon_{\lambda} t} {\bf A}_{\lambda' \lambda}\\
+        &= \frac{1}{\mathcal{Z}} \sum_{\lambda \lambda'} \frac{
+        \bra{\lambda} {\bf B} \ket{\lambda'} \bra{\lambda'} {\bf A} \ket{\lambda}}{\omega + \varepsilon_{\lambda} - \varepsilon_{\lambda'} + i\eta} e^{-\beta \varepsilon_{\lambda'}}\\
+        \end{split}
+    \end{array}
+\end{array}
+\end{equation*}
+
+\normalsize
+\begin{equation}
+    \Rightarrow \mathfrak{G}_{{\bf AB}}(\omega) = \frac{1}{\mathcal{Z}} \sum_{\lambda \lambda'} \frac{
+        {\bf A}_{\lambda \lambda'} {\bf B}_{\lambda' \lambda}}{\omega + \varepsilon_{\lambda} - \varepsilon_{\lambda'} + i\eta} ( e^{-\beta \varepsilon_{\lambda}} + e^{-\beta \varepsilon_{\lambda'}} )
+\end{equation}
+
+As for the Matsubara function, for $\tau > 0$,
+
+\begin{equation}
+    \begin{split}
+        &\textgoth{G}_{{\bf AB}}(\tau) = - \frac{1}{\mathcal{Z}} \Tr \bigg[
+        e^{-\beta {\bf H}} e^{{\bf H} \tau} {\bf A} e^{-{\bf H} \tau} {\bf B}
+        \bigg] =  - \frac{1}{\mathcal{Z}} \sum_{\lambda \lambda'} {\bf A}_{\lambda \lambda'} {\bf B}_{\lambda' \lambda} e^{\tau (\varepsilon_{\lambda} - \varepsilon_{\lambda'})} \\
+        & \textgoth{G}_{{\bf AB}}(i\omega_n) =  \frac{1}{\mathcal{Z}} \sum_{\lambda \lambda'} \frac{
+        {\bf A}_{\lambda \lambda'} {\bf B}_{\lambda' \lambda}}{i\omega_m + \varepsilon_{\lambda} - \varepsilon_{\lambda'} + i\eta} ( e^{-\beta \varepsilon_{\lambda}} + e^{-\beta \varepsilon_{\lambda'}} )
+        \end{split}
+\end{equation}
+
+Hence, $\mathfrak{G}^R_{{\bf AB}}(\omega)$ have identical expressions $\textgoth{G}_{{\bf AB}}(i\omega_n)$ and, moreover, both can be obtained from a common function 
+
+\begin{equation}
+    \textgoth{F}_{{\bf AB}}(z) =  \frac{1}{\mathcal{Z}} \sum_{\lambda \lambda'} \frac{
+        {\bf A}_{\lambda \lambda'} {\bf B}_{\lambda' \lambda}}{z + \varepsilon_{\lambda} - \varepsilon_{\lambda'} + i\eta} ( e^{-\beta \varepsilon_{\lambda}} + e^{-\beta \varepsilon_{\lambda'}} ),
+\end{equation}
+
+which is analytic in the upper and lower half-planes, but has a series of poles at $\varepsilon_{\lambda} - \varepsilon_{\lambda'}$, along the real axis. \\
+
+Knowledge of $\textgoth{G}_{{\bf AB}}(i\omega_n)$ implies knowledge of the $\textgoth{F}_{{\bf AB}}$-function of the complex $z$-variable on an infinite set of points on the imaginary axis $z_n = i\Omega_n$, which is sufficient to determine the full $\textgoth{F}_{{\bf AB}}$-function in the complex plane, with the proviso that, since $\textgoth{F}_{{\bf AB}}(z) = \mathfrak{G}_{{\bf AB}}(z)$, it has to be analytic in the upper-half-plane, leading to the prescription
+
+\begin{equation*}
+    \mathfrak{G}^R_{{\bf AB}}(\omega) = \mathfrak{G}_{{\bf AB}}(i\omega_n \rightarrow \omega + i\eta).
+\end{equation*} 
+
+\blanky \\
+
+For example, consider again the fermionic Hamiltonian of a non-interacting theory given in \cref{Matsubara_Green_Non_interacting_fermion_Hamiltonian}. Its fermionic Matsubara function in the frequency domain can be obtained as the Fourier transform of \cref{Matsubara_Green_Non_interacting_fermion_Matsubara_function}, yielding
+
+\begin{equation}
+    \begin{split}
+        \textgoth{G}_{\lambda}^{(0)}(i\Omega_n) =& \int_{0}^{\beta}d\tau \blanky e^{i\Omega_n \tau} \textgoth{G}_{\lambda}^{(0)}(\tau), \quad \textnormal{ where } \Omega_n = \frac{(2n+1)\pi}{\beta}, \tau > 0, \\
+        &= \frac{1}{i\Omega_n - \varepsilon_{\lambda}},
+    \end{split}
+\end{equation}
+
+since $e^{i\Omega_n \tau} = -1$ and since $(1-{\bf n}(\varepsilon_{\lambda})) = (1+e^{-\beta \varepsilon_{\lambda)}})^{-1}$. Hence, using the previously explained relationships between the Green and Matsubara functions, it follows that 
+
+\begin{equation}
+    \mathfrak{G}_{\lambda}^{(0)}(\omega) = \frac{1}{\omega - \varepsilon_{\lambda} + i \eta}. 
+\end{equation}
+
+\blanky \\
+
+\paragraph{Matsubara Approach to the Two-Particle Green Function}
