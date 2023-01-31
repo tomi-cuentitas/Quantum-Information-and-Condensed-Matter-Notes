@@ -134,7 +134,7 @@ This kind of crystal structure exists in nature and when it happens, the system 
 
 \blanky \\
 
-\paragraph{\textbf{Hartree-Fock theory}}
+\paragraph{\textgoth{Hartree-Fock theory}}
 
 Mean field theory's methods, upto now, concern only interaction between different particles, wherein correlation terms are replaced by their average values plus small corrections. For interactions between identical particles this, however, does not exhaust the possibilities and only includes the so-called Hartree term, requiring a more general approximation scheme, given by the Hartree-Fock approximation. Consider a quantum system of interacting particles, whose Hamiltonian is given by 
 \begin{equation}
@@ -3776,11 +3776,11 @@ Furthermore, it is convenient to separate the Fourier transforms of the Green-Ma
 \begin{equation}
     \begin{split}
         &{\textgoth{G}_{{\bf AB}}}(i\Omega_n) = \int_{0}^{\beta} d\tau \blanky e^{i \Omega_n \tau} {\textgoth{G}_{{\bf AB}}}(\tau), \quad \Omega_n = \frac{(2n+1)\pi}{\beta} \textnormal{ for fermions.} \\
-        &{\textgoth{G}_{{\bf AB}}}(i\omega_n) = \int_{0}^{\beta} d\tau \blanky e^{i \omega_n \tau} {\textgoth{G}_{{\bf AB}}}(\tau), \quad \Omega_n = \frac{2n\pi}{\beta} \textnormal{ for bosons.}
+        &{\textgoth{G}_{{\bf AB}}}(i\omega_n) = \int_{0}^{\beta} d\tau \blanky e^{i \omega_n \tau} {\textgoth{G}_{{\bf AB}}}(\tau), \quad \omega_n = \frac{2n\pi}{\beta} \textnormal{ for bosons.}
     \end{split}
 \end{equation}
 
-It is custom to call both $i\Omega_n, i\omega_n$ as Matsubara frequencies. Note the temperature appears only in the Matsubara frequencies via $\beta$. \\
+It is custom to call both $i\Omega_n, i\omega_n$ as Matsubara frequencies. The temperature appears only in the Matsubara frequencies via $\beta$. \\
 
 \paragraph{Analytic Continuation for the Matsubara and Green Functions}
 
@@ -3908,3 +3908,105 @@ since $e^{i\Omega_n \tau} = -1$ and since $(1-{\bf n}(\varepsilon_{\lambda})) = 
 \blanky \\
 
 \paragraph{Matsubara Approach to the Two-Particle Green Function}
+
+As an application of the Matsubara approach for finite temperature quantum field theory, one can calculated the two-particle correlation function $\chi$ at finite temperatures. Said correlation function reads 
+
+\begin{equation}
+    \begin{split}
+        \chi({\bf q}, \tau) =& - \sum_{\substack{
+        {\bf k,k'} \\
+        \sigma, \sigma' 
+        }} \bigg\langle 
+        \mathcal{T}_{\tau} 
+        [
+        {\bf c}_{{\bf k}, \sigma}^\dagger(\tau + \varepsilon)
+        {\bf c}_{{\bf k+q}, \sigma}(\tau)  
+        {\bf c}_{{\bf k}', \sigma'}^\dagger(\varepsilon) 
+        {\bf c}_{{\bf k'-q}, \sigma'}(0)  
+        ]
+        \bigg\rangle \\
+        &= \sum_{\substack{
+        {\bf k,k'} \\
+        \sigma, \sigma' 
+        }} \bigg\langle 
+        \mathcal{T}_{\tau} \bigg[
+            \wick{
+                \c1{\bf c}_{{\bf k}, \sigma}^\dagger(\tau + \varepsilon)
+                \c2{\bf c}_{{\bf k+q}, \sigma}(\tau)  
+                \c2{\bf c}_{{\bf k}', \sigma'}^\dagger(\varepsilon) 
+                \c1{\bf c}_{{\bf k'-q}, \sigma'}(0)  
+            } - 
+            \wick{
+                \c1{\bf c}_{{\bf k}, \sigma}^\dagger(\tau + \varepsilon)
+                \c1{\bf c}_{{\bf k+q}, \sigma}(\tau)  
+                \c2{\bf c}_{{\bf k}', \sigma'}^\dagger(\varepsilon) 
+                \c2{\bf c}_{{\bf k'-q}, \sigma'}(0)  
+            }
+        \bigg]
+        \bigg\rangle 
+        \\
+        &= \sum_{\substack{
+        {\bf k,k'} \\
+        \sigma, \sigma' 
+        }} \left\langle 
+        \left[ \begin{array}{c}
+             \mathcal{T}_{\tau} \bigg( 
+            {\bf c}_{{\bf k+q}, \sigma}(\tau) 
+            {\bf c}_{{\bf k}', \sigma'}^\dagger(0) 
+        \bigg) \mathcal{T}_{\tau} \bigg( 
+            {\bf c}_{{\bf k'-q}, \sigma'}(0)  
+            {\bf c}_{{\bf k}, \sigma}^\dagger(\tau)
+        \bigg) \\
+             \blanky \blanky \blanky \blanky 
+         - \mathcal{T}_{\tau} \bigg(
+            {\bf c}_{{\bf k}, \sigma}^\dagger(\tau + \varepsilon)
+            {\bf c}_{{\bf k+q}, \sigma}(\tau)
+        \bigg) \mathcal{T}_{\tau} \bigg(
+            {\bf c}_{{\bf k}', \sigma'}^\dagger(\varepsilon) 
+            {\bf c}_{{\bf k'-q}, \sigma'}(0)  
+        \bigg)
+        \end{array}
+        \right]
+        \right\rangle \\
+        &= \sum_{\substack{
+        {\bf k,k'} \\
+        \sigma, \sigma' 
+        }} \bigg[\textgoth{G}_{{\bf k+q}, \sigma}^{(0)}(\tau)\textgoth{G}_{{\bf k}, \sigma}^{(0)}(-\tau) - \rho_{{\bf q}, \sigma}^{(0)}\rho_{-{\bf q}, \sigma}^{(0)}\bigg],
+    \end{split}
+\end{equation}
+
+where $\zeta$ is an infinitesimal positive constant that places the creation operators to the left of annihilation ones for equal time ordering. Note that the second term in the last line, does not depend on $\tau$. Hence, its Fourier transform is done with respect to $\tau \sim \delta_{\omega_n, 0}$ and will thus disappear in the process of the analytical continuation $i \omega_n \rightarrow \omega + i\eta$. \\
+
+Note that the density operators are physical observables, they are hermitian and the commute, thus having bosonic character. This character should be reflected in the correlation function as well, i.e. it should be a function of a bosonic Matsubara frequency. Noting that the Fourier transform of a product in time-domain is a convolution in frequency-domain, the Fourier transform of -the first in- the correlation function is 
+
+\begin{equation}
+    \begin{split}
+        \chi({\bf q}, i \omega_n) =& \frac{1}{\beta} \sum_{i\Omega_n} \sum_{\substack{
+        {\bf k},\sigma 
+        }} \textgoth{G}_{{\bf k+q}, \sigma}^{(0)}(i\Omega_m + i\omega_n)\textgoth{G}_{{\bf k}, \sigma}^{(0)}(i\Omega_m) \\
+        &= \frac{2}{\beta} \sum_{{\bf k}, i \Omega_m} \bigg[
+        \bigg(i(\Omega_m + \omega_n) - (\varepsilon_{{\bf k+q}} - \mu)\bigg)
+        \bigg(i\Omega_m - (\varepsilon_{{\bf k}} - \mu)\bigg)
+        \bigg]^{-1},
+    \end{split}
+\end{equation}
+
+wherein $\omega_n$ and $\Omega_m$ are bosonic and fermionic Matsubara frequencies, respectively. Performing the summation over $\Omega_m$ can be carried out by writing the sum as an integral over the lower-half-plane contour in the complex plane. The actual details of the calculations can be found in \ref{el2020advanced} p.509-511. 
+
+\subsection{Path Integrals}
+
+\paragraph{Quantum Propagators and Path Integrals}
+
+The dynamical information in quantum mechanics is contained in the matrix elements of the time-evolution operator $\bm{\mathcal{U}}(t_f;t_i)$, which for a time-independent Hamiltonian reads
+
+\begin{equation*}
+    \bm{\mathcal{U}}(t_f;t_i) = e^{-\frac{i {\bf H} (t_i-t_f)}{\hbar}}.
+\end{equation*}
+
+The probability amplitude for a particle to start at ${\bf x}_i$-position and $t_i$-time and end at ${\bf x}_f$-position and $t_f$-time is written as 
+
+\begin{equation*}
+\begin{split}
+    \bm{\mathcal{U}}(x_f, t_f; x_i, t_i) = \bra{x}_f \bm{\mathcal{U}}(t_f;t_i) \ket{x_i} \\
+\end{split}
+\end{equation*}
