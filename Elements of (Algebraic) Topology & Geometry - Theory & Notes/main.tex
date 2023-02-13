@@ -1,13 +1,12 @@
 \documentclass{homework}
 \author{Tomás Pérez}
-\class{Elements of (Algebraic) Topology & Geometry - Theory & Notes}
+\class{Differential Geometry and Topology -Lecture Notes}
 \date{\today}
 \title{Theory \& Notes}
 
 \graphicspath{{./media/}}
 
 \begin{document} \maketitle
-
 
 \section{Some topology definitions and results}
 
@@ -112,7 +111,6 @@ For a topological space $X$, the following statements are all equivalent:
     \item Every contractible space is path-connected and simply connected. Moreover, since all the higher homotopy groups, vanish. Every contractible space is $n$-connected, for all $n \geq 0$.\\ 
 \end{itemize}
 
-
 \paragraph{\textbf{Hopf-Rinow theorem}}
 
 Let $(M,g)$ be a connected Riemannian manifold\footnote{Note that a path-connected topological space is connected as well. 
@@ -133,6 +131,312 @@ which, if true, implies that $\mathds{R}_{[0,1]}$ is not connected, which is fal
 \end{itemize}
 
 Furthermore, any one of the above implies that, given any two points $p, q \in M$, there exists a length-minimizing geodesic connecting these two points. \\
+
+\section{Preliminary Definitions and Results in Group Theory}
+
+\paragraph{Quotient Group}
+
+Consider the following theorem, concerning groups and quotient groups. These results can be generalized to quotient sets and quotient spaces as well. 
+
+\begin{theorem} \label{Theorem_Quotient_Group}
+      Let $G, G'$ be two groups. Then, let $\phi: G \rightarrow G'$ be a homeomorphism of kernel $\phi^{-1}(e') = H \subset G$. Then, $H$ is an invariant subgroup of $G$ and the quotient group is isomorphic to $G'$, 
+      $$
+        \frac{G}{H} \simeq G'
+      $$
+\end{theorem}
+
+For further references, see \cite{HoracioII}
+
+\section{Preliminary Definitions and Results in Differential Geometry}
+
+\section{Preliminary Definitions and Results in Point-Set Topology and Algebaic Topology}
+
+\paragraph{Quotient space}
+
+\begin{df}
+
+Let $(X, \tau_X)$ be a topological space with $\tau_X$-topology. If $A$ is a subset of $X$, let $\sim_A$ be the equivalence relation on $X$ defined by 
+
+$$
+    x \sim_A y \leftrightarrow x=y \textnormal{ or } (x \in A, y \in A).
+$$
+
+This is well-defined, even if $A$ is the empty set. Now, the quotient space $\frac{X}{A}$ is, by definition, $\frac{X}{\sim_A}$. Let $0$ denote the equivalence class $[A]$ of $\sim_A$. Then, as a set,
+
+\begin{equation*}
+    \frac{X}{\sim_A} = \left\{
+         \begin{array}{cc}
+              X & \textnormal{ if } A = \emptyset \\
+              (X-A) \cup \{0\} & \textnormal{ if } A \neq \emptyset
+         \end{array}
+    \right.
+\end{equation*}
+
+\end{df}
+
+The open subsets of $\frac{X}{\sim_A}$ are the open subsets of $X-A$ in $X$ and the subsets $U \cup \{0\}$ s.t. $U \cup A$ is open in $X$.
+
+\clearpage
+
+\section{Fiber Bundles}
+
+\clearpage
+
+\section{Geometry and cohomology of K\"ahler manifolds}
+
+\subsection{\textswab{Complex Structure on a vector space}}
+
+Let $\vectorspace$ be a $2m$-dimensional real-valued vector space. A \textit{complex structure} on $\vectorspace$ is an automorphism $J : \vectorspace \rightarrow \vectorspace$ such that $J^2 = - \idop_\vectorspace$. With this structure, $\vectorspace$ is naturally brought into an $m$-dimensional complex-valued vector space by letting 
+
+\begin{equation}
+    (\alpha + i\beta) v = \alpha v + \beta J v, \quad \begin{array}{cc}
+         v \in \vectorspace  \\
+         \alpha, \beta \in \R.
+    \end{array}
+\end{equation}
+
+In other words, an $m$-dimensional complex-valued vector space can be thought of as a $2m$-dimensional real-value vector space endowed with the complex structure $J = i\id_{\vectorspace}$. 
+Hence, this vector space $\vectorspace$ -equipped with the complex structure $J$- has an \textit{adapted basis}
+
+\begin{equation}
+    (v_1, \cdots, v_m, Jv_1, \cdots, J v_m), \quad \textnormal{ s.t. } \quad J = \left(
+        \begin{array}{cc}
+            0 & \idop_\vectorspace  \\
+           - \idop_\vectorspace & 0
+        \end{array}
+    \right).
+\end{equation}
+
+\medbreak
+
+An automorphism $\rho: \vectorspace \rightarrow \vectorspace$ preserves a complex structure $J$ on $\vectorspace$ if and only if it commutes with $J$. Hence, these automorphisms form the commutant $\{J\}' \subset \generallineargroup(2m, \R)$ of $J$. It turns out that there is an explicit mapping $\phi$ for the $\{J\}$-commutant of complex-valued $m$-dimensional matrices and the $\{J\}'$-commutant of real-valued $2m$-dimensional matrices. In effect, note that the commutant $\{J\}' \subset \generallineargroup(2m, \R)$ of $J$ is the image of the group $\generallineargroup(m,\C)$ under the monomorphism $\phi$, whose action is given as follows 
+
+\begin{equation}
+    \begin{split}
+    \phi: \generallineargroup(m,\C) \rightarrow \generallineargroup(2m,\R), \textnormal{ s.t. }
+    \begin{array}{cc}
+         M \in \generallineargroup(m,\C), \\
+         M \overset{\phi}{ \mapsto} 
+        \left(
+            \begin{array}{cc}
+                \Re M & -\Im M  \\
+                \Im M & \Re M
+            \end{array}
+        \right) \in \generallineargroup(2m, \R).
+    \end{array}
+    \end{split}
+\end{equation}|
+
+By invoking \cref{Theorem_Quotient_Group}, one notices that there is an 
+explicit one-to-one correspondence between the complex structures 
+on a  $2m$-dimensional real-valued vector space $\vectorspace$ and the elements of the quotient
+$\frac{\generallineargroup(2m, \R)}{\generallineargroup(m, 
+\C)}$\footnote{Here, a short summary of the main topological properties of the real-valued and complex-valued general linear groups is presented.
+
+\begin{enumerate}
+    \item The real-valued $\generallineargroup(m, \R)$ is non-compact. Its maximal compact subgroup is the orthogonal group $O(m)$, while the maximal compact subgroup of $\generallineargroup^+(m, \R)$ is the special orthogonal group $SO(m)$. As for $SO(m)$, the group  $\generallineargroup^+(m, \R)$ is not simply connected if $m \neq 1$, but rather has a fundamental group
+        
+        \begin{equation*}
+            \pi_1(SO(m)) = \left\{ \begin{array}{cc}
+                 \mathds{Z} \textnormal{ for } m = 2 \\
+                \mathds{Z}_2 \textnormal{ for } m > 2 
+            \end{array}
+            \right..
+        \end{equation*}
+    
+    \item The complex-valued $\generallineargroup(m, \C)$ is a connected space. This follows, in part, since the multiplicative group of complex numbers $\C - \{0\}$ is connected as well. The complex-valued general linear group is not compact however, rather its maximal compact subgroup, $U(m)$, is a compact (group/space). As for $U(m)$, the group manifold $\generallineargroup(m, \C)$ is not simply connected but has a fundamental group $\pi \simeq \mathds{Z}$.
+\end{enumerate}
+}. \medbreak
+
+\begin{remark}
+    \textnormal{First consider the topological space }$X = \generallineargroup(2m,\R)$. \textnormal{Then consider a subspace of it, } $A = \generallineargroup(m,\C)$. \textnormal{The homomorphism } $\phi: \generallineargroup(m,\C) \rightarrow \generallineargroup(2m,\R)$, \textnormal{which in reality is an isomorphism, induces an equivalence relationship } $\sim_{\phi}$ s.t. 
+    
+    $$
+        A \sim_{\phi} B \leftrightarrow A = B, \quad A,B \in \generallineargroup(2m,\R).
+    $$
+    
+   \textnormal{Now, the quotient space } $\frac{\generallineargroup(2m,\R)}{\generallineargroup(m,\C)}$ \textnormal{is, by definition, } $\frac{\generallineargroup(2m,\R)}{\sim_{\phi}}$, \textnormal{given by }
+    
+    \begin{equation}
+        \frac{\generallineargroup(2m,\R)}{\sim_{\phi}} = \{\generallineargroup(2m,\R) - \generallineargroup(m,\C)\} \cup \{0_{\vectorspace}\}.
+    \end{equation}
+\end{remark}
+
+\bigbreak
+
+A complex structure $J$ on $\vectorspace$ generates a complex structure on the dual space to $\vectorspace$, $\vectorspace^{*}$, as follows 
+
+\begin{equation}
+    \langle v, J \omega \rangle = \langle Jv, \omega \rangle, \quad \begin{array}{cc}
+         v \in \vectorspace \\
+         \omega \in \vectorspace^{*}
+    \end{array}.
+\end{equation}
+
+\begin{df}
+    \textnormal{A scalar product $h: \vectorspace \rightarrow \C$ on a real-valued vector space $\vectorspace$ equipped with a complex structure $J$ is called \textit{Hermitian} if it is $J$-invariant, i.e.}
+
+    \begin{equation}
+        h(Jv, Jv') = h(v, v'), \quad v,v' \in \vectorspace.
+    \end{equation}
+
+\end{df}
+
+\blanky \bigbreak
+
+From this, it follows immediately that $h(Jv, v) = 0, \blanky \forall v \in \vectorspace$. Moreover, $\vectorspace$ admits an adapted basis, which is orthonormal with respect to this $h$-scalar product. Furthermore, one can also define a skew-symmetric bilinear form, which reads
+
+\begin{equation}\label{Complex_Manifolds_skew_symmetric_form}
+    \Omega(v,v') \equiv h(Jv, v'),
+\end{equation}
+
+on $\vectorspace$, which is $J$-invariant as well. \smallbreak
+
+One may be interested in defining the so-called \textit{complexification} of a real-valued vector space $\vectorspace$ by considering of a morphism between the rings $\R$ and $\C$, as follows,
+
+\begin{df}
+    \textnormal{Let $\vectorspace$ be a real-valued vector space. The \textit{complexification} of $\vectorspace$ is defined as the tensor product of $\vectorspace$ with $\C$, thought of as a two-dimensional real veector space, as follows}
+        
+        \begin{equation*}
+            \vectorspace^{\C} = \C \otimes \vectorspace, \textnormal{ s.t. } \begin{array}{cc}
+                 \alpha(v \otimes \beta) = v \otimes (\alpha \beta), \quad v \in \vectorspace, \alpha, \beta \in \C. \\
+                 \vectorspace^{\C} \simeq \vectorspace \oplus i \vectorspace \rightarrow v = v_1 \otimes 1 + v_2 \otimes i, \quad v_1, v_2 \in \vectorspace.
+            \end{array}
+        \end{equation*}
+    
+    \textnormal{Alternatively, one may use the direct sum as the definition of the complexification $\vectorspace^\C$ of $\vectorspace$ in such a way that , i.e.}
+    
+    $$
+        \vectorspace^\C \equiv \vectorspace \oplus \vectorspace,
+    $$    
+    \textnormal{ where $\vectorspace^\C$ is imbued with a linear complex structure operator $J$ s.t. 
+    $J(v,w) \equiv (-w, v)$. This linear complex structure, thus, encodes the operation "multiplication by $i$" in matrix form. 
+    }
+\end{df}
+
+\begin{remark}
+    \textnormal{From its definition, the complexification $\vectorspace^\C$, the following properties and results hold}
+    
+    \begin{itemize}
+        \item \textnormal{Given a real linear transformation $f: \vectorspace \rightarrow \mathcal{W}$, between two real vector spaces, there is a natural complex linear transformation $f^\C$, the complexification of $f$, $f^\C : \vectorspace^\C \rightarrow \mathcal{W}^\C$ given by}
+        
+        \begin{equation*}
+            f^\C (v\otimes z) = f(v) \otimes z, 
+        \end{equation*}
+        
+        \textnormal{ s.t. } 
+        
+        \begin{enumerate}
+             \item $(\idop_\vectorspace)^\C = \idop_{\vectorspace^\C}$,
+             \item $(f \circ g) = f^\C \circ g^\C$,
+             \item $(f + g) = f^\C + g^\C$,
+             \item $(af)^\C = a f^\C, \quad \in \R$.
+        \end{enumerate} 
+        
+        \textnormal{
+        The map $f^\C$ commutes with conjugation, and maps the real subspace of $\vectorspace^\C$ with the real subspace of $\mathcal{W}^\C$. Conversely, a complex linear map $g : \vectorspace^\C \rightarrow \mathcal{W}^\C$ is the complexification of a real linear map if and only if it commutes with conjugation. Hence, it follows that 
+        }
+        
+        $$
+            \textnormal{Hom}_{\R}(\vectorspace, \mathcal{W})^\C \simeq \textnormal{Hom}_{\R}(\vectorspace^\C, \mathcal{W}^\C),
+        $$
+        
+        \textnormal{
+        where $\textnormal{Hom}_{\R}(\vectorspace, \mathcal{W})$ is the space of all real-valued linear maps from $\vectorspace$ to $\mathcal{W}$.
+        }
+        
+        \item \textnormal{
+        The dual $\vectorspace^{*}$ of a real-valued vector space $\vectorspace$ is the space $\vectorspace^{*}$ of all real-valued linear maps from $\vectorspace$ to $\R$. 
+        The complexification of $\vectorspace^{*}$ can be naturally be thought of as $\textnormal{Hom}_{\R}(\vectorspace, \C)$. This is,
+        }
+        
+        $$
+            (\vectorspace^{*})^\C = {\vectorspace^{*}} \otimes \C \simeq \textnormal{Hom}_{\R}(\vectorspace, \C).
+        $$
+        
+        The isomorphism is given by $(\omega_1 \otimes 1 + \omega_2 \otimes i) \leftrightarrow \omega_1 + i\omega_2, \quad \omega_1, \omega_2 \in \vectorspace^{*}$. 
+        
+        \item Given a real linear map $\phi : \vectorspace \rightarrow \C$, it may be extended by linearity to yield a complex linear map $\phi: \vectorspace^\C \rightarrow \C$ by letting $\phi(v \otimes z) = z \phi(v)$. 
+        
+        \item Moreover, the previous extension results in an natural isomorphism between the two following structures
+        
+        \begin{equation*}
+            (\vectorspace^{*})^\C \simeq (\vectorspace^\C)^{*}. 
+        \end{equation*}
+    \end{itemize}
+    
+\end{remark}
+
+\blanky \bigbreak
+
+Then, the complexification $\vectorspace$ is a $2m$-dimensional complex space. A complex structure $J$ on $\vectorspace$ is naturally extended to $\vectorspace^\C$ by letting $J \circ i = i \circ J$, allowing $\vectorspace^\C$ to be split into a direct sum of two components
+
+\begin{equation} \label{Complex_Manifolds_holo_antiholo_structures}
+\begin{split}
+    &\vectorspace^\C = \vectorspace^{1,0} \oplus \vectorspace^{0,1}, \textnormal{ where }\begin{array}{cc}
+         \textnormal{$\vectorspace^{1,0}$ is the complex holomorphic subspace }: \vectorspace^{1,0} = \{v + i J v, \blanky v \in \vectorspace\}  \\
+         \textnormal{$\vectorspace^{0,1}$ is the complex antiholomorphic subspace }: \vectorspace^{0,1} = \{v - i J v, \blanky v \in \vectorspace\}.
+    \end{array}
+\end{split}
+\end{equation}
+
+These are the eigenspaces of $J$ characterized by the eigenvalues $i$ and $-i$ respectively. Furthermore, there is the \textit{antilinear complex conjugate morphism}  
+
+\begin{equation}
+    v = v_1 + iv_2 \mapsto \bar{v} = v_1 - i v_2, \quad \bm{\omega} \mapsto \bar{\bm{\omega}}, \begin{array}{cc}
+         \bm{\omega} \in \vectorspace^{r,s} \\
+         \bar{\bm{\omega}} \in \vectorspace^{s,r}
+    \end{array} r ,s = 0,1, \quad \textnormal{ and s.t. } \bar{Jv} = J \bar{v}.
+\end{equation}
+
+From the previous remarks, it is clear that the complexification $(\vectorspace^{*})^\C$ of the dual $\vectorspace^{*}$ of $\vectorspace$ is the complex dual of $\vectorspace^\C$. This allows for a dual decomposition to \cref{Complex_Manifolds_holo_antiholo_structures}, as follows 
+
+\begin{equation} \label{Complex_Manifolds_holo_antiholo_dual_structures}
+\begin{split}
+    &(\vectorspace^\C)^{*} = (\vectorspace^{1,0})^{*} \oplus (\vectorspace^{0,1})^{*}, \textnormal{ where }\begin{array}{cc}
+         \textnormal{$(\vectorspace^{1,0})^{*}$ is the subspace }: (\vectorspace^{1,0})^{*} = \{\omega - i J \omega, \blanky \omega \in \vectorspace^{*}\}  \\
+         \textnormal{$(\vectorspace^{0,1})^{*}$ is the subspace }: (\vectorspace^{0,1})^{*} = \{\omega + i J \omega, \blanky \omega \in \vectorspace^{*}\}.
+    \end{array}
+\end{split}
+\end{equation}
+
+are the annihilators\footnote{
+   The annihilator of a vector subspace $\mathcal{S}$ of a vector space $\vectorspace$ is the set $S^{0} \subset \vectorspace^{*}$ of linear functionals s.t. $f(s) = 0, \quad s \in \mathcal{S}$.
+} of ${\vectorspace^{1,0}}$ and ${\vectorspace^{0,1}}$ respectively. They are the eigenspaces of the complex structure $J$ on $(\vectorspace^{*})^\C$ characterized by the eigenvalues $i$ and $-i$, respectively. \bigbreak
+
+Using the preceding remarks and results, a Hermitian scalar product $h$ on $\vectorspace$ can be uniquely extended to a symmetric complex $J$-invariant bilinear fo on $\vectorspace^{\C}$ fulliling the following conditions 
+
+\begin{itemize}
+    \item $h(\xoverline{v}, \xoverline{v}') = \xoverline{h(v,v')}, \quad v,v' \in \vectorspace^\C$.
+    \item $h(v, \xoverline{v}) > 0, \quad v \in \vectorspace^{\C} - \{{\bf 0}\}$.
+    \item $h(v, v') = 0$ if $v,v'$ are simultaneously holomorphic or antiholomorphic. 
+\end{itemize}
+
+This complex bilinear form, thus, induces a non-degenerate Hermitian form on $\vectorspace^\C$, as follows 
+
+$$
+    \langle v | v' \rangle_{h} \equiv h(v, \bar{v}'), 
+$$
+
+s.t. the holomorphic and antiholomorphic spaces are mutually orthogonal. Accordingly, the skew-symmetric form $\Omega$, introduced in \cref{Complex_Manifolds_skew_symmetric_form}, can be extendd to $\vectorspace^C$ so that 
+
+\begin{equation}
+    \begin{array}{cc}
+          \Omega(\xoverline{v}, \xoverline{v}') = \xoverline{\Omega(v,v')}, \quad v,v' \in \vectorspace^\C\\ 
+          \Omega(v,v') = 0, \quad v,v' \in \vectorspace^{r,s},\quad r,s=0,1. 
+    \end{array}
+\end{equation}
+
+\clearpage
+
+\subsection{Almost-complex manifolds}
+
+Let $Z$ be a $2m$-dimensional smooth real-valued manifold, with coordinate basis $(z^i)_{i=1}^{2m}.$
+
+%\subsection{.}
+
+\bibliography{citations.bib}
+\bibliographystyle{apsrev4-1}
 
 \end{document}
 
