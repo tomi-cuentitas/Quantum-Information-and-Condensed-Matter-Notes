@@ -1,22 +1,25 @@
-\subsection{Classical Spin Systems}
+\subsection{\underline{Classical Spin Systems}}
 
-Classical spin systems are idealized versions of magnets. Although many magnetic phenomena in materials are inherently quantum mechanical, many properties are well described at least qualitatively by classical spin systems. \\
+Classical spin systems are idealized versions of magnets. Although many magnetic phenomena in materials are inherently quantum mechanical, many properties are well described at least qualitatively by classical spin systems. \bigbreak
 
-Each degrees of freedom of a spin system models a magnetic moment at a fixed location. A classical spin is simply the angular momentum vector of a spinning particle, and so can be represented by an arrow, which is assumed to have fixed length. For a spin system to be well-defined, the following requirements are needed 
+Each degree of freedom of a spin system models a magnetic moment at a fixed location. A classical spin is simply the angular momentum vector of a spinning particle, and so can be represented by an arrow, which is assumed to have fixed length. For a spin system to be well-defined, the following requirements are needed 
 
 \begin{itemize}
-    \item constraints on where the arrow is allowed to point. For example, in the XY-model, the arrow is constrained to point in a two-dimensional plane, and in the Ising model, the arrow is allowed to point in only directions. More complicated examples are the sigma-models, where instead of an arrow, the degrees of freedom take values on some manifold. In this language, the spins in the XY model take values on a circle. \\
-    \item Where the spins physically are. For example, they may be at each point of some lattice in some dimension or they could be continuously distributed (ie. an arrow for every point in space eg. a field theory). \\
-    \item How the spins themselves interact with one another ie. the energies associated with the possible spin configurations. Two major types of interaction are the ferromagnetic, where the energy is lowered when two spin are aligned, and antiferromagnetic, where the energy is lowered when they point in opposite directions. A given model can include interactions of both types. \\
+    \item constraints on where the arrow is allowed to point. For example, in the XY-model, the arrow is constrained to point in a two-dimensional plane, and in the Ising model, the arrow is allowed to point in only directions. More complicated examples are the sigma-models, where instead of an arrow, the degrees of freedom take values on some manifold. In this language, the spins in the XY model take values on a circle. \medbreak
+    
+    \item Where the spins physically are. For example, they may be at each point of some lattice in some dimension or they could be continuously distributed (ie. an arrow for every point in space eg. a field theory). \medbreak
+    
+    \item How the spins themselves interact with one another ie. the energies associated with the possible spin configurations. Two major types of interaction are the ferromagnetic, where the energy is lowered when two spin are aligned, and antiferromagnetic, where the energy is lowered when they point in opposite directions. A given model can include interactions of both types. \medbreak
 \end{itemize}
 
-Many many-body physical systems can effectively be treated as being on a lattice. For example, many of these systems are often well treated by utilizing a tight-binding model, where each electron is treated as being located at a fixed nucleus and so live at particular points in space. In some situations, the physics itself arises from the interplay between the degrees of freedom and the particular lattice they live on eg. geometrical frustration in the two-dimensional antiferromagnetic Ising model on a triangular lattice. Calling the two allowed directions in the Ising model as "up" and "down", antiferromagnetic interactions make adjacent spins different. On the square lattice, it is possible to make a low-energy state by alternating up and down spins, but on a triangular lattice this is not the case. Around a triangle, there must be at least two mutually up or down spins adjacent to each other. Such a bond in said to be unsatisfied and so the spins are frustrated, yielding completely new properties different fro the unfrustrated model. \\
+Many many-body physical systems can effectively be treated as being on a lattice. For example, many of these systems are often well treated by utilizing a tight-binding model, where each electron is treated as being located at a fixed nucleus and so live at particular points in space. In some situations, the physics itself arises from the interplay between the degrees of freedom and the particular lattice they live on eg. geometrical frustration in the two-dimensional antiferromagnetic Ising model on a triangular lattice. Calling the two allowed directions in the Ising model as "up" and "down", antiferromagnetic interactions make adjacent spins different. On the square lattice, it is possible to make a low-energy state by alternating up and down spins, but on a triangular lattice this is not the case. Around a triangle, there must be at least two mutually up or down spins adjacent to each other. Such a bond in said to be unsatisfied and so the spins are frustrated, yielding completely new properties different fro the unfrustrated model. \bigbreak
 
-\subsubsection{Formalization of Statistical Mechanics}
+\subsubsection{\textit{Formalization of Statistical Mechanics}}
 
-A formal definition for a classical general spin chain, as a dynamical system, requires the use of measure theory terminology. \\
+A formal definition for a classical general spin chain, as a dynamical system, requires the use of measure theory terminology. \bigbreak
 
-\paragraph{\textbf{Some technical aspects}} 
+\paragraph{\textswab{Some technical aspects}} 
+
 \underline{\textbf{An introduction to Measure Theory}}
 
 A \textbf{measure} is a mathematical device which reflects the notion of quantity for a given set. Let ${\bf X}$ be a set, then each subset ${\bf U} \in {\bf X}$ is assigned a positive real number $\mu[{\bf U}]$. Thus, the measure is a function
@@ -26,7 +29,7 @@ $$
 $$
 
 where $2^{\bf X} = \{{\bf S} \in {\bf X}\}$ is the power set of ${\bf X}$. However, it's usually impossible to define a satisfactory notion of quantity for all subsets of ${\bf X}$. Therefore, it is useful to consider 
-$\textnormal{Dom}(\mu) \in {\bf X}$ ie. only some subsets of ${\bf X}$ will be measurable. Before defining a proper measure, it's domain must be specified first. This domain will be a collection of subsets of the space ${\bf X}$, called a $\sigma$-\textbf{algebra}. \\
+$\textnormal{Dom}(\mu) \in {\bf X}$ ie. only some subsets of ${\bf X}$ will be measurable. Before defining a proper measure, it's domain must be specified first. This domain will be a collection of subsets of the space ${\bf X}$, called a $\sigma$-\textbf{algebra}. \bigbreak
 
 Let ${\bf X}$ be a nonempty set, which in the following sections will be a sample space. A $\sigma$-\textbf{algebra} over ${\bf X}$ is a collection $\mathcal{F} = \{{\bf U}_i\}_{i \in \mathds{N}}$ of subsets of ${\bf X}$ with the following properties:
 
@@ -44,7 +47,7 @@ Let ${\bf X}$ be a nonempty set, which in the following sections will be a sampl
     $\\
 \end{itemize}
 
-Technically, the fourth property, is a corollary and follows directly from the second and third properties and due to De Morgan's laws. \\
+Technically, the fourth property, is a corollary and follows directly from the second and third properties and due to De Morgan's laws. \bigbreak
 
 A \textbf{measurable space} is an ordered pair $({\bf X}, \mathcal{F})$, where ${\bf X}$ is a set and where $\mathcal{F}$ is a $\sigma$-algebra on ${\bf X}$. Some of the most common examples of $\sigma$-algebras are
 
@@ -91,10 +94,10 @@ A \textbf{measurable space} is an ordered pair $({\bf X}, \mathcal{F})$, where $
     \mathcal{M} = \{(a,b): -\infty \leq a < b \leq \infty\}, 
     $$
     
-    then the $\sigma$-algebra $\mathcal{B} = \sigma(\mathcal{M})$ contains all open subsets of $\mathds{R}$, all closed subset, all countable intersections of open subsets, countable unions of closed subsets, etc. For example, $\mathcal{B}$ contains, as elements, the set $\mathds{Z}$ of integers, the set $\mathds{Q}$ of rationals and the set $\mathds{I}$ of irrationals. Then, $\mathcal{B}$ is called the \textbf{Borel} $\sigma$\textbf{-algebra} of $\mathds{R}$. \\
+    then the $\sigma$-algebra $\mathcal{B} = \sigma(\mathcal{M})$ contains all open subsets of $\mathds{R}$, all closed subset, all countable intersections of open subsets, countable unions of closed subsets, etc. For example, $\mathcal{B}$ contains, as elements, the set $\mathds{Z}$ of integers, the set $\mathds{Q}$ of rationals and the set $\mathds{I}$ of irrationals. Then, $\mathcal{B}$ is called the \textbf{Borel} $\sigma$\textbf{-algebra} of $\mathds{R}$. \bigbreak
 \end{itemize}
 
-In general, let ${\bf X}$ be a topological space and let $\mathcal{M}$ be the set of all open subsets of ${\bf X}$. The $\sigma$-algebra $\sigma(\mathcal{M)}$ is the \textbf{Borel} $\sigma$\textbf{-algebra} of {\bf X} and is denoted by $\mathcal{B}({\bf X})$. It contains all open sets and closed subsets of ${{\bf X}}$, all countable intersections of open sets (called $G\delta$ sets), all countable unions of closed sets (called $F\sigma$ sets). For example, if ${\bf X}$ is Hausdorff, then $\mathcal{B}({\bf X})$ contains all countable and co-countable sets.\\
+In general, let ${\bf X}$ be a topological space and let $\mathcal{M}$ be the set of all open subsets of ${\bf X}$. The $\sigma$-algebra $\sigma(\mathcal{M)}$ is the \textbf{Borel} $\sigma$\textbf{-algebra} of {\bf X} and is denoted by $\mathcal{B}({\bf X})$. It contains all open sets and closed subsets of ${{\bf X}}$, all countable intersections of open sets (called $G\delta$ sets), all countable unions of closed sets (called $F\sigma$ sets). For example, if ${\bf X}$ is Hausdorff, then $\mathcal{B}({\bf X})$ contains all countable and co-countable sets. \bigbreak
 
 Let $({\bf X}, \mathcal{F})$ be a measurable space. A \textbf{measure} on $\mathcal{F}$ is a map $\mu: \mathcal{F} \rightarrow \mathds{R}_{+}$, which is \textbf{countably additive} ie. 
 
@@ -111,7 +114,7 @@ Then a \textbf{measure space} is an ordered triple $({\bf X}, \mathcal{F}, \mu)$
     \mu[{\bf S}] =\textnormal{card}[{\bf S}].
     $$
     
-    This measure provides no means of distinguishing between sets of the same cardinality, only being useful in finite measure spaces. \\
+    This measure provides no means of distinguishing between sets of the same cardinality, only being useful in finite measure spaces. \bigbreak
     
     \item A \textbf{finite measure space} is made up by a finite set ${\bf X}$, and a $\sigma$-algebra $\mathcal{F}= {\bf X}$. Then a measure $\mu$ on ${\bf X}$ is entirely defined by some function $f: {\bf X} \rightarrow \mathds{R}_{+}$. For any subset $\{x_i\}_{i=1}^{N}$ we then define 
     
@@ -119,13 +122,13 @@ Then a \textbf{measure space} is an ordered triple $({\bf X}, \mathcal{F}, \mu)$
     \mu\bigg(\{x_i\}_{i=1}^{N}\bigg)= \sum_{i=1}^{N}f(x_i).
     $$
     
-    Discrete probability theory is based on at most countable sample spaces $\Omega$, where all subsets of $\Omega$ may be treated as events, and thus elements of the $\sigma$-algebra $\mathcal{F}$. \\
+    Discrete probability theory is based on at most countable sample spaces $\Omega$, where all subsets of $\Omega$ may be treated as events, and thus elements of the $\sigma$-algebra $\mathcal{F}$. \bigbreak
     
     \item \textbf{Discrete measures}: If, instead, the sample space is uncountable, (eg. it has a discrete part a non-discrete part), it can be decomposed into \textbf{atoms}. The atoms are an at most countable (maybe even empty) set, whose probability is the sum of probabilities of all atoms. If this sum is equal to 1, then all other points can safely be excluded from the sample space, returning to the discrete case. Otherwise, if the sum of probabilities of all atoms is between 0 and 1, then the measure space decomposes into a discrete atomic part and a non-atomic part.    If $({\bf X}, \mathcal{F},\mu)$ is a measure space, then an \textbf{atom} of $\mu$ is a subset $\mathbf{A} \in \mathcal{F}$ such that
     
     \begin{itemize}
         \item it has positive measure $\mu[{\bf A}] = A > 0$.
-        \item and it contains no set of smaller positive measure, ie. $\forall {\bf B} \subset {\bf A}$, either $\mu[{\bf B}] = A$ or $\mu[{\bf B}] = 0$.\\
+        \item and it contains no set of smaller positive measure, ie. $\forall {\bf B} \subset {\bf A}$, either $\mu[{\bf B}] = A$ or $\mu[{\bf B}] = 0$.\bigbreak
     \end{itemize}
     
     For example, in the finite measure space above, the singleton set $\{x_n\}$ is an atom if $f(x_n) > 0$. The measure space $({\bf X}, \mathcal{F},\mu)$ is called discrete if it can be written as 
@@ -134,9 +137,9 @@ Then a \textbf{measure space} is an ordered triple $({\bf X}, \mathcal{F}, \mu)$
     {\bf X} = {\bf Z} \sqcup (\sqcup_{n=1}^{\infty} A_n),
     $$
     
-    where $\mu[{\bf Z}] = 0$ and where $\{A_n\}_{n=1}^{\infty}$ is a collection of atoms. Note that any finite measure space is discrete. \\
+    where $\mu[{\bf Z}] = 0$ and where $\{A_n\}_{n=1}^{\infty}$ is a collection of atoms. Note that any finite measure space is discrete. \bigbreak
     
-    For example, consider the set ${\bf X}$ = \{1, 2, ..., 9, 10\} and let the $\sigma$-algebra ${\displaystyle \Sigma }$ be the power set of ${\bf X}$. Define the measure ${\displaystyle \mu }$  of a set to be its cardinality, that is, the number of elements in the set. Then, each of the singletons ${i}$, for i = 1, 2, ..., 9, 10 is an atom. On the other hand, consider the Lebesgue measure on the real line. This measure has no atoms. \\
+    For example, consider the set ${\bf X}$ = \{1, 2, ..., 9, 10\} and let the $\sigma$-algebra ${\displaystyle \Sigma }$ be the power set of ${\bf X}$. Define the measure ${\displaystyle \mu }$  of a set to be its cardinality, that is, the number of elements in the set. Then, each of the singletons ${i}$, for i = 1, 2, ..., 9, 10 is an atom. On the other hand, consider the Lebesgue measure on the real line. This measure has no atoms. \bigbreak
     
     %\item \textbf{The Lebesgue measure}, the \textbf{Haar measures} and the \textbf{Hausdorff measure}. \\ 
     
@@ -171,16 +174,16 @@ Then a \textbf{measure space} is an ordered triple $({\bf X}, \mathcal{F}, \mu)$
     \mu_{\rho}({\bf B}) = \int_{{\bf B}} \rho,
     $$
     
-    where $\rho$ is the \textbf{density function} for $\mu$. \\
+    where $\rho$ is the \textbf{density function} for $\mu$. \bigbreak
 
 \end{itemize}
 
 Then, the ordered triple $({\bf X}, \mathcal{F}, \mu)$ is a \textbf{probability space} if $\mu$ is a \textbf{probability measure}. This is, a measure $\mu$ on ${\bf X}$ is a \textbf{probability measure} if $\mu[{\bf X}] = 1$ \footnote{\textbf{Stochastic processes} are a particular kind of probability measures, which represent a system randomly evolving in time. Let $\mathcal{S}$ be any  randomly-evolving complex system, let ${\bf X}$ be the set of all possible states of the system $\mathcal{S}$ and let $\mathds{T}$ be a set representing time. For example, 
     
     \begin{itemize}
-        \item If $\mathcal{S}$ is a rolling die, then ${\bf X}= \{1,2,3,4,5,6\}$ and $\mathds{T}=\mathds{N} $ indexes the successive dice rolls. \\
-        \item If $\mathcal{S}$ is a publically traded stock, then its state is its price. Thus ${\bf X} = \mathds{R}$. If we assume trading occurs continuously when the market is open, and let each trading day have length $c < 1$, then one representation of market time is $\mathds{T} = \sqcup_{n=1}^{\infty} [n, n+c]$. \\
-        \item If $\mathcal{S}$ is a weather system, then its state can be representated by a large array of data ${\bf x} = [x_1,\cdots,x_n]$. Thus ${\bf X} = \mathds{R}^n$ and since the weather evolves continuously $\mathds{T}= \mathds{R}$.\\
+        \item If $\mathcal{S}$ is a rolling die, then ${\bf X}= \{1,2,3,4,5,6\}$ and $\mathds{T}=\mathds{N} $ indexes the successive dice rolls.  \bigbreak
+        \item If $\mathcal{S}$ is a publically traded stock, then its state is its price. Thus ${\bf X} = \mathds{R}$. If we assume trading occurs continuously when the market is open, and let each trading day have length $c < 1$, then one representation of market time is $\mathds{T} = \sqcup_{n=1}^{\infty} [n, n+c]$.  \bigbreak
+        \item If $\mathcal{S}$ is a weather system, then its state can be representated by a large array of data ${\bf x} = [x_1,\cdots,x_n]$. Thus ${\bf X} = \mathds{R}^n$ and since the weather evolves continuously $\mathds{T}= \mathds{R}$. \bigbreak
     \end{itemize}
     
     The random evolution of $\mathcal{S}$ is represented by assigning a probability to every possible \textit{history}. A history is an assignment of a state in ${\bf X}$ to every moment in time (ie. in $\mathds{T}$). In other words, it's a function $f: \mathds{T} \rightarrow {\bf X}$. The set of all possibly histories is ${\bf H} = {\bf X}^{\mathds{T}}$ ie. the set of all functions $f: \mathds{T} \rightarrow {\bf X}$. The $\sigma$-algebra on ${\bf H}$ is usually a \textbf{cylinder algebra}. 
@@ -192,12 +195,12 @@ Then, the ordered triple $({\bf X}, \mathcal{F}, \mu)$ is a \textbf{probability 
         \mathcal{M} = \bigg\{\bigtimes\limits_{\lambda \in \Lambda}{\bf U}_\lambda \textnormal{ } | \textnormal{ } \forall \lambda \in \Lambda \textnormal{ and } {\bf U}_{\lambda} \in \mathcal{F}_{\lambda} \textnormal{ and } {\bf U}_{\lambda} = {\bf X}_{\lambda} \textnormal{ for all but finitely many } \lambda \bigg\},
         $$
         
-    such subsets are called \textbf{cylinder sets} in ${\bf X}$ and $\sigma(\mathcal{M})$ is the \textbf{cylinder} $\sigma$\textbf{-algebra} denoted by $\bigtimes\limits_{\lambda \in \Lambda}{\bf X}_\lambda \mathcal{F}_{\lambda}$. If the ${\bf X}_{\lambda}$ are topological spaces with Borel $\sigma$-algebras $\mathcal{F}_{\lambda}$, and we endow ${\bf X}$ with the Tychonoff product topology, then $\bigtimes\limits_{\lambda \in \Lambda} \mathcal{F}_{\lambda}$ is the Borel $\sigma$-algebra of ${\bf X}$. \\
+    such subsets are called \textbf{cylinder sets} in ${\bf X}$ and $\sigma(\mathcal{M})$ is the \textbf{cylinder} $\sigma$\textbf{-algebra} denoted by $\bigtimes\limits_{\lambda \in \Lambda}{\bf X}_\lambda \mathcal{F}_{\lambda}$. If the ${\bf X}_{\lambda}$ are topological spaces with Borel $\sigma$-algebras $\mathcal{F}_{\lambda}$, and we endow ${\bf X}$ with the Tychonoff product topology, then $\bigtimes\limits_{\lambda \in \Lambda} \mathcal{F}_{\lambda}$ is the Borel $\sigma$-algebra of ${\bf X}$. 
     \end{itemize}
     
-    Suppose that ${\bf X}$ has a $\sigma$-algebra $\mathcal{F}$, then it follows ${\bf H}$'s $\sigma$-algebra is $\mathcal{H}= \bigtimes\limits_{t \in \mathds{T}}\mathcal{F}_t$. An \textbf{event} is an element of $\mathcal{F}$ and thus corresponds to a cylinder set, a countable union of cylinder sets etc. Suppose, for all ${t\in \mathds{T}}$, that ${\bf U}_t \in \mathcal{F}$ with ${\bf U}_t = X$ for all but finitely many $t$. The cylinder set ${\bf U} = \prod_{t \in \mathds{T}} {\bf U}_t$ thus corresponds to the assertion: "for every ${t\in \mathds{T}}$, at time $t$, the state of $\mathcal{S}$ was inside ${\bf U}_t$. A probability measure on $(\bf H, \mathcal{H})$ is then a way of assigning probabilities to such assertions. }. \\
+    Suppose that ${\bf X}$ has a $\sigma$-algebra $\mathcal{F}$, then it follows ${\bf H}$'s $\sigma$-algebra is $\mathcal{H}= \bigtimes\limits_{t \in \mathds{T}}\mathcal{F}_t$. An \textbf{event} is an element of $\mathcal{F}$ and thus corresponds to a cylinder set, a countable union of cylinder sets etc. Suppose, for all ${t\in \mathds{T}}$, that ${\bf U}_t \in \mathcal{F}$ with ${\bf U}_t = X$ for all but finitely many $t$. The cylinder set ${\bf U} = \prod_{t \in \mathds{T}} {\bf U}_t$ thus corresponds to the assertion: "for every ${t\in \mathds{T}}$, at time $t$, the state of $\mathcal{S}$ was inside ${\bf U}_t$. A probability measure on $(\bf H, \mathcal{H})$ is then a way of assigning probabilities to such assertions. }. \bigbreak
     
-\paragraph{\textbf{Gibbs Random Fields}}
+\paragraph{\textswab{Gibbs Random Fields}}
 
 A \textbf{Gibbs random field} is defined on a lattice, as follows
 
@@ -211,7 +214,8 @@ A \textbf{Gibbs random field} is defined on a lattice, as follows
         \omega_{\Lambda} = (\omega(t))_{t \in \Lambda}.
     $$
     
-    In particular, if $A_1 \cap A_2 = \emptyset$ and $A_1 \cup A_2 = \mathds{L}$, then the configuration $\omega_{\Lambda_1} \omega_{\Lambda_2}$ is the configuration whose restrictions to $\Lambda_1$ and $\Lambda_2$ are $\omega_{\Lambda_1}$ and $\omega_{\Lambda_2}$, respectively. \\
+    In particular, if $A_1 \cap A_2 = \emptyset$ and $A_1 \cup A_2 = \mathds{L}$, then the configuration $\omega_{\Lambda_1} \omega_{\Lambda_2}$ is the configuration whose restrictions to $\Lambda_1$ and $\Lambda_2$ are $\omega_{\Lambda_1}$ and $\omega_{\Lambda_2}$, respectively. \bigbreak
+    
     \item For each subset $\Lambda \subset \mathds{L}$, $\mathcal{F}_{\Lambda}$ is the $\sigma$-algebra generated by the family of functions 
     
     $$
@@ -219,6 +223,7 @@ A \textbf{Gibbs random field} is defined on a lattice, as follows
     $$
     
     The union of these $\sigma$-algebras as $\Lambda$ varies over $\mathcal{L}$ is the algebra of cylinder sets on the lattice. 
+    
     \item The potential is a family of functions 
     
     \begin{equation*}
@@ -229,6 +234,7 @@ A \textbf{Gibbs random field} is defined on a lattice, as follows
     
     \begin{enumerate}
         \item $\forall A \in \mathcal{L}$, $\Phi_A$ is $\mathcal{F}_\Lambda$-measurable, meaning it depends only on the restriction $\omega_A$, and does so measurably. 
+        
         \item $\forall A \in \mathcal{L}, \blanky \forall \omega \in \Omega$, then 
         
         $$
@@ -236,7 +242,7 @@ A \textbf{Gibbs random field} is defined on a lattice, as follows
               A \cap \Lambda \neq \emptyset}} \Phi_A (\omega),
         $$
         
-        where $\Phi_A$ is interpreted as the contribution to the total energy, ie. the Hamiltonian, associated to the interaction among all the points of finite set $A$. Then, $H_{\Lambda}^{\Phi}(\omega)$ is the contribution to the total energy of all the finite sets $A$ that meet $\Lambda$. Typically, the total energy may be infinite. \\
+        where $\Phi_A$ is interpreted as the contribution to the total energy, ie. the Hamiltonian, associated to the interaction among all the points of finite set $A$. Then, $H_{\Lambda}^{\Phi}(\omega)$ is the contribution to the total energy of all the finite sets $A$ that meet $\Lambda$. Typically, the total energy may be infinite. \bigbreak
     
     \item The Hamiltonian in $\Lambda \in \mathcal{L}$ with boundary conditions $\bar \omega$, for the potential $\Phi$, is defined by 
     
@@ -252,7 +258,7 @@ A \textbf{Gibbs random field} is defined on a lattice, as follows
     \end{equation*}
 \end{itemize}
 
-\blanky \\
+\bigbreak
 
 As dynamical systems, the Ising model or lattice gas can be obtained by first ignoring the momenta and assuming that the particles' positions are restricted to a discrete subset of $\mathds{R}^d$. In general, this subset is taken to be the $d$-\textbf{dimensional cubic lattice}. Then,
 
@@ -299,8 +305,7 @@ where $\mathcal{Z}_{\Lambda, \beta, N}$ is the partition function defined on the
 \end{align*}
 
 
-Note that if the degrees of freedom take on continuous values, or the model is defined in the continuum, then the sums are replaced by integrals. Note that, indeed, the probability of a given configuration increases as the energy gets lower, and conversely, that as the temperature gets higher and higher, the energies involved must get larger and larger to make a difference. Note as well that if all the energies are shifted by some constant $E_0$, the probabilities are left unchanged, since both the numerator and denominator are multiplied by the same constant, namely $e^{-\beta E_0}$. \\
-
+Note that if the degrees of freedom take on continuous values, or the model is defined in the continuum, then the sums are replaced by integrals. Note that, indeed, the probability of a given configuration increases as the energy gets lower, and conversely, that as the temperature gets higher and higher, the energies involved must get larger and larger to make a difference. Note as well that if all the energies are shifted by some constant $E_0$, the probabilities are left unchanged, since both the numerator and denominator are multiplied by the same constant, namely $e^{-\beta E_0}$. \bigbreak
 
 Consider then the Ising model, with nearest-neighbour interactions (coupling constant $J$) and a magnetic field $(h)$. Its regular crystalline structure, corresponding to the positions of the magnet's atoms by a finite, non-oriented graph $G = (\Lambda, \mathcal{E})$, whose set of vertices is $\Lambda \subset \mathds{Z}^d$. Then, the \textbf{box of radius $n$} is 
 
@@ -308,7 +313,7 @@ $$
     B({n}) = \{-n, \cdots, n\}^d
 $$
 
-The edges of the graph will most often be between nearest neighbours, that is, pairs of vertices $i, j$ such that $||j-i||_{1} = 1$ \footnote{In this discrete setting, the norm is defined such that $||i||_1 = \sum_{k=1}^d |i_k|$}. Two nearest-neighbours spins are denoted by $i \sim j$. Then, the set of edges in the box $B(n)$ is $\{\{i,j\} \subset B(n) : i \sim j\}$. \\
+The edges of the graph will most often be between nearest neighbours, that is, pairs of vertices $i, j$ such that $||j-i||_{1} = 1$ \footnote{In this discrete setting, the norm is defined such that $||i||_1 = \sum_{k=1}^d |i_k|$}. Two nearest-neighbours spins are denoted by $i \sim j$. Then, the set of edges in the box $B(n)$ is $\{\{i,j\} \subset B(n) : i \sim j\}$. \bigbreak
 
 The Ising model is defined by first assuming that a spin is located at each vertex of a graph $G = (\Lambda, \mathcal{E})$, such that each single-spin space has cardinality two, ie. each spin can only take two values. It follows, then, that to describe a microstate, a variable $\sigma_i$ taking two possible values ($\pm1$) is associated to each vertex $i \in \Lambda$, which is called the \textbf{spin} at $i$. A microstate of the system is called a \textbf{configuration}, and is thus an element
 
@@ -319,13 +324,13 @@ $$
 An $N$-site chain, with finite $N$, has a configuration space, which is a discrete space, which is a 0-manifold. This 0-manifold has zero topological dimension and $2^N$ cardinality. The microscopic interactions among the spins are defined such that 
 
 \begin{enumerate}
-    \item There are only interactions between pairs of sins located at neighbouring vertices. That is, it is assumed that the spins at two distinct vertices $i, j \in \Lambda$ interact if and only if the pair $\{i, j\}$ is an edge of the graph. \\
+    \item There are only interactions between pairs of sins located at neighbouring vertices. That is, it is assumed that the spins at two distinct vertices $i, j \in \Lambda$ interact if and only if the pair $\{i, j\}$ is an edge of the graph. \bigbreak
     
     \item The interaction favours agreement of spin values. In the simplest form of the Ising model, this is done in the simplest possible way: a pair of spins at the endpoints $i$ and $j$ of an edge, decreases the overall configuration's energy if they agree $\sigma_i = \sigma_j$ and increases if they differ. More precisely, the spins at the endpoints of the $\{i,j\}-$edge contributes to the total energy by an amount $
-        - \sigma_i \sigma_j.$ Therefore, configurations in which most pairs of neighbours are aligned to have smaller energy. \\
+        - \sigma_i \sigma_j.$ Therefore, configurations in which most pairs of neighbours are aligned to have smaller energy. \bigbreak
     
     \item Spins align with the external magnetic field. Assume that a constant external magnetic field of $h \in \mathds{R}$ intensity, oriented along the same direction as the spins, acts on the system. Its interaction with the $i$-th spin contributes an     $
-        -h \sigma_i $ to the total energy. That is, when the magnetic field is positive, the configurations with most of their spins equal to +1 have smaller energy. \\
+        -h \sigma_i $ to the total energy. That is, when the magnetic field is positive, the configurations with most of their spins equal to +1 have smaller energy. \bigbreak
 \end{enumerate}
 
 Then, the energy of a given configuration $\sigma \in \Omega_{\Lambda}$ is obtained by summing the interactions over all pairs and by adding the interaction of each spin with the external magnetic field, thus yielding the \textbf{Ising Hamiltonian}
@@ -349,7 +354,7 @@ $$
     \prob_{\Lambda, \beta, 0} (-\sigma) = \prob_{\Lambda, \beta, 0}. 
 $$
 
-The model is then said to be invariant under global spin flip. When $h\neq0$, this symmetry no longer holds. \\
+The model is then said to be invariant under global spin flip. When $h\neq0$, this symmetry no longer holds. \bigbreak
 
 The expectation value of an observable $f : \Omega_\Lambda \rightarrow \mathds{R}$, under $\mu_{\Lambda, \beta, h}$, is denoted by $\langle f \rangle_{\Lambda, \beta, h}$. 
 The parameter $J$ is the coupling strength, if $J>0$ this models describes a ferromagnetic coupling, while $J<0$ describes an antiferromagnetic coupling. 
@@ -357,7 +362,7 @@ From the partition function, the expectation values of physical quantities can b
 
 \begin{itemize}
     \item Internal energy $\langle E\rangle_{\Lambda, \beta, h} = \frac{1}{\mathcal{Z}} \sum_{n} E_n e^{-\beta E_n} = - \frac{\partial}{\partial \beta} \log \mathcal{Z}$. \\
-    \item Specific heat $C = \frac{\partial}{\partial T} \langle E\rangle_{\Lambda, \beta, h} = k \frac{\partial}{\partial T} T^2 \frac{\partial \log \mathcal{Z}}{\partial T}$ \\
+    \item Specific heat $C = \frac{\partial}{\partial T} \langle E\rangle_{\Lambda, \beta, h} = k \frac{\partial}{\partial T} T^2 \frac{\partial \log \mathcal{Z}}{\partial T}$. \bigbreak
     \item Two-point correlator in the Ising model, 
     
     $$
@@ -385,9 +390,9 @@ From the partition function, the expectation values of physical quantities can b
 
 \clearpage
 
-\subsubsection{\textbf{Exact solution to the classical Ising Models}}
+\subsubsection{\textit{Exact solution to the classical Ising Models}}
 
-Many quantum phase transition in $d$ dimensions are intimately connected to certain well-studied finite temperature phase transition in classical statistical mechanics models in $d+1$ dimensions. \\
+Many quantum phase transition in $d$ dimensions are intimately connected to certain well-studied finite temperature phase transition in classical statistical mechanics models in $d+1$ dimensions. \bigbreak
 
 \begin{tcolorbox}[colback =yellow, title = Physical Context]
 
@@ -395,9 +400,9 @@ The $d=0$ single site quantum Ising and rotor models are then mapped to classica
 
 \end{tcolorbox}
 
-\blanky \\
+\bigbreak
 
-\paragraph{\underline{Zero-dimensional Classical Ising model}}
+\paragraph{\textswab{Zero-dimensional Classical Ising model}}
 
 A system with a finite number of spins, no matter in which directions, is commonly referred to a zero-dimensional model. In the $(D=0)$-Ising model, there are just two degrees of freedom, called $s_1$ and $s_2$, both of which can only take two values $s_i \in S = \{\pm 1\}$ and where the configuration space is given by $(\Omega_\Lambda, \mathcal{F})$, where $\Omega_\Lambda = \{-1, 1\}^{\times 2}$ and where the $\sigma$-algebra $\mathcal{F} = 2^{\Omega_\Lambda}$. To compute the partition function, $\mathcal{Z}_{\Lambda, \beta, B}$, the system's energy must be known for every configuration $(s_1, s_2) \in \Omega_{\Lambda}$, which is assumed to be 
 
@@ -405,7 +410,7 @@ A system with a finite number of spins, no matter in which directions, is common
     E({\bf s}) = - J s_1 s_2 - B(s_1+s_2).
 \end{equation}
 
-This energy models a system made of magnetic moments. Although, in general, the moments can point in any direction, in the Ising model they point up or down one axis - say the $z$-axis - along which an external magnetic field $B$ is applied. The constant $J$ has units of energy and $B$ has units of magnetic moment. If $J>0$, the model is ferromagnetic and the energy favours aligned spins while if $J<0$ it models an antiferromagnetic system, which favours anti-parallel spins. In both cases, $B>0$ is chosen so that the spins tend to align with the external field. \\
+This energy models a system made of magnetic moments. Although, in general, the moments can point in any direction, in the Ising model they point up or down one axis - say the $z$-axis - along which an external magnetic field $B$ is applied. The constant $J$ has units of energy and $B$ has units of magnetic moment. If $J>0$, the model is ferromagnetic and the energy favours aligned spins while if $J<0$ it models an antiferromagnetic system, which favours anti-parallel spins. In both cases, $B>0$ is chosen so that the spins tend to align with the external field. \bigbreak
 
 The partition function may be evaluated as 
 
@@ -437,7 +442,7 @@ In terms of the free energy $F(K,h)$, defined as $\mathcal{Z}_{\Lambda, K, h} = 
     \end{array}
 \end{equation}
 
-\blanky \\
+\bigbreak
 
 The thermal average of a particular spin can also be calculated, provided a source term of the form $h_1 s_1 + h_2 s_2$ is added in the Boltzmann weight, which couples the $i$-th spin to its own independent field $h_i$. Then,
 
@@ -483,7 +488,7 @@ The correlation function $\langle s_1 s_2 \rangle$ as a $K$-derivative,
     \end{split}
 \end{equation}
 
-which may interpreted as quantifying the average interaction energy, which happens to coincide with the correlation of neighbouring spins. In a model with more spins, correlations of not-neighbouring spins (eg. the correlation between $s_5$ and $s_{92}$) cannot be obtained via a $K$-derivative. The distinction between the average interaction energy and generic spin correlations is blurred in this toy-model. \\
+which may interpreted as quantifying the average interaction energy, which happens to coincide with the correlation of neighbouring spins. In a model with more spins, correlations of not-neighbouring spins (eg. the correlation between $s_5$ and $s_{92}$) cannot be obtained via a $K$-derivative. The distinction between the average interaction energy and generic spin correlations is blurred in this toy-model. \bigbreak
 
 Higher-order derivatives with respect to $K$ or $h$ (for uniform $h$) give additional information about fluctuactions about the mean. Thus, 
 
@@ -491,13 +496,13 @@ Higher-order derivatives with respect to $K$ or $h$ (for uniform $h$) give addit
     \chi = \frac{1}{2} \frac{ \partial \langle M \rangle}{\partial h} = \frac{1}{4} \frac{\partial^2 [-\beta F]}{\partial h^2} = \langle M^2 \rangle_{\Lambda, K, h}- \langle M \rangle^2_{\Lambda, K, h}
 \end{equation}
 
-measures the magnetization's fluctuation about its mean and is the magnetic susceptibility, and quantifies the rate of change of the average magnetization with the applied field. \\
+measures the magnetization's fluctuation about its mean and is the magnetic susceptibility, and quantifies the rate of change of the average magnetization with the applied field. \bigbreak
 
-\paragraph{\textbf{One-dimensional Classical Ising model}}
+\paragraph{\textswab{One-dimensional Classical Ising model}}
 
-The standard way for solving the one-dimensional Ising model is to use the transfer matrix. The physical motivation behind it is very elegant: it consists on singling out a given spatial direction, say the $x$-direction. Then the partition function is built up by "evolving" the system from one value of $x=x_0$ to the next value $x=x_1$. Repeating this process yields the full partition function after all values of $x$ are summed over. This method is not only useful for classical statistical mechanics, but by replacing the spatial evolution with a real time-evolution, yields a connection between quantum and classical statistical mechanics. \\
+The standard way for solving the one-dimensional Ising model is to use the transfer matrix. The physical motivation behind it is very elegant: it consists on singling out a given spatial direction, say the $x$-direction. Then the partition function is built up by "evolving" the system from one value of $x=x_0$ to the next value $x=x_1$. Repeating this process yields the full partition function after all values of $x$ are summed over. This method is not only useful for classical statistical mechanics, but by replacing the spatial evolution with a real time-evolution, yields a connection between quantum and classical statistical mechanics. \bigbreak
 
-Now, any real system is finite, one may ask why we should focus on infinite systems. The answer lies that systems with a very large number of degrees of freedom look more like infinite systems than finite ones in the following sense.  Phenomenologically, system at a temperature lower than some Curie temperature $T_C$ will magnetize. But it can be shown rigorously that a finite system of Ising spins can never magnetize: if it is polarized one way (say the $z$-axis) for some time, it can jump to the opposite polarization after some time, so that on average it is not magnetized. This rigorous result can be reconciled with reality by noting that the time to flip can be as large as the age of the universe, so that in human time, magnetization is possible. The nice thing about infinite system is that remote possibilities are rendered impossible, making them a better model of real life. \\
+Now, any real system is finite, one may ask why we should focus on infinite systems. The answer lies that systems with a very large number of degrees of freedom look more like infinite systems than finite ones in the following sense.  Phenomenologically, system at a temperature lower than some Curie temperature $T_C$ will magnetize. But it can be shown rigorously that a finite system of Ising spins can never magnetize: if it is polarized one way (say the $z$-axis) for some time, it can jump to the opposite polarization after some time, so that on average it is not magnetized. This rigorous result can be reconciled with reality by noting that the time to flip can be as large as the age of the universe, so that in human time, magnetization is possible. The nice thing about infinite system is that remote possibilities are rendered impossible, making them a better model of real life. \bigbreak
 
 In the $(D=1)$-dimensional Ising model, the energy of a given configuration is given by 
 
@@ -506,7 +511,7 @@ In the $(D=1)$-dimensional Ising model, the energy of a given configuration is g
 \end{equation}
 
 In said model, at a given $x$-value,
-there is only a single site, so that the system "evolves" from one spin to the next. This model, as it stands, is called ferromagnetic, since there is an overall minus sign and thus favours local spin alignment. The reader should be aware that the model may not behave like a ferromagnet. \\
+there is only a single site, so that the system "evolves" from one spin to the next. This model, as it stands, is called ferromagnetic, since there is an overall minus sign and thus favours local spin alignment. The reader should be aware that the model may not behave like a ferromagnet. \bigbreak
 
 Given a one-dimensional Ising spin chain. Consider two nearest-neighbour sites in said chain, there are, then, four configurations on these two sites, $\ket{++}, \ket{+-}, \ket{-+}, \ket{--}$. The Boltzmann weights $\prob(\sigma_1 \sigma_2)$ for these four configurations are 
 
@@ -532,7 +537,6 @@ The general expression for the partition function of an $N$-site Ising model wit
 \end{equation*}
 
 These expressions look exactly like matrix multiplications, explicitly written out in terms of the matrix elements. The matrix being multiplied is called the \underline{transfer matrix} and includes all the nearest-neighbour interactions. For the one-dimensional classical Ising model it is given by 
-
 \begin{equation}
     \bm{\mathcal{T}} = \left( \begin{array}{cc}
         \prob(++) & \prob(+-) \\
@@ -561,7 +565,7 @@ To compute the partition function with fixed boundaries conditions, from the tra
         $
 \end{itemize}
 
-Each time the transfer matrix is applied, it corresponds to adding one bond to the system. The transfer matrix can now be used to find analogous expressions for other boundary conditions. For example, \\
+Each time the transfer matrix is applied, it corresponds to adding one bond to the system. The transfer matrix can now be used to find analogous expressions for other boundary conditions. For example, \bigbreak
 
 \begin{itemize}
     \item for \underline{free boundary conditions}, allowing the extreme-most spins to take on all allowed values, the partition function is given by 
@@ -716,7 +720,7 @@ Note as well that the free energy per site is proportional to $\frac{\log \mathc
     F(\beta, K) = - \lim_{N \rightarrow \infty} \frac{\log \mathcal{Z}}{N}.
 \end{equation}
 
-\blanky \\
+\bigbreak
 
 It is straight forward to compute the two-point function in terms of these partition functions. Consider the following special cases.
 
@@ -728,8 +732,8 @@ It is straight forward to compute the two-point function in terms of these parti
     (\tanh \beta J)^{N-1},
     \end{equation}
     
-   which falls off exponentially with distance, so even for small distances, the end spins are effectively uncorrelated.
-  \\
+   which falls off exponentially with distance, so even for small distances, the end spins are effectively uncorrelated. \bigbreak
+   
    \item Now, consider an Ising chain with \underline{periodic boundary conditions}. Then, the the two-point function between the $j$-th and the $i$-th spins, with $j>i$, may be written as
 
     \begin{equation}
@@ -737,7 +741,7 @@ It is straight forward to compute the two-point function in terms of these parti
     \end{equation}
 \end{itemize}
 
-\blanky \\
+\bigbreak
 
 The general two-point correlator is similar and is given by 
 
@@ -776,7 +780,7 @@ where the exponential has naturally factorized into a product over $i$.}. Then, 
 \end{split}
 \end{equation}
 
-\blanky \\
+\bigbreak
 
 Consider the form of the correlations given by \cref{cl_Ising_corrs} in the thermodynamic limit $N \rightarrow \infty$, in which case at any finite $\beta J$, since $\tanh \beta J < 1$, $\langle \sigma_j \sigma_i \rangle  \underset{|j-i| \rightarrow \infty}{\longrightarrow} 0$. Only at $T=0$ or $\beta J \rightarrow \infty$,\footnote{i.e.  when $\tanh \beta J = 1$}, does the correlation not exponentially decay but remain flat. In other words, note that 
 
@@ -791,10 +795,9 @@ Here $\zeta$ always represents the actual correlation length at zero external ma
     \label{cl_Ising_relation_corr_betaJ}
 \end{equation}
 
-Thus, the one-dimensional Ising model is in a \textbf{disordered phase for any non-zero temperature}. The zero-temperature case is pathological, since there is no meaning of equilibrium in a zero-temperature classical system. 
-\\
+Thus, the one-dimensional Ising model is in a \textbf{disordered phase for any non-zero temperature}. The zero-temperature case is pathological, since there is no meaning of equilibrium in a zero-temperature classical system. \bigbreak
 
-The $\langle \sigma_j \sigma_i \rangle$-correlator depends on just the difference in coordinates, ie. it presents translational invariance. This is not a generic result for a finite chain, but a peculiarity of this model in particular. In general, for an $N+1$-site chain, correlations between two spins will generally depend on where the two points are in relation to the ends. On the other hand, for $N\rightarrow\infty$-models, translational invariance is expected to hold for correlations of spins far from the ends. In order for translational invariance to hold for a finite system, periodic boundary conditions must be imposed on the system. In said case, correlation functions will now only depend on the difference between the two coordinates, but will not decay monotonically with separation since as one point start moving away from one extreme, it starts approaching the extreme spin from the other side. \\
+The $\langle \sigma_j \sigma_i \rangle$-correlator depends on just the difference in coordinates, ie. it presents translational invariance. This is not a generic result for a finite chain, but a peculiarity of this model in particular. In general, for an $N+1$-site chain, correlations between two spins will generally depend on where the two points are in relation to the ends. On the other hand, for $N\rightarrow\infty$-models, translational invariance is expected to hold for correlations of spins far from the ends. In order for translational invariance to hold for a finite system, periodic boundary conditions must be imposed on the system. In said case, correlation functions will now only depend on the difference between the two coordinates, but will not decay monotonically with separation since as one point start moving away from one extreme, it starts approaching the extreme spin from the other side. \bigbreak
 
 \underline{The scaling limit}
 
@@ -805,9 +808,9 @@ The simplest way to understand the scaling limit is to first divide all lengths 
     \item and the lattice spacing $|i-j|$ is the only small length. 
 \end{itemize}
 
-Then, the scaling limit of an observable is then defined as its value when all corrections involving the ratio of small to large lengths are neglected. \\
+Then, the scaling limit of an observable is then defined as its value when all corrections involving the ratio of small to large lengths are neglected. \bigbreak
 
-There are two different, but equivalent, ways of thinking about the scaling limit. Particle physicists are inclined to send the small length $|i-j|$ to zero while keeping the large lengths fixed, while condensed matter physicists send all large lengths to infinity, while keeping $|i-j|$ fixed. The physics can only depend upon the ratio of lengths, thus making both approaches equivalent. \\
+There are two different, but equivalent, ways of thinking about the scaling limit. Particle physicists are inclined to send the small length $|i-j|$ to zero while keeping the large lengths fixed, while condensed matter physicists send all large lengths to infinity, while keeping $|i-j|$ fixed. The physics can only depend upon the ratio of lengths, thus making both approaches equivalent. \bigbreak
 
 For the definition of the scaling limit to be complete, the manner in which $\beta J$ and the external magnetic field $h$ are treated. From \cref{cl_Ising_relation_corr_betaJ} it is clear that $\beta J$ can be thought as a ratio of lengths, $\frac{\zeta}{|i-j|}$, allowing for the elimination of the explicit dependence on the $\beta J$-variable, by specifying $\frac{\zeta}{|i-j|} \rightarrow \infty$. In the $\beta J$-limit, invariably, spins a few lattice spacing apart point in the same direction, and should be sensitive to the mean magnetic field $h$ per unit length, measured by $\tilde{h}$,
 
@@ -819,7 +822,7 @@ So the scaling limit can be taken with $|i-j| \rightarrow 0$, while keeping $\ti
 
 \clearpage
 
-\paragraph{\textbf{The Monte-Carlo method}}
+\paragraph{\textswab{The Monte-Carlo method}}
 
 The partition function and two-point functions may be numerically calculated with the Monte-Carlo method. Consider the two point function, 
 
@@ -827,7 +830,7 @@ The partition function and two-point functions may be numerically calculated wit
     \langle \sigma_i \sigma_j \rangle_{\Lambda, \beta, h} = \frac{\sum_{{\bm \sigma} \in \Omega_{\Lambda}} \sigma_i \sigma_j e^{-\beta {\bf H}_{\Lambda, \beta, h}({\bm \sigma})}}{\sum_{{\bm \sigma} \in \Omega_{\Lambda}} e^{-\beta {\bf H}_{\Lambda, \beta, h}({\bm \sigma})}} = \sum_{{\bm \sigma} \in \Omega_{\Lambda}} \sigma_i \sigma_j({\bm \sigma}) \prob_{\Lambda, \beta, h}{({\bm \sigma})},
 \end{equation}
 
-where $\sigma_i \sigma_j({\bm \sigma})$ is the value of $\sigma_i \sigma_j$ at the ${\bm \sigma} \in \Omega_{\Lambda}$ configuration. The Monte-Carlo method is useful for numerically computing multidimensional integrals or sums. Each configuration will occur at a rate proportional to its Boltzmann weight. Then, for each configuration, the value of $\sigma_i \sigma_j$ can be computed. Since the configurations are already weighted, the arithmetic average of these numbers will yield the weighted thermal average. From this correlation function, the correlation length $\varepsilon$ can be calculated. By the same method, any other quantity of interest may be calculated eg. the magnetization. This can be done for any problem with a real, positive, Boltzmann weight, not just for Ising models. One specific algorithm for calculating these weighted configurations is the \textbf{Metropolis Method}, as follows \\
+where $\sigma_i \sigma_j({\bm \sigma})$ is the value of $\sigma_i \sigma_j$ at the ${\bm \sigma} \in \Omega_{\Lambda}$ configuration. The Monte-Carlo method is useful for numerically computing multidimensional integrals or sums. Each configuration will occur at a rate proportional to its Boltzmann weight. Then, for each configuration, the value of $\sigma_i \sigma_j$ can be computed. Since the configurations are already weighted, the arithmetic average of these numbers will yield the weighted thermal average. From this correlation function, the correlation length $\varepsilon$ can be calculated. By the same method, any other quantity of interest may be calculated eg. the magnetization. This can be done for any problem with a real, positive, Boltzmann weight, not just for Ising models. One specific algorithm for calculating these weighted configurations is the \textbf{Metropolis Method}, as follows \bigbreak
 
 \begin{algorithm}[H]
  \KwData{System's parameters: $J, h, \beta$}
@@ -865,7 +868,7 @@ where $R(i\rightarrow j)$ is the rate of jumping from the $i$-th configuration t
 
 \clearpage
 
-\paragraph{\textbf{Three kinds of phases}}
+\paragraph{\textswab{Three kinds of phases}}
 
 Even in simple interacting systems, the two point function will not have such simple values except in some extreme limits. However, knowing its dependence on the separation is valuable information, and it implies that the behaviour of the correlators is one of the best ways of understanding and characterising different phases of matter. Consider a correlator defined so that in the non-interacting limit, ie. the $T \rightarrow \infty$, it vanishes. Letting $L$ be the system size, there are three main types of behaviour of such a two-point function as $L >> |a-b|>> 1$, as follows 
 
@@ -885,7 +888,7 @@ Another way to characterize order is in terms of a one-point function, of a give
     -\langle \sigma_a \rangle = - \sum_{\sigma_i = \pm 1} \sigma_i e^{-\beta E(\{\sigma_i\})} = \sum_{\sigma_i = \mp 1} s_a e^{-\beta E(\{s_i\})} \textnormal{ where } s_i = -\sigma_i.
 \end{equation}
 
-However, since the sum is performed over a finite number of lattice sites, the $s_i$-variables on the last equality may be renamed as $\sigma_i$. Thus, the last expression is simply $\langle \sigma_a \rangle=0$. \\
+However, since the sum is performed over a finite number of lattice sites, the $s_i$-variables on the last equality may be renamed as $\sigma_i$. Thus, the last expression is simply $\langle \sigma_a \rangle=0$. \bigbreak
     
     \item \textbf{disordered:} 
     
@@ -893,7 +896,7 @@ However, since the sum is performed over a finite number of lattice sites, the $
       \langle \sigma_a \sigma_b \rangle \sim e^{-\frac{|a-b|}{\epsilon}},
     $$
     
-    A more general way of characterizing order is to use the previous definition, ie. a non-vanishing value of a two-point function at arbitrarily large separation. Then, the order parameter can be defined as the square root of this absolute value. \\
+    A more general way of characterizing order is to use the previous definition, ie. a non-vanishing value of a two-point function at arbitrarily large separation. Then, the order parameter can be defined as the square root of this absolute value. \bigbreak
     
     \item \textbf{critical:} 
     
@@ -901,18 +904,18 @@ However, since the sum is performed over a finite number of lattice sites, the $
       \langle \sigma_a \sigma_b \rangle \sim \frac{1}{|a-b|^{2x}}.
     $$
     
-    In a disordered phase, the two-point function class off to zero exponentially fast. Thus a conveniet measure is the correlation length $\epsilon$. A useful heuristic argument is to think of the degrees of freedom closer than $\epsilon$ as being correlated, and those further apart as being uncorrelated. One thing to bear in mind is that not all disordered systems behave in the same way. Some systems are disordered by definition, but possess a topological order, where an expectation value of some non-local quantities has a non-vanishing expectation value. \\
+    In a disordered phase, the two-point function class off to zero exponentially fast. Thus a conveniet measure is the correlation length $\epsilon$. A useful heuristic argument is to think of the degrees of freedom closer than $\epsilon$ as being correlated, and those further apart as being uncorrelated. One thing to bear in mind is that not all disordered systems behave in the same way. Some systems are disordered by definition, but possess a topological order, where an expectation value of some non-local quantities has a non-vanishing expectation value. \bigbreak
 
-The system's criticality is the most difficult and physically meaningful case. The correlator is said to be algebraically decaying. In particular, in the algebraic decay, the spatial dependence does not involve in any way a dimensional parameter, but rather only a dimensionless parameter $x$. Thus, this behaviour is characteristic of a critical phase, where the system is scale-invariant, given that there is no parameter like a correlation length. The reason for the factor of 2 in the $x$-quantity's definition stems from this picture, in the continuum limit, $x$ can be thought of as a "scaling dimension" of the spin field. \\
+The system's criticality is the most difficult and physically meaningful case. The correlator is said to be algebraically decaying. In particular, in the algebraic decay, the spatial dependence does not involve in any way a dimensional parameter, but rather only a dimensionless parameter $x$. Thus, this behaviour is characteristic of a critical phase, where the system is scale-invariant, given that there is no parameter like a correlation length. The reason for the factor of 2 in the $x$-quantity's definition stems from this picture, in the continuum limit, $x$ can be thought of as a "scaling dimension" of the spin field. \bigbreak
 \end{itemize}
 
-Note that, this picture is oversimplified since different types of correlators can occur in the same system. \\
+Note that, this picture is oversimplified since different types of correlators can occur in the same system. \bigbreak
 
 %A simple phase diagram in statistical mechanics. 
 
-A common case in statistical mechanics occurs when, at temperatures much larger than any parameter with dimensions of energy - like $J$ in the Ising model-, one can effectively neglect the energy altogether. The partition function is then a sum over all allowed configurations with the same weight each. Then, the two-point function of any local operators vanishes quickly as they are brought apart (as long as non-local constraints are not present). The system is then in a disordered phase at sufficiently large temperatures. At low enough temperatures, the opposite occurs: since the Boltzmann weight is proportional to $e^{-E/T}$, the very low-energy configurations are much more likely. This can lead to order, the lowest-energy configurations have some regular pattern and so there is a non-vanishing local order parameter. When there is a disordered phase at high-temperature and an ordered phase at high temperature as well, there must be a phase transition in between. There are two categories of phase transitions, often referred to as first-order and continuous. In the latter case, correlators become algebraically decaying, and then the system is critical. In the former case, the system remains disordered at the phase transition and abruptly changes its behaviour. \\
+A common case in statistical mechanics occurs when, at temperatures much larger than any parameter with dimensions of energy - like $J$ in the Ising model-, one can effectively neglect the energy altogether. The partition function is then a sum over all allowed configurations with the same weight each. Then, the two-point function of any local operators vanishes quickly as they are brought apart (as long as non-local constraints are not present). The system is then in a disordered phase at sufficiently large temperatures. At low enough temperatures, the opposite occurs: since the Boltzmann weight is proportional to $e^{-E/T}$, the very low-energy configurations are much more likely. This can lead to order, the lowest-energy configurations have some regular pattern and so there is a non-vanishing local order parameter. When there is a disordered phase at high-temperature and an ordered phase at high temperature as well, there must be a phase transition in between. There are two categories of phase transitions, often referred to as first-order and continuous. In the latter case, correlators become algebraically decaying, and then the system is critical. In the former case, the system remains disordered at the phase transition and abruptly changes its behaviour. \bigbreak
 
-\subsection{Quantum Spin Systems}
+\subsection{\underline{Quantum Spin Systems}}
 
 %A general spin chain is a dynamical system. In particular, an $N$-site chain, with finite $N$, has a configuration space, which is a discrete space or also known as a 0-manifold.
 
@@ -951,7 +954,7 @@ A common case in statistical mechanics occurs when, at temperatures much larger 
 
 %Note that if the degrees of freedom take on continuous values, or the model is defined in the continuum, then this sum is replaced by an integral. Note that, indeed, the probability of a given configuration increases as the energy gets lower, and conversely, that as the temperature gets higher and higher, the energies involved must get larger and larger to make a difference. Note as well that if all the energies are shifted by some constant $E_0$, the probabilities are left unchanged, since both the numerator and denominator are multiplied by the same constant, namely $e^{-\beta E_0}$. \\
 
-There is a deep correspondence between classical statistical mechanics and quantum statistical mechanics for spin-$\frac{1}{2}$ particles. In particular, the $d$-dimensional classical statistical mechanics problem may be mapped to a $d-1$-dimensional quantum statistical problem. The nature of the quantum variable will depend then on the nature of the classical variable. In general, the allowed values of the classical variable will correspond to the maximal set of simultanoes eigenvalues of the operators in the quantum problem (eg. $\sigma_z$). \\
+There is a deep correspondence between classical statistical mechanics and quantum statistical mechanics for spin-$\frac{1}{2}$ particles. In particular, the $d$-dimensional classical statistical mechanics problem may be mapped to a $d-1$-dimensional quantum statistical problem. The nature of the quantum variable will depend then on the nature of the classical variable. In general, the allowed values of the classical variable will correspond to the maximal set of simultanoes eigenvalues of the operators in the quantum problem (eg. $\sigma_z$). \bigbreak
 
 The Hilbert space of a quantum spin is defined by choosing a representation for the spin operators. A representation of a Lie algebra is a set of three matrices satisfying the commutation relations of the $\mathfrak{su}(2)$-algebra. An \textbf{irreducible representation} is a set of matrices such that no unitary transformation $\mathcal{U} {\bf S}^{a} \mathcal{U}^\dagger$ block-diagonalizes all three matrices. It is known that for the $\mathfrak{su}(2)$-Lie algebra there is exactly one set (up to unitary transformations) of irreducible complex $n\times n$-matrices, for each integer $n$. It is customary to write $n=2s+1$ for all integers and half-integers $s$. A single spin-$s$ quantum particle at a fixed point in space therefore has a Hilbert space $\mathds{C}^{2s+1}$, so the matrices ${\bf S}^a$ are all $(2s+1)\times(2s+1)$. An orthonormal basis is given by the eigenstates of any one of the matrices. 
 
@@ -973,7 +976,7 @@ which commutes with each of the representation's generators. As a result, it mus
     Let $\mathds{V}$ be a $\mathds{C}$-vector space, associated with a finite-dimensional irreducible representation of an algebra $\mathfrak{A}$ over $\mathds{C}$. Then, let $\phi : \mathds{V} \rightarrow \mathds{V}$ be a homomorphism ie. $\phi(av) = a\phi(v), \forall a \in \mathfrak{A}, v \in \mathds{V}$. Then, $\phi = \lambda \textnormal{id}_{\mathds{V}}.$ \\
 \end{lemma}
 
-\paragraph{\textbf{Thermodynamics of the Quantum Ising model}}
+\paragraph{\textswab{Thermodynamics of the Quantum Ising model}}
 
 Consider the following quantum Ising model 
 
@@ -1043,9 +1046,11 @@ When $g=0$, wherein ${\bf H}_i$ involves only $\sigma^z$, ${\bf H}_I$ will be di
 It is straightforward to see that there is no analytical function on $g$ which transforms the ground states for large and small $g$ into each other. Furthermore, there must be a critical value $g = g_c$ at which the large $|x_i - x_j|$ limit of the two point correlators changes from \cref{Q_Ising_small_g_corr} to \cref{Q_Ising_large_g_corr}. Note that systems may have more than one critical point, which does not happen for ${\bf H}_I$. 
 
 \begin{itemize}
-    \item For $g > g_c$, the ground state is a quantum paramagnet and \cref{Q_Ising_large_g_corr} is obeyed. As $g \rightarrow g_c$, the correlation length diverges. \\
-    \item Precisely at $g = g_c$, neither \cref{Q_Ising_large_g_corr} nor \cref{Q_Ising_small_g_corr} are obeyed. Instead, a power-law dependence on $|x_i - x_j|$ arises at large distances. \\
-    \item \cref{Q_Ising_small_g_corr} is obeyed for all $g < g_c$, where the ground state is magnetically ordered. The spontaneous magnetization of the ground state, $N_0$, vanishes as a power law as $g \rightarrow g_c$. \\
+    \item For $g > g_c$, the ground state is a quantum paramagnet and \cref{Q_Ising_large_g_corr} is obeyed. As $g \rightarrow g_c$, the correlation length diverges. \bigbreak
+    
+    \item Precisely at $g = g_c$, neither \cref{Q_Ising_large_g_corr} nor \cref{Q_Ising_small_g_corr} are obeyed. Instead, a power-law dependence on $|x_i - x_j|$ arises at large distances. \bigbreak
+    
+    \item \cref{Q_Ising_small_g_corr} is obeyed for all $g < g_c$, where the ground state is magnetically ordered. The spontaneous magnetization of the ground state, $N_0$, vanishes as a power law as $g \rightarrow g_c$. \bigbreak
 \end{itemize}
 
 Finally, note that in a finite lattice there is necessarily a non-zero energy gap between the ground state and the first excited state. However, this energy spacing can either remain finite o approach zero in the infinite lattice limit, the two cases being identified as having gapped or gapless energy spectrums, respectively. There is a non-zero energy gap $\Delta$ for all $g \neq g_c$, but it vanishes upon approaching $g_c$, producing a gapless spectrum at $g = g_c$. 
