@@ -1,10 +1,10 @@
-\subsection{\textbf{Spin Path Integrals}}
+\subsection{Spin Path Integrals}
 
 Path integrals provide formal expressions which, in general without a known closed analytic form, lead to useful approximation schemes, such as generating asymptotic expansions and to formulate mean field theories. 
 
-The spin coherent states path integral describes quantum spins in terms of time-dependent histories of unit vectors, thus providing a connection between the classical and quantum phenomena. \\
+The spin coherent states path integral describes quantum spins in terms of time-dependent histories of unit vectors, thus providing a connection between the classical and quantum phenomena. \bigbreak
 
-\paragraph{Construction of the path-integrals}
+\subsubsection{Construction of the path-integrals}
 
 Spin coherent states can be used to construct a path integral representation of the Heisenberg model, with its generating functional in imaginary time being 
 
@@ -44,16 +44,16 @@ The spin coherent resolution identity is given by \cref{spin_coherent_resol_id},
 
 where, in the second line a total of $N_{\epsilon}$ \cref{spin_coherent_resol_id}-
 identities were introduced and labelled as 
-$\hat{\Omega'}_i$, where $\hat{\Omega}_\tau 
-= (\sin \theta_\tau \cos \phi_\tau, \sin 
-\theta_\tau \sin \varphi_\tau, \cos 
-\theta_\tau) = (\Omega_i_\tau$ and where 
+$\hat{\Omega'}_{i}$, where $\hat{\Omega}_{\tau} 
+= (\sin \theta_{\tau} \cos \phi_{\tau}, \sin 
+\theta_{\tau} \sin \varphi_{\tau}, \cos 
+\theta_{\tau}) = \Omega_i_\tau$ and where 
 $\bm{\mathcal{H}}(\tau)$ is a "classical 
 Hamiltonian". In the last line, the 
 $\hat{\Omega'}_{i}$s were identified with 
 $\hat{\Omega}_{i-\epsilon}$. Let 
 $\hat{\bm{\Omega}}(\beta) = 
-\hat{\bm{\Omega}}(0)$. \\
+\hat{\bm{\Omega}}(0)$. \bigbreak
 
 A priori, $\hat{\bm{\Omega}}(\tau)$ is an arbitrary discrete function on $\tau$. Though unjustified, it may be taken to be a continuous and differentiable function in the $(N_{\epsilon}\rightarrow\infty)$-limit, in such a way that 
 
@@ -108,9 +108,9 @@ where $\dot{\hat{\Omega}}$ is a unit magnetic monopole vector potential, whose l
 
 allowing for different gauge choices for the vector potential. For futher discussion on this point and the Dirac string, see \cite{assa} page 105. \\
 
-}. \\
+}. \bigbreak
 
-\paragraph{The Green Function}
+\subsubsection{The Green Function}
 
 The Green function, which describes the real-time evolution at zero-temperature, is given by the matrix element of the evolution operator between two coherent states, 
 
@@ -130,9 +130,9 @@ and the $[0,t]$-interval is discretized into $N_{\epsilon}$-timesteps of $\epsil
     \mathfrak{G}(t) = \int_{\hat{\Omega}_0}^{\hat{\Omega}_t} \mathcal{D} \hat{\Omega}(t') \blanky e^{i \mathcal{S}[\hat{\Omega}]}, \textnormal{ where } \mathcal{S}[\hat{\Omega}] = \int_{0}^{t} dt' \blanky \bigg(S \sum_{i} {\bf A} \cdot \dot{\hat{\Omega}} - \bm{\mathcal{H}}[\hat{\Omega}(t'), t'] \bigg).
 \end{equation}
 
-Here $\mathcal{S}[\hat{\Omega}]$ is the real-time action. \\
+Here $\mathcal{S}[\hat{\Omega}]$ is the real-time action. \bigbreak
 
-\paragraph{The large-$S$ expansion} 
+\subsubsection{The large-$S$ expansion}
 
 The spin coherent path integrals are useful starting points for deriving semiclassical approximations, wherein coordinates are simply unit vectors ie. classical spins. The quantum effects enter through their real or imaginary time dependence. Consider the classical Hamiltonian $\bm{\mathcal{H}}$, which is the result obtained by scaling the parameters of ${\bf H}[\hat{\Omega}]$ such that these are independent of $S$. By considering the $(S \rightarrow \infty)$-limit, all time-dependent paths with $\dot{\hat{\Omega}} \neq 0$ are suppresed by the rapid oscillations of the Berry phase factor. Thus, a classical partition function is obtained 
 
@@ -168,7 +168,7 @@ These saddle point equations yield the prefactors $\mathcal{Z}'_{\alpha}$, which
     \mathcal{Z}'_{\alpha} = \oint \mathcal{D}\delta \hat{\Omega} \exp\bigg[ -S \bigg(\mathcal{S}^{\textnormal{cl}}[\hat{\Omega}^{\textnormal{cl}}] - \mathcal{S}^{\textnormal{cl}}[\hat{\Omega}^{\textnormal{cl}, \alpha}] \bigg) \bigg], \textnormal{ where } \delta \hat{\Omega} = \hat{\Omega} - \hat{\Omega}^{\textnormal{cl}, \alpha}. 
 \end{equation}
 
-\blanky \\
+\bigbreak
 
 \paragraph{Semiclassical Dynamics}
 
@@ -226,7 +226,7 @@ The last equation describes a system of classical rotators in the fast-top-limit
     \end{split}
 \end{equation}
 
-thus ensuring conservation of energy $\bm{\mathcal{H}} [\hat{\Omega}^{\textnormal{cl}} (t')] = \bm{\mathcal{H}} [\hat{\Omega}^{\textnormal{cl}}_0]$ along the classical trajectory. A problem arises however, in that the equations of motion are first order in time, but the solution must satisfy two boundary conditions at $t' = 0$ and at $t' = t$. This is impossible for almost all boundary conditions (eg. when $\bm{\mathcal{H}} [\hat{\Omega}_{t}] = \bm{\mathcal{H}} [\hat{\Omega}_0]$). Klauder has suggested a way to overcome this problem by including second-order transistent terms of $\mathcal{O}(\epsilon)$-order in the classical equations of motion. This allows one to solve a second-order equation, with fixed boundary conditions, and calculate the classical action and at the end, take the $(\epsilon \rightarrow 0)$-limit. \\
+thus ensuring conservation of energy $\bm{\mathcal{H}} [\hat{\Omega}^{\textnormal{cl}} (t')] = \bm{\mathcal{H}} [\hat{\Omega}^{\textnormal{cl}}_0]$ along the classical trajectory. A problem arises however, in that the equations of motion are first order in time, but the solution must satisfy two boundary conditions at $t' = 0$ and at $t' = t$. This is impossible for almost all boundary conditions (eg. when $\bm{\mathcal{H}} [\hat{\Omega}_{t}] = \bm{\mathcal{H}} [\hat{\Omega}_0]$). Klauder has suggested a way to overcome this problem by including second-order transistent terms of $\mathcal{O}(\epsilon)$-order in the classical equations of motion. This allows one to solve a second-order equation, with fixed boundary conditions, and calculate the classical action and at the end, take the $(\epsilon \rightarrow 0)$-limit. \bigbreak
 
 \paragraph{Semiclassical spectrum}
 
@@ -278,11 +278,13 @@ yielding the semiclassical spectrum $\{E_{\alpha}^{\textnormal{sc}}\}$. Since tw
 
 \clearpage
 
-\subsection{\textbf{Spin Wave Theory}}
+\subsection{Spin Wave Theory}
+
+\tableofcontents
 
 \subsubsection{Spin Waves: Path Integral Approachs}
 
-\blanky \\
+\blanky \bigbreak
 
 \begin{tcolorbox}[colback = yellow, title = Physical Context]
 
@@ -1259,18 +1261,21 @@ Inspecting \cref{NLSM_fourier_integral_canting_fields_susceptibility}, is it rea
 
 \begin{equation}
     \begin{split}
-        |\hat{\bf n}({\bf x}) \times \partial_{\tau} \hat{\bf n}({\bf x})|^2 =& \delta^{ij} (\hat{\bf n}({\bf x}) \times \partial_{\tau} \hat{\bf n}({\bf x}))^{i} (\hat{\bf n}({\bf x}) \times \partial_{\tau} \hat{\bf n}({\bf x}))^j \\
-        &= \delta^{ij} (\epsilon_{abi} \hat{\bf n}_a \partial_{\tau} \hat{\bf n}_b) (\varepsilon^{cdj} \hat{\bf n}_c \partial_{\tau} \hat{\bf n}_d) \\
+        |\hat{\bf n}({\bf x}) \times \partial_{\tau} \hat{\bf n}({\bf x})|^2 =& \delta^{ij} (\hat{\bf n}({\bf x}) \times \partial_{\tau} \hat{\bf n}({\bf x}))^{i} (\hat{\bf n}({\bf x}) \times \partial_{\tau} \hat{\bf n}({\bf x}))^{j} \\
+        &= \delta^{ij} (\epsilon_{abi} \hat{\bf n}_{a} \partial_{\tau} \hat{\bf n}_{b}) (\varepsilon^{cdj} \hat{\bf n}_{c} \partial_{\tau} \hat{\bf n}_{d}) \\
         &= \epsilon_{abi} \epsilon^{cdj} 
         \bigg(
-        \hat{\bf n}_a \hat{\bf n}_c \partial_{\tau} \hat{\bf n}_b \partial_{\tau} \hat{\bf n}_d
+        \hat{\bf n}_{a} \hat{\bf n}_{c} \partial_{\tau} \hat{\bf n}_{b} \partial_{\tau} \hat{\bf n}_{d}
         \bigg) \\
         &= (\delta^{c}_{a} \delta^{d}_{b} - \delta^{d}_{a} \delta^{c}_{b})\bigg(
-        \hat{\bf n}_a \hat{\bf n}_c \partial_{\tau} \hat{\bf n}_b \partial_{\tau} \hat{\bf n}_d
+        \hat{\bf n}_{a} \hat{\bf n}_c \partial_{\tau} \hat{\bf n}_{b} \partial_{\tau} \hat{\bf n}_{d}
         \bigg) \\
-        &= \delta^{c}_{a} \delta^{d}_{b} \hat{\bf n}_a \hat{\bf n}_c \partial_{\tau} \hat{\bf n}_b \partial_{\tau} \hat{\bf n}_d
-        - \delta^{d}_{a} \delta^{c}_{b}\hat{\bf n}_a \hat{\bf n}_c \partial_{\tau} \hat{\bf n}_b \partial_{\tau} \hat{\bf n}_d \\
-        &= \cancelto{1}{\hat{\bf n}_a \hat{\bf n}^a} \partial_{\tau} \hat{\bf n}_b \partial_{\tau} \hat{\bf n}^b - \overset{?}{\hat{\bf n}_a \hat{\bf n}_b \partial_{\tau} \hat{\bf n}^b \partial_{\tau} \hat{\bf n}^a} = |\partial_{\tau} \hat{\bf n}_b|^2.
+        &= \delta^{c}_{a} \delta^{d}_{b} \hat{\bf n}_{a} \hat{\bf n}_{c} \partial_{\tau} \hat{\bf n}_{b} \partial_{\tau} \hat{\bf n}_{d}
+        - \delta^{d}_{a} \delta^{c}_{b}\hat{\bf n}_a \hat{\bf n}_c \partial_{\tau} \hat{\bf n}_{b} \partial_{\tau} \hat{\bf n}_d \\
+        &= \cancelto{1}{\hat{\bf n}_{a} \hat{\bf n}^{a}} \partial_{\tau} \hat{\bf n}_{b} \partial_{\tau} \hat{\bf n}^{b} 
+        - \overset{\textgoth{HOW}}{
+        \hat{\bf n}_{a} \hat{\bf n}_{b} \partial_{\tau} \hat{\bf n}^{b} \partial_{\tau} \hat{\bf n}^{a}} 
+        = |\partial_{\tau} \hat{\bf n}_{b}|^2.
      \end{split}
 \end{equation}
 
@@ -1305,7 +1310,7 @@ which allows the action of $\mathcal{Z}$ of the Non-linear sigma model NLSM in $
 
 \begin{equation}
     \begin{split}
-        &\mathcal{Z} \propto \int_{\Lambda} \mathcal{D}\hat{{\bf n}} \blanky e^{i\Gamma} \exp \bigg(- \int d^{d+1}x \blanky \mathcal{L}^{d+1}_{\textnormal{NLSM}}\bigg), \quad \mathcal{L}^{D}_{\textnormal{NLSM}} = \frac{\Lambda^{D-2}}{2f_D} \sum_{\mu = 1}^{D} \partial_{\mu} \hat{{\bf n}} \cdot \partial_{\mu} \hat{{\bf n}},
+        &\mathcal{Z}_{\textnormal{NLSM}} \propto \int_{\Lambda} \mathcal{D}\hat{{\bf n}} \blanky e^{i\Gamma} \exp \bigg(- \int d^{d+1}x \blanky \mathcal{L}^{d+1}_{\textnormal{NLSM}}\bigg), \quad \mathcal{L}^{D}_{\textnormal{NLSM}} = \frac{\Lambda^{D-2}}{2f_D} \sum_{\mu = 1}^{D} \partial_{\mu} \hat{{\bf n}} \cdot \partial_{\mu} \hat{{\bf n}},
     \end{split}, \quad \begin{array}{cc}
          |\hat{{\bf n}}({\bf x})| = 1,  \\
          {\bf x} \in \mathds{R}^d. 
@@ -1345,21 +1350,268 @@ Caution must be taken, in that the Haldane mapping is valid under the restrictiv
 
 \subsubsection{NonLinear Sigma Model: Weak Coupling}
 
-The NonLinear Sigma model in $d$-dimension emerges as the continuum approximation to the quantum Heisenberg antiferromagnet in $(d-1)$-dimensions, with additional Berry phases, wherein the partition function is given by \cref{NLSM_partition_func} and where $\Lambda$ is a momentum cutoff, i.e. the shortest wavelength included in the $\mathcal{D}\hat{{\bf n}}$-field. \\
+The NonLinear Sigma model in $d$-dimension emerges as the continuum approximation to the quantum Heisenberg antiferromagnet in $(d-1)$-dimensions, with additional Berry phases, wherein the partition function $\mathcal{Z}_{\textnormal{NLSM}}$ is given by \cref{NLSM_partition_func} and where $\Lambda$ is a momentum cutoff, i.e. the shortest wavelength included in the $\mathcal{D}\hat{{\bf n}}$-field. \\
 
 \paragraph{The Lattice Regularization}
 
-Note that \cref{NLSM_partition_func}'s path integral is not well-defined until a regularization procedure is established. Hence, consider a $d$-dimensional classical Heisenberg model on a cubic-lattice, with $N$ sites and lattice constant $a$. Its partition function reads 
+One can, in fact, rigorously prove the connection between the NLSM in $d$-dimensions and the quantum Heisenberg antiferromagnet in $(d-1)$-dimensions via a regularization procedure. But note that \cref{NLSM_partition_func}'s path integral is not well-defined until a regularization procedure is established. 
+
+Hence, first consider a $d$-dimensional classical Heisenberg model on a cubic-lattice, with $N$ sites and lattice constant $a$. Its partition function reads 
 
 \begin{equation}
     \mathcal{Z}_{\textnormal{CMH}} = \int \prod_{i=1}^{N} d\hat{\Omega}_i \blanky \exp \bigg(\frac{\bar{J}}{T} \sum_{\langle ij \rangle} \hat{\Omega}_i \cdot \hat{\Omega}_j\bigg), \begin{array}{c}
          \textnormal{ where the continuum} \\
          \textnormal{limit of $\mathcal{Z}_{\textnormal{CMH}}$ is } \\
          \textnormal{given by the substitutions } 
-    \end{array}
-    \blanky \hat{\Omega}_i  \rightarrow \eta_i \hat{{\bf n}}({\bf x}_i), \textnormal{ with } \eta_i = \left\{\begin{array}{cc}
+    \end{array} \begin{array}{cc}
+         \hat{\Omega}_i  \rightarrow \eta_i \hat{{\bf n}}({\bf x}_i), \\
+         \textnormal{ with } \eta_i = \left\{\begin{array}{cc}
               1 & \textnormal{ferromagnet } \\
               e^{i {\bf X}_i \vec{\pi}} & \textnormal{antiferromagnet }
          \end{array}  \right.
+    \end{array}
+    \label{NLSM_Weak_partition_function_CMH}
 \end{equation}
 
+Moreover, sums and differences are substituted by lattice integrals and spatial derivatives, as follows
+
+\begin{equation}
+    \sum_{i} F_i({\bf x}_i) \rightarrow a^{-d} \int d^d x \blanky F({\bf x}), \quad \hat{\Omega}({\bf x}_i + a \hat{x}_{\mu}) - \hat{\Omega}({\bf x}_i) \rightarrow a \partial_{\mu} \hat{{\bf n}}, 
+\end{equation}
+
+and a dimensionless coupling constant $\frac{T}{\bar{J}} \leftrightarrow f$. The measure is replaced by 
+
+\begin{equation}
+    \mathcal{D}\hat{\Omega} \rightarrow \prod_{{\bf q}| \leq \Lambda} d\hat{\bf n}_{{\bf q}}, \begin{array}{cc}
+         \textnormal{where $\Lambda$ is the radius of a spherical Brillouin zone that has the same } \\
+         \textnormal{number of degrees of freedom as the cubic zone of the lattice, } \\
+         \begin{array}{cc}
+              \frac{1}{N}\sum_{|k_{\mu}| \leq \frac{\pi}{a}}^{\textnormal{cube}} = \frac{1}{N}\sum_{|k| \leq \Lambda}^{\textnormal{sph}} = 1.
+         \end{array}
+    \end{array}
+\end{equation}
+
+This determines the spherical Brillouin zone radius to be $\Lambda \sim a^{-1}$ for $d=1,2,3$, with different constants each. A second-order expansion of the Hamiltonian in \cref{NLSM_Weak_partition_function_CMH} in terms of gradients of the unimodular Néel field yields the following relation
+
+\begin{equation}
+    \mathcal{Z}_{\textnormal{CMH}}\bigg(\frac{T}{\bar{J}}, a\bigg) \approx \mathcal{Z}_{\textnormal{NLSM}}(f, \Lambda^{-1}) e^{\frac{d \mathcal{N}}{f}},
+\end{equation}
+
+which is valid at low-temperatures $f << 1$. The $e^{\frac{d \mathcal{N}}{f}}$-factor is the Boltzmann weight for the classical ground state. 
+Note that the continuum approximation holds for the generating functional and for the long-wavelength spin correlations  as well, as long as the spin correlation length $\varepsilon$ is much larger than $\Lambda^{-1}$. 
+Hence, in this regime, the NLSM properties are weakly-dependent on the regularization procedure, and therefore it serves as a model for diverse Heisenberg models. 
+The key common feature of these Heisenberg models is the $O(3)$-symmetry of the ground state manifold and the short-range nature of the interactions. Other details will primarily affect the choice of $f$ and $\Lambda$.\\
+
+The "nonlinearity" property of the NLSM is due to the Néel's field unimodular constraint, which may be expressed as 
+
+\begin{equation}
+    n^{(1)}({\bf x}) = \sqrt{1 - [n^{(2)}({\bf x})]^2 - [n^{(3)}({\bf x})]^2}. 
+\end{equation}
+
+The measure is then replaced by 
+
+\begin{equation}
+    \int \mathcal{D}\hat{{\bf n}} = \int \mathcal{D}n^{(2)}({\bf x}) \mathcal{D}n^{(3)}({\bf x}) \frac{\Theta[1 - [n^{(2)}({\bf x})]^2 - [n^{(3)}({\bf x})]^2]}{\sqrt{1 - [n^{(2)}({\bf x})]^2 - [n^{(3)}({\bf x})]^2}},
+\end{equation}
+
+wherein the first component has been written in terms of the other two components. This constraint induces anharmonic interactions between the field components. Thus, the correlation of the NLSM will differ, at least in principle, from those of a free Gaussian model, where the measure simply reads $\mathcal{D}n^{(2)}({\bf x}) \mathcal{D}n^{(3)}({\bf x})$ \footnote{
+\begin{tcolorbox}[colback = yellow, title = Physical Context]
+
+An important effect of the unimodular constraint is the existence of topologically stable excitations, solitons, in two dimensions. 
+
+\end{tcolorbox}}. 
+Moreover, given that the $O(3)$-NLSM is the continuum limit of the classical Heisenberg model, it must obey the Mermin-Wagner theorem, which forbids spontaneously broken symmetries at any finite temperature (e.g. $f>0$) for $(d=1,2)$-dimensions. Now, it will be proven that the $O(n)$-NLSM is disordered by fluctuations of the order parameter using a weak-coupling expansion in powers of $f$. 
+\bigbreak
+
+\paragraph{N\"aive Weak Coupling Expansion}
+
+The $O(3)$-NLSM can be easily generalized to a more general $O(n)$-symmetry. Let the $n$ orthonormal basis vectors be 
+
+$$
+    {\bf e}^\alpha, \blanky \alpha = 0, \cdots, n-1, \quad n^{\alpha} = \hat{\bf n} \cdot {\bf e}^\alpha.
+$$
+
+Furthermore, the partition function and integration measure read
+
+\begin{equation}
+    \begin{split}
+        &\mathcal{Z}_{O(n)} = \int \mathcal{D}\hat{{\bf n}} \blanky \exp 
+        \bigg[
+            -\frac{\Lambda^{d-2}}{2f} \int d^d x \blanky \sum_{\mu \alpha} (\partial_{\mu} n^{\alpha})^2
+        \bigg] \\
+        & \mathcal{D}\hat{{\bf n}} = \prod_{\alpha} \mathcal{D}\hat{{n}}^{\alpha} \delta
+        \bigg[
+            1 - \sum_{\alpha = 0}^{n-1} (n^\alpha)^2
+        \bigg].
+    \end{split}
+\end{equation}
+
+At low temperatures, i.e. weak coupling $f<<1$, it is expected that the dominant configurations will be close to an ordered ground state. This requires for the breaking of the $O(n)$-symmetry in the path integral and to choose a particular uniform ground state configuration, e.g. $\bar{\hat{\bf n}} = \hat{\bf e}^{0}$. 
+Then, this direction will be referred to as the longitudinal direction, with the other $n-1$ possible directions being the transverse fluctuations. 
+The small fluctuactions, e.g. those s.t. $|\hat{{\bf n}} - \hat{\bf e}^{0}| << 1$, are parameterized by 
+
+\begin{equation}
+    \hat{{\bf n}} = \hat{\bf e}^{0} \sqrt{1 - \bar{\phi}^2} + \sum_{\alpha = 1}^{n-1} \phi^a \hat{\bf e}^{a}, \textnormal{ where } \bar{\phi}^2 = \sum_{\alpha = 1}^{n-1} (\phi^a)^2.
+\end{equation}
+
+The expansion of the NLSM to leading order in $|\delta \hat{{\bf n}}|$ yields 
+
+\begin{equation}
+    \begin{split}
+        &\mathcal{Z} \approx \int \mathcal{D} \phi \blanky \exp 
+        \bigg(
+             - \mathcal{S}^{(2)}[\phi]
+        \bigg) [1+ \mathcal{O}(f)], \\
+        & \mathcal{S}^{(2)} = \frac{\Lambda^{d-2}}{2f} \int d^dx \blanky \sum_{a,\mu} (\partial_{\mu} \phi^a)^2 + \mathcal{O}(\phi^3) = \frac{1}{2f \Lambda^2 N} \sum_{{\bf k}, a} {\bf k}^2 \phi_{{\bf k}}^{a}\phi_{-{\bf k}}^{a}, \textnormal{ where }
+        \phi_{{\bf k}}^{a} = \Lambda^d \int d^d x \blanky e^{-i {\bf x} \cdot {\bf x}} \phi^{a}({\bf x}).
+    \end{split}
+\end{equation}
+
+In the previous expressions, $\mathcal{S}^{(2)}$ is the harmonic or "spin wave" energy functional. Using the weak-coupling parameterization of the small fluctuations, one can write the spin wave contribution to the local fluctuactions
+
+\begin{equation}
+    \begin{split}
+        \langle |\delta \hat{\bf n}|^2 \rangle \approx& \frac{1}{\mathcal{Z}N} \sum_{{\bf k}, a} \int \mathcal{D}\hat{{\bf n}} \blanky \phi_{{\bf k}}^{a}\phi_{-{\bf k}}^{a} \exp 
+        \bigg(
+             - \mathcal{S}^{(2)}[\phi]
+        \bigg) \\
+        &= \frac{(n-1) \Lambda^2 f}{(2\pi)^d} \lim_{\bar{\Lambda} \rightarrow 0} \int_{\bar{\Lambda}}^{\Lambda} \blanky \frac{d^dx}{|{\bf k}|^2} = \infty \textnormal{ in $d=1,2$. }
+    \end{split}
+\end{equation}
+
+The spin fluctuations diverge for $n \geq 2$ in one and two dimensions for all $f>0$. 
+Thus, the naive weak-coupling expansion is inadequate for describing the ground state since the assumption of spontaneously broken symmetry is invalid. This is in accordance with Mermin-Wagner's theorem \cref{Mervin-Wagner}.
+Moreover, by Haldane's mapping, the ground state of the quantum Heisenberg antiferromagnet in one dimension should be disordered, a spin liquid, for all finite spin sizes $S < \infty$ (see for further details the "Physical Context" box in \cref{physical_context_Mermin_Wagner_theo_long_range}).  
+
+\medbreak
+
+More sofisticated methods can be used to treat infrared divergences. \bigbreak
+
+\paragraph{\textswab{"Simple" Renormalization Procedure}}
+
+The infrared divergences, alluded to in the previous section, indicate the necessity to abandon the assumption of broken symmetry, and to preserve the exact $O(n)$-symmetry of the path integral. 
+However, it is possible to use a perturbative approach, in particular a weak-coupling approximation, to calculate the correlations in the disordered phase. 
+In effect, this can be done by expanding the integrand around \textit{slowly varying configurations}, $\hat{{\bf n}}^{0}({\bf x})$, of the Néel field, which still need to be integrated over. The renormalization of the energy functional is carried out by sequentially eliminating the large-momenta modes, the "fast modes", leaving only the remaining "slow modes".
+This can be done in a procedure much similar to that of a  quantum field theory, giving rise to a $\beta$-function, which will determine the correlation length. \bigbreak
+
+Polyakov's renormalization technique goes as follows:
+
+\begin{itemize}
+    \item First, the Néel field is separated into \textit{slow \textnormal{and} fast} degrees of freedom, labelled ${\hat{{\bf n}}}, \phi^a$ respectively, given by 
+    
+    \begin{equation}
+        \hat{{\bf n}}({\bf x}) = \hat{{\bf n}}^{0}({\bf x})
+                                    \sqrt{1-\bar{\phi}^2} + \sum_{a=1}^{n-1} \phi^a \hat{{\bf e}}^{a}({\bf x}), \quad \bar{\phi}^2 = \sum_{a=1}^{n-1} (\phi^a)^2,
+                                    \label{NLSM_Polyakov_fast_slow_fields}
+    \end{equation}
+    
+    with a comoving basis defined as 
+    
+    \begin{equation}
+        \hat{{\bf e}}^{(0)}({\bf x}) = \hat{{\bf n}}^{0}({\bf x}), \quad \hat{{\bf e}}^{(\alpha)}({\bf x}) \cdot \hat{{\bf e}}^{(\beta)}({\bf x}) = \delta^{\alpha \beta}, \alpha = 0,1,\cdots, n-1,
+    \end{equation}
+    
+    wherein Greek indices include the longitudinal $\hat{{\bf n}}^{(0)}$-direction and where Latin indices are strictly restricted to the transverse directions $a,b = 1, \cdots, n-1$. 
+    The relation between the coordinate systems at nearby points in space defines the \textbf{Gauge potentials}, defined as follows\footnote{
+    
+    In effect, it's easy to see how the relationships between the gauge potentials and the moving orthonormal basis can be inverted, 
+    
+\begin{equation}
+    \begin{split}
+        \tilde{A}^{\alpha \beta}_{\mu} = \hat{{\bf e}}^{(\alpha)} \cdot \partial_{\mu} \hat{{\bf e}}^{(\beta)} 
+        \rightarrow 
+        \tilde{A}^{\alpha 0}_{\mu} = {\bf e}^{\alpha} \cdot \partial_{\mu} {\bf e}^{0} 
+        \rightarrow \tilde{A}^{\alpha 0}_{\mu} = {\bf e}^{\alpha} \cdot \partial_{\mu} \hat{{\bf n}}^{0} \Rightarrow \partial_{\mu} \hat{{\bf n}}^{0} = \sum_{a} \tilde{A}^{\alpha 0}_{\mu} {\bf e}^{\alpha}
+    \end{split}
+\end{equation}
+    } 
+    
+    \begin{equation}
+        \begin{split}
+            \tilde{A}^{\alpha \beta}_{\mu} = \hat{{\bf e}}^{(\alpha)} \cdot \partial_{\mu} \hat{{\bf e}}^{(\beta)}, \begin{array}{cc}
+                 \textnormal{ which describe the variations }  \\
+                 \textnormal{ of the moving orthonormal basis by }  
+            \end{array} \begin{array}{cc}
+                 \partial_{\mu} \hat{{\bf n}}^{0} = \sum_{a} \tilde{A}^{a0}_{\mu} \hat{{\bf e}}^{a} \\
+                 \partial_{\mu} \hat{{\bf e}}^{a} = \sum_{b} (\tilde{A}^{ba}_{\mu} \hat{{\bf e}}^{b}) - \tilde{A}^{a0}_{\mu} \hat{{\bf n}}^{0}
+            \end{array}
+        \end{split}
+    \end{equation}
+    
+    In the context of differential geometry, these fields are connections between principal bundles. 
+    Since the $\hat{{\bf e}}^{a}$-vectors are orthonormal, the gauge potentials $\tilde{A}^{\alpha \beta}_{\mu}$ must be antisymmetric, namely $\tilde{A}^{\alpha \beta}_{\mu} = -\tilde{A}^{\beta \alpha}_{\mu}$.
+    
+    \item Next, an intermediate momentum scale $\tilde{\Lambda}$ is chosen, s.t.
+    
+    $$
+        0 < \tilde{\Lambda} << \Lambda,
+    $$
+    
+    which separates the fast and slow fields, which are defined as follows:
+    
+    \begin{equation}
+        \begin{split}
+            &\textnormal{Fast fields: } \phi^a({\bf x}) = \sum_{\tilde{\Lambda} \leq |{\bf k}| \leq \tilde{\Lambda}} e^{i {\bf k} \cdot {\bf x}} \phi_{{\bf k}}^a, \\   
+            &\textnormal{Slow fields: } {\bf X}({\bf x}) = \sum_{\tilde{\Lambda} \leq |{\bf k}| \leq \tilde{\Lambda}} e^{i {\bf k} \cdot {\bf x}} {\bf X}_{{\bf k}}, \quad {\bf X} = \hat{{\bf e}}^{a}, \tilde{A}_{\mu}^{\alpha \beta}.
+        \end{split}
+    \end{equation}
+    
+    \item With these reparametrizations in mind, specifically those defined in \cref{NLSM_Polyakov_fast_slow_fields}, the NLSM Lagrangian now reads 
+    
+    \begin{equation}
+        \begin{split}
+            \mathcal{L}& = \frac{\Lambda^{d-2}}{2f} \int d^d x \blanky \cancelto{1}{\mathcal{J}[\hat{{\bf n}}; \hat{{\bf n}}^0, \phi^a]}\sum_{\mu = 1,d} \partial_\mu \hat{\bf n} \cdot \partial_\mu \hat{\bf n} \\
+            & = \frac{\Lambda^{d-2}}{2f} \int d^d x \blanky \sum_{\mu = 1,d} \bigg[
+                (\partial_\mu \hat{\bf n}^0) \sqrt{1-\bar{\phi}^2} + \hat{\bf n}^{0} \partial_{\mu} \sqrt{1-\bar{\phi}^2}  
+                + \sum_{a} (\partial_{\mu} \phi^a) \hat{{\bf e}}^{a} 
+                + \sum_{a} \phi^a \partial_{\mu} \hat{{\bf e}}^{a}
+            \bigg]^2
+            \\
+            &= \frac{\Lambda^{d-2}}{2f} \int d^d x \blanky \sum_{\mu = 1,d} \bigg[
+                \sqrt{1-\bar{\phi}^2} \sum_{a} \tilde{A}^{\alpha \beta}_{\mu} \hat{{\bf e}}^{a} 
+                + (\partial_\mu \sqrt{1-\bar{\phi}^2} )\hat{{\bf n}}^{0} 
+                + \sum_{a} (\partial_{\mu} \phi^a) \hat{{\bf e}}^{a} 
+                + \sum_{a} \phi^a \sum_{b} 
+                \bigg(
+                    \tilde{A}^{b a}_{\mu} \hat{{\bf e}}^{b} 
+                    -
+                    \tilde{A}^{a 0}_{\mu} \hat{{\bf n}}^{0} 
+                \bigg) 
+            \bigg]^2
+            \\
+            &= \frac{\Lambda^{d-2}}{2f} \sum_{\mu ab} \bigg[
+                \bigg(
+                    \partial_{\mu} \sqrt{1-\bar{\phi^2}} 
+                    -
+                    \tilde{A}^{a 0}_{\mu} \phi^a
+                \bigg)^2
+                + 
+                \bigg(
+                    \partial_{\mu} \phi^a 
+                    + 
+                    \tilde{A}^{a b}_{\mu} \phi^b 
+                    +
+                    \tilde{A}^{a 0}_{\mu} \sqrt{1-\bar{\phi^2}}
+                \bigg)^2
+            \bigg]^2 \\
+            & \Rightarrow \mathcal{Z} \approx \int_{\bar{\Lambda}} \mathcal{D} \hat{\bf n} \blanky \exp 
+            \bigg[
+                - \int_{\bar{\Lambda}} d^d x \blanky \mathcal{L}[\hat{{\bf n}}^{0}]
+                \mathcal{Z}^{(2)}[\hat{{\bf n}}^{0}] 
+                [1 + \mathcal{O}(\phi^2, f^{-1} \phi^3)]
+            \bigg]
+        \end{split}
+    \end{equation}
+    
+    where 
+    
+    \begin{equation}
+        \mathcal{Z}^{(2)} = \int_{{\Lambda}} \mathcal{D} \hat{\bf n} \blanky \exp 
+        \bigg[
+            - \int_{\Lambda} d^d x \blanky \mathcal{L}^{(2)}[\hat{\bf n}^{0}, \phi], \quad \mathcal{L}^{(2)} = \frac{}{}
+        \bigg]
+    \end{equation}
+    
+\end{itemize}
+
+\paragraph{.}
