@@ -1,0 +1,83 @@
+%\section{Fiber Bundles}
+
+A manifold is a topological space which is locally isomorphic to $\R^n$, but not necessarily so globally. By introducing a coordinate chart, a local Euclidean structure is endowed on the manifold. A fibre bundle is a topological space which is locally isomorphic to a direct product of two topological spaces. \medbreak
+
+\subsection{\textswab{Tangent bundles}}
+
+A \textswab{tangent bundle} $TM$ over an $m$-dimensional manifold $M$ is a collection of all the tangent spaces of $M$, namely 
+
+\begin{equation*}
+    TM := \bigcup_{p \in M} T_p M
+\end{equation*}
+
+The $M$-manifold over which $TM$ is defined is the \textswab{base space}. Let $\{U_i\}^{i}$ be an open covering of $M$. 
+
+\begin{equation*}
+    \begin{array}{cc}
+         \textnormal{If $x^{\mu} = \phi_i(p)$ is the coordinate} \\
+         \textnormal{ on $U_i$, an element of}
+    \end{array}
+   T U_i := \bigcup_{p \in U_i} T_p M 
+    \begin{array}{cc}
+         \textnormal{ is specified by a point $p \in M$} \\
+         \textnormal{ and a vector ${\bf V} = V^\mu(p) \partial_{\mu}|_{p} \in T_p M$.}
+    \end{array}
+\end{equation*}
+
+Given that the open covering $U_i$ are homeomorphic to an open subset $\phi(U_i) \subset \R^m$ and each $T_p M \homeomorphic \R^m$, it follows that $TU_i$ is identified with a direct product $\R^m \times \R^m$. Explicitly, the mapping reads
+
+\begin{equation}
+    (p, {\bf V}) \in TU_i: \blanky (p, {\bf V}) \mapsto (x^{\mu}(p), V^{\mu}(p)).
+\end{equation}
+
+This implies that $TU_i$ is a $2m$-differentiable manifold. 
+Moreover, $TU_i$ can be decomsoped as a direct product $U_i \times \R^i$, i.e. the information contained in the point $u \in TU_i$ can be systematically mapped into a point $p \in M$ and a vector ${\bf V} \in T_p M$. \medbreak
+
+\begin{wrapfigure}{l}{0.3\textwidth}
+\includegraphics[scale = .4]{figs/Differential_Geometry/Fibre_Bundles/bundle_projection.png}
+\caption{Diagram showing a local piece of $TU_i \simeq \R^m \times \R^m$ of the tangent bundle $TM$. The projection $\pi$ projects a vector ${\bf V} \in T_p M$ to a point $p \in U_i \subset M$.}
+\end{wrapfigure} 
+
+Thus, the idea of a \textswab{bundle projection}, not to be confused with the \textswab{natural projection}, arises. 
+
+\begin{df}
+    Given a manifold $M$ with tangent bundle $TM$, the \textswab{bundle projection} $\pi$ at the point $u \in T_pM$ is defined as a map
+
+    $$
+        \pi: TU_i \rightarrow U_i, 
+    $$
+
+    s.t. for any point $u \in TU_i$, $\pi(u)$ is a point $p \in U_i$ at which the vector is defined. 
+\end{df}
+
+This definition must be contrasted with the notion of \textswab{natural projection},
+
+\begin{df}
+    Let $X$ and $Y$ be two topological spaces. Then, the \textswab{natural projection} mapping $\textnormal{proj}_1: X \times Y \rightarrow X$ is defined s.t. $\textnormal{proj}_1( (x,y) ) = x \in X$.
+\end{df}
+
+\clearpage
+
+\begin{remark}
+Since both of these mappings are projections, information is lost. In particular in the case of the bundle projection, information about the vector itself is lost. 
+Furthermore, note that $\pi^{-1}(p) = T_p M$. 
+
+\end{remark}
+
+Hence, $T_pM$ is called the \textswab{fibre} of $M$ at the point $p$. \medbreak
+
+It is obvious that if $M = \R^m$, the tangent bundle itself is expressed as $\R^m \times \R^m$. Naturally, this will not be always the case for more complex structures, since the tangent bundle measures the topological non-triviality of the manifold $M$. 
+In effect, consider a topology $\tau = \{U_i\}^{i}$ of charts on $M$, s.t. $U_i \cap U_j \neq \emptyset$. In particular, consider two charts $U_i, U_j$ and let $y^{\mu} = \psi(p)$ be the coordinates on $U_j$. Consider a vector ${\bf V} \in T_pM$ s.t. $p \in U_i \cap U_j$. Then, ${\bf V}$ has two coordinate presentations,
+
+\begin{equation*}
+    {\bf V} = { V}^{\mu} \frac{\partial}{\partial x^{\mu}} \bigg|_{p} 
+    = \tilde{{ V}}^{\mu} \frac{\partial}{\partial y^{\mu}} \bigg|_{p}, 
+        \textnormal{ related as } 
+    \tilde{{ V}}^{\mu} = \frac{\partial y^\mu}{\partial x^\nu}(p) {{V}}^{\nu}, 
+        \textnormal{ with} 
+    \frac{\partial y^\mu}{\partial x^\nu}(p) \in \generallineargroup(m, \R)
+\end{equation*}
+
+For $\{x^\mu\}$ and $\{\bf y^\mu\}$ to be good coordinate systems, the matrix $G^{\mu}_{\blanky \nu} \equiv {\partial y^\mu}/{\partial x^\nu}(p)$ must be non-singular. 
+Hence, the fibre coordinates are simply related via a linear transformation, an element of the general linear group. The group $\generallineargroup(m, \R)$ is called the \textswab{structure group} of $TM$. 
+This group then describes precisely how fibres of a tangent bundle are interwoven together to form a tangent bundle, which consequently may have a topologically complicated stucture. 
