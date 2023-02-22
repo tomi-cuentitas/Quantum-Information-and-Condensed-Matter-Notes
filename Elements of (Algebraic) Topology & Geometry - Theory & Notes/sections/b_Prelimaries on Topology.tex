@@ -1,0 +1,152 @@
+%\section{Some topology definitions and results}
+
+First, consider $X$ to be a topological space.\\
+
+\paragraph{\textbf{Path-connected}}
+
+A \textbf{\underline{path}} from a point $p$ to a point $q$ in a topological space $X$ is a continuous function $f: \mathds{R}_{[0,1]} \to X$, with $f(0) = x$ and $f(1) = y$. A \textbf{\underline{path-component}} of $X$ is an equivalence class of $X$ under the equivalence relation which makes $x$ equivalent to $y$ is there there is a path from $x$ to $y$. Hence, $X$ is said to be \textbf{\underline{path-connected}} if there is exactly one-path component, ie. if there is a path joining any two points $X$. Some important results regarding path-connectedness are enunciated, as follows.
+
+\begin{itemize}
+    \item Let $X$ and $Y$ be topological spaces and let $f: X \to Y$ be a continuous function. If $X$ is path-connected then its image $f(X)$ is path-connected as well. 
+    \item Every path-connected space is connected
+    \item The closure of a connected subset is connected. Furthermore, any subset between a connected subset and its closure is connected. 
+    \item Every product of a family of path-connected  spaces is path-connected.
+    \item Every manifold is locally path-connected. \\
+\end{itemize}
+
+\paragraph{\textbf{Simply connected}}
+
+$X$ is \textbf{\underline{simply connected}} (or 1-connected) if it is path-connected and every path between two points can be continuously transformed (intuitively for embedded spaces, staying within the space) into any other such path, while preserving the two endpoints in question. The fundamental group $\pi_1(X)$ is an indicator of the failure of a topological space to be simply connected: a path-connected topological space is simply connected if and only if $\pi_1(X) \simeq \mathds{Z}$. \\
+
+An equivalent definition is: $X$ is called simply-connected if
+
+\begin{itemize}
+    \item it is path-connected, 
+    \item and any loop in $X$ defined by $f: S^{1} \to X$ can be contracted to a point; ie. $\exists F: D^{2} \to X \textnormal{ such that } F\bigg|_{S^{1}} = f$, where ${S^{1}}$ denotes the unit circle and $D^2$ denotes the closed unit disk in the Euclidean plane respectively. In other words, there exists a continuous map from the closed unit disk to $X$ such that $F$ restricted to $S^1$ is precisely $f$.
+\end{itemize}
+
+An equivalent formulation is this: $X$ is simply connected if and only if 
+
+\begin{itemize}
+    \item it is path-connected,
+    \item and whenever two arbitrary paths (ie. continuous maps) $p: \mathds{R}_{[0,1]} \to X$ and $q: \mathds{R}_{[0,1]} \to X$ with the same endpoints, $p(0) = q(0) \textnormal{ and } p(1) = q(1)$, can be continuously deformed into one another. Explicitly, there exists a homotopy $F: \mathds{R}_{[0,1]} \to X$ such that $F(x,0) = p(x)$ and $F(x,1) = q(x)$. \\
+\end{itemize}
+
+Equivalently, $X$ is simply connected if and only if $X$ is path-connected and $\pi_1 (X) \simeq \mathds{Z}$ at each point. \\
+
+\paragraph{\textbf{Homotopy invariants}}
+
+Formally, a homotopy between two continuous functions $f, g: X \to Y$, wherein both $X$ and $Y$ are topological spaces, is defined to be a continuous function $H: X \times \mathds{R}_{[0,1]} \to Y$, from the product of the space $X$ with the unit interval to $Y$, such that 
+
+$$
+    H(x,0) = f(x) \textnormal{ and } H(x, 1) = g(x), \forall x \in X.
+$$
+
+In particular, a pointed map $f: (X, x_0) \rightarrow (Y, y_0)$ is called \underline{null-homotopic relative to the basepoint} if there is a homotopy $H: X\times \mathds{R}_{[0,1]}$ such that $H(x,0) = f(x)$ and $H(x, 1) = e_{y_0}, \blanky \forall x \in X$, with $f(x_0, t) = y_0$. \clearpage
+
+In practical terms, if $H$'s second argument is thought of as time, when $H$ describes a continuous deformation of $f$ into $g$, at time 0 we have the function $f$ and at time 1 we have the function $g$, in such a way that there is a smooth transition from $f$ to $g$. \medbreak
+
+Given two topological spaces $X$ and $Y$, a homotopy equivalence between $X$ and $Y$ is a pair of continuous maps $f: X \to Y$ and $g: Y \to X$, such that $ g \circ f $ is homotopic to the identity map on $X$, $\textnormal{id}_X$ and $ f \circ g $ is homotopic to the identity map on $Y$, $\textnormal{id}_Y$. If such a pair exists, then $X$ and $Y$ are homotopy-equivalent, o r of the same homotopy type. Intuitively, two space X and Y are homotopy equivalent if they can be transformed into one another by bending, shrinking and expanding operations. Spaces that are homotopy-equivalent to a point are called contractible.
+
+Note that a homeomorphism is a special case of a homotopy equivalence, in which $g \circ f$ is exactly equal to the identity map $\textnormal{id}_X$ (not only homotopic to it), and $f \circ g$ is equal to $\textnormal{id}_Y$. Therefore, if $X$ and $Y$ are homeomorphic then they are homotopy-equivalent, but the opposite is not true. Some examples:
+
+\begin{itemize}
+    \item A solid disk is homotopy-equivalent to a single point, since you can deform the disk along radial lines continuously to a single point. However, they are not homeomorphic, since there is no bijection between them (since one is an infinite set, while the other is finite).
+    \item The Möbius strip and an untwisted (closed) strip are homotopy equivalent, since you can deform both strips continuously to a circle. But they are not homeomorphic. \\
+\end{itemize}
+
+A function $f$ is said to be null-homotopic if it is homotopic to a constant function. (The homotopy from $f$ to a constant function is then sometimes called a null-homotopy.) For example, a map $f$ from the unit circle $S^1$ to any space $X$ is null-homotopic precisely when it can be continuously extended to a map from the unit disk $D^2$ to $X$ that agrees with $f$ on the boundary. \underline{It follows from these definitions that a space $X$ is contractible if and only if the}
+\underline{ identity map from $X$ to itself—which is always a homotopy equivalence—is null-homotopic.} \\
+
+In algebraic topology, there are many interesting homotopic invariants. Namely, let $X, Y$ be topological spaces, then 
+
+\begin{itemize}
+    \item $X$ is path-connected if and only if $Y$ is.
+    \item $X$ is simply connected if and only if $Y$ is.
+    \item if $X$ and $Y$ are path-connected, then the fundamental groups of $X$ and $Y$ are isomorphic, and so are the higher homotopy groups. \\
+\end{itemize}
+
+\paragraph{\textbf{Contractibility}}
+
+ Then, said topological space $X$ is \underline{\textbf{contractible}} if the identity map on $X$ is null-homotopic, ie. if it is homotopic to some constant map. Intuitively, a contractible space is one that can be continously shrunk to a point within that space.
+
+A contractible space is precisely one with the homotopy type of a point. It follows that all the the associated homotopy groups of a contractible space are trivial. Therefore, any space with a non-trivial homotopy group cannot be contractible. There are two non-equivalent definitions for a contractible space:
+
+\begin{itemize}
+    \item Munkres' definition: Let $X$ be a topological space. If the identity map on $X$, $\textnormal{id}_X$, is null-homotopic, then $X$ is contractible. 
+    \item Theodore's definition: Let $X$ be a topological space and let $x_0 \in X$ a point. If there is a continuous map $F: X \times \mathds{R}_{[0,1]} \rightarrow X$ such that 
+    
+    \begin{align}
+    \begin{array}{c}
+         F(x, 0) = x \\
+         F(x, 1) = x_0 \\
+         F(x_0, t) = x_0  
+    \end{array} \begin{array}{c}
+        \forall x \in X, \\
+        \forall t \in \mathds{R}_{[0,1]}
+    \end{array} 
+    \Rightarrow \textnormal{ then $X$ is contractible. }
+    \end{align}
+\end{itemize}
+
+For a topological space $X$, the following statements are all equivalent:
+
+\begin{itemize}
+    \item $X$ is contractible (ie. the identity map is null-homotopic). 
+    \item $X$ is homotopy-equivalent to a one-point space. 
+    \item For any space $Y$, any two maps $f, g: Y \rightarrow X$ are homotopic.
+    \item For any space $Y$, any map $f: Y \rightarrow X$ is null-homotopic. 
+    \item The cone on a space $X$ is always contractible. Therefore any space can be embedded in a contractible one (which also illustrates that subspaces of contractible spaces need not be contractible themselves).
+    \item $X$ is a contractibe if and only if there exists a retraction from the cone of $X$ to $X$.
+    \item Every contractible space is path-connected and simply connected. Moreover, since all the higher homotopy groups, vanish. Every contractible space is $n$-connected, for all $n \geq 0$.\\ 
+\end{itemize}
+
+\paragraph{\textbf{Hopf-Rinow theorem}}
+
+Let $(M,g)$ be a connected Riemannian manifold\footnote{Note that a path-connected topological space is connected as well. 
+\begin{tcolorbox}[title=Proof: path-connectedness implies connectedness]
+In effect, if $X$ is a path-connected topological space and assuming (by contradiction) that $X = A \sqcup B$, and $A, B \neq \emptyset$ (ie. $X$ isn't connected). Then, let $a \in A, b \in B$ and let $\gamma: \mathds{R}_{[0,1]}$ be a path in $X$ such that $\gamma(0) = a$, $\gamma(1) = b$. Then, given $\gamma$'s continuity, there is a decomposition 
+
+$$
+    \mathds{R}_{[0,1]} = \gamma^{-1}(A) \cup \gamma^{-1}(B),
+$$
+
+which, if true, implies that $\mathds{R}_{[0,1]}$ is not connected, which is false. Hence, $X$ cannot be path-connected if it isn't connected.
+\end{tcolorbox}}. Then, the following statements are equivalent
+
+\begin{itemize}
+    \item The closed and bounded subsets of $M$ are compact,
+    \item $M$ is a complete metric space, 
+    \item $M$ is geodesically complete, that is, $\forall p \in M$, the exponential map $\mathfrak{e}\mathfrak{x}\mathfrak{p}_{p}$ is defined on the entire tangent space $T_p M$,
+\end{itemize}
+
+Furthermore, any one of the above implies that, given any two points $p, q \in M$, there exists a length-minimizing geodesic connecting these two points. \\
+
+\section{Preliminary Definitions and Results in Point-Set Topology and Algebaic Topology}
+
+\paragraph{Quotient space}
+
+\begin{df}
+
+Let $(X, \tau_X)$ be a topological space with $\tau_X$-topology. If $A$ is a subset of $X$, let $\sim_A$ be the equivalence relation on $X$ defined by 
+
+$$
+    x \sim_A y \leftrightarrow x=y \textnormal{ or } (x \in A, y \in A).
+$$
+
+This is well-defined, even if $A$ is the empty set. Now, the quotient space $\frac{X}{A}$ is, by definition, $\frac{X}{\sim_A}$. Let $0$ denote the equivalence class $[A]$ of $\sim_A$. Then, as a set,
+
+\begin{equation*}
+    \frac{X}{\sim_A} = \left\{
+         \begin{array}{cc}
+              X & \textnormal{ if } A = \emptyset \\
+              (X-A) \cup \{0\} & \textnormal{ if } A \neq \emptyset
+         \end{array}
+    \right.
+\end{equation*}
+
+\end{df}
+
+The open subsets of $\frac{X}{\sim_A}$ are the open subsets of $X-A$ in $X$ and the subsets $U \cup \{0\}$ s.t. $U \cup A$ is open in $X$.
+
+\clearpage
