@@ -21,29 +21,15 @@
 \usepackage{xcolor}
 \usepackage{relsize}
 
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
 %usepackage[pass,showframe]{geometry}% just to show the page margins %\usepackage[demo]{graphicx}% remove demo option in actual document\usepackage[pass,showframe]{geometry}% just to show the page margins
 
 \usepackage{mwe} % for blindtext and example-image-a in example
 \usepackage{wrapfig}
 
 \usepackage[demo]{graphicx}% remove demo option in actual document
-
-\usepackage{simpler-wick}
-\usepackage{calligra, unicode-math}
-\newlength\dlf
-\newcommand\alignedbox[2]{
-  % #1 = before alignment
-  % #2 = after alignment
-  &
-  \begingroup
-  \settowidth\dlf{$\displaystyle #1$}
-  \addtolength\dlf{\fboxsep+\fboxrule}
-  \hspace{-\dlf}
-  \fcolorbox{red}{yellow}{$\displaystyle #1 #2$}
-  \endgroup
-}
-
-\usepackage[]{algorithm2e}
 
 % new and renewed commands
 \renewcommand{\qedsymbol}{$_{\scriptstyle \substack{\sc{quod}\\\sc{erat}\\\sc{dem}\scalebox{0.53}{$\blacksquare$}}}$}
@@ -195,8 +181,11 @@ skipbelow=\topskip,
 \newcommand{\wedgeprod}{\mathsans{\mupLambda}}
 \newcommand{\ctwo}{\mathds{C}^2}
 \newcommand{\xmeasure}{\int_{\R^3} d\x}
+\newcommand{\defsymb}{\overset{\textnormal{def}}{=}}
+\newcommand{\homeomorphic}{{\approx}_h}
+
+
 \newcommand{\spinmeasure}{\sum_{\sigma_j \in \ctwo}}
-\definecolor{my-blue}{cmyk}{0.80, 0.13, 0.14, 0.04, 1.00}
 \newcommand{\M}{\mathcal{M}}
 \newcommand{\transpose}{^{\textnormal{T}}}
 \newcommand{\Rb}{{\bf R}}
