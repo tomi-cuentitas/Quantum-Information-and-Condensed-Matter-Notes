@@ -1,0 +1,14 @@
+%\section{Preliminary Definitions and Results in Group Theory}
+
+\paragraph{Quotient Group}
+
+Consider the following theorem, concerning groups and quotient groups. These results can be generalized to quotient sets and quotient spaces as well. 
+
+\begin{theorem} \label{Theorem_Quotient_Group}
+      Let $G, G'$ be two groups. Then, let $\phi: G \rightarrow G'$ be a homeomorphism of kernel $\phi^{-1}(e') = H \subset G$. Then, $H$ is an invariant subgroup of $G$ and the quotient group is isomorphic to $G'$, 
+      $$
+        \frac{G}{H} \simeq G'
+      $$
+\end{theorem}
+
+For further references, see \cite{HoracioII}
