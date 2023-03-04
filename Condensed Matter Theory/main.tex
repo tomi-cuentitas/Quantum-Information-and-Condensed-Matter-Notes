@@ -2,6 +2,16 @@
 \usepackage[subpreambles=true]{standalone}
 \usepackage{import}
 \usepackage{float}
+\usepackage{xr}
+
+\externaldocument{1. Quantum Phase Transitions}
+\externaldocument{2. Spin Chain Models}
+\externaldocument{3. Ising and Heisenberg Spin Models}
+\externaldocument{4. Spin Wave Theory}
+\externaldocument{5. Additional Topics}
+\externaldocument{6. A Review of Quantum Field Theory}
+\externaldocument{7. QFTaCMT}
+\externaldocument{8. Path Integrals in CMT.tex}
 
 \author{Tomás Pérez}
 \class{Condensed Matter Theory - Lecture Notes}
@@ -13,38 +23,50 @@
 
 \tableofcontents
 
-\section{\textbf{Quantum Phase Transitions}}
+%\iffalse
+\section{{\textbf{Quantum Phase Transitions}}}
 \import{sections/}{1. Quantum Phase Transitions}
 \clearpage
 
-\section{\textbf{Spin Chain models}}
+\section{{\textbf{Spin Chain models}}}
 \import{sections/}{2. Spin Chain Models}
 \clearpage
 
-\section{\textbf{Ising and Heisenberg Models}}
+\section{{\textbf{Ising and Heisenberg Models}}}
 \import{sections/}{3. Ising and Heisenberg Spin Models}
 \clearpage
 
-\section{\textbf{Spin Wave Theory}}
+\section{{\textbf{Spin Wave Theory}}}
 \import{sections/}{4. Spin Wave Theory}
 \clearpage
 
-\section{\textbf{Additional Topics}}
+\section{{\textbf{Additional Topics}}}
 \import{sections/}{5. Additional Topics}
 \clearpage
 
-\section{\textbf{Quantum Field-Theoretic approach to Condensed Matter Physics}}
-\import{sections/}{6. QFTaCMT}
+\section{{\textbf{A Review of Quantum Field Theory}}}
+\import{sections/}{6. A Review of Quantum Field Theory}
 
+\section{{\textbf{Quantum Field-Theoretic approach to Condensed Matter Physics}}}
+\import{sections/}{7. QFTaCMT}
+%\fi
+
+\section{{\textbf{Path Integral Formalism and its applications in Condensed Matter Theory}}}
+\import{sections/}{8. Path Integrals in CMT.tex}
+
+\bibliSography{ref.bib}
+\bibliographystyle{apsrev4-1}
+
+\end{document}
 \clearpage
 
-\section{Linear Response Theory}
+%\section{Linear Response Theory}
 
 Linear response theory is an extremely widely used concept in physics, stating that the response to a weak external perturbation is proportional to the perturbation, and therefore the quantity of interest is the proportionality constant. The physical question to ask is thus: supposing some perturbation $H'$, what is the measured consequence for an observable quantity ${\bf A}$. In other words, what is $\langle {\bf A} \rangle$ to linear order in $H'$? 
 
 Among the numerous physical application of the linear response formalism, one can mention charge and spin susceptibilities of eg. electron systems due to external electric or magnetic fields. Responses to external mechanical forces or vibrations can also be calculated using the same formalism. \\
 
-\paragraph{\textbf{The general Kubo formula}}
+%\paragraph{\textbf{The general Kubo formula}}
 
 Consider a quantum system described by a time independent Hamiltonian ${\bf H}_0$ in thermodynamic equilibrium. This means that an expectation value of a physical quantity, described by the operator ${\bf A}$, which can be evaluated as 
 
@@ -108,7 +130,7 @@ the difference between $\langle {{\bf A}}(t) \rangle \textnormal{ and } \langle 
 
 which is the Kubo formula. This expresses the linear response to a perturbation $\Hamiltonian'$. Note that the factor $e^{-\eta(t-t')}$, with an infinitesimal positive parameter $\eta$, has been included to force the response at time $t$ due to the influence of $\Hamiltonian'$ at time $t'$ to decay when $t >> t'$. At the end of the calculation, the limit $\eta \rightarrow 0^+$,. This is so since the retarded effect of a perturbation must decrease in time\footnote{The other, the advanced correlation function is non-physical and must be ditched. The other one, the retarded correlation function, decreases exponentially with time, the exponential factor thus picks out the physically relevant solution by introducing an artificial relaxation mechanism.}. \\
 
-\paragraph{\textbf{Kubo fromula in the frequency domain}}
+%\paragraph{\textbf{Kubo fromula in the frequency domain}}
 
 It is often convenient to express the response to an external disturbance in the frequency domain via Fourier transformations\footnote{Consider the $L^1$-space, ie. the space of all integrable functions on the real line. Then the Fourier transform and the Fourier-anti transform can be defined as 
 \begin{align}
@@ -160,7 +182,7 @@ which can be inverted to yield the final result in the frequency domain
 
 {where the infinitesimal $\eta$ parameter is incorporated } { in order to ensure the correct physical result, ie.} {the retarded response function decays at $t>>1$.} \\
 
-\paragraph{\textbf{Kubo formula for conductivity}}
+%\paragraph{\textbf{Kubo formula for conductivity}}
 
 Consider a system of charged particles, eg. electrons, which is subjected t an external electromagnetic field. The electromagnetic field induces a current and the conductivity is the linear response coefficient. In the general case, the conductivity is a non-local quantity in both time and space, such that the electric current ${{\bf J}_e}$ at some point ${\bf x}$ at time $t$ depends on the electric field at points ${\bf y}$ at times $t'$, eg.\footnote{Note that this section's mathematical treatment is not Lorentz-covariant. This is, the spacetime is treated as $\R^4$ with the metric being $g_{\mu \nu} = \delta_{\mu \nu}$} 
 
@@ -210,14 +232,11 @@ Now, given that he external perturbation, written in frequency space, is already
 
 \clearpage
 
-\section{Microscopic Theory of Conventional Superconductivity}
+%\section{Microscopic Theory of Conventional Superconductivity}
 
 From \textbf{Advanced Quantum Condensed Matter Physics, One-Body, Many-Body and Topological perspectives. Michael El-Batanouny} \\
 
-\paragraph{\textbf{}}
+%\paragraph{\textbf{}}
 
-
-
-\bibliography{citations.bib}
-\bibliographystyle{abbrv}
 \end{document}
+
