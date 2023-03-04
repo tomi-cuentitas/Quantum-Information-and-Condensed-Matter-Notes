@@ -1,0 +1,2453 @@
+\subsection{Motivation for the derivation of a Quantum Field Theoretic Approach to Condensed Matter Theory} \medbreak
+
+Consider a quantum many-body system governed by a time-dependent Hamiltonian ${\bf H}(t)$, s.t. in the distant past the system was in a state specified by a many-body density matrix $\rho(-\infty)$, whose identity is non-important. 
+It may be thought of as the equilibrium density matrix associated with the Hamiltonian ${\bf H}(-\infty)$. Without any loss in generality, one may consider that ${\bf H}(-\infty)$ describes a free (Gaussian) theory, i.e. a theory of non-interacting particles. 
+The interactions may be \textswab{adiabatically} switched on to reach their actual physical strength sometime prior to the observation time. 
+This idea of adiabaticity is paramount to derive useful analytical methods in Quantum Field Theory. \bigbreak
+
+\paragraph{\textswab{Closed Time Contour Evolution}}
+
+The system's density matrix evolves according to the von Neumann equation 
+
+\begin{equation}
+\begin{split}
+    \frac{\partial}{\partial t} \rho(t) = -i [{\bf H}(t), \rho(t)], \textnormal{ with formal solution } \rho(t) &= \mathcal{U}(t, \infty) \rho(-\infty) \mathcal{U}^\dagger(t, \infty) \\ 
+    &= \mathcal{U}(t, \infty) \rho(-\infty) \mathcal{U}(-\infty, t), \\
+    \textnormal{with the evolution operators obeying} \begin{array}{cc}
+         \partial_t \mathcal{U}(t,t') = - i {\bf H}(t) \mathcal{U}(t,t') \\
+         \\
+         \partial_{t'} \mathcal{U}(t,t') = i  \mathcal{U}(t,t') {\bf H}(t')
+    \end{array}
+\end{split}
+\end{equation}
+
+Given that the Hamiltonian operators at different times need not to commute, the $\mathcal{U}$-evolution operator must be understood as an infinite product of incremental evolution operators with instantaneous locally constant Hamiltonians, i.e.
+
+\begin{equation} 
+\begin{split}
+    \mathcal{U}(t,t') &= \lim_{N \rightarrow \infty} e^{i {\bf H}(t- \delta t) \blanky \delta t}  e^{i {\bf H}(t- 2 \delta t) \blanky \delta t} \cdots e^{i {\bf H}(t- N\delta t) \blanky \delta t}  e^{i {\bf H}(t') \blanky \delta t}, \quad \delta_t = \frac{t-t'}{N}, \\
+    &= \bm{\mathcal{T}} \exp 
+    \bigg(
+        -i \int_{t'}^{t} dt \blanky {\bf H}(t)
+    \bigg).
+\end{split}
+\end{equation}
+
+Physical observables at $t$-time can be computed as 
+
+\begin{equation}
+    \langle {\bf O}(t) \rangle \equiv \frac{\Tr \rho(t) {\bf O}(t)}{\Tr \rho(t)} \Tr \bigg[ 
+        \mathcal{U}(-\infty, t) \blanky {\bf O} \blanky \mathcal{U}(t, -\infty) \rho(-\infty)
+    \bigg],
+\end{equation}
+
+where the trace is perfomrmed over the many-body Hilbert space. 
+The previous expression, in its last form, reads as an evolution from $t = - \infty$ (wherein the initial state is known), towards $t$ (wherein the observable is calculated), and then back to $t = - \infty$. 
+Hence, calculation of an observable implies evolving the initial state both forward and backward. \medbreak
+
+Such forward-backward evolution can be avoided, in the equilibrium quantum field theory, with a special trick. 
+In the zero-temperature equlibrium formalism, the expectation values are taken w.r.t. the ground state of the interacting many-body system, $\groundstate$. 
+This state is obtained from the known, and simple ground state of the corresponding non-interacting system, $\ket{0}$, by action with the evolution operator of the fully-interacting theory, e.g.
+
+$$
+    \groundstate = \mathcal{U}(t, -\infty) \ket{0}. 
+$$
+
+This mapping holds if and only if the only allowed time-dependence for the Hamiltonian is an \textswab{adiabatic switching} of the interactions on and off the distant past and distant future, respectively, since the idea is to only deal with systems in equilibrium. The notion of adiabatic-switching will be discused in detail in \nameref{section:adiabaticity_in_QFT}. 
+
+If such a mapping holds, then it is clear that 
+
+$$
+    \bra{\textnormal{GS}} {{\bf O}} \groundstate = \bra{0} 
+        \mathcal{U}(-\infty, t) \blanky {{\bf O}} \blanky \mathcal{U}(t, -\infty)
+    \ket{0}.
+$$
+
+The trick lies in arguing that 
+
+$$
+    \mathcal{U}(+\infty, - \infty) \ket{0} = e^{iL} \ket{0}, \quad \bra{0} \mathcal{U}(+\infty, - \infty) = \bra{0} e^{iL}.
+$$
+
+This is, the evolution of the non-interacting ground state -upon adiabatic switching-on of the interations and subsequent adiabatic switching-off- brings the system back into the state, upto a phase factor $e^{iL}$.
+This statement is based on the hypothesis that the adiabatic perturbation keeps the system in its evolving ground state at all times.
+If so, the normalization condition $\bra{0}\ket{0} = 1$, implies that the only possible change is the phase of the non-interacting ground state $e^{iL} = \bra{0} \mathcal{U}(+\infty, -\infty) \ket{0}$. 
+Similarly, it follows that 
+
+\begin{equation}
+\label{Intro_QFT_Observable_ex_v}
+    \begin{split}
+        \bra{\textnormal{GS}} {\bf O} \groundstate &= \bra{0} \mathcal{U}(-\infty, t) \blanky {\bf O} \blanky \mathcal{U}(t, - \infty) \ket{0} \\
+        &= e^{-iL} \bra{0} 
+                     e^{iL} \mathcal{U}(-\infty, t) \blanky {\bf O} \blanky \mathcal{U}(t, - \infty) \ket{0} \\
+        &= e^{-iL} \bra{0}
+            \mathcal{U}(+\infty, -\infty) \blanky \mathcal{U}(-\infty, t) \blanky {\bf O} \blanky \mathcal{U}(t, -\infty) \ket{0} 
+        \ket{0}\\
+        &= \frac{\bra{0}
+            \mathcal{U}(+\infty,t) \blanky {\bf O} \blanky \mathcal{U}(t, - \infty)
+        \ket{0}
+        }{\bra{0} \mathcal{U}(+\infty, -\infty) \ket{0}}, \quad \textnormal{ where } \mathcal{U}(+\infty, - \infty) \mathcal{U}(-\infty, t) = \mathcal{U}(+\infty, t). 
+    \end{split}
+\end{equation}
+
+The result of this procedure is that one needs to consider only the forward evolution.
+Indeed, the numerator in the last expression calls for evolving the non-interacting ground state $\ket{0}$ from the distant past to the observation time, wherein the observable acts, and then proceeding towards the distant futures, where the overlap with the same known state $\ket{0}$ is evaluated. 
+This formalism will work in the finite-temperature equilibrium formalism, as will be seen in \nameref{section:finite_T_QFT}, wherein the equilibrium density matrix is $\rho \propto e^{-\beta {\bf H}}$ is treated as an evolution operator in imaginary time $\tau \in [0, \beta]$. 
+The observables are then evaluated at imaginary times $\tau_1, \tau_2, \cdots$ and the result must be analytically continued back to the real-time axis. Since the adiabatic switching of the interaction does not drive the system out of equilibrium, a statement similar to \cref{Intro_QFT_Observable_ex_v} holds as well, in which one needs only to describe the forward evolution, albeit along the finite time interval in the imaginary direction. \medbreak
+
+Denominator
+
+
+
+\subsection{Green Functions for Many-Body systems.}
+
+Green function techniques play a fundamental role in the treatment of many-body systems, for many properties of a many body system -eg. ground state energy, excitation spectra, response functions, electric and magnetic susceptibilities and thermodynamic quantities- can be derived from many-body Green functions.\\
+
+Consider the ground state $\ket{\Omega}$ of a system. At some time $t'$, a perturbation is enacted upon the system, said perturbation represented by a local operator ${\bf O}^\dagger({\bf x}, t)$, creating an initial state ${\bf O}^\dagger({\bf x}', t') \ket{\Omega}$. Thus, the system has been deviated from the initial some by some local excitations, a disturbance, and then this disturbance will evolve in space and time. Such a scenario describes typical local measurements done on a quantum many-particle system. Since an explicit time dependence is necessary for this formalism, the Heisenberg picture is useful. To determine physically interesting quantities, the quantum-mechanical amplitude to find the system in state ${\bf O}^\dagger({\bf x}', t') \ket{\Omega}$ at time $t > t'$ namely, 
+
+$$
+    \mathcal{A} = \bra{\Omega} {{\bf O}}({{\bf x}}, t) {{\bf O}}^\dagger({{\bf x}}', t') \ket{\Omega}.
+$$
+
+Many quantum-mechanical operators may be written in bilinear forms of the field operators themselves, $\hat{\Psi}({{\bf x}}, t)$. However, it turns out that correlation functions of the field operators are related to experiments such as photoemission and tunnelling spectroscopies, which involve extraction or injection of a single electron. These field correlation functions can be identified as propagators which satisfy the Green function equation. \\
+
+\subsubsection{The One-Particle Green Function of Many-Body Systems}
+
+\paragraph{Non-interacting Particle Propagator}
+
+Consider a particle in free space described by a single-particle time-independent Hamiltonian ${\bf H}_1$. Its eigenstates and eigenenergies are 
+
+$$
+    {\bf H}_1 \ket{\phi_n} = \varepsilon_n \ket{\phi_n}.
+$$
+
+In general, if a particle is in the $\ket{\phi}_i$-state, it will remain in that state forever. Instead, consider a system in a generic state $\ket{\psi_{\textnormal{trial}}}$. If the trial state is created at time $t'$, the wave-function at a later time $t$ is given by 
+
+$$
+    \ket{\psi(t)} = e^{-\frac{i {\bf H} (t-t')}{\hbar}} \ket{\psi_{\textnormal{trial}}} = \sum_{n} \ket{\psi_n} e^{-\frac{i \varepsilon_n (t-t')}{\hbar}} \bar{\phi_n}\ket{\psi_{\textnormal{trial}}}.
+$$
+
+Then, at time $t$, the probability amplitude that a measurement would find the particle at position ${\bf x}$ can be found as
+
+\begin{equation}
+    \begin{split}
+        \bra{{\bf x}} \ket{\psi(t)} \Theta(t-t') &= \int_{\R^3} d{\bf x}' \blanky \bra{{\bf x}} e^{-\frac{i {\bf H} (t-t')}{\hbar}} \ket{{\bf x}'}\bra{{\bf x}'} \ket{\psi_{\textnormal{trial}}} \Theta(t-t') \\
+        &=  \int_{\R^3} d{\bf x}' \sum_{n \in \mathds{N}} \blanky \bra{{\bf x}} \ket{\phi_n} e^{-\frac{i \varepsilon_n (t-t')}{\hbar}} \bra{\phi_n}\ket{{\bf x}'}\bra{{\bf x}'} \ket{\psi_{\textnormal{trial}}} \Theta(t-t') \\
+        &= i \int_{\R^3} d{\bf x}' \blanky \mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}'t') \psi_{\textnormal{trial}}({\bf x}', t'), \begin{array}{c}
+             \textnormal{ where } \mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}'t') = - i \Theta(t-t') \bra{{\bf x}} e^{-\frac{i {\bf H} (t-t')}{\hbar}} \ket{{\bf x}'} \\
+             \textnormal{ is the retarded Green function, or propagator,} \\
+             \textnormal{ in coordinate representation.}
+        \end{array}
+    \end{split} 
+    \label{NR-1particle-GF}
+\end{equation}
+
+Note that the time translational invariance is apparent due to the Hamiltonian's dependence on $\tau = t-t'$. Therefore, if the Green function $\mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}'t')$ is known, then it can be used to calculate the evolution of any initial state. Interesting information can be extracted from the propagator. 
+
+\begin{itemize}
+    \item The bracket $\bra{\phi_n}\ket{{\bf x}} = \bra{\phi_n} \psi_n^\dagger({\bf x}) \ket{0}$ is just the probability amplitude of forcing the system to collapse into the eigenstate $\ket{\psi_n}$ when a particle is inserted at position ${\bf x}$ and its energy is measured immediately afterwards. \\
+    \item Its resolvant can also be found. From \cref{NR-1particle-GF}, note that the time evolution is a superposition of waves propagating with different energies. In principle, it could be used to determine the eigenspectrum. This can be done via a Fourier transform to the frequency domain\footnote{Note that the Fourier transform is ill-defined, given the oscillatory behaviour for $t \rightarrow \infty$. Therefore, according to the Sokhotoski-Plemelj formula, the new function
+        $$
+            e^{-\eta |t| }\mathfrak{G}^{\textnormal{R}}({\bf x}, {\bf x}'; \omega), \textnormal{ with } \eta > 0,
+        $$
+        is considered.},
+    
+    \begin{equation}
+    \begin{split}
+        \mathfrak{G}^{\textnormal{R}}({\bf x}, {\bf x}'; \omega) &= \mathcal{F}[        \mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}'t')]({\bf x}, {\bf x}'; \omega) \\
+        &= \int dt \blanky e^{i(\omega + i \eta) \tau} \bra{{\bf x}} e^{-\frac{i {\bf H} \tau}{\hbar}} \ket{{\bf x}'} = \bigg\langle {\bf x} \bigg| \frac{1}{\omega - {\bf H} + i \eta} \bigg| {{\bf x}'}\bigg\rangle,
+    \end{split}
+    \end{equation}
+    
+    where the Sokhotoski-Plemelj formula has been used. This is just the resolvent whose poles constitute the quantum system's spectrum. \\
+    
+    Operationally, we can dvise a gedankenexperiment in which the particle is initially inserted at ${\bf x}'$-position and picked up at ${\bf x}$-position after some time $t$. When performing this recipe with adequate resolution and for a sufficiently large number of different positions and elapsed times, the Fourier transform of the record data would provide the full eigenvalue spectrum. Such an experiment would give complete information on our particle. 
+\end{itemize}
+
+This scenario thus reveals that all observables can be expressed in terms of the Green function and thus avoid the explicit use of the wavefunctions. \\
+
+\underline{Differential Equation for the Green Function} \\
+
+Consider \cref{NR-1particle-GF}. The LHS's time derivative will yield
+
+\begin{equation}
+    \begin{split}
+        &\bra{{\bf x}} \ket{\psi(t)} \Theta(t-t') = i \int_{\R^3} d{\bf x}' \blanky \mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}'t') \psi_{\textnormal{trial}}({\bf x}', t') \\
+        &i \delta(t-t') \psi({\bf x}, t) + i \Theta(t-t') \frac{\partial \psi({\bf x}, t)}{\partial t} = i \frac{\partial}{\partial t} \bigg(i \int_{\R^3} d{\bf x}' \blanky \mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}'t') \psi({\bf x}', t') \bigg) \\
+        & i \delta(t-t') \int_{\R^3} d{\bf x}' \blanky \delta({\bf x}- {\bf x}') \psi({\bf x}, t) + {\bf H} \Theta(t-t') ({\bf x}) \frac{\partial \psi({\bf x}, t)}{\partial t} = i \frac{\partial}{\partial t} \bigg(i \int_{\R^3} d{\bf x}' \blanky \mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}'t') \psi({\bf x}', t') \bigg) \\
+        & i \delta(t-t') \int_{\R^3} d{\bf x}' \blanky \delta({\bf x}- {\bf x}') \psi({\bf x}, t) + {\bf H} \bigg(i \int_{\R^3} d{\bf x}' \blanky \mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}'t') \psi_{\textnormal{trial}}({\bf x}', t')\bigg) = i \frac{\partial}{\partial t} \bigg(i \int_{\R^3} d{\bf x}' \blanky \mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}'t') \psi({\bf x}', t') \bigg) \\
+        &\int_{\R^3} d{\bf x}' \blanky \bigg(i \frac{\partial}{\partial t} - {\bf H}\bigg) \mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}'t') \psi({\bf x}', t') = i \delta(t-t') \int_{\R^3} d{\bf x}' \blanky \delta({\bf x}- {\bf x}') \psi({\bf x}, t) \\
+        & \Rightarrow  \bigg(i \frac{\partial}{\partial t} - {\bf H}\bigg) \mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}'t') = \delta(t-t') \delta({\bf x}- {\bf x}'),
+    \end{split}
+\end{equation}
+
+which is just the definition of the Green function for the Schr\"odinger equation in differential equation form
+\iffalse\footnote{Another, equivalent deriviation is as follows,
+
+\begin{equation}
+    \begin{split}
+        &\bra{{\bf x}} \ket{\psi(t)} \Theta(t-t') = i \int_{\R^3} d{\bf x}' \blanky \mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}'t') \psi_{\textnormal{trial}}({\bf x}', t') \\
+        &i \delta(t-t') \psi({\bf x}, t) + i \Theta(t-t') \frac{\partial \psi({\bf x}, t)}{\partial t} = i \frac{\partial}{\partial t} \bigg(i \int_{\R^3} d{\bf x}' \blanky \mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}'t') \psi({\bf x}', t') \bigg) \\
+        & i \delta(t-t') \psi({\bf x}, t) + \Theta(t-t') {\bf H}({\bf x}) \frac{\partial \psi({\bf x}, t)}{\partial t} = i \int_{\R^3} d{\bf x}' \blanky \frac{\partial}{\partial t} \bigg( - i \Theta(t-t') \bra{{\bf x}} e^{-\frac{i {\bf H} (t-t')}{\hbar}} \ket{{\bf x}'}\bigg) \psi({\bf x}', t') \\
+        &  i \delta(t-t') \psi({\bf x}, t) + \Theta(t-t') {\bf H}({\bf x}) \frac{\partial \psi({\bf x}, t)}{\partial t} = i \int_{\R^3} d{\bf x}' \blanky \bigg(\frac{\partial}{\partial t} \Theta(t-t')\bigg) \bra{{\bf x}} e^{-\frac{i {\bf H} (t-t')}{\hbar}} \ket{{\bf x}'} \psi({\bf x}', t') \\
+        & \blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky \blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky + i \int_{\R^3} d{\bf x}' \blanky \Theta(t-t') \bigg(\frac{\partial}{\partial t} \bra{{\bf x}} e^{-\frac{i {\bf H} (t-t')}{\hbar}} \ket{{\bf x}'} \bigg) \psi({\bf x}', t')\\
+        &  i \delta(t-t') \psi({\bf x}, t) + \Theta(t-t') {\bf H}({\bf x}) \frac{\partial \psi({\bf x}, t)}{\partial t} = i \int_{\R^3} d{\bf x}' \blanky \delta(t-t') \bra{{\bf x}} e^{-\frac{i {\bf H} (t-t')}{\hbar}} \ket{{\bf x}'} \psi({\bf x}', t') \\
+        & \blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky \blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky + i {\bf H}({\bf x}) \int_{\R^3} d{\bf x}' \blanky \Theta(t-t') \mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}'t') \psi({\bf x}', t')\\
+        &  i \delta(t-t') \psi({\bf x}, t) + {\bf H}({\bf x}) \frac{\partial \psi({\bf x}, t)}{\partial t} = i \delta(t-t') \int_{\R^3} d{\bf x}' \blanky \delta({\bf x}- {\bf x}')\psi({\bf x}', t') \\
+        & \blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky \blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky + i {\bf H}({\bf x}) \int_{\R^3} d{\bf x}' \blanky  \mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}'t') \psi({\bf x}', t')
+    \end{split}
+\end{equation}
+}\fi
+
+\subsubsection{One-particle Green Function of Many-Body Systems}
+
+The notion of a Green function can be applied to situations in which a particle is injected into a system containing many similar interacting particles and subsequently remove it from the system. Conversely, a particle can be removed from the system and then inject it back. This process may induce non-trivial collective excitations on the system. Physically, an interesting quantity would be the correlation function. \\
+
+Consider a zero-temperature system. The one-particle Green function is defined, in the position representation, as 
+
+\begin{equation}
+    i \mathfrak{G}_{\alpha \beta} ({\bf x}t, {\bf x}'t') = \frac{\bra{\Omega} \mathcal{T} [\hat{\psi}_{H \alpha}({\bf x}, t) \hat{\psi}^\dagger_{H \beta}({\bf x}', t')] \ket{\Omega}}{\bra{\Omega}\ket{\Omega}},
+    \label{SR-1particle-GF}
+\end{equation}
+
+where \begin{itemize}
+    \item $\ket{\Omega}$ is the ground state of the interacting system in the Heisenberg picture,
+    \item and $\hat{\psi}_{H \alpha}({\bf x}, t)$ is a Heisenberg field operator, which can be written in terms of the corresponding Schr\"odinger field operator as $\hat{\psi}_{H \alpha}({\bf x}, t) = e^{\frac{i {\bf H} t}{\hbar}} \hat{\psi}_{H \alpha}({\bf x}, t) e^{-\frac{i {\bf H} t}{\hbar}}$, 
+    \item and where $\alpha$ represents a set of quantum numbers associated with the particle, eg. spin, momentum etc. \item $\mathcal{T}$ is the time-ordering operator, whose definition is as follows 
+    
+    \begin{equation} \begin{split}
+        \mathcal{T} [\hat{\psi}_{H \alpha}({\bf x}, t) \hat{\psi}_{H \beta}({\bf x}', t')] &= \left\{ \begin{array}{cc}
+           \hat{\psi}_{H \alpha}({\bf x}, t) \hat{\psi}^\dagger_{H \beta}({\bf x}', t') & t > t' \\ 
+           -  \hat{\psi}^\dagger_{H \beta}({\bf x}', t')   \hat{\psi}_{H \alpha}({\bf x}, t) & t' > t 
+        \end{array}\right. \\
+        &= \Theta(t-t')\hat{\psi}_{H \alpha}({\bf x}, t) \hat{\psi}^\dagger_{H \beta}({\bf x}', t') - \Theta(t'-t)\hat{\psi}^\dagger_{H \beta}({\bf x}', t')   \hat{\psi}_{H \alpha}({\bf x}, t),
+    \end{split}
+    \end{equation}
+    
+    where the minus sign arises from the anticommutation of the fermionic field operators. \\
+\end{itemize}
+
+Now, \cref{SR-1particle-GF}'s one-particle nature is due to the fact that it represents a propagator of a particle created at ${\bf x}', t'$ with quantum numbers $\beta$, and annihilated at ${\bf x}, t$ with quantum numbers $\alpha$. Note, however, that these so-called single-particle Green functions are truly many-body objects since they describe the propagation of a single particle obeying the full many-body Hamiltonian and therefore contain all effects of interactions with the other particles in the system. \\
+
+Depending on the problem at hand, there are a number of useful Green functions. The greater and lesser Green functions are defined as 
+
+\begin{equation}
+    \begin{split}
+       \mathfrak{G}^{>}({\bf x}t, {\bf x}' t') = -i \bra{\Omega}\hat{\psi}_{H \alpha}({\bf x}, t) \hat{\psi}^\dagger_{H \beta}({\bf x}', t') \ket{\Omega}
+        \\
+       \mathfrak{G}^{<}({\bf x}t, {\bf x}' t') = \pm i \bra{\Omega} \hat{\psi}^\dagger_{H \beta}({\bf x}', t') \hat{\psi}_{H \alpha}({\bf x}, t) \ket{\Omega}
+    \end{split}, \begin{array}{c}
+         \textnormal{ where the + and - signs are for}  \\
+         \textnormal{ fermions and bosons, respectively. }
+    \end{array}
+\end{equation}
+
+The retarded and advanced Green functions are 
+
+\begin{equation}
+    \begin{split}
+         \mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}' t') = \left\{\begin{array}{c}
+              -i \Theta(t-t')  \bra{\Omega}[\hat{\psi}_{H \alpha}({\bf x}, t),  \hat{\psi}^\dagger_{H \beta}({\bf x}', t')]_{\pm} \ket{\Omega}   \\
+              \Theta(t-t') \bigg[\mathfrak{G}^{>}({\bf x}t, {\bf x}' t') - \mathfrak{G}^{<}({\bf x}t, {\bf x}' t')\bigg]
+         \end{array} \right. \\
+         \mathfrak{G}^{\textnormal{A}}({\bf x}t, {\bf x}' t') = \left\{\begin{array}{c}
+              i \Theta(t-t')  \bra{\Omega}[\hat{\psi}^\dagger_{H \beta}({\bf x}', t'), \hat{\psi}_{H \alpha}({\bf x}, t)]_{\pm} \ket{\Omega}   \\
+              \Theta(t-t') \bigg[\mathfrak{G}^{<}({\bf x}t, {\bf x}' t') - \mathfrak{G}^{>}({\bf x}t, {\bf x}' t')\bigg]
+         \end{array} \right. 
+ \end{split}
+\end{equation}
+
+For compactness, $\bra{\Omega} \ket{\Omega} = 1$. Note that, from these definitions, $ \mathfrak{G}^{\textnormal{R}} = 0$, for $t < t'$ and $ \mathfrak{G}^{\textnormal{A}} = 0$, for $t > t'$. So far these Green functions are the space-time Green functions, since they involve creation and annihilation of particles at definite locations in space and time. Analogous Green functions may be defined in other basis. For example, in translationally invariant systems in space-time, the momentum-frequency domain may be useful. \\
+
+As a many-body correlation function, a Green function conveys only part of the full information available in the many-body wavefunctions of the system, but it provides the relevant information for the problem at hand. \\
+
+\paragraph{\textit{Equations of Motion for the One-Particle Green function}}
+
+Consider a system with Hamiltonian, 
+
+\begin{equation}
+    {{\bf H}} = {{\bf H}}^{0} + {{\bf H}}', \begin{array}{c}
+         {{\bf H}}^{0} = \sum_{\alpha \in \Lambda} \varepsilon_{\alpha} {{\bf c}_{\alpha}}^\dagger {{\bf c}_{\alpha}}, \\  
+         \\
+         {\bf H}' \simeq \mathcal{O}\bigg(({{\bf c}}^\dagger {{\bf c}})^2\bigg) \\
+    \end{array}
+\end{equation}
+
+In the $\alpha$-basis, the retarded Green function reads 
+
+\begin{equation*} \begin{split}
+    \mathfrak{G}^{\textnormal{R}}(\alpha t, \beta t') = -i \Theta(t-t') \bigg\langle [{\bf c}_{\alpha}(t),{\bf c}_{\beta}^\dagger(t') ]_{\pm}\bigg\rangle_{\Omega} \\
+    \Rightarrow \bigg[i \frac{\partial}{ \partial t} - \epsilon_{\alpha}\bigg] \mathfrak{G}^{\textnormal{R}}(\alpha t, \beta t') &= i \frac{\partial}{ \partial t}\mathfrak{G}^{\textnormal{R}}(\alpha t, \beta t') - \epsilon_{\alpha}\mathfrak{G}^{\textnormal{R}}(\alpha t, \beta t') \\
+    &= i (-i) \bigg[\bigg(\frac{\partial}{ \partial t} \Theta(t-t')\bigg) \bigg\langle\bigg[{\bf c}_{\alpha}(t),{\bf c}_{\beta}^\dagger(t') \bigg]_{\pm}\bigg\rangle_{\Omega} \\
+    & \blanky \blanky \blanky \blanky- i\Theta(t-t') \bigg\langle\bigg[\frac{\partial{\bf c}_{\alpha}(t)}{\partial t},{\bf c}_{\beta}^\dagger(t') \bigg]_{\pm}\bigg\rangle_{\Omega} \bigg]- \epsilon_{\alpha}\mathfrak{G}^{\textnormal{R}}(\alpha t, \beta t') \\
+    &= \bigg[\delta(t-t') \bigg\langle\bigg[{\bf c}_{\alpha}(t),{\bf c}_{\beta}^\dagger(t') \bigg]_{\pm}\bigg\rangle_{\Omega} \\
+    & \blanky \blanky \blanky \blanky- i\Theta(t-t') \bigg\langle\bigg[[{\bf c}_{\alpha}(t), {\bf H}_0 + {\bf H'}],{\bf c}_{\beta}^\dagger(t') \bigg]_{\pm}\bigg\rangle_{\Omega} \bigg]- \epsilon_{\alpha}\mathfrak{G}^{\textnormal{R}}(\alpha t, \beta t') \\
+    &= \bigg[\delta(t-t') \delta_{\alpha \beta} - i \Theta(t-t') \bigg\langle\bigg[[{\bf c}_{\alpha}(t), {\bf H'}], {\bf c}_{\beta}^\dagger(t') \bigg]_{\pm}\bigg\rangle_{\Omega} \bigg]  \\
+    & \blanky \blanky \blanky \blanky \cancel{- \epsilon_{\alpha} \overset{\mathfrak{G}^{\textnormal{R}}(\alpha t, \beta t')}{i  \Theta(t-t')\bigg\langle\bigg[{{\bf c}_{\alpha}(t)},{\bf c}_{\beta}^\dagger(t') \bigg]_{\pm}\bigg\rangle_{\Omega}} - \epsilon_{\alpha} \mathfrak{G}^{\textnormal{R}}(\alpha t, \beta t')} \\
+    &= \bigg[\delta(t-t') \delta_{\alpha \beta} - i \Theta(t-t') \bigg\langle\bigg[[{\bf c}_{\alpha}(t), {\bf H'}], {\bf c}_{\beta}^\dagger(t') \bigg]_{\pm}\bigg\rangle_{\Omega} \bigg],
+\end{split}
+\end{equation*}
+
+where $[{\bf c}_{\alpha}, {\bf H}_0] = -\varepsilon_{\alpha} {\bf c}_{\alpha}$ has been used. 
+Now, if $\mathcal{O}\bigg(({{\bf c}}^\dagger {{\bf c}})^2\bigg)$, then $[{\bf c}_{\alpha}(t), {\bf H}']$ will be qubic in the ${\bf c}$-operators. Then, 
+
+$$
+\mathfrak{G}^{\textnormal{R}}_{2}(\alpha t, \beta t') = i \Theta(t-t') \bigg\langle\bigg[[{\bf c}_{\alpha}(t), {\bf H'}], {\bf c}_{\beta}^\dagger(t') \bigg]_{\pm}\bigg\rangle_{\Omega}
+$$
+
+is a two-particle Green function. Then, the dynamics of a one-particle Green function becomes coupled to that of a two-particle Green function. This two-particle Green function's dynamic will become coupled to a three-particle Green function and so on. Unless the couplings terminate at a reasonable order, there is an infinite hierarchy of equations and corresponding Green functions. \\
+
+\paragraph{\textit{Equations of Motion and Microscopic Self-Interaction}}
+
+Consider the many-electron Hamiltonian
+
+\begin{equation}\begin{split}
+    {\bf H} = &\int_{\mathds{R}^3} d{\bf x} \blanky \sum_{\sigma \in \mathds{C}^2} \psi^\dagger_{\sigma}({\bf x}) \bigg[-\frac{\hbar^2}{2m} \nabla^2 + V({\bf x})\bigg]\psi_{\sigma}({\bf x}) \\
+    & + \frac{1}{2}  \int_{\mathds{R}^6} d{\bf x} d{\bf x}' \blanky \sum_{\sigma \sigma' \in \mathds{C}^2} \psi^\dagger_{\sigma}({\bf x}) \psi^\dagger_{\sigma'}({\bf x}') V(|{\bf x} - {\bf x}'|) \psi_{\sigma'}({\bf x}) \psi_{\sigma}({\bf x}),
+\end{split}\end{equation}
+
+where $V$ represents the pair interaction. This Hamiltonian includes a one-electron potential $U$. The Green function's equation of motion may be found from
+
+\begin{equation}
+    \begin{split}
+        \bigg[i\frac{\partial}{\partial t} - \frac{1}{\hbar} \bigg(-\frac{\hbar^2}{2m} \nabla^2 + U({\bf x})\bigg)\bigg] \mathfrak{G}_{\sigma \sigma'}({\bf x} t; {\bf x}' t') = i\frac{\partial}{\partial t} \mathfrak{G}_{\sigma \sigma'}({\bf x} t; {\bf x}' t') - \bigg(-\frac{\hbar^2}{2m} \nabla^2 + U({\bf x})\bigg) \mathfrak{G}_{\sigma \sigma'}({\bf x} t; {\bf x}' t').
+    \end{split}
+\end{equation}
+
+Then, the first term may be rewritten as 
+    
+    \begin{equation}
+        \begin{split}
+            i\frac{\partial}{\partial t} \mathfrak{G}_{\sigma \sigma'}({\bf x} t; {\bf x}' t') = &(-i) i \frac{\partial}{\partial t} \bigg\langle \mathcal{T} \hat{\psi}_{H \sigma}({\bf x}, t) \hat{\psi}^\dagger_{H \sigma'}({\bf x}', t') \bigg \rangle_{\Omega}\\
+            &= \frac{\partial}{\partial t} \bigg(\Theta(t-t')\bigg\langle \hat{\psi}_{H \sigma}({\bf x}, t) \hat{\psi}^\dagger_{H \sigma'}({\bf x}', t') \bigg \rangle_{\Omega} -\Theta(t'-t) \bigg\langle\hat{\psi}^\dagger_{H \sigma'}({\bf x}', t')\hat{\psi}_{H \sigma}({\bf x}, t)  \bigg \rangle_{\Omega}  \bigg)\\
+            &= \delta(t-t')\bigg\langle \hat{\psi}_{H \sigma}({\bf x}, t) \hat{\psi}^\dagger_{H \sigma'}({\bf x}', t') +  \hat{\psi}^\dagger_{H \sigma'}({\bf x}', t')\hat{\psi}_{H \sigma}({\bf x}, t) \bigg \rangle_{\Omega} \\
+            & \blanky \blanky \blanky \blanky+ \Theta(t-t') \bigg\langle \frac{\partial\hat{\psi}_{H \sigma}({\bf x}, t)}{\partial t} \hat{\psi}^\dagger_{H \sigma'}({\bf x}', t') \bigg \rangle_{\Omega} - \Theta(t'-t) \bigg\langle \hat{\psi}^\dagger_{H \sigma'}({\bf x}, t)  \frac{\partial \hat{\psi}^\dagger_{H \sigma'}({\bf x}, t)}{\partial t} \bigg \rangle_{\Omega}\\
+            &= \delta(t-t') \bigg\langle \hat{\psi}_{H \sigma}({\bf x}, t) \hat{\psi}^\dagger_{H \sigma'}({\bf x}', t) +  \hat{\psi}^\dagger_{H \sigma'}({\bf x}', t)\hat{\psi}_{H \sigma}({\bf x}, t) \bigg \rangle_{\Omega} \\
+            & \blanky \blanky \blanky \blanky
+            - \Theta(t-t') \bigg\langle [\hat{\psi}_{H \sigma}({\bf x}, t), {\bf H}] \hat{\psi}^\dagger_{H \sigma'}({\bf x}', t') \bigg \rangle_{\Omega} + \Theta(t'-t) \bigg\langle\hat{\psi}^\dagger_{H \sigma'}({\bf x}', t') [\hat{\psi}_{H \sigma}({\bf x}, t), {\bf H}] \bigg \rangle_{\Omega} \\
+            &= \delta(t-t') \bigg\langle e^{i {\bf H} t} \{\hat{\psi}_{S \sigma}({\bf x}), \hat{\psi}^\dagger_{S \sigma'}({\bf x}')\} e^{-i {\bf H} t} \bigg \rangle_{\Omega} + \mathcal{T} \bigg\langle \bigg[-i [\hat{\psi}_{H \sigma}({\bf x}, t), {\bf H}] \hat{\psi}^\dagger_{H \sigma'}({\bf x}', t') \bigg] \bigg \rangle_{\Omega} \\
+            &= \delta({\bf x} - {\bf x}') \delta(t-t') \delta_{\sigma \sigma'} + \mathcal{T} \bigg\langle \bigg[-i \bigg[\hat{\psi}_{H \sigma}({\bf x}, t), {\bf H}\bigg] \hat{\psi}^\dagger_{H \sigma'}({\bf x}', t') \bigg] \bigg \rangle_{\Omega} \\
+            &= \textnormal{id}_{\bm{\mathcal{F}}} + \mathcal{T} \bigg\langle \bigg[-i \bigg[\hat{\psi}_{H \sigma}({\bf x}, t), {\bf H}\bigg] \hat{\psi}^\dagger_{H \sigma'}({\bf x}', t') \bigg] \bigg \rangle_{\Omega}, 
+        \end{split}
+    \end{equation}
+    
+    where the commutator in the Heisenberg picture has been transformed to one on the Schr\"odinger picture 
+    
+    \begin{equation}
+        \begin{split}
+            & [\hat{\psi}^\dagger_{H \sigma}({\bf x}, t), {\bf H}] = e^{i{\bf H} t} [\hat{\psi}^\dagger_{ S \sigma}({\bf x}), {\bf H}] e^{-i{\bf H} t} \\
+            & \Rightarrow [\hat{\psi}^\dagger_{ S \sigma}({\bf x}), {\bf H}] = \bigg[-\frac{\hbar^2}{2m} \nabla^2 + U({\bf x})\bigg] \hat{\psi}_{S \sigma}({\bf x})
+            + \int_{\mathds{R}^3} d{\bf x}'' \blanky \sum_{\sigma'' \in \mathds{C}^2} \psi^\dagger_{S \sigma''}({\bf x}'') V(|{\bf x} - {\bf x}''|) \psi_{S \sigma''}({\bf x}'') \psi_{S \sigma}({\bf x}) \\
+            & \Rightarrow [\hat{\psi}^\dagger_{ h \sigma}({\bf x}, T), {\bf H}] = \bigg[-\frac{\hbar^2}{2m} \nabla^2 + U({\bf x})\bigg] \hat{\psi}_{H \sigma}({\bf x}, t)
+            + \int_{\mathds{R}^3} d{\bf x}'' \blanky \sum_{\sigma'' \in \mathds{C}^2} \psi^\dagger_{H \sigma''}({\bf x}'', t) V({\bf x}t; {\bf x}' t') \psi_{H \sigma''}({\bf x}'', t) \psi_{H \sigma}({\bf x}, t)
+        \end{split}
+    \end{equation}
+
+Plugging this result into the previous equation yields
+
+\begin{equation}
+    \begin{split}
+         \mathfrak{i}\mathfrak{d}_{\bm{\mathcal{F}}} = & i\frac{\partial}{\partial t} \mathfrak{G}_{\sigma \sigma'}({\bf x} t; {\bf x}' t') - \mathcal{T} \bigg\langle \bigg[-i \bigg[\hat{\psi}_{H \sigma}({\bf x}, t), {\bf H}\bigg] \hat{\psi}^\dagger_{H \sigma'}({\bf x}', t') \bigg] \bigg \rangle_{\Omega} \\
+         \mathfrak{i}\mathfrak{d}_{\bm{\mathcal{F}}} = &\bigg\{ i\frac{\partial}{\partial t} - \bigg[-\frac{\hbar^2}{2m} \nabla^2 + U({\bf x})\bigg] \bigg\} \mathfrak{G}_{\sigma \sigma'}({\bf x} t; {\bf x}' t') \\
+         & \blanky \blanky \blanky \blanky + i\int_{\mathds{R}^4} d{\bf x}'' dt'' \blanky V({\bf x}t; {\bf x}'' t'') \bigg\langle \mathcal{T} \bigg[ \psi^\dagger_{H \sigma''}({\bf x}'', t'') \psi_{H \sigma''}({\bf x}'', t'') \psi_{H \sigma}({\bf x}, t) \psi_{H \sigma}^\dagger({\bf x}', t') \bigg] \bigg \rangle_{\Omega}.
+    \end{split}
+    \label{NR_GF_Jellium_like_model}
+\end{equation}
+
+Then, in the absence of interactions, 
+
+\begin{align}
+  {\bigg\{ i\frac{\partial}{\partial t} - \bigg[-\frac{\hbar^2}{2m} \nabla^2 + U({\bf x})\bigg] \bigg\} \mathfrak{G}^{(0)}_{\sigma \sigma'}({\bf x} t; {\bf x}' t')} =  \mathfrak{i}\mathfrak{d}_{\bm{\mathcal{F}}} \\
+  \Rightarrow \alignedbox{ \mathfrak{G}^{(0)}_{\sigma \sigma'}({\bf x} t; {\bf x}' t')}{ = \bigg\{ i\frac{\partial}{\partial t} - \bigg[-\frac{\hbar^2}{2m} \nabla^2 + U({\bf x})\bigg] \bigg\}^{-1}}
+\end{align}
+
+for a given periodic potential $U({\bf x})$ an analytic expression may be found. Note that the integro-differential equation for the Green functions, written in \cref{NR_GF_Jellium_like_model}, has no general explicit solution. But it can be seen, from a matrix perspective, as having an infinite number of continuous and discrete indices. Let, 
+
+\begin{align*}
+    i\int_{\mathds{R}^4} d{\bf x}'' dt'' \blanky V({\bf x}t; {\bf x}'' t'') \bigg\langle \mathcal{T} \bigg[ \psi^\dagger_{H \sigma''}({\bf x}'', t'') \psi_{H \sigma''}({\bf x}'', t'') \psi_{H \sigma}({\bf x}, t) \psi_{H \sigma}^\dagger({\bf x}', t') \bigg] \bigg \rangle_{\Omega} = \\
+    = - \int_{\mathds{R}^4} d{\bf x}'' dt''\Sigma_{\sigma \sigma''}^{*}({\bf x} t; {\bf x}'' t'')  \mathfrak{G}^{(0)}_{\sigma'' \sigma'}({\bf x}'' t''; {\bf x}' t').
+\end{align*}
+
+Then, \cref{NR_GF_Jellium-like_model} may be rewritten in matrix notation as 
+
+\begin{align}
+    \bigg[(\mathfrak{G}^{(0)})^{-1} - \Sigma^{*}\bigg] \mathfrak{G} = \mathfrak{i}\mathfrak{d}_{\bm{\mathcal{F}}} \Rightarrow &  \alignedbox{\mathfrak{G} }{= \bigg[(\mathfrak{G}^{(0)})^{-1} - \Sigma^{*}\bigg]^{-1} = \mathfrak{G}^{(0)} + \mathfrak{G}^{(0)} \Sigma^{*} \mathfrak{G}},
+\end{align}
+
+which is the matrix form of the Dyson equations for the one-particle Green function, or the Dyson series. It will be shown that $\Sigma^{*}$ is the one-particle irreducible self-energy. \\
+
+\paragraph{\textit{Physical Interpretation of the One-particle Green function and the Self-Energy}}
+
+Let $\ket{\Omega}$ be the (normalized) system's ground state, such that the system's Green function can be written as 
+
+\begin{equation}
+    i \mathfrak{G}_{\alpha \beta} ({\bf x}t, {\bf x}'t') = {\bra{\Omega} \mathcal{T} [\hat{\psi}_{H \alpha}({\bf x}, t) \hat{\psi}^\dagger_{H \beta}({\bf x}', t')] \ket{\Omega}}.
+\end{equation}
+
+The complete set of eigenstates of the Hamiltonian, defined on the Fock space and thus containing any number of particles, is given by 
+
+\begin{equation*}
+    \begin{split}
+        &\sum_{n} \bra{\Psi_n}\ket{\Psi_n} = \textnormal{id}_{\bm{\mathcal{F}}}, \\
+        &e^{-i{\bf H} t} \ket{\Psi_n^N} = e^{-i E_n(N) t} \ket{\Psi_n^N}, \begin{array}{cc}
+             \textnormal{ where $\ket{\Psi_n^N}$ is the $n$-th eigenstate in the sub-Hilbert space for $N$ particles} \\
+              \textnormal{ with $E_n(N)$, its corresponding eigenvalue} 
+        \end{array} \\
+        &\Rightarrow i \mathfrak{G}_{\sigma \sigma'} ({\bf x}t, {\bf x}'t') = \sum_{n} \bigg[\begin{array}{c}
+             \Theta(t-t') e^{-i(E_n - E_0)(t-t')} \bra{\Psi_0} \psi_{\sigma}({\bf x}) \ket{\Psi_0} \bra{\Psi_0} \psi_{\sigma'}^\dagger({\bf x}') \ket{\Psi_0}\\
+             - \Theta(t-t') e^{-i(E_n - E_0)(t-t')} \bra{\Psi_0} \psi_{\sigma'}^\dagger({\bf x}')\ket{\Psi_0} \bra{\Psi_0} \psi_{\sigma}({\bf x}) \ket{\Psi_0}
+        \end{array}\bigg]
+     \end{split}
+\end{equation*}
+
+\begin{equation*}
+     \begin{split}
+        \Rightarrow \mathcal{F}[i \mathfrak{G}_{\sigma \sigma'} ({\bf x}t, {\bf x}'t')]({\bf x}; {\bf x}',\omega) = \int_{\R} d\tau \blanky e^{i\omega\tau}\mathfrak{G}_{\sigma \sigma'} ({\bf x}t, {\bf x}'t') \rightarrow & (-i) \int_{\R} d\tau \blanky e^{i\omega \tau} \Theta(\tau) e^{-i(E_n-E_0) \tau} \\
+        &= i \int_{\R} \frac{d\omega'}{2\pi i} \blanky \frac{1}{\omega'+i\eta} \int_{\mathds{R}} d\tau e^{i\omega \tau}e^{-i\omega' \tau} e^{- i(E_n - E_0)\tau} \\
+        &= \frac{1}{\omega - (E_n-E_0) + i\eta}.
+     \end{split}
+\end{equation*}
+
+Consider the first term of the matrix elements of the Green function, 
+
+$$
+\Theta(t-t') e^{-i(E_n - E_0)(t-t')} \bra{\Psi_0} \psi_{\sigma}({\bf x}) \ket{\Psi_0} \bra{\Psi_0} \psi_{\sigma'}^\dagger({\bf x}') \ket{\Psi_0}.
+$$
+
+Examination of this matrix element shows that the $\ket{\Psi_n}$-state must correspond to an excited state with $(N+1)$ particles, since $\ket{\Omega}$ is the ground stat for the $N$-body system. Consequently, its eigenvalue $E_n$ is the energy of an excited state of the $(N+1)$-particle system. It is denoted explicitly as $E_n \rightarrow E_{n}(N+1)$. Thus, the denominator in the Green function's Fourier transform can be written as 
+
+$$
+    E_n - E_0 \rightarrow E_n(N+1) - E_0(N).
+$$
+
+Similarly for the second term, the energies of the denominator read $E_0 - E_n \rightarrow E_0(N) - E_n(N-1)$, thus yielding the final result 
+
+\begin{equation}
+    \Rightarrow i \mathfrak{G}_{\sigma \sigma'} ({\bf x}t, {\bf x}'t') = \sum_{n}
+             \frac{\bra{\Psi_0} \psi_{\sigma}({\bf x}) \ket{\Psi_0} \bra{\Psi_0} \psi_{\sigma'}^\dagger({\bf x}') \ket{\Psi_0}}{\omega - (E_n(N+1)-E_0(N)) + i\eta} + \frac{\bra{\Psi_0} \psi_{\sigma'}^\dagger({\bf x}')\ket{\Psi_0} \bra{\Psi_0} \psi_{\sigma}({\bf x}) \ket{\Psi_0}}{\omega - (E_0(N)-E_N(N-1)) - i\eta}\bigg].
+\end{equation}
+
+The one-particle Green function's poles are precisely the one-particle excitations of the interacting system. The first term describes the excitations produced by adding one particle to the system, therefore defining particle excitations with energies above the chemical potential, namely 
+
+$$
+E_n (N+1) - E_0 = E_n (N+1) + E_0(N+1) + E_0(N+1) - E_0(N) = \epsilon_n (N+1) + \mu,
+$$
+
+where $E_0(N+1)$ is the ground state of the $(N+1)$-system. The quantity $E_0(N+1) - E_0(N)$ is identified with the chemical potential $\mu$, since the volume of the system is kept constant. Consequently, the energy difference $E_n(N+1) - E_0(N+1) = \epsilon_n (N+1)$ must be just the excitation energy of the $(N+1)$-system, provided $\epsilon_n (N+1)$ is non-negative. The second term describes the transition to a system with one particle less, with manifest hole excitations having energies below the chemical potential. The merger of hole and electron excitations in a single function is one of the notable advantages of the time-ordered Green function \footnote{An alternative identification may be given, in terms of the electron affinity and the ionization energy.}. \\
+
+\paragraph{\textit{Green Function for the Fermi Gas}}
+
+Consider the Sommerfeld gas, for which all excited states 
+are known. The corresponding field operators are given by
+
+\begin{equation} \begin{split}
+    &\Psi({\bf x}, t) = \frac{1}{\sqrt{\Omega}} \sum_{\substack{{\bf k} \in \Lambda \\
+    \sigma \in \mathds{C}^2}} e^{i {\bf k} \cdot {\x}} {\bf c}_{{\bf k} \sigma}, \blanky \blanky \blanky \blanky 
+    \Psi^\dagger({\bf x}, t) = \frac{1}{\sqrt{\Omega}} \sum_{\substack{{\bf k} \in \Lambda \\
+    \sigma \in \mathds{C}^2}} e^{-i {\bf k} \cdot {\x}} {\bf c}_{{\bf k} \sigma}^\dagger
+    \end{split}
+\end{equation}
+
+\begin{equation}
+    \begin{split}
+    \Rightarrow \mathcal{M} = \bra{\Psi_0} \psi_{\sigma}({\bf x}) \ket{\Psi_n} \bra{\Psi_n} \psi_{\sigma'}^\dagger({\bf x}') \ket{\Psi_0} = & \frac{1}{\Omega} \sum_{{\bf k}, {\bf k}' \in \Lambda} e^{i {\bf k} \cdot {\bf x}} e^{-i {\bf k} \cdot {\bf x}'} \bra{\Psi_0} {{\bf c}}_{{\bf k} \sigma} \ket{\Psi_n} \bra{\Psi_n} {{\bf c}}_{{\bf k}' \sigma'}^\dagger \ket{\Psi_0} \\
+    & = \frac{1}{\Omega} \sum_{{\bf k}, {\bf k}' \in \Lambda} e^{i {\bf k} \cdot ({\bf x}-{\bf x}')} \bra{\Psi_0} {{\bf c}}_{{\bf k} \sigma} \ket{{\bf k} \sigma} \bra{{\bf k} \sigma} {{\bf c}}_{{\bf k} \sigma}^\dagger \ket{\Psi_0}.
+    \end{split}
+\end{equation}
+
+The translational invariance of the Sommerfeld gas leads to an $({\bf x}-{\bf x}')$-dependence, thus the spatiotemporal Fourier transformation of the Green function is 
+
+\begin{equation}
+    \mathfrak{G}_{\sigma \sigma'} ({\bf k}, \omega) = \delta_{\sigma \sigma'} \bigg[\frac{|\bra{\Psi_0} {{\bf c}}_{{\bf k} \sigma} \ket{{\bf k} \sigma}|^2}{\omega - \varepsilon_{\bf k} + i\eta} + \frac{|\bra{\Psi_0} {{\bf c}}^\dagger_{{\bf k} \sigma} \ket{\bar{{\bf k} \sigma}}|^2}{\omega - \varepsilon_{\bf k} - i\eta}\bigg],
+\end{equation}
+
+where $\ket{\bar{{\bf k} \sigma}} = {{\bf c}}_{{\bf k} \sigma}\ket{\Psi_0}$ represents the ground state with one particle at $\varepsilon_{{\bf k}}$ removed. The poles of the one-particle Green function are, thus, just the one-particle excitation energies for particles and holes, with the energies of particle states above the chemical potential, and the states for holes energies below the chemical potential, satisfying $\varepsilon_{{\bf k}} > 0$. Since the Sommerfeld's gas ground state is just the Fermi sea, $\ket{\Psi_0} = \prod_{|{\bf k}| < k_F, \sigma} {\bf c}^\dagger_{{\bf k} \sigma} \ket{0}$, then the following identities hold 
+
+\begin{align}
+    |\bra{\Psi_0} {{\bf c}}_{{\bf k} \sigma} \ket{{\bf k} \sigma}|^2 &= \Theta(|{\bf k}| - k_F), & |\bra{\Psi_0} {{\bf c}}^\dagger_{{\bf k} \sigma} \ket{\bar{{\bf k} \sigma}}|^2 &= \Theta( k_F - |{\bf k}|). 
+\end{align}\\
+
+\paragraph{\textit{Spectral functions}}
+
+The spectral functions or spectral weights, $\mathcal{A}(\nu, \omega)$, are the quantum state resolution of a particle with a given energy $\omega$ or as the energy resolution for a particle in a given quantum number $\nu$. It quantifies how suitable the excitation created b adding or removing a particle in $\ket{\nu}$-state can be described by a free non-interacting particle or hole, respectively. \\
+
+In particular, let $\mathcal{A}^{+}({\bf k}, \omega)$ and $\mathcal{A}^{-}({\bf k}, \omega)$ be the spectral functions which quantify the probability of a particle (+) or a hole (-) with ${\bf k}$-momentum and $\omega$-energy to be in an exact eigenstate of the system with either $N+1$ or $N-1$ particles, respectively, and are defined as follows 
+
+\begin{equation}
+    \begin{split}
+        \mathcal{A}^{+}({\bf k}, \omega) = \frac{1}{\Omega} \sum_{n} |\bra{\Psi_0} {{\bf c}}_{{\bf k} \sigma} \ket{\Psi_0}|^2 \delta(\omega - [E_N(N+1) - E_0(N)]) \\
+        \mathcal{A}^{-}({\bf k}, \omega) = \frac{1}{\Omega} \sum_{n} |\bra{\Psi_0} {{\bf c}}_{{\bf k}\sigma}^\dagger \ket{\Psi_0}|^2 \delta(\omega - [E_0(N) - E_N(N+1)]),
+    \end{split}
+\end{equation}
+
+from which it is clear that 
+
+$$
+    \mathcal{A}^{+}({\bf k}, \omega) + \mathcal{A}^{-}({\bf k}, \omega) = \mathfrak{I}\mathfrak{m}[\mathfrak{G}({\bf k}, \omega)],
+$$ 
+
+where the spectral functions are manifestly both real and positive definite, which allows their interpretation as a probability to find a single particle excitation with energy $\omega$ and ${\bf k}$-momentum. Note as well that 
+
+$$
+    \int_{\mathds{R}} d\omega \blanky \mathcal{A}({\bf k}, \omega) = \bra{\Psi_0}\ket{\Psi_0} = 1.
+$$
+
+Thus, the spectral functions satisfy the probability rule and is thus a probability, irrespective from the Hamiltonian. These spectral functions include only the states involving one particle more or less in the system. Consequently, these specify the one-particle density of states resolved in momentum. It turns out that spectral functions are experimentally accesible with the techniques of angle-resolved photoemission spectroscopy (ARPES) and inverse photoemission spectroscopy. \\
+
+The density of states of one-particle excitations is obtained by summing over momenta,
+
+\begin{equation}
+    \mathcal{D}(\omega) = \sum_{{\bf k} \in \Lambda} \bigg[\mathcal{A}^{+}({\bf k}, \omega) + \mathcal{A}^{-}({\bf k}, \omega) \bigg],
+\end{equation}
+
+and covers states with energies both above and below the Fermi energy. The spectral functions are, in fact, related to the Green function as 
+
+\begin{equation}
+\begin{split}
+    \mathfrak{G}({\bf k}, \omega) =& \int_{\mathds{R}} d\omega' \blanky \bigg[ \frac{\mathcal{A}^{+}({\bf k}, \omega')}{\omega - \omega' + i\eta} + \frac{\mathcal{A}^{-}({\bf k}, \omega')}{\omega - \omega' - i\eta} \bigg] \\
+    &= \mathcal{P} \int_{\mathds{R}} d\omega' \blanky  \frac{\mathcal{A}^{+}({\bf k}, \omega')}{\omega - \omega' + i\eta} - i\pi \mathcal{A}^{+}({\bf k}, \omega'), \textnormal{ for } \omega > \mu = E_F,
+\end{split} 
+\end{equation}
+ 
+wherein Plemelj-Sokhotolksi's formula was used, $\frac{1}{\omega \pm i \eta} = \mathcal{P} \frac{1}{\omega} \mp i \pi \delta(\omega)$. The spectral functions' reality implies that 
+
+\begin{equation}
+    \begin{split}
+        &\mathcal{A}^{+}({\bf k}, \omega') = -\frac{1}{\pi} \mathfrak{I}\mathfrak{m}[\mathfrak{G}({\bf k}, \omega)] \Rightarrow \mathcal{D}(\omega) = -\frac{1}{\pi} \mathfrak{I}\mathfrak{m}[\mathfrak{G}({\bf x}, {\bf x}', \omega)]  \textnormal{ for } \omega > \mu  \\
+        &\mathcal{A}^{-}({\bf k}; \omega') = \frac{1}{\pi} \mathfrak{I}\mathfrak{m}[\mathfrak{G}({\bf k}, \omega)] \Rightarrow \mathcal{D}(\omega) = -\frac{1}{\pi} \mathfrak{I}\mathfrak{m}[\mathfrak{G}({\bf x}, {\bf x}'; \omega)]  \textnormal{ for } \omega < \mu.
+    \end{split}
+\end{equation}
+
+\blanky \\
+
+\textbf{Spectral signatures in the one-particle Green Function}. 
+
+Consider a non-interacting fermionic system. Its Green function may be written as 
+
+\begin{equation}
+    \mathfrak{G}_0({\bf k}, \omega) = \frac{1}{\Omega} \bigg[\frac{\Theta(|{\bf k}| - k_F)}{\omega - \varepsilon_0({\bf k}) + i \eta} + \frac{\Theta(k_F-|{\bf k}|)}{\omega - \varepsilon_0({\bf k}) - i \eta}\bigg] \Rightarrow \begin{array}{cc}
+        A_0^+({\bf k}, \omega) = \frac{1}{\Omega} \delta(\omega - \varepsilon_0({\bf k})) & \textnormal{ for } |{\bf k}| > k_F \\
+        A_0^-({\bf k}, \omega) = \frac{1}{\Omega} \delta(\omega - \varepsilon_0({\bf k})) & \textnormal{ for } |{\bf k}| < k_F,
+    \end{array}
+\end{equation}
+
+which shows that, for a non-interacting system, every single-particle state has unity weight, aside from a normalization factor. It confirms that all the weight is on the one-perticle, or hole, state. The excitation with energy $\omega$ can only happen by adding an electron, or a hole, to the $\ket{{\bf k}}$-state such that $\varepsilon_0({\bf k}) = \omega.$ \\
+
+In an interacting system, the Green function is given by 
+
+\begin{equation}
+    \mathfrak{G}({\bf k}, {\bf k}'; \omega) = \frac{1}{[\mathfrak{G}({\bf k}, \omega)]^{-1} - \Sigma^{*}({\bf k}, ({\bf k}'; \omega)}, \textnormal{ where } [\mathfrak{G}({\bf k}, \omega)]^{-1} = \omega - \varepsilon_0({\bf k}).
+    \label{Feynmann_diags_spectral_functions}
+\end{equation}
+ 
+Both $\mathfrak{G}$ and the self-energy $\Sigma^*$ are, in general, non-local function that depend on two spatial or momentum points. However, in the presence of systems with translational or periodic invariance, these become diagonal in momentum, thus the following equality holds 
+
+\begin{equation}
+    \mathfrak{G}({\bf k}, \omega) = \frac{1}{\omega - \varepsilon_0({\bf k}) - \Sigma^*({\bf k}, \omega)} = \frac{1}{\omega - \varepsilon_0({\bf k}) - \mathfrak{R}\mathfrak{e}[\Sigma^*({\bf k}, \omega)]- \mathfrak{I}\mathfrak{m}[\Sigma^*({\bf k}, \omega)]},
+\end{equation}
+
+where $\Sigma^*({\bf k}, \omega)$ could be a messy complex function, but its real part modifies, or renormalizes, the non-interacting dispersion $\varepsilon_0({\bf k}$, while its imaginary part replaces the delta function of the pole with a finite width profile, a Lorentzian line shape. \\
+
+It turns out that the imaginary part accounts for a finite lifetime in the $({\bf k}, \omega)$-state, and arises from electron-electron interactions, electron-phonon interactions or other scattering events. Furthermore, only states close to the Fermi surface are relevant, and for such states, scattering events due to electron-electron interactions lead to quadratic contribution to the line broadening, namely $-\Im \Sigma^*({\bf k}, \omega) \propto (\omega - E_f)^2$. In effect, consider for simplicity $E_F = 0$. Since here the interest lies only in the low-energy excitations close to the Fermi level, a Taylor-expansion of $\varepsilon({\bf k}) = \varepsilon_{0}({\bf k}) + \Re \Sigma^*({\bf k}, \omega)$ around $k = k_F$ and $\omega = E_F = 0$. In particular, if only linear terms $\mathcal{O}(\Delta {\bf k})$ are retained,
+
+\begin{equation}
+    \varepsilon({\bf k}) = \varepsilon_{0}({\bf k}) + \Re \Sigma^*({\bf k}, \omega) = \bigg[\frac{k_F}{m} + \frac{\partial \Re \Sigma^*}{\partial k}\bigg|_{k=k_F}\bigg] \Delta {\bf k} + \frac{\partial \Re \Sigma^*}{\partial \omega}\bigg|_{\omega = 0},
+\end{equation}
+
+where the derivatives are taken along a direction perpendicular to the Fermi surface. Substituing this result in the previous equation for the interacting Green function, yields an approximation valid for small $\omega$ and $\Delta {\bf k}$ of the form,
+
+\begin{equation}
+     \mathfrak{G}({\bf k}, \omega) = \frac{\mathcal{Z}}{\omega - \varepsilon({\bf k})},
+\end{equation}
+
+which formally resembles the expression for $ \mathfrak{G}^{0}$, with a few modifications, 
+
+\begin{itemize}
+    \item Here, the spectral weight factor is 
+    $$
+     \mathcal{Z} = \bigg(1 - \frac{\partial \Re \Sigma^*}{\partial \omega}\bigg|_{\omega = 0}\bigg)^{-1},
+    $$
+    
+    \item with a mass renormalization given by 
+    
+    $$ 
+        \varepsilon_0({\bf k}) = (k-k_F) \frac{k_F}{m} \Rightarrow \varepsilon({\bf k}) = (k-k_F) \frac{k_F}{m^*},
+    $$
+    
+    such that 
+    
+    $$
+        \frac{m^*}{m} = \frac{1}{\mathcal{Z}} \bigg(1 + \nabla_{{\bf k}} \Re \Sigma^*\bigg|_{k=k_F}\bigg)^{-1},
+    $$
+    
+    which indicates that the dispersion relation has been changed by the interactions. Therefore, a different mass from one of the independent particles emerges. This renormalization is consistent with experimental results for fermionic systems, as for example in the measurements of electronic specific heat of Fermi liquids. \\
+\end{itemize}
+
+A particle whose lifetime becomes finite and/or its energy gets renormalized is referred to as a quasiparticle, in order to differentiate from its kind in a non-interacting environment. The quasiparticle consists of the original real, individual particle, plus a cloud of disturbed neighbours interacting with it. It behaves very much like a real particle but with an effective mass and a lifetime. \\
+
+\textbf{Particle lifetime in the vicinity of a Fermi surface}
+
+Consider the consequences of injecting a quasiparticle into a state above, but close to the Fermi surface, 
+
+$$
+    \varepsilon = E_F + \delta \epsilon, {\bf k}, \textnormal{ where } k > k_F, \frac{\delta \epsilon}{E_F} << 1.
+$$
+
+The quasiparticle is expected to be scattered by particles in the Fermi sea, with $(\varepsilon' < E_F, k' < k_F)$. Since all states in the Fermi sea are occupied, both particles should be scattered to states outside the Fermi sea. Momentum conservation implies that $p^{\mu} + p^{'\mu} = p^{\mu}_f + p^{'\mu}_f$. The scattering rate $\gamma_{\bf k}$ is expected to be proportional to the accesible phase space, namely 
+
+\begin{equation} \begin{split}
+    \gamma_{\bf k} \propto & \int_{\mathds{R}^3} d{\bf k'} \int_{\mathds{R}^3} d{\bf k}_{f} \int_{\mathds{R}^3} d{\bf k'}_{f} \blanky \delta({\bf k} + {\bf k'} - {\bf k}_f - {\bf k}'_{f}) \\
+    & \propto \int_{-\infty}^{E_F} d \varepsilon' \mathcal{D}(\varepsilon') \int_{E_F}^{\infty} d\varepsilon_{f} \mathcal{D}(\varepsilon_f) \int_{E_F}^{\infty} d\varepsilon'_{f}  \blanky \mathcal{D}(\varepsilon'_f) \delta(\varepsilon + \varepsilon' - \varepsilon_f - \varepsilon'_f) \\
+    & \sim \mathcal{D}^{3}(E_F) (\delta \varepsilon)^2.
+\end{split}
+\end{equation}
+
+Since $\gamma \approx (\varepsilon - E_F)^2$ in the vicinity of the Fermi energy implies that the existence of the Fermi surface allows quasiparticles to become more clearly defined as the Fermi surface is approached. Furthermore, the lifetime becomes infinite on the Fermi surface itself, since $\gamma$ has a sign change as it crosses the Fermi surface. The same phase space argument reveals that the particle lifetime approaches zero as the quasiparticle's energy distances from the vicinity of the Fermi surface. The immediate implication is that particles injected into a state with $\varepsilon >> E_F$ are unstable and will immediately scatter into other states, leaving no trace of coherent information about its propagation, ie. its propagation is incoherent. There are no poles in the Green function for such scattering events. Note that fermions close to the Fermi surface will scatter very little, allowing for a qualitatively correct non-interacting treatment, which is a truly remarkable consequence. Many experimentally measurable properties are recorded at low temperatures, and thus essentially involve fermions at or near the Fermi surface. These properties are not qualitatively changed by electron-electron interactions. \\
+
+\textbf{Spectral manifestations of Particle Lifetime}
+
+So far, interparticle interactions are responsible for replacing the ideal delta function in the spectral function with a broadened profile. Said interaction are expected to redistribute the spectral weight, due to the energy exchanges between the injected particle and the quasiparticles in the systems. Traditionally, the interactions of interest are electron-phonon and electron-electron interactions. Consider a system which, for simplicity, has only a single electronic state with energy $\varepsilon({\bf k})$ close to the Fermi energy $E_F$, with an inverse lifetime or line-broadening given by 
+
+$$
+    \Gamma_{{\bf k}} = \mathcal{Z} C_{{\bf k}} (\varepsilon({\bf k} - E_F)^2,
+$$
+
+where $C_{{\bf k}}$ is a proportionality constant. Then,
+
+\begin{equation}
+\mathfrak{G}({\bf k}, \omega) = {\frac{\mathcal{Z}}{\omega - \varepsilon({\bf k}) + i \Gamma_{{\bf k}}}}_{\underbrace{\mathfrak{G}_{\textnormal{coh}}({\bf k}, \omega)}} + \mathfrak{G}_{\textnormal{incoh}}({\bf k}, \omega).
+\end{equation}
+
+Here $\mathfrak{G}_{\textnormal{incoh}}$ contains the rest of the spectrum, describing incoherent scattering events that have no corresponding poles. In constrast, $\mathfrak{G}_{\textnormal{coh}}$, the coherent term corresponds to a coherently propagating particle at least for times $t < \frac{1}{\Gamma_{{\bf k}}}$. To confirm this fact, consider the Fourier transform $\mathfrak{G}_{\textnormal{coh}}({\bf k}, \omega)$ to study its time evolution
+
+\begin{equation}
+    {\mathfrak{G}_{\textnormal{coh}}({\bf k}, t)} = \int_{\mathds{R}} d\omega e^{-i\omega t} \blanky {\frac{\mathcal{Z}}{\omega - \varepsilon({\bf k}) + i \Gamma_{{\bf k}}}} \sim \mathcal{Z} \exp \bigg(-i[\varepsilon({\bf k}) - i \Gamma_{\bf k}] t\bigg),
+\end{equation}
+
+where the integral has been performed using Jordan's theorem, considering $t > 0$ and $\Gamma_{{\bf k}} > 0$, so that the contour integral can be performed in the lower half-plane. Thus, the coherent part evolves as a decaying plane wave with $\frac{1}{\Gamma}$-lifetime, with a particle weight given by the pole residue $\mathcal{Z}$, the quasiparticle weight. When $\mathcal{Z}$ vanishes, the electron quasiparticle disappears. \\
+
+ $\mathfrak{G}_{\textnormal{coh}}$ can be rewritten as 
+ 
+\begin{equation} \begin{split}
+    \mathfrak{G}_{\textnormal{coh}} = \frac{\mathcal{Z}\bigg(\omega - \varepsilon({\bf k}) - i \Gamma-{{\bf k}}\bigg)}{(\omega - \varepsilon({\bf k})^2 + \Gamma_{{\bf k}}^2} \Rightarrow \mathcal{A}^{+}_{\textnormal{coh}}({\bf k}, \omega) = - \frac{1}{\pi} \Im \mathfrak{G}_{\textnormal{coh}}({\bf k}, \omega) \rightarrow \frac{\mathcal{
+   Z} \frac{\Gamma_{{\bf k}}}{\pi}}{(\omega - \varepsilon({\bf k})^2 + \Gamma_{{\bf k}}^2}
+   \label{Fermi_liquids_valid_approx}
+\end{split}
+\end{equation}
+
+\begin{figure}
+    \centering
+    \subfloat[\centering ]{{\includegraphics[scale=0.7]{figs/1p_Green_function_interacting/interacting_regime_spectral_function_one.png} }}
+    \qquad
+    \subfloat[\centering ]{{\includegraphics[scale=0.7]{figs/1p_Green_function_interacting/interacting_regime_spectral_function_two.png}}}
+    \caption{\small Fig. A: Spectral function for a particle in a non-interacting system (black delta function) and of the corresponding quasiparticle after turning on interactions (gray filled curve). Notice the shift in energy and the linewidth broadening. \\
+    Fig. B: Typical spectral function for a quasiparticle displaying its coherent component and the coherent background. } 
+    \label{figs:1p_Green_f_(in)coh}
+\end{figure}
+
+Naturally, the full spectral function may be written as $ \mathcal{A}^{+}({\bf k}, \omega) = \mathcal{A}^{+}_{\textnormal{coh}}({\bf k}, \omega) +  \mathcal{A}^{+}_{\textnormal{incoh}}({\bf k}, \omega) $, which is schematically represented in \cref{figs:1p_Green_f_(in)coh}. The contributions from the coherent terms appear as a Lorentzian line shape, while the background arises from the incoherent part. If the quasiparticle weight vanishes, then the background only manifests itself in the spectral function. \\
+
+The coherent terms of the spectral function have the following features:
+
+\begin{enumerate}
+    \item It has a Lorentzian profile peaked at $\varepsilon({\bf k})$. 
+    \item The single-particle energies are renormalized, $\varepsilon_0 ({\bf k}) \rightarrow \varepsilon ({\bf k})$. 
+    \item Its width is given by the inverse of the lifetime. 
+    \item Its magnitude is proportional to the quasiparticle weight $\mathcal{Z}$, a positive number between 0 and 1. 
+    \item The area under the peak has decreased, from $1$ and $\mathcal{Z}$.
+\end{enumerate}
+
+The incoherent terms, in contrasst, presents a continuum, not a peak. It must be present if $\mathcal{Z} \neq 1$, in order to satisfy the sum rule/normalization of the spectral function. A similar result is obtained for the hole spectral function, wherein $\Gamma < 0$. \\
+
+\begin{tcolorbox}[colback=yellow, 
+title = Physical Context]
+
+Fermionic systems for which the previously laid picture holds are called Fermi liquids, its theory phenomenologically developed by Landau (1957), and in the subsequent years a microscopic formulation with the help of many-body perturbation theory was developed as well. \\
+
+The identification and investigation of interacting fermionic systems which do not obey Fermi liquid theory is an important research area in modern many-body physics. Such non-Fermi liquids have, by definition, spectral functions which cannot be approximated by \cref{Fermi_liquids_valid_approx} and, therefore, cannot be understood in terms of a picture of non-interacting fermions. A prominent example of a non-Fermi liquid is the so-called Luttinger fermions, which occur in one-dimension.  
+\end{tcolorbox}
+
+\clearpage
+
+\subsection{\textbf{Quantum Field Theory and Feynmann Rules}}
+
+
+In the definition of the Green function, the average values are taken with respect to the Heisenberg ground-state vector, $\ket{\psi_H}$, which is a time-independent and generally intractable object for interacting systems. The strategy is to set 
+
+$$
+    \ket{\psi_H} = \ket{\psi_I (0)} = \mathcal{S}^\dagger(t,0) \ket{\psi_I (t)},
+$$
+
+and use the time $t \rightarrow -\infty$ to interpolate the non-interacting ground state with the aid of the \textswab{principle of adiabatic switching on}. \medbreak
+
+\paragraph{\textswab{The concept of Adiabaticity in Quantum Mechanics}}
+\label{section:adiabaticity_in_QFT}
+
+The construct of adiabaticity plays an important role in quantum many-body theory, by paving a path to understand a many-body problem, even when there is only an approximate solution. \\
+
+In order to examine the usefulness of adibaticity, consider a many-body quantum system with Hamiltonian ${\bf H} = {\bf H}_0 + {\bf H}$, for which no exact solution of its ground state $\ket{\Psi_g}$ can be obtained but the exact ground state for ${\bf H}_0$, labelled as $\ket{\Phi_g}$, is known. To connect the two systems, the ${\bf H}_0$-Hamiltonian is ever present, with ground state $\ket{\Phi_g}$, and adiabatically slowly turn on ${\bf H}'$ until the total Hamiltonian is reached. This can be done by setting 
+
+\begin{equation}
+    {\bf H}(t) = {\bf H} + \lambda(t) {\bf H}', \textnormal{ where } \lambda(t) = e^{-\eta |t|} \textnormal{ and } \eta > 0, \textnormal{ is arbitrary small, }
+    \label{Adiabatic_switching_on}
+\end{equation}
+
+\iffalse
+\begin{figure}[H]
+    \centering
+    \subfloat[\centering ]{{\includegraphics[scale=0.8]{figs/1p_Green_function_interacting/adiabatic_evol_no_phase_tr.png} }}
+    \qquad
+    \subfloat[\centering ]{{\includegraphics[scale=0.8]{figs/1p_Green_function_interacting/adiabatic_evol_phase_tr.png}}}
+    \caption{\small  Fig a): Adiabatic evolution of a discrete spectrum within the symmetry subspace of the ground state. The ground state can be adiabatically evolved all the way to $\lambda = 1$, from $\ket{\Phi_g}$ to $\ket{\Psi_g}$. Fig b): Adiabatic evolution of the Hilbert space with $\lambda$. A phase transition occurs at $\lambda = \lambda_c$, where an excited state of the unperturbed Hamiltonian, with a symmetry different from that of the ground state, crosses below the ground state. } 
+    \label{figs:adiabatic_evols}
+\end{figure}
+\fi
+
+and varying $-\infty \leq t \rightarrow 0$. The efficacy of this approach hinges on whether $\ket{\Phi_g}$ has the same basic symmetries as $\ket{\Psi_g}$, ie. if these share the same quantum number labels. There are two possible paths for an adiabatic switching of a many-body system, which are explored as follows. \medbreak
+
+\begin{itemize}
+    \item \textit{The ground-state symmetry remains invariant throughout the adiabatic evolution, } 
+\end{itemize}
+
+    \begin{wrapfigure}{l}{0.3\textwidth}
+        \includegraphics[scale = .8]{figs/1p_Green_function_interacting/adiabatic_evol_no_phase_tr.png}
+        \caption{\small  Fig a): Adiabatic evolution of a discrete spectrum within the symmetry subspace of the ground state. The ground state can be adiabatically evolved all the way to $\lambda = 1$, from $\ket{\Phi_g}$ to $\ket{\Psi_g}$.}
+        \label{figs:adiabatic_evols_a}
+    \end{wrapfigure} 
+    
+    as $\lambda$ increases from 0 to 1. In such cases, the corresponding evolution of the energy spectrum, within the symmetry subspace of the ground state. In \cref{figs:adiabatic_evols_a}, subfigure a), a discrete spectrum with a series of avoided crossing, from $\lambda = 0$ to $\lambda = 1$, is shown. These crossings are avoided since the states have the same symmetries. The avoided crossing arise since an intersection of two levels having the same symmetry is removed because, in general, the off-diagonal matrix elements between the two states will not vanish, and thus will give rise to mutual repulsion. \clearpage
+
+\begin{itemize}
+    \item \underline{The ground-state symmetry changes during the evolution due to a crossing of} 
+    
+    \underline{ an energy level with different symmetry }.
+\end{itemize}
+
+    \begin{wrapfigure}{l}{0.3\textwidth}
+        \includegraphics[scale = .8]{figs/1p_Green_function_interacting/adiabatic_evol_phase_tr.png}
+        \caption{\small Fig b): Adiabatic evolution of the Hilbert space with $\lambda$. A phase transition occurs at $\lambda = \lambda_c$, where an excited state of the unperturbed Hamiltonian, with a symmetry different from that of the ground state, crosses below the ground state. }
+        \label{figs:adiabatic_evols_b}
+    \end{wrapfigure} 
+    
+    In this case, it is possible for the energy levels of states with different symmetries to cross, since selection rules give vanishing matrix elements between the states, and thus prevent them from mixing. This scenarios leads to an adiabatic evolution, where a level crossing actually occurs at some $\lambda = \lambda_c$. Within such scenario, and excited state $\ket{\Phi}$ of the unperturbed Hamiltonian, with a symmetry different from that of the ground state $\ket{\Psi_g}$, may cross at $\lambda_c$ to a lower energy than the ground state, resulting in a symmetry change of the ground state. A simple example is when a ferromagnetic ground state becomes stabilized by interactions, however, in this case a continuous rotational symmetry of the spin is broken (ie. spontaneous symmetry breaking).  \bigbreak
+
+Thus, the switching-on procedure may become troublesome. Specially if it leads to instabilities at some critical value $\lambda = \lambda_c$. The presence of a $\lambda_c$ ushers a phase transition whereby the ground state changes its symmetry. If the transition is non-analytic, it signals a quantum critical transition initiated at a quantum critical point. \\
+
+In many cases of interesent, there is no symmetry-changing phase transition as the perturbation Hamiltonian is turned on, and the procedure of adiabatic evolution can be used to turn on the interaction and to analytically evolve the ground state from $\ket{\Phi_g}$ to $\ket{\Psi_g}$. The adiabatic concept, together with the Gell-Mann-Low theorem, are key elements to perturbation theory. \\
+
+\paragraph{Gell-Mann-Low Theorem}
+
+\blanky \\
+
+\begin{tcolorbox}[colback = LimeGreen, title = Historical Context]
+
+In a 1951 seminal paper, Murray Gell-Mann and Francis Low used the adiabatic construct to establish the connection between the interacting and non-interacting Green functions, in the famous Gell-Mann-Low theorem. 
+
+\end{tcolorbox}
+
+The ground state $\ket{\Psi_0}$, which appears in the definition of the Green function of the interacting system, must be a time independent state in the Heisenberg picture. So far, only expectation values about the non-interacting ground state $\ket{\Phi_0}$ can be calculated. Thus, a path is needed to connect the states of the exactly solvable unperturbed Hamiltonian ${\bf H}_0$ with the ones of the full Hamiltonian. For this purpose, consider the time-dependent Hamiltonian given by \cref{Adiabatic_switching_on}, which allows for the adiabatic switching on:
+
+\begin{itemize}
+    \item For $|t|\rightarrow \infty$, the Hamiltonian reduces to ${\bf H}_0$. 
+    \item At $t=0$, it becomes the interacting problem of interest.
+    \item In the $\eta \rightarrow 0$-limit, the interaction is switched on adiabatically.
+\end{itemize}
+
+The scattering operator, in this context, is thus defined as 
+
+\begin{equation}
+    \mathcal{S}_{\eta}(t, t_0) = \sum_{n = 0}^{\infty} \frac{1}{n!} (-i)^{n} \int_{t_0}^{t} dt_1 \cdots \int_{t_0}^{t} dt_n \blanky e^{-\eta (|t_1| + \cdots + |t_n|)} \mathcal{T} [{\bf H}_{I}(t_1) \cdots {\bf H}_{I}(t_n)].
+\end{equation}
+
+As $t_0 \rightarrow - \infty$, the effect of the interaction vanishes and the problem reduces to that of the unperturbed Hamiltonian, 
+
+$$
+    t_0 \rightarrow -\infty \Longleftrightarrow \left\{\begin{array}{cc}
+         {\bf H}_0 \ket{\Psi_0} = E^{(0)} \ket{\Psi_0}  \\
+         \ket{\Psi_I(t_0)} \rightarrow \ket{\Psi_0}. 
+    \end{array}\right.
+$$
+
+Now, recall the relation among state vector in different pictures, 
+
+$$
+    \ket{\Psi_H} = \ket{\Psi_S(t=0)} = \ket{\Psi_I (t=0)},
+$$
+
+where $t=0$ corresponds to the fully interacting Hamiltonian. In particular, the following relation between the Heisenberg and interaction state vectors is found 
+
+$$
+    \ket{\Psi_H} = \ket{\Psi_I (0)} = \mathcal{S}_{\eta}(0, - \infty) \ket{\Psi_0}. 
+$$
+
+The previous equation gives the relationship between the eigenstates of the non-interacting system with those of the fully interacting one, albeit via the adiabatic switching process. Then, the following theorem arises \\
+
+\begin{theorem} \textbf{\textnormal{Gell-Mann-Low theorem}}
+
+In the absence of any symmetry breaking transition, and in the $(\eta \rightarrow 0)$-limit, $\mathcal{S}_{\eta} \rightarrow \mathcal{S}_I$, and provides the right solution. To be more precise, let $\ket{\Psi_0}$ be an eigenstate of the unperturbed Hamiltonian ${\bf H_0}$ with energy $E^{(0)}$, and consider the interacting Hamiltonian given by
+
+$$
+    {\bf H} = {\bf H} + g e^{-\eta |t|} {\bf H}',
+$$
+
+which effectively interpolates between ${\bf H}$ and ${\bf H}_0$ in the limit $\eta \rightarrow 0$ and $|t|\rightarrow 0$. Let $\mathcal{S}_{\eta}$ denote the evolution operator in the interaction limit. Then, in the $(\eta \rightarrow 0)$-limit,
+
+$$
+    \ket{\Psi_{\eta}^{(\pm)}} = \frac{\mathcal{S}(0, \pm\infty) \ket{\Psi_0}}{\bra{\Psi_0} \mathcal{S}(0, \pm\infty) \ket{\Psi_0}},
+$$
+
+exists, is well defined with the $ \ket{\Psi_{\eta}^{(\pm)}}$-states being the eigenstates of the full Hamiltonian.
+
+\end{theorem}
+
+\begin{proof}
+
+In effect, let the coupling constant be $g = e^{\eta \theta}$ and consider the Dyson expansion of the evolution operator. From Schr\"odinger's equation for the time evolution operator, it is known that 
+
+$$
+    i \partial_{t_1} \mathcal{S}_{\eta}(t_1,t_2) = {\bf H} \mathcal{S}_{\eta}(t_1,t_2), \textnormal{ with } \mathcal{S}_{\eta}(t_2,t_2) = \textnormal{id}, 
+$$
+
+and the adjoint Schr\"odinger equation establishes that 
+
+$$
+-i \partial_{t_1} \mathcal{S}_{\eta}(t_1,t_2) = \mathcal{S}_{\eta}(t_1,t_2) {\bf H}(t_1). 
+$$
+
+Then, formally 
+
+$$
+    \mathcal{S}_{\eta}(t_1,t_2) = \textnormal{id} - i \int_{t_2}^{t_1}dt' \blanky ({\bf H}_0 + e^{-\eta (|t'| - \theta)} {\bf H}') \mathcal{S}_{\eta}(t',t_2).
+$$
+
+
+Then, for $t_2 \leq t_1 \leq 0$ and with $\tau = t' + \theta$, it follows that 
+
+\begin{equation}
+    \begin{split}
+        \mathcal{S}_{\eta}(t_1,t_2) = \textnormal{id} - i \int_{\theta + t_2}^{\theta + t_1}dt' \blanky ({\bf H}_0 + e^{\eta \tau} {\bf H}') \mathcal{S}_{\eta}(\tau - \theta,t_2) \\
+        \Rightarrow \partial_{\theta} \mathcal{S}_{\eta}(t_1,t_2) \equiv \eta \partial_{g} \mathcal{S}_{\eta}(t_1,t_2) =& \partial_{t_1} \mathcal{S}_{\eta}(t_1,t_2) + \partial_{t_2}\mathcal{S}_{\eta}(t_1,t_2) \\
+        &= {\bf H}(t_1) \mathcal{S}_{\eta}(t_1,t_2) - \mathcal{S}_{\eta}(t_1,t_2) {\bf H}(t_2).
+    \end{split}
+    \label{Gell_Mann_Low}
+\end{equation}
+
+The corresponding equation in the interaction picture can be obtained from the previous equation by pre-multiplying both sides with $e^{i {\bf H} t_1}$ and post-multiplying with $e^{i {\bf H} t_2}$ and using the definition of the interaction picture, namely that 
+
+$$
+    \mathcal{S}_{\eta, I}(t_1,t_2) = e^{i {\bf H_0} t_1} \mathcal{S}_{\eta}(t_1,t_2) e^{i {\bf H_0} t_2}. 
+$$
+
+The other case, in which $t_2 \geq t_1 \geq 0$, can be obtained in a similar fashion, yielding an additional global minus sign in front of the commutator. The mixed-sign case is not of interest here. Then, using the definition of the $\ket{\Psi_{\eta}^{(\pm)}}$ and employing \cref{Gell_Mann_Low}
+
+\begin{equation}
+    \begin{split}
+        &\bigg({\bf H}_{\eta}(t=0) - E_0 \pm i \eta g \partial_{g} \bigg) \mathcal{S}_{\eta, I}(0,\pm \infty) \ket{\Psi_0} = 0. \\
+        &\Rightarrow \mp i \eta g \partial_{g} \mathcal{S}_{\eta, I}(0,\pm \infty) \ket{\Psi_{\eta}^{(\pm)}}= ({\bf H}_{\eta} - E_0)  \mathcal{S}_{\eta, I}(0,\pm \infty) \ket{\Psi_{\eta}^{(\pm)}}\\
+        &\Rightarrow \mp i \eta g \partial_{g} \ket{\Psi_0}= \frac{({\bf H} - E_0) \mathcal{S}_{\eta}(t_1,t_2) \ket{\Psi_0} }{ \bra{\Psi_0} \mathcal{S}_{\eta}(t_1,t_2) \ket{\Psi_0}} - \frac{\mathcal{S}_{\eta}(t_1,t_2) \ket{\Psi_0}}{ \bra{\Psi_0} \mathcal{S}_{\eta}(t_1,t_2) \ket{\Psi_0}} \bra{\Psi_0} ({\bf H} - E_0) \mathcal{S}_{\eta}(t_1,t_2) \ket{\Psi_0}  \\
+\\
+\Rightarrow \mp i \eta g \partial_{g} \ket{\Psi_0} &= ({{\bf H}} - E_0) \ket{\Psi_{\eta}^{(\pm)}} -  \bra{\Psi_{\eta}^{(\pm)}} \bra{\Psi_0} {{\bf H}} - E_0  \ket{\Psi_{\eta}^{(\pm)}} \\
+&= [{{\bf H}} -\mathcal{E}^{(\pm)}] \ket{\Psi_{\eta}^{(\pm)}},
+    \end{split}
+\end{equation}
+
+where $\mathcal{E}^{(\pm)} = E_0 + \bra{\Psi_0} {{\bf H}} - {{\bf H}}_0  \ket{\Psi_{\eta}^{(\pm)}}$. In the $\eta \rightarrow 0^+$-limit, by assumption, $g \partial_{g} \ket{\Psi_{\eta}^{(\pm)}}$ is finite. Then, it is clear that $\ket{\Psi_{\eta}^{(\pm)}}$ is an eigenstate of the full Hamiltonian, completing the proof. 
+
+\end{proof}
+
+\blanky \\
+
+\paragraph{One-particle Green functions as a power series in the interaction}
+
+The Gell-Mann-Low theorem connects the eigenstates of the non-interacting system with those of the fully interacting one, with the aid of the interaction picture. The Heisenberg operators, appearing in the Green function, remain to be related to those in the corresponding interaction picture. \\
+
+To that end, consider the relationship between operators in the Heisenberg and interaction pictures,
+
+\begin{equation}
+    {\bf O}_{H}(t) = e^{i {\bf H} t} {\bf O}_{S} e^{-i {\bf H} t} = e^{i {\bf H} t} e^{-i {\bf H}_0 t} {\bf O}_{I} e^{i {\bf H}_0 t} e^{-i {\bf H} t}.
+\end{equation}
+
+Furthermore, the states in the interaction picture are given by 
+
+\begin{equation}
+    \ket{\Psi_I(t)} = e^{i{\bf H}_0 t} e^{-i {\bf H}t} \ket{\Psi_I(0)} = \mathcal{S}_{I}(t,0) \ket{\Psi_I(0)}.
+\end{equation}
+
+Then, 
+
+\begin{equation}
+    {\bf O}_{H}(t) = \mathcal{S}_{I}(0,t) {\bf O}_{I}(t) \mathcal{S}_{I}(t,0). 
+\end{equation}
+
+With these ingredients, the product of two Heisenberg operators, in the interaction picture, reads
+
+\begin{equation}
+    \begin{split}
+        {\bf O}_{H}(t) {\bf O}_{H}(t_1) =& \mathcal{S}_{I}(0,t) {\bf O}_{I}(t) \mathcal{S}_{I}(t,0)  \mathcal{S}_{I}(0,t_1) {\bf O}_{I}(t_1) \mathcal{S}_{I}(t_1,0) \\
+        &= \mathcal{S}_{I}(0,t) {\bf O}_{I}(t) \mathcal{S}_{I}(t,t_1) {\bf O}_{I}(t_1) \mathcal{S}_{I}(t_1,0).
+    \end{split}
+\end{equation}
+
+Then, the Green function in terms of interaction-picture operators reads
+
+\begin{equation}
+\begin{split}
+    i \mathfrak{G}(x; x') &= \bra{\Psi_H} \mathcal{T} [\psi_{H}(x) \psi^\dagger_{H}(x')] \ket{\Psi_H} \\
+    &= \frac{\bra{\Phi_0} \mathcal{S}_I(\infty, 0) \mathcal{T} [\mathcal{S}_I(0, t) \psi_{I}(x) \mathcal{S}_I(t, t') \psi_{I}(x') \mathcal{S}_I(t', 0) ] \mathcal{S}_I(0, -\infty)\ket{\Phi_0}}{\bra{\Phi_0} \mathcal{S}_I(\infty, 0)\mathcal{S}_I(0, -\infty)\ket{\Phi_0}},
+\end{split}
+\end{equation}
+
+where $x \equiv ({\bf x}, t, \sigma)$ for compactness. The $(\psi_H, \psi_H^\dagger)$-Heisenberg operators have been replaced by their interaction-picture conterparts, which simply evolve under the action of the unperturbed Hamiltonian ${\bf H}_0$. The ground state of the interaction problem $\ket{\Psi_0}$ has been replaced by the non-interacting one, $\ket{\Phi_0}$. Furthermore, since the evolution operations $\mathcal{S}$ form a semigroup, all evolution operators in the preceding equation can be combined into a single $\mathcal{S}$, for the time-ordering operator takes care of the proper time ordering anyhow, thus yielding 
+
+\begin{equation}
+\begin{split}
+     i \mathfrak{G}^{\sigma \sigma'}({\bf x}, t; {\bf x}', t') &= \frac{\bra{\Phi_0}  \mathcal{T} [\mathcal{S}_I(-\infty, \infty) \psi_{I \sigma}({\bf x}, t)\psi_{I \sigma'}({\bf x}', t')]\ket{\Phi_0}}{\bra{\Phi_0} \mathcal{S}_I(\infty, -\infty)\ket{\Phi_0}} \\
+     &= \sum_{n=0}^{\infty} \frac{1}{n!} (-i)^n \int_{-\infty}^{\infty} dt_1 \cdots \int_{-\infty}^{\infty} dt_n \blanky \frac{\bra{\Phi_0} \mathcal{T} [{\bf H}_{I}(t_1) \cdots {\bf H}_{I}(t_n) \psi_{I \sigma}({\bf x}, t)\psi_{I \sigma'}({\bf x}', t')]\ket{\Phi_0}}{\bra{\Phi_0} \mathcal{S}_I(\infty, -\infty)\ket{\Phi_0}},
+     \label{GF_perturbation_exp}
+\end{split}
+\end{equation}
+
+where the one-particle Green function is now explicitly written as an expansion in powers of the perturbation ${\bf H}_I$. For this reformulation to be useful, a method is needed to mitigate taking expectation values of large numbers of operators in a non-interacting sytem. This procedure is systematized with the application of Wick's theorem and simplified with the aid of Feynmann diagrams. \\
+
+\paragraph{\textit{Wick's Theorem: Normal ordering and contractions}}
+
+In the preceding identity for the one-particle Green function, the arraying of interaction Hamiltonians is fixed by time ordering. However, as the interaction Hamiltonian contains creation and annihilation operators, it is convenient to move all annihilation operators to the right, where these can eliminate particles. This ordering is called the \textit{normal ordering}. Furthermore, observables have zero-expectation values in the vacuum state, it is convenient to construct them in normal order, with creation operators on the left of destruction operators. Wick's theorem provides a way to go from time-ordered to normal-ordered products, which is valid when the expectation values are with respect to a Hamiltonian that is quadratic in fermionic (bosonic) operators. \\
+
+Recall from the study of superfluidity phenomenom that the Bogoliubov canonical transformation generated new non-interacting quasiparticles from the original interacting bosons, and the emerging ground state acted as a vacuum state for the new quasiparticles. 
+In many physical situations, the ground state $\ket{\Psi_g}$, of some incipient effective Hamiltonian, will be taken to be the reference vacuum state. Such a state is filled with both particles and quasiparticles, and the effective Hamiltonian is expressed in a basis of canonical operators $\bigg\{({\bm \alpha}_{a}, {\bm \alpha}^\dagger_{a})\bigg\}_{a = 1}$, where 
+
+\begin{align}
+    {\bm \alpha}_{a} \ket{\Psi_g} &= 0, & \bra{\Psi_g} {\bm \alpha}_{a}^\dagger = 0,
+\end{align}
+
+where this action only holds for such systems, but not for the other creation and annihilation operators associated with the system. \\
+
+\begin{tcolorbox}[colback = yellow, title = Physical Context]
+
+In order to bring light upon these ideas, consider the non-interacting ground state $\ket{\Phi_0}$, describing the Fermi sea. Then, the field operators are given in terms of the canonical particle-hole transformation,
+
+\begin{equation}
+    \psi({\bf x}) = \sum_{{\bf k} \sigma} \phi_{{\bf k} \sigma} {\bf c}_{{\bf k} \sigma} = \left\{\begin{array}{cc}
+       \sum_{{\bf k} \sigma} \phi_{{\bf k} \sigma}({\bf x}) {\bf d}_{{\bf k} \sigma} = \phi^{(-)}({\bf x}) & \textnormal{ if $k > k_F$ annihilates particles}{} \\
+       \sum_{{\bf k} \sigma} \phi_{{\bf k} \sigma}({\bf x}) {\bf h}_{-{\bf k} \sigma} = \phi^{(+)}({\bf x}) & \textnormal{ if $k < k_F$ create holes }{}
+    \end{array}\right.,
+\end{equation}
+
+then 
+
+\begin{align}
+    \phi^{(-)}({\bf x}) \ket{\Phi_0} &= 0, & \phi^{(+)^\dagger}({\bf x}) \ket{\Phi_0} &= 0.
+\end{align}
+
+The preceding relations indicate that $(\phi^{(-)}, \phi^{(+)\dagger})$ are annihilation parts, while $(\phi^{(+)}, \phi^{(-)\dagger})$ are the creation operators. 
+
+\end{tcolorbox}
+
+The following discussion will be restricted to 
+fermionic operators in a non-interacting system. 
+
+\begin{definition}
+
+Consider a product of operators ${\bf A}_i^{\pm}$ is normally ordered if all the ${\bf A}_i^{-}$-operators are on the right of the ${\bf A}_i^{+}$-operators, i.e.
+
+$$
+    {\bf A}_1^{+} \cdots {\bf A}_k^{+} {\bf A}_1^{-} \cdots {\bf A}_n^{-}.
+$$
+
+\end{definition}
+
+The usefulness of this definition is that the expectation value on the ground state of a normally ordered operator product is always zero. \\
+
+It is clear that any product of operators ${\bf A}_1 \cdot {\bf A}_n$ can be written as a sum of normally ordered terms. In effect, every local operator can be written as ${\bf A}_i^{+} + {\bf A}_i^{-}$, thus yielding $2^n$ terms. In each term, the components ${\bf A}_i^{-}$ are brought to the right by succesive anticommutation, yielding the desired result. Wick's theorem is an efficient answer to this particular problem: to write a product $\prod_{i} {\bf A}_i$ as a sum of normally ordered terms. The theorem is an extremely useful operator identity, with important corollaries. \\
+
+\begin{definition}[Normal Ordering]
+    The normal-ordering operator, $\bm{\mathcal{N}}$ brings a generic product into a normal form. If a product of operators contains $k$ ${\bf A}_i^+$-factors mixed with $n-k$ ${\bf A}^-_i$-factors, it action is given by 
+    
+    \begin{equation}
+        \bm{\mathcal{N}} [{\bf A}_i^{(\pm)} \cdots {\bf A}_n^{(\pm)}] = (\pm 1)^{P} {\bf A}_{i_1}^{+} \cdots {\bf A}_{i_k}^{+} \cdots {\bf A}_{i_n}^{-}, 
+    \end{equation}
+    
+    where $P$ is the permutation which brings the $(1, \cdots,n)$-sequence to its normal ordered $(i_1, \cdots, i_n)$-sequence. \\
+\end{definition}
+
+At first glance, it may seem that the normal ordering is ambiguous, since the (+)-operators and $(-)$-operators can be given in different orders. However, the different expressions are actually the same operator, since ${\bf A}^+$-operators anticommute among themselves, with the same being true for the ${\bf A}^-$-operators. For example, $\bm{\mathcal{N}}[{{\bf A}_1^+ {\bf A}_2^+}] = {{\bf A}_1^+ {\bf A}_2^+} = - {{\bf A}_2^+ {\bf A}_1^+}$. Now, any product $\prod_i {\bf A}_i$ can be written as a sum of normally ordered terms. 
+
+\begin{tcolorbox}[colback = Bittersweet, title = Example]
+
+Consider for example a product of two operators, 
+
+\begin{equation*}
+    \begin{split}
+        {\bf A}_1 {\bf A}_2 &= ({\bf A}_1^+ + {\bf A}_1^-)({\bf A}_2^+ + {\bf A}_2^-) \\
+        &= {\bf A}_{1}^{+} {\bf A}_{2}^{+} + {\bf A}_{1}^{-} {\bf A}_{2}^{+} + {\bf A}_{1}^{+} {\bf A}_{2}^{-} + {\bf A}_{1}^{-} {\bf A}_{2}^{-} \\
+        &= \bm{\mathcal{N}} [{\bf A}_1 {\bf A}_2] + \{{\bf A}_1^-, {\bf A}_2^+\}.
+    \end{split}
+\end{equation*}
+
+The vanishing of the expectation value of a normally ordered product implies 
+
+\begin{equation*}
+    \{{\bf A}_1^-, {\bf A}_2^+\} = \bra{\Psi_g} {\bf A}_1 {\bf A}_2 \ket{\Psi_g},
+\end{equation*}
+
+which is a c-number, the \underline{contraction} of the two operators, denoted ${\bf A}_1^c {\bf A}_2^c$. 
+
+\end{tcolorbox}
+
+Using the previous example:
+
+\begin{definition}[Contraction]
+     
+    The contraction of two operators, where a product of $n'$ operators is inserted between them, may be defined by 
+    
+    \begin{equation}
+        {\bf A}_1^c ({\bf A}_{1'} \cdots {\bf A}_{n'}) {\bf A}_2^c = (-1)^{n'}   {\bf A}_1^c {\bf A}_2^c ({\bf A}_{1'} \cdots {\bf A}_{n'}).
+    \end{equation}
+     
+\end{definition}
+
+Wick's theorem provides a computationally efficient way for calculating operator contractions, by mapping it to a purely combinatorial problem. 
+
+\begin{theorem}Wick's theorem \\
+
+Consider a product of $n$ operators, then the following equality holds:
+
+\begin{equation}
+    {\bf A}_1 \cdots {\bf A}_n = \bm{\mathcal{N}}[1\cdots n] + \sum_{c} \bm{\mathcal{N}}[\cdots i^c \cdots j^c \cdots n] + \sum_{c, d} \bm{\mathcal{N}}[\cdots i^c \cdots r^d \cdots j^c \cdots s^d \cdots n] + \cdots,
+\end{equation}
+
+where the first sum is performed over single contractions of pairs, the second sum is performed over double contractions and so on. If $n$ is even, the result consists only of products of contractions (c-numbers).
+
+\end{theorem}
+
+Some important consequences of Wick's theorem readily follow, 
+
+\begin{remark}
+    As a general rule, the expectation value of a product of destruction and creation operators. Particle number conservation thus requieres that the number of destruction operators equals that of creators.
+\end{remark}
+
+\begin{corr}
+
+The following identity can be proved from Wick's theorem\footnote{
+
+\begin{tcolorbox}[colback = Bittersweet, title = Example]
+
+Using the previous corollary, it is trivial that 
+
+\begin{equation*}
+    \bra{\Psi_g} 1234 \ket{\Psi_g} = \langle 12 \rangle \langle 34 \rangle - \langle 13 24 \rangle + \langle 14 \rangle \langle 23 \rangle.
+\end{equation*}
+
+\end{tcolorbox}
+
+},
+
+\begin{equation}
+    \bra{\Psi_g} {{{\bf A}}}_1 \cdots {{\bf A}}_{2n} \ket{\Psi_g} = \sum_{\mathcal{P}_2} (-1)^{P} \langle {{\bf A}}_{i_1} {{\bf A}}_{j_1} \rangle \cdots \langle {{\bf A}}_{i_n} {{\bf A}}_{j_n} \rangle, {\begin{array}{cc}
+         \textnormal{ where the sum is performed over the set $\mathcal{P}_2$ of}  \\
+         \textnormal{ partitions of $1, \cdots, 2n$ into sets of } \\
+         \textnormal{ pairs $\{(i_1, j_1), \cdots, (i_n, j_n)\}$ with $(i,j) \sim (j,i)$} \\
+         \textnormal{ belonging to the same equivalency class.}
+    \end{array}}
+\end{equation}
+
+\end{corr}
+
+\blanky \\
+An important variation of Wick's theorem deals with the normal-ordering of a time-ordered product, via a $\bm{\mathcal{T}}$-contraction operator. 
+
+\begin{theorem}
+
+Consider a product of two-operators. Then, its time-ordered product can be written as 
+
+\begin{equation}
+    \mathcal{T} {{\bf A}}_{i}(t_i) {{\bf A}}_{j}(t_j) = \bm{\mathcal{N}}[{{\bf A}}_{i}(t_j) {{\bf A}}_{j}(t_i)] + \overbrace{{{\bf A}}_{i}(t_i) {{\bf A}}_{j}(t_j)}, 
+\end{equation}
+
+then a $\bm{\mathcal{T}}$(time ordered)-contraction is defined as 
+
+\begin{equation}
+    \overbrace{{{\bf A}}_{i}(t_i) {{\bf A}}_{j}(t_j)} = \bra{\Psi_g} \mathcal{T} {{\bf A}}_{i}(t_i) {{\bf A}}_{j}(t_j) \ket{\Psi},
+\end{equation}
+
+\end{theorem}
+
+\begin{remark}
+    The $\bm{\mathcal{T}}$-contraction of two-operators is such that 
+    
+    \begin{equation}
+        \overbrace{{{\bf A}}_{i}(t_i) (\cdots ) {{\bf A}}_{j}(t_j)} = (-1)^k \overbrace{{{\bf A}}_{i}(t_i) {{\bf A}}_{j}(t_j)} ()\cdots).
+    \end{equation}
+\end{remark}
+
+\begin{remark}
+    The $\bm{\mathcal{T}}$-contractions have a new property, not shared by ordinary contractions,
+    
+    \begin{equation}
+        \overbrace{{{\bf A}}_{i}(t_i) {{\bf A}}_{j}(t_j)} = - \overbrace{{{\bf A}}_{j}(t_j) {{\bf A}}_{i}(t_i)}.
+    \end{equation}
+\end{remark}
+
+\begin{remark}
+
+From the previous definitions and remarks, the following explicit expressions can be given, 
+
+\begin{equation} \begin{split}
+    \overbrace{\psi(t_1) \psi^\dagger(t_2)} =& \bigg \langle \mathcal{T} \psi(t_1) \psi^\dagger(t_2) \bigg \rangle \\
+    &= i \mathfrak{G}^{(0)}(1,2)
+\end{split}, \blanky \blanky \blanky \blanky \begin{split}
+    \overbrace{\psi(t_1) \psi(t_2)} =& \bigg \langle \mathcal{T} \psi(t_1) \psi(t_2) \bigg \rangle \\
+    &= i \mathfrak{F}^{(0)}(1,2)
+\end{split}, \blanky \blanky \blanky \blanky \begin{split}
+    \overbrace{\psi^\dagger(t_1) \psi^\dagger(t_2)} =& \bigg \langle \mathcal{T} \psi^\dagger(t_1) \psi^\dagger(t_2) \bigg \rangle \\
+    &= i \mathfrak{F}^{(0)\dagger}(1,2).
+\end{split}
+\end{equation}
+    
+\end{remark}
+
+For systems where $\ket{\Psi_g}$ has a definite number of particles, the anomalous correlators $\mathfrak{F}^{(0)}, \mathfrak{F}^{(0)\dagger}$ are zero. They are non-zero, for example, in the Bardeen-Cooper-Schrieffer theory. \\
+
+\subsubsection{\textbf{Feynmann Diagrams}}
+
+Consider the perturbation expansion of the Green function, given by \cref{GF_perturbation_exp} and consider only terms linear on the interaction Hamiltonian ${\bf H}_I$, ie. 
+
+\begin{equation}
+    i \mathfrak{G}_{\sigma \sigma'} \rightarrow i \mathfrak{G}_{\sigma \sigma'}^{(0)} + i \mathfrak{G}_{\sigma \sigma'}^{(1)}, \textnormal{ with } \begin{array}[cc]
+        i \mathfrak{G}_{\sigma \sigma'}^{(1)} \propto -i \int_{\mathds{R}} dt \blanky \bra{\Psi_0} \mathcal{T} [{\bf H}_I(t_1) \psi_{I \sigma}({\bf x}, t) \psi^\dagger_{I \sigma'}({\bf x}', t')] \ket{\Psi_0} \\
+        \\
+        {\bf H}_I = \frac{1}{2} \int_{\mathds{R}^6} d{\bf x}_1 d{\bf x}_2 \blanky \psi^\dagger_{\sigma_1}({\bf x}_1) \psi^\dagger_{\sigma_2}({\bf x}_2) V(|{\bf x}_1 - {\bf x}_2|) \psi_{\sigma_2'}({\bf x}_2) \psi_{ \sigma_1'}({\bf x}_1).
+    \end{array}  
+    \label{GreenFunc_expansion_Hamiltonians}
+\end{equation}
+
+Consider the interaction of the form 
+
+$$
+    V_{\sigma_1\sigma'_1}^{\sigma_2\sigma'_2}({{\bf x}}_1, t_1; {{\bf x}}_2, t_2) = V(|{{\bf x}}_1 - {{\bf x}}_2|) \psi_{\sigma_2'}({{\bf x}}_2) \delta(t_1-t_2) \delta_{\sigma_1\sigma'_1}^{\sigma_2\sigma'_2},
+$$
+
+then
+
+\begin{equation}
+    \begin{split}
+        i \mathfrak{G}_{\sigma \sigma'}^{(1)} \propto - \frac{i}{2} \sum_{{\substack{\sigma_1, \sigma'_1 
+         \\ \sigma_2, \sigma_2'}}}
+        \int_{\mathds{R}^8} d^4x_1 d^4x_2 V_{\sigma_1\sigma'_1}^{\sigma_2\sigma'_2}(x_1, x_2) \bra{\Psi_0} \mathcal{T} \bigg[ \psi_{\sigma_1}^\dagger(x_1) \psi_{\sigma_2}^\dagger(x_2) \psi_{\sigma'_2}(x_2) \psi_{\sigma'_1}(x_1) \psi_{\sigma}(x) \psi^\dagger_{\sigma'}(x') \bigg] \ket{\Psi_0}
+        \label{first_order_perturb_Green_function}
+    \end{split}
+\end{equation}
+
+The problem of interacting electrons has been reduced to determining expectation values of its non-interacting counterparts. Now, Wick's theorem must be applied by considering all possible pair contractions. Each particle emerging from a creation operator in the previous equation, must be destroyed by an annihilation operator. Thus, every creation operator can be paired to an annihilation operator, keeping in mind the following simplifying points to obtain the final expression of the first-order Green function in terms of the free Green functions:
+
+\begin{itemize}
+    \item the ground state is that of ${\bf H}_0$, 
+    \item the operators now have the form
+          $$
+            \psi_\sigma^\dagger({\bf x},t) = e^{i {\bf H}_0 t} \psi_{S \sigma}^\dagger({\bf x}) e^{-i {\bf H}_0 t}.
+          $$
+          
+          For eigenstates of the unperturbed Hamiltonian representing a crystalline solid, these can be written as 
+          
+           $$
+            e^{i {\bf H}_0 t} {\bf c}_{n {\bf k} \sigma}^\dagger e^{-i {\bf H}_0 t} \rightarrow e^{i \varepsilon_{n {\bf k}} t}{\bf c}_{n {\bf k} \sigma}^\dagger.
+          $$
+          
+    \item An injected electron in the $\ket{n {\bf k} \sigma}$ of a non-interacting system must be removed from the same state, since it evolves in time unperturbed. This allows for the insertion of $\ket{\Psi_0}\bra{\Psi_0}$ between pairs of creation and annihilation operators to obtain
+    
+    $$
+        \bra{\Psi_0} {{\bf c}}_{n {{\bf k}} \sigma}(t) {{\bf c}}_{n {{\bf k}} \sigma}^\dagger(t_1) \ket{\Psi_0},
+    $$
+    
+    which is just the non-interacting single-particle Green function. This procedure can be generalized to all creation and annihilation operators a Green function contains, for they represent non-interacting systems. This is a direct consequence of Wick's theorem. 
+    
+\end{itemize}
+
+All in all, this procedures yield a total of six terms in the first-order Green function, given in \cref{first-order perturb Green function}, which can be obtained from all possible pair-wise contractions of a creation operator with an annihilation operator, yielding 
+
+\begin{equation}
+    \begin{split}
+        \bra{\Psi_0} &\mathcal{T} \bigg[ \psi_{\sigma_1}^\dagger(x_1) \psi_{\sigma_2}^\dagger(x_2) \psi_{\sigma'_2}(x_2) \psi_{\sigma'_1}(x_1) \psi_{\sigma}(x) \psi^\dagger_{\sigma'}(x') \bigg] \ket{\Psi_0} =\\
+        &= \bigg({\wick{ \c2\psi_{\sigma_1}^\dagger(x_1) \c1 \psi_{\sigma_2}^\dagger(x_2) \c1 \psi_{\sigma'_2}(x_2) \c2\psi_{\sigma'_1}(x_1)} 
+        }-{\wick{ \c1\psi_{\sigma_1}^\dagger(x_1) \c2 \psi_{\sigma_2}^\dagger(x_2) \c1 \psi_{\sigma'_2}(x_2) \c2\psi_{\sigma'_1}(x_1)} 
+        }\bigg) \wick{\c  \psi_{\sigma}(x) \c\psi^\dagger_{\sigma'}(x') } \\
+        &\blanky \blanky \blanky+ \wick{
+        \c3 \psi_{\sigma_1}^\dagger(x_1) 
+        \c2 \psi_{\sigma_2}^\dagger(x_2) 
+        \c1 \psi_{\sigma'_2}(x_2) 
+        \c2 \psi_{\sigma'_1}(x_1) 
+        \c3 \psi_{\sigma}(x) 
+        \c1 \psi^\dagger_{\sigma'}(x') } - \wick{\c3 \psi_{\sigma_1}^\dagger(x_1)  \c1 \psi_{\sigma_2}^\dagger(x_2)  \c1 \psi_{\sigma'_2}(x_2) \c2 \psi_{\sigma'_1}(x_1) \c3 \psi_{\sigma}(x) \c2 \psi^\dagger_{\sigma'}(x') } \\
+        &\blanky \blanky \blanky + \wick{\c1 \psi_{\sigma_1}^\dagger(x_1) \c3 \psi_{\sigma_2}^\dagger(x_2) \c1 \psi_{\sigma'_2}(x_2) \c2 \psi_{\sigma'_1}(x_1) \c3 \psi_{\sigma}(x) \c2 \psi^\dagger_{\sigma'}(x') } - \wick{\c1 \psi_{\sigma_1}^\dagger(x_1) \c3 \psi_{\sigma_2}^\dagger(x_2) \c2 \psi_{\sigma'_2}(x_2) \c1 \psi_{\sigma'_1}(x_1) \c3 \psi_{\sigma}(x) \c2 \psi^\dagger_{\sigma'}(x') } \\
+        &= i{\mathfrak{G}_{\sigma \sigma'}^{(x,x'); (0)}} \bigg(i{\mathfrak{G}_{\sigma_1 \sigma'_1}^{(x_1, x_1); (0)}} i{\mathfrak{G}_{\sigma_2 \sigma'_2 }^{(x_2,x_2); (0)}} - i{\mathfrak{G}_{\sigma'_1\sigma_2}^{(x_1, x_2); (0)}} i{\mathfrak{G}_{\sigma'_2 \sigma_1}^{(x_2, x_1); (0)}}\bigg)  \\
+        & \blanky \blanky \blanky + i{\mathfrak{G}_{\sigma \sigma_1}^{(x,x_1); (0)}}\bigg(  i{\mathfrak{G}_{\sigma'_1 \sigma_2}^{(x_1,x_2); (0)}} i{\mathfrak{G}_{\sigma'_2\sigma_2}^{(x_2, x'); (0)}} -  i{\mathfrak{G}_{\sigma'_1 \sigma'}^{(x_1, x'); (0)}} i{\mathfrak{G}_{\sigma'_2 \sigma_2}^{(x_2, x_2); (0)}} \bigg) \\
+        & \blanky \blanky \blanky + i{\mathfrak{G}_{\sigma \sigma_2}^{(x, x_2);(0)}} \bigg(i{\mathfrak{G}_{\sigma'_2 \sigma_1}^{(x_2, x_1);(0)}}
+        i{\mathfrak{G}_{\sigma'_1 \sigma'}^{(x_1, x');(0)}} - 
+        i{\mathfrak{G}_{\sigma'_2 \sigma'}^{(x_2, x');(0)}}
+        i{\mathfrak{G}_{\sigma_1' \sigma_2}^{(x_1, x_1);(0)}}\bigg) 
+    \end{split}
+    \label{first_order_contractions}
+\end{equation}
+
+The, using Wick's theorem, each term in the perturbation expansion can be expressed as a product of non-interacting Green functions, which is the general methodology behind perturbation theory. \\
+
+\paragraph{Equal-Time operators}
+
+In the previous calculation, the Green functions are ambiguous, since these represent contractions of creation and annihilation operators at equal times with the time-ordered product being undefined at equal times. Moreover, \cref{NR_GF_Jellium_like_model} has a discontinuity at equal times $t=t'$. Consequently, taking this limit from either side will yield different results. However, \cref{first_order_perturb_Green_function} shows that the the operators of ${\bf H}_I$ come in sets of four having identical times and a term such as ${\mathfrak{G}^{(x_1, x_1);(0)}}$ arising from a contraction of two fields within the perturbation Hamiltonian, where they appear in the form of $\psi^\dagger(x)\psi(x)$ with the adjoint field always occurring to the left of the field, 
+
+$$
+    {\bf H}_I \propto \psi_{\sigma_1}^\dagger ({\bf x}_1) \psi_{\sigma_2}^\dagger ({\bf x}_2) \psi_{\sigma'_2} ({\bf x}_2) \psi_{\sigma'_1} ({\bf x}_1) \rightarrow 
+    \psi_{\sigma_1}^\dagger ({\bf x}_1)  \psi_{\sigma'_1} ({\bf x}_1) \psi_{\sigma_2}^\dagger ({\bf x}_2) \psi_{\sigma'_2} ({\bf x}_2), \quad {\bf x}_1 \neq {\bf q}_2.
+$$
+
+When this term is replaced in the propagators, the backward time propagation introduces a (-1)-factor for fermions. Therefore, Green functions at equal times for fermionic systems are to interpreted as follows
+
+\begin{equation}
+    \begin{split}
+        \mathfrak{G}_{\sigma \sigma'}^{(0)}(x,x) =& \lim_{t' \rightarrow t} \bra{\Psi_0} \psi_{\sigma}({\bf x}, t)  \psi^\dagger_{\sigma'}({\bf x}, t') \ket{\Psi_0} \\
+        &= - \bra{\Psi_0} \psi^\dagger_{\sigma'}({\bf x}) \psi_{\sigma}({\bf x}) \ket{\Psi_0} = - \delta_{\sigma \sigma'} \frac{n^{(0)}({\bf x)}}{2s+1},
+    \end{split}
+\end{equation}
+
+for fermionic systems of $s$-spin, where $n^{(0)}({\bf x})$ is the electron density in the non-interacting system, which may be different from $n({\bf x})$ of the interacting system. For a uniform system, like the jellium, they coincide. \\
+
+As a general rule, if two operators occur at equal time, they should be normal ordered. Operationally, this means that, when encountering Green functions of the form $\mathfrak{G}^{(0)}({\bf x}, {\bf x}'; t = 0)$, these should be interpreted as 
+
+\begin{equation}
+    \mathfrak{G}^{(0)}({\bf x}, {\bf x}'; t = 0) \equiv \lim_{\epsilon^{-}} \mathfrak{G}_{\sigma \sigma'}^{(0)}({\bf x}, {\bf x}'; t + \epsilon)
+\end{equation}
+
+\subsubsection{The Feynmann Rules}
+
+The Feynmann rules allows for the calculation of the $n$-th-order term in the perturbation expansion of the Green function, which can be formulated in both direct space and in momentum space. The rules read
+
+\begin{itemize}
+    \item Draw all topologically distinct connected diagrams with $n$ interaction (wavy) lines $V$ and $2n+1$ Green function $\mathfrak{G}^{(0)}$ solid lines. 
+    \item Each wavy line corresponds to the interaction written in \cref{first_order_perturb_Green_function} (its Fourier transform in $({\bf k}-\omega)$-basis.
+    \item Vertex and line labelling: 
+    \begin{itemize}
+        \item ${\bf x -t}$-basis: Each vertex is labelled by a point in spacetime $x_i$; each solid line represents a Green function $\mathfrak{G}^{(0)}(x,x')$, running from $x'$ to $x$.
+        \item ${\bf k}-\omega$-basis: a direction is assigned to each interaction line; associated directed momentum and frequency are added to each line (both solid and wavy) and conservation of energy and momentum is imposed at each vertex. 
+    \end{itemize}
+    \item All internal variables are integrated over spacetime or frequency space. 
+    \item Each diagram carries a $(-1)^L$-factor, where $L$ is the number of closed fermion loops in the diagram.
+    \item Each diagram contributes to $\mathfrak{G}$ a factor 
+
+    $$
+        -i \bigg(\frac{-i}{\hbar}\bigg)^n i^{2n+1} = \bigg(\frac{i}{\hbar}\bigg)^n 
+    $$
+\end{itemize}
+
+\blanky \\
+
+\begin{itemize}
+    \item Feynmann rules for the first-order expansion in space-time representation
+\end{itemize}
+
+From this rules, the resulting diagrams for the first-order expansion of the Green function, shown in \cref{first_order_perturb_Green_function}-\cref{first_order_contractions}, read as follows
+
+\begin{equation}
+\begin{split}
+   & \includegraphics[valign = c, scale = .3]{figs/Feynmann_diagrams/Feynmann_diags_first_order_diag1.png} \textcolor{red}{\longleftrightarrow} \left\{\begin{array}{c}
+         i\mathfrak{G}^{(x,x_1);(0)}_{\sigma \sigma_1} i\mathfrak{G}^{(x_1,x');(0)}_{\sigma'_1 \sigma'}
+         i\mathfrak{G}^{(x_2,x_2);(0)}_{\sigma'_2 \sigma_2} \\
+         i\mathfrak{G}^{(x,x_2);(0)}_{\sigma \sigma_2} i\mathfrak{G}^{(x_2,x');(0)}_{\sigma'_2 \sigma'}
+         i\mathfrak{G}^{(x_1,x_1);(0)}_{\sigma'_1 \sigma_2}
+    \end{array} \right., \blanky \blanky 
+    \includegraphics[valign = c, scale = .3]{figs/Feynmann_diagrams/Feynmann_diags_first_order_diag4.png} \textcolor{green}{\longleftrightarrow}
+         i\mathfrak{G}^{(x,x');(0)}_{\sigma \sigma'} i\mathfrak{G}^{(x_1,x_1);(0)}_{\sigma'_1 \sigma_1}
+         i\mathfrak{G}^{(x_2,x_2);(0)}_{\sigma'_2 \sigma_2}
+         \\ 
+    & \includegraphics[valign = c, scale = .3]{figs/Feynmann_diagrams/Feynmann_diags_first_order_diag2.png} \textcolor{blue}{\longleftrightarrow} \left\{\begin{array}{c}
+         i\mathfrak{G}^{(x,x_1);(0)}_{\sigma \sigma_1} i\mathfrak{G}^{(x_1,x_2);(0)}_{\sigma'_1 \sigma_2}
+         i\mathfrak{G}^{(x_2,x');(0)}_{\sigma'_2 \sigma'}   \\
+         i\mathfrak{G}^{(x,x_2);(0)}_{\sigma \sigma_2} i\mathfrak{G}^{(x_2,x_1);(0)}_{\sigma'_2 \sigma_1}
+         i\mathfrak{G}^{(x_1,x');(0)}_{\sigma'_1 \sigma'}  
+    \end{array} \right., \blanky \blanky \includegraphics[valign = c, scale = .3]{figs/Feynmann_diagrams/Feynmann_diags_first_order_diag3.png} \textcolor{yellow}{\longleftrightarrow}
+         i\mathfrak{G}^{(x,x');(0)}_{\sigma \sigma'} i\mathfrak{G}^{(x_1,x_2);(0)}_{\sigma'_1 \sigma_2}
+         i\mathfrak{G}^{(x_2,x_1);(0)}_{\sigma'_2 \sigma_1}
+\end{split}
+\label{first_order_contraction_Feynmann_diags}
+\end{equation}
+
+The \textcolor{red}{first} and \textcolor{blue}{third} diagrams, the ones with red and blue arrows, depict a pair of Green function products, which have identical graphs but with ${\bf x}_1$ and ${\bf x}_2$ interchanged and said graphs are connected. In the \textcolor{blue}{third} diagram, the one with the blue arrow, an exchange occurs in the contraction with ${\bf x}$, whereas the ${\bf x'}$-point has the same contraction. First, the injected electron travels to point ${\bf x}_1, t_1$ where it interacts with another electron at point ${\bf x}_2, t_2$. This electron at ${\bf x}_2, t_2$ then travels to the finish point, where it is taken out, with another electron at ${\bf x}_1, t_1$ travelling to ${\bf x}_2, t_2$ in order to leave the system in the same state it started. Consequently, such diagrams are referred to as exchange diagrams. In the \textcolor{red}{first} and \textcolor{green}{third} diagrams, there are lines starting and ending at the same vertex, thus closing a fermion loop. These describe scattering events at $({\bf x}_i, t_i)$, represented by a Green function $\mathfrak{G}^{({\bf x_i, x_i});(0)}$. These can be thought of as spontaneous creation and re-annihilation of a particle. Recall that when these arise from an interaction Hamiltonian ${\bf H}_I$, the prescription is to interpret them as 
+
+$$
+    \lim_{\epsilon \rightarrow 0} \mathfrak{G}_{\sigma'_1 \sigma_1} ({\bf x}_1, t_1; {\bf x}_1, t_1+\epsilon),
+$$
+
+and represent electronic densities. \\
+
+In this representation, the diagrams have a nice physical interpretation. The Green function $\mathfrak{G}({\bf x}, t; {\bf x}',t')$ is the probability amplitude for a particle to get from the ${\bf x}'$-point, at $t'$-time, to ${\bf x}$-point at $t$-time. The Feynmann expansion thus states that the electron can get between these two points in all possible ways, weighted by the appropriate amplitude, with the zero-th order Feynmann graph being the direct graph. \\
+
+\begin{itemize}
+    \item Feynmann rules for the first-order expansion in momentum representation.
+\end{itemize}
+
+The interaction Hamiltonian can be written as 
+
+\begin{equation}
+    {\bf H}_I = \frac{1}{\Omega}\sum_{{\bf k}_1, {\bf k}'_1, {\bf q}} \frac{V({\bf q)}}{2} {\bf c}_{{\bf k}_1 - {\bf q}}^\dagger {\bf c}_{{\bf k}_2 + {\bf q}}^\dagger {\bf c}_{{\bf k}_2}{\bf c}_{{\bf k}_1}.
+\end{equation}
+
+The only difference between momentum space and realspace is that integrations are carried out over internal momenta, rather than internal position, with momentum being conserved at each vertex, where an interaction links two points at equal time. \\
+
+With the aid of such basic diagrammatic representation, a depiction can be given for the interacting Green function, which can be diagramatically represented by a double line with an arrow, ie. 
+
+\begin{equation}
+    \mathfrak{G}({\bf k}, t-t') = \includegraphics[valign = c, scale = .3]{figs/Feynmann_diagrams/Feynmann_diags_first_order_exact_GF_doublearrow.png} = \mathfrak{G}^{(0)} + \mathfrak{G}^{(1)} + \mathfrak{G}^{(2)} + \cdots,
+\end{equation}
+
+considering perturbation terms upto quadractic order in the interaction Hamiltonian, $\mathcal{O}({\bf H}_I^2)$:
+
+\begin{itemize}
+    \item \underline{Zero-th order} The zero-th order expansion yields the following diagramatic representation
+
+    \begin{equation}
+        \includegraphics[valign = c, scale = .4]{figs/Feynmann_diagrams/Feynmann_diags_first_order_exact_GF_doublearrow_zero_order.png}, \begin{array}{cc}
+             \textnormal{namely, that the particle with ${\bf k}$-momentum injected } \\
+             \textnormal{ at $t_1$-time travels unperturbed until it is extracted}\\
+             \textnormal{ at $t$-time, without suffering any scattering effects.} 
+        \end{array}
+    \end{equation}
+
+\item \underline{First-order terms}: the first order terms can then be 
+interpreted as suffering a single scattering event. From \cref{first_order_contractions} there are a total of six first-order terms contributing to $\mathfrak{G}^{(1)}$, which can be represented by six diagrams. Consider, eg., the first pairing, 
+
+\begin{equation}
+\begin{split}
+    &\bigg \langle \bm{\mathcal{T}} \bigg[ 
+    \overbrace{
+    {\bf c}_{{\bf k}}(t) {\bf c}_{{\bf k}_1 - {\bf q}}^\dagger(t_1)
+    } \overbrace{
+    {\bf c}_{{\bf k}_2 + {\bf q}}(t_1)^\dagger {\bf c}_{{\bf k}_2}(t_1) 
+    } \overbrace{
+    {\bf c}_{{\bf k}_1}(t_1) {\bf c}_{{\bf k}}^\dagger(t')
+    }
+    \bigg]\bigg \rangle_{{\Phi_0}}\\
+    \\
+    \Rightarrow \mathfrak{G}_{a}^{(1)} ({\bf k}, t-t') =& -\frac{1}{\Omega} \int_{\mathds{R}} dt \blanky \sum_{{\bf k}_1, {\bf k}'_1, {\bf q}} \frac{V({\bf q)}}{2} \bm{\mathcal{T}} \bigg[ \begin{array}{ccc}
+         \overbrace{
+    {\bf c}_{{\bf k}}(t) {\bf c}_{{\bf k}_1 - {\bf q}}^\dagger(t_1)
+    } & \overbrace{
+    {\bf c}_{{\bf k}_2 + {\bf q}}(t_1)^\dagger {\bf c}_{{\bf k}_2}(t_1) 
+    } & \overbrace{
+    {\bf c}_{{\bf k}_1}(t_1) {\bf c}_{{\bf k}}^\dagger(t')
+    } \\
+    {\bf k}_1 - {\bf q} = {\bf k} & {\bf k}_2 = {\bf k_2} + {\bf q} & {\bf k}_1 ? {\bf k}
+    \end{array} \\
+    &= \frac{i}{\Omega} \int_{\mathds{R}} dt \blanky \sum_{{\bf k}_2} \mathfrak{G}^{(0)}({\bf k}, t- t_1)  \mathfrak{G}^{(0)}({\bf k}_2, 0^-)  \mathfrak{G}^{(0)}({\bf k}, t_1 - t') \\
+    &= \includegraphics[valign = c, scale 
+= .4]{figs/Feynmann_diagrams/Feynmann_diags_first_order_exact_GF_doublearrow_first_order_first_term.png}
+\end{split}
+\end{equation}
+
+The six first-order diagrams then are isomorphic to those shown in \cref{first_order_contraction_Feynmann_diags}. 
+In fact, only the labels change yielding 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = .5]{figs/Feynmann_diagrams/Feynmann_diags_first_order_k_space_Feynmann_diags_all.png}
+    \caption{All six first-order Feynmann diagrams in momentum representation, derived from the six Wick contraction shown in \cref{first_order_contractions}.}
+\end{figure}
+
+An examination of the diagrams reveals that there are two pairs of identical diagrams and two disconnected diagrams. \\
+
+\item \underline{Second-order terms}
+
+The second order terms involve 
+
+\begin{equation}
+    \bigg \langle \bm{\mathcal{T}} \bigg[ {\bf c}_{{\bf k}}(t) {\bf H}_I(t_1){\bf H}_I(t_2) {\bf c}_{{\bf k}}(t_1)
+    \bigg]\bigg \rangle_{{\Phi_0}},
+\end{equation}
+
+whose diagrams contain five fermionic lines with two interaction, yielding -in principle- 5! = 120 Wick contractions, each represented by a diagram. However, some of these diagrams will be identical to other ones. \\
+
+\end{itemize}
+
+From these cases, it is clear that some redundacies arise in the diagramatic expansion of the Dyson series, since many contractions appear to correspond to the same graph. \\
+
+\paragraph{\textit{Redundancies and Simplfications in the Diagrammatic Expansions}}
+
+There are multiple causes for redundancies in the Feynmann expansion. For example, a third-order expansion of the Green function has, in principle, 7! = 5040 possible Wick contractions. An identification of diagrammatic redundancies among these contractions is then of the utmost importance. Some ways in which to account for redundancies are treated as follows,
+
+\begin{itemize}
+    \item Permutation of interaction lines: first, consider three interaction lines which occur at $t_1, t_2, t_3$-times. It is obvious that there 3! = 6 equivalent Wick contractions, equivalent in the sense that these can be obtained from permutations. Such contractions will yield the exact same product of Green functions with identical diagrams but with different labels. But, since integrations are carried out over all internal lines, albeit at different orders, their interchange is irrelevant. Therefore, in general, in an $n$-line diagram, a $\frac{1}{n!}$-factor is associated with terms of order $n$, namely 
+
+    $$
+        S(\infty, -\infty) = \sum_{n=0}^{\infty} \frac{i^n}{n!} \mathcal{T} \int_{\mathds{R}} 
+        dt_1 \cdot \int_{\mathds{R}} dt_n {\bf H}_I(t_1) \cdots {\bf H}_I(t_n).
+    $$
+
+    This $\frac{1}{n!}$ thus cancels itself out with the $n!$ symmetry factor for each diagram. \\
+
+    \item Reversal symmetry of an interaction line: Each individual interaction line, in the momentum-time representation, has a direction, with two possible orientations. In the position-time representation, internal variables ${\bf x}_i$, ${\bf x}_j$, at the vertices, may be interchanged. In either case, such operation will yield diagrams having the same topology. Integrating over these internal variables will yield the same value for the contribution of each diagrams. This entails that, for each interaction line, there is a factor of $V({\bf q})$, instead of $\frac{V({\bf q})}{2}$ that appears in the Hamiltonian. \\
+
+    \item Multiplicative factors: the fact that any contraction term of order $n$ has $n$ interaction lines, and $2n+1$ Green functions, implies that the corresponding $n$th-order diagram must be associated with a factor $i^n$. \\
+
+    \item Transposition of fermionic operators: Correct Green function operator ordering requires operator switching and gives rise to a factor of $-1$. 
+    Furthermore, there is a $(-1)^L$-factor associated with diagrams with $L$ closed fermionic loops. 
+    
+\end{itemize}
+
+So far the denominator of \cref{first_order_perturb_Green_function} has been ignored. Upto first order in the interaction Hamiltonian it gives, 
+
+\begin{equation}
+    \begin{split}
+        \bra{\Psi_0} S(\infty, -\infty) \ket{\Psi_0} \sim&
+        \bra{\Psi_0} \ket{\Psi_0} - \frac{i}{\hbar} \int_{\mathds{R}} dt_1 \blanky \bra{\Psi_0} T {\bf H}_I(t_1) \ket{\Psi_0} \\
+        &= 1 - \frac{i}{\hbar} \int_{\mathds{R}} d^4 x_1 d^4 x_2 V_{\sigma_1 \sigma_2 \sigma'_1 \sigma'_2}^{(x, x')} \blanky \bra{\Psi_0} \mathcal{T} 
+        \psi_{\sigma_1}^\dagger(x_1)
+        \psi_{\sigma_2}^\dagger(x_2)
+        \psi_{\sigma'_2}(x_2)
+        \psi_{\sigma'_1}(x_1)
+        \ket{\Psi_0} = F_0 + F_1
+    \end{split}     
+\end{equation}
+
+These diagrams do not have external fermionic lines, and consequently its diagrams are closed ones. Terms in the series $\bra{\Psi_0} S(\infty, -\infty) \ket{\Psi_0}$ are called \textbf{vacuum polarization terms}, which have corresponding vacuum polarization diagrams of the closed type. Some contractions of the interaction Hamiltonian in the $n$th-order perturbative expansion do not link the external fermionic points ${\bf c}(t)$ and ${\bf c}^\dagger(t')$. Such contractions correspond to diagrams having disconnected closed components. It can be shown that there exists a factorization that separates the disconnected closed-type components from connected ones. This cancellation theorem demonstrations that, in such factorization, the closed diagrams in the denominator exactly cancel the disconnected counterpart diagrmas of the pertubation expansion in the numerator. This means that the Green function is then given by the sum of all connected diagrams as 
+
+\begin{equation}
+    \begin{split}
+        i \mathfrak{G}_{\sigma \sigma'}^{(x,x')} = \sum_{n=0}^{\infty} \frac{1}{n!} \bigg(\frac{-i}{\hbar}\bigg)^n \int_{\mathds{R}} dt_1 \cdots \int_{\mathds{R}} dt_n \blanky \bra{\Phi_0} \mathcal{T} [ {\bf H}_I(t_1) \cdots {\bf H}_I(t_n) \psi_{H \sigma}({\bf x}, t) \psi_{H \sigma'}^\dagger({\bf x}', t_1)]\ket{\Phi_0}_{\textnormal{connected}}.
+    \end{split}
+\end{equation}
+
+\blanky \\
+
+\subsubsection{Infinite Sums: Dyson Series and Self-Energy}
+
+It turns out that some diagrams can be constructed by linking diagrams which appear in lower-order expansion with a fermionic line $\mathfrak{G}^{(0)}$. In order words, there are second- and higher-order diagrams which can be decomposed into first-order diagrams. This suggests that identifying \underline{building blocks}, or \underline{irreducible} or \underline{proper} diagrams is useful, since all other diagrams can be generated from this one. \\
+
+An irreducible diagram can be defined as one which cannot be disconnected into two parts by cutting a single internal electron line. If a diagram is not irreducible, it is said to be reducible. Some examples of second-order diagrams reducibles diagrams are 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = .5]{figs/Feynmann_diagrams/reducible_feynmann_diags.png}
+\end{figure}
+
+which consist of linked first-order direct and exchange diagrams. All of these can be cut into two diagrams along the dashed line. \\
+
+An irreducibe self-energy diagram (ISED) is defined as the diagram obtained by removing external lines from an irreducible diagram. Equivalently, the ISED's mathematical expression is obtained by deleting two factors of $\mathfrak{G}^{(0)}$ due to external lines. The total ISED sum can be represented as follows 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = .5]{figs/Feynmann_diagrams/irreducible_self_energy.png}
+    \label{Feynmann_diags_ISED_sum}
+\end{figure}
+
+Then, the complete one-particle interacting Green function can be recovered by reconstructing the clipped diagrams as 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale 
+ = .5]{figs/Feynmann_diagrams/feynmann_diags_dyson_equation.png}
+\end{figure}
+
+which is the Dyson equation. The appearance of the double line on the right-hand side indicates the self-consistent nature of this equation. The diagrammatic expression of the Dyson equations' main advantage is that it can be terminated at any order and still only include certain classes of diagrams. In many cases, the application of perturbation theory requires summation over whole classes of diagrams in order to obtain meaningful and reliable results, eg. divergences of perturbation terms in the interacting electron gas can be removed by performing an infinite sum of the terms arising from two particular diagrams, the Hartree or direct diagram and the exchange or Fock diagram. 
+\\
+
+In this case, the Hartree term in particular has ${\bf q} = 0$ due to momentum conservation and is cancelled by the background interaction. The Fock-term gives rise to a non-trivial contribution, 
+
+\begin{equation}
+\begin{split}
+    &i\mathfrak{G}_{\textnormal{Fock}}^{(1\textnormal{-st order})} = i \mathfrak{G}^{(0)}({\bf k}, \omega) \int \frac{d\varepsilon}{2\pi} \frac{1}{\Omega} \sum_{{\bf q}} V({\bf q}) \mathfrak{G}^{(0)}({\bf k-q}, \omega - \varepsilon)  \mathfrak{G}^{(0)}({\bf k}, \omega) \equiv \Sigma^{*}_F({\bf k}, \omega) = \includegraphics[valign = c]{figs/Feynmann_diagrams/feynmann_diags_Fock_term_first_order.png} \\
+    &i\mathfrak{G}_{\textnormal{Fock}}^{(2\textnormal{-nd order})} \approx \mathfrak{G}^{(0)}({\bf k}, \omega) \Sigma^{*}_F({\bf k}, \omega) \mathfrak{G}^{(0)}({\bf k}, \omega) \Sigma^{*}_F({\bf k}, \omega) \mathfrak{G}^{(0)}({\bf k}, \omega) = \includegraphics[valign = c, scale = .4]{figs/Feynmann_diagrams/feynmann_diags_Fock_term_second_order.png} \\
+\end{split}
+\end{equation}
+
+%%%% #### this is how you create an environment for an image to the left of text ya twat #### %%%%
+%\noindent\begin{minipage}{0.3\textwidth}% adapt widths of minipages to your needs
+%\includegraphics[width=\linewidth]{figs/Feynmann_diagrams/feynmann_diags_Fock_term_complete_summation.png}
+%\end{minipage}
+%\hfill%
+%\begin{minipage}{0.6\textwidth}\raggedright
+
+%Then, in order to calculate this exact contribution \\
+%all higher-order terms must be included. These \\
+%higher-order terms include repetitions of this sequence
+%\end{minipage}
+
+\begin{wrapfigure}{l}{0.3\textwidth}
+\includegraphics[scale = .5]{figs/Feynmann_diagrams/feynmann_diags_Fock_term_complete_summation.png}
+\end{wrapfigure} 
+
+Then, in order to calculate this exact contribution all higher-order terms must be included. These higher-order terms include repetitions of this precise sequence, generating an infinite series, the \textbf{Dyson series}, which involves terms as 
+
+\begin{equation}
+    \begin{split}
+        & \includegraphics[scale = .5, valign = c]{figs/Feynmann_diagrams/feynmann_diags_Dyson_equation_complete.png} \\
+        &= \mathfrak{G}^{(0)}({\bf k}, \omega) \sum_{n=0}^{\infty} \bigg(\Sigma^{*}({\bf k}, \omega)\mathfrak{G}^{(0)}({\bf k}, \omega)\bigg)^n \\
+        &= \frac{\mathfrak{G}^{(0)}({\bf k}, \omega)}{1-\Sigma^{*}_F({\bf k}, \omega) \mathfrak{G}^{(0)}({\bf k}, \omega)} = \frac{1}{[\mathfrak{G}^{(0)}({\bf k}, \omega)]^{-1} - \Sigma^{*}_F({\bf k}, \omega)}, \\
+        & \textnormal{ which, by inserting the explicit form of the non-interactive Green function in \cref{Feynmann_diags_spectral_functions}} \\
+        & \textnormal{namely, $\mathfrak{G}^{(0)} = (\omega - \varepsilon({\bf k}))^{-1}$ ,yields }
+        \mathfrak{G}({\bf k}, \omega) = \frac{1}{\omega - \varepsilon({\bf k}) - \Sigma_F^{*}({\bf k}, \omega) \pm i\eta}.
+    \end{split}
+\end{equation}
+
+$\Sigma_F^{*}({\bf k}, \omega)$ is the self-energy of the interacting electron gas, obtained by carrying out the summation, a process known as renormalization. In general, as in \cref{Feynmann_diags_ISED_sum}, the self-energy is identified with the sum of all proper diagrams coming from all orders of perturbation, namely the ones which cannot be split into parts by breaking fermion lines. \\
+
+To obtain the complete interacting Green function, these self-energy diagrams must be augmented with external fermion lines at their vertices, with one line carrying ${\bf k}$-momentum and $\omega$-energy to the first vertex, and the other carrying them away from the last vertex. The Dyson series allows for the recasting the Green function in a form in which it can be identified with that of the non-interacting counterpart but with a renormalized spectrum, 
+$$
+    \varepsilon^{(0)}({\bf k}) \rightarrow \varepsilon({\bf k}) = \varepsilon^{(0)}({\bf k}) + \Re \Sigma^{*}({\bf k}, \omega).
+$$
+
+\blanky \\
+
+\subsubsection{Recasting the Hartree-Fock Approach}
+
+The Hartree-Fock approach may be reinterpreted from a field-theoretic perspective using the Feynmann-Dyson perturbative approach. This approach can be viewed as a nonperturbative expansion in the sense that the Green function will contain all powers in the interaction, but will only contain a selected class of diagrams. \\
+
+\paragraph{Self-energy in the Hartree-Fock Self-Consistent Approximation}
+
+Diagramatically, the one-particle Green function up to first-order is given by 
+
+\begin{equation}
+    \begin{split}
+        \mathfrak{G} &= \longrightarrow +  \includegraphics[scale = .3, ]{figs/Feynmann_diagrams/Hartree_fock_diags.png} \\
+        &= \mathfrak{G}^{(0)} + \mathfrak{G}^{(0)} \Sigma \mathfrak{G}^{(0)}, \textnormal{ with the corresponding self-energy expansion given by } \includegraphics[scale = .15, valign = c]{figs/Feynmann_diagrams/Hartree_fock_diags.png}.
+    \end{split}
+    \label{HF_RPA_first_order_self_energy_expansion}
+\end{equation}
+
+Terminating the perturbation expansion at first order yields the Hartree-Fock approximation, discussed in \cref{First_order_Hartree_Fock}. By going beyond this approximation, using Dyson's equation, yields 
+
+\begin{equation}
+    \begin{split}   
+    &\includegraphics[scale = .45, valign = c]{figs/Hartree-Fock-RPA/HFRPA_Dyson_eq.png} \\
+    &\mathfrak{G} = \mathfrak{G}^{(0)} + \mathfrak{G}^{(0)} \Sigma_{\textnormal{HF}}\mathfrak{G}. 
+    \end{split}
+\end{equation}
+
+By iteration, a Green function with the interaction restricted to Hartree-Fock terms can be constructed, ie. via the HF self-energy but extended to all orders. Consider \cref{first_order_contraction_Feynmann_diags}, wherein all contractions for a first-order approximation to the Green function where carried out. Restricting these terms to only those which arise from the self-energy diagrams, written in 
+\cref{HF_RPA_first_order_self_energy_expansion}, yields
+
+\begin{equation}
+    \begin{split}
+        i \mathfrak{G}^{(1)}_{\sigma \sigma'} = \frac{i}{\hbar} \sum_{\substack{\sigma_1 \sigma'_1 \\
+        \sigma_2 \sigma'_2}} V_{\sigma_1\sigma_2}^{\sigma'_2\sigma'_1}(x_1,x_2) i \mathfrak{G}^{(x_1, x_2); (0)}_{\sigma\sigma_1} \bigg[ i \mathfrak{G}^{(x_1,x_2); (0)}_{\sigma'_1\sigma_2}
+        \mathfrak{G}^{(x_2, x'); (0)}_{\sigma'_2\sigma'} 
+         -
+        i \mathfrak{G}^{(x_1,x'); (0)}_{\sigma'_1\sigma'} 
+        i \mathfrak{G}^{(x_2, x_2); (0)}_{\sigma'_2\sigma_2} \bigg]
+    \end{split}
+\end{equation}
+
+Now, consider the following properties 
+
+\begin{itemize}
+    \item The non-interacting Green function is diagonal in spin $\mathfrak{G}_{\sigma \sigma'}^{(0)} = \delta_{\sigma \sigma'} \mathfrak{G}^{(0)}$.
+    \item The interaction is assumed to be spin independent and instantaneous $V_{\sigma_1 \sigma_2 \sigma'_2 \sigma'_1} \sim \delta_{\sigma_1 \sigma'_1}^{\sigma_2 \sigma'_2} \delta(t_1-t_2)$.
+    \item The free fermion Green function in position representation is as follows, 
+    
+\begin{equation}
+    \begin{split}
+        \langle \mathcal{T} [\Psi({\bf x},t) \Psi^\dagger({\bf x}_1, t_1)] \rangle_{\Psi_0} =& \sum_{{\bf k} {\bf k}_1} \phi_{{\bf k}}({\bf x})\phi^{*}_{{\bf k}_1}({\bf x}_1) \langle \mathcal{T} [{\bf c}_{{\bf k}}(t) {\bf c}_{{\bf k}_1}^\dagger(t_1)] \rangle_{\Phi_0} \\
+        &= \sum_{{\bf k} {\bf k}_1} \phi_{{\bf k}}({\bf x})\phi^{*}_{{\bf k}_1}({\bf x}_1) \langle \mathcal{T} [{\bf c}_{{\bf k}} {\bf c}_{{\bf k}_1}^\dagger] \rangle_{\Phi_0} e^{-i(\varepsilon_{{\bf k}}t - {\varepsilon}_{{\bf k}_1} t_1)} \\
+        &= \sum_{{\bf k}} \phi_{{\bf k}}({\bf x})\phi^{*}_{{\bf k}_1}({\bf x}_1) \delta_{{\bf k} {\bf k}_1} e^{-i\varepsilon_{{\bf k}}(t-t_1)} = \delta({\bf x} - {\bf x}_1) \delta(t-t_1). 
+    \end{split}
+\end{equation}
+
+\item With the equal space-time Green function being 
+
+\begin{equation}
+    i \bar{\mathfrak{G}}^{(0)}(x_2, x_2^+) = - {\bf n}^{(0)}(x_2),
+\end{equation}
+
+        ie. the density per spin of the non-interacting system. 
+\end{itemize}
+
+Then,
+
+\begin{equation}
+    \begin{split}
+         i \mathfrak{G}^{(1)}_{\sigma \sigma'} =& \frac{i}{\hbar} \sum_{\substack{\sigma_1 \sigma'_1 \\
+        \sigma_2 \sigma'_2}} V_{\sigma_1\sigma_2}^{\sigma'_2\sigma'_1}(x_1,x_2) i \mathfrak{G}^{(x_1, x_2); (0)}_{\sigma\sigma_1} \bigg[ i \mathfrak{G}^{(x_1,x_2); (0)}_{\sigma'_1\sigma_2}
+        \mathfrak{G}^{(x_2, x'); (0)}_{\sigma'_2\sigma'} 
+         -
+        i \mathfrak{G}^{(x_1,x'); (0)}_{\sigma'_1\sigma'} 
+        i \mathfrak{G}^{(x_2, x_2); (0)}_{\sigma'_2\sigma_2} \bigg] \\
+        &=\frac{i}{\hbar} \sum_{\substack{\sigma_1 \sigma'_1 \\
+        \sigma_2 \sigma'_2}} V_{\sigma_1\sigma_2}^{\sigma'_2\sigma'_1}(x_1,x_2) i \mathfrak{G}^{(x_1, x_2); (0)} \delta_{\sigma \sigma_1} \bigg[ i \mathfrak{G}^{(x_1,x_2); (0)} \delta_{\sigma'_1\sigma_2}
+        \mathfrak{G}^{(x_2, x'); (0)} \delta_{\sigma'_2\sigma'} 
+         -
+        i \mathfrak{G}^{(x_1,x'); (0)}\delta_{\sigma'_1\sigma'} 
+        i \mathfrak{G}^{(x_2, x_2); (0)}\delta_{\sigma'_2\sigma_2} \bigg] \\
+        &=\frac{i}{\hbar} \sum_{\substack{\sigma_1 \sigma'_1 \\
+        \sigma_2 \sigma'_2}} \bigg[\begin{array}{cc}
+            V(|{\bf x}_1 - {\bf x}_2|)\delta_{\sigma_1\sigma_2} \delta_{\sigma'_2\sigma'_1} i \delta({\bf x}_1 - {\bf x}_2) \delta(t_1-t_2)\delta_{\sigma \sigma_1}i \mathfrak{G}^{(x_1,x_2); (0)} \delta_{\sigma'_1\sigma_2}
+            \mathfrak{G}^{(x_2, x'); (0)} \delta_{\sigma'_2\sigma'} \\
+             \blanky \blanky \blanky \blanky       - V(|{\bf x}_1 - {\bf x}_2|)\delta_{\sigma_1\sigma_2} \delta_{\sigma'_2\sigma'_1} i \delta({\bf x}_1 - {\bf x}_2) \delta(t_1-t_2)\delta_{\sigma \sigma_1}
+                i \mathfrak{G}^{(x_1,x'); (0)}\delta_{\sigma'_1\sigma'} 
+                i \mathfrak{G}^{(x_2, x_2); (0)}\delta_{\sigma'_2\sigma_2} 
+        \end{array} \bigg] \\
+        &= \frac{i}{\hbar} \bigg[\begin{array}{cc}
+            V(|{\bf x}_1 - {\bf x}_2|)\delta_{\sigma \sigma'} \delta({\bf x}_1 - {\bf x}_2) \delta(t_1-t_2) i \bar{\mathfrak{G}}^{(x_2,x_2^+); (0)} 
+            i \mathfrak{G}^{(x_2, x'); (0)} \\
+             \blanky \blanky \blanky \blanky - V(|{\bf x}_1 - {\bf x}_2|)\delta_{\sigma \sigma'} i \delta({\bf x}_1 - {\bf x}_2) \delta(t_1-t_2) 
+                i \mathfrak{G}^{(x_1,x'); (0)} i \mathfrak{G}^{(x_2, x_2); (0)} 
+                \end{array} \bigg] \\
+        %\\
+        %& \Sigma^{*}_{\sigma \sigma'} =  - \frac{1}{\hbar} \delta(t-t') \bigg[-\delta({\bf x} - {\bf x}') (2S+1) \int_{\mathds{R}^3} d{\bf x}_2 \blanky {\bf n}(x_2) V(|{\bf x}- {\bf x}_2|) - V(|{\bf x} - {\bf x'}|) i \mathfrak{G}({\bf x}, t; {\bf x}', t')\bigg]         \\
+    \end{split}
+\end{equation}
+
+where $2S+1$ accounts for the sum over spin. Consequently, the integral in the first self-energy term is just the Coulomb interaction of the fermionic test particle with all the particles of the systemm. The unphysical self-interaction is cancelled by its counterpart in the Fock term. The self-consistency built into the Hartree-Fock theory allows for the replacing of non-interacting Green functions $\mathfrak{G}^{(0)}$ with similar diagrams for the interacting Green function $\mathfrak{G}$
+
+\begin{equation}
+\begin{split}
+    &\Sigma^{*}_{\textnormal{HF}}(x,x') =  - \frac{1}{\hbar} \delta(t-t') \bigg[-\delta({\bf x} - {\bf x}') (2S+1) \int_{\mathds{R}^3} d{\bf x}_2 \blanky {\bf n}(x_2) V(|{\bf x}- {\bf x}_2|) - V(|{\bf x} - {\bf x'}|) i \mathfrak{G}({\bf x}, t; {\bf x}', t')\bigg]
+        \\
+    & \includegraphics[scale = .5, valign = c]{figs/Hartree-Fock-RPA/HFRPA_irreducible_self_energy.png},
+\end{split}
+\end{equation}
+
+Note that $\Sigma_{\textnormal{HF}}^{*}$ is frequency independent, since it depends on $\delta(t-t_1)$. It is purely real, which manifests the Hartree-Fock approximation as a ${\bf k}$-dependent shift in the non-interacting energy poles. \\
+
+\subsubsection{The Two-Particle Green Function and RPA}
+
+The Hartree-Fock approach, as a first-order approximation, does not give an adequate account of the density-density response function for the interacting electron gas. These shortfalls are the consequence of the long interaction range of the Coulomb potential, which gives rise  to an infrared divergence because of the $\frac{1}{q^2}$-behaviour. To make progress, higher-order diagrams and their approximations are to be considered. Moreover, screening effects that reduce the long-range nature of the Coulomb interaction arise. 
+
+\begin{wrapfigure}{l}{0.2\textwidth}
+\includegraphics[scale = .4]{figs/Hartree-Fock-RPA/HFRPA_fermionic_bubble.png}
+\end{wrapfigure} 
+
+In these higher-order diagrams, a new element appears: the fermionic bubble, also called a polarization loop.  \\
+
+\blanky \\
+
+\paragraph{A disgression on Diagram Scaling}
+
+Consider the self-energy diagrams of $n$-th order in the Fourier $({\bf k}, \omega)$ representation. They contain
+
+\begin{itemize}
+    \item $n$ interaction lines,
+    \item $2n$ vertices 
+    \item and $2n-1$ fermionic lines. 
+\end{itemize}
+
+All of these quantities have distinct energy scalings, which can be written in terms of $k_F$ as follows:
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{ |p{5cm}||p{5cm}|p{4cm}|  }
+ \hline
+ \multicolumn{3}{|c|}{Scalings of different diagram elements} \\
+ \hline
+ \textbf{Quantity} & \textbf{Per component} & \textbf{ Total} \\
+ \hline
+ Fermionic lines & $k_F^{-2}$ & $(k_F^{-2})^{2n-1}$\\
+ Internal lines & $k_F^5$ & $(k_F^5)^n$ \\
+ Coulomb interaction & $k_F^{-2}$ & $(k_F^{-2})^n$\\
+ \hline
+\end{tabular}
+ \label{diagram_elements_scalings}
+\end{table}
+
+Integration is carried out over $n$ internal momenta, each with three components, and $n$ internal energies. However, given the conservation of momenta at each vertex, there are $2n$ constraints, reducing the number of independent variables to $n$. 
+
+Scaling up all energies and momenta in terms of $k_F$, for a diagram of order $n$ yields,
+
+\begin{equation}
+    (k_F^5)^n \times (k_F^{-2})^{2n-1} \times (k_F^{-2})^{n} = k_F^{-(n-2)} \propto r_s^{(n-2)}
+\end{equation}
+
+Thus, if $r_S < 1$, it follows that $\Sigma^{*(n+1)} \leq \Sigma^{*(n)}$.
+
+As previously stated, quasiparticles can only be defined near the Fermi surface and that is precisely where Green functions assume large amplitudes, namely, for $k \simeq k_F$. Thus, configurations where all momenta appearing in the self-energy fermionic lines are close to $k_F$ contribute significantly. Consider the following two diagrams. \\
+  
+\begin{wrapfigure}{l}{0.2\textwidth}
+\includegraphics[scale = .4]{figs/Hartree-Fock-RPA/HFRPA_second_order_self_energy_diagram_1.png}
+\end{wrapfigure} 
+
+First, consider this second-order self-energy diagram. For small-enough $q$, it turns out $V^2(q) \approx {q^{-4}}$, and that the summation over ${\bf k}_1$, with $k_1 \simeq k_F$, is unconstrained over a shell of width $2q$. Such a second-order diagram diverges. \\
+
+\blanky \\
+
+In contrast,
+
+\begin{wrapfigure}{l}{0.2\textwidth}
+\includegraphics[scale = .4]{figs/Hartree-Fock-RPA/HFRPA_second_order_self_energy_diagram_2.png}
+\end{wrapfigure} 
+
+in this second-order diagram, for small-enough $q$ and $|{\bf k - q - k}_1|$ in the interaction lines, the phase space for $k_1 \simeq k_F$ becomes severely restricted. \\
+
+\blanky \\
+
+It can thus be inferred that, because of this relatively large difference of phase space volume over which $k_1 \simeq k_F$, the contribution of the first diagram dwarfs that of the second diagram, ie. that $
+    \frac{\Sigma^{*}(a)}{\Sigma^{*}(b)} >> 1.  $ 
+This argument can be extended to higher-order diagrams and ascertain that the dominant diagram, in any order, will be the one with maximum phase space volume for all internal momenta to have $k_i \simeq k_F$, and that will be the case when the internal momenta are least constrained to be in the vicinity of the Fermi surface. These diagrams have the highest-degree of divergence, namely, that the highest power of $q^{-2} \rightarrow q^{-2n}$. These dominant diagrams are called \textbf{bubble} or \textbf{ring} diagrams. 
+
+Note that, although the contribution of each individual diagram diverges, their Dyson infinite sum in the high-density regime $r_S < 1$ gives a finite result. This inference describes the screening of the Coulomb potential by free electrons, giving rise to a Yukawa potential, and is the basis for the random phase approximation. \\
+
+\clearpage
+
+\paragraph{Density-Density Correlation Function}
+
+Consider the density-density Green function, ie. the two-particle Green function, defined as 
+
+\begin{equation}
+\begin{split}
+    \Pi({\bf q},t) =& i \bigg \langle \textnormal{GS} \bigg | \mathcal{T} \bigg[\rho_{\sigma}({\bf q},t) \rho_{\sigma}(-{\bf q},0)\bigg] \bigg | \textnormal{GS} \bigg \rangle, \textnormal{ where } \begin{array}{cc}
+        \ket{\textnormal{GS}} \textnormal{ is the ground state } \\
+        \rho({\bf q},t) = \sum_{{\bf k} \sigma} {\bf c}_{{\bf k} \sigma}^\dagger(t) {\bf c}_{{{\bf k+q} \sigma}}(t)
+    \end{array} \\
+    &= i \sum_{{\substack{ {\bf k k'}
+    \\
+    \sigma \sigma'
+    }}} \langle \textnormal{GS} \bigg | \mathcal{T} \bigg[ 
+      {\bf c}_{{\bf k} \sigma}^\dagger(t) 
+      {\bf c}_{{{\bf k+q} \sigma}}(t)
+      {\bf c}_{{\bf k}' \sigma'}^\dagger(0) {\bf c}_{{{\bf k'-q} \sigma'}}(0)
+    \bigg] \bigg | \textnormal{GS} \bigg \rangle.
+\end{split}
+\label{HFRPA_density_density_gf}
+\end{equation}
+
+This quantity describes the propagation of a particle-hole pair created at time 0: 
+
+\begin{itemize}
+    \item the particle is created in the state $\ket{{\bf k'} \sigma'}$,
+    \item and the hole is created by annihilating a particle in the $\ket{{\bf k' - q} \sigma'}$.
+    \item The pair is ultimately annihilated in states $\ket{{\bf k} \sigma}$ and $\ket{{\bf k +q} \sigma}$ at time t. 
+\end{itemize}
+
+By analogy to the case of the single-particle Green function, this propagator will therefore have poles at energies corresponding to stable particle-hole excitations of the system. The summation over ${\bf k}, {\bf k'}$ describes the propagation of a superposition of many particle-hole exxcitations. Such superpositions are, in fact, collective excitations. This is, in essence, a density fluctuation, so that \cref{HFRPA_density_density_gf} is also called the density-fluctuation propagator. For an interacting system, the perturbative expansion reads
+
+\begin{equation}
+    \Pi({\bf q},t) = i \frac{\bra{\Phi_0} \mathcal{T} \bigg[ \rho_{\sigma}({\bf q},t) \rho_{\sigma}(-{\bf q},0)\mathcal{S}(\infty, -\infty) \bigg] \ket{\Phi_0}}{\bra{\Phi_0} \mathcal{S}(\infty, -\infty) \ket{\Phi_0}}
+    \label{HFRPA_Density_density_gf_expansion}
+\end{equation}
+
+with all quantities appearing in the interaction representation, and all expectation values being taken with respect to the non-interacting ground state, allowing for analog diagrammatic rules previously derived for any order in the perturbation expansion, including vacuum elimination. \\
+
+\paragraph{Excitations spectrum of the Non-Interacting System}
+
+Consider the zero-th-order in the perturbative expansion given by \cref{HFRPA_Density_density_gf_expansion}, $\Pi_0({\bf q}, t)$, which is just th two-particle correlation function of the non-interacting system. $\Pi_0({\bf q}, t)$ provides information about the excitation spectrum of the Sommerfeld-Fermi gas, with a fixed number of particles $N$, which can be done using Wick's theorem. There are two possible contractions 
+
+\begin{align}
+    \langle \mathcal{T} \bigg[\wick{ \c1 {\bf c}_{{\bf k}\sigma}^\dagger(t) \c1 {\bf c}_{{{\bf k+q}\sigma}}(t)} \wick{\c1 {\bf c}^\dagger_{{\bf k'}\sigma'}(0) \c1 {\bf c}_{{\bf k'-q}\sigma'}(0) } \bigg] \rangle, \quad \langle \mathcal{T} \bigg[\wick{ \c1 {\bf c}_{{\bf k}\sigma}^\dagger(t) \c2 {\bf c}_{{{\bf k+q}\sigma}}(t) \c2 {\bf c}^\dagger_{{\bf k'}\sigma'}(0) \c1 {\bf c}_{{\bf k'-q}\sigma'}(0) }\bigg] \rangle
+\end{align}
+
+The first contraction requires ${\bf q} = 0$ for it to be non-zero, yielding 
+
+\begin{equation}
+    \bigg(\sum_{{\bf k} \sigma} \langle {\bf c}_{{\bf k}\sigma}^\dagger {\bf c}_{{{\bf k}\sigma}} \rangle\bigg)\bigg(\sum_{{\bf k}' \sigma'} {\bf c}_{{\bf k'}\sigma'}^\dagger {\bf c}_{{{\bf k'}\sigma'}} \rangle \bigg) \propto N^2.
+\end{equation}
+
+It describes the self-correlation of the uniform electron density and can be ignored. Thus, there is only one possible contraction. Using the definition $\mathfrak{G}^{(0)} = -i \langle \mathcal{T} {\bf c} {\bf c}^\dagger \rangle$ and performing three fermionic swaps, the zero-th-order density-density correlation function reads 
+
+\begin{equation}
+    \begin{split}
+    \Pi_0({\bf q}, t) =& i \sum_{{\bf k} \sigma} \mathfrak{G}^{(0)}_{\sigma}({\bf k+q}, t) \mathfrak{G}^{(0)}_{\sigma}({\bf k}, -t) \\
+    &= \includegraphics[valign = c, scale = .4]{figs/Hartree-Fock-RPA/HFRPA_density_density_corr_func_diagram.png}, \begin{array}{cc}
+         \textnormal{ where the ${\bf q}$-momentum is an external one, whereas the ${\bf k}$-momentum }  \\
+         \textnormal{ is an internal momentum, which together with an internal spin are summed over.}
+    \end{array}
+    \end{split}
+\end{equation}
+
+Note that a hole can be thought of as an electron propagating backward in time, which is the reason such diagram is known as a particle-hole loop, or a polarization loop. Now, consider the Fourier transform with respect to time in order to work out the momentum-energy representation of the density-density correlator, which will yield a convolution in energy 
+
+\begin{equation}
+\begin{split}
+    \Pi_0({\bf q}, \omega) =& \int_{-\infty}^{\infty} dt \blanky e^{i\omega t} \Pi_0({\bf q}, \omega) = i \sum_{{\bf q}, \sigma} \int \frac{d\varepsilon}{2\pi} \blanky \mathfrak{G}_{\sigma}^{(0)}({\bf k}, \varepsilon)  \mathfrak{G}_{\sigma}^{(0)}({\bf k+q}, \varepsilon+\omega)\\
+    &= \sum_{{\bf k} \sigma} \int \frac{d\varepsilon}{2\pi i} \frac{1}{\varepsilon - \varepsilon_{{\bf k}} + i \eta \textnormal{sgn}(\varepsilon_{{\bf k}})} \frac{1}{\varepsilon + \omega - \varepsilon_{{\bf k+q}} + i \eta \textnormal{sgn}(\varepsilon_{{\bf k+q}})} \\
+    &= -2 \sum_{{\bf k} \sigma} \bigg[ \frac{\Theta(-\varepsilon_{{\bf k+q}}) \Theta(\varepsilon_{{\bf k})}}{\omega - \varepsilon_{{\bf k+q}} + \varepsilon_{{\bf k}} + i\eta} - \frac{\Theta(\varepsilon_{{\bf k+q}}) \Theta(-\varepsilon_{{\bf k})}}{\omega - \varepsilon_{{\bf k+q}} + \varepsilon_{{\bf k}} - i\eta}\bigg],
+\end{split}
+\label{HFRPA_first_term_density_density_corr}
+\end{equation}
+
+where in the last step the integral was carried out in the complex plane. Note that both $\varepsilon_{{\bf k+q}}$ and $\varepsilon_{{\bf k}}$ have the same sign, so that they are both positive/negative, the poles in the complex $\varepsilon$-plane are either in the lower or upper half-plane. 
+Taking the contour in the pole-free half, and noting the asymptotic value of the integral is $\mathcal{O}(\varepsilon^{-2})$, yields zero. The integral is non-zero if  $\varepsilon_{{\bf k+q}}$ and $\varepsilon_{{\bf k}}$ have opposite signs, thus yielding the last line. 
+
+The physical interpretation of the $\Theta$-functions is straightforward, 
+
+\begin{itemize}
+    \item For $\Theta(-\varepsilon_{{\bf k}})$, it follows that $n_p = {\bf n}_{\bf k}^{0}$ ie. a particle in the Fermi sea.
+    \item In contrast, for $\Theta(\varepsilon_{{\bf k}})$, it follows that $n_p = 1-{\bf n}_{\bf k}^{0}$ ie. a hole outside the Fermi sea.
+\end{itemize}
+
+Consequently, \cref{HFRPA_first_term_density_density_corr}'s first term is the retarded propagator whilst the second term is the advanced propagator. Furthermore the retarded propagator of a particle-hole pair, with $|{\bf k+q}| > k_F$ and $|{\bf k}|<k_F$, correspond to a positive excitation energy, $\omega_{{\bf q}} = \varepsilon_{{\bf k+q}} - \varepsilon_{{\bf k}} > 0$. \\
+
+\paragraph{The Dynamical Form Factor}
+
+The imaginary part of $\Pi_0$ is the dynamical form factor,
+
+\begin{equation}
+    \begin{split}
+        \mathcal{S}_{0}({\bf q}, \omega) =& \frac{1}{\pi} \Im{\Pi_0({\bf q}, \omega)} \\
+        &= 2 \int \frac{d{\bf k}}{(2\pi)^3} {\bf n}^{0}({\bf k}) \bigg(1-{\bf n}^{0}({\bf k+q})\bigg) \delta(\omega - \varepsilon_{{\bf k+q}} + \varepsilon_{{\bf k}}).
+    \end{split}
+\end{equation}
+
+Hence, a non-zero ${\bf n}^{0}$ implies that the $\ket{{\bf k} \cdots}$-state is occupied and that an excitation of the particle in it will leave behind a hole, while a null ${\bf n}^{0}({\bf k+q})$ indicates an empty state that can be filled with a particle of $({\bf k+q})$-momentum. Conservation of energy thus implies that the dynamical form factor provides information about \underline{real} or \underline{absorbative processes}. This is just a manifestation of all possible particle-hole pairs that carry ${\bf q}$-momentum and satisfy energy conservation, since it defines the real excitations of the Fermi gas.
+
+In order to determine the spectrum, one must inspect the energy-conserving delta function
+
+\begin{equation}
+    0 \leq \omega = \frac{q^2}{2m} + {\bf v_k} \cdot {\bf q} \Rightarrow \begin{array}{cc}
+         \omega_{\textnormal{max}} = \frac{q^2}{2m} + v_F q & q \leq 2k_F \\
+         \omega_{\textnormal{min}} = \frac{q^2}{2m} - v_F q & q \geq 2k_F
+    \end{array}.
+\end{equation}
+
+\begin{wrapfigure}{l}{0.2\textwidth}
+\includegraphics[scale = .3]{figs/Hartree-Fock-RPA/HFRPA_Fermi_gas_excitation_spectrum.png}
+\end{wrapfigure}  
+
+The electron-hole excitation spectrum is a strip between two parabolas, ie. the gray area shown in this figure. Then, at a fixed ${\bf q}$, the dynamical form factor gives a wide range of allowed energies. It is then clear that these are \underline{incoherent excitations} for particle-hole events, an excitation in the $\ket{{\bf q}, \omega}$-state can immediately decay into excitations with energies lower than $\omega$, but with same ${\bf q}$-momentum for the Sommerfeld gas. 
+
+This is in clear contrast with the coherent single-particle excitation events manifest in the corresponding spectral function,
+
+\begin{equation}
+    A({\bf k}, \omega) = \delta[\omega - \varepsilon({\bf k})]. 
+\end{equation}
+
+\blanky \\
+
+\paragraph{Virtual Excitations and Lindhard functions}
+
+If the energy conservation condition is not realized, the corresponding contribution is \underline{reactive}, not dissipative, and it only appears in the real part of the density-density correlation function. The intermediate state is only virtual. In effect, consider the real part of the zero-th-order density-density correlator function given by \cref{HFRPA_first_term_density_density_corr}, which can be written as 
+
+\begin{equation}
+    \Re{\Pi_0({\bf q}, \omega)} = 2 \int \frac{d{\bf k}}{(2\pi)^3} \blanky \frac{{\bf n}^{(0)}({\bf k}) - {\bf n}^{(0)}({\bf k+q})}{\omega - \varepsilon_{{\bf k+q}} + \varepsilon_{{\bf k}}},
+\end{equation}
+
+where $\mathcal{D}(\varepsilon_F)$ is the density of states at $\varepsilon_F$ and where $F(\tilde{q}, \tilde{\omega})$ is the Lindhard function. The previous relationship carries information about the probability and phase of all possible virtual processes. \\
+
+\paragraph{Interacting Systems and the Random Phase Approximation (RPA)}
+
+\begin{itemize}
+    \item Irreducible Polarization Bubble
+\end{itemize}
+
+By analogy to the treatment of the self-energy, an exact irreducible polarization bubble $\Pi({\bf q}, \omega)$ can be defined as the sum over all diagrams that cannot be cut into two by splitting a single interaction line (an external line), ie.
+
+\begin{equation}
+\begin{split}
+    & \begin{array}{cc}
+         \textnormal{The first-order diagrams for the density-density}  \\
+         \textnormal{correlator are given by }
+    \end{array}
+    \includegraphics[valign = c, scale = .35]{figs/Hartree-Fock-RPA/HFRPA_first_order_diagrams_PI_density_density_corr.png}\\
+    & \Rightarrow \includegraphics[scale = .5]{figs/Hartree-Fock-RPA/HFRPA_RPA_irreducible_polarization_bubble.png}
+\end{split}
+\label{HFRPA_first_order_density_density_corr_diagrams}
+\end{equation}
+
+Furthermore, the exact charge susceptibility, which is the response to external Coulomb perturbations, can be obtained from a Dyson series on the irreducible polarization as 
+
+\begin{equation}
+\begin{split}
+     &\includegraphics[valign = c, scale = .5]{figs/Hartree-Fock-RPA/HFRPA_RPA_charge_susceptibility.png} \\
+     & \chi({\bf q}, \omega) = \frac{\Pi({\bf q}, \omega)}{1- V_c({\bf q}) \Pi({\bf q}, \omega)}.
+\end{split}
+\end{equation}
+
+\blanky \\
+
+\begin{itemize}
+    \item Screened interaction
+\end{itemize}
+
+Moreover, an exact effective screened Coulomb interaction can be diagramatically represented by a double wiggle line, and is given by a summation over concatenated irreducible polarization bubbles attached with internal line with with several external interaction lines attached, namely
+
+\begin{equation}
+    \includegraphics[valign = c, scale = .6]{figs/Hartree-Fock-RPA/HFRPA_effective_screened_coulomb_interaction.png}    
+\end{equation}
+
+\begin{itemize}
+    \item Random Phase Approximation
+\end{itemize}
+
+{Consider the first-order diagrams for the density-density correlator $\Pi$, given in the first line of \cref{HFRPA_first_order_density_density_corr_diagrams}. A phase space analysis shows that the diagram (a) has the dominant contribution to the correlation function, where each of the two $\Pi_0$ bubbles has an unconstrained sum. By extension, it can be argued that the dominant contribution at any order consists of interacting $\Pi_0$ bubbles. A justifiable approximation can be made in terms of Dyson-like sums involving $\Pi_0$ bubbles, which is known as the \textbf{random phase approximation} (RPA)}:
+
+\begin{equation}
+    \begin{split}
+        \chi^{\textnormal{RPA}}({\bf q}, \omega) =& 
+\includegraphics[scale = .5, valign = c]{figs/Hartree-Fock-RPA/HFRPA_susceptibility_RPA.png} \\
+    &= \Pi_0({\bf q}, \omega) + \Pi_0({\bf q}, \omega) [V_c({\bf q}) \Pi_0({\bf q}, \omega)] + \Pi_0({\bf q}, \omega) [V_c({\bf q}) \Pi_0({\bf q}, \omega)]^2 + \cdots, \\
+    &= \frac{\Pi_0({\bf q}, \omega)}{1- V_{c}({\bf q}) \Pi_0({\bf q}, \omega)}
+    \end{split}
+\end{equation}
+
+Physically relevant information can be extracted from the imaginary part of $\chi^{\textnormal{RPA}}$, which is given by 
+
+\begin{equation}
+    \Im[\chi^{\textnormal{RPA}}] = \frac{\Im \Pi_0}{(1 - V_c({\bf q}) \Re \Pi_0)^2 + V_c^2({\bf q}) (\Im \Pi_0)^2}
+\end{equation}
+
+The numerator thus indicates that the electron-hole excitations spectrum carries over to the interacting case. Moreover, outside the electron-hole continuum ie. where $\Im[\Pi_0] = 0$, new excitations appear when $1 - V_c({\bf q}) \Re \Pi_0 = 0$.
+These excitations are plasmons, which manifest in Coulomb interacting systems. Said excitations are also manifest as zero-sound excitations in systems with short-range interactions. \\
+
+The random phase approximation can be extended to the effective screened interaction, by including external fermionic lines, ie.
+
+\begin{equation}
+    \begin{split}
+        &\includegraphics[scale = .5, valign = c]{figs/Hartree-Fock-RPA/HFRPA_effective_screened_interaction_diag.png} \\
+        & V^{\textnormal{RPA}}({\bf q}, \omega) = V_c({\bf q}) + V_c({\bf q}) [V_c({\bf q}) \Pi_0 ({\bf q}, \omega)] + V_c({\bf q}) [V_c({\bf q}) \Pi_0 ({\bf q}, \omega)]^2 \\
+        &= \frac{V_c({\bf q})}{1-V_c({\bf q}) \Pi_0({\bf q}, \omega)} = \frac{V_c({\bf q})}{\varepsilon({\bf q}, \omega)}, \textnormal{ where } \varepsilon^{-1}({\bf q}, \omega) = 1 + V_c({\bf q}) \chi^{\textnormal{RPA}},
+    \end{split}
+\end{equation}
+
+where $\varepsilon$ is the dielectric function. The effective interaction is $\omega$-dependent, which means that it acquires a time-dependence, in contrast to the instantaneous character of the original non-relativistic Coulomb interaction. This is physically sound, since interactions via density fluctuations involve time delay. \\
+
+In particular, consider static screening by examining the effective interaction in the $(\omega = 0)$-limit. Note that 
+
+\begin{equation}
+    \begin{array}{cc}
+         \Im \Pi_0 \underset{\omega, q \rightarrow 0}{=} 0  \\
+         \Re \Pi_0 \underset{\omega, q \rightarrow 0}{=} \mathcal{D}(\varepsilon_F) = \frac{m k_F}{\pi^2 \hbar^2} = \frac{3 n}{2 \varepsilon_F}
+    \end{array} \Rightarrow 1+V_c({\bf q}) \Pi_0 \underset{\omega, q \rightarrow 0}{=} 1 + \frac{6 \pi n e^2}{q^2 \varepsilon_F} \Rightarrow V^{\textnormal{RPA}}({\bf q}, \omega) \underset{\omega, q \rightarrow 0}{=} \frac{4\pi e^2}{q^2 + \kappa^2},
+\end{equation}
+
+with $\kappa = \varepsilon_{\textnormal{TF}^{-1}} = \sqrt{\frac{6 \pi n e^2}{ \varepsilon_F}}$ is the inverse Thomas-Fermi screening length. The effective interaction potential thus becomes a short-range Yukawa-type interaction, namely 
+
+$$
+    V_{\textnormal{eff}}(q\rightarrow 0, 0) \approx \frac{e^{-\kappa r}}{r}.
+$$
+
+Consequently, in the presence of the polarizable medium - ie. the electron sea - the long-range Coulomb interaction actually becomes short-range. To physically interpret this screening mechanism, consider the scenario where a negative point charge is introduced. Then, the electrons in its vicinity will be repelled from this region, creating a region around this point of lower-than-average density, namely a screening region of positive charge.
+At long distances, another electron sees not only the initial negative charge, but also the screening region around it, which \textit{almost} cancel each other, hence making the Coulomb interaction effectively short-ranged. \\
+
+\paragraph{Plasma Oscillations}
+
+Now, consider the $(\omega \neq 0)$-frequency. In particular, consider the domain of high-frequencies, long-wavelengths and low temperatures, and in particular the region outside the electron-hole continuum, wherein $\Im \Pi_0 = 0$. The dielectric function can be written down explicitly as 
+
+\begin{equation}
+    \begin{split}
+        \varepsilon^{\textnormal{RPA}}({\bf q}, \omega) = 1 - \frac{4\pi e^2}{q^2} \Pi_0({\bf q}, \omega) =& 1 - \frac{4\pi e^2}{q^2} \int_{\mathds{R}^3} \frac{2d{\bf k}}{(2\pi)^3} \blanky \frac{{\bf n}^0({\bf k}) - {\bf n}^0({\bf k+q})}{\omega - \varepsilon_{{\bf k+q}} + \varepsilon_{{\bf k}}} \\
+        & \underset{{\substack{\omega >> _F q \\
+        q << k_F \\
+        k_B T << k_F}}}{=} 1 - \frac{4\pi e^2}{q^2} \int_{\mathds{R}^3} \frac{2d{\bf k}}{(2\pi)^3} \blanky \frac{
+        {\bf q} \cdot \nabla_{{\bf k}}
+        \varepsilon_{{\bf k}} \frac{d n(\varepsilon)}{d\varepsilon}}
+        { \frac{{\bf q} \cdot \nabla_{{\bf k}} \varepsilon_{{\bf k}}}{m} } \\
+        &= 1 - \frac{4\pi e^2}{q^2} \int_{\mathds{R}^3} \frac{2d{\bf k}}{(2\pi)^3} \blanky \frac{ v_{{\bf k}} q \cos \theta \frac{dn(\varepsilon)}{d\varepsilon}\bigg|_{\varepsilon_F}
+        }
+        { {\bf q} \cdot {\bf v}_{{\bf k}} } \\
+        &= 1 - \frac{4\pi e^2}{q^2} \int_{\mathds{R}^3} \frac{2d{\bf k}}{(2\pi)^3} \blanky \frac{ v_{{\bf k}} q \cos \theta \frac{dn(\varepsilon)}{d\varepsilon}\bigg|_{\varepsilon_F}
+        }
+        { {v}_{{\bf k}} q \cos \theta} \\
+        &= 1 - \frac{4\pi e^2}{q^2} \frac{1}{2\pi^2}\int dk \blanky k^2 \delta(\varepsilon_{{\bf k}} - \varepsilon_F) \int_{-1}^{+1} dx \blanky \frac{v_{{\bf k}} q x}{ \omega - v_{{\bf k}} qx} \\
+        &= 1 - \frac{\omega_p^2}{\omega^2} \bigg[
+        1+ \frac{3}{5} \bigg(\frac{qv_F}{\omega}\bigg)^2
+        \bigg].
+    \end{split}
+\end{equation}
+
+\begin{wrapfigure}{l}{0.2\textwidth}
+\includegraphics[scale = .3]{figs/Hartree-Fock-RPA/HFRPA_plasmon_dispersion_relation.png}
+\end{wrapfigure}  
+
+The plasmon dispersion is obtained from the zeros of the dielectric function, yielding 
+
+\begin{equation*}
+    \varepsilon^{\textnormal{RPA}}({\bf q}, \omega) = 0 \Rightarrow \omega(q) \simeq \omega_P + \frac{3}{10} \frac{v_F^2}{\omega_p} q^2. 
+\end{equation*}
+
+Once the dispersion curve of plasmons enters the particle-hole continuum, wherein $\Im \Pi_0 \neq 0$, plasmons become unstable to decay into an electron-hole pair. Note that $\Im \chi({\bf q}, \omega) \neq 0$ only in the shaded area. \\
+
+\subsubsection{Finite Temperature Green Functions}
+\label{section:finite_T_QFT}
+
+In a large number of application in many-body physics, the effects of finite temperature are to be included, wherein Green functions now read
+
+\begin{equation}
+    \mathfrak{G}_{AB}(t) = \langle {\bf A}(t) {\bf B}(0) \rangle = -i \Tr \bigg[\frac{1}{\mathcal{Z}} e^{-\beta {\bf H}} {\bf A}(t) {\bf B}(0)\bigg], \textnormal{ where } \begin{array}{cc}
+         \mathcal{Z} = \Tr \bigg[e^{-\beta {\bf H}}\bigg], \quad
+         {\bf H} \rightarrow {\bf H} - \mu {\bf N} \\
+         \textnormal{and where the ${\bf A}(t)-$ and ${\bf B}(t_1)$- are} \\
+         \textnormal{in the Heisenberg picture. }
+    \end{array}
+\end{equation}
+
+The idea for finite-temperature many-body physics is to separate the Hamiltonian into a solvable part, ${\bf H}_0$, and a perturbative quantity ${\bf H'}$, so that perturbation theory is applicable. Then, an expansion in powers of ${\bf H'}$ can be done. Note that at zero temperature, the traces over $\rho$ are replaced with ground-state averages, which allows to transform the problem to the interaction picture, thanks to the Gell-Mann-Low theorem and the scattering matrix, and to solve it perturbatively within the non-interaction framework. \\
+
+\paragraph{Perturbative Expansion of $\rho$}
+
+The $\rho$-density operator satisfies the Bloch equation of motion 
+
+\begin{equation}
+    -\frac{\partial \rho}{\partial \beta} = {\bf H} \rho. 
+\end{equation}
+
+which is similar to the Schr\"odinger equation of motion, but with the time variable $it$ replaced with $\beta$ and with ${\bf H} \rightarrow {\bf H} - \mu {\bf N}$. Consequently, it is possible to perform a perturbative expansion in powers of ${\bf H}'$, with said expansion not being along the real-time axis but along the inverse temperature axis. This, a priori, entails a loss of the notion of time-ordered product of operators which evolve along two orthogonal axes. \\
+
+\paragraph{Analytic Continuation}
+
+From a mathematical perspective, it would be desirable to include the thermal state $\rho = e^{-\beta {\bf H}}$ explicitly in the group of time-evolution operators. This requires the analytic continuation of the time-evolution group to complex times $t \rightarrow t + i\tau = z$ and to introduce new (imaginary)-time evolution operators $e^{iz {\bf H}}$. Consider the corresponding Green function
+
+\begin{equation}
+    \begin{split}
+        t>0, \mathfrak{G}_{AB}(t) &= - \frac{i}{\mathcal{Z}} \Tr \bigg[e^{-\beta {\bf H}} e^{i {\bf H} t} {\bf A} e^{-i {\bf H} t} {\bf B}\bigg] \\
+        & \rightarrow \mathfrak{G}_{AB}(z) = - \frac{i}{\mathcal{Z}} \Tr \bigg[e^{-(\beta+\tau) {\bf H}} e^{i {\bf H} t} {\bf A} e^{-i {\bf H} t} {\bf B}\bigg] \\
+        \\
+        t<0, \mathfrak{G}_{AB}(t) &= \pm\frac{i}{\mathcal{Z}} \Tr \bigg[e^{-\beta {\bf H}} e^{-i {\bf H} t} {\bf A} e^{+i {\bf H} t} {\bf B}\bigg] \\
+        & \rightarrow \mathfrak{G}_{AB}(z) = \pm \frac{i}{\mathcal{Z}} \Tr \bigg[e^{-(\beta-\tau) {\bf H}} e^{i {\bf H} t} {\bf A} e^{-i {\bf H} t} {\bf B}\bigg] \\
+    \end{split}
+\end{equation}
+
+where $\pm$ corresponds to fermions and bosons, respectively. Furthermore, $e^{iz {\bf H}}$ is a well-defined operator on the strip given by 
+
+\begin{equation}
+    \left\{\begin{array}{cc}
+         -\beta \leq \tau \leq 0, \blanky t \in \mathds{R} & t > 0 \\
+         0 \leq \tau \leq \beta, t \in \mathds{R} & t < 0 
+    \end{array} \right.,
+\end{equation}
+
+thus defining the domains of complex time for which the preceding Green function is analytic. Note that this shows that the Green function of complex time is discontinuous on the whole real axis of time. 
+
+\begin{tcolorbox}[title = Physical Context, colback = yellow]
+
+In an informal way, the $\pm \beta$-boundaries along the imaginary time axis can be associated with decoherence induced by thermal fluctuations, namely the thermal fluctuations introduced by an uncertainty $\beta^{-1}$ in energies, in which case $\tau_T = \beta^{-1}$ represents a characteristic time of a thermal fluctuation. Processes of duration longer that $\tau_T$ lose their phase coherence, so coherent quantum processes are limited within a world of finite temporal extent $\beta$. 
+
+\end{tcolorbox}
+
+\blanky \\
+
+\paragraph{Imaginary Time}
+
+The solution to this problem was first proposed by Takeo Matsubara and relies on taking advantage of the similarity between the operators $e^{-\beta {\bf H}}$ and ${\bf U}(t) = e^{-i {\bf H} t}$, but limiting the domain to the imaginary axis only, wherein 
+
+$$
+    \rho = \frac{e^{-\beta {\bf H}}}{\Tr e^{-\beta {\bf H}}} = \frac{{\bf U}(-i\beta)}{\Tr {\bf U}(-i\beta)}.
+$$
+
+The Matsubara approach is to treat time as an imaginary temperature. For time $t = -i\tau$, the Green functions are well-defined in the interval $-\beta \leq \tau \leq \beta$. Thus, the real-time evolution operators and elements can be replaced by its appropriate imaginary-time counterparts,
+
+$$
+    -i\tau, \tau \in \mathds{R}: e^{-i {\bf H} t} \rightarrow e^{-i {\bf H} (-i\tau)} = e^{-{\bf H} \tau},
+$$
+
+which evolves in imaginary- rather than real-time. This allows for the tractable expansion of the Green function in terms of these new imaginary-time operators. Note that these operators can then be analytically-continued to recover the real-time ones. 
+
+This approach renders finite-temperature many-body physics to be just as manageable as its zero-temperature counterpart. \\
+
+\paragraph{Representations}
+
+To develop the imaginary-time formulation of the Heisenberg and interaction representations in terms of $t \rightarrow -i\tau$, consider the real-time Schr\"odinger equation,
+
+\begin{equation}
+    \begin{split}
+        &i \partial_t \ket{\Psi_S} = {\bf H} \ket{\Psi_S} \longrightarrow - \partial_{\tau} \ket{\Psi_S} = {\bf H} \ket{\Psi_S}\\
+        & \ket{\Psi_S(t)} = e^{i{\bf H}t} \ket{\Psi_S(0)} \longrightarrow \ket{\Psi_S(\tau)} = e^{-{\bf H}\tau} \ket{\Psi_S(0)} \\
+        & {\bf O}_H(t) = e^{i{\bf H}t} {\bf O}_s e^{-i{\bf H}t} \longrightarrow {\bf O}_H(\tau) = e^{{\bf H}\tau} {\bf O}_s e^{-{\bf H}\tau} \Longrightarrow \partial_{\tau} {\bf O}_H= [{\bf H}, {\bf O}_H].
+    \end{split}
+\end{equation}
+
+\begin{tcolorbox}[colback = Bittersweet, title = Example]
+
+Consider the free fermionic particle Hamiltonian
+
+\begin{equation*}
+    \begin{split}
+        {\bf H} = \sum_{{\bf k}} \varepsilon_{{\bf k}} {\bf c}_{{\bf k}}^\dagger {\bf c}_{{\bf k}} \longrightarrow \begin{array}{cc}
+            \partial_{\tau} {\bf c}_{{\bf k}} = [{\bf H}, {\bf c}_{{\bf k}}] \rightarrow {\bf c}_{{\bf k}}(\tau) = e^{-{\varepsilon}_{{\bf k}} \tau} {\bf c}_{{\bf k}} \\
+            \partial_{\tau} {\bf c}_{{\bf k}}^\dagger = [{\bf H}, {\bf c}_{{\bf k}}^\dagger] \rightarrow {\bf c}_{{\bf k}}^\dagger(\tau) = e^{{\varepsilon}_{{\bf k}} \tau} {\bf c}_{{\bf k}}^\dagger 
+        \end{array}
+    \end{split}
+\end{equation*}
+
+One should take note of an important difference between real-time and imaginary-time formalism, since in the latter the Heisenberg creation and annihilation operators are not hermitian conjugates, ie. ${\bf c}_{{\bf k}}^\tau = ({\bf c}_{{\bf k}} (-\tau))^\dagger \neq ({\bf c}_{{\bf k}} (\tau))^\dagger$.
+
+\end{tcolorbox}
+
+\blanky \\
+
+\paragraph{Matsubara Functions}
+
+Green functions for operators with imaginary-time arguments are referred to as Matsubara functions, which are only used for thermal equilibrium calculations at finite temperature, and are defined as follows 
+
+\begin{equation}
+    \textgoth{G}_{{\bf A} {\bf B}}(\tau_1, \tau_2) = - \bigg \langle \mathcal{T}_{\tau} {\bf A}(\tau_1) {\bf B}(\tau_2) \bigg\rangle = - \frac{1}{\mathcal{Z}} \Tr \bigg[ e^{-\beta {\bf H}} {\bf A}(\tau_1) {\bf B}(\tau_2) \bigg],
+\end{equation}
+
+where $\mathcal{T}_\tau$ is the chronological time ordering, whose action is defined as follows
+
+$$
+    {\mathcal {T}}_{\tau} {\bf A}(\tau_1) {\bf B}(\tau_2) = \Theta(\tau_1 - \tau_2) {\bf A}(\tau_1) {\bf B}(\tau_2) - \Theta(\tau_2 - \tau_1) {\bf B}(\tau_2) {\bf A}(\tau_1) 
+$$
+
+for fermions\footnote{Note that the Matsubara function is a function of the time difference alone, ie. $\textgoth{G}_{{\bf A} {\bf B}}(\tau_1, \tau_2) = \textgoth{G}_{{\bf A} {\bf B}}(\tau_1-\tau_2,0)$. In effect, note that for $\tau_1 > \tau_2$
+
+\begin{equation*}
+    \begin{split}
+        \textgoth{G}_{{\bf A} {\bf B}}(\tau_1, \tau_2) &= - \frac{\Theta(\tau_1-\tau_2)}{\mathcal{Z}} \Tr \bigg[
+           e^{-\beta {\bf H}} e^{{\bf H} \tau_1} {\bf A} e^{-{\bf H}\tau_1} e^{{\bf H}\tau_2} {\bf B} e^{-{\bf H}\tau_2} 
+        \bigg] + \frac{\Theta(\tau_2-\tau_1)}{\mathcal{Z}} \Tr \bigg[
+           e^{-\beta {\bf H}} e^{{\bf H} \tau_2} {\bf A} e^{-{\bf H}\tau_2} e^{{\bf H}\tau_1} {\bf B} e^{-{\bf H}\tau_1} 
+        \bigg] \\
+        &= - \frac{\Theta(\tau_1-\tau_2)}{\mathcal{Z}} \Tr \bigg[
+           e^{-\beta {\bf H}} e^{{\bf H} (\tau_1 - \tau_2)} {\bf A} e^{-{\bf H}(\tau_1-\tau_2)} {\bf B}  
+        \bigg] + \frac{\Theta(\tau_2-\tau_1)}{\mathcal{Z}} \Tr \bigg[
+           e^{-\beta {\bf H}}  {\bf B} e^{{\bf H} (\tau_1 - \tau_2)} {\bf A} e^{-{\bf H}(\tau_1 -\tau_2)}
+        \bigg] \\
+        &= \textgoth{G}_{{\bf A} {\bf B}}(\tau_1-\tau_2, 0) = \textgoth{G}_{{\bf A} {\bf B}}(\tau),
+    \end{split}
+\end{equation*}
+
+with a similar result holding for $\tau_2 > \tau_1$, with the condition $-\beta < \tau < \beta$ needed in order to assure the convergence.
+}. \\
+
+An important property of the Matsubara functions is that it is periodic for bosons and antiperiodic for fermions over an interval $\beta$, ie. 
+
+\begin{equation}
+    \textgoth{G}_{{\bf A} {\bf B}}(\tau) = 
+    \left\{\begin{array}{cc}
+         -\textgoth{G}_{{\bf A} {\bf B}}(\tau \pm \beta), \quad \textnormal{ fermions } \\
+         \textgoth{G}_{{\bf A} {\bf B}}(\tau \pm \beta), \quad \textnormal{ bosons}
+    \end{array} \right., \textnormal{ for $\tau >(<)0$}
+\end{equation}
+
+This antiperiodicity of the Matsubara-Green function for the fermionic case, can be used to extend the definition of the Matsubara function $\textgoth{G}_{{\bf AB}}(\tau)$ to the entire imaginary time axis. An important type of Matsubara-Green function are the single-particle fermionic correlation functions $\textgoth{G}$, defined as 
+
+\begin{equation}
+    \begin{split}
+        \textgoth{G}_{\sigma \sigma'}({\bf x}, \tau; {\bf x}', \tau') = - \bigg\langle \mathcal{T}_{\tau} \bigg[\psi_{\sigma}({\bf x}, \tau) \psi^\dagger_{\sigma'}({\bf x}', \tau')\bigg] \bigg\rangle \textnormal{ in real space}.
+ \end{split}
+ \end{equation}
+ 
+\blanky \\
+
+Consider for instance the Hamiltonian of a non-interacting fermionic system, which reads 
+
+\begin{equation}
+    {\bf H} = \sum_{\mu} \varepsilon_{\mu} {\bf c}_{\mu}^\dagger {\bf c}_{\mu}, 
+\begin{array}{cc}
+    \textnormal{ where $\varepsilon_{\lambda} = E_{\lambda} - \mu$ is the one-particle } \\
+    \textnormal{energy shifted by the chemical potential.} \label{Matsubara_Green_Non_interacting_fermion_Hamiltonian}
+\end{array}
+\end{equation}
+
+Its corresponding Matsubara function is 
+
+\begin{equation}
+\begin{split}
+    \textgoth{G}_{\lambda \lambda'}(\tau - \tau') =
+    &= - \bigg \langle \mathcal{T}_{\tau} {\bf c}_{\lambda}(\tau) {\bf c}_{\lambda'}^\dagger(\tau') \bigg \rangle \\
+    &= - \frac{1}{\mathcal{Z}} \Tr e^{-\beta {\bf H}} \bigg[\Theta(\tau - \tau') {\bf c}_{\lambda}(\tau) {\bf c}_{\lambda'}^\dagger(\tau') - \Theta(\tau' - \tau) {\bf c}_{\lambda'}^\dagger(\tau') {\bf c}_{\lambda}(\tau) \bigg], \textnormal{ with } \begin{array}{cc}
+         {\bf c}_{\lambda}(\tau) = e^{-\varepsilon_{\lambda} \tau} {\bf c}_{\lambda}(0) \\
+         {\bf c}_{\lambda}^\dagger(\tau) = e^{\varepsilon_{\lambda} \tau} {\bf c}_{\lambda}^\dagger(0)
+    \end{array} \\
+    &= - \frac{1}{\mathcal{Z}} \Tr \bigg[
+    \Theta(\tau - \tau') 
+    e^{\varepsilon_{\lambda'} \tau'-\varepsilon_{\lambda} \tau} {\bf c}_{\lambda} {\bf c}_{\lambda'}^\dagger
+    - \Theta(\tau' - \tau) 
+    e^{\varepsilon_{\lambda'} \tau' - \varepsilon_{\lambda} \tau} {\bf c}_{\lambda'}^\dagger {\bf c}_{\lambda}
+    \bigg] \\
+    &= - \frac{1}{\mathcal{Z}} \Tr e^{-\beta {\bf H}}
+    \bigg[
+    \Theta(\tau - \tau') 
+    e^{\varepsilon_{\lambda'} \tau'-\varepsilon_{\lambda} \tau} {\bf c}_{\lambda} {\bf c}_{\lambda'}^\dagger
+    - \Theta(\tau' - \tau) 
+    e^{\varepsilon_{\lambda'} \tau' - \varepsilon_{\lambda} \tau} {\bf c}_{\lambda'}^\dagger {\bf c}_{\lambda}
+    \bigg], \\
+    & \blanky \blanky \blanky \blanky \blanky \blanky \blanky \blanky \textnormal{ where } \begin{array}{cc}
+         \langle {\bf c}_{\lambda'}^\dagger {\bf c}_{\lambda} \rangle = \delta_{\lambda \lambda'} {\bf n}_{\mathfrak{F}}(\varepsilon_{\lambda}) = \frac{1}{e^{\beta \varepsilon_{\lambda}} + 1} \\
+         \\
+         \langle {\bf c}_{\lambda} {\bf c}_{\lambda'}^\dagger \rangle = \delta_{\lambda \lambda'} ( 1 - {\bf n}_{\mathfrak{F}}(\varepsilon_{\lambda}) )
+    \end{array}  \\
+    &= -  
+    \bigg[
+    \Theta(\tau - \tau') 
+    e^{\varepsilon_{\lambda'} \tau'-\varepsilon_{\lambda} \tau} \langle {\bf c}_{\lambda} {\bf c}_{\lambda'}^\dagger \rangle
+    - \Theta(\tau' - \tau) 
+    e^{\varepsilon_{\lambda'} \tau' - \varepsilon_{\lambda} \tau} \langle {\bf c}_{\lambda'}^\dagger {\bf c}_{\lambda} \rangle
+    \bigg] \\
+    &= - \delta_{\lambda \lambda'} e^{\varepsilon_{\lambda} (\tau'-\tau)}
+    \bigg[
+    \Theta(\tau - \tau') 
+    \langle {\bf c}_{\lambda} {\bf c}_{\lambda}^\dagger \rangle
+    - \Theta(\tau' - \tau) 
+     \langle {\bf c}_{\lambda}^\dagger {\bf c}_{\lambda} \rangle
+    \bigg] \\
+    &= - \delta_{\lambda \lambda'} e^{\varepsilon_{\lambda} (\tau'-\tau)}
+    \bigg[ (1 - {\bf n}_{\mathfrak{F}}(\varepsilon_{\lambda}))
+    \Theta(\tau - \tau') 
+    - {\bf n}_{\mathfrak{F}}(\varepsilon_{\lambda}) \Theta(\tau' - \tau) 
+    \bigg].
+    \end{split} \label{Matsubara_Green_Non_interacting_fermion_Matsubara_function}
+\end{equation}
+
+\begin{equation}
+    \begin{array}{cc}
+         \textnormal{This result can be generalized to include the}  \\
+         \textnormal{bosonic non-interacting case as well, yielding}
+    \end{array} 
+    \begin{array}{cc}
+         \textgoth{G}_{\lambda \lambda'}(\tau - \tau') = \delta_{\lambda \lambda'} \textgoth{G}_{\lambda}(\tau - \tau'), \\
+         \textgoth{G}_{\lambda}(\tau) = e^{\varepsilon_{\lambda} \tau}
+    \bigg[ (1 \pm {\bf n}_{\mathfrak{F}, \mathfrak{B}}(\varepsilon_{\lambda}))
+    \Theta(\tau) 
+    \pm {\bf n}_{\mathfrak{F}, \mathfrak{B}}(\varepsilon_{\lambda}) \Theta(- \tau) 
+    \bigg]
+    \end{array}
+\end{equation}
+
+For further references\footnote{In effect, these identities can be easily derived for both the fermionic and bosonic case as follows,  
+    \begin{equation}
+        \begin{split}
+            \langle {\bf c}_{\lambda'}^\dagger {\bf c}_{\lambda} \rangle &= \frac{\Tr \exp(-\beta {\bf H}) {\bf c}_{\lambda'}^\dagger {\bf c}_{\lambda} }{\Tr \exp(-\beta {\bf H})} = \frac{\Tr \blanky {\bf c}_{\lambda} \exp(-\beta {\bf H}) {\bf c}_{\lambda'}^\dagger}{\Tr \exp(-\beta {\bf H})} = \frac{\Tr \blanky {\bf c}_{\lambda} \exp(-\beta {\bf H}) {\bf c}_{\lambda'}^\dagger
+            \exp(-\beta {\bf H})
+            \exp(\beta {\bf H})
+            }{\Tr \exp(-\beta {\bf H})}
+            \\
+            &= \frac{\Tr \exp(-\beta {\bf H}) {\bf c}_{\lambda}{\bf c}_{\lambda'}^\dagger(\beta)
+            }{\Tr \exp(-\beta {\bf H})} = e^{-\beta \varepsilon_{\lambda}} \langle {\bf c}_{\lambda}{\bf c}_{\lambda'}^\dagger \rangle =  e^{-\beta \varepsilon_{\lambda}} \bigg(
+            \delta_{\lambda\lambda'} \mp \langle {\bf c}_{\lambda'}^\dagger {\bf c}_{\lambda} \rangle
+            \bigg) \Rightarrow \langle {\bf c}_{\lambda'}^\dagger {\bf c}_{\lambda} \rangle = \frac{1}{e^{\beta \varepsilon_{\lambda}} \pm 1} = {\bf n}_{\mathfrak{F}, \mathfrak{B}},
+        \end{split}
+    \end{equation} 
+    
+    ie. yielding the Fermi and Bose statistics, respectively. 
+    }, check \cref{Toda_Kubo_Statistica_mechanics, Ming_Che_Chang_Matsubara}. \\
+    
+\paragraph{Fourier Transform of the Matsubara Functions: Fourier series in Imaginary Time}
+
+The Fourier transform of the Matsubara-Green function ${\textgoth{G}_{{\bf AB}}}(\tau)$ to the frequency domain. It can be proven that the Matsubara-Green function is periodic with period $2\beta$ on the interval $\tau \in \mathds{R}_{[-{\beta}, \beta]}$. In effect, using the Matsubara-Green function's symmetry property twice yields
+
+\begin{equation}
+    {\textgoth{G}_{{\bf AB}}}(-\beta) = \mp {\textgoth{G}_{{\bf AB}}}(0) = (\mp)^2 {\textgoth{G}_{{\bf AB}}}(\beta) =  {\textgoth{G}_{{\bf AB}}}(\beta). 
+\end{equation}
+
+Hence, a discrete Fourier series can be written, 
+
+\begin{equation}
+\begin{split}
+    &{\textgoth{G}_{{\bf AB}}}(\tau) = \frac{1}{\beta} \sum_{n \in \mathds{Z}} e^{-\frac{in\pi\tau}{\beta}} {\textgoth{G}_{{\bf AB}}}(n) \Longleftrightarrow {\textgoth{G}_{{\bf AB}}}(n) = \frac{1}{2} \int_{-\beta}^{\beta} d\tau \blanky e^{\frac{in\pi\tau}{\beta}} {\textgoth{G}_{{\bf AB}}}(\tau) \\
+    &\textnormal{Employing the previous symmetry property yields a simplified transform, }\\
+    {\textgoth{G}_{{\bf AB}}}(n) &= \frac{1}{2} \int_{-\beta}^{\beta} d\tau \blanky e^{\frac{in\pi\tau}{\beta}} {\textgoth{G}_{{\bf AB}}}(\tau) = \frac{1}{2} \int_{-\beta}^{0} d\tau \blanky e^{\frac{in\pi\tau}{\beta}} {\textgoth{G}_{{\bf AB}}}(\tau) + \frac{1}{2} \int_{0}^{\beta} d\tau \blanky e^{\frac{in\pi\tau}{\beta}} {\textgoth{G}_{{\bf AB}}}(\tau) \\
+    &= e^{-in\pi} \frac{1}{2} \int_{0}^{\beta} d\tau \blanky e^{\frac{in\pi\tau}{\beta}} {\textgoth{G}_{{\bf AB}}}(\tau + \beta) + \frac{1}{2} \int_{0}^{\beta} d\tau \blanky e^{\frac{in\pi\tau}{\beta}} {\textgoth{G}_{{\bf AB}}}(\tau) \\
+    &= \frac{1}{2} \bigg(1 \mp e^{-in\pi}\bigg) \int_{0}^{\beta} d\tau \blanky e^{\frac{in\pi\tau}{\beta}} {\textgoth{G}_{{\bf AB}}}(\tau) \\
+    &\Rightarrow {\textgoth{G}_{{\bf AB}}}(n) = \int_{0}^{\beta} d\tau \blanky e^{\frac{in\pi\tau}{\beta}} {\textgoth{G}_{{\bf AB}}}(\tau), \left\{ \begin{array}{cc}
+        n \in 2\mathds{N} \textnormal{ for fermions, }   \\
+        n \in 2\mathds{N}+1 \textnormal{ for bosons. }
+    \end{array} \right.\\
+\end{split}
+\end{equation}
+
+Furthermore, it is convenient to separate the Fourier transforms of the Green-Matsubara functions for bosons and fermions as follows,
+
+\begin{equation}
+    \begin{split}
+        &{\textgoth{G}_{{\bf AB}}}(i\Omega_n) = \int_{0}^{\beta} d\tau \blanky e^{i \Omega_n \tau} {\textgoth{G}_{{\bf AB}}}(\tau), \quad \Omega_n = \frac{(2n+1)\pi}{\beta} \textnormal{ for fermions.} \\
+        &{\textgoth{G}_{{\bf AB}}}(i\omega_n) = \int_{0}^{\beta} d\tau \blanky e^{i \omega_n \tau} {\textgoth{G}_{{\bf AB}}}(\tau), \quad \omega_n = \frac{2n\pi}{\beta} \textnormal{ for bosons.}
+    \end{split}
+\end{equation}
+
+It is custom to call both $i\Omega_n, i\omega_n$ as Matsubara frequencies. The temperature appears only in the Matsubara frequencies via $\beta$. \\
+
+\paragraph{Analytic Continuation for the Matsubara and Green Functions}
+
+\begin{wrapfigure}{l}{0.3\textwidth}
+\includegraphics[scale = .5]{figs/Matsubara_Green_Functions/Matsubara_Green_complex_freq_space.png}
+\end{wrapfigure} 
+
+It turns out that the Matsubara and Green functions are manifstations of the same analytic function $\textgoth{F}_{{\bf AB}}(z)$ in the complex-frequency plane: in the upper half-plane, it is equal to ${\textgoth{G}_{{\bf AB}}}(i\omega_n)$ on the imaginary axis and $\mathfrak{G}^{R}_{{\bf AB}}(\omega)$ on the real axis, while in the lower complex-plane, the advanced Green function emerges on the real axis. 
+
+Hence, determination of one of the two guarantees that the other must follow as well by analytic continuation, which amounts to stating 
+
+\begin{equation}
+    \mathfrak{G}_{{\bf AB}}^R(\omega) = \textgoth{G}_{{\bf AB}}(i\omega_n \rightarrow \omega + i \eta), \textnormal{ where $\eta$ is a positive and infinitesimal constant}.
+\end{equation}
+
+Some interesting properties of the Matsubara function are enumerated, as follows 
+
+\begin{enumerate}
+    \item $\textgoth{G}_{{\bf AB}}(\tau)$ is periodic along the imaginary-time axis,
+    \item $\textgoth{G}_{{\bf AB}}(\tau)$ does not have any statistical factor, eg. ${\bf n}_{\mathfrak{B}}(\omega)$ nor ${\bf n}_{\mathfrak{F}}(\omega)$, on the imaginary-frequency axis. The information on statistical probabilities implicitly enters through the so-called Matsubara frequency sums. 
+    \item The Matsubara function is based on a thermal equilibrium theory. We note that, in some cases, the $(T \rightarrow 0)$-limit of a thermal equilibrium can be different from results obtained from a $T = 0$ analysis. Note that the $(T \rightarrow 0)$-formalism is designed to get the true ground state, including the prediction of equal thermal occupation for degenerate states, whereas a $T = 0$ analysis may identify only one of the available degenerate states, or because adiabatic turning on of the interaction may miss state crossings or a phase transition and land in an excited state. 
+\end{enumerate}
+
+The Matsubara approach provides an expedient recipe for obtaining its Green function counterparts. It is convenient to use the Lehmann representation to establish the relation between the two functions  $\textgoth{G}_{{\bf AB}}(\tau)$ and $\mathfrak{G}^R_{{\bf AB}}(\tau)$, whereby earlier results for the zero-temperature retarded single-particle Green function can be extended to finite temperatures as 
+
+\begin{equation}
+    \begin{split}
+        \mathfrak{G}_{{\bf AB}}(\omega) &= - \frac{i}{\mathcal{Z}} \int_{\mathds{R}} dt \blanky e^{i\omega t}\textgoth{G}_{{\bf AB}}(t) = - \frac{i}{\mathcal{Z}} \int_{\mathds{R}} dt \blanky e^{i\omega t} \bigg \langle e^{-\beta {\bf H}} \mathcal{T} [{\bf A}(t) {\bf B}(0)] \bigg \rangle \\
+        &= - \frac{i}{\mathcal{Z}} \int_{\mathds{R}} dt \blanky e^{i\omega t} \bigg \langle e^{-\beta {\bf H}} 
+        \bigg[
+        \Theta(t) {\bf A}(t) {\bf B}(0) - 
+        \Theta(-t) {\bf B}(0) {\bf A}(t)
+        \bigg] \bigg \rangle
+    \end{split}
+\end{equation}
+
+\footnotesize
+\begin{equation*}\begin{array}{c}
+    \begin{array}{ccc}
+        \begin{split}
+         - \frac{i}{\mathcal{Z}} &\int_{\mathds{R}} dt \blanky e^{i\omega t} \bigg \langle e^{-\beta {\bf H}} 
+        \Theta(t) {\bf A}(t) {\bf B}(0)\bigg \rangle \\
+        &= - \frac{i}{\mathcal{Z}} \int_{\mathds{R}} dt \blanky e^{i\omega t} \bigg \langle e^{-\beta {\bf H}} 
+        \Theta(t) e^{\frac{i}{\hbar} {\bf H} t}{\bf A}(0)e^{-\frac{i}{\hbar} {\bf H} t} {\bf B}(0)\bigg \rangle
+        \\
+        &= - \frac{i}{\mathcal{Z}} \int_{\mathds{R}^+} dt \blanky e^{i\omega t} \Tr \bigg[e^{-\beta {\bf H}} 
+        e^{\frac{i}{\hbar} {\bf H} t}{\bf A} e^{-\frac{i}{\hbar} {\bf H} t} {\bf B}\bigg] \\
+        &= - \frac{i}{\mathcal{Z}} \int_{\mathds{R}^+} dt \blanky e^{i\omega t} \sum_{\lambda \lambda'} \bra{\lambda} e^{-\beta {\bf H}} 
+        e^{\frac{i}{\hbar} {\bf H} t}{\bf A} \ket{\lambda'} \bra{\lambda'} e^{-\frac{i}{\hbar} {\bf H} t} {\bf B}  \ket{\lambda} \\
+        &= - \frac{i}{\mathcal{Z}} \int_{\mathds{R}^+} dt \blanky e^{i\omega t} \sum_{\lambda \lambda'} e^{-\beta \varepsilon_{\lambda}} e^{\frac{i}{\hbar} \varepsilon_{\lambda} t} {\bf A}_{\lambda \lambda'} e^{-\frac{i}{\hbar} \varepsilon_{\lambda'} t} {\bf B}_{\lambda' \lambda}\\
+        &= \frac{1}{\mathcal{Z}} \sum_{\lambda \lambda'} \frac{
+        \bra{\lambda} {\bf A} \ket{\lambda'} \bra{\lambda'} {\bf B} \ket{\lambda}}{\omega + \varepsilon_{\lambda} - \varepsilon_{\lambda'} + i\eta} e^{-\beta \varepsilon_\lambda}\\
+        \end{split}
+        & &
+       \begin{split} 
+        \frac{i}{\mathcal{Z}} &\int_{\mathds{R}} dt \blanky e^{i\omega t} \bigg \langle e^{-\beta {\bf H}} 
+        \Theta(-t) {\bf B}(0) {\bf A}(t) \bigg \rangle &= - \frac{i}{\mathcal{Z}} \int_{\mathds{R}} dt \blanky e^{i\omega t} \bigg \langle e^{-\beta {\bf H}} 
+        \Theta(t) e^{\frac{i}{\hbar} {\bf H} t}{\bf A}(0)e^{-\frac{i}{\hbar} {\bf H} t} {\bf B}(0)\bigg \rangle
+        \\
+        &= \frac{i}{\mathcal{Z}} \int_{\mathds{R}} dt \blanky e^{i\omega t} \bigg \langle e^{-\beta {\bf H}} 
+        \Theta(-t) {\bf B}(0) e^{\frac{i}{\hbar} {\bf H} t}{\bf A}(0)e^{-\frac{i}{\hbar} {\bf H} t}\bigg \rangle
+        \\
+        &= \frac{i}{\mathcal{Z}} \int_{\mathds{R}^-} dt \blanky e^{i\omega t} \Tr \bigg[e^{-\beta {\bf H}} 
+        {\bf B}  e^{\frac{i}{\hbar} {\bf H} t}{\bf A} e^{-\frac{i}{\hbar} {\bf H} t}\bigg] \\
+        &= \frac{i}{\mathcal{Z}} \int_{\mathds{R}^-} dt \blanky e^{i\omega t} \sum_{\lambda \lambda'} \bra{\lambda} e^{-\beta {\bf H}} {\bf B} 
+        e^{+\frac{i}{\hbar} {\bf H} t}\ket{\lambda'} \bra{\lambda'} e^{-\frac{i}{\hbar} {\bf H} t} {\bf A}  \ket{\lambda} \\
+        &= \frac{i}{\mathcal{Z}} \int_{\mathds{R}^-} dt \blanky e^{i\omega t} \sum_{\lambda \lambda'} e^{-\beta \varepsilon_{\lambda'}} e^{\frac{i}{\hbar} \varepsilon_{\lambda'} t} {\bf B}_{\lambda \lambda'} e^{-\frac{i}{\hbar} \varepsilon_{\lambda} t} {\bf A}_{\lambda' \lambda}\\
+        &= \frac{1}{\mathcal{Z}} \sum_{\lambda \lambda'} \frac{
+        \bra{\lambda} {\bf B} \ket{\lambda'} \bra{\lambda'} {\bf A} \ket{\lambda}}{\omega + \varepsilon_{\lambda} - \varepsilon_{\lambda'} + i\eta} e^{-\beta \varepsilon_{\lambda'}}\\
+        \end{split}
+    \end{array}
+\end{array}
+\end{equation*}
+
+\normalsize
+\begin{equation}
+    \Rightarrow \mathfrak{G}_{{\bf AB}}(\omega) = \frac{1}{\mathcal{Z}} \sum_{\lambda \lambda'} \frac{
+        {\bf A}_{\lambda \lambda'} {\bf B}_{\lambda' \lambda}}{\omega + \varepsilon_{\lambda} - \varepsilon_{\lambda'} + i\eta} ( e^{-\beta \varepsilon_{\lambda}} + e^{-\beta \varepsilon_{\lambda'}} )
+\end{equation}
+
+As for the Matsubara function, for $\tau > 0$,
+
+\begin{equation}
+    \begin{split}
+        &\textgoth{G}_{{\bf AB}}(\tau) = - \frac{1}{\mathcal{Z}} \Tr \bigg[
+        e^{-\beta {\bf H}} e^{{\bf H} \tau} {\bf A} e^{-{\bf H} \tau} {\bf B}
+        \bigg] =  - \frac{1}{\mathcal{Z}} \sum_{\lambda \lambda'} {\bf A}_{\lambda \lambda'} {\bf B}_{\lambda' \lambda} e^{\tau (\varepsilon_{\lambda} - \varepsilon_{\lambda'})} \\
+        & \textgoth{G}_{{\bf AB}}(i\omega_n) =  \frac{1}{\mathcal{Z}} \sum_{\lambda \lambda'} \frac{
+        {\bf A}_{\lambda \lambda'} {\bf B}_{\lambda' \lambda}}{i\omega_m + \varepsilon_{\lambda} - \varepsilon_{\lambda'} + i\eta} ( e^{-\beta \varepsilon_{\lambda}} + e^{-\beta \varepsilon_{\lambda'}} )
+        \end{split}
+\end{equation}
+
+Hence, $\mathfrak{G}^R_{{\bf AB}}(\omega)$ have identical expressions $\textgoth{G}_{{\bf AB}}(i\omega_n)$ and, moreover, both can be obtained from a common function 
+
+\begin{equation}
+    \textgoth{F}_{{\bf AB}}(z) =  \frac{1}{\mathcal{Z}} \sum_{\lambda \lambda'} \frac{
+        {\bf A}_{\lambda \lambda'} {\bf B}_{\lambda' \lambda}}{z + \varepsilon_{\lambda} - \varepsilon_{\lambda'} + i\eta} ( e^{-\beta \varepsilon_{\lambda}} + e^{-\beta \varepsilon_{\lambda'}} ),
+\end{equation}
+
+which is analytic in the upper and lower half-planes, but has a series of poles at $\varepsilon_{\lambda} - \varepsilon_{\lambda'}$, along the real axis. \\
+
+Knowledge of $\textgoth{G}_{{\bf AB}}(i\omega_n)$ implies knowledge of the $\textgoth{F}_{{\bf AB}}$-function of the complex $z$-variable on an infinite set of points on the imaginary axis $z_n = i\Omega_n$, which is sufficient to determine the full $\textgoth{F}_{{\bf AB}}$-function in the complex plane, with the proviso that, since $\textgoth{F}_{{\bf AB}}(z) = \mathfrak{G}_{{\bf AB}}(z)$, it has to be analytic in the upper-half-plane, leading to the prescription
+
+\begin{equation*}
+    \mathfrak{G}^R_{{\bf AB}}(\omega) = \mathfrak{G}_{{\bf AB}}(i\omega_n \rightarrow \omega + i\eta).
+\end{equation*} 
+
+\blanky \\
+
+For example, consider again the fermionic Hamiltonian of a non-interacting theory given in \cref{Matsubara_Green_Non_interacting_fermion_Hamiltonian}. Its fermionic Matsubara function in the frequency domain can be obtained as the Fourier transform of \cref{Matsubara_Green_Non_interacting_fermion_Matsubara_function}, yielding
+
+\begin{equation}
+    \begin{split}
+        \textgoth{G}_{\lambda}^{(0)}(i\Omega_n) =& \int_{0}^{\beta}d\tau \blanky e^{i\Omega_n \tau} \textgoth{G}_{\lambda}^{(0)}(\tau), \quad \textnormal{ where } \Omega_n = \frac{(2n+1)\pi}{\beta}, \tau > 0, \\
+        &= \frac{1}{i\Omega_n - \varepsilon_{\lambda}},
+    \end{split}
+\end{equation}
+
+since $e^{i\Omega_n \tau} = -1$ and since $(1-{\bf n}(\varepsilon_{\lambda})) = (1+e^{-\beta \varepsilon_{\lambda)}})^{-1}$. Hence, using the previously explained relationships between the Green and Matsubara functions, it follows that 
+
+\begin{equation}
+    \mathfrak{G}_{\lambda}^{(0)}(\omega) = \frac{1}{\omega - \varepsilon_{\lambda} + i \eta}. 
+\end{equation}
+
+\blanky \\
+
+\paragraph{Matsubara Approach to the Two-Particle Green Function}
+
+As an application of the Matsubara approach for finite temperature quantum field theory, one can calculated the two-particle correlation function $\chi$ at finite temperatures. Said correlation function reads 
+
+\begin{equation}
+    \begin{split}
+        \chi({\bf q}, \tau) =& - \sum_{\substack{
+        {\bf k,k'} \\
+        \sigma, \sigma' 
+        }} \bigg\langle 
+        \mathcal{T}_{\tau} 
+        [
+        {\bf c}_{{\bf k}, \sigma}^\dagger(\tau + \varepsilon)
+        {\bf c}_{{\bf k+q}, \sigma}(\tau)  
+        {\bf c}_{{\bf k}', \sigma'}^\dagger(\varepsilon) 
+        {\bf c}_{{\bf k'-q}, \sigma'}(0)  
+        ]
+        \bigg\rangle \\
+        &= \sum_{\substack{
+        {\bf k,k'} \\
+        \sigma, \sigma' 
+        }} \bigg\langle 
+        \mathcal{T}_{\tau} \bigg[
+            \wick{
+                \c1{\bf c}_{{\bf k}, \sigma}^\dagger(\tau + \varepsilon)
+                \c2{\bf c}_{{\bf k+q}, \sigma}(\tau)  
+                \c2{\bf c}_{{\bf k}', \sigma'}^\dagger(\varepsilon) 
+                \c1{\bf c}_{{\bf k'-q}, \sigma'}(0)  
+            } - 
+            \wick{
+                \c1{\bf c}_{{\bf k}, \sigma}^\dagger(\tau + \varepsilon)
+                \c1{\bf c}_{{\bf k+q}, \sigma}(\tau)  
+                \c2{\bf c}_{{\bf k}', \sigma'}^\dagger(\varepsilon) 
+                \c2{\bf c}_{{\bf k'-q}, \sigma'}(0)  
+            }
+        \bigg]
+        \bigg\rangle 
+        \\
+        &= \sum_{\substack{
+        {\bf k,k'} \\
+        \sigma, \sigma' 
+        }} \left\langle 
+        \left[ \begin{array}{c}
+             \mathcal{T}_{\tau} \bigg( 
+            {\bf c}_{{\bf k+q}, \sigma}(\tau) 
+            {\bf c}_{{\bf k}', \sigma'}^\dagger(0) 
+        \bigg) \mathcal{T}_{\tau} \bigg( 
+            {\bf c}_{{\bf k'-q}, \sigma'}(0)  
+            {\bf c}_{{\bf k}, \sigma}^\dagger(\tau)
+        \bigg) \\
+             \blanky \blanky \blanky \blanky 
+         - \mathcal{T}_{\tau} \bigg(
+            {\bf c}_{{\bf k}, \sigma}^\dagger(\tau + \varepsilon)
+            {\bf c}_{{\bf k+q}, \sigma}(\tau)
+        \bigg) \mathcal{T}_{\tau} \bigg(
+            {\bf c}_{{\bf k}', \sigma'}^\dagger(\varepsilon) 
+            {\bf c}_{{\bf k'-q}, \sigma'}(0)  
+        \bigg)
+        \end{array}
+        \right]
+        \right\rangle \\
+        &= \sum_{\substack{
+        {\bf k,k'} \\
+        \sigma, \sigma' 
+        }} \bigg[\textgoth{G}_{{\bf k+q}, \sigma}^{(0)}(\tau)\textgoth{G}_{{\bf k}, \sigma}^{(0)}(-\tau) - \rho_{{\bf q}, \sigma}^{(0)}\rho_{-{\bf q}, \sigma}^{(0)}\bigg],
+    \end{split}
+\end{equation}
+
+where $\zeta$ is an infinitesimal positive constant that places the creation operators to the left of annihilation ones for equal time ordering. Note that the second term in the last line, does not depend on $\tau$. Hence, its Fourier transform is done with respect to $\tau \sim \delta_{\omega_n, 0}$ and will thus disappear in the process of the analytical continuation $i \omega_n \rightarrow \omega + i\eta$. \\
+
+Note that the density operators are physical observables, they are hermitian and the commute, thus having bosonic character. This character should be reflected in the correlation function as well, i.e. it should be a function of a bosonic Matsubara frequency. Noting that the Fourier transform of a product in time-domain is a convolution in frequency-domain, the Fourier transform of -the first in- the correlation function is 
+
+\begin{equation}
+    \begin{split}
+        \chi({\bf q}, i \omega_n) =& \frac{1}{\beta} \sum_{i\Omega_n} \sum_{\substack{
+        {\bf k},\sigma 
+        }} \textgoth{G}_{{\bf k+q}, \sigma}^{(0)}(i\Omega_m + i\omega_n)\textgoth{G}_{{\bf k}, \sigma}^{(0)}(i\Omega_m) \\
+        &= \frac{2}{\beta} \sum_{{\bf k}, i \Omega_m} \bigg[
+        \bigg(i(\Omega_m + \omega_n) - (\varepsilon_{{\bf k+q}} - \mu)\bigg)
+        \bigg(i\Omega_m - (\varepsilon_{{\bf k}} - \mu)\bigg)
+        \bigg]^{-1},
+    \end{split}
+\end{equation}
+
+wherein $\omega_n$ and $\Omega_m$ are bosonic and fermionic Matsubara frequencies, respectively. Performing the summation over $\Omega_m$ can be carried out by writing the sum as an integral over the lower-half-plane contour in the complex plane. The actual details of the calculations can be found in \ref{el2020advanced} p.509-511. 
