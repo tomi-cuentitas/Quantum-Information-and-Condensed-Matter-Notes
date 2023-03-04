@@ -1594,23 +1594,118 @@ Polyakov's renormalization technique goes as follows:
                     \tilde{A}^{a 0}_{\mu} \sqrt{1-\bar{\phi^2}}
                 \bigg)^2
             \bigg]^2 \\
+            &= \frac{\Lambda^{d-2}}{2f}  
+            \sum_{\mu ab} 
+            \left[
+                \begin{array}{cc}
+                     \bigg\{ 
+                     \bigg(
+                        \partial_{\mu} \sqrt{1-\bar{\phi^2}}
+                     \bigg)^2 
+                     -
+                     2 \partial_{\mu} \sqrt{1-\bar{\phi^2}} \times \tilde{A}^{a0}_{\mu} \phi^a  \bigg\} 
+                     + 
+                     \tilde{A}^{a0}_{\mu}   \tilde{A}^{b0}_{\mu} \phi^a \phi^b 
+                    \\
+                    \blanky \blanky +  \bigg(
+                        \partial_{\mu} \phi^a 
+                        + 
+                        \tilde{A}^{a b}_{\mu} \phi^b 
+                    \bigg)^2 + 
+                    2 \bigg\{\bigg(
+                        \partial_{\mu} \phi^a 
+                        + 
+                        \tilde{A}^{a b}_{\mu} \phi^b 
+                    \bigg)^2 \times \tilde{A}^{a 0}_{\mu} \sqrt{1-\bar{\phi^2}} \bigg \}\\
+                     +
+                    \bigg(
+                        \tilde{A}^{a 0}_{\mu} \sqrt{1-\bar{\phi^2}}
+                    \bigg)^2
+                \end{array}
+            \right]\\
+            &=  \frac{\Lambda^{d-2}}{2f}  
+            \sum_{\mu ab} \bigg[
+                \bigg(
+                    \partial_{\mu} \phi^a 
+                    + 
+                    \tilde{A}^{a b}_{\mu} \phi^b 
+                    )
+                \bigg)^2 + 
+                \bigg(
+                    \tilde{A}^{a 0}_{\mu} \phi^a +  \mathcal{O}(\phi^2, f^{-1} \phi^3)
+                \bigg)^2 
+            \\
             & \Rightarrow \mathcal{Z} \approx \int_{\bar{\Lambda}} \mathcal{D} \hat{\bf n} \blanky \exp 
             \bigg[
                 - \int_{\bar{\Lambda}} d^d x \blanky \mathcal{L}[\hat{{\bf n}}^{0}]
                 \mathcal{Z}^{(2)}[\hat{{\bf n}}^{0}] 
-                [1 + \mathcal{O}(\phi^2, f^{-1} \phi^3)]
+                \bigg\{
+                    1 + \mathcal{O}(\phi^2, f^{-1} \phi^3)
+                \bigg\}
             \bigg]
         \end{split}
     \end{equation}
     
-    where 
+    where, in the ante-penultimate line in the last derivations \footnote{Note that, in the ante-penultimate line,  
+    
+    \begin{equation}
+        \bigg(
+            \tilde{A}^{a 0}_{\mu} \sqrt{1-\bar{\phi^2}}
+        \bigg)^2 = \tilde{A}^{a 0}_{\mu} \tilde{A}^{b 0}_{\mu} \phi^{ab} (1- \bar{\phi}^2). 
+    \end{equation}
+    
+    }, the terms in brackets $\{\}$ are of cubic and higher powers of $\phi$ and thus, can be neglected for the time being. Here, the $\mathcal{Z}^{(2)}[\hat{{\bf n}}^{0}]$-factor is given in terms of the fast-spin wave Lagrangian $\mathcal{L}^{(2)}[\hat{\bf n}^{0}, \phi]$, as follows 
     
     \begin{equation}
         \mathcal{Z}^{(2)} = \int_{{\Lambda}} \mathcal{D} \hat{\bf n} \blanky \exp 
         \bigg[
-            - \int_{\Lambda} d^d x \blanky \mathcal{L}^{(2)}[\hat{\bf n}^{0}, \phi], \quad \mathcal{L}^{(2)} = \frac{}{}
-        \bigg]
+            - \int_{\Lambda} d^d x \blanky \mathcal{L}^{(2)}[\hat{\bf n}^{0}, \phi]
+        \bigg], 
+        \quad 
+        \mathcal{L}^{(2)} = 
+        \frac{\Lambda^{d-2}}{2f}  
+            \sum_{\mu ab} 
+            \left[
+                \begin{array}{cc}
+                     \bigg(
+                        \partial_{\mu} \phi^a 
+                        + 
+                        \tilde{A}^{a b}_{\mu} \phi^b 
+                    \bigg)^2 + 
+                     \tilde{A}^{a0}_{\mu}   \tilde{A}^{b0}_{\mu} 
+                    (
+                      \phi^a \phi^b - \delta_{ab} \bar{\phi}^2
+                        )^2
+                \end{array}
+            \right].
+            \label{NLSM_fast_spin_wave_lagrangian}
     \end{equation}
+    
+    In the context of the renormalization group theory, a one-loop-level calculation is being performed, since $\mathcal{O}[f^{-1} \phi^3]$ terms are neglected entirely. 
+    Moreover, cross terms of the sort $
+    (
+    \tilde{A}_{{\bf q}}^{ab} \phi^{b}_{\bf k-q} \tilde{A}_{-{\bf k}}^{a0},
+    )$ were neglected as well, since these couple slow and fast fields. 
+    By letting $\tilde{\Lambda} << \Lambda$, the contribution of such terms is small since they vanish for all ${\bf k} > 2\tilde{\Lambda}$, i.e. for most of the Brillouin zone. \medbreak
+    
+    The fast spin wave Lagrangian $\mathcal{L}^{(2)}$ describes the high-momenta fluctuations around the classical Néel field ${\hat{{\bf n}}}^{0}$. 
+    There is a certain degrees of arbitrariness in the choice of the transverse unit vectors $\hat{\bf e}^a$, given in \cref{NLSM_Polyakov_fast_slow_fields} in the $(n>2)$-case. In effect, in the $(n>2)$-case, one can continuously rotate the transverse coordinate system in the $(n-1)$-dimensional case at each point in space using any $(n-1)\times(n-1)$-dimensional matrix $R$ s.t. 
+    
+    \begin{equation} \label{NLSM_gauge_symmetry}
+        \begin{array}{cc}
+             \phi^a \rightarrow R^{ab} \phi^b \\
+             \quad R^{\textnormal{T}} R = \mathfrak{i}\mathfrak{d}_{\R^{(n-1)\times(n-1)}}, 
+        \end{array}
+        \begin{array}{cc}
+             \textnormal{which transforms the covariant derivative in}  \\
+             \textnormal{the first term in \cref{NLSM_fast_spin_wave_lagrangian} as}
+        \end{array} \partial_{\mu} \delta_{ab} + \tilde{A}_{\mu}^{ab} \rightarrow \partial_{\mu} \delta_{ab} + \tilde{A}_{\mu}^{ab} + [(\partial_{\mu R})R^{-1}]^{ab}
+    \end{equation}
+    
+    The manifest invariance of the fast spin wave Lagrangian $\mathcal{L}^{(2)}$, under the \cref{NLSM_gauge_symmetry}, is an example 
+    of a \textit{gauge symmetry} of the fast modes Lagrangian. This Lagrangian can only depend on the derivatives of the gauge potentials $\tilde{A}^{ab}_{\mu}$, which are slow fields. 
+    Hence, these terms must be higher-order derivativs of $\hat{\bf n}^{0}$ than the leading term $\mathcal{L}[\hat{\bf n}^{0}]$. This allows for the neglecting of the gauge potentials in $\mathcal{L}^{(2)}$. 
+    It turns out that these gauge potentials ae important when expanding a slow field with finite topological density. 
     
 \end{itemize}
 
