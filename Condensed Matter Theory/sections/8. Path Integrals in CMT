@@ -1,0 +1,694 @@
+\subsection{\underline{Path Integrals}}
+
+\paragraph{\textswab{Quantum Propagators and Path Integrals}}
+
+The dynamical information in quantum mechanics is contained in the matrix elements of the time-evolution operator $\bm{\mathcal{U}}(t_f;t_i)$, which for a time-independent Hamiltonian reads
+
+\begin{equation}
+    \bm{\mathcal{U}}(t_f;t_i) = e^{-\frac{i {\bf H} (t_i-t_f)}{\hbar}}.
+    \label{PathIntegral_propagator}
+\end{equation}
+
+The probability amplitude for a particle to start at ${\bf x}_i$-position and $t_i$-time and end at ${\bf x}_f$-position and $t_f$-time is written as 
+
+\begin{equation}
+\begin{split}
+    \bm{\mathcal{U}}(x_f, t_f; x_i, t_i) &= \bra{x_f} \bm{\mathcal{U}}(t_f;t_i) \ket{x_i} \\
+    &= \int_{x_i}^{x_f} \mathcal{D}[x] \exp \bigg[
+        \frac{i}{\hbar} \int_{t_i}^{t_f} dt \blanky \mathcal{L}[\cdot{x}, x] 
+    \bigg] = \int_{x_i}^{x_f} \mathcal{D}[x] \exp \bigg[
+        \frac{i}{\hbar} \mathcal{S}[x(t)],
+    \bigg]
+\end{split}
+\label{PathIntegral_prob_amplitude}
+\end{equation}
+
+where $\mathcal{L}$ is the Lagrangian and $\mathcal{S}$ is the classical action associated with the $x(t)$-trajectory and where the integration is to be understood as over all paths with starting point $x(t_i) = x_i$ and end-point $x(t_f) = x_f$. Hence, the path integral representation thus provides an elegant interpretation of the quantum-mechanical transition-amplitude, since the particle takes all possible trajectories with each $x(t)$-trajectory contributing $\exp \bigg[-\frac{i}{\hbar}\mathcal{S}[x(t)]\bigg]$ to the amplitude. Moreover, the path integral is an exact representation of the evolution operator $\bm{\mathcal{U}}(t) = \exp\bigg[\frac{\hbar}{i} {\bf H} t\bigg]$ without explicitly incorporating any quantum-mechanical operators. \bigbreak
+
+\paragraph{\textswab{Classical Limit and the Stationary Phase Approximation}}
+
+It can be seen from \cref{PathIntegral_prob_amplitude} that all paths have the same absolute magnitude but with different phase: the phase of each $x(t)$-path is its classical action $\mathcal{S}[x(t)]$
+divided by its microscopic action $\hbar$. Hence, each path taken in isolation is equally important, i.e. the classical path is no more important than any arbitrarily complicated path.
+
+However, given that the path integral is a coherent summation of paths, different paths interfere with one another. The important trajectories, hence, contribute significantly to the path integral must be those for which the action varies very slowly when the $x(t)$
+-path is slightly deformed, which means that they leave the $\mathcal{S}$-action stationary, i.e.
+
+\begin{equation}
+    \frac{\delta \mathcal{S}[x]}{\delta x} = 0. 
+\end{equation}
+
+By contrast, the contributions which rapidly oscillating exponential factor add up to zero. Thus, in the classical limit, only one trajectory $x_c(t)$ contributes, that which is the solution to the classical equations of motions. \bigbreak
+
+In the classical limit, $\hbar \rightarrow 0$. In particular, consider a deviation from the classical path $x(t) = x_{\textnormal{cl}}(t) + \eta(t)$, which allows for a second order expansion in this \textit{small} deviation as follows 
+
+\begin{equation}
+\begin{split}
+     \bm{\mathcal{U}}(x_f, x_i; t_f - t_i) \simeq& e^{\frac{i}{\hbar} \mathcal{S}_{\textnormal{cl}}[x_{\textnormal{cl}}]} \int_{\eta(t_i) = 0}^{\eta(t_f) = 0} \mathcal{D}[\eta] \blanky \exp \bigg[
+            \frac{i}{2\hbar} \int_{t_i}^{t_f} dt \blanky \frac{\delta^{(2)} \mathcal{S}[x]}{\delta x(t) \delta x(t')} \eta(t)\eta(t')
+        \bigg] \\
+        &= e^{\frac{i}{\hbar} \mathcal{S}_{\textnormal{cl}}[x_{\textnormal{cl}}]} \det \bigg[
+            \frac{1}{2\pi \hbar} \frac{\delta^{(2)} \mathcal{S}[x]}{\delta x(t) \delta x(t')} 
+        \bigg]^{-\frac{1}{2}}
+\end{split}
+\end{equation}
+
+The quantum correction to the classical action thus measures the strength of the quantum fluctuations. In general, the action for the quantum $\eta$-fluctuations is not the same as the action for the classical trajectory. \bigbreak
+
+\subsubsection{Path integrals in Statistical Mechanics}
+
+Path integrals offer an elegant and powerful technique for calculating observables, in particular correlation functions, for statistical mechanics systems, since -in this formalism- the partition function is a path integral. Hence, the finite-temperature quantum-mechanical properties of the system can be accessible from the path integral. \bigbreak
+
+A statistical ensemble in equilibrium at finite $\beta^{-1}$-temperature is described by a partition function
+
+\begin{equation}
+    \partitionfunction = \Tr e^{-\beta {\bf H}}.
+\end{equation}
+
+The partition function can be written in the eigenstate basis 
+
+\begin{equation}
+    \partitionfunction = \int dx \blanky \bra{x} e^{-\beta {\bf H}} \ket{x} 
+    = \int dx \int dx_1 \blanky \bra{x}\ket{x_1}\bra{x_1} e^{-\beta {\bf H}} \ket{x},
+\end{equation}
+
+where $\bra{x_1} e^{-\beta {\bf H}} \ket{x}$ can now be viewed as analytic continuation of the propagator \cref{PathIntegral_propagator} to imaginary time $\tau = it$, where the propagation is considered to start at $\tau = 0$ and ending at $\tau = \beta \hbar$, i.e. a Wick rotation which maps Minkowski $\mathds{M}^4$ to a euclidean $\R^4$.
+Performing these steps yields the following representation for the propagator 
+
+\begin{equation}
+    \begin{split}
+        &\bra{x_f} e^{-\beta {\bf H}} \ket{x_i} = \mathcal{N} \int \mathcal{D}[x(\tau)] \blanky e^{-\frac{\mathcal{S}_E[x]}{\hbar}}, \\
+        & \mathcal{S}_E[x] = \int_{0}^{\hbar \beta} d\tau {\bf H}(x), \quad \textnormal{ is the Euclidean action. }
+    \end{split}
+\end{equation}
+
+Note that, in the previous relations, the Hamiltonian has replaced the Lagrangian in the action, since $t = -i\tau$. The positive form of the Euclidean actions eliminates any convergence problems in the integral. \bigbreak
+
+Given that the partition function is, by definition, a trace over states, boundary conditions must be imposed s.t. that the initial and final states are the same state $x(0) = x(\hbar \beta)$. Then, a sum a is taken across all such states. 
+In other words, the imaginary-time periodic boundary condition reads: $x(\tau) = x(\tau + \hbar \beta)$. 
+Taking into account the previous considerations, the partition function now reads,
+
+\begin{equation}
+    \partitionfunction = \mathcal{N} \int dx \int_{x(0) = x}^{x(\beta \hbar) = x} \mathcal{D}[x(\tau)] \blanky e^{-\frac{\mathcal{S}_E[x]}{\hbar}}.
+\end{equation}
+
+Real-time dynamics and quantum-statistical properties can be obtained by the transformation $t \rightarrow -it$, a Wick rotation of $\frac{\pi}{2}$ in the complex-time plane. \bigbreak
+
+\paragraph{\textswab{Correlation Functions}}
+
+Usually, one is interested in measuring thermal-averages of (products of) local observables. Analytically, this reads as 
+
+\begin{equation}
+    \langle {\bf O}_1 \cdots {\bf O}_n \rangle = \frac{1}{\partitionfunction} \Tr  \bigg( {\bf O}_1 \cdots {\bf O}_n e^{-\beta {\bf H}}\bigg).
+\end{equation}
+
+Such averages can be readily obtained in an alternative way, by defining a modified partition function 
+
+\begin{equation}
+    \begin{split}
+        \partitionfunction(h_1, \cdots, h_n) = \Tr e^{-\beta {\bf H} + {\bf H}_{\textnormal{ext}}}, \quad {\bf H}_{\textnormal{ext}} = \sum_{i} h_i {\bf O}_i,
+    \end{split}
+\end{equation}
+
+wherein ${\bf H}_{\textnormal{ext}}$ represents the Hamiltonian of external sources $h_i$ which couple to the relevant operators ${\bf O}_i$. This allows for the simple representation of an $n$-body correlator as follows 
+
+\begin{equation}
+    \begin{split}
+        \langle {\bf O}_1 \cdots {\bf O}_n \rangle = \frac{1}{\partitionfunction[\{h_i=0\}]} \frac{\partial^n \partitionfunction[h_1, \cdots, h_n]}{\partial h_i \cdots h_{\ell}}\bigg|_{\{h_i = 0\}}.           
+    \end{split}
+\end{equation}
+
+Now, the question aristes as to the possibility of extending this thermal averaging process to correlation functions of the form,
+
+\begin{equation}
+    \langle {\bf O}_1(\tau_1) \cdots {\bf O}_n(\tau_n) \rangle =
+    \frac{
+        \int_{x(0) = x(\beta)}
+            \mathcal{D}[x(\tau)] \blanky {\bf O}_1(\tau_1) \cdots {\bf O}_n(\tau_n) e^{-\frac{S_E}{\hbar}}
+    }{
+        \int_{x(0) = x(\beta)}
+            \mathcal{D}[x(\tau)] \blanky e^{-\frac{S_E}{\hbar}}
+    }, \textnormal{ where } {\bf O}_i(\tau_i) = {\bf O}_i(x(\tau_i)).
+\end{equation}
+
+\begin{remark}
+
+\textnormal{To interpret such a correlation function in imaginary time, one may start by considering the action of operators on a given state function $\ket{\phi(t)}$ at different times. Operator ${\bf O}_1$ acts at $t_1$ s.t. }
+
+\begin{equation}
+\begin{split}
+    &\textnormal{Operator ${\bf O}_1$ acts at $t_1$ s.t. } {\bf O}_1 {\ket{\phi(t_1)}} = {\bf O}_1 \bm{\mathcal{U}}(t_1, 0) {\ket{\phi(0)}} \\
+    &\textnormal{Operator ${\bf O}_2$ acts at $t_2 > t_1$ s.t. } {\bf O}_2 {\ket{\phi(t_2)}} = {\bf O}_2 \bm{\mathcal{U}}(t_2, t_1)  {\bf O}_1 \bm{\mathcal{U}}(t_1, 0) {\ket{\phi(0)}} \\
+    &\Rightarrow 
+    \begin{array}{cc}
+         \textnormal{The projection of this states }\\
+         \textnormal{onto the unperturbed state reads}
+    \end{array}
+    \bra{\phi(0)} {{\bf O}}_2 {\bm{\mathcal{U}}}(t_2, t_1) {{\bf O}}_1 {\bm{\mathcal{U}}}(t_1, 0) \ket{\phi(0)}  = \bra{\psi(0)} {{\bf O}}_{2H}(t_2) {{\bf O}}_{1H}(t_1) \ket{\psi(0)}
+\end{split}
+\end{equation}
+
+\textnormal{Its analytic continuation to imaginary time reads }
+
+$$
+    \frac{\Tr e^{- \beta {\bf H}} \mathcal{T}_{\tau}
+        \bigg[ 
+            {{\bf O}}_{2H}(t_2) {{\bf O}}_{1H}(t_1) 
+        \bigg]}
+    {\Tr e^{-\beta {\bf H}}}.
+$$
+
+\textnormal{where a time-ordering operator has been introduced since, now, now, ${\bf O}_H^\dagger (\tau) \neq [\bf O_H(\tau)]^\dagger$. It follows then, by using a complete set of basis functions, that}
+
+\begin{equation}
+\begin{split}
+    \Tr e^{- \beta {\bf H}} \mathcal{T}_{\tau} &
+        \bigg[ 
+            {{\bf O}}_{2H}(t_2) {{\bf O}}_{1H}(t_1) 
+        \bigg] = 
+        \int_{\R^9} dx dx_1 dx_2  
+        \bra{x} e^{-(\beta - \tau_2) {\bf H}}         \ket{x_2} 
+        \bra{x_2} {{\bf O}}_2 e^{-(\tau_2 - \tau_1) {\bf H}} \ket{x_1} 
+        \bra{x_1} {{\bf O}}_1 e^{- \tau_1 {\bf H}} \ket{x}
+        \\
+        &= \int_{\R^9} dx dx_1 dx_2 \blanky {\bf O}_2(x_2) {\bf O}_1(x_1) \blanky 
+        \bra{x} e^{-(\beta - \tau_2) {\bf H}}         \ket{x_2} 
+        \bra{x_2} e^{-(\tau_2 - \tau_1) {\bf H}} \ket{x_1} 
+        \bra{x_1} e^{- \tau_1 {\bf H}} \ket{x} \\
+        &= \int_{\R^9} dx dx_1 dx_2 \blanky  {\bf O}_2(x_2) {\bf O}_1(x_1) \blanky 
+        \left[
+        \begin{array}{cc}
+             \int_{x(\tau_2) = x_2}^{x(\beta) = x} \mathcal{D}[x(\tau)]
+             \int_{x(\tau_1) = x_1}^{x(\tau_2) = x_2} 
+             \mathcal{D}[x'(\tau)]
+             \int_{x(0) = x}^{x(\tau_1) = x_1} 
+             \mathcal{D}[x''(\tau)] \\
+             \times 
+             e^{-\int_{\tau_2}^{\beta \hbar} d\tau \mathcal{L}_{E}(x(\tau))}
+             e^{-\int_{\tau_1}^{\tau_2} d\tau \mathcal{L}_{E}(x(\tau))}
+             e^{-\int_{0}^{\tau_1} d\tau \mathcal{L}_{E}(x(\tau))}
+        \end{array}
+        \right] \\
+        &= \int_{x(0) = 
+        x(\beta)} \mathcal{D}[x(\tau)]  \blanky {{\bf O}}_{2}(x_2) {{\bf O}}_{1}(x_1) e^{- \int_{0}^{\beta \hbar}d\tau \blanky \mathcal{L}_E(x(\tau))}.
+\end{split}
+\end{equation}
+
+\textnormal{Hence, the time-ordered correlation functions naturally manifest as moments of the path integral. 
+Moreover, all operators in the path-integral disappear and are replaced by classical c-numbers.
+Furthermore, since all paths must satisfy the condition $x(0) = x(\beta)$, the correlation functions can be expanded in terms of a Matsubara Fourier series. 
+The real-time correlation function is obtained then through analytic continuation of Matsubara sums. 
+Thus, path integrals present very convenient tools to obtain time-ordered correlation functions. } \bigbreak
+\end{remark}
+
+\paragraph{\textswab{Correlation Function in Terms of State Kets}}
+
+Frequently, the transition amplitudes between two state kets
+$\ket{\psi_i}$ and $\ket{\psi_f}$ is desired, which can be written as 
+
+\begin{equation}
+\begin{split}
+    \bra{\psi_f} \ket{\psi_i} &= \int dx_f dx_i \blanky \bra{\psi_f} \ket{x_f, t_f} \bra{x_f, t_f} \bra{x_i, t_i} \ket{x_i, t_i} \\
+    &= N \int dx_f dx_i \blanky \psi_f^{*}(x_f, t_f) \psi_i(x_i, t_i) \int \mathcal{D}[x] e^{\frac{i}{\hbar} S[x]}.
+\end{split}
+\end{equation}
+
+This definition can be extended to time-ordered correlation functions by writing 
+
+\begin{equation}
+\begin{split}
+    \xoverline{\bra{\psi_f} \ket{\psi_i}} &= \bra{\psi_f}  \mathcal{T} [{{\bf O}}(\tau_1) \cdots {{\bf O}}(\tau_n) ]\ket{\psi_i} \\
+    &= N \int dx_f dx_i \blanky \psi_f^{*}(x_f, t_f) \psi_i(x_i, t_i) \int \mathcal{D}[x] \blanky \mathcal{T} [{{\bf O}}(\tau_1) \cdots {{\bf O}}(\tau_n)] e^{\frac{i}{\hbar} S[x]}.
+\end{split}
+\end{equation}
+
+These correlation functions can be written by defining a generalized action, in the form 
+
+\begin{equation}
+    S[x, {\bf h}] = S[x] + \int_{t_i}^{t_f} dt \blanky \bm{\mathcal{O}}[x(t)] \cdot {\bf h}, \quad \begin{array}{cc}
+         \bm{\mathcal{O}}[x(t)] = [{\bf O}_1(x(\tau_1)) \cdots {\bf O}_1(x(\tau_n))], \\
+         {\bf h}^{T} = [h_1 \cdots h_n]. 
+    \end{array}
+\end{equation}
+
+From which, the correlation functions are given by 
+
+\begin{equation}
+    \bra{\psi_f}  \mathcal{T} [{{\bf O}}(\tau_1) \cdots {{\bf O}}(\tau_n) ]\ket{\psi_i} = N (-i\hbar)^n \int dx_f dx_i \blanky \psi_f^{*}(x_f, t_f) \psi_i(x_i,t_i) \blanky \int \mathcal{D}[x] \frac{\delta^{(n)} S[x, {\bf h}]}{\delta h_1(t_1) \cdots \delta h_n(t_n)} \bigg|_{{\bf h} = 0} e^{\frac{i}{\hbar} S[x]}.
+\end{equation}
+
+\blanky \bigbreak
+
+\subsubsection{Functional Integrals in Many-Body Theory}
+
+Upto now, the path integral has been formulated in terms of the single-particle eigenstates, e.g. position and momentum eigenkets.
+However, in many body systems, the functional integrals will be written in terms, not of position/momentum eigenstates, but in terms of coherent states, which themselves are parameterized in terms of complex scalar variables (or Grassmann variables in the case of fermions).
+A functional integral approach will, then, be written by replacing operators with their corresponding scalar variables. \medbreak
+
+\paragraph{\textswab{Coherent State Functional Integral}}
+
+The grand-canonical partition function can be written in terms of the many-body coherent states $\ket{{\bm{\psi}}}$ as follows,
+
+\begin{equation}
+    \mathcal{Z} = \sum_{n} \int d(\Bar{\bm{\psi}}, {\bm{\psi}}) e^{-\sum_{\alpha} \Bar{\psi}_{\alpha} \Bar{\psi}_{\alpha}} 
+    \bra{n} \ket{{\bm{\psi}}}
+    \bra{{\bm{\psi}}}
+        e^{- \beta ({\bf H} - \mu {\bf N})}
+    \ket{n}, \quad d(\Bar{\bm{\psi}}, {\bm{\psi}}) = \left \{
+    \begin{array}{cc}
+         \prod_{\alpha} \frac{d\bar{\psi_{\alpha}} d\psi_{\alpha}}{2\pi i}, \textnormal{ bosons}  \\
+         \prod_{\alpha} = d\bar{\psi_{\alpha}} d\psi_{\alpha}, \textnormal{ fermions}. 
+    \end{array}
+    \right. 
+\end{equation}
+
+where $\phi_a$ is a c-number for bosons and a Grassmann variable for fermions, and where $d(\Bar{\bm{\psi}}, {\bm{\psi}})$ is the integration measure.
+In order to eliminate the sum over $n$, the matrix elements must be recast into a resolution of the identity on the ${\ket{n}}$-eigenstates. 
+This means that the $\bra{n}\ket{\Bar{\bm{\psi}}}$ must be commuted with $\bra{{\bm{\psi}}}
+        e^{- \beta ({\bf H} - \mu {\bf N})}
+    \ket{n}$. 
+In the case of bosons, the commutation holds but in the case of fermions, the Grassmann variables anticommute, leading to 
+
+$$
+    \bra{n} \ket{{\bm{\psi}}}
+    \bra{{\bm{\psi}}} \ket{n} = \bra{-{\bm{\psi}}} \ket{n} \bra{n} \ket{{\bm{\psi}}},
+$$
+
+where $\bra{-{\bm{\psi}}} = \bra{\emptyset} \exp[-\sum_{\alpha} \bar\psi_{\alpha} {\bf c}_{\alpha}^\dagger]$.
+Given that both the Hamiltonian and number operators contain even numbers of creation and annihilation operators, and thus are not susceptible to sign changes, it follows that 
+
+\begin{equation}
+    \mathcal{Z} = \int d(\Bar{\bm{\psi}}, {\bm{\psi}}) \blanky e^{-\sum_{\alpha} \bar{\psi_{\alpha}} \psi_{\alpha}} \bra{\zeta \bm{\psi}} e^{-\beta({\bf H} - \mu {\bf N})} \ket{\bm{\psi}},
+\end{equation}
+
+with $\zeta = \pm 1$ for bosons and fermions, respectively. 
+The interval $\beta$ can be divided into $N$ segments, with $\delta \beta = \beta/N$ s.t.
+
+$$
+    \bra{\zeta \bm{\psi}} e^{-\beta({\bf H} - \mu {\bf N})} \ket{\bm{\psi}} = \bra{\zeta \bm{\psi}} \bigwedge_{j=1}^{N} e^{-\delta \beta ({\bf H} - \mu {\bf N})} \ket{\bm{\psi}}.
+$$
+
+Then, it follows that 
+
+\begin{equation}
+    \begin{split}
+        &\mathcal{Z} = \int_{{\substack{
+            \bar{\bm{\psi}}_N = \zeta \bar{\bm{\psi}}_0 \\
+            {\bm{\psi}}_N = \zeta {\bm{\psi}}_0 
+        }}} \mathcal{D}(\xoverline{\bm{\psi}}, {\bm{\psi}}) \blanky e^{- S[\bar{\bm{\psi}}, {\bm{\psi}}]}, \quad S[\xoverline{\bm{\psi}}, {\bm{\psi}}] = \int_{0}^{\beta} d\tau \blanky \bigg[
+            \xoverline{\bm{\psi}} \partial_{\tau} {\bm{\psi}} + {\bf H}(\xoverline{\bm{\psi}}, {\bm{\psi}}) - \mu {\bf N}(\xoverline{\bm{\psi}}, {\bm{\psi}})
+        \bigg].
+    \end{split}
+    \label{PathIntegral_Partition_function_gaussian_states}
+ \end{equation} \bigbreak
+
+\subsubsection{Hubbard-Stratonovich Transformation}
+
+Biquadratic, i.e. four-variable terms, in the Lagrangian cannot be readily integrated in the path integral. These terms can be decoupled via the Hubbard-Stratonovich transformation.
+The Hubbard-Stratonovich transformation (HST) is a general method for replacing a four-body interaction with two-body operators with external bosonic exchange fields, and is a generalization of the Gaussian Integral
+
+\begin{equation}
+    e^{{\bf O}^2} = \int_{\R} dx \blanky \exp \bigg[
+        -\pi x^2 - 2 \sqrt{\pi} x {\bf O}
+    \bigg],
+\end{equation}
+
+where ${\bf O}$ is an operator. Hence, if a biquadratic term appears in the partition function \cref{PathIntegral_Partition_function_gaussian_states} -e.g. a term similar to the left-hand side of the previous equation-. representing a two-body interaction, it can be replaced by the right-hand side, a Gaussian integral which only contains two-body operators. 
+However, these single particles now interact with an external bosonic field that must be integrated. \medbreak
+
+In order to apply the HST to the case of a bilinear interaction of the form, 
+
+$$
+    {\bf H}_I(\tau_i) = V_{12} {\bf O}_1(\tau_i) {\bf O}_2(\tau_i) = V_{12} \bigg[
+        \bigg(\frac{{\bf O}_1+{\bf O_2}}{2} \bigg)^2 - \bigg(\frac{{\bf O}_1-{\bf O_2}}{2} \bigg)^2 
+    \bigg], 
+$$
+
+valid for commuting ${\bf O}_1$ and ${\bf O}_2$. Then, if follows that 
+
+\begin{equation}
+\begin{split}
+    e^{{\bf H}_I(\tau_i)} = 
+         \int \mathcal{D}[\phi] \blanky \exp\bigg[
+        - \pi \int_{0}^{\beta} d\tau \blanky& \phi(\tau) V_{12}^{-1} \phi^{*}(\tau)
+    \bigg] \\
+    &\times \bm{\mathcal{T}}_{\tau} \exp \bigg[
+        -\int_{0}^{\beta} d\tau \blanky \sqrt{\pi} \bigg\{ 
+            {\bf O}_1(\tau) \phi^{*}(\tau) - {\bf O}_2(\tau) \phi(\tau)
+        \bigg\}
+    \bigg],
+\end{split}
+\end{equation}
+
+where $\phi(\tau)$ is a complex field. In most cases, ${\bf O}_2 = {\bf O}_1^\dagger$. \clearpage
+
+\begin{remark}
+\end{remark}
+Choosing the appropiated HST is always an educated guess, which may have profound phyiscal ramifications. As a matter of fact, one can consider pairings of ${\bf a}$-operators in three distinct and physically meaningful ways, which are discussed as follows 
+
+\begin{itemize}
+    \item For Hartree or direct Coulomb interactions, the interaction Hamiltonian reads 
+
+    \begin{equation}
+        {\bf H}_I = \frac{1}{2} \sum_{\substack{
+            {\bf k,k',q} \\
+            \sigma, \sigma' \in \ctwo
+        }} \frac{4\pi e^2}{q^2}
+        {\bf c}^\dagger_{{\bf k+q}, \sigma} 
+        {\bf c}^\dagger_{{\bf k'-q}, \sigma'} 
+        {\bf c}_{{\bf k}' \sigma'}
+        {\bf c}_{{\bf k} \sigma} = \frac{1}{2}
+        \sum_{\substack{
+            {\bf q} \\
+            \sigma, \sigma' \in \ctwo
+        }} \frac{4\pi e^2}{q^2} \rho_{\sigma}({\bf q}) \rho_{\sigma'}({\bf -q}) + c.
+    \end{equation}
+
+    By identifying ${\bf O}_1 = e \sum_{\sigma \in \ctwo} \rho_{\sigma}({\bf q})$ and ${\bf O}_2 = e \sum_{\sigma \in \ctwo} \rho_{\sigma}(-{\bf q})$, the HST yields 
+
+    \begin{equation}
+        - \frac{1}{8\pi} \sum_{{\bf q}} q^{2} \phi_{-{\bf q}} \phi_{{\bf q}} + i \sum_{{\bf q}} \bigg[
+            e\rho({\bf q})\phi_{-{\bf q}} - e\rho(-{\bf q}) \phi_{{\bf q}}
+        \bigg]
+    \end{equation}
+
+    The inverse Fourier transform of the first term\footnote{In effect, consider the definition of the inverse Fourier transform
+
+    \begin{equation*}
+        \begin{split}
+            - \nabla^2 \phi({\bf x}) = \rho({\bf x}), \quad \textnormal{let } \phi({\bf x}) = \int d{\bf k} \blanky \hat{\phi}({\bf k}) e^{i {\bf k} \cdot {\bf x}} \Rightarrow \nabla^2 \phi({\bf x}) &= \nabla^2 \int d{\bf k} \blanky \hat{\phi}({\bf k}) e^{i {\bf k} \cdot {\bf x}} \\
+            &= \int d{\bf k} \blanky \hat{\phi}({\bf k}) \nabla^2 e^{i {\bf k} \cdot {\bf x}} \\
+            &= \int d{\bf k} \blanky [-k^2 \hat{\phi}({\bf k})] e^{i {\bf k} \cdot {\bf x}}.
+        \end{split}
+    \end{equation*}
+
+    Then, it follows that $\mathcal{F}[\nabla^2 \phi({\bf x})] = -k^2 \phi({\bf x})$.   
+    } yields $\frac{1}{8\pi} (\nabla \phi(x))^2 = E^2/8\pi$, which is the bosonic electric field. Furthermore, for a Coulomb-electron gas, the action, given in \cref{PathIntegral_Partition_function_gaussian_states}, can be written as 
+
+    \begin{equation}
+        S = \int d{\bf x} d\tau \blanky \bigg[
+            \xoverline{\psi}({\bf x}) \bigg(
+                \partial_{\tau} - \frac{p^2}{2m} + e\phi({\bf x}) - \mu
+            \bigg) \psi({\bf x}) - \frac{1}{2} \nabla^2 \phi^2
+        \bigg]. %Batanouny tiene un error acá. 
+    \end{equation}
+
+    \item Consider, for instance, the contact interaction model, whose interaction Hamiltonian reads 
+
+    \begin{equation}
+        g \sum_{s,s'} \Psi^\dagger_{s}(x) \Psi^\dagger_{s'}(x) \Psi_{s'}(x) \Psi_{s}(x) = -{\bf s}(x) \cdot {\bf s}(x),
+    \end{equation}
+
+    where ${\bf s}(x) = \Psi^\dagger_{s}(x) \sigma_{ss'} \Psi_{s}(x)$. By introducing an exchange field ${\bf m}$, the HST yields 
+
+    \begin{equation}
+        \begin{split}
+            &\int \mathcal{D}[{\bf m}] \exp 
+            \bigg[
+                - \int_{0}^{\beta} d\tau d{\bf x} \blanky (m^2 - 2 {\bf m} \cdot {\bf s})
+            \bigg] = N \exp 
+            \bigg[
+                \int_{0}^{\beta} d\tau d{\bf x} \blanky s^2({\bf x})
+            \bigg] \\
+            & \textnormal{ with } S = \int_{0}^\beta d{\bf x} d{\tau} \blanky \bigg[
+                \sum_{s \in \ctwo} \xoverline{\psi}_s (\partial_\tau - {\bf H}_0 - \mu) \psi_s - 2g {\bf m} \cdot {\bf s} + gm^2
+            \bigg],
+        \end{split}
+    \end{equation}
+
+    wherein the ${\bf m}$-field is allowed to fluctuate and the integration is carried out over all possible paths of this field. \medbreak
+
+    \item Consider the pairing interaction Hamiltonian associated with superconductivity BCS theory, 
+
+    \begin{equation}
+        {\bf H}_I = -g \sum_{{\bf k, k'}} 
+        {\bf c}^\dagger_{{\bf k }\uparrow}
+        {\bf c}^\dagger_{{\bf -k} \downarrow}
+        {\bf c}_{-{\bf k'}\downarrow}
+        {\bf c}_{{\bf k'}\uparrow} = -g \bigg(
+            \sum_{{\bf k}} {\bf c}^\dagger_{{\bf k }\uparrow}
+        {\bf c}^\dagger_{{\bf -k} \downarrow}
+        \bigg) \bigg(
+            \sum_{{\bf k}} {\bf c}_{-{\bf k'}\downarrow}
+            {\bf c}_{{\bf k'}\uparrow}  
+        \bigg).
+    \end{equation}
+
+    Applying the HST with a complex pairing field $\Delta$ yields 
+
+    \begin{equation}
+        \frac{\xoverline{\Delta} \Delta}{g} + \xoverline{\Delta} \bigg(
+            \sum_{{\bf k}} {\bf c}^\dagger_{{\bf k }\uparrow}
+        {\bf c}^\dagger_{{\bf -k} \downarrow}
+        \bigg) + \Delta \bigg(
+            \sum_{{\bf k}} {\bf c}_{-{\bf k'}\downarrow}
+            {\bf c}_{{\bf k'}\uparrow}  
+        \bigg).
+    \end{equation}
+    
+\end{itemize}
+
+\subsubsection{Mean Field Theory and Saddle-Point Approximation}
+
+So far, the treatment of four-body interactions and its variants is exact, no approximations being made anywhere along the way. 
+The HST gives the exact expression
+
+\begin{equation}
+\begin{split}
+    \mathcal{Z} &= \int \mathcal{D}[\phi^{*}, \phi]  \mathcal{D}[\bar{\psi}, \psi] \blanky \exp 
+    \bigg[
+        - \pi \int_{0}^{\beta} d\tau \blanky 
+          \bm{\phi}(\tau) V^{-1} \bm{\phi}^{*}(\tau)
+    \bigg]
+    \exp \bigg[
+        - \int_{0}^{\beta} d\tau \blanky 
+        (
+            \xoverline{\bm{\psi}} \partial_{\tau} \bm{\psi} + {\bf H}_{\textnormal{eff}}
+        )
+    \bigg] \\
+    &= \int \mathcal{D}[\phi^{*}, \phi] 
+    \mathcal{D}[\xoverline{\psi}, \psi] \blanky e^{- S[\phi^{*}, \phi, \bar{\psi}, \psi]}, \\    
+    & \equiv \int \mathcal{D}[\phi^{*}, \phi] \blanky e^{- S_{\textnormal{eff}}[\phi^{*}, \phi]}, \\
+    & \textrm{ where } e^{- S_{\textnormal{eff}}[\phi^{*}, \phi]} \equiv \int \mathcal{D}[\xoverline{\psi}, \psi] \blanky e^{- S[\phi^{*}, \phi, \bar{\psi}, \psi]} \\
+    &  e^{- S[\phi^{*}, \phi, \bar{\psi}, \psi]} = \exp 
+    \bigg[
+        - \pi \int_{0}^{\beta} d\tau \blanky 
+          \bm{\phi}(\tau) V^{-1} \bm{\phi}^{*}(\tau)
+    \bigg]
+    \exp \bigg[
+        - \int_{0}^{\beta} d\tau \blanky 
+        (
+            \xoverline{\bm{\psi}} \partial_{\tau} \bm{\psi} + {\bf H}_{\textnormal{eff}}
+        )
+    \bigg] \\
+    & \qquad \quad \begin{array}{cc}
+         \textnormal{where $S_{\textnormal{eff}}$ is an effective} \\
+         \textnormal{ action given by }
+    \end{array}
+    S_{\textnormal{eff}}[\phi^{*}, \phi] = 
+        - \pi \int_{0}^{\beta} d\tau \blanky 
+            \bm{\phi}(\tau) V^{-1} \bm{\phi}^{*}(\tau)  
+        - \int_{0}^{\beta} d\tau \blanky 
+            \bigg\{
+                \xoverline{\bm{\psi}} (\partial_{\tau} - \mu )\bm{\psi} + {\bf H}_{\textnormal{eff}}
+            \bigg\}, \\
+    & \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad     
+    \textrm{ and } {\bf H}_{\textnormal{eff}} =  \xoverline{\bm{\psi}} {\bf H}_0 \bm{\psi} + \sum_{i} 
+                 (   
+                    \xoverline{\bf O}_i \phi_i + {\bf O}_i \phi^{*}_i
+                 ), \\ 
+\end{split}
+\label{PathIntegrals_Partition_Effective_Action_HST_transform}
+\end{equation}
+
+where the ${\bf O}_i$ operators are bilinear in the $(\xoverline{\psi}, \psi)$ fields. 
+In principle, one can carry out the functional integral in the previous equation, but the problem lies in that handling the functional integral over $\phi(x,t)$ is not easy nor known. 
+Note that the four-body interactions become encoded in the dynamics of the bosonic $\phi$-field, and hence the various approximations to treat it. 
+The simplest way to treat it is to subject the action to a stationary phase treatment, which amounts to perform a saddle-point approximation for the functional integral over $\phi$, by extremizing the action, as follows 
+
+\begin{equation}
+    \frac{\delta S_{\textnormal{eff}}[\phi^{*}, \phi]}{\delta \phi_i^{*}} = \frac{\delta \log \mathcal{Z}}{\delta \phi_i^{*}} = \frac{1}{\mathcal{Z}} \int \mathcal{D}[\xoverline{\psi}, \psi] \blanky (V_i^{-1} \phi_i + {\bf O}_i) e^{- S[\phi^{*}, \phi, \bar{\psi}, \psi]} = 0.
+\end{equation}
+
+This amounts to a classical approximation. It is clear that such a procedue will lead to a fixed configuration of the $\phi$-field, namely 
+
+$$
+    \phi^0_i = - V_i \langle {\bf O}_i \rangle,
+$$
+
+whereby the stationary auxiliary field is the average of the four-body interaction over the associated operator.
+This is just the mean-field approximation, where for a example a quartic term ${\bf c}_i^\dagger {\bf c}_j {\bf c}_k^\dagger {\bf c}_{\ell}$ becomes $\langle {\bf c}_i^\dagger {\bf c}_j \rangle {\bf c}_k^\dagger {\bf c}_{\ell} + {\bf c}_i^\dagger {\bf c}_j \langle {\bf c}_k^\dagger {\bf c}_{\ell} \rangle $. 
+
+\begin{remark}
+\end{remark}
+
+Moreover, it is worthwhile to remark, that both methods are equivalent, with the HST being systematic, as it might be easier to figure out how to go beyond the mean field as well contributions and combinations from different channels. 
+In the case of superconductivity, ${\bf c}_i^\dagger {\bf c}_j {\bf c}_k^\dagger {\bf c}_{\ell} \mapsto \langle {\bf c}_i^\dagger {\bf c}_j \rangle {\bf c}_k^\dagger {\bf c}_{\ell} + {\bf c}_i^\dagger {\bf c}_j \langle {\bf c}_k^\dagger {\bf c}_{\ell} \rangle $. 
+However, the HST are arbitrary, allowing for any arbitrary combination of any number of them, and the different emerging mean-field theories give different results. \medbreak
+
+\begin{remark}
+\end{remark}
+
+Spontaneous symmetry breaking occurs when the \textswab{order parameter} $\phi^0_i$ or $\langle {\bf O}_i \rangle$ assumes a non-zero value. 
+In both methods, order parameters can be then solved self-consistently to yield the decoupled Hamiltonian. \medbreak
+
+In the example of the Coulombic electron gas, this yields 
+
+\begin{equation}
+    \frac{\delta S_{\textnormal{eff}}[\phi^{*}, \phi]}{\delta \phi_i^{*}} = \frac{1}{\mathcal{Z}} \int \mathcal{D}[\xoverline{\psi}, \psi] \blanky 
+    \bigg(
+        e \rho({\bf x}) + \nabla^2 \phi({\bf x})
+    \bigg) e^{-S} = 0,
+\end{equation}
+
+and the saddle-point solution satisfies the Gauss' law
+
+\begin{equation}
+    - \nabla^2 \phi = \nabla \cdot {\bf E} = e\rho({\bf x}). 
+\end{equation}
+
+Spatial and temporal homogeneity translates to a uniform potential $\phi_0$, and charge neutrality sets it to zero. \bigbreak
+
+\paragraph{\textswab{Effective Action and Fluctuations}}
+
+One can, then, calculate systematic corrections to the lowest-order stationary-phase approximation $\phi^0$.
+If the integration on the $(\xoverline{\psi}, \psi)$ is carried, the properties of functional fluctuations on the bosonic field $\delta \phi = \phi - \phi^0$ can be studied. 
+From \cref{PathIntegral_Partition_function_gaussian_states} it follows that, 
+
+\begin{equation*}
+    \begin{split}
+        \mathcal{Z} =& \int
+        \mathcal{D}(\bm{\delta{\phi^{*}}}, \bm{\delta{\phi}}) \blanky e^{-S_{\textnormal{eff}} [\delta\phi^{*}, \delta\phi]}, \textrm{ where } e^{- S_{\textnormal{eff}}[\phi^{*}, \phi]} \equiv \int \mathcal{D}[\xoverline{\psi}, \psi] \blanky e^{- S[\phi^{*}, \phi, \bar{\psi}, \psi]} \\
+    \end{split}
+\end{equation*}
+\begin{equation*}
+    \begin{split}
+    \textnormal{ and where } 
+    S_{\textnormal{eff}}[\phi^{*}, \phi] &= S_{\textnormal{int}}[\phi^{*}, \phi] + S^{(1)}[\phi^{*}, \phi] \\
+    &= 
+       - \int_{0}^{\beta} d\tau \blanky 
+            \bm{\phi}(\tau) V^{-1} \bm{\phi}^{*}(\tau)  
+       - \int_{0}^{\beta} d\tau \blanky 
+            \bigg\{
+                \xoverline{\bm{\psi}} (\partial_{\tau} - \mu )\bm{\psi} + {\bf H}^{\textnormal{eff}}
+            \bigg\}, \\
+    \end{split}
+\end{equation*}
+
+The second term in the last line of the previous equation is not known. 
+However, the "classical" partition function associated with it, is. In effect, 
+
+\begin{equation}
+\begin{split}
+    \mathcal{Z}^{(1)} = & \int \mathcal{D}[\bar{\psi}, \psi] e^{-S^(1)[\phi^{*}, \phi]} \\
+    & = \int \mathcal{D}[\bar{\psi}, \psi] \blanky \exp \bigg[
+        - \int_{0}^{\beta} d\tau \blanky 
+            \bigg\{
+                \xoverline{\bm{\psi}} (\partial_{\tau} - \mu )\bm{\psi} + {\bf H}^{\textnormal{eff}}
+            \bigg\}
+    \bigg] = \det^{\zeta} \bigg[ 
+        \partial_{\tau} - \mu + {\bf H}^{\textnormal{eff}}
+    \bigg] \\
+    & \Rightarrow S^{(1)}[\bar{\psi}, \psi] = \log \mathcal{Z}^{(1)} = \log \det^{\zeta} \bigg[ 
+        \partial_{\tau} - \mu + {\bf H}^{\textnormal{eff}}
+    \bigg] = \Tr \log \bigg[ 
+        \partial_{\tau} - \mu + {\bf H}^{\textnormal{eff}}
+    \bigg]
+\end{split}
+\end{equation}
+
+Using this result in the first equation of this section, yields an exact and tractable expression for the effective action, i.e.
+
+\begin{equation}
+    \begin{split}
+        S_{\textnormal{eff}}[\phi^{*}, \phi] &= S_{\textnormal{int}}[\phi^{*}, \phi] + S^{(1)}[\phi^{*}, \phi] \\
+        &= 
+        - \int_{0}^{\beta} d\tau \blanky 
+            \bm{\phi}(\tau) V^{-1} \bm{\phi}^{*}(\tau)  
+        - \int_{0}^{\beta} d\tau \blanky 
+            \bigg\{
+                \xoverline{\bm{\psi}} (\partial_{\tau} - \mu )\bm{\psi} + {\bf H}^{\textnormal{eff}}
+            \bigg\}, \\
+        &= - \int_{0}^{\beta} d\tau \blanky 
+            \bm{\phi}(\tau) V^{-1} \bm{\phi}^{*}(\tau) 
+            - \zeta \Tr \log \bigg[ 
+                    \partial_{\tau} - \mu + {\bf H}^{\textnormal{eff}}
+                \bigg] \\
+        &= - \int_{0}^{\beta} d\tau \blanky 
+            \bm{\phi}(\tau) V^{-1} \bm{\phi}^{*}(\tau) 
+            - \zeta \Tr \log \bigg[ 
+                    {\partial_{\tau} + {\bf H}_0- \mu} + \sum_{i} (   
+                    \xoverline{\bf O}_i \phi_i + {\bf O}_i \phi^{*}_i)
+                \bigg] \\
+        &\textnormal{But notice that } {\partial_{\tau} + {\bf H}_0- \mu} = (\mathfrak{G}^{(0)})^{-1}, \textnormal{the non-interacting Green function s.t. } \\
+        & \qquad \quad
+        \exp [\Tr \log -(\mathfrak{G}^{(0)})^{-1}] = \exp[- \Tr \log -(\mathfrak{G}^{(0)})] = \exp[ \log \det (\mathfrak{G}^{(0)})] = \mathcal{Z}_0, \textnormal{ then } \\
+        &= - \int_{0}^{\beta} d\tau \blanky 
+            \bm{\phi}(\tau) V^{-1} \bm{\phi}^{*}(\tau) 
+            - \zeta \Tr \log \bigg[ 
+                    -(\mathfrak{G}^{(0)})^{-1} + \sum_{i} (   
+                    \xoverline{\bf O}_i \phi_i + {\bf O}_i \phi^{*}_i)
+                \bigg] \\
+        &= - \int_{0}^{\beta} d\tau \blanky 
+            \bm{\phi}(\tau) V^{-1} \bm{\phi}^{*}(\tau) 
+            - \zeta \Tr \log \bigg \{
+                -(\mathfrak{G}^{(0)})^{-1} \times [1- 
+                        \mathfrak{G}^{(0)} \sum_{i} (    
+                    \xoverline{\bf O}_i \phi_i + {\bf O}_i \phi^{*}_i) ]
+                \bigg \}\\
+        &= - \int_{0}^{\beta} d\tau \blanky 
+            \bm{\phi}(\tau) V^{-1} \bm{\phi}^{*}(\tau) 
+            - \zeta \Tr \log \bigg [               - 
+                (\mathfrak{G}^{(0)})^{-1} \bigg] 
+            - \zeta \Tr \log \bigg \{[1- 
+                        \mathfrak{G}^{(0)} \sum_{i} (  
+                    \xoverline{\bf O}_i \phi_i + {\bf O}_i \phi^{*}_i) ]
+                \bigg \}
+    \end{split}
+\end{equation}
+\begin{equation*}
+    \begin{split}
+        &= - \int_{0}^{\beta} d\tau \blanky 
+            \bm{\phi}(\tau) V^{-1} \bm{\phi}^{*}(\tau) 
+            - \zeta \Tr \log \bigg [               - 
+                (\mathfrak{G}^{(0)})^{-1} \bigg] 
+            - \zeta \sum_{n=1}^{\infty} \frac{1}{n!} \Tr \bigg[
+                \mathfrak{G}^{(0)} \sum_{i} (   
+                    \xoverline{\bf O}_i \phi_i + {\bf O}_i \phi^{*}_i)
+            \bigg]^n \\
+        &\Rightarrow \mathcal{Z} = \mathcal{Z}_0 \int
+        \mathcal{D}(\bm{\delta{\phi^{*}}}, \bm{\delta{\phi}}) \exp \bigg[
+            - \int_{0}^{\beta} d\tau \blanky 
+            \bm{\phi}(\tau) V^{-1} \bm{\phi}^{*}(\tau) 
+           - \zeta \sum_{n=1}^{\infty} \frac{1}{n!} \Tr \bigg[
+                \mathfrak{G}^{(0)} \sum_{i} (   
+                    \xoverline{\bf O}_i \phi_i + {\bf O}_i \phi^{*}_i)
+            \bigg]^n
+        \bigg]
+    \end{split}
+\end{equation*}
+
+where $\mathcal{Z}_0$ is a normalization factor stemming from the non-interacting theory. 
+
+\begin{tcolorbox}[colback = Bittersweet, title = Example]
+
+For example, consider the Coulomb gas, which is mediated by a scalar photon field $\phi$, which is real and periodic $\phi(\tau + \beta) = \phi(\tau)$. A plane-wave basis expansion and Matsubara-Fourier series expansion in the fermionic and bosonic Matsubara frequencies $\Omega_n, \omega_m$, respectively, yields
+
+\begin{equation}
+    \begin{split}
+        S_{\textnormal{eff}}[ \phi] &= \frac{1}{2} \sum_{{\bf q}} \bigg(
+            \frac{q^2}{2\pi} - e^2 \Pi_0({\bf q}) 
+        \bigg) |\phi({\bf q})|^2 + \mathcal{O}(e^4) \\
+        &= \frac{1}{2} \sum_{{\bf q}} \frac{q^2}{2\pi} \bigg(
+            1 - \frac{4\pi e^2}{q^2} \Pi_0({\bf q}) 
+        \bigg) |\phi({\bf q})|^2 = \sum_q \varepsilon(q) \frac{q^2}{4\pi},
+    \end{split}
+\end{equation}
+
+which describes the screening of Coulomb field fluctuations by the electron gas. 
+
+\end{tcolorbox}
+
+
+\clearpage
+
+\subsection{.}
