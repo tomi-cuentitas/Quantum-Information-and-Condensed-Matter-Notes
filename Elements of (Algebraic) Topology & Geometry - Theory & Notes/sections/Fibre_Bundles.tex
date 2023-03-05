@@ -60,7 +60,7 @@ This definition must be contrasted with the notion of \textswab{natural projecti
 
 \begin{remark}
 Since both of these mappings are projections, information is lost. In particular in the case of the bundle projection, information about the vector itself is lost. 
-Furthermore, note that $\pi^{-1}(p) = T_p M$. 
+Furthermore, note that $\pi^{-1}(p) = T_p M$. Moreover, the projection $\pi$ can be globally defined on $M$, since the definition $\pi(u) = p$ does not depend on a special coordinate chosen, allowing for $\pi: TM \rightarrow M$ to be defined globally with no reference to local charts. 
 
 \end{remark}
 
@@ -78,6 +78,398 @@ In effect, consider a topology $\tau = \{U_i\}^{i}$ of charts on $M$, s.t. $U_i 
     \frac{\partial y^\mu}{\partial x^\nu}(p) \in \generallineargroup(m, \R)
 \end{equation*}
 
-For $\{x^\mu\}$ and $\{\bf y^\mu\}$ to be good coordinate systems, the matrix $G^{\mu}_{\blanky \nu} \equiv {\partial y^\mu}/{\partial x^\nu}(p)$ must be non-singular. 
+For $\{x^\mu\}$ and $\{y^\mu\}$ to be good coordinate systems, the matrix $G^{\mu}_{\blanky \nu} \equiv {\partial y^\mu}/{\partial x^\nu}(p)$ must be non-singular. 
 Hence, the fibre coordinates are simply related via a linear transformation, an element of the general linear group. The group $\generallineargroup(m, \R)$ is called the \textswab{structure group} of $TM$. 
-This group then describes precisely how fibres of a tangent bundle are interwoven together to form a tangent bundle, which consequently may have a topologically complicated stucture. 
+This group then describes precisely how fibres of a tangent bundle are interwoven together to form a tangent bundle, which consequently may have a topologically complicated structure. \medbreak
+
+Furthermore, let $X \in \chi(M)$ be a vector field on $M$, which assigns a vector ${\bf X}|_p \in T_p M$ at each point $p \in M$. 
+In other words, $X$ is a smooth map $X : M \rightarrow TM$. This map is well defined since a point $p$ must be mapped to a point $u \in TM$ s.t. $\pi(u) = p$. Hence, one naturally arrives to the following definition
+
+\begin{df}
+    Let $M$ be a manifold with fibre bundle $TM$, a \textswab{section} or \textswab{cross section} of $TM$ is a smooth map $s: M \rightarrow TM$ s.t. $\pi \circ s = \idop_M$. \medbreak
+
+    If a section $s_i: U_i \rightarrow TU_i$ is only defined on a chart $U_i$, it is called a \textswab{local section}.
+\end{df}
+
+\clearpage
+
+\subsubsection{\textgoth{Fibre Bundles}}
+
+\paragraph{Definitions and Immediate Results}
+
+The tangent bundle of the previous section is an example of a more general framework, a fibre bundle, which is given in terms of several objects
+
+\begin{df}
+    A \textswab{differentiable fibre bundle} $(E, \pi, M, F, g)$ consists of the following elements 
+
+    \begin{itemize}
+        \item \begin{df}
+            A differentiable manifold $E$ called the \textswab{total space}. \label{Def_Fibre_Bundle_total_space}
+        \end{df}
+        \item 
+        \begin{df}
+           A differentiable manifold $M$ called the \textswab{base space}. \label{Def_Fibre_Bundle_base_space}
+        \end{df}
+        
+        \item 
+        \begin{df} 
+            A differentiable manifold $F$ called the \textswab{fibre}, or \textswab{typical fibre}. \label{Def_Fibre_Bundle_fibre_at_p}
+        \end{df}
+        
+        \item \begin{df}
+            A surjection $\pi: E \rightarrow M$ called the \textswab{projection}. Its inverse image $\pi^{-1}(p) = F_p \simeq F$ is called the fibre at $p$. \label{Def_Fibre_Bundle_surjection_at_p}
+        \end{df}
+        \item \begin{df}
+            A Lie group $G$ called the \textswab{structure group}, which acts on $F$ on the left. 
+            \label{Def_Fibre_Bundle_Lie_Group}
+        \end{df}
+        \item \begin{df}
+
+            A set of open coverings $\{U_i\}^i$ on $M$ with a diffeomorphism $\phi_i: U_i \times F \rightarrow \pi^{-1}(U_i)$ s.t. 
+
+            $$
+                \pi \circ \phi_i(p,f) = p.
+            $$
+
+            The map $\phi$ is called the \textswab{local trivialization}, since $\phi^{-1}_i$ maps $\pi^{-1}(U_i)$ onto the direct product $U_i \times F$. \label{Def_Fibre_Bundle_local_trivialization}
+        \end{df}
+            
+        \item \begin{df}
+            If the map $\phi_i(p, f)$ is relabelled as $\phi_{i,p}(f)$, then the map $\phi_{i,p}: F \rightarrow F_p$ is a diffeomorphism. On $U_i \cap U_j \neq \emptyset$, an additional requirement is made, namely that 
+
+            $$
+                t_{ij}(p) \equiv \phi_{i,p}^{-1} \circ  \phi_{j,p}: F \rightarrow F
+            $$
+
+            is an element of $G$. Then, the maps $\phi_i, \phi_j$ are related by a smooth map $t_{ij}: U_i \cap U_j \rightarrow G$ as 
+
+            $$
+              \phi_j(p,f) = \phi_i(p, t_{ij}(p) f).
+            $$
+
+            These maps $t_{ij}$ are called the \textswab{transition functions}.
+            \label{Def_Fibre_Bundle_transition_functions}
+        \end{df}
+    \end{itemize}
+\end{df}
+
+Several remarks must be made about the preceding definitions. \medbreak
+
+\begin{remark}
+\end{remark}
+\begin{itemize}
+        \item Let $U_i$ be a chart on the base space $M$, i.e. an open covering. Remember from \cref{Def_Fibre_Bundle_fibre_at_p} and \cref{Def_Fibre_Bundle_surjection_at_p}, that this means that 
+
+        $$
+            \forall p \in M, \textnormal{ and hence } \forall p \in U_i, \blanky \exists \pi: E \rightarrow M \textnormal{ s.t. } \pi^{-1}(p) = F_p \simeq F.
+        $$
+
+        More explicitly, for all points $p$ in this open covering, there is a globally-defined projection $\pi$, which maps (subsets $U_i$ of) the total space $E$ to the base space $M$ s.t. its preimage $\pi^{-1}(U_i)$ yields a fibre $F_p$ at point $p$, which is diffeomorphic to the fibre space $F$. 
+        In particular, these charts -according to \cref{Def_Fibre_Bundle_local_trivialization}- naturally come   equipped with a diffeomorphism $\phi$, defined as follows
+        
+        \begin{equation*}
+            \begin{split}
+            &\begin{array}{cc}
+                 \phi_i: U_i \times F \rightarrow \pi^{-1}(U_i), \\ 
+                \phi_i^{-1}: \pi^{-1}(U_i) \rightarrow U_i \times F 
+             \end{array} \textnormal{ Then, }\forall p \in U_i \subset M, \exists \phi_i: \pi^{-1}(U_i) \rightarrow U_i \times F, \\
+            &\textnormal{ In other words, } \forall p \in U_i, \blanky \pi^{-1}(p) = F_p \simeq F \rightarrow  \phi_i: F \rightarrow U_i \times F.
+            \end{split}
+        \end{equation*}
+         
+        More explicitly, since the projection is map from the fibre space $F_p \simeq F$ to the base space $M$ yielding the point $p$, its preimage is a mapping from the base space to the fibre at the point $p$.
+        Then, the diffeomorphism $\phi_i: U_i \times F \rightarrow \pi^{-1}(U_i)$ can be thought of as a mapping from the direct product of the fibre space with the open set, $U_i \times F$, to the fibre itself. In tecnical terms, $\pi^{-1}(U_i)$ is 
+        a \textswab{direct-product diffeomorphism} to $U_i \times F$ via $\phi$, i.e.
+
+        $$
+            \pi^{-1}(U_i) \overset{\phi_i}{\simeq}_{d} U_i \times F, \textnormal{ s.t. } \phi_i^{-1}: \pi^{-1}(U_i) \rightarrow U_i \times F.
+        $$
+        \medbreak
+
+        Then the following diagram commutes
+        \[
+        \begin{tikzcd}
+          \pi^{-1}(U_i) \arrow[d, "\pi"'] \arrow[r, "\phi_i^{-1}"] & U_i \times F \arrow[ld, "proj_1"] \\
+                    U_i                                                 &            
+        \end{tikzcd}
+        \]
+
+        If $U_i \cap U_j \neq \emptyset$, there are two maps $\phi_i$ and $\phi_j$ on $U_i \cap U_j$, and consider a point $u$ s.t. $\pi(u) = p \in U_i \cap U_j$. 
+        Then, there are two possible elements in $F$ to which $u$ can be assigned, one via the mapping $\phi_i^{-1}$ and the other one via the mapping $\phi_j^{-1}$, as follows 
+
+        \begin{equation}
+        \begin{split}
+            &\phi^{-1}_i(u) = (p, f_i), \quad \phi^{-1}_j (u) = (p, f_j) \\
+            & \implies \exists t_{ij}: U_i \cap U_j \rightarrow G, \textnormal{ which relates $f_i$ and $f_j$ as }
+            \begin{array}{cc}
+                f_i = t_{ij}(p) f_j \\
+                \Updownarrow \\
+                \phi_j(p, f) = \phi_i \bigg(p, t_{ij}(p) f\bigg)
+            \end{array}
+        \end{split}
+        \end{equation}
+
+    Some requirements are imposed on these transition functions, namely 
+
+    \begin{equation}
+        \begin{split}
+            &t_{ii}(p) = \idop_{M}, \quad p \in U_i \\
+            &t_{ij}(p) = t_{ji}(p)^{-1}, \quad p \in U_i \cap U_j \\
+            &t_{ij}(p) \cdot t_{jk}(p) = t_{ik}(p), \quad p \in U_i \cap U_j \cap U_k.
+        \end{split}
+    \end{equation}
+
+    Unless these conditions are met, local pieces of a fibre bundle cannot be glued together consistently. If all transition functions are identity maps $\idop_M$, the fibre bundle is the \textswab{trivial fibre bundle}, which is simply a direct product $M \times F$. 
+ 
+\end{itemize} \bigbreak 
+
+\begin{remark}
+\end{remark}
+
+\begin{itemize}
+    \item Given a fibre bundle $E \overset{\pi}{\rightarrow} M$, the possible set of transition functions is not unique. 
+        In effect, consider a covering $\{U_i\}^i$ of $M$ with $\{\phi\}^i$ and $\{\tilde{\phi}_i\}^i$ be two sets of local trivializations giving rise to the same fibre bundle, with transition functions 
+
+        \begin{equation}
+            t_{ij}(p) = \phi_{i,p}^{-1} \circ \phi_{j,p}, \quad \tilde{t}_{ij}(p) = \tilde{\phi}_{i,p}^{-1} \circ \tilde{\phi}_{j,p}.
+        \end{equation}
+
+        Let $g_i(p) : F \rightarrow F$ at each point $p \in M$ defined by $g_i(p) = \phi^{-1}_{i,p} \circ \tilde{\phi}_{i,p}$, which must be a homeomorphism belonging to $G$. 
+        This requirement must be fulfilled if $\{\phi\}^i$ and $\{\tilde{\phi}_i\}^i$ describe the same fibre bundle.
+
+        \begin{equation}
+        \begin{split}
+            \tilde{t}_{ij}(p) &= \tilde{\phi}_{i,p}^{-1} \circ \tilde{\phi}_{j,p} \\
+            &= \tilde{\phi}_{i,p}^{-1} \circ {\phi}_{i,p} \circ {\phi}^{-1}_{i,p} \circ {\phi}_{i,p} \circ {\phi}^{-1}_{i,p}  \circ \tilde{\phi}_{j,p} \\
+            &= g_i(p)^{-1} \circ t_{ij}(p) \circ g_{j}(p). 
+        \end{split}
+        \end{equation}
+
+    In physics, the $t_{ij}$ transformations are the gauge transformations required to paste local charts together, while the $g_i$ correspond       
+    to the gauge degrees of freedom within a chart $U_i$. The most general form of the transition functions is 
+
+    \begin{equation}
+        t_{ij}(p) = g_i(p)^{-1} \circ g_j(p).
+    \end{equation}
+    
+\end{itemize}
+
+\begin{remark}
+\end{remark}
+\begin{itemize}
+    \item Let $\fibrebundle{E}{\pi}{M}$ be a fibre bundle. A \textswab{section} o a \textswab{cross section} $s : M \rightarrow E$ is a smooth map which satisfies $\pi \circ s = \idop_M$. It follows that $s(p) = s|_p$ is an element of the fibre at $p$, $F_p = \pi^{-1}(p)$.
+    The set of sections on $M$ is denoted by $\Gamma(M,F)$. If $U \subset M$. the \textswab{local section} is only defined on $U$. For example, $\Gamma(M, TM)$ is identified with the set of vector fields $\chi(M)$.
+    Note, however, that not all fibre bundles admit global sections.
+\end{itemize} \bigbreak
+
+\paragraph{Example}
+
+Consider the following example of a fibre bundle: \medbreak
+
+Let $\fibrebundle{E}{\pi}{S^1}$ be a fibre bundle with a typical fibre $F = \R_{[-1, 1]}$. Moreover, let $U_1 = \R_{(0, 2\pi)}$ and $U_2 = \R_{(-\pi, \pi)}$ be two 
+open coverings of $S^1$. 
+Let $A = \R_{(0, \pi)}$ and let $B = \R_{(\pi, 2\pi)}$ be the intersection $U-1 \cap U_2$. 
+The local trivializations $(\phi_1, \phi_2)$ are given by 
+
+\[
+    \phi_1^{-1}(u) = (\theta, t), \quad \phi_2^{-1}(u) = (\theta, t),
+\]
+
+for $\theta \in A$, $t \in F$. The transition function $t_{12}(\theta), \theta \in A$, is the identity map $t_{12}(\theta): t \mapsto t$. 
+On B, however, there are two choices
+
+\begin{itemize}
+    \item for instance, \[
+        \phi_1^{-1}(u) = (\theta, t), \quad \phi_2^{-1}(u) = (\theta, t),
+        \]
+    \item or \[
+        \phi_1^{-1}(u) = (\theta, t), \quad \phi_2^{-1}(u) = (\theta, -t),
+    \]
+\end{itemize}
+
+The first case has a trivial transition map, i.e. it is the identity map. Hence, the two pieces of the local bundles are glued together to form a cylinder.
+In the second case, the transition map is $t_{12}(\theta): t \mapsto -t, \theta \in B$, giving rise to the M\"obius strip. \medbreak
+
+The cylinder has a trivial structure group $G = \{e\}$, where $e$ is the identity map on $F$, while the M\"obius strip has $G = \{e,g\} \simeq \mathds{Z}_2$, where $g: t \mapsto -t$. Technically, however, $G$ is not a Lie group. Then, the cylinder corresponds to the trivial bundle $S^1 \times F$, while the M\"obius strip is not. \medbreak
+
+\paragraph{Reconstruction of fibre bundles}
+
+A question naturally arises: what is the minimal information required to construct a fibre bundle? 
+
+\begin{theo}
+
+    Consider a fibre bundle in which the following elements are known:
+    \begin{itemize}
+        \item a base space $M$, 
+        \item a topology $\{U_i\}$ of open coverings on $M$, 
+        \item the transition functions $t_{ij}(p)$,
+        \item the typical fibre $F$, 
+        \item the structure group $G$.
+    \end{itemize}
+    Then, a fibre bundle $(E, \pi, M, F, G)$ can be reconstructed.
+    
+\end{theo}
+
+\begin{proof}
+
+    In other words, one needs only to define a projection $\pi$, a total space $E$ and the local trivializations $\{\phi_i\}^i$, for the fibre bundle to be uniquely characterized.
+    In effect, consider 
+
+    $$
+        X \equiv \cup_{i} U_i \times F.
+    $$
+
+    Furthermore, let $\sim$ be a globally-defined equivalence relation defined on $\{U_i \times F\}^{i}$, defined as follows 
+
+    \[
+        \begin{array}{cc}
+             (p, f) \in U_i \times F, \\
+             (q, f') \in U_j \times F 
+        \end{array}, \quad (p,f) \sim (q,f') \textrm{ and } p = q \land f' = t_{ij}(p) f. 
+    \]
+
+    Sets of equivalence classes can then be defined, 
+
+    \[
+        \begin{array}{cc}
+             \textnormal{Let $p \in M$ be a point,} \\
+             \textnormal{Let $f \in F$ be an element} \\
+             \textnormal{of the fibre space}
+        \end{array} [(p, f)] = \{
+                                (q,f') \in U_i \times F \textnormal{ s.t. } (p,f) \sim (q, f')
+                                    \} 
+                             = \left\{
+                                (q,f') \in U_i \times F \textnormal{ s.t. } \begin{array}{cc}
+                                     p = q  \\
+                                     f' = t_{ij}(p) f
+                                \end{array}
+                                \right\}
+    \]
+    \[
+        \Rightarrow \frac{X}{\sim} = \{ [(p,f)] \textnormal{ s.t. } (p,f) \in U_i \times F\}
+    \]
+    
+    i.e. the set of equivalence classes on $U_i \times F$.
+    A fibre bundle $E$ is then defined as the quotient space 
+    
+    $$
+        E = \frac{X}{\sim}.
+    $$
+
+    Two mappings of vital importance then readily arise, 
+
+    \begin{equation*}
+        \begin{split}
+            & \quad \textnormal{A projection } \qquad \textnormal{ and } \qquad  \textnormal{the local trivializations } \\
+            &   \begin{array}{c}
+                     \pi: U_i \times F \rightarrow U_i \\
+                     \qquad \left[(p, f)\right] \mapsto p,
+                \end{array} \qquad \qquad
+                \begin{array}{cc}
+                     \phi_i : U_i \times F \rightarrow \pi^{-1}(U_i)  \\
+                     \qquad (p,f) \mapsto \left[(p,f)\right],
+                \end{array} %\textnormal{ wherein, note that $\pi^{-1}(U_i) \simeq U_i \times F$ via $\phi_i$. } 
+                \\
+            &\qquad \qquad \qquad \qquad
+            \textnormal{with their inverse maps } \\
+            &   \begin{array}{c}
+                     \pi^{-1}: U_i \rightarrow U_i \times F \\
+                     \qquad p \mapsto \left[(p, f)\right],
+                \end{array} \qquad \qquad \qquad 
+                \begin{array}{cc}
+                     \phi_i^{-1} : \pi^{-1}(U_i) \rightarrow U_i \times F \\
+                     \qquad \left[(p,f)\right] \mapsto (p,f),
+                \end{array} \\
+            \\
+            & \textnormal{ with } (p,f) \in U_i \times F, \textnormal{ and } \left[(p,f)\right] \in E. \textnormal{ One notes that } U_i \times F = \pi^{-1}(U_i). \\
+            &\textnormal{Moreover, note that } \begin{array}{cc}
+                 \pi \circ \phi_i: U_i \times F \rightarrow U_i
+                 \\
+                 (p,f) \mapsto \left[(p,f)\right] \mapsto p
+            \end{array} \textnormal{is the $proj_1: U_i \times F \rightarrow U_i$ map, see \cref{Def_Fibre_Bundle_local_trivialization}.} 
+        \end{split} 
+    \end{equation*}
+
+    Expanding briefly on the last remark, remember that the inverse map $\phi_i^{-1}$ maps $\pi^{-1}(U_i)$ to the direct product $U_i \times F$. Hence, the following diagram commutes,
+
+    \[
+    \begin{tikzcd}
+          \pi^{-1}(U_i) \arrow[d, "\pi"'] \arrow[r, "\phi_i^{-1}"] & U_i \times F \arrow[ld, "proj_1"] \\
+                    U_i                                                 &            
+        \end{tikzcd} \Leftrightarrow
+    \begin{tikzcd}
+	{\pi^{-1}(U_i)} & {U_i \times F} \\
+	{U_i}
+	\arrow["\phi"', from=1-2, to=1-1]
+	\arrow["\pi"', from=1-1, to=2-1]
+	\arrow["{proj_1}", from=1-2, to=2-1]
+    \end{tikzcd}
+    \]
+
+    making $\pi \circ \phi$ the cartesian projection mapping. \medbreak
+    
+    Moreover, one can define a global mapping, similar in nature to the local trivializations $\phi_i$ but instead defined on the entirety of $X$ and not only on $U_i \times F$,
+    
+    $$
+        \mathfrak{q} : X \rightarrow E \simeq \frac{X}{\sim}, \quad \textnormal{the \textswab{canonical map}},
+    $$ 
+    $$
+        \mathfrak{q}^{-1}: E \simeq \frac{X}{\sim} \rightarrow X
+    $$
+    
+    
+    s.t. it sends points to their equivalence classes.
+    It is a surjective map, i.e. 
+    
+    \[
+        (p,f), (q,f') \in X, \quad \mathfrak{q} (p,f) \sim \mathfrak{q} (q,f)  \textnormal{ if and only if } \mathfrak{q}(p,f) = \mathfrak{q}(q,f'),
+    \]
+
+    and consequently $\mathfrack{q}((p,f)) = \mathfrak{q}^{-1}(\mathfrak{q}(p,f))$ for all $(p,f) \in U_i \times F$. \medbreak
+
+    In particular, this shows that the set of equivalence classes $\frac{X}{\sim}$ is exactly the st of fibers of the local trivialization maps $\phi_i$, or its globally defined counterpart: the canonical map. 
+    Moreover, if $X$ is a topological space, then $\frac{X}{\sim}$ is imbued with the quotient topology induced by $q$, hence making $\mathfrak{q}:X \rightarrow \frac{X}{\sim}$ a quotient map.
+    Upto a homeomorphism, this construction is representative of all quotient spaces. \medbreak
+    
+    This proves that the given data reconstructs a fibre bundle $\fibrebundle{E}{\pi}{M}$.
+\end{proof}
+
+This procedure can be employed to construct new fibre bundles from and old one. 
+In effect, $(E, \pi, M, F, G)$ be a fibre bundle, s.t. associated to it there is a new bundle with the same base space $M$, transition fucntions $t_{ij}(p)$, structure group $G$ but different typical fibre $F'$ on which $G$ acts. \medbreak
+
+\paragraph{Bundle Maps}
+
+Let $\fibrebundle{E}{\pi}{M}, \fibrebundle{E'}{\pi'}{M'}$ be two fibre bundles. 
+A smooth map $\map{\bar{f}}{E'}{E}$ is called a \textswab{bundle map} if it maps each fibre $F_p'$ of $E'$ onto exactly the same fibre $F_q$ of $E$.
+If this holds, then $\bar{f}$ naturally induces a smooth map $\map{f}{M'}{M}$ s.t. $f(p) = q$. 
+Hence, the following diagrams commute
+
+\[
+\begin{tikzcd}
+	{E'} & E \\
+	{M'} & M
+	\arrow["{\pi'}"', from=1-1, to=2-1]
+	\arrow["f"', from=2-1, to=2-2]
+	\arrow["\pi", from=1-2, to=2-2]
+	\arrow["{\bar{f}}", from=1-1, to=1-2]
+\end{tikzcd} \Longleftrightarrow 
+\begin{tikzcd}
+    {u} & {\bar{f}(u)} \\
+    {p} & {q} 
+    \arrow["{\pi'}"', from=1-1, to=2-1]
+	\arrow["f"', from=2-1, to=2-2]
+	\arrow["\pi", from=1-2, to=2-2]
+	\arrow["{\bar{f}}", from=1-1, to=1-2]
+\end{tikzcd}
+\]
+
+\begin{remark}
+\end{remark}
+
+Note, however, that not all smooth maps $\map{\bar{f}}{E'}{E}$ are bundle maps, since the definition of bundle maps requires it to be \textswab{fibre-preserving}. 
+More explicitly, let $\map{\bar{f}}{E'}{E}$ be a mapping from $E'$ to $E$, s.t. it induces a map $\map{{f}}{M'}{M}$ from $M'$ to $M$, then $\Bar{f}$ is a bundle map if and only if 
+$\pi \circ \bar{f} = \pi' \circ f$. 
+In other words, a general smooth map $\bar{f}$ could map $u,v \in F'_p$ of $E'$ to different fibres $\bar{f}(u), \bar{f}(v)$ of $E$ so that their projections differ $\pi (\bar{f}(u)) \neq \pi(\bar{f}(v))$. \medbreak
+
+\paragraph{}
+
