@@ -1,5 +1,3 @@
-\subsection{Motivation for the derivation of a Quantum Field Theoretic Approach to Condensed Matter Theory} \medbreak
-
 Consider a quantum many-body system governed by a time-dependent Hamiltonian ${\bf H}(t)$, s.t. in the distant past the system was in a state specified by a many-body density matrix $\rho(-\infty)$, whose identity is non-important. 
 It may be thought of as the equilibrium density matrix associated with the Hamiltonian ${\bf H}(-\infty)$. Without any loss in generality, one may consider that ${\bf H}(-\infty)$ describes a free (Gaussian) theory, i.e. a theory of non-interacting particles. 
 The interactions may be \textswab{adiabatically} switched on to reach their actual physical strength sometime prior to the observation time. 
@@ -11,6 +9,7 @@ The system's density matrix evolves according to the von Neumann equation
 
 \begin{equation}
 \begin{split}
+\label{Intro_QFT_von_Neumann}
     \frac{\partial}{\partial t} \rho(t) = -i [{\bf H}(t), \rho(t)], \textnormal{ with formal solution } \rho(t) &= \mathcal{U}(t, \infty) \rho(-\infty) \mathcal{U}^\dagger(t, \infty) \\ 
     &= \mathcal{U}(t, \infty) \rho(-\infty) \mathcal{U}(-\infty, t), \\
     \textnormal{with the evolution operators obeying} \begin{array}{cc}
@@ -36,17 +35,18 @@ Given that the Hamiltonian operators at different times need not to commute, the
 Physical observables at $t$-time can be computed as 
 
 \begin{equation}
-    \langle {\bf O}(t) \rangle \equiv \frac{\Tr \rho(t) {\bf O}(t)}{\Tr \rho(t)} \Tr \bigg[ 
+\label{Intro_QFT_ensemble_avgs_forward_backward_ev}
+    \langle {\bf O}(t) \rangle \equiv \frac{\Tr \rho(t) {\bf O}(t)}{\Tr \rho(t)} = \frac{1}{\Tr \rho(t)} \Tr \bigg[ 
         \mathcal{U}(-\infty, t) \blanky {\bf O} \blanky \mathcal{U}(t, -\infty) \rho(-\infty)
     \bigg],
 \end{equation}
 
-where the trace is perfomrmed over the many-body Hilbert space. 
+where the trace is performed over the many-body Hilbert space. 
 The previous expression, in its last form, reads as an evolution from $t = - \infty$ (wherein the initial state is known), towards $t$ (wherein the observable is calculated), and then back to $t = - \infty$. 
 Hence, calculation of an observable implies evolving the initial state both forward and backward. \medbreak
 
 Such forward-backward evolution can be avoided, in the equilibrium quantum field theory, with a special trick. 
-In the zero-temperature equlibrium formalism, the expectation values are taken w.r.t. the ground state of the interacting many-body system, $\groundstate$. 
+In the zero-temperature equilibrium formalism, the expectation values are taken w.r.t. the ground state of the interacting many-body system, $\groundstate$. 
 This state is obtained from the known, and simple ground state of the corresponding non-interacting system, $\ket{0}$, by action with the evolution operator of the fully-interacting theory, e.g.
 
 $$
@@ -90,14 +90,86 @@ Similarly, it follows that
     \end{split}
 \end{equation}
 
-The result of this procedure is that one needs to consider only the forward evolution.
-Indeed, the numerator in the last expression calls for evolving the non-interacting ground state $\ket{0}$ from the distant past to the observation time, wherein the observable acts, and then proceeding towards the distant futures, where the overlap with the same known state $\ket{0}$ is evaluated. 
-This formalism will work in the finite-temperature equilibrium formalism, as will be seen in \nameref{section:finite_T_QFT}, wherein the equilibrium density matrix is $\rho \propto e^{-\beta {\bf H}}$ is treated as an evolution operator in imaginary time $\tau \in [0, \beta]$. 
-The observables are then evaluated at imaginary times $\tau_1, \tau_2, \cdots$ and the result must be analytically continued back to the real-time axis. Since the adiabatic switching of the interaction does not drive the system out of equilibrium, a statement similar to \cref{Intro_QFT_Observable_ex_v} holds as well, in which one needs only to describe the forward evolution, albeit along the finite time interval in the imaginary direction. \medbreak
+Some important remarks are in order, with respect to the previous relations and their validity. 
 
-Denominator
+\begin{remark}
+\end{remark}
+\begin{enumerate}
+\item 
+    First, it is clear from \cref{Intro_QFT_Observable_ex_v}, that one needs only to consider the forward evolution, when calculating ensemble averages of observables. 
+    Indeed, the numerator in the last expression calls for evolving the non-interacting ground state $\ket{0}$ from the distant past to the observation time, wherein the observable acts, and then proceeding towards the distant futures, where the overlap with the same known state $\ket{0}$ is evaluated. \medbreak 
 
+    \item This formalism will work in the finite-temperature equilibrium formalism, as will be seen in \nameref{section:finite_T_QFT}, wherein the equilibrium density matrix is $\rho \propto e^{-\beta {\bf H}}$ is treated as an evolution operator in imaginary time $\tau \in [0, \beta]$. 
+    The observables are then evaluated at imaginary times $\tau_1, \tau_2, \cdots$ and the result must be analytically continued back to the real-time axis. Since the adiabatic switching of the interaction does not drive the system out of equilibrium, a statement similar to \cref{Intro_QFT_Observable_ex_v} holds as well, in which one needs only to describe the forward evolution, albeit along the finite time interval in the imaginary direction. \medbreak
 
+    \item The backward evolution has been explicitly eliminated from the previous relationships, e.g. from \cref{Intro_QFT_Observable_ex_v}, at the cost of a new term arising in the denominator, a normalization factor. 
+    This normalization factor offsets the phase accumulation $e^{iL}$ of the non-interacting ground state $\ket{0}$.
+    In QFT-diagrammatic language, it amounts to subtracting the so-called \textswab{disconnected} or \textswab{vacuum loop diagrams}, a topic which will be treated in detail in % \cref{}
+    This denominator is a serious problem in the theory of disordered states, since the accumulated phase $e^{iL}$ sensitively depends on a specific realisation of the disorder (which, again, may be thought of as being absent in the distant past, and adiabatically switched on and off in the process of the evolution). 
+    Hence, the denominator must be included in the disorder-averaging procedure, making treatment a very difficult problem. \medbreak
+
+    \item All these steps depend on the assumption of a continuous equilibrium situation. 
+    In particular, if the Hamiltonian ${\bf H}(t)$ contains non-adiabatic time-dependent external fields, boundary conditions, etc., the evolution drives away the system from equilibrium. 
+    Even if all fields involved in said evolution eventually achieve an equilibrium configuration in the distant future, there is no guarantee that the system returns to the original ground or initial equilibrium state. 
+    Hence, left-action of the ${\mathcal{U}}_{+\infty, -\infty}$ on $\ket{GS}$ or $\rho_0$ results in an unknown superposition of the excited states, making elimination of the backward evolution -inherent to \cref{Intro_QFT_ensemble_avgs_forward_backward_ev}- impossible.
+\end{enumerate} \bigbreak
+
+Consider again \cref{Intro_QFT_ensemble_avgs_forward_backward_ev}, the idea of \textswab{closed time evolution} readily arises, if one extends the evolution to $t = +\infty$, and then back to $t$, via the introduction of a trivial identity $\mathcal{U}_{-\infty,t} \mathcal{U}_{t,+\infty}$, yielding 
+
+\begin{equation}
+\label{Intro_QFT_closed_contour_ev}
+    \begin{split}
+        \langle {\bf O}(t) \rangle = \frac{1}{\Tr \rho(-\infty)} \Tr \bigg\{
+            \mathcal{U}_{-\infty, +\infty} \mathcal{U}_{+\infty, t} {\bf O} \mathcal{U}_{t, -\infty} \rho(-\infty) 
+        \bigg\},
+    \end{split}
+\end{equation}
+
+wherein, according to von-Neumann's equation \cref{Intro_QFT_von_Neumann}, the trace of the initial density matrix is unchanged under the unitary evolution. 
+Hence, \cref{Intro_QFT_closed_contour_ev} describes an evolution along the closed time contour $\mathcal{C}$. 
+It is custom to insert the observable at time $t$, somewhere along the forward branch of the contour. \medbreak
+
+\begin{remark}
+\end{remark}
+
+It should be noted that the denominators in \cref{Intro_QFT_closed_contour_ev} and \cref{Intro_QFT_Observable_ex_v} are very different. 
+
+    \begin{itemize}
+        \item In the former, $\Tr \rho(-\infty)$ refers entirely to the distant past, in which both interactions and disorder are completely switched off. 
+        It is a simple constant, which can be calculated.
+        \item In the latter, $\bra{0} \mathcal{U}(+\infty, -\infty) \ket{0}$ is a very different beast, since it involves evolution of the ground state upon adiabatic switching on and off of the interactions and disorder. 
+        It, thus, depends on both disorder and interaction and may be intractable. 
+    \end{itemize}
+
+The absence of a disorder-dependent denominator in \cref{Intro_QFT_closed_contour_ev} is a telling sign of the special suitability of the closed-contour formalism to deal with disordered systems. 
+
+\begin{tcolorbox}[colback = LimeGreen, title = Historical Context]
+
+The closed-time contour formulation of quantum field theory was first realized by Schwinger, with further developments due to Konstantinov and Perel', and independently by Keldyish and Baym 
+
+\end{tcolorbox}
+
+The central idea behind the Schwinger-Kadanoff-Baym-Keldysh's construction is that, if the Hamiltonian remains unchanged on the forward and backward branches, then the forward-backward evolution of \underline{any} state brings it exactly to the original state, with no phase factor accumulation. 
+This is the case since any phase gained on the forward branch is exactly unwound in the backward-branch. 
+As a result, $\mathcal{U}_{\mathcal{C}} = \textnormal{id}$, with the partition function simply being equal to one,
+
+\[
+    \mathcal{Z} = \frac{\Tr \mathcal{U}_{\mathcal{C}} \rho(-\infty)}{\Tr  \rho(-\infty)}.
+\]
+
+To insert an observable somewhere along the forward or backward branches, as described in \cref{Intro_QFT_closed_contour_ev}, it iw convenient to modify the Hamiltonian ${\bf H}(t)$ by adding the source term, yielding 
+${\bf H}^{\pm}_{V}(t) = {\bf H}(t) \pm {\bf O} V(t)$, where the $\pm$ refers to the forward/backward branch of the contour. 
+Sine the Hamiltonian is now different on the two branches, the evolution operator along the contour is no longer trivial 
+$\mathcal{U}_{\mathcal{C}} \neq \textnormal{id}$, and so does the \textswab{generating functional}
+
+\begin{equation}
+    \mathcal{Z}[V] \equiv \frac{\Tr \mathcal{U}_{\mathcal{C}} \rho(-\infty)}{\Tr  \rho(-\infty)}, \textnormal{ s.t. } 
+    \langle {\bf O}(t) \rangle \equiv \frac{i}{2} \frac{\delta \mathcal{Z}[V]}{\delta V(t)}\bigg|_{V = 0}. 
+\end{equation}
+
+This expression should be contrasted to the equilibrium technique in which the observables' expectation values are given in terms of the functional derivatives of the logarithms of the generating/partition function. \bigbreak
+
+In what follows, we start with a derivation of the fundamentals of the equilibrium approach to Quantum Field theory, with the non-equilibrium Keldysh approach importing several of its features. \clearpage
 
 \subsection{Green Functions for Many-Body systems.}
 
