@@ -4,14 +4,17 @@
 \usepackage{float}
 \usepackage{xr}
 
-\externaldocument{1. Quantum Phase Transitions}
-\externaldocument{2. Spin Chain Models}
-\externaldocument{3. Ising and Heisenberg Spin Models}
-\externaldocument{4. Spin Wave Theory}
-\externaldocument{5. Additional Topics}
-\externaldocument{6. A Review of Quantum Field Theory}
-\externaldocument{7. QFTaCMT}
-\externaldocument{8. Path Integrals in CMT.tex}
+\externaldocument{1. Quantum Phase Transitions.tex}
+\externaldocument{2. Spin Chain Models.tex}
+\externaldocument{3. Ising and Heisenberg Spin Models.tex}
+\externaldocument{4. Spin Wave Theory.tex}
+\externaldocument{5. Additional Topics.tex}
+\externaldocument{6. Equilibrium Quantum Field Theory.tex}
+\externaldocument{7. Non-Equilibrium Quantum Field Theory.tex}
+\externaldocument{8. QFTaCMT.tex}
+\externaldocument{9. Path Integrals in CMT.tex}
+\externaldocument{10. Bosonic Systems.tex}
+\externaldocument{11. Fermionic Systems.tex}
 
 \author{Tomás Pérez}
 \class{Condensed Matter Theory - Lecture Notes}
@@ -43,18 +46,99 @@
 \section{{\textbf{Additional Topics}}}
 \import{sections/}{5. Additional Topics}
 \clearpage
+%\fi 
 
-\section{{\textbf{A Review of Quantum Field Theory}}}
-\import{sections/}{6. A Review of Quantum Field Theory}
+\section{Equilibrium vs. Non-Equilibrium Quantum Field Theories} 
 
-\section{{\textbf{Quantum Field-Theoretic approach to Condensed Matter Physics}}}
-\import{sections/}{7. QFTaCMT}
-%\fi
+\import{sections/}{6. Equilibrium Quantum Field Theory}
+
+%\iffalse
+
+\import{sections/}{7. Non-Equilibrium Quantum Field Theory}
+
+\section{{\textbf{Equilibrium Quantum Field-Theoretic approach to Condensed Matter Physics}}}
+\import{sections/}{8. QFTaCMT}
 
 \section{{\textbf{Path Integral Formalism and its applications in Condensed Matter Theory}}}
-\import{sections/}{8. Path Integrals in CMT.tex}
+\import{sections/}{9. Path Integrals in CMT}
 
-\bibliSography{ref.bib}
+\section{\textbf{Applications to Bosonic and Fermionic Quantum Many-Body Systems}}
+
+\subsection{Partition Function of Ideal Quantum Systems}
+
+The partition function of a general quantum many-body system is given in terms of a gaussian/coherent state integral of the action, as stated in  \cref{PathIntegral_Partition_function_gaussian_states}. In particular, the action reads 
+
+\begin{equation}
+    \begin{split}
+        &S_0 = \sum_{\alpha, n} \xoverline{\eta}_{\alpha, n} [-i \nu_n + (\epsilon_{\alpha} - \mu)] \eta_{\alpha, n}, \textnormal{ where $\nu_n$ is a Matsubara frequency}. \\
+        &\Rightarrow \mathcal{Z}_0 = \lim_{N \rightarrow \infty} \int d[\xoverline{\bm{{\psi}}}, \bm{\psi}] \int_{\substack{
+            \bar{\bm{\psi}}_N = \zeta \bar{\bm{\psi}}_0 
+            \\
+            {\bm{\psi}}_N = \zeta {\bm{\psi}}_0 
+        }} \bigg(
+                \prod_{n=1}^{N=1} \prod_{\alpha}        d\bar{\psi}_{\alpha, n} d{\psi}_{\alpha, n}
+            \bigg) 
+            \exp \bigg[-\delta \beta \sum_{n=1}^{N-1} \sum_{\alpha} 
+                \frac{\bar{\psi}_{\alpha, n} {\psi}_{\alpha, n}}{\delta \beta}
+            \bigg] \\
+            & \qquad \qquad \qquad \times \exp \bigg[
+                \sum_{n=1}^{N-1}
+                \bigg(
+                    \frac{\bar{\psi}_{\alpha, n} {\psi}_{\alpha, n}}{\delta \beta} - {\bf H}(\bar{\bm{\psi}}_{n}, \bm{\psi}_{n-1}) + \mu {\bf N} (\bm{\bar{\psi}}_{n}, \bm{\psi}_{n-1})
+                \bigg)
+            \bigg] \\
+        & \textnormal{In this discretized form, the action $S_0$ - the term inside the second exponential - reads as } \\
+        &S_0 =  \sum_{\alpha, m} \bigg[             
+                        \xoverline{\eta}_{\alpha, m}            (\eta_{\alpha, m} - \eta_{\alpha, m-1} ) - \delta \beta (\varepsilon_{\alpha} - \mu) 
+                        \xoverline{\eta}_{\alpha, m} \eta_{\alpha, m-1}
+        \bigg] \\
+    \end{split}
+\end{equation}
+
+Considering a Matsubara-Fourier series expansion of the form
+
+\[
+    \eta_{\alpha, m} = \frac{1}{\sqrt{N}} \sum_{n \in \N} a_{\alpha,n} e^{-i\omega_m \tau_m},
+\]
+
+in which the $a_{\alpha, n}$ are c-numbers in the bosonic case and Grasmann variables in the fermionic case. 
+Hence, the action reads 
+
+\begin{equation}
+    \begin{split}
+    \mathcal{Z}_0 &= \lim_{N \rightarrow \infty} \int d[\xoverline{\bm{{\psi}}}, \bm{\psi}] 
+                \prod_{n=1}^{N=1} \prod_{\alpha}        
+                d({\bf a}^{*}_n, {\bf a}_n)
+                \exp \bigg[
+                    - \sum_{\alpha} \sum_{n = 0}^{N-1}
+                        a_{\alpha, n}^{*} a_{\alpha, n} 
+                        (1 + (\delta \beta (\varepsilon_{\alpha} - \mu)- 1)) e^{i \nu_n \delta \beta}
+                \bigg] \\
+    &= \lim_{N \rightarrow \infty} \prod_{\alpha} \prod_{n=0}^{N-1} \bigg[(1 + (\delta \beta (\varepsilon_{\alpha} - \mu)- 1)) e^{i \nu_n \delta \beta}\bigg]^{-\zeta}, \quad \textnormal{Writing $1 - \delta \beta (\varepsilon_{\alpha} - \mu) \simeq e^{- \phi_{\alpha}}$}, 
+    \end{split}
+\end{equation}
+
+\begin{equation*}
+    \begin{split}
+    = \lim_{N \rightarrow \infty} \prod_{\alpha} \prod_{n=0}^{N-1} [(1 - \zeta e^{i \nu_n \delta \beta - \phi} )] = \lim_{N \rightarrow \infty}
+        \prod_{\alpha} 
+        [(1 - \zeta e^{-N \phi_{\alpha}})]^{-\zeta} \\
+    = \prod_{\alpha} \bigg(1- \zeta e^{-\beta (\varepsilon_{\alpha} - \mu)} \bigg)^{-\zeta},
+    \end{split}
+\end{equation*}
+
+which is the partition function for a non-interacting bosonic/fermionic system. 
+
+\import{sections/}{10. Bosonic Systems.tex}
+
+\section{End}
+\clearpage
+
+\import{sections/}{11. Fermionic Systems.tex}
+%\fi
+
+\clearpage
+\bibliography{ref.bib}
 \bibliographystyle{apsrev4-1}
 
 \end{document}
