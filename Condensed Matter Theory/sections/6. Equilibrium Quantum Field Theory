@@ -1,7 +1,4 @@
-Consider a quantum many-body system governed by a time-dependent Hamiltonian ${\bf H}(t)$, s.t. in the distant past the system was in a state specified by a many-body density matrix $\rho(-\infty)$, whose identity is non-important. 
-It may be thought of as the equilibrium density matrix associated with the Hamiltonian ${\bf H}(-\infty)$. Without any loss in generality, one may consider that ${\bf H}(-\infty)$ describes a free (Gaussian) theory, i.e. a theory of non-interacting particles. 
-The interactions may be \textswab{adiabatically} switched on to reach their actual physical strength sometime prior to the observation time. 
-This idea of adiabaticity is paramount to derive useful analytical methods in Quantum Field Theory. \bigbreak
+\blanky \smallbreak
 
 \paragraph{\textswab{Closed Time Contour Evolution}}
 
@@ -169,56 +166,74 @@ $\mathcal{U}_{\mathcal{C}} \neq \textnormal{id}$, and so does the \textswab{gene
 
 This expression should be contrasted to the equilibrium technique in which the observables' expectation values are given in terms of the functional derivatives of the logarithms of the generating/partition function. \bigbreak
 
-In what follows, we start with a derivation of the fundamentals of the equilibrium approach to Quantum Field theory, with the non-equilibrium Keldysh approach importing several of its features. \clearpage
+In what follows, we start with a derivation of the fundamentals of the Feynmann-Dyson Equilibrium Approach to Quantum Field theory, with the non-equilibrium Keldysh contour approach importing several of its features. \clearpage
 
 \subsection{Green Functions for Many-Body systems.}
 
+\blanky \medbreak
+
+The quantum dynamics of a many-body quantum system can be expressed in terms of correlation functions, i.e. \textswab{Green's functions} of the quantum fields, evaluated with respect to some state of the system. \medbreak
+
 Green function techniques play a fundamental role in the treatment of many-body systems, for many properties of a many body system -eg. ground state energy, excitation spectra, response functions, electric and magnetic susceptibilities and thermodynamic quantities- can be derived from many-body Green functions.\\
 
-Consider the ground state $\ket{\Omega}$ of a system. At some time $t'$, a perturbation is enacted upon the system, said perturbation represented by a local operator ${\bf O}^\dagger({\bf x}, t)$, creating an initial state ${\bf O}^\dagger({\bf x}', t') \ket{\Omega}$. Thus, the system has been deviated from the initial some by some local excitations, a disturbance, and then this disturbance will evolve in space and time. Such a scenario describes typical local measurements done on a quantum many-particle system. Since an explicit time dependence is necessary for this formalism, the Heisenberg picture is useful. To determine physically interesting quantities, the quantum-mechanical amplitude to find the system in state ${\bf O}^\dagger({\bf x}', t') \ket{\Omega}$ at time $t > t'$ namely, 
+Consider the ground state $\ket{\textnormal{GS}}$ of a system. 
+At some time $t'$, a perturbation is enacted upon the system, said perturbation represented by a local operator ${\bf O}^\dagger({\bf x}, t)$, creating an initial state ${\bf O}^\dagger({\bf x}', t') \ket{\Omega}$.
+Thus, the system has been deviated from the initial some by some local excitations, a disturbance, and then this disturbance will evolve in space and time. 
+Such a scenario describes typical local measurements done on a quantum many-particle system. 
+Since an explicit time dependence is necessary for this formalism, the Heisenberg picture is useful. 
+To determine physically interesting quantities, the quantum-mechanical amplitude to find the system in state ${\bf O}^\dagger({\bf x}', t') \groundstate$ at time $t > t'$ namely, 
 
 $$
-    \mathcal{A} = \bra{\Omega} {{\bf O}}({{\bf x}}, t) {{\bf O}}^\dagger({{\bf x}}', t') \ket{\Omega}.
+    \mathcal{A} = \bra{\textnormal{GS}} {{\bf O}}({{\bf x}}, t) {{\bf O}}^\dagger({{\bf x}}', t') \ket{\textnormal{GS}}.
 $$
 
 Many quantum-mechanical operators may be written in bilinear forms of the field operators themselves, $\hat{\Psi}({{\bf x}}, t)$. However, it turns out that correlation functions of the field operators are related to experiments such as photoemission and tunnelling spectroscopies, which involve extraction or injection of a single electron. These field correlation functions can be identified as propagators which satisfy the Green function equation. \\
 
-\subsubsection{The One-Particle Green Function of Many-Body Systems}
+\subsubsection{Non Interacting Systems: The one-particle Green Function for Gaussian Systems}
 
-\paragraph{Non-interacting Particle Propagator}
+%\subsubsection{The One-Particle Green Function of Many-Body Systems}
 
-Consider a particle in free space described by a single-particle time-independent Hamiltonian ${\bf H}_1$. Its eigenstates and eigenenergies are 
+Before considering fully-interacting many-body quantum mechanical systems, it is necessary to introduce some relevant notions for the case of free (i.e. Gaussian) quantum mechanical system. \smallbreak
+
+\paragraph{\textswab{Non-interacting Particle Propagator}} \label{section_QFT_Equilibrium_1p_Green_Function_Diff_eq}
+
+In effect, consider a single free-particle system, whose dynamics is described by a time-independent Hamiltonian ${\bf H}$, with known sets of eigenenergies and eigenstates, namely $\{\varepsilon_n, \ket{\phi_n}\}^{n \in \Lambda}$.
+Since these are eigenstates of the Hamiltonian, a particle in the state $\ket{\phi_i}$-state will remain in that state forever. \smallbreak
+
+Instead, consider a system in a generic state $\ket{\psi}$. 
+If the trial state is created at time $t'$, the wave-function at a later time $t$ is given by 
 
 $$
-    {\bf H}_1 \ket{\phi_n} = \varepsilon_n \ket{\phi_n}.
-$$
-
-In general, if a particle is in the $\ket{\phi}_i$-state, it will remain in that state forever. Instead, consider a system in a generic state $\ket{\psi_{\textnormal{trial}}}$. If the trial state is created at time $t'$, the wave-function at a later time $t$ is given by 
-
-$$
-    \ket{\psi(t)} = e^{-\frac{i {\bf H} (t-t')}{\hbar}} \ket{\psi_{\textnormal{trial}}} = \sum_{n} \ket{\psi_n} e^{-\frac{i \varepsilon_n (t-t')}{\hbar}} \bar{\phi_n}\ket{\psi_{\textnormal{trial}}}.
+    \ket{\psi(t)} = e^{-\frac{i {\bf H} (t-t')}{\hbar}} \ket{\psi} = \sum_{n \in \Lambda} e^{-\frac{i \varepsilon_n (t-t')}{\hbar}} \ket{\phi_n} \bra{\phi_n}\ket{\psi}.
 $$
 
 Then, at time $t$, the probability amplitude that a measurement would find the particle at position ${\bf x}$ can be found as
 
 \begin{equation}
     \begin{split}
-        \bra{{\bf x}} \ket{\psi(t)} \Theta(t-t') &= \int_{\R^3} d{\bf x}' \blanky \bra{{\bf x}} e^{-\frac{i {\bf H} (t-t')}{\hbar}} \ket{{\bf x}'}\bra{{\bf x}'} \ket{\psi_{\textnormal{trial}}} \Theta(t-t') \\
-        &=  \int_{\R^3} d{\bf x}' \sum_{n \in \mathds{N}} \blanky \bra{{\bf x}} \ket{\phi_n} e^{-\frac{i \varepsilon_n (t-t')}{\hbar}} \bra{\phi_n}\ket{{\bf x}'}\bra{{\bf x}'} \ket{\psi_{\textnormal{trial}}} \Theta(t-t') \\
-        &= i \int_{\R^3} d{\bf x}' \blanky \mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}'t') \psi_{\textnormal{trial}}({\bf x}', t'), \begin{array}{c}
-             \textnormal{ where } \mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}'t') = - i \Theta(t-t') \bra{{\bf x}} e^{-\frac{i {\bf H} (t-t')}{\hbar}} \ket{{\bf x}'} \\
-             \textnormal{ is the retarded Green function, or propagator,} \\
-             \textnormal{ in coordinate representation.}
-        \end{array}
+        \bra{{\bf x}} \ket{\psi(t)} \theta(t-t') &= \theta(t-t') \int_{\R^3} d{\bf x}' \blanky \bra{{\bf x}} e^{-\frac{i {\bf H} (t-t')}{\hbar}} \ket{{\bf x}'}\bra{{\bf x}'} \ket{\psi} \\
+        %&=  \int_{\R^3} d{\bf x}' \sum_{n \in \Lambda} \blanky \bra{{\bf x}} \ket{\phi_n} e^{-\frac{i \varepsilon_n (t-t')}{\hbar}} \bra{\phi_n}\ket{{\bf x}'}\bra{{\bf x}'} \ket{\psi} \Theta(t-t') \\
+        &\equiv i \int_{\R^3} d{\bf x}' \blanky \mathfrak{G}^{\textnormal{R}}_{0}({\bf x}t, {\bf x}'t') \bra{{\bf x}'} \ket{\psi}\\
+        &\textnormal{ where } \mathfrak{G}^{\textnormal{R}}_{0}({\bf x}t, {\bf x}'t') = - i \theta(t-t') \bra{{\bf x}} e^{-\frac{i {\bf H} (t-t')}{\hbar}} \ket{{\bf x}'} \\
+             &\textnormal{ is the retarded Green function, } \textnormal{or propagator, in coordinate representation.}
     \end{split} 
     \label{NR-1particle-GF}
 \end{equation}
 
-Note that the time translational invariance is apparent due to the Hamiltonian's dependence on $\tau = t-t'$. Therefore, if the Green function $\mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}'t')$ is known, then it can be used to calculate the evolution of any initial state. Interesting information can be extracted from the propagator. 
+Here the subscript ${0}$ signifies that this integral representation holds for the non-interacting case only.
+Moreover, note that the time-translational invariance is apparent due to the Hamiltonian's dependence on $\tau = t-t'$. 
+Therefore, if the Green function $\mathfrak{G}^{\textnormal{R}}_{0}({\bf x}t, {\bf x}'t')$ is known, then it can be used to calculate the evolution of any initial state. 
+Relevant information can be extracted from the propagator, 
+
+\begin{remark}
+\end{remark}
 
 \begin{itemize}
-    \item The bracket $\bra{\phi_n}\ket{{\bf x}} = \bra{\phi_n} \psi_n^\dagger({\bf x}) \ket{0}$ is just the probability amplitude of forcing the system to collapse into the eigenstate $\ket{\psi_n}$ when a particle is inserted at position ${\bf x}$ and its energy is measured immediately afterwards. \\
-    \item Its resolvant can also be found. From \cref{NR-1particle-GF}, note that the time evolution is a superposition of waves propagating with different energies. In principle, it could be used to determine the eigenspectrum. This can be done via a Fourier transform to the frequency domain\footnote{Note that the Fourier transform is ill-defined, given the oscillatory behaviour for $t \rightarrow \infty$. Therefore, according to the Sokhotoski-Plemelj formula, the new function
+    \item The bracket $\bra{\phi_n}\ket{{\bf x}} = \bra{\phi_n} \psi_n^\dagger({\bf x}) \ket{0}$ is just the probability amplitude of forcing the system to collapse into the eigenstate $\ket{\psi_n}$, when a particle is inserted at position ${\bf x}$ and its energy is measured immediately afterwards. \medbreak
+    
+    \item Its resolvant can also be found. From \cref{NR-1particle-GF}, note that the time evolution is a superposition of waves propagating with different energies. 
+    In principle, it could be used to determine the eigenspectrum. 
+    This can be done via a Fourier transform to the frequency domain\footnote{Note that the Fourier transform is ill-defined, given the oscillatory behaviour for $t \rightarrow \infty$. Therefore, according to the Sokhotoski-Plemelj formula, the new function
         $$
             e^{-\eta |t| }\mathfrak{G}^{\textnormal{R}}({\bf x}, {\bf x}'; \omega), \textnormal{ with } \eta > 0,
         $$
@@ -226,150 +241,320 @@ Note that the time translational invariance is apparent due to the Hamiltonian's
     
     \begin{equation}
     \begin{split}
-        \mathfrak{G}^{\textnormal{R}}({\bf x}, {\bf x}'; \omega) &= \mathcal{F}[        \mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}'t')]({\bf x}, {\bf x}'; \omega) \\
+        \mathfrak{G}_{0}^{\textnormal{R}}({\bf x}, {\bf x}'; \omega) &= \mathcal{F}[        \mathfrak{G}_{0}^{\textnormal{R}}({\bf x}t, {\bf x}'t')]({\bf x}, {\bf x}'; \omega) \\
         &= \int dt \blanky e^{i(\omega + i \eta) \tau} \bra{{\bf x}} e^{-\frac{i {\bf H} \tau}{\hbar}} \ket{{\bf x}'} = \bigg\langle {\bf x} \bigg| \frac{1}{\omega - {\bf H} + i \eta} \bigg| {{\bf x}'}\bigg\rangle,
     \end{split}
     \end{equation}
     
-    where the Sokhotoski-Plemelj formula has been used. This is just the resolvent whose poles constitute the quantum system's spectrum. \\
+    where the Sokhotoski-Plemelj formula has been used. This is just the resolvent whose poles constitute the quantum system's spectrum. \medbreak
     
-    Operationally, we can dvise a gedankenexperiment in which the particle is initially inserted at ${\bf x}'$-position and picked up at ${\bf x}$-position after some time $t$. When performing this recipe with adequate resolution and for a sufficiently large number of different positions and elapsed times, the Fourier transform of the record data would provide the full eigenvalue spectrum. Such an experiment would give complete information on our particle. 
+    Operationally, we can devise a gedankenexperiment in which the particle is initially inserted at ${\bf x}'$-position and picked up at ${\bf x}$-position after some time $t$. 
+    When performing this recipe with adequate resolution and for a sufficiently large number of different positions and elapsed times, the Fourier transform of the record data would provide the full eigenvalue spectrum.
+    Such an experiment would give complete information on our particle. 
 \end{itemize}
 
 This scenario thus reveals that all observables can be expressed in terms of the Green function and thus avoid the explicit use of the wavefunctions. \\
 
-\underline{Differential Equation for the Green Function} \\
+\underline{Differential Equation for the Green Function}
+\smallbreak
 
 Consider \cref{NR-1particle-GF}. The LHS's time derivative will yield
 
-\begin{equation}
+\begin{equation*}
     \begin{split}
-        &\bra{{\bf x}} \ket{\psi(t)} \Theta(t-t') = i \int_{\R^3} d{\bf x}' \blanky \mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}'t') \psi_{\textnormal{trial}}({\bf x}', t') \\
-        &i \delta(t-t') \psi({\bf x}, t) + i \Theta(t-t') \frac{\partial \psi({\bf x}, t)}{\partial t} = i \frac{\partial}{\partial t} \bigg(i \int_{\R^3} d{\bf x}' \blanky \mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}'t') \psi({\bf x}', t') \bigg) \\
-        & i \delta(t-t') \int_{\R^3} d{\bf x}' \blanky \delta({\bf x}- {\bf x}') \psi({\bf x}, t) + {\bf H} \Theta(t-t') ({\bf x}) \frac{\partial \psi({\bf x}, t)}{\partial t} = i \frac{\partial}{\partial t} \bigg(i \int_{\R^3} d{\bf x}' \blanky \mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}'t') \psi({\bf x}', t') \bigg) \\
-        & i \delta(t-t') \int_{\R^3} d{\bf x}' \blanky \delta({\bf x}- {\bf x}') \psi({\bf x}, t) + {\bf H} \bigg(i \int_{\R^3} d{\bf x}' \blanky \mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}'t') \psi_{\textnormal{trial}}({\bf x}', t')\bigg) = i \frac{\partial}{\partial t} \bigg(i \int_{\R^3} d{\bf x}' \blanky \mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}'t') \psi({\bf x}', t') \bigg) \\
-        &\int_{\R^3} d{\bf x}' \blanky \bigg(i \frac{\partial}{\partial t} - {\bf H}\bigg) \mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}'t') \psi({\bf x}', t') = i \delta(t-t') \int_{\R^3} d{\bf x}' \blanky \delta({\bf x}- {\bf x}') \psi({\bf x}, t) \\
-        & \Rightarrow  \bigg(i \frac{\partial}{\partial t} - {\bf H}\bigg) \mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}'t') = \delta(t-t') \delta({\bf x}- {\bf x}'),
+        &\partial_t \bigg[
+            \psi({\bf x}t) \Theta(t-t')
+            \bigg] 
+            = \partial_t \bigg[ 
+                i \int_{\R^3} d{\bf x}' \blanky \mathfrak{G}_{0}^{\textnormal{R}}({\bf x}t, {\bf x}'t') \psi({\bf x}'t') 
+            \bigg] \\
+        &i \delta(t-t') \psi({\bf x}t) + i \Theta(t-t') \bra{{\bf x}} \partial_t \ket{\psi(t)} 
+            = 
+            i {\partial_t} \bigg[i \int_{\R^3} d{\bf x}' \blanky \mathfrak{G}_{0}^{\textnormal{R}}({\bf x}t, {\bf x}'t') \psi({\bf x}'t') \bigg] \\
+        & i \delta(t-t') \int_{\R^3} d{\bf x}' \blanky \delta({\bf x}- {\bf x}') \psi({\bf x} t) 
+            + {\bf H} \blanky \theta(t-t')\partial_t \psi({\bf x}t)
+        =
+            i \partial_t \bigg[i \int_{\R^3} d{\bf x}' \blanky \mathfrak{G}_{0}^{\textnormal{R}}({\bf x}t, {\bf x}'t') \psi({\bf x}'t') \bigg] \\
+        & i \delta(t-t') \int_{\R^3} d{\bf x}' \blanky \delta({\bf x}- {\bf x}') \psi({\bf x}t) + {\bf H} \bigg[
+            i \int_{\R^3} d{\bf x}' \blanky \mathfrak{G}_{0}^{\textnormal{R}}({\bf x}t, {\bf x}'t') \psi({\bf x}'t')
+            \bigg]
+            = i \frac{\partial}{\partial t} \bigg[
+                i \int_{\R^3} d{\bf x}' \blanky \mathfrak{G}_{0}^{\textnormal{R}}({\bf x}t, {\bf x}'t') \psi({\bf x}'t')
+            \bigg] \\
+        & \Rightarrow \int_{\R^3} d{\bf x}' \blanky \bigg(i {\partial_t} - {\bf H}\bigg) \mathfrak{G}_{0}^{\textnormal{R}}({\bf x}t,{\bf x}'t') \psi({\bf x}'t') = i \delta(t-t') \int_{\R^3} d{\bf x}' \blanky \delta({\bf x}- {\bf x}') \psi({\bf x}t) \\
+        & \Longrightarrow  \bigg(i {\partial_t} - {\bf H}\bigg) \mathfrak{G}_{0}^{\textnormal{R}}({\bf x}t, {\bf x}'t') = \delta(t-t') \delta({\bf x}- {\bf x}'),
     \end{split}
+\end{equation*}
+
+which is just the definition of the Green function for the Schr\"odinger equation in differential equation form. \clearpage
+
+\begin{mdframed}[style=MyFrame]
+
+For the case of a free (gaussian) theory, the previous derivation can be more neatly understood as follows, 
+
+\[
+    {\mathfrak{G}^{-1}}_0({\bf x}, t) \mathfrak{G}^{\textnormal{R}}_0({\bf x}t, {\bf x'}t') = \hbar \delta^{(4)}(x-x'), 
+    \textnormal{ where } 
+    \begin{array}{cc}
+        \hat{\mathfrak{G}}^{-1}_0({\bf x}, t) = i \hbar \partial_{t} - {\bf H}. \\
+    \end{array}
+\]
+
+By introducing a new operator, $\hat{\mathfrak{G}}_0^{-1}$, a new representation of the previous differential equation can be written
+
+\begin{equation} \label{QFT_Equilibrium_Gaussian_model_green_F_matrix_mult}
+\begin{split}
+    \textnormal{Let } \mathfrak{G}_0^{-1}({\bf x}t, {\bf x'}t') \equiv& {\mathfrak{G}}^{-1}_0({\bf x}, t) \delta(t-t') \delta({\bf x}- {\bf x}') \\
+    &\Longrightarrow (\hat{\mathfrak{G}}_0^{-1} \otimes \hat{\mathfrak{G}}_0^{-1})({\bf x}t, {\bf x}'t') = \hbar \delta(t-t') \delta({\bf x}- {\bf x}'),
+\end{split}
 \end{equation}
 
-which is just the definition of the Green function for the Schr\"odinger equation in differential equation form
-\iffalse\footnote{Another, equivalent deriviation is as follows,
+in which the Green function and its inverse are on equal footing. 
+Here the $\otimes$ operation signifies matrix multiplication in the spatial and time variables, i.e. internal integrations over space and integration over all times.
 
-\begin{equation}
-    \begin{split}
-        &\bra{{\bf x}} \ket{\psi(t)} \Theta(t-t') = i \int_{\R^3} d{\bf x}' \blanky \mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}'t') \psi_{\textnormal{trial}}({\bf x}', t') \\
-        &i \delta(t-t') \psi({\bf x}, t) + i \Theta(t-t') \frac{\partial \psi({\bf x}, t)}{\partial t} = i \frac{\partial}{\partial t} \bigg(i \int_{\R^3} d{\bf x}' \blanky \mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}'t') \psi({\bf x}', t') \bigg) \\
-        & i \delta(t-t') \psi({\bf x}, t) + \Theta(t-t') {\bf H}({\bf x}) \frac{\partial \psi({\bf x}, t)}{\partial t} = i \int_{\R^3} d{\bf x}' \blanky \frac{\partial}{\partial t} \bigg( - i \Theta(t-t') \bra{{\bf x}} e^{-\frac{i {\bf H} (t-t')}{\hbar}} \ket{{\bf x}'}\bigg) \psi({\bf x}', t') \\
-        &  i \delta(t-t') \psi({\bf x}, t) + \Theta(t-t') {\bf H}({\bf x}) \frac{\partial \psi({\bf x}, t)}{\partial t} = i \int_{\R^3} d{\bf x}' \blanky \bigg(\frac{\partial}{\partial t} \Theta(t-t')\bigg) \bra{{\bf x}} e^{-\frac{i {\bf H} (t-t')}{\hbar}} \ket{{\bf x}'} \psi({\bf x}', t') \\
-        & \blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky \blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky + i \int_{\R^3} d{\bf x}' \blanky \Theta(t-t') \bigg(\frac{\partial}{\partial t} \bra{{\bf x}} e^{-\frac{i {\bf H} (t-t')}{\hbar}} \ket{{\bf x}'} \bigg) \psi({\bf x}', t')\\
-        &  i \delta(t-t') \psi({\bf x}, t) + \Theta(t-t') {\bf H}({\bf x}) \frac{\partial \psi({\bf x}, t)}{\partial t} = i \int_{\R^3} d{\bf x}' \blanky \delta(t-t') \bra{{\bf x}} e^{-\frac{i {\bf H} (t-t')}{\hbar}} \ket{{\bf x}'} \psi({\bf x}', t') \\
-        & \blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky \blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky + i {\bf H}({\bf x}) \int_{\R^3} d{\bf x}' \blanky \Theta(t-t') \mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}'t') \psi({\bf x}', t')\\
-        &  i \delta(t-t') \psi({\bf x}, t) + {\bf H}({\bf x}) \frac{\partial \psi({\bf x}, t)}{\partial t} = i \delta(t-t') \int_{\R^3} d{\bf x}' \blanky \delta({\bf x}- {\bf x}')\psi({\bf x}', t') \\
-        & \blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky \blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky\blanky + i {\bf H}({\bf x}) \int_{\R^3} d{\bf x}' \blanky  \mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}'t') \psi({\bf x}', t')
-    \end{split}
-\end{equation}
-}\fi
+\end{mdframed}
 
-\subsubsection{One-particle Green Function of Many-Body Systems}
+\subsubsection{One-Body Green Functions of Many-Body Quantum Systems}
 
-The notion of a Green function can be applied to situations in which a particle is injected into a system containing many similar interacting particles and subsequently remove it from the system. Conversely, a particle can be removed from the system and then inject it back. This process may induce non-trivial collective excitations on the system. Physically, an interesting quantity would be the correlation function. \\
+The notion of a Green function can be applied to situations in which a particle is injected into a system containing many similar interacting particles, and is subsequently removed from it. 
+Conversely, a particle can be removed from the system and then injected back into it. 
+This process may induce non-trivial collective excitations on the system. 
+Physically, an interesting quantity would be the correlation function. \medbreak
 
-Consider a zero-temperature system. The one-particle Green function is defined, in the position representation, as 
+Consider a zero-temperature system, wherein the theory's Hamiltonian is time-independent and where the system's state is pure, i.e. $\rho = \groundstate \groundbra$.
+The one-particle Green function is defined, in the position representation, as 
 
-\begin{equation}
-    i \mathfrak{G}_{\alpha \beta} ({\bf x}t, {\bf x}'t') = \frac{\bra{\Omega} \mathcal{T} [\hat{\psi}_{H \alpha}({\bf x}, t) \hat{\psi}^\dagger_{H \beta}({\bf x}', t')] \ket{\Omega}}{\bra{\Omega}\ket{\Omega}},
+\begin{equation} 
+    i \mathfrak{G}_{\alpha \beta} ({\bf x}t,{\bf x}'t') = 
+    \frac{\bra{\textnormal{GS}} \mathcal{T} \hat{\psi}_{H \alpha}({\bf x}t) \hat{\psi}^\dagger_{H \beta}({\bf x}'t')
+    \ket{\textnormal{GS}}}
+    {\bra{\textnormal{GS}}\ket{\textnormal{GS}}},
     \label{SR-1particle-GF}
 \end{equation}
 
 where \begin{itemize}
-    \item $\ket{\Omega}$ is the ground state of the interacting system in the Heisenberg picture,
-    \item and $\hat{\psi}_{H \alpha}({\bf x}, t)$ is a Heisenberg field operator, which can be written in terms of the corresponding Schr\"odinger field operator as $\hat{\psi}_{H \alpha}({\bf x}, t) = e^{\frac{i {\bf H} t}{\hbar}} \hat{\psi}_{H \alpha}({\bf x}, t) e^{-\frac{i {\bf H} t}{\hbar}}$, 
+    \item $\ket{\textnormal{GS}}$ is the ground state of the interacting system in the Heisenberg picture,
+    \item and $\hat{\psi}_{H \alpha}({\bf x} t)$ is a Heisenberg field operator, which can be written in terms of the corresponding Schr\"odinger field operator as $\hat{\psi}_{H \alpha}({\bf x}t) = e^{\frac{i}{\hbar} {\bf H} t} \hat{\psi}_{H \alpha}({\bf x} t) e^{-\frac{i}{\hbar}{\bf H} t}$, 
     \item and where $\alpha$ represents a set of quantum numbers associated with the particle, eg. spin, momentum etc. \item $\mathcal{T}$ is the time-ordering operator, whose definition is as follows 
     
     \begin{equation} \begin{split}
-        \mathcal{T} [\hat{\psi}_{H \alpha}({\bf x}, t) \hat{\psi}_{H \beta}({\bf x}', t')] &= \left\{ \begin{array}{cc}
-           \hat{\psi}_{H \alpha}({\bf x}, t) \hat{\psi}^\dagger_{H \beta}({\bf x}', t') & t > t' \\ 
-           -  \hat{\psi}^\dagger_{H \beta}({\bf x}', t')   \hat{\psi}_{H \alpha}({\bf x}, t) & t' > t 
+        \mathcal{T} \hat{\psi}_{H \alpha}({\bf x}t) \hat{\psi}_{H \beta}({\bf x}'t') &= \left\{ \begin{array}{cc}
+           \hat{\psi}_{H \alpha}({\bf x}t) \hat{\psi}^\dagger_{H \beta}({\bf x}'t') & t > t' \\ 
+           \pm \hat{\psi}^\dagger_{H \beta}({\bf x}' t')   \hat{\psi}_{H \alpha}({\bf x} t) & t' > t 
         \end{array}\right. \\
-        &= \Theta(t-t')\hat{\psi}_{H \alpha}({\bf x}, t) \hat{\psi}^\dagger_{H \beta}({\bf x}', t') - \Theta(t'-t)\hat{\psi}^\dagger_{H \beta}({\bf x}', t')   \hat{\psi}_{H \alpha}({\bf x}, t),
+        &= \Theta(t-t')\hat{\psi}_{H \alpha}({\bf x}t) \hat{\psi}^\dagger_{H \beta}({\bf x}'t') - \Theta(t'-t)\hat{\psi}^\dagger_{H \beta}({\bf x}'t') \hat{\psi}_{H \alpha}({\bf x}t),
     \end{split}
     \end{equation}
     
     where the minus sign arises from the anticommutation of the fermionic field operators. \\
 \end{itemize}
 
-Now, \cref{SR-1particle-GF}'s one-particle nature is due to the fact that it represents a propagator of a particle created at ${\bf x}', t'$ with quantum numbers $\beta$, and annihilated at ${\bf x}, t$ with quantum numbers $\alpha$. Note, however, that these so-called single-particle Green functions are truly many-body objects since they describe the propagation of a single particle obeying the full many-body Hamiltonian and therefore contain all effects of interactions with the other particles in the system. \\
+Now, \cref{SR-1particle-GF}'s one-particle nature is due to the fact that it represents a propagator of a particle created at ${\bf x}', t'$ with quantum numbers $\beta$, and annihilated at ${\bf x}, t$ with quantum numbers $\alpha$. 
+Note, however, that these so-called single-particle Green functions are truly many-body objects since they describe the propagation of a single particle obeying the full many-body Hamiltonian and therefore contain all effects of interactions with the other particles in the system. \medbreak
 
-Depending on the problem at hand, there are a number of useful Green functions. The greater and lesser Green functions are defined as 
+Depending on the problem at hand, there are a number of useful Green functions. 
+The \textswab{greater} and \textswab{lesser Green functions} are defined as 
 
 \begin{equation}
     \begin{split}
-       \mathfrak{G}^{>}({\bf x}t, {\bf x}' t') = -i \bra{\Omega}\hat{\psi}_{H \alpha}({\bf x}, t) \hat{\psi}^\dagger_{H \beta}({\bf x}', t') \ket{\Omega}
+       \mathfrak{G}^{>}({\bf x}t, {\bf x}' t') = -i \bra{\textnormal{GS}}\hat{\psi}_{H \alpha}({\bf x}, t) \hat{\psi}^\dagger_{H \beta}({\bf x}', t') \ket{\textnormal{GS}}
         \\
-       \mathfrak{G}^{<}({\bf x}t, {\bf x}' t') = \pm i \bra{\Omega} \hat{\psi}^\dagger_{H \beta}({\bf x}', t') \hat{\psi}_{H \alpha}({\bf x}, t) \ket{\Omega}
+       \mathfrak{G}^{<}({\bf x}t, {\bf x}' t') = \pm i \bra{\textnormal{GS}} \hat{\psi}^\dagger_{H \beta}({\bf x}', t') \hat{\psi}_{H \alpha}({\bf x}, t) \ket{\textnormal{GS}}
     \end{split}, \begin{array}{c}
-         \textnormal{ where the + and - signs are for}  \\
-         \textnormal{ fermions and bosons, respectively. }
+         \textnormal{ where the + holds for fermions}  \\
+         \textnormal{ and where the - holds for bosons. }
     \end{array}
 \end{equation}
 
-The retarded and advanced Green functions are 
+The \textswab{retarded}, \textswab{advanced} and \textswab{Keldysh Green functions} are 
 
 \begin{equation}
     \begin{split}
-         \mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}' t') = \left\{\begin{array}{c}
-              -i \Theta(t-t')  \bra{\Omega}[\hat{\psi}_{H \alpha}({\bf x}, t),  \hat{\psi}^\dagger_{H \beta}({\bf x}', t')]_{\pm} \ket{\Omega}   \\
+        &\mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}' t') = \left\{\begin{array}{c}
+              -i \Theta(t-t') 
+                \bra{\textnormal{GS}}
+                \bigg[
+                    {\psi}_{H \alpha}({\bf x}, t),  {\psi}^\dagger_{H \beta}({\bf x}', t')
+                \bigg]_{\pm} 
+                \ket{\textnormal{GS}}  \\
               \Theta(t-t') \bigg[\mathfrak{G}^{>}({\bf x}t, {\bf x}' t') - \mathfrak{G}^{<}({\bf x}t, {\bf x}' t')\bigg]
-         \end{array} \right. \\
-         \mathfrak{G}^{\textnormal{A}}({\bf x}t, {\bf x}' t') = \left\{\begin{array}{c}
-              i \Theta(t-t')  \bra{\Omega}[\hat{\psi}^\dagger_{H \beta}({\bf x}', t'), \hat{\psi}_{H \alpha}({\bf x}, t)]_{\pm} \ket{\Omega}   \\
-              \Theta(t-t') \bigg[\mathfrak{G}^{<}({\bf x}t, {\bf x}' t') - \mathfrak{G}^{>}({\bf x}t, {\bf x}' t')\bigg]
-         \end{array} \right. 
+         \end{array} \right. \rightarrow  \mathfrak{G}^{\textnormal{R}}({\bf x}t, {\bf x}' t') = 0, \quad t < t'.\\ &\mathfrak{G}^{\textnormal{A}}({\bf x}t, {\bf x}' t') = \left\{\begin{array}{c}
+              i \Theta(t-t') 
+              \bra{\textnormal{GS}}     
+                \bigg[
+                    {\psi}^\dagger_{H \beta}({\bf x}', t'), {\psi}_{H \alpha}({\bf x}, t)
+                \bigg]_{\pm} 
+              \ket{\textnormal{GS}}   \\
+              \Theta(t-t') 
+              \bigg[
+                \mathfrak{G}^{<}({\bf x}t, {\bf x}' t') - \mathfrak{G}^{>}({\bf x}t, {\bf x}' t')
+              \bigg] \\
+         \end{array} \right. \rightarrow \mathfrak{G}^{\textnormal{A}}({\bf x}t, {\bf x}' t') = 0, \quad t > t'. \\ 
+         &\mathfrak{G}^{\textnormal{K}}({\bf x}t, {\bf x}' t') = \left\{
+         \begin{array}{cc}
+              -i \bra{\textnormal{GS}} 
+              \bigg[
+                {\psi}_{H \alpha}({\bf x}, t),  {\psi}^\dagger_{H \beta}({\bf x}', t')
+              \bigg]
+              \ket{{\textnormal{GS}}}  \\
+              \mathfrak{G}^{>}{({\bf x}t, {\bf x}'t')} + \mathfrak{G}^{<}{({\bf x}t, {\bf x}'t')}
+         \end{array}
+        \right.
  \end{split}
 \end{equation}
 
-For compactness, $\bra{\Omega} \ket{\Omega} = 1$. Note that, from these definitions, $ \mathfrak{G}^{\textnormal{R}} = 0$, for $t < t'$ and $ \mathfrak{G}^{\textnormal{A}} = 0$, for $t > t'$. So far these Green functions are the space-time Green functions, since they involve creation and annihilation of particles at definite locations in space and time. Analogous Green functions may be defined in other basis. For example, in translationally invariant systems in space-time, the momentum-frequency domain may be useful. \\
+For compactness, $ \langle \textnormal{GS}\groundstate = 1$.
+So far these Green functions are the space-time Green functions, since they involve creation and annihilation of particles at definite locations in space and time. Analogous Green functions may be defined in other bases. 
+For example, in translationally invariant systems in space-time, the momentum-frequency domain may be useful as well. \smallbreak
 
-As a many-body correlation function, a Green function conveys only part of the full information available in the many-body wavefunctions of the system, but it provides the relevant information for the problem at hand. \\
+As a many-body correlation function, a Green function conveys only part of the full information available in the many-body wavefunctions of the system, but it provides relevant information for the problem at hand. \medbreak
 
-\paragraph{\textit{Equations of Motion for the One-Particle Green function}}
+The previous definition for the system's one-body Green function can be expanded to include a vast array of system in thermodynamic equilibrium at finite-temperature. 
+In other words, \cref{SR-1particle-GF} may be rewritten as 
 
-Consider a system with Hamiltonian, 
-
-\begin{equation}
-    {{\bf H}} = {{\bf H}}^{0} + {{\bf H}}', \begin{array}{c}
-         {{\bf H}}^{0} = \sum_{\alpha \in \Lambda} \varepsilon_{\alpha} {{\bf c}_{\alpha}}^\dagger {{\bf c}_{\alpha}}, \\  
-         \\
-         {\bf H}' \simeq \mathcal{O}\bigg(({{\bf c}}^\dagger {{\bf c}})^2\bigg) \\
+\begin{equation} \label{SR-1particle_General_GF}
+\begin{split}
+    i \mathfrak{G}_{\alpha \beta} ({\bf x}t,{\bf x}'t') &= 
+    \bigg \langle \blanky \mathcal{T} \hat{\psi}_{H \alpha}({\bf x}t) \hat{\psi}^\dagger_{H \beta}({\bf x}'t') \bigg \rangle_\rho \\
+    &= \Tr \bigg[\rho \blanky \mathcal{T} \hat{\psi}_{H \alpha}({\bf x}t) \hat{\psi}^\dagger_{H \beta}({\bf x}'t') \bigg], 
+\end{split} \textnormal{ where } \begin{array}{cc}
+         \rho = \groundstate \groundbra \textnormal{ at zero temperature}  \\
+         \rho = \frac{e^{-\beta {\bf H}}}{\Tr e^{-\beta {\bf H}}} \textnormal{ at finite-temperature.}
     \end{array}
 \end{equation}
 
-In the $\alpha$-basis, the retarded Green function reads 
+The zero-temperature density matrix can be understood as the $(\beta \rightarrow \infty)$-limit of the finite-temperature density matrix, i.e. 
 
-\begin{equation*} \begin{split}
-    \mathfrak{G}^{\textnormal{R}}(\alpha t, \beta t') = -i \Theta(t-t') \bigg\langle [{\bf c}_{\alpha}(t),{\bf c}_{\beta}^\dagger(t') ]_{\pm}\bigg\rangle_{\Omega} \\
-    \Rightarrow \bigg[i \frac{\partial}{ \partial t} - \epsilon_{\alpha}\bigg] \mathfrak{G}^{\textnormal{R}}(\alpha t, \beta t') &= i \frac{\partial}{ \partial t}\mathfrak{G}^{\textnormal{R}}(\alpha t, \beta t') - \epsilon_{\alpha}\mathfrak{G}^{\textnormal{R}}(\alpha t, \beta t') \\
-    &= i (-i) \bigg[\bigg(\frac{\partial}{ \partial t} \Theta(t-t')\bigg) \bigg\langle\bigg[{\bf c}_{\alpha}(t),{\bf c}_{\beta}^\dagger(t') \bigg]_{\pm}\bigg\rangle_{\Omega} \\
-    & \blanky \blanky \blanky \blanky- i\Theta(t-t') \bigg\langle\bigg[\frac{\partial{\bf c}_{\alpha}(t)}{\partial t},{\bf c}_{\beta}^\dagger(t') \bigg]_{\pm}\bigg\rangle_{\Omega} \bigg]- \epsilon_{\alpha}\mathfrak{G}^{\textnormal{R}}(\alpha t, \beta t') \\
-    &= \bigg[\delta(t-t') \bigg\langle\bigg[{\bf c}_{\alpha}(t),{\bf c}_{\beta}^\dagger(t') \bigg]_{\pm}\bigg\rangle_{\Omega} \\
-    & \blanky \blanky \blanky \blanky- i\Theta(t-t') \bigg\langle\bigg[[{\bf c}_{\alpha}(t), {\bf H}_0 + {\bf H'}],{\bf c}_{\beta}^\dagger(t') \bigg]_{\pm}\bigg\rangle_{\Omega} \bigg]- \epsilon_{\alpha}\mathfrak{G}^{\textnormal{R}}(\alpha t, \beta t') \\
-    &= \bigg[\delta(t-t') \delta_{\alpha \beta} - i \Theta(t-t') \bigg\langle\bigg[[{\bf c}_{\alpha}(t), {\bf H'}], {\bf c}_{\beta}^\dagger(t') \bigg]_{\pm}\bigg\rangle_{\Omega} \bigg]  \\
-    & \blanky \blanky \blanky \blanky \cancel{- \epsilon_{\alpha} \overset{\mathfrak{G}^{\textnormal{R}}(\alpha t, \beta t')}{i  \Theta(t-t')\bigg\langle\bigg[{{\bf c}_{\alpha}(t)},{\bf c}_{\beta}^\dagger(t') \bigg]_{\pm}\bigg\rangle_{\Omega}} - \epsilon_{\alpha} \mathfrak{G}^{\textnormal{R}}(\alpha t, \beta t')} \\
-    &= \bigg[\delta(t-t') \delta_{\alpha \beta} - i \Theta(t-t') \bigg\langle\bigg[[{\bf c}_{\alpha}(t), {\bf H'}], {\bf c}_{\beta}^\dagger(t') \bigg]_{\pm}\bigg\rangle_{\Omega} \bigg],
-\end{split}
-\end{equation*}
+\[
+   \frac{e^{-\beta {\bf H}}}{\Tr e^{-\beta {\bf H}}} \overset{\beta \rightarrow \infty}{\longrightarrow}\groundstate \groundbra.
+\]
 
-where $[{\bf c}_{\alpha}, {\bf H}_0] = -\varepsilon_{\alpha} {\bf c}_{\alpha}$ has been used. 
-Now, if $\mathcal{O}\bigg(({{\bf c}}^\dagger {{\bf c}})^2\bigg)$, then $[{\bf c}_{\alpha}(t), {\bf H}']$ will be qubic in the ${\bf c}$-operators. Then, 
+\paragraph{\textswab{Martin-Schwinger's Hierarchy of (Equations of Motion for) }$N$\textswab{-body Green functions}}
+
+\blanky \smallbreak
+
+Consider an interacting bosonic/fermionic field theory, i.e. a non-gaussian theory, in equilibrium, whose action includes a quartic-order interaction term, as follows 
+
+\begin{align*}
+    {{\bf H}} = {{\bf H}}^{0} + {{\bf H}}' &, \textrm{ with } \mathfrak{G}^{\textnormal{R}}(\alpha t, \beta t') = 
+    -i \Theta(t-t') \bigg\langle[
+                {\bf c}_{\alpha}(t),
+                {\bf c}_{\beta}^\dagger(t') 
+                ]_{\pm}
+        \bigg\rangle_{\textnormal{GS}} \\
+    & {{\bf H}}^{0} = \sum_{\alpha \in \Lambda} \varepsilon_{\alpha} {{\bf c}_{\alpha}}^\dagger {{\bf c}_{\alpha}}, \quad {\bf H}' \simeq \mathcal{O}\bigg(({{\bf c}}^\dagger {{\bf c}})^2\bigg) 
+\end{align*}
+
+\begin{align*}
+    \Rightarrow 
+        \bigg[
+            i {\partial_t} - \epsilon_{\alpha}
+        \bigg] 
+        \mathfrak{G}^{\textnormal{R}}(\alpha t, \beta t') 
+          &= i (-i) \left[
+            \begin{array}{cc}
+                \bigg(
+                    {\partial_t} \Theta(t-t')
+                \bigg) 
+                \bigg\langle
+                [
+                    {\bf c}_{\alpha}(t),
+                    {\bf c}_{\beta}^\dagger(t') 
+                ]_{\pm}          \bigg\rangle_{\textnormal{GS}} \\
+                \quad + \Theta(t-t') \bigg\langle
+                [
+                    {\partial_t {\bf c}_{\alpha}(t)},
+                    {\bf c}_{\beta}^\dagger(t')
+                ]_{\pm}\bigg\rangle_{\textnormal{GS}} 
+            \end{array}
+          \right] - \epsilon_{\alpha}\mathfrak{G}^{\textnormal{R}}(\alpha t, \beta t') \\
+          &= \left[
+            \begin{array}{cc}
+                 \delta(t-t') \bigg\langle
+                 \bigg[
+                        {\bf c}_{\alpha}(t),
+                        {\bf c}_{\beta}^\dagger(t') 
+                \bigg]_{\pm}
+                \bigg\rangle_{\textnormal{GS}} \\
+                - i \Theta(t-t') \bigg\langle
+                \bigg[
+                    [{\bf c}_{\alpha}(t),
+                    {\bf H}_0 + {\bf H'}],
+                    {\bf c}_{\beta}^\dagger(t')
+                \bigg]_{\pm}\bigg\rangle_{\textnormal{GS}} 
+            \end{array}
+          \right] - \epsilon_{\alpha}\mathfrak{G}^{\textnormal{R}}(\alpha t, \beta t') \\
+          &= \delta(t-t') \delta_{\alpha \beta} - i \Theta(t-t') \left[
+          \begin{array}{cc}
+               + \epsilon_{\alpha} \bigg\langle 
+                    [{\bf c}_{\alpha}(t), {\bf c}_{\beta}^\dagger(t')]_{\pm}
+               \bigg \rangle_{\textnormal{GS}} \\
+               \quad + \bigg\langle
+               \bigg[
+                    [{\bf c}_{\alpha}(t), {\bf H'}], 
+                    {\bf c}_{\beta}^\dagger(t')
+                \bigg]_{\pm}
+                \bigg\rangle_{\textnormal{GS}}
+          \end{array}
+          \right] - \epsilon_{\alpha} \mathfrak{G}^{\textnormal{R}}(\alpha t, \beta t') \\
+          &=  
+          \left[
+            \begin{array}{cc} 
+                \delta(t-t') \delta_{\alpha \beta} - \cancel{ 
+                 i \Theta(t-t') \varepsilon_{\alpha} \bigg\langle 
+                    [{\bf c}_{\alpha}(t), {\bf c}_{\beta}^\dagger(t')]_{\pm}
+               \bigg \rangle_{\textnormal{GS}}} \\
+                - \cancel{\epsilon_{\alpha} \mathfrak{G}^{\textnormal{R}}(\alpha t, \beta t')} - i \Theta(t-t')
+                \bigg\langle
+               \bigg[
+                    [{\bf c}_{\alpha}(t), {\bf H'}], 
+                    {\bf c}_{\beta}^\dagger(t')
+                \bigg]_{\pm}
+                \bigg\rangle_{\textnormal{GS}}
+            \end{array}
+          \right] \\
+          &= \delta(t-t') \delta_{\alpha \beta} - i \Theta(t-t')
+                \bigg\langle
+               \bigg[
+                    [{\bf c}_{\alpha}(t), {\bf H'}], 
+                    {\bf c}_{\beta}^\dagger(t')
+                \bigg]_{\pm}
+                \bigg\rangle_{\textnormal{GS}} \\
+        &= \bigg(\textgoth{id}_{\mathcal{F}} - (\mathfrak{G}^{(2)})^{\textnormal{R}}(\cdot t, \cdot t')\bigg)_{\alpha \beta},
+\end{align*}
+
+wherein $[{\bf c}_{\alpha}, {\bf H}_0] = +\varepsilon_{\alpha} {\bf c}_{\alpha}$ and the von Neumann equation \cref{Intro_QFT_von_Neumann} have both been used. \smallbreak
+
+From \nameref{section_QFT_Equilibrium_1p_Green_Function_Diff_eq}, in particular from \cref{QFT_Equilibrium_Gaussian_model_green_F_matrix_mult}, the following relation is known:
 
 $$
-\mathfrak{G}^{\textnormal{R}}_{2}(\alpha t, \beta t') = i \Theta(t-t') \bigg\langle\bigg[[{\bf c}_{\alpha}(t), {\bf H'}], {\bf c}_{\beta}^\dagger(t') \bigg]_{\pm}\bigg\rangle_{\Omega}
+    {\mathfrak{G}^{-1}}_0({\bf x}, t) \mathfrak{G}^{\textnormal{R}}_0({\bf x}t, {\bf x'}t') = \hbar \delta^{(4)}(x-x').
 $$
 
-is a two-particle Green function. Then, the dynamics of a one-particle Green function becomes coupled to that of a two-particle Green function. This two-particle Green function's dynamic will become coupled to a three-particle Green function and so on. Unless the couplings terminate at a reasonable order, there is an infinite hierarchy of equations and corresponding Green functions. \\
+This relationship, which establishes the existence of the inverse of the Green function as a very particular operator, holds only for the free case.
+In the interacting case, as can be ascertained from the previous derivation, a new term arises\footnote{
+This is, in fact, the case since the commutator $[{\bf c}_{\alpha}, {\bf H}']$ is qubic in the $\{({\bf c_{\alpha}, {\bf c}_{\alpha}^\dagger})\}^{\alpha}$ operators. 
+}, namely 
 
-\paragraph{\textit{Equations of Motion and Microscopic Self-Interaction}}
+\[
+    - i \Theta(t-t')
+                \bigg\langle
+               \bigg[
+                    [{\bf c}_{\alpha}(t), {\bf H'}], 
+                    {\bf c}_{\beta}^\dagger(t')
+                \bigg]_{\pm}
+                \bigg\rangle_{\textnormal{GS}}.
+\]
+
+Its physical interpretation is straightforward: it is a zero-temperature two-body correlator with respect to the pure state $\rho = \groundstate \groundbra$, a \textswab{two-body Green function}. \smallbreak
+
+This highly non-trivial finding has profound implications in Many-Body Quantum Theory: for the interacting non-Gaussian case, the $\ell$-body Green function's equation of motion is coupled with the $\ell + 1$-body Green function, establishing a non-bounded Hierarchy of Green functions. 
+Hence, solving said equations is impossible in all but a very limited set of physical systems, requiring the derivation of new analytical techniques for their study. 
+\medbreak
+
+\paragraph{\textit{Application: Equations of Motion and Microscopic Self-Interaction}}
+
+\blanky \smallbreak
 
 Consider the many-electron Hamiltonian
 
@@ -382,7 +567,7 @@ where $V$ represents the pair interaction. This Hamiltonian includes a one-elect
 
 \begin{equation}
     \begin{split}
-        \bigg[i\frac{\partial}{\partial t} - \frac{1}{\hbar} \bigg(-\frac{\hbar^2}{2m} \nabla^2 + U({\bf x})\bigg)\bigg] \mathfrak{G}_{\sigma \sigma'}({\bf x} t; {\bf x}' t') = i\frac{\partial}{\partial t} \mathfrak{G}_{\sigma \sigma'}({\bf x} t; {\bf x}' t') - \bigg(-\frac{\hbar^2}{2m} \nabla^2 + U({\bf x})\bigg) \mathfrak{G}_{\sigma \sigma'}({\bf x} t; {\bf x}' t').
+        \bigg[i \partial_t - \frac{1}{\hbar} \bigg(-\frac{\hbar^2}{2m} \nabla^2 + U({\bf x})\bigg)\bigg] \mathfrak{G}_{\sigma \sigma'}({\bf x} t; {\bf x}' t') = i\partial_t \mathfrak{G}_{\sigma \sigma'}({\bf x} t; {\bf x}' t') - \bigg(-\frac{\hbar^2}{2m} \nabla^2 + U({\bf x})\bigg) \mathfrak{G}_{\sigma \sigma'}({\bf x} t; {\bf x}' t').
     \end{split}
 \end{equation}
 
@@ -390,91 +575,140 @@ Then, the first term may be rewritten as
     
     \begin{equation}
         \begin{split}
-            i\frac{\partial}{\partial t} \mathfrak{G}_{\sigma \sigma'}({\bf x} t; {\bf x}' t') = &(-i) i \frac{\partial}{\partial t} \bigg\langle \mathcal{T} \hat{\psi}_{H \sigma}({\bf x}, t) \hat{\psi}^\dagger_{H \sigma'}({\bf x}', t') \bigg \rangle_{\Omega}\\
-            &= \frac{\partial}{\partial t} \bigg(\Theta(t-t')\bigg\langle \hat{\psi}_{H \sigma}({\bf x}, t) \hat{\psi}^\dagger_{H \sigma'}({\bf x}', t') \bigg \rangle_{\Omega} -\Theta(t'-t) \bigg\langle\hat{\psi}^\dagger_{H \sigma'}({\bf x}', t')\hat{\psi}_{H \sigma}({\bf x}, t)  \bigg \rangle_{\Omega}  \bigg)\\
-            &= \delta(t-t')\bigg\langle \hat{\psi}_{H \sigma}({\bf x}, t) \hat{\psi}^\dagger_{H \sigma'}({\bf x}', t') +  \hat{\psi}^\dagger_{H \sigma'}({\bf x}', t')\hat{\psi}_{H \sigma}({\bf x}, t) \bigg \rangle_{\Omega} \\
-            & \blanky \blanky \blanky \blanky+ \Theta(t-t') \bigg\langle \frac{\partial\hat{\psi}_{H \sigma}({\bf x}, t)}{\partial t} \hat{\psi}^\dagger_{H \sigma'}({\bf x}', t') \bigg \rangle_{\Omega} - \Theta(t'-t) \bigg\langle \hat{\psi}^\dagger_{H \sigma'}({\bf x}, t)  \frac{\partial \hat{\psi}^\dagger_{H \sigma'}({\bf x}, t)}{\partial t} \bigg \rangle_{\Omega}\\
-            &= \delta(t-t') \bigg\langle \hat{\psi}_{H \sigma}({\bf x}, t) \hat{\psi}^\dagger_{H \sigma'}({\bf x}', t) +  \hat{\psi}^\dagger_{H \sigma'}({\bf x}', t)\hat{\psi}_{H \sigma}({\bf x}, t) \bigg \rangle_{\Omega} \\
-            & \blanky \blanky \blanky \blanky
-            - \Theta(t-t') \bigg\langle [\hat{\psi}_{H \sigma}({\bf x}, t), {\bf H}] \hat{\psi}^\dagger_{H \sigma'}({\bf x}', t') \bigg \rangle_{\Omega} + \Theta(t'-t) \bigg\langle\hat{\psi}^\dagger_{H \sigma'}({\bf x}', t') [\hat{\psi}_{H \sigma}({\bf x}, t), {\bf H}] \bigg \rangle_{\Omega} \\
-            &= \delta(t-t') \bigg\langle e^{i {\bf H} t} \{\hat{\psi}_{S \sigma}({\bf x}), \hat{\psi}^\dagger_{S \sigma'}({\bf x}')\} e^{-i {\bf H} t} \bigg \rangle_{\Omega} + \mathcal{T} \bigg\langle \bigg[-i [\hat{\psi}_{H \sigma}({\bf x}, t), {\bf H}] \hat{\psi}^\dagger_{H \sigma'}({\bf x}', t') \bigg] \bigg \rangle_{\Omega} \\
+            i\partial_t \mathfrak{G}_{\sigma \sigma'}({\bf x} t; {\bf x}' t') = &(-i) i \partial_t \bigg\langle \mathcal{T} \hat{\psi}_{H \sigma}({\bf x}t) \hat{\psi}^\dagger_{H \sigma'}({\bf x}'t') \bigg \rangle_{\Omega}\\
+            &= \partial_t \bigg[
+                \theta(t-t')\bigg\langle \hat{\psi}_{H \sigma}({\bf x}, t) \hat{\psi}^\dagger_{H \sigma'}({\bf x}'t') \bigg \rangle_{\textnormal{GS}} 
+                -
+                \theta(t'-t) \bigg\langle\hat{\psi}^\dagger_{H \sigma'}({\bf x}'t')\hat{\psi}_{H \sigma}({\bf x}, t)  \bigg \rangle_{\textnormal{GS}}  
+            \bigg]\\
+            &= \delta(t-t')\bigg\langle \hat{\psi}_{H \sigma}({\bf x}, t) \hat{\psi}^\dagger_{H \sigma'}({\bf x}' t') +  \hat{\psi}^\dagger_{H \sigma'}({\bf x}'t')\hat{\psi}_{H \sigma}({\bf x} t) \bigg \rangle_{\textnormal{GS}} \\
+            & \qquad +
+                    \theta(t-t') 
+                    \bigg\langle 
+                        \bigg(\partial_t\hat{\psi}_{H \sigma}({\bf x}t)\bigg)\hat{\psi}^\dagger_{H \sigma'}({\bf x}' t') 
+                    \bigg \rangle_{\textnormal{GS}} 
+                    - 
+                    \theta(t'-t) \bigg\langle
+                        \hat{\psi}^\dagger_{H \sigma'}({\bf x} t)  \bigg(\partial_t{\hat{\psi}^\dagger_{H \sigma'}({\bf x} t)}\bigg) 
+                    \bigg \rangle_{\textnormal{GS}}\\
+            &= \delta(t-t') 
+            \bigg\langle 
+                \hat{\psi}_{H \sigma}({\bf x},t) \hat{\psi}^\dagger_{H \sigma'}({\bf x}' t') 
+                +  
+                \hat{\psi}^\dagger_{H \sigma'}({\bf x}'t')\hat{\psi}_{H \sigma}({\bf x}, t) 
+            \bigg \rangle_{\textnormal{GS}} \\
+            & \qquad -
+            \theta(t-t') \bigg\langle 
+                [\hat{\psi}_{H \sigma}({\bf x}, t), {\bf H}] \hat{\psi}^\dagger_{H \sigma'}({\bf x}', t') 
+            \bigg \rangle_{\textnormal{GS}} 
+            + 
+            \theta(t'-t) \bigg\langle
+                \hat{\psi}^\dagger_{H \sigma'}({\bf x}', t') [\hat{\psi}_{H \sigma}({\bf x}, t), {\bf H}] 
+            \bigg \rangle_{\textnormal{GS}} \\
+            &= \delta(t-t') 
+            \bigg\langle 
+                e^{i {\bf H} t} \{\hat{\psi}_{S \sigma}({\bf x}), \hat{\psi}^\dagger_{S \sigma'}({\bf x}')\} e^{-i {\bf H} t} 
+            \bigg \rangle_{\textnormal{GS}} + \mathcal{T} \bigg\langle \bigg[-i [\hat{\psi}_{H \sigma}({\bf x}, t), {\bf H}] \hat{\psi}^\dagger_{H \sigma'}({\bf x}', t') \bigg] \bigg \rangle_{\textnormal{GS}} \\
             &= \delta({\bf x} - {\bf x}') \delta(t-t') \delta_{\sigma \sigma'} + \mathcal{T} \bigg\langle \bigg[-i \bigg[\hat{\psi}_{H \sigma}({\bf x}, t), {\bf H}\bigg] \hat{\psi}^\dagger_{H \sigma'}({\bf x}', t') \bigg] \bigg \rangle_{\Omega} \\
-            &= \textnormal{id}_{\bm{\mathcal{F}}} + \mathcal{T} \bigg\langle \bigg[-i \bigg[\hat{\psi}_{H \sigma}({\bf x}, t), {\bf H}\bigg] \hat{\psi}^\dagger_{H \sigma'}({\bf x}', t') \bigg] \bigg \rangle_{\Omega}, 
+            &= \textnormal{id}_{\bm{\mathcal{F}}} + \mathcal{T} \bigg\langle \bigg\{-i \bigg[\hat{\psi}_{H \sigma}({\bf x}, t), {\bf H}\bigg] \hat{\psi}^\dagger_{H \sigma'}({\bf x}', t') \bigg\} \bigg \rangle_{\textnormal{GS}}, 
         \end{split}
     \end{equation}
     
     where the commutator in the Heisenberg picture has been transformed to one on the Schr\"odinger picture 
     
-    \begin{equation}
+    \begin{equation*}
         \begin{split}
-            & [\hat{\psi}^\dagger_{H \sigma}({\bf x}, t), {\bf H}] = e^{i{\bf H} t} [\hat{\psi}^\dagger_{ S \sigma}({\bf x}), {\bf H}] e^{-i{\bf H} t} \\
-            & \Rightarrow [\hat{\psi}^\dagger_{ S \sigma}({\bf x}), {\bf H}] = \bigg[-\frac{\hbar^2}{2m} \nabla^2 + U({\bf x})\bigg] \hat{\psi}_{S \sigma}({\bf x})
-            + \int_{\mathds{R}^3} d{\bf x}'' \blanky \sum_{\sigma'' \in \mathds{C}^2} \psi^\dagger_{S \sigma''}({\bf x}'') V(|{\bf x} - {\bf x}''|) \psi_{S \sigma''}({\bf x}'') \psi_{S \sigma}({\bf x}) \\
-            & \Rightarrow [\hat{\psi}^\dagger_{ h \sigma}({\bf x}, T), {\bf H}] = \bigg[-\frac{\hbar^2}{2m} \nabla^2 + U({\bf x})\bigg] \hat{\psi}_{H \sigma}({\bf x}, t)
-            + \int_{\mathds{R}^3} d{\bf x}'' \blanky \sum_{\sigma'' \in \mathds{C}^2} \psi^\dagger_{H \sigma''}({\bf x}'', t) V({\bf x}t; {\bf x}' t') \psi_{H \sigma''}({\bf x}'', t) \psi_{H \sigma}({\bf x}, t)
+            &\quad \blanky [\hat{\psi}^\dagger_{H \sigma}({\bf x}, t), {\bf H}] = e^{i{\bf H} t} [\hat{\psi}^\dagger_{ S \sigma}({\bf x}), {\bf H}] e^{-i{\bf H} t} \\
+            & \Rightarrow [\hat{\psi}_{ S \sigma}({\bf x}), {\bf H}] = \bigg[-\frac{\nabla^2}{2m} + U({\bf x})\bigg] \hat{\psi}_{S \sigma}({\bf x})
+            + \int_{\mathds{R}^3} d{\bf x}'' \sum_{\sigma'' \in \mathds{C}^2} \psi^\dagger_{S \sigma''}({\bf x}'') V(|{\bf x} - {\bf x}''|) \psi_{S \sigma''}({\bf x}'') \psi_{S \sigma}({\bf x}) \\
+            & \Rightarrow [\hat{\psi}_{H \sigma}({\bf x}, t), {\bf H}] = \bigg[-\frac{\nabla^2}{2m} + U({\bf x})\bigg] \hat{\psi}_{H \sigma}({\bf x}, t)
+            + \int_{\mathds{R}^3} d{\bf x}''  \sum_{\sigma'' \in \mathds{C}^2} \psi^\dagger_{H \sigma''}({\bf x}''t) V({\bf x}t; {\bf x}' t') \psi_{H \sigma''}({\bf x}'', t) \psi_{H \sigma}({\bf x}t)
         \end{split}
-    \end{equation}
+    \end{equation*}
 
 Plugging this result into the previous equation yields
 
 \begin{equation}
     \begin{split}
-         \mathfrak{i}\mathfrak{d}_{\bm{\mathcal{F}}} = & i\frac{\partial}{\partial t} \mathfrak{G}_{\sigma \sigma'}({\bf x} t; {\bf x}' t') - \mathcal{T} \bigg\langle \bigg[-i \bigg[\hat{\psi}_{H \sigma}({\bf x}, t), {\bf H}\bigg] \hat{\psi}^\dagger_{H \sigma'}({\bf x}', t') \bigg] \bigg \rangle_{\Omega} \\
-         \mathfrak{i}\mathfrak{d}_{\bm{\mathcal{F}}} = &\bigg\{ i\frac{\partial}{\partial t} - \bigg[-\frac{\hbar^2}{2m} \nabla^2 + U({\bf x})\bigg] \bigg\} \mathfrak{G}_{\sigma \sigma'}({\bf x} t; {\bf x}' t') \\
-         & \blanky \blanky \blanky \blanky + i\int_{\mathds{R}^4} d{\bf x}'' dt'' \blanky V({\bf x}t; {\bf x}'' t'') \bigg\langle \mathcal{T} \bigg[ \psi^\dagger_{H \sigma''}({\bf x}'', t'') \psi_{H \sigma''}({\bf x}'', t'') \psi_{H \sigma}({\bf x}, t) \psi_{H \sigma}^\dagger({\bf x}', t') \bigg] \bigg \rangle_{\Omega}.
+         \mathfrak{i}\mathfrak{d}_{\bm{\mathcal{F}}} = & i\partial_t\mathfrak{G}_{\sigma \sigma'}({\bf x} t; {\bf x}' t') - \mathcal{T} \bigg\langle \bigg\{
+            -i \bigg[\hat{\psi}_{H \sigma}({\bf x}, t), {\bf H}\bigg] \hat{\psi}^\dagger_{H \sigma'}({\bf x}', t') 
+         \bigg\} \bigg \rangle_{\textnormal{GS}} \\
+         \mathfrak{i}\mathfrak{d}_{\bm{\mathcal{F}}} = &\bigg\{ i\partial_t - \bigg[-\frac{\nabla^2}{2m} + U({\bf x})\bigg] \bigg\} \mathfrak{G}_{\sigma \sigma'}({\bf x} t; {\bf x}' t') \\
+         & \qquad + i\int_{\mathds{R}^4} d{\bf x}'' dt'' \blanky V({\bf x}t; {\bf x}'' t'') \bigg\langle \mathcal{T} \bigg[ \psi^\dagger_{H \sigma''}({\bf x}''t'') \psi_{H \sigma''}({\bf x}'' t'') \psi_{H \sigma}({\bf x} t) \psi_{H \sigma'}^\dagger({\bf x}' t') \bigg] \bigg \rangle_{\textnormal{GS}},
     \end{split}
     \label{NR_GF_Jellium_like_model}
 \end{equation}
 
-Then, in the absence of interactions, 
-
-\begin{align}
-  {\bigg\{ i\frac{\partial}{\partial t} - \bigg[-\frac{\hbar^2}{2m} \nabla^2 + U({\bf x})\bigg] \bigg\} \mathfrak{G}^{(0)}_{\sigma \sigma'}({\bf x} t; {\bf x}' t')} =  \mathfrak{i}\mathfrak{d}_{\bm{\mathcal{F}}} \\
-  \Rightarrow \alignedbox{ \mathfrak{G}^{(0)}_{\sigma \sigma'}({\bf x} t; {\bf x}' t')}{ = \bigg\{ i\frac{\partial}{\partial t} - \bigg[-\frac{\hbar^2}{2m} \nabla^2 + U({\bf x})\bigg] \bigg\}^{-1}}
-\end{align}
-
-for a given periodic potential $U({\bf x})$ an analytic expression may be found. Note that the integro-differential equation for the Green functions, written in \cref{NR_GF_Jellium_like_model}, has no general explicit solution. But it can be seen, from a matrix perspective, as having an infinite number of continuous and discrete indices. Let, 
-
-\begin{align*}
-    i\int_{\mathds{R}^4} d{\bf x}'' dt'' \blanky V({\bf x}t; {\bf x}'' t'') \bigg\langle \mathcal{T} \bigg[ \psi^\dagger_{H \sigma''}({\bf x}'', t'') \psi_{H \sigma''}({\bf x}'', t'') \psi_{H \sigma}({\bf x}, t) \psi_{H \sigma}^\dagger({\bf x}', t') \bigg] \bigg \rangle_{\Omega} = \\
-    = - \int_{\mathds{R}^4} d{\bf x}'' dt''\Sigma_{\sigma \sigma''}^{*}({\bf x} t; {\bf x}'' t'')  \mathfrak{G}^{(0)}_{\sigma'' \sigma'}({\bf x}'' t''; {\bf x}' t').
-\end{align*}
-
-Then, \cref{NR_GF_Jellium-like_model} may be rewritten in matrix notation as 
-
-\begin{align}
-    \bigg[(\mathfrak{G}^{(0)})^{-1} - \Sigma^{*}\bigg] \mathfrak{G} = \mathfrak{i}\mathfrak{d}_{\bm{\mathcal{F}}} \Rightarrow &  \alignedbox{\mathfrak{G} }{= \bigg[(\mathfrak{G}^{(0)})^{-1} - \Sigma^{*}\bigg]^{-1} = \mathfrak{G}^{(0)} + \mathfrak{G}^{(0)} \Sigma^{*} \mathfrak{G}},
-\end{align}
-
-which is the matrix form of the Dyson equations for the one-particle Green function, or the Dyson series. It will be shown that $\Sigma^{*}$ is the one-particle irreducible self-energy. \\
-
-\paragraph{\textit{Physical Interpretation of the One-particle Green function and the Self-Energy}}
-
-Let $\ket{\Omega}$ be the (normalized) system's ground state, such that the system's Green function can be written as 
+which, in the absence of interactions yields
 
 \begin{equation}
-    i \mathfrak{G}_{\alpha \beta} ({\bf x}t, {\bf x}'t') = {\bra{\Omega} \mathcal{T} [\hat{\psi}_{H \alpha}({\bf x}, t) \hat{\psi}^\dagger_{H \beta}({\bf x}', t')] \ket{\Omega}}.
+    \begin{split}
+         &{\bigg\{ i{\partial_t} - \bigg[-\frac{\hbar^2}{2m} \nabla^2 + U({\bf x})\bigg] \bigg\} \mathfrak{G}^{(0)}_{\sigma \sigma'}({\bf x} t; {\bf x}' t')} =  \mathfrak{i}\mathfrak{d}_{\bm{\mathcal{F}}} \\
+         & \qquad \qquad \Longrightarrow { \mathfrak{G}^{(0)}_{\sigma \sigma'}({\bf x} t; {\bf x}' t')}{ = \bigg\{ i\partial_t - \bigg[-\frac{\hbar^2}{2m} \nabla^2 + U({\bf x})\bigg] \bigg\}^{-1}}.
+    \end{split}
 \end{equation}
 
-The complete set of eigenstates of the Hamiltonian, defined on the Fock space and thus containing any number of particles, is given by 
+For a given periodic potential $U({\bf x})$ an analytic expression may be found. 
+Note that the integro-differential equation for the Green functions, written in \cref{NR_GF_Jellium_like_model}, has no general explicit solution. 
+But it can be seen, from a matrix perspective, as having an infinite number of continuous and discrete indices. 
+Let, 
+
+\begin{equation}
+\begin{split}
+    i\int_{\mathds{R}^4} d{\bf x}'' dt'' \blanky V({\bf x}t; {\bf x}'' t'') \bigg\langle \mathcal{T}& \bigg[ \psi^\dagger_{H \sigma''}({\bf x}'', t'') \psi_{H \sigma''}({\bf x}'', t'') \psi_{H \sigma}({\bf x}, t) \psi_{H \sigma}^\dagger({\bf x}', t') \bigg] \bigg \rangle_{\Omega} \\
+    &= - \int_{\mathds{R}^4} d{\bf x}'' dt'' \blanky \Sigma_{\sigma \sigma''}^{*}({\bf x} t; {\bf x}'' t'')  \mathfrak{G}^{(0)}_{\sigma'' \sigma'}({\bf x}'' t''; {\bf x}' t') \\
+    &= - \Sigma^{*}(1,3) \otimes \mathfrak{G}^{(0)}(3,2), \textnormal{ where } A \otimes B \equiv \int_{\mathds{R}^4} d3 A_{\sigma \alpha}(1,3) B_{\alpha \sigma'}(3,2),
+\end{split}
+\end{equation}
+
+where a mixed notation has been introduced for the internal product has been introduced.
+
+\begin{mdframed}[style=MyFrame]
+
+Then, \cref{NR_GF_Jellium_like_model} may be rewritten in matrix notation as 
+
+\begin{equation}
+\bigg[(\mathfrak{G}^{(0)})^{-1} - \Sigma^{*}\bigg] \mathfrak{G} = \mathfrak{i}\mathfrak{d}_{\bm{\mathcal{F}}} \quad \Longrightarrow \quad 
+\begin{array}{cc}
+     \mathfrak{G} = \bigg[(\mathfrak{G}^{(0)})^{-1} - \Sigma^{*}\bigg]^{-1} \\
+     &\qquad = \mathfrak{G}^{(0)} + \mathfrak{G}^{(0)} \Sigma^{*} \mathfrak{G},
+\end{array}
+\end{equation}
+
+which is the matrix form of the Dyson equations for the one-particle Green function, or the \textswab{Dyson series}. 
+It will be shown that $\Sigma^{*}$ is the \textswab{one-particle irreducible self-energy}. 
+
+\end{mdframed}
+
+\blanky \medbreak
+
+\paragraph{\textit{Application: Physical Interpretation of the One-particle Green function and the Self-Energy}}
+
+\blanky \smallbreak
+
+The Lehmnann representation of the quantum one-body Green function induces a precise and important physical interpretation on it, making it a physical observable in its own right.
+Consider a quantum many-body system in its ground state $\textnormal{GS}$.
+Hence, the system's Green function can be written as 
+
+\begin{equation}
+    i \mathfrak{G}_{\alpha \beta} (1,2) = {\bra{\textnormal{GS}} \mathcal{T} [\hat{\psi}_{H \alpha}(1) \hat{\psi}^\dagger_{H \beta}(2)] \ket{\textnormal{GS}}}.
+\end{equation}
+
+Then, the Hamiltonian's eigenstates, the set $\{\ket{\Psi_n}\}^{n \in \Lambda}$ is a complete set of eigenstates of the Hamiltonian, defined on the Fock space and thus containing any number of particles.
+Then, it is a basis on said Fock space, 
 
 \begin{equation*}
     \begin{split}
-        &\sum_{n} \bra{\Psi_n}\ket{\Psi_n} = \textnormal{id}_{\bm{\mathcal{F}}}, \\
-        &e^{-i{\bf H} t} \ket{\Psi_n^N} = e^{-i E_n(N) t} \ket{\Psi_n^N}, \begin{array}{cc}
-             \textnormal{ where $\ket{\Psi_n^N}$ is the $n$-th eigenstate in the sub-Hilbert space for $N$ particles} \\
-              \textnormal{ with $E_n(N)$, its corresponding eigenvalue} 
-        \end{array} \\
-        &\Rightarrow i \mathfrak{G}_{\sigma \sigma'} ({\bf x}t, {\bf x}'t') = \sum_{n} \bigg[\begin{array}{c}
-             \Theta(t-t') e^{-i(E_n - E_0)(t-t')} \bra{\Psi_0} \psi_{\sigma}({\bf x}) \ket{\Psi_0} \bra{\Psi_0} \psi_{\sigma'}^\dagger({\bf x}') \ket{\Psi_0}\\
-             - \Theta(t-t') e^{-i(E_n - E_0)(t-t')} \bra{\Psi_0} \psi_{\sigma'}^\dagger({\bf x}')\ket{\Psi_0} \bra{\Psi_0} \psi_{\sigma}({\bf x}) \ket{\Psi_0}
+        &\Rightarrow i \mathfrak{G}_{\sigma \sigma'} (1,2) = \sum_{n} \bigg[\begin{array}{c}
+             \theta(t-t') e^{-i(E_n - E_0)(t-t')} \bra{\Psi_0} \psi_{\sigma}({\bf x}) \ket{\Psi_0} \bra{\Psi_0} \psi_{\sigma'}^\dagger({\bf x}') \ket{\Psi_0}\\
+             - \theta(t-t') e^{-i(E_n - E_0)(t-t')} \bra{\Psi_0} \psi_{\sigma'}^\dagger({\bf x}')\ket{\Psi_0} \bra{\Psi_0} \psi_{\sigma}({\bf x}) \ket{\Psi_0}
         \end{array}\bigg]
      \end{split}
 \end{equation*}
 
 \begin{equation*}
      \begin{split}
-        \Rightarrow \mathcal{F}[i \mathfrak{G}_{\sigma \sigma'} ({\bf x}t, {\bf x}'t')]({\bf x}; {\bf x}',\omega) = \int_{\R} d\tau \blanky e^{i\omega\tau}\mathfrak{G}_{\sigma \sigma'} ({\bf x}t, {\bf x}'t') \rightarrow & (-i) \int_{\R} d\tau \blanky e^{i\omega \tau} \Theta(\tau) e^{-i(E_n-E_0) \tau} \\
+        \Rightarrow \mathcal{F}[i \mathfrak{G}_{\sigma \sigma'} (1,2)]({\bf x}; {\bf x}',\omega) = \int_{\R} d\tau \blanky e^{i\omega\tau}\mathfrak{G}_{\sigma \sigma'} (1,2) \rightarrow & (-i) \int_{\R} d\tau \blanky e^{i\omega \tau} \Theta(\tau) e^{-i(E_n-E_0) \tau} \\
         &= i \int_{\R} \frac{d\omega'}{2\pi i} \blanky \frac{1}{\omega'+i\eta} \int_{\mathds{R}} d\tau e^{i\omega \tau}e^{-i\omega' \tau} e^{- i(E_n - E_0)\tau} \\
         &= \frac{1}{\omega - (E_n-E_0) + i\eta}.
      \end{split}
@@ -495,8 +729,8 @@ $$
 Similarly for the second term, the energies of the denominator read $E_0 - E_n \rightarrow E_0(N) - E_n(N-1)$, thus yielding the final result 
 
 \begin{equation}
-    \Rightarrow i \mathfrak{G}_{\sigma \sigma'} ({\bf x}t, {\bf x}'t') = \sum_{n}
-             \frac{\bra{\Psi_0} \psi_{\sigma}({\bf x}) \ket{\Psi_0} \bra{\Psi_0} \psi_{\sigma'}^\dagger({\bf x}') \ket{\Psi_0}}{\omega - (E_n(N+1)-E_0(N)) + i\eta} + \frac{\bra{\Psi_0} \psi_{\sigma'}^\dagger({\bf x}')\ket{\Psi_0} \bra{\Psi_0} \psi_{\sigma}({\bf x}) \ket{\Psi_0}}{\omega - (E_0(N)-E_N(N-1)) - i\eta}\bigg].
+    \Rightarrow i \mathfrak{G}_{\sigma \sigma'} (1,2) = \sum_{n \in \Lambda}
+             \bigg[ \frac{\bra{\Psi_0} \psi_{\sigma}({\bf x}) \ket{\Psi_0} \bra{\Psi_0} \psi_{\sigma'}^\dagger({\bf x}') \ket{\Psi_0}}{\omega - (E_n(N+1)-E_0(N)) + i\eta} + \frac{\bra{\Psi_0} \psi_{\sigma'}^\dagger({\bf x}')\ket{\Psi_0} \bra{\Psi_0} \psi_{\sigma}({\bf x}) \ket{\Psi_0}}{\omega - (E_0(N)-E_N(N-1)) - i\eta}\bigg].
 \end{equation}
 
 The one-particle Green function's poles are precisely the one-particle excitations of the interacting system. The first term describes the excitations produced by adding one particle to the system, therefore defining particle excitations with energies above the chemical potential, namely 
@@ -505,9 +739,17 @@ $$
 E_n (N+1) - E_0 = E_n (N+1) + E_0(N+1) + E_0(N+1) - E_0(N) = \epsilon_n (N+1) + \mu,
 $$
 
-where $E_0(N+1)$ is the ground state of the $(N+1)$-system. The quantity $E_0(N+1) - E_0(N)$ is identified with the chemical potential $\mu$, since the volume of the system is kept constant. Consequently, the energy difference $E_n(N+1) - E_0(N+1) = \epsilon_n (N+1)$ must be just the excitation energy of the $(N+1)$-system, provided $\epsilon_n (N+1)$ is non-negative. The second term describes the transition to a system with one particle less, with manifest hole excitations having energies below the chemical potential. The merger of hole and electron excitations in a single function is one of the notable advantages of the time-ordered Green function \footnote{An alternative identification may be given, in terms of the electron affinity and the ionization energy.}. \\
+where $E_0(N+1)$ is the ground state of the $(N+1)$-system. 
+The quantity $E_0(N+1) - E_0(N)$ is identified with the chemical potential $\mu$, since the volume of the system is kept constant. 
+Consequently, the energy difference $E_n(N+1) - E_0(N+1) = \epsilon_n (N+1)$ must be just the excitation energy of the $(N+1)$-system, provided $\epsilon_n (N+1)$ is non-negative.
+The second term describes the transition to a system with one particle less, with manifest hole excitations having energies below the chemical potential. 
+The merger of hole and electron excitations in a single function is one of the notable advantages of the time-ordered Green function \footnote{An alternative identification may be given, in terms of the electron affinity and the ionization energy.}. \medbreak
 
-\paragraph{\textit{Green Function for the Fermi Gas}}
+\begin{mdframed}[style=MyFrame]
+
+\paragraph{\textit{Application: Green Function for the Fermi Gas}}
+
+\blanky \smallbreak 
 
 Consider the Sommerfeld gas, for which all excited states 
 are known. The corresponding field operators are given by
@@ -522,7 +764,8 @@ are known. The corresponding field operators are given by
 
 \begin{equation}
     \begin{split}
-    \Rightarrow \mathcal{M} = \bra{\Psi_0} \psi_{\sigma}({\bf x}) \ket{\Psi_n} \bra{\Psi_n} \psi_{\sigma'}^\dagger({\bf x}') \ket{\Psi_0} = & \frac{1}{\Omega} \sum_{{\bf k}, {\bf k}' \in \Lambda} e^{i {\bf k} \cdot {\bf x}} e^{-i {\bf k} \cdot {\bf x}'} \bra{\Psi_0} {{\bf c}}_{{\bf k} \sigma} \ket{\Psi_n} \bra{\Psi_n} {{\bf c}}_{{\bf k}' \sigma'}^\dagger \ket{\Psi_0} \\
+    \Rightarrow \mathcal{M} &= \bra{\Psi_0} \psi_{\sigma}({\bf x}) \ket{\Psi_n} \bra{\Psi_n} \psi_{\sigma'}^\dagger({\bf x}') \ket{\Psi_0} \\
+    & = \frac{1}{\Omega} \sum_{{\bf k}, {\bf k}' \in \Lambda} e^{i {\bf k} \cdot {\bf x}} e^{-i {\bf k} \cdot {\bf x}'} \bra{\Psi_0} {{\bf c}}_{{\bf k} \sigma} \ket{\Psi_n} \bra{\Psi_n} {{\bf c}}_{{\bf k}' \sigma'}^\dagger \ket{\Psi_0} \\
     & = \frac{1}{\Omega} \sum_{{\bf k}, {\bf k}' \in \Lambda} e^{i {\bf k} \cdot ({\bf x}-{\bf x}')} \bra{\Psi_0} {{\bf c}}_{{\bf k} \sigma} \ket{{\bf k} \sigma} \bra{{\bf k} \sigma} {{\bf c}}_{{\bf k} \sigma}^\dagger \ket{\Psi_0}.
     \end{split}
 \end{equation}
@@ -530,25 +773,30 @@ are known. The corresponding field operators are given by
 The translational invariance of the Sommerfeld gas leads to an $({\bf x}-{\bf x}')$-dependence, thus the spatiotemporal Fourier transformation of the Green function is 
 
 \begin{equation}
-    \mathfrak{G}_{\sigma \sigma'} ({\bf k}, \omega) = \delta_{\sigma \sigma'} \bigg[\frac{|\bra{\Psi_0} {{\bf c}}_{{\bf k} \sigma} \ket{{\bf k} \sigma}|^2}{\omega - \varepsilon_{\bf k} + i\eta} + \frac{|\bra{\Psi_0} {{\bf c}}^\dagger_{{\bf k} \sigma} \ket{\bar{{\bf k} \sigma}}|^2}{\omega - \varepsilon_{\bf k} - i\eta}\bigg],
+    \mathfrak{G}_{\sigma \sigma'} ({\bf k}, \omega) = \delta_{\sigma \sigma'} \bigg[\frac{|\bra{\Psi_0} {{\bf c}}_{{\bf k} \sigma} \ket{{\bf k} \sigma}|^2}{\omega - \varepsilon_{\bf k} + i\eta} + \frac{|\bra{\Psi_0} {{\bf c}}^\dagger_{{\bf k} \sigma} \ket{\xoverline{{\bf k} \sigma}}|^2}{\omega - \varepsilon_{\bf k} - i\eta}\bigg],
 \end{equation}
 
-where $\ket{\bar{{\bf k} \sigma}} = {{\bf c}}_{{\bf k} \sigma}\ket{\Psi_0}$ represents the ground state with one particle at $\varepsilon_{{\bf k}}$ removed. The poles of the one-particle Green function are, thus, just the one-particle excitation energies for particles and holes, with the energies of particle states above the chemical potential, and the states for holes energies below the chemical potential, satisfying $\varepsilon_{{\bf k}} > 0$. Since the Sommerfeld's gas ground state is just the Fermi sea, $\ket{\Psi_0} = \prod_{|{\bf k}| < k_F, \sigma} {\bf c}^\dagger_{{\bf k} \sigma} \ket{0}$, then the following identities hold 
+where $\ket{\xoverline{{\bf k} \sigma}} = {{\bf c}}_{{\bf k} \sigma}\ket{\Psi_0}$ represents the ground state with one particle at $\varepsilon_{{\bf k}}$ removed. The poles of the one-particle Green function are, thus, just the one-particle excitation energies for particles and holes, with the energies of particle states above the chemical potential, and the states for holes energies below the chemical potential, satisfying $\varepsilon_{{\bf k}} > 0$. Since the Sommerfeld's gas ground state is just the Fermi sea, $\ket{\Psi_0} = \prod_{|{\bf k}| < k_F, \sigma} {\bf c}^\dagger_{{\bf k} \sigma} \ket{0}$, then the following identities hold 
 
 \begin{align}
     |\bra{\Psi_0} {{\bf c}}_{{\bf k} \sigma} \ket{{\bf k} \sigma}|^2 &= \Theta(|{\bf k}| - k_F), & |\bra{\Psi_0} {{\bf c}}^\dagger_{{\bf k} \sigma} \ket{\bar{{\bf k} \sigma}}|^2 &= \Theta( k_F - |{\bf k}|). 
-\end{align}\\
+\end{align}
 
-\paragraph{\textit{Spectral functions}}
+\end{mdframed}
 
-The spectral functions or spectral weights, $\mathcal{A}(\nu, \omega)$, are the quantum state resolution of a particle with a given energy $\omega$ or as the energy resolution for a particle in a given quantum number $\nu$. It quantifies how suitable the excitation created b adding or removing a particle in $\ket{\nu}$-state can be described by a free non-interacting particle or hole, respectively. \\
+\begin{mdframed}[style=MyFrame]
+    
+\paragraph{\textit{Application: Spectral functions}}
+
+The spectral functions or spectral weights, $\mathcal{A}(\nu, \omega)$, are the quantum state resolution of a particle with a given energy $\omega$ or as the energy resolution for a particle in a given quantum number $\nu$. 
+It quantifies how suitable the excitation created b adding or removing a particle in $\ket{\nu}$-state can be described by a free non-interacting particle or hole, respectively. \smallbreak
 
 In particular, let $\mathcal{A}^{+}({\bf k}, \omega)$ and $\mathcal{A}^{-}({\bf k}, \omega)$ be the spectral functions which quantify the probability of a particle (+) or a hole (-) with ${\bf k}$-momentum and $\omega$-energy to be in an exact eigenstate of the system with either $N+1$ or $N-1$ particles, respectively, and are defined as follows 
 
 \begin{equation}
     \begin{split}
-        \mathcal{A}^{+}({\bf k}, \omega) = \frac{1}{\Omega} \sum_{n} |\bra{\Psi_0} {{\bf c}}_{{\bf k} \sigma} \ket{\Psi_0}|^2 \delta(\omega - [E_N(N+1) - E_0(N)]) \\
-        \mathcal{A}^{-}({\bf k}, \omega) = \frac{1}{\Omega} \sum_{n} |\bra{\Psi_0} {{\bf c}}_{{\bf k}\sigma}^\dagger \ket{\Psi_0}|^2 \delta(\omega - [E_0(N) - E_N(N+1)]),
+        \mathcal{A}^{+}({\bf k}, \omega) = \frac{1}{\Omega} \sum_{n} |\bra{\Psi_0} {{\bf c}}_{{\bf k} \sigma} \ket{\Psi_0}|^2 \delta\bigg(\omega - [E_N(N+1) - E_0(N)]\bigg) \\
+        \mathcal{A}^{-}({\bf k}, \omega) = \frac{1}{\Omega} \sum_{n} |\bra{\Psi_0} {{\bf c}}_{{\bf k}\sigma}^\dagger \ket{\Psi_0}|^2 \delta\bigg(\omega - [E_0(N) - E_N(N+1)]\bigg),
     \end{split}
 \end{equation}
 
@@ -590,7 +838,9 @@ wherein Plemelj-Sokhotolksi's formula was used, $\frac{1}{\omega \pm i \eta} = \
     \end{split}
 \end{equation}
 
-\blanky \\
+\end{mdframed}
+
+\clearpage
 
 \textbf{Spectral signatures in the one-particle Green Function}. 
 
@@ -731,6 +981,7 @@ The coherent terms of the spectral function have the following features:
 
 The incoherent terms, in contrasst, presents a continuum, not a peak. It must be present if $\mathcal{Z} \neq 1$, in order to satisfy the sum rule/normalization of the spectral function. A similar result is obtained for the hole spectral function, wherein $\Gamma < 0$. \\
 
+
 \begin{tcolorbox}[colback=yellow, 
 title = Physical Context]
 
@@ -743,8 +994,8 @@ The identification and investigation of interacting fermionic systems which do n
 
 \subsection{\textbf{Quantum Field Theory and Feynmann Rules}}
 
-
-In the definition of the Green function, the average values are taken with respect to the Heisenberg ground-state vector, $\ket{\psi_H}$, which is a time-independent and generally intractable object for interacting systems. The strategy is to set 
+In the definition of the Green function, the average values are taken with respect to the Heisenberg ground-state, $\ket{\textnormal{GS}}$, which is a time-independent and generally intractable object for interacting systems. 
+The strategy is to set 
 
 $$
     \ket{\psi_H} = \ket{\psi_I (0)} = \mathcal{S}^\dagger(t,0) \ket{\psi_I (t)},
