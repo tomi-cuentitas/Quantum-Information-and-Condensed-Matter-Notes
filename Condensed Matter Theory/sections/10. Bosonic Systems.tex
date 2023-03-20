@@ -46,5 +46,40 @@ If the temperature is lowered to $T' < T$, then $\lambda_{T'} > \lambda_T$, and 
 Before the experimental observation of Bose-Einstein condenstation in optically trapped super-cooled atoms, it was thought to occur in superfluid He$^4$
 
 \end{tcolorbox}. 
-    
+
+%\subsection{}
+
+\clearpage
+
+\subsection{Bogoliubov Theory of Superfluid Helium: Weakly interacting Bosons}
+
+Current understanding of BEC as the microscopic basis of Landau's theory of superfluidty was first derived by Bogoliubov in 1947.
+Bogoliubov's theory is based on a physical assumption that a weakly-non-ideal Bose gas can undergo a condensation similar to the traditional BEC. 
+The existence of the Bose condensate leads to a unique macroscopic wavefunction of the whole system, e.g. a collective effect.
+Hence, weak interactions transform single-particle excitations into a spectrum of collective excitations. 
+
+The Hamiltonian, in field operators representations, reads as follows 
+
+\begin{equation}
+    {\bf H} = \int_{\R^3} d{\bf } \blanky \nabla \psi^\dagger_{\bf x} \nabla \psi_{\bf x} + \frac{1}{2} \int_{\R^3} d{\bf x'} V({\bf x'-x}) \psi^\dagger_{{\bf x}} \psi^\dagger_{{\bf x'}} \psi_{{\bf x}} \psi_{{\bf x'}},
+\end{equation}
+
+where $V(\bf x)$ is a short range two-particle interaction potential. 
+In the particular case of a uniform gas in volume ${\Omega}$, the field operators can be expanded as 
+
+\begin{equation}
+    \psi = \sum_{{\bf k} \in \Lambda} \frac{e^{i {\bf k} \cdot {\bf x}}}{\sqrt{\Omega}} {\bf b}_{{\bf k}},
+\end{equation}
+
+where the ${\bf b}_{{\bf k}}$ are annihilation operators.
+Then, the Hamiltonian reads 
+
+\begin{equation}
+    {\bf H} = \sum_{{\bf k} \in \Lambda} \varepsilon_{{\bf k}} {\bf b}_{{\bf k}}^\dagger {\bf b}_{{\bf k}} + \frac{1}{2\Omega} \sum_{{\bf k, k',q}} V_{{\bf q}} {\bf b}_{{\bf k-q}}^\dagger {\bf b}_{{\bf k'+q}}^\dagger {\bf b}_{{\bf k}'} {\bf b}_{{\bf k}},
+\end{equation}
+
+where $\varepsilon_{{\bf k}}$ is the energy of a helium atom of mass $M$ and where ${V}_{{\bf q}}$ is the Fourier transform of $V({\bf x})$. 
+
+
+\clearpage
     
