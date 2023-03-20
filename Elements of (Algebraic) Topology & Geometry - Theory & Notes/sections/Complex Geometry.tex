@@ -309,22 +309,21 @@ From the previous remarks, it is clear that the complexification $(\vectorspace^
 \end{remark}
 
 \bigbreak
-
-\begin{lemma}
+\begin{lemma}\label{complex_manifolds_exterior_algebra_decom}
     
     Hence, for a real vector space $\vectorspace$ of dimension $n$, the natural decomposition of its exterior algebra is of the form 
     
     \begin{equation}
-        \bigg(\bigwedge \vectorspace\bigg)^{*} = \bigoplus_{k=0}^{d} \bigwedge^k \vectorspace.
+        \bigwedge \vectorspace\bigg = \bigoplus_{k=0}^{d} \bigwedge^k \vectorspace.
     \end{equation}
     
-    Similarly, $(\wedge \vectorspace^\C)^{*}$ denotes the exterior algebra of the complex vector space $\vectorspace^\C$, which decomposes as 
+    Similarly, $(\bigwedge \vectorspace^\C)^{*}$ denotes the exterior algebra of the complex vector space $\vectorspace^\C$, which decomposes as 
     
     \begin{equation}
         \bigg(\bigwedge \vectorspace^\C\bigg)^{*} = \bigoplus_{k=0}^{d} \bigwedge^k \vectorspace^\C.
     \end{equation}
     
-    Furthermore, $(\bigwedge \vectorspace^\C )^{*} = \bigwedge \vectorspace \otimes_{\R} \C$ and $(\wedge \vectorspace)^{*}$ is the real subspace of $(\vectorspace \vectorspace^\C)^{*}$ that is left invariant under complex conjugation. 
+    Furthermore, $(\bigwedge \vectorspace^\C )^{*} = \bigwedge \vectorspace \otimes_{\R} \C$ and $(\bigwedge \vectorspace)^{*}$ is the real subspace of $(\bigwedge \vectorspace^\C)^{*}$ that is left invariant under complex conjugation. 
 \end{lemma}
 
 If $\vectorspace$ is endowed with an almost complex structure $J$, then its real dimension $d$ is even, and $\vectorspace^\C$ naturally decomposes as $\vectorspace^\C = \vectorspace^{1,0} \oplus \vectorspace^{0,1}$, each complex vector space having dimension $n$. \bigbreak
@@ -341,8 +340,147 @@ From the preceding discussion on the complexification and the dual complexifacti
         
 \end{df}
 
+where the exterior products of $\vectorspace^{1,0}$ and $\vectorspace^{0,1}$ are taken as exterior products o complex vectors spaces.
+An element $\alpha \in \bigwedge^{p,q} \vectorspace$ is of bidegree $(p, q)$.
 
+\begin{lemma}
+    For a real-valued vector space $\vectorspace$, endowed with an almost complex structure $J$, then the following results hold
 
+    \begin{itemize}
+        \item $\bigwedge^{p,q} \vectorspace$ is a subspace of $\bigwedge^{p+q} \vectorspace^{\C}$. 
+        \item $\bigwedge^{k} \vectorspace^{\C} = \bigoplus_{p+q = k} \bigwedge^{p,q} \vectorspace$
+        \item Complex conjugation on $\bigwedge^{*} \vectorspace$ defines a $\C$-antilinear isomorphism
+
+            $$
+                \bigwedge^{p,q} \vectorspace \simeq \bigwedge^{q, p} \vectorspace, \textnormal{ and } \xoverline{\bigwedge^{p,q} \vectorspace} = \bigwedge^{q,p} \vectorspace.
+            $$
+
+        \item The exterior product is of bidegree (0,0). In other words, the exterior product -thought of as the map - $(\alpha, \beta) \overset{\langle \cdot, \cdot \rangle}{\longmapsto} \langle \alpha, \beta \rangle$ is s.t. that it maps
+
+            \[
+               \bigwedge^{p,q} \vectorspace \times \bigwedge^{r,s} \vectorspace \longmapsto \bigwedge^{p+r,q+s} \vectorspace,
+            \]
+
+        where the latter must be understood as a subspace. 
+    \end{itemize}
+\end{lemma}
+
+\begin{proof}
+
+    Let $\{v_i\}_{i=1}^{n} \in \bigwedge^{1,0} \vectorspace = \vectorspace^{1,0}$ and let $\{\omega^i\}_{i=1}^{n} \in \bigwedge^{0,1} \vectorspace = \vectorspace^{0,1}$ be $\C$-basis on both components, whose sum yields thee complex vector space $\C$.
+    Then 
+
+    \[
+       \{v_{J_1} \otimes \omega_{J_2}\} \in \bigwedge^{p,q} \vectorspace, \textnormal{ with } \begin{array}{cc}
+            J_1 = \{i_1 < \cdots < i_p\} \\
+            J_2 = \{j_1 < \cdots < j_q\}  
+       \end{array} \begin{array}{cc}
+            \textnormal{forms a basis } \\
+            \textnormal{of $\bigwedge^{p,q} \vectorspace$}.
+       \end{array}
+    \]
+
+    Hence, this proves the first and second items. 
+    An equivalent derivation could have been obtained from using the general fact that any direct sum decomposition $V^\C = W_1 \oplus W_2$ induces a direct sum decomposition 
+
+    $$
+        \bigwedge^{k} \vectorspace_\C = \bigoplus_{p+q=k} \bigwedge^{p} W_1 \otimes \bigwedge^{q} W_2.
+    $$
+
+    \blanky \medbreak
+
+    On the other hand, note that complex conjugation is multiplicative, i.e. $\xoverline{\omega_1 \land \omega_2} = \xoverline{\omega}_1 \land \xoverline{\omega}_2$. 
+    From this fact, the third assertion follows immediately since
+    $\xoverline{\vectorspace^{1,0}} = \vectorspace^{0,1}$.
+    Finally, the last assertion holds again true for any decomposition $\vectorspace^\C = W_1 \oplus W_2$. 
+\end{proof}
+
+Noting that any vector $v \in \vectorspace^\C$ can be decomposed as $x+iy$, with $x,y \in \vectorspace$,  
+
+\[
+   \textnormal{then let } \{z_i\}^{i}, z_i = \frac{x_i - i y_i}{2} \in \vectorspace^{1,0} \textnormal{ be a basis of } \vectorspace^{1,0}, \textnormal{ with $x,y \in \vectorspace$. }
+\]
+
+In \cref{Complex_Manifolds_Theorem_holo_antiholo}, it was established that $\vectorspace^{1,0}$ was defined as the set of vectors s.t. $J(v) = i v$. 
+Since the $z_i$-vectors belong to said structure, this implies that $J(z_i) = i z_i$, from which one finds that $y_i = J(x_i)$ and $x_i = -J(y_i)$. 
+Moreover, $\{x_i, y_i\}^{i}$ forms a real basis of $\vectorspace$ and, hence, a basis of its complexification $\vectorspace^\C$.
+A natural basis on $\vectorspace^{0,1}$ is given by $\{\bar{z}_i\}, \blanky z_i = \frac{x_i + i y_i}{2}$. \smallbreak
+
+\[  \begin{array}{cc}
+     \begin{array}{cc}
+         \textnormal{Conversely, if $v \in \vectorspace$, then it  follows immediately that }
+    \end{array} \begin{array}{cc}
+         \frac{v - i J(v)}{2} \in \vectorspace^{1,0} \\
+         \\
+         \frac{v + i J(v)}{2} \in \vectorspace^{0,1} \\
+    \end{array}. \\
+     \textnormal{ Hence, if } \langle x_i, y_i := J(x_i) \rangle \textnormal{ is a basis of $\vectorspace$, then} \begin{array}{cc}
+          \{z_i\}^{i}, \blanky z_i = \frac{x_i - iy_i}{2} \textnormal{ is a basis of the complexified vector space $\vectorspace^{1,0}$}  \\
+          \\
+          \{\bar{z}_i\}^{i}, \blanky \bar{z}_i = \frac{x_i + iy_i}{2} \textnormal{ is a basis of the complexified vector space $\vectorspace^{0,1}$}
+     \end{array}
+\end{array}
+    
+\]
+
+Then, one can imbue on $\vectorspace$ a very important element, 
+
+\begin{lemma}
+    For any $m \leq \dim_{\C} \vectorspace^{1,0}$, 
+
+    \[
+        (-2i)^m \bigwedge_{j = 1}^{m} (z_j \land \bar{z}_j) = \bigwedge_{j=1}^{m} (x_j \land y_j),
+    \]
+
+    defines a positive oriented volume form the natural orientation of $\vectorspace$, if $m = \dim_{\C} \vectorspace^{1,0}$.
+\end{lemma}
+
+\begin{remark}    
+\end{remark}
+
+An analogous result holds for the dual bases. If $\langle x^i, y^i \rangle$ is the basis of $(\vectorspace^\C)^{*}$ -dual to $\langle x_i, y_i\rangle$.
+Then $z^i = x^i + i y^i$ and $\xoverline{z}^{i} = \bar{x}^i - i \bar{y}^i$ are the basis of the dual spaces $(\vectorspace^{1,0})^{*}$ and $(\vectorspace^{0,1})^{*}$, dual to $\langle z_i \rangle$ and $\langle \bar{z}_i \rangle$, respectively. 
+Then, it follows that 
+
+\[
+    \left(\frac{i}{2}\right)^m \bigwedge_{j = 1}^{m} (z^j \land \bar{z}^j) = \bigwedge_{j=1}^{m} (x^j \land y^j).
+\]
+
+In this case, note that $ -y^i = J(x^i)$ and $x^i = J(y^i)$. 
+Note as well the existence of the natural isomorphism $\bigwedge^{k} \vectorspace^* \simeq (\bigwedge^{k} \vectorspace)^{*}$ given by 
+
+\[
+    (\bigwedge_{j=1}^{k} \alpha_j) (\bigwedge_{j=1}^{k} v_j) = \det (\alpha_j(v_j))_{ij}
+\]
+
+\blanky \medbreak
+
+With such a structure for the exterior algebras of the complexified vectorspace defined in terms of the exterior algebras of the real-valued vector space, one can define natural projections, 
+
+\begin{df}
+    With respect to the direct sum decomposition of the exterior algebras of the real-valued vector space and of its complexification, given in \cref{complex_manifolds_exterior_algebra_decom}, 
+    then the following operations immediately arise,
+
+    \begin{equation*}
+        \Pi^{k}: \bigwedge^{*} \vectorspace^{\C} \rightarrow \bigwedge^{k} \vectorspace^\C \textnormal{  and  } \Pi^{p,q}: \bigwedge^{*} \vectorspace^\C \rightarrow \bigwedge^{p,q} \vectorspace,
+    \end{equation*}
+    \begin{equation*}
+        {\bf I}: \bigwedge^{*} \vectorspace^{\C} \rightarrow \bigwedge^{*} \vectorspace^{\C},   
+    \end{equation*}
+
+    where the fist two operators are natural projections, with the third operation being the linear operator acting on $\bigwedge^{p,q} \vectorspace$ by multiplication by $i^{p,q}$, i.e.
+
+    \[
+        {\bf I} = \sum_{p,q} i^{p-q} \Pi^{p,q}.
+    \]
+    
+\end{df}
+
+\begin{remark}
+\end{remark}
+
+Note here, that the first projection, $\Pi^{k}$, does not depend on the almost-complex structure $J$, contrary to the ${\Pi^{p,q}}$ and ${\bf I}$ operations. 
+Moreover, ${\bf I}$ is the multiplicative extension of the almost complex structure $J$ on ${\bf V}$
 
 
 
