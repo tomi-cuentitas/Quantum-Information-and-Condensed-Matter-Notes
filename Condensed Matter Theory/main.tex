@@ -26,7 +26,7 @@
 
 \tableofcontents
 
-%\iffalse
+\iffalse
 \section{{\textbf{Quantum Phase Transitions}}}
 \import{sections/}{1. Quantum Phase Transitions}
 \clearpage
@@ -46,16 +46,20 @@
 \section{{\textbf{Additional Topics}}}
 \import{sections/}{5. Additional Topics}
 \clearpage
-%\fi 
+
+\fi
 
 \section{Equilibrium vs. Non-Equilibrium Quantum Field Theories} 
 
+Consider a quantum many-body system governed by a time-dependent Hamiltonian ${\bf H}(t)$, s.t. in the distant past the system was in a state specified by a many-body density matrix $\rho(-\infty)$, whose identity is non-important. 
+It may be thought of as the equilibrium density matrix associated with the Hamiltonian ${\bf H}(-\infty)$. Without any loss in generality, one may consider that ${\bf H}(-\infty)$ describes a free (Gaussian) theory, i.e. a theory of non-interacting particles. 
+The interactions may be \textswab{adiabatically} switched on to reach their actual physical strength sometime prior to the observation time. 
+This idea of adiabaticity is paramount to derive useful analytical methods in Quantum Field Theory. \bigbreak
+
 \import{sections/}{6. Equilibrium Quantum Field Theory}
-
-%\iffalse
-
 \import{sections/}{7. Non-Equilibrium Quantum Field Theory}
 
+\iffalse
 \section{{\textbf{Equilibrium Quantum Field-Theoretic approach to Condensed Matter Physics}}}
 \import{sections/}{8. QFTaCMT}
 
@@ -130,6 +134,7 @@ Hence, the action reads
 which is the partition function for a non-interacting bosonic/fermionic system. 
 
 \import{sections/}{10. Bosonic Systems.tex}
+\fi
 
 \section{End}
 \clearpage
