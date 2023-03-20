@@ -425,7 +425,7 @@ A question naturally arises: what is the minimal information required to constru
         (p,f), (q,f') \in X, \quad \mathfrak{q} (p,f) \sim \mathfrak{q} (q,f)  \textnormal{ if and only if } \mathfrak{q}(p,f) = \mathfrak{q}(q,f'),
     \]
 
-    and consequently $\mathfrack{q}((p,f)) = \mathfrak{q}^{-1}(\mathfrak{q}(p,f))$ for all $(p,f) \in U_i \times F$. \medbreak
+    and consequently $\mathfrak{q}((p,f)) = \mathfrak{q}^{-1}(\mathfrak{q}(p,f))$ for all $(p,f) \in U_i \times F$. \medbreak
 
     In particular, this shows that the set of equivalence classes $\frac{X}{\sim}$ is exactly the st of fibers of the local trivialization maps $\phi_i$, or its globally defined counterpart: the canonical map. 
     Moreover, if $X$ is a topological space, then $\frac{X}{\sim}$ is imbued with the quotient topology induced by $q$, hence making $\mathfrak{q}:X \rightarrow \frac{X}{\sim}$ a quotient map.
@@ -471,5 +471,129 @@ More explicitly, let $\map{\bar{f}}{E'}{E}$ be a mapping from $E'$ to $E$, s.t. 
 $\pi \circ \bar{f} = \pi' \circ f$. 
 In other words, a general smooth map $\bar{f}$ could map $u,v \in F'_p$ of $E'$ to different fibres $\bar{f}(u), \bar{f}(v)$ of $E$ so that their projections differ $\pi (\bar{f}(u)) \neq \pi(\bar{f}(v))$. \medbreak
 
-\paragraph{}
+\paragraph{Equivalent Bundles}
 
+Two bundles $\fibrebundle{E'}{\pi'}{M}$ and $\fibrebundle{E}{\pi}{M}$ are equivalent if there exists a bundle map $\bar{f}: M \rightarrow M$ s.t. the induced mapping $f: M \rightarrow M$ is the identity map.
+In other words, if the following diagram commutes 
+
+\[
+\begin{tikzcd}
+	{E'} & E \\
+	{M'} & M
+	\arrow["{\pi'}"', from=1-1, to=2-1]
+	\arrow["\idop_M"', from=2-1, to=2-2]
+	\arrow["\pi", from=1-2, to=2-2]
+	\arrow["{\bar{f}}", from=1-1, to=1-2]
+\end{tikzcd} 
+\] \smallbreak
+
+\paragraph{Pullback bundles}
+
+Let $\fibrebundle{E}{\pi}{B}$ be a fibre bundle with typical fibre $F$.
+Let $f : B' \rightarrow B$ be a continuous mapping between a generic manifold $B'$ and the base-space $B$ of $E$. 
+A \textswab{pullback bundle} can be defined via the the pair $(E,f)$, which defines a new fibre bundle with base-space $B'$ and the same fibre $F$, namely $\fibrebundle{f^{*}E}{\pi_1}{B'}$.
+
+In effect, the pullback bundle is defined as the following subspace of $N \times E$,
+
+\[
+    f^{*}E = \{(p, u) \in B' \times E  \blanky | \blanky f(p) = \pi(u)\},
+\]
+
+equipped with the subspace topology and the projection map $\pi_1: f^{*}E \rightarrow B'$ given by projection onto the first factor,
+
+\[
+    \begin{array}{cc}
+     \pi_1 : f^{*}E  \rightarrow B', \blanky \pi_1: (p,u) \mapsto p \\
+         \\
+     \pi_2 : f^{*}E  \rightarrow E, \blanky \pi_2: (p,u) \mapsto u,
+    \end{array} \implies \fibrebundle{f^{*}E}{\pi_1}{B'} \textnormal{ is a fibre bundle}. 
+\]
+
+Then the following diagrams commute 
+
+\[
+\begin{tikzcd}
+	{f^{*}E} & E \\
+	{B'} & B
+	\arrow["{\pi_1}"', from=1-1, to=2-1]
+	\arrow["f"', from=2-1, to=2-2]
+	\arrow["\pi", from=1-2, to=2-2]
+	\arrow["\pi_2", from=1-1, to=1-2]
+\end{tikzcd} \Longleftrightarrow 
+\begin{tikzcd}
+    {(p, u)} & {u} \\
+    {p} & {f(p)} 
+    \arrow["{\pi_1}"', from=1-1, to=2-1]
+	\arrow["f"', from=2-1, to=2-2]
+	\arrow["\pi", from=1-2, to=2-2]
+	\arrow["\pi_2", from=1-1, to=1-2]
+\end{tikzcd}
+\]
+
+The commutativity of the diagram follows since 
+
+$$
+    \pi( \pi_2(p, u)) = \pi (u) = f(p) = f(\pi_1(p,u)), \blanky \forall (p,u) \in f^{*}E.
+$$
+
+Clearly, if $B' = B$, then $f = \idop_{B}$ and both fibre bundles $f^{*}E$, $E$ are equivalent. \medbreak
+
+On the other hand, it can be proved that such a fibre bundle structure makes $f^{*}E$ locally trivial, by adequately mapping local trivializations and topologies, yielding the following lemma 
+
+\begin{theo}
+    Let $\fibrebundle{E}{\pi}{B}$ be a fibre bundle with pullback bundle $\fibrebundle{f^{*}E}{\pi_1}{B'}$.
+\end{theo}
+
+\begin{proof}
+
+In effect, consider the first fibre bundle $\fibrebundle{E}{\pi}{B}$. 
+On such base space, a topology - i.e. a set of open coverings - and their respective local trivializations can be defined, namely $\{U_i, \phi_i\}^{i}$, wherein 
+
+\[
+    \phi_i : U_i \times F \rightarrow \pi^{-1}(U_i) \subset E
+\]
+
+is a local trivialization of $E$ on the open covering $U_i$, s.t. $\phi_i^{-1}: \pi^{-1}(U_i) \rightarrow U_i \times F$. 
+Now, the map $f: B' \rightarrow B$ has an inverse map $f^{-1} : B \rightarrow B'$. 
+The former is a continuous map, and hence maps open coverings into open coverings. 
+Hence, one can define $\{f^{-1}(U_i), \psi_i\}^{i}$ as coverings and local trivializations on $B'$, where $\psi_i : f^{-1}(U_i) \times F \rightarrow \pi_1(U_i) \subset f^{*}E$ is the local trivialization of $f^{*}E$ on $f^{-1}(U_i) \times F$ - or equivalently $\psi_i^{-1} : \pi_1(U_i) \rightarrow f^{-1}(U_i) \times F$. 
+Moreover, let $\phi_i^{-1}(u) = (f(p), f_i)$\footnote{From which one notes that 
+
+$$
+    f_i = \pi_2 (\phi_i^{-1}(u))
+$$
+
+}, these $\psi$-local trivializations of $f^{*}E$ read 
+
+\[
+    \begin{array}{cc}
+        \psi_i^{-1}(p,u) = (p, f_i) = (p, \pi_2 ( \phi_i^{-1} (u))),
+    \end{array}
+\]
+
+making of $\fibrebundle{f^{*}E}{\pi_1}{B'}$ a fibre bundle with typical fibre $F$, with topology and open coverings $\{f^{-1}(U_i), \psi_i)\}^{i}$
+\end{proof}
+
+Moreover, the transition function $t_{ij}$ at $p \in U_i \cap U_j$ maps $f_i$ to $f_j = t_{ij}(f(p)) f_j$.
+The corresponding transition function $t_{ij}^{*}$ on $f^* E$ at $p \in f^{-1}(U_i) \cap f^{-1}(U_j)$ also maps $f_j$ to $f_i$.
+This shows that 
+
+$$
+    t_{ij}^{*}(p) = t_{ij}(f(p)). 
+$$
+
+%%% TODO incluir el ejemplo
+
+\begin{mdframed}[style=MyFrame]
+
+    Let $M$ and $N$ be two differentiable manifolds with $\dim M = \dim N = m$
+
+\end{mdframed}
+
+\smallbreak
+
+\paragraph{Homotopy axiom}
+
+\begin{df}
+    Let $f$ and $g$ be maps from $M'$ to $M$. These are said to \textswab{homotopic} if there exists a smooth map $F: M' \times \R_{[0,1]} \rightarrow M$ s.t. $F(p,0) = f(p)$ and $F(p,1) = g(p)$ for any $p$ in $M'$. 
+\end{df}
