@@ -1,0 +1,206 @@
+\documentclass{homework}
+\author{Tomás Pérez}
+\class{Condensed Matter Theory - Lecture Notes}
+\date{\today}
+\title{Theory \& Notes}
+
+\graphicspath{{./media/}}
+
+\begin{document} \maketitle
+
+\section{On the geometry of Gaussian Manifolds}
+
+\subsection{Notes on "Local optimization on pure Gaussian state manifolds"}
+
+\paragraph{Quadratures}
+
+Bosonic and fermionic quantum systems with $N$ modes can be constructed from $N$ creation or annihilation operators, 
+
+\begin{equation}
+    \zeta \overset{{\bf a}, {\bf a}^\dagger}{=} ({\bf a}_1, \cdots, {\bf a}_N, {\bf a}_1^\dagger, \cdots, {\bf a}_N^\dagger),
+    \begin{array}{cc}
+         \textnormal{ which satisfy the } \\
+         \textnormal{ commutation relations }
+    \end{array}
+    \begin{array}{cc}
+         [{\bf a}_i, {\bf a}_j] = [{\bf a}_i^{\dagger}, {\bf a}_j^{\dagger}] = 0, [{\bf a}_i, {\bf a}_j^\dagger] = \delta_{ij}, \textnormal{ for bosons}, \\
+         \{{\bf a}_i, {\bf a}_j\} = \{{\bf a}_i^{\dagger}, {\bf a}_j^{\dagger}\} = 0, \{{\bf a}_i, {\bf a}_j^\dagger\} = \delta_{ij}, \textnormal{ for fermions}.
+    \end{array}
+\end{equation}
+
+In contrast to this set of $N$ creation and annihilation operators, one may choose instead, a basis of $2N$ Hermitian operators, the quadratures, which read
+
+\begin{equation}
+    \zeta \overset{{\bf a}, {\bf a}^\dagger}{=} ({\bf q}_1, \cdots, {\bf q}_N, {\bf p}_1, \cdots, {\bf p}_N), \textnormal{ with } \begin{array}{cc}
+         {\bf a}_i = \frac{{\bf q}_i + i {\bf p}_i}{\sqrt{2}}  \\
+         \\
+         {\bf a}_i^\dagger = \frac{{\bf q}_i - i {\bf p}_i}{\sqrt{2}}  \\
+    \end{array} \textnormal{ with } \begin{array}{cc}
+         [{\bf q}_i, {\bf q}_j] = [{\bf p}_i, {\bf p}_j] = 0, [{\bf q}_i, {\bf p}_j] = i\delta_{ij} \\ 
+         \{{\bf q}_i, {\bf q}_j\} = \{{\bf p}_i, {\bf p}_j\} = \delta_{ij}, [{\bf q}_i, {\bf p}_j] = 0.
+    \end{array}
+\end{equation}
+
+In the fermionic case, these operators are called Majorana modes. \\
+
+Gaussian states are uniquely specified by their two-point correlation function in the fundamental operators $\var{\zeta}$. For any state $\rho$, the expectation value of an ${\bf O}$-operators is given by $\langle {\bf O} \rangle_{\rho} = \Tr \rho {\bf O}$. It is useful to separately consider the symmetrized and anti-symmetrized part of these correlations, given by two real bilinear forms
+
+\begin{equation}
+\begin{split} 
+    \langle \zeta^a \zeta^b \rangle_{\rho} = \frac{1}{2} \bigg(
+        \mathcal{G}^{ab} + i \Omega^{ab}
+    \bigg), \quad
+\begin{array}{c}
+     \mathcal{G}^{ab} = \langle \zeta^a \zeta^b + \zeta^b \zeta^a \rangle_{\rho}, \\
+     \Omega^{ab} = -i \langle \zeta^a \zeta^b - \zeta^b \zeta^a \rangle_{\rho}, \\
+     \textnormal{ with } z^a = \langle \zeta^a \rangle_{\rho} = 0.  
+\end{array}
+\end{split}
+\end{equation}
+
+\begin{itemize}
+    \item For bosons, the \underline{symplectic form} $\Omega$ is fixed by canonical commutation relations (CCR), with the positive-definite \underline{metric} $\mathcal{G}$ containing the physical correlations. 
+    \item For fermions, the situation is reversed, with $\mathcal{G}$ fixed by canonical anti-commutation relations (CAR) and $\Omega$ describing the physical correlations. 
+\end{itemize}
+
+With respect to these bases, the following state-independent expressions soon arise 
+
+\begin{equation}
+\begin{split}
+    \Omega \overset{q,p}{\equiv} \left(
+        \begin{array}{cc}
+            0 & \id \\
+            -\id & 0 
+        \end{array} 
+    \right) \overset{{\bf a}, {\bf a}^{\dagger}}{\equiv} \left(
+        \begin{array}{cc}
+            0 & -i\id \\
+            i\id & 0 
+        \end{array} 
+    \right), \textnormal{ for bosons. } \\
+    \mathcal{G} \overset{q,p}{\equiv} \left(
+        \begin{array}{cc}
+            \id & 0 \\
+            0 & \id 
+        \end{array} 
+    \right) \overset{{\bf a}, {\bf a}^{\dagger}}{\equiv} \left(
+        \begin{array}{cc}
+            0 & \id \\
+            \id & 0 
+        \end{array} 
+    \right), \textnormal{ for fermions. }
+\end{split}
+\end{equation}
+
+Now consider the state-dependent bilinear forms containing the physical correlations. These are contained in the covariance matrix $\Gamma^{ab}$, defined as 
+
+\begin{equation}
+    \Gamma^{ab} = \left\{ 
+          \begin{array}{cc}
+               \mathcal{G}^{ab} & \textnormal{bosons} \\
+               \Omega^{ab} & \textnormal{fermions}
+          \end{array}
+    \right.
+\end{equation}
+
+The state-dependent bilinear forms and the state-independent parts into a single object $J$. 
+
+\begin{enumerate}
+    \item Given that $\mathcal{G}^{ab}$ is always a positive-definite object, it can be inverted giving rise to $\mathbcal{g}_{ab} = (\mathcal{G}^{-1})_{ab}$ s.t. $\mathcal{G}^{ac} \mathbcal{g}_{cb}= \delta^{a}_b$. 
+    \item Similarly, we define $\omega_{ab} = (\Omega^{-1})_{ab}$, s.t. $\Omega^{ac}\omega_{cb} = \delta^{a}_b$. The symplectic $\Omega$-form may not be invertible, in which case $\omega$ is understood to be a pseudo-inverse with respect to $\mathcal{G}$.
+\end{enumerate}
+
+Hence, the $J$-linear map can be defined as follows 
+
+\begin{equation}
+    J^{a}_{\blanky b} = \left\{
+    \begin{array}{cc}
+         -\mathcal{G}^{ac} \omega_{cb} & \textnormal{ for bosons} \\
+         \Omega^{ac} \mathbcal{g}_{cb} & \textnormal{ for fermions}
+    \end{array}
+    \right.,
+\end{equation}
+
+which depends on the state being considered. Furthermore, it turns out that, for Gaussian states, the two preceding expression coincide, completely specifying all correlations for both bosonic and fermionic systems. \bigbreak
+
+\paragraph{Pure Gaussian states}
+
+The preceding statements hold for a generic quantum state $\rho$, such that $z^a = \langle \zeta^a \rangle_{\rho} = 0$. The emphasis is now put on \textbf{pure Gaussian states}, for which there are several equivalent definitions:
+
+\begin{itemize}
+    \item Gaussian states may be defined to be those states satisfying Wick's theorem, states which are the ground states of quadratic non-interacting non-degenerate Hamiltonians, as well as those states vanishing under a full set of specific annihilation operators. 
+    \item Equivalently, they may be defined as those states s.t. $J^2 = - \id$. 
+    
+    \begin{df}
+    
+    More precisely,
+
+    $$
+        \rho \textnormal{ is a pure Gaussian state } \leftrightarrow J^2 = - \id .
+    $$
+
+    \end{df}
+
+    \begin{theorem}
+        If this holds, both types of expressions in the $J$-linear map coincidde, s.t
+
+        \begin{equation}
+            \textnormal{$\rho$ is a pure Gaussian state } \leftrightarrow -\mathcal{G}^{ac} \omega_{cb} = \Omega^{ac} \mathbcal{g}_{cb}.
+        \end{equation}
+    \end{theorem}
+   
+    \begin{proof}
+        In effect, consider the object $(\mathcal{G} \omega)^{-1}$,
+
+        \begin{equation*}
+            (\mathcal{G} \omega)^{-1} = \omega^{-1} \mathcal{G}^{-1} = \Omega \mathbcal{g}.
+        \end{equation*}
+
+        Moreover, since $J^2 = - \id$, it follows that $J^{-1} = -J$. In effect, notice that 
+
+        \begin{equation*}
+            J^{a}_{\blanky b}^{-1} \equiv \left\{ 
+                \begin{array}{cc}
+                     (-\mathcal{G}^{ac} \omega_{cb})^{-1}  \\
+                     (\Omega^{ac} \mathbcal{g}_{cb})^{-1}
+                \end{array}
+            \right. = \left\{
+                \begin{array}{cc}
+                     -\Omega \mathbcal{g} \\
+                \mathcal{G}^{ac} \omega_{cb} 
+                \end{array}
+            \right. = - J^{a}_{\blanky b} \equiv \left\{
+                \begin{array}{cc}
+                    \mathcal{G}^{ac} \omega_{cb}  \\
+                    -\Omega^{ac} \mathbcal{g}_{cb}
+                 \end{array}
+            \right.,
+        \end{equation*}
+
+    Hence, if we define a pure gaussian state $\rho$ as one s.t. $J^2 = -\id$, it follows that 
+
+    \begin{equation*}
+        \textnormal{$\rho$ is a pure Gaussian state } \leftrightarrow -\mathcal{G}^{ac} \omega_{cb} = \Omega^{ac} \mathbcal{g}_{cb}.
+    \end{equation*}
+    \end{proof}
+    
+\end{itemize}
+
+
+\section{Anderson Localization}
+
+\section{Zhang}
+
+\section{Markovian Repeated Interaction Quantum Systems}
+
+\section{Perturbation theory approaches to Anderson and Many-Body Localization: some lecture notes
+}
+
+\paragraph{+}
+
+\clearpage
+
+
+
+\end{document}
+
