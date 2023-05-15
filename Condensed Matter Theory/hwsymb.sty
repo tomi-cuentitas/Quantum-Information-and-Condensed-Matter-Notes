@@ -4,12 +4,13 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage[export]{adjustbox}
-\numberwithin{equation}{section}
+\numberwithin{equation}{subsubsection}
 \usepackage{dsfont}
 \usepackage[noabbrev,nameinlink]{cleveref}
 \RequirePackage{amssymb, amsthm, amscd, graphicx}
 \usepackage{amsmath,times}
 \usepackage{physics}
+\usepackage{yfonts}
 \usepackage{mathabx, bm, hyperref}
 %usepackage{kpfonts}
 \usepackage{multirow}
@@ -19,6 +20,9 @@
 \usepackage{tcolorbox}
 \usepackage{xcolor}
 \usepackage{relsize}
+
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
 
 %usepackage[pass,showframe]{geometry}% just to show the page margins %\usepackage[demo]{graphicx}% remove demo option in actual document\usepackage[pass,showframe]{geometry}% just to show the page margins
 
@@ -55,6 +59,18 @@
 \newtheorem*{remark}{Remark}
 \newtheorem{theo}{Theorem}
 \newtheorem{corr}{Corollary}
+
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{lipsum}
+\mdfdefinestyle{MyFrame}{%
+    linecolor=blue,
+    outerlinewidth=2pt,
+    roundcorner=20pt,
+    innertopmargin=\baselineskip,
+    innerbottommargin=\baselineskip,
+    innerrightmargin=20pt,
+    innerleftmargin=20pt,
+    backgroundcolor=gray!50!white}
 
 \usepackage{ifmtarg}% http://ctan.org/pkg/ifmtarg
 \usepackage{xifthen}% http://ctan.org/pkg/xifthen
@@ -206,6 +222,8 @@ skipbelow=\topskip,
 }
 \makeatother
 
+
+
 \newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
 \newcommand{\wedgeprod}{\mathsans{\mupLambda}}
 \newcommand{\ctwo}{\mathds{C}^2}
@@ -230,6 +248,32 @@ skipbelow=\topskip,
 \newcommand{\prob}{\mathds{P}}
 \newcommand{\E}{\mathds{E}}
 \newcommand{\twobytwo}{2 \times 2}
+\newcommand{\groundstate}{\ket{\textnormal{GS}}}
+\newcommand{\groundbra}{\bra{\textnormal{GS}}}
 
 \newcommand{\tdis}{$t$-distribution }
 \newcommand{\chidis}{$\chi^2$-distribution }
+
+%%%%
+
+\newcommand{\partitionfunction}{\mathcal{Z}}
+
+\makeatletter
+\newsavebox\myboxA
+\newsavebox\myboxB
+\newlength\mylenA
+\newcommand*\xoverline[2][0.75]{%
+    \sbox{\myboxA}{$\m@th#2$}%
+    \setbox\myboxB\null% Phantom box
+    \ht\myboxB=\ht\myboxA%
+    \dp\myboxB=\dp\myboxA%
+    \wd\myboxB=#1\wd\myboxA% Scale phantom
+    \sbox\myboxB{$\m@th\overline{\copy\myboxB}$}%  Overlined phantom
+    \setlength\mylenA{\the\wd\myboxA}%   calc width diff
+    \addtolength\mylenA{-\the\wd\myboxB}%
+    \ifdim\wd\myboxB<\wd\myboxA%
+       \rlap{\hskip 0.5\mylenA\usebox\myboxB}{\usebox\myboxA}%
+    \else
+        \hskip -0.5\mylenA\rlap{\usebox\myboxA}{\hskip 0.5\mylenA\usebox\myboxB}%
+    \fi}
+\makeatother
