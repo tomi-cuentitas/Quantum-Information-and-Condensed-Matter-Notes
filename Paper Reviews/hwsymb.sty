@@ -1,0 +1,232 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{hwsymb}[2021/01/01 hwsymb]
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\numberwithin{equation}{subsubsection}
+\usepackage{dsfont}
+\usepackage[noabbrev,nameinlink]{cleveref}
+\RequirePackage{amssymb, amsthm, amscd, graphicx}
+\usepackage{amsmath,times}
+\usepackage{physics}
+\usepackage{yfonts}
+\usepackage{mathabx, bm, hyperref}
+%usepackage{kpfonts}
+\usepackage{multirow}
+\usepackage{ulem}
+\usepackage{cancel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage{relsize}
+
+%usepackage[pass,showframe]{geometry}% just to show the page margins %\usepackage[demo]{graphicx}% remove demo option in actual document\usepackage[pass,showframe]{geometry}% just to show the page margins
+
+\usepackage{mwe} % for blindtext and example-image-a in example
+\usepackage{wrapfig}
+
+\usepackage[demo]{graphicx}% remove demo option in actual document
+
+\usepackage{simpler-wick}
+\usepackage{calligra, unicode-math}
+\newlength\dlf
+\newcommand\alignedbox[2]{
+  % #1 = before alignment
+  % #2 = after alignment
+  &
+  \begingroup
+  \settowidth\dlf{$\displaystyle #1$}
+  \addtolength\dlf{\fboxsep+\fboxrule}
+  \hspace{-\dlf}
+  \fcolorbox{red}{yellow}{$\displaystyle #1 #2$}
+  \endgroup
+}
+
+\usepackage[]{algorithm2e}
+
+% new and renewed commands
+\renewcommand{\qedsymbol}{$_{\scriptstyle \substack{\sc{quod}\\\sc{erat}\\\sc{dem}\scalebox{0.53}{$\blacksquare$}}}$}
+% beamer does not define a \labelenumi therefore this can't be renewed.
+\def\labelenumi{\theenumi)} % to make (n) into n)
+
+% New enviroments
+\newtheorem{df}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem*{remark}{Remark}
+\newtheorem{theo}{Theorem}
+\newtheorem{corr}{Corollary}
+
+\usepackage{ifmtarg}% http://ctan.org/pkg/ifmtarg
+\usepackage{xifthen}% http://ctan.org/pkg/xifthen
+\usepackage{environ}% http://ctan.org/pkg/environ
+\usepackage{multido}% http://ctan.org/pkg/multido
+\usepackage{lipsum}% http://ctan.org/pkg/lipsum
+
+\makeatletter%
+\newcommand{\theoremhang}{% top theorem decoration
+  \begingroup%
+  \setlength{\unitlength}{.005\linewidth}% \linewidth/200
+    \begin{picture}(0,0)(1.5,0)%
+      \linethickness{0.45pt} \color{black!50}%
+      \put(-3,2){\line(1,0){206}}% Top line
+      \multido{\iA=2+-1,\iB=50+-10}{5}{% Top hangs
+        \color{black!\iB}%
+        \put(-3,\iA){\line(0,-1){1}}% Top left hang
+        \put(203,\iA){\line(0,-1){1}}% Top right hang
+      }%
+    \end{picture}%
+  \endgroup%
+}%
+\newcommand{\theoremhung}{% bottom theorem decoration
+  \nobreak
+  \begingroup%
+    \setlength{\unitlength}{.005\linewidth}% \linewidth/200
+    \begin{picture}(0,0)(1.5,0)%
+      \linethickness{0.45pt} \color{black!50}%
+      \put(-3,0){\line(1,0){206}}% Bottom line
+      \multido{\iA=0+1,\iB=50+-10}{5}{% Bottom hangs
+        \color{black!\iB}%
+        \put(-3,\iA){\line(0,1){1}}% Bottom left hang
+        \put(203,\iA){\line(0,1){1}}% Bottom right hang
+      }%
+    \end{picture}%
+  \endgroup%
+}%
+
+\newcounter{theorem}
+\renewcommand{\thetheorem}{\arabic{theorem}}
+\NewEnviron{theorem}[1][]{%
+    \par\noindent\theoremhang\par\nobreak\noindent%\addvspace{-.5ex}
+    \refstepcounter{theorem}\postdisplaypenalty=10000 %
+    {\sffamily\bfseries\upshape Theorem \thetheorem\@ifnotmtarg{#1}{\ (#1)}}\ \ \itshape\ignorespaces%
+    \BODY % Typeset theorem body/content
+    \par\addvspace{-1ex}\nobreak\noindent\theoremhung\par\addvspace{.4ex}%
+}
+
+\usepackage[framemethod=default,
+skipabove=\topskip,
+skipbelow=\topskip,
+]{mdframed}
+\usepackage{lipsum}
+
+\newcounter{theor}[section]
+\newcommand*\Mydefinitionheader[1]{%
+  \@afterindentfalse
+   {\parindent \z@
+         \setlength{\parfillskip}{\z@ plus 1fil}%
+         \mdraggedtitle\nobreak%
+         \makebox[\linewidth][l]{%
+          \hspace*{-1\mdf@innerleftmargin@length}%
+          \rlap{\color{white}%
+               \hspace*{-1\mdf@middlelinewidth@length}%
+               \rule[\mdf@middlelinewidth@length]%
+                    {\dimexpr\linewidth+1\mdf@innerleftmargin@length%
+                      +\mdf@innerrightmargin@length
+                      +2\mdf@middlelinewidth@length\relax}%
+                     {\dimexpr\ht\strutbox+.3333em
+                        \relax}%
+               }%
+          \rlap{\color{blue!20}%
+                \rule{\dimexpr\linewidth+\mdf@innerleftmargin@length%
+                        +\mdf@innerrightmargin@length\relax}%
+                     {\mdf@middlelinewidth@length}}%
+          \hspace*{-1\mdf@middlelinewidth@length}%
+          \tikz[remember picture,baseline]\node[,draw = none, text = black,
+                     fill = blue!20,]
+                     {\mdf@frametitlefont\strut Definition~\thedef#1};\relax%
+         }%
+    \par\kern.5\baselineskip}%
+  \@afterheading}
+
+\newenvironment{theor}[1][]{%
+   \let\mdframedtitleenv\Mydefinitionheader%
+   \stepcounter{theor}%
+   \ifstrempty{#1}{\mdfsetup{frametitle={\strut}}}{\mdfsetup{frametitle={:~#1}}}%
+   \begin{mdframed}[innertopmargin=0pt,linecolor=blue!20,linewidth=2pt,topline=false,]%
+   }{\end{mdframed}}
+   
+  \newtheoremstyle{mydef}
+{\topsep}{\topsep}%
+{}{}%
+{\bfseries}{}
+{\newline}
+{%
+  \rule{\textwidth}{0.4pt}\\*%
+  \thmname{#1}~\thmnumber{#2}\thmnote{\ -\ #3}.\\*[-1.5ex]%
+  \rule{\textwidth}{0.4pt}}%
+
+\theoremstyle{mydef}
+\newtheorem{definition}{Definition}
+
+\usepackage{mathtools}
+\usepackage{pst-node, auto-pst-pdf}
+
+\DeclarePairedDelimiterX\Dirbraket[3]{\langle}{\rangle}%
+{#1\,\delimsize\vert\,\mathopen{}#2\,\delimsize\vert\,\mathopen{}#3} 
+
+% Deprecated Set Symbols
+\newcommand{\id}{\textgoth{i}\textgoth{d}}
+
+% Symbols
+\newcommand{\fancyf}{%
+  \mkern-4mu
+  \text{%
+    \scalebox{1}[.8]{%
+      \rotatebox[origin=c]{20}{\fontfamily{calligra}\selectfont f}
+    }%
+  }%
+ \mkern-4mu
+}
+\newcommand{\bl}{\bm{\mathcal{L}}}
+\newcommand{\bmt}{\bm{\mathcal{T}}}
+\newcommand{\vds}{\mathds{V}}
+\newcommand{\br}{\bm {\mathcal{R}}}
+\newcommand{\summation}{\sum_{j=1}^{L-1}}
+\newcommand{\Hamiltonian}{{\bf H}}
+
+\makeatletter
+\newcommand{\exterior}[1]{\mathop{\mathpalette\exterior@{#1}}}
+\newcommand{\exterior@}[2]{%
+  % raise to the baseline
+  \raisebox{\depth}{%
+  % select the script size relative to the current font
+  \fontsize{\sf@size}{0}%
+  % nullify the math surround
+  \m@th
+  % typeset \bigwedge, but using \textstyle in displays
+  $\ifx#1\displaystyle\textstyle\else#1\fi\bigwedge$}%
+  % the exponent, a bit nearer to the symbol
+  ^{\mspace{-2mu}#2}%
+  % remove the \scriptspace
+  \kern-\scriptspace
+}
+\makeatother
+
+\newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
+\newcommand{\wedgeprod}{\mathsans{\mupLambda}}
+\newcommand{\ctwo}{\mathds{C}^2}
+\newcommand{\xmeasure}{\int_{\R^3} d\x}
+\newcommand{\spinmeasure}{\sum_{\sigma_j \in \ctwo}}
+\definecolor{my-blue}{cmyk}{0.80, 0.13, 0.14, 0.04, 1.00}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\transpose}{^{\textnormal{T}}}
+\newcommand{\Rb}{{\bf R}}
+\newcommand{\spin}{{\bf S}}
+\newcommand{\X}{{\bf X}}
+\newcommand{\x}{{\bf x}}
+\newcommand{\blanky}{\textnormal{ }}
+\newcommand{\seq}{\{{\bf X}_n\}_{n=1}^{\infty}}
+\newcommand{\seqY}{\{{\bf Y}_j\}_{j=1}^{n}}
+\newcommand{\variance}{\mathds{V}\textnormal{ar}}
+\newcommand{\cov}{\mathds{C}\textnormal{ov}}
+\newcommand{\n}{n \rightarrow \infty}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\Rp}{\mathds{R}_+}
+\newcommand{\R}{\mathds{R}}
+\newcommand{\prob}{\mathds{P}}
+\newcommand{\E}{\mathds{E}}
+\newcommand{\twobytwo}{2 \times 2}
+
+\newcommand{\tdis}{$t$-distribution }
+\newcommand{\chidis}{$\chi^2$-distribution }
