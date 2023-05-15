@@ -586,8 +586,26 @@ $$
 
 \begin{mdframed}[style=MyFrame]
 
-    Let $M$ and $N$ be two differentiable manifolds with $\dim M = \dim N = m$
+    Let $M$ and $N$ be two differentiable manifolds with $\dim M = \dim N = m$.
+    Let $f: N \rightarrow M$ be a smooth map, which induces a map $\pi_2: TN \rightarrow TM$, s.t. the following diagram commutes 
 
+    \[
+        \begin{tikzcd}
+	   {TN} & TM \\
+	   {N} & M
+	   \arrow["{\pi_1}"', from=1-1, to=2-1]
+	   \arrow["f"', from=2-1, to=2-2]
+	   \arrow["\pi", from=1-2, to=2-2]
+	   \arrow["\pi_2", from=1-1, to=1-2]
+        \end{tikzcd}
+    \]
+
+    Let ${\bf W} = W^{\mu} \partial/\partial y^\mu$ be a vector of $T_pN$ and ${\bf V} = V^{\mu} \partial/\partial x^\mu$ be the corresponding vector of $T_{f(p)}M$.
+    If $TN$ is the pullback bundle $f^{*}(TM)$, $\pi_2$ maps $T_pN$ to $T_{f(p)}M$ diffeomorphically.
+    This is possible if and only if $\pi_2$ has the maximal rank $m$ at each point of $TN$.
+    Let $\phi(f(p)) = (f^{1}(y), \cdots, f^m(y))$ be the coodinates of $f(p)$ in a chart $(U, \phi)$ of $M$, where $y = \phi(p)$ are the coordinates of $p$ in a chart $(V, \psi)$ of $N$.
+    The maximal rank condition is given by $\det ( \partial f^\mu (y) / \partial y^{\nu}) \neq 0, \blanky \forall p \in N$. 
+    
 \end{mdframed}
 
 \smallbreak
@@ -595,5 +613,145 @@ $$
 \paragraph{Homotopy axiom}
 
 \begin{df}
+
     Let $f$ and $g$ be maps from $M'$ to $M$. These are said to \textswab{homotopic} if there exists a smooth map $F: M' \times \R_{[0,1]} \rightarrow M$ s.t. $F(p,0) = f(p)$ and $F(p,1) = g(p)$ for any $p$ in $M'$. 
+    
 \end{df}
+
+\begin{theo}
+
+    Let $\fibrebundle{E}{\pi}{M}$ be a fibre bundle with fibre $F$ and let $f,g: N \rightarrow M$ be two homotopic maps. 
+    Then, $f^{+} E$ and $g^{*} E$ are equivalent bundles over $N$.
+     
+\end{theo}
+
+\iffalse
+\begin{proof}
+
+    In effect, let $M$ be a manifold which is contractible to a point. 
+    Then, there exists a homotopy $F: M \times \R_{[0,1]} \rightarrow M$ s.t. 
+
+    \[
+        F(p, 0) = p, \quad F(p, 1) = p_0,
+    \]
+
+    where $p_0 \in M$ is a fixed point. 
+    Let $\fibrebundle{E}{\pi}{M}$ be a fibre bundle over $M$ and consider pullback bundles $h_0^{*}E$ and $h_1^{*}E$, where $h_t(p) \equiv F(p,t)$.
+    The fibre bundle $h_1^{*}E$ is a pullback of a fibre bundle $\{p_0\} \times F$, and hence is a trivial bundle: $h_1^{*}E \simeq M \times F$.
+    
+\end{proof}
+\fi
+
+\begin{lemma}
+
+    Let $\fibrebundle{E}{\pi}{M}$ be a fibre bundle. $E$ is trivial if $M$ is contractible to a point. 
+
+\end{lemma}
+
+\blanky \smallbreak 
+
+\paragraph{Vector Bundle}
+
+A \textswab{vector bundle} $\fibrebundle{E}{\pi}{M}$ is a fibre bundle whose fibre is a vector space. 
+Let $F = \R^k$ and $M$ be an $m$-dimensional manifold. 
+Then, $k \equiv \dim E$ is the \textswab{fibre dimension}, with the total space being $(m+k)$-dimensional. 
+The transition functions belong to $\generallineargroup(k, \R)$, since it isomorhpically maps a vector space onto another vector space of the same dimension.
+If $F$ is a complex vector space $\C$, the structure group is $\generallineargroup(k, \C)$. \smallbreak
+
+\begin{remark}
+\end{remark}
+
+\begin{enumerate}
+
+    \item For example, a tangent bundle $TM$ over an $m$-dimensional manifold $M$ is a vector bundle whose typical fibre is $\R^m$. 
+    Then, let $u$ be a point in $TM$ s.t. $\pi(u) = p \in U_i \cap U_j$, wherein the $\{U_i\}^{i}$ is a topology covering $M$.
+    Let $x^\mu = \phi_i (p)$ and $y^{\mu} = \phi_j (p)$ be the coordinate system of $U_i$ and $U_j$, respectively. 
+    The vector ${\bf V}$ corresponding to $u$ is expressed as ${\bf V} = V^\mu \partial / \partial x^{\mu} |_p = \tilde{V}^{\mu} \partial / \partial y^{\mu} |_p$.
+    The local trivializations are 
+
+    \[
+        \phi^{-1}_i (u) = (p, \{V^{\mu}\}^{\mu}), \quad \phi^{-1}_j (u) = (p, \{\tilde{V}^\mu\}^{\mu})
+    \]
+
+    The fibre coordinates $\{V^\mu\}^{\mu}$ and $\{\tilde{V}^{\mu}\}$
+    are related as 
+
+    \[
+        V^\mu = G^{\mu}_{\blanky \nu} \tilde{V}^\nu, \textnormal{ with } \{G^{\mu}_{\blanky \nu} (p)\} = \{(\partial x^\mu / \partial y^\nu)_p\}^{\mu, \nu} \in \generallineargroup(m, \R).
+    \]
+
+    Hence, the tangent bundle $(TM, \pi, M, \R^m, \generallineargroup(m, \R))$.
+    Sections of $TM$ are the vector fields on the manifold $M$, namely $\mathfrak{X}(M)$, with the vector fields being local inverses of the projection $\pi$, s.t. $\pi \circ s = \idop_{M}$. \\
+
+    \item Example: consider a 2-sphere and its tangent bundle $TS^2$. 
+    Let the pair $\{U_N, U_S\}$ be a topology on the 2-sphere, s.t. 
+
+    \[
+        U_N \equiv S^2 - \{\textnormal{South Pole}\}, \quad U_S \equiv S^2 - \{\textnormal{North Pole}\}.
+    \]
+
+    Let $(X,Y)$ and $(U,V)$ be their respective stereographic coordinates, related by 
+
+    \[
+        U = \frac{X}{X^2 + Y^2}, \quad V = - \frac{Y}{X^2 + Y^2}.
+    \]
+
+    Consider a point $u \in TS^2$ s.t. $\pi(u) = p \in U_N \cap U_S$, with $\phi_N$ and $\phi_S$ being their respective local trivializations s.t. $\phi_N^{-1} (u) = (p, V_N^{\mu})$. 
+    Then, the transition of the components of the tangent vectors consists of a rescaled-rotation of the $\{V_i^\mu\}$ by an angle of $2\theta$.
+
+    \item Example: Let $M$ be an $m$-dimensional manifold embedded in $\R^{m+k}$.
+    In particular, 
+
+    \[  
+        \begin{array}{cc}
+             \textnormal{Let $N_p M$ be the vector space normal to $T_p M$ in  $\R^{m+k}$, with respect to the euclidean metric in $\R^{m+k}$, that is} \\
+             \\
+             N_p M = \{{\bf U} | {{\bf U} \cdot {\bf V}} = 0, \blanky \forall {\bf V} \in T_p M \} = (T_p M)^\bot
+        \end{array}
+    \]
+
+    This vector space $N_p M$ is, then, isomorphic to $\R^k$. The \textswab{normal bundle}
+
+    \[
+        NM = \cup_{p \in M} N_p M,
+    \]    
+
+    is a vector bundle with the typical fibre $\R^k$. \\ 
+
+    \begin{itemize}
+        \item In effect, consider the $S^2$-sphere embedded in $\R^3$. 
+        The normal bundle $NS^2$ can be imagined as $S^2$, whose surface is pierced perpendicularly by straight lines.
+        $NS^2$ is then a trivial bundle $S^2 \times \R$. \\
+    \end{itemize}
+\end{enumerate}
+
+In particular, a vector bundle whose fibre is one-dimensional, eg. $F = \R$ or $\C$, is called a \textswab{line bundle}.
+A cylinder $S^1 \times \R$ is a trivial $\R$-line bundle. 
+A M\"obius strip is also a real-line bundle.
+The structure group $\generallineargroup(1, F) = F - \{0\}$ is abelian. 
+In particular, one may be interested in considering the \textswab{canonical line bundle} $L$. 
+
+\begin{mdframed}[style=MyFrame]
+
+The \textswab{complex projective space} $\C P^n$ is defined similarly to the \textswab{real projective space} $\R P^n$. 
+The $n$-tuple $z = (z^i) \in \C^{n+1}$ determines a complex line through the origin, provided that $z \neq {\bf 0}$. 
+An equivalence relation $\sim$ is defined on the set of complex n-tuples, 
+as follows 
+
+\[
+    z \sim w, \textnormal{ if there exists $a \neq 0, a \in \C$ s.t. } w = az.
+\]
+
+Then, $\C P^n = \frac{\C^{n+1} - \{0\}}{\sim}$.
+The $(n+1)$ numbers $z^0, z^1, \cdots, z^n$ are called the \textswab{homogeneous coordinates}, which is denoted by $[z^0, z^1, \cdots, z^n]$ where $(z^0, z^1, \cdots, z^n) \sim (\lambda z^0, \lambda z^1, \cdots, \lambda z^n)$, with non-zero $\lambda$. 
+
+Then, a chart $U_{\mu}$ is a subset of $\C^{n+1} - \{0\}$ s.t. $z^\mu \neq 0$. In a chart $U_{\mu}$, the \textswab{inhomogeneous coordinates} are defined by 
+
+\[
+    \zeta^nu_{(\mu)} = \frac{z^\nu}{z^\mu}, \textnormal{ for \nu \neq \mu}.
+\]
+
+In 
+
+
+\end{mdframed}
