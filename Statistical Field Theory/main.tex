@@ -1,0 +1,23 @@
+\documentclass{homework}
+\usepackage[subpreambles=true]{standalone}
+\usepackage{import}
+\usepackage{float}
+\usepackage{xr}
+
+\externaldocument{1. sft.tex}
+
+\author{Tomás Pérez}
+\class{Condensed Matter Theory - Lecture Notes}
+\date{\today}
+\title{Theory \& Notes}
+\graphicspath{{./media/}}
+
+\begin{document} \maketitle
+
+\tableofcontents
+
+\section{{\textbf{Statistical Field Theoretic Approach to Condensed Matter Theory}}}
+\import{sections/}{1. sft}
+
+\end{document}
+
