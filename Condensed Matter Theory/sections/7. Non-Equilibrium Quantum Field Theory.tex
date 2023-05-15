@@ -1,1 +1,388 @@
+\subsection{Developing the Keldysh Contour Formalism}
 
+In the time-independent Feynmann-Dyson equilibrium quantum field theoretic approach, the quantum observable averages, given by \cref{Intro_QFT_ensemble_avgs_forward_backward_ev}, are obtained as overlaps between an initial bra, the operator itself, and the ket, which is obtained by evolving the system's initial state from an initial time $t_0$ to $t$ -the time at which the operator acts- and then evolving the ket backward, from $t$ to $t_0$
+In particular, \cref{Intro_QFT_ensemble_avgs_forward_backward_ev} can be re-written as 
+
+\[
+    \langle {\bf O}(t) \rangle 
+    = \bra{\Psi_0} 
+       \bar{\mathcal{T}} \{ e^{i \int_{t}^{t_0} d\bar{t} \blanky {\bf H}(\bar{t})}\} \blanky {\bf O}(t) \blanky 
+       {\mathcal{T}} \{ e^{i \int_{t_0}^{t} dt \blanky {\bf H}(t)}\}
+    \ket{\Psi_0},
+\]
+
+wherein $\bar{\mathcal{T}}$ and $\mathcal{T}$ are the anti- and chronological time ordering operators.
+From left to right, inside the chronological time ordering operator all Hamiltonians are ordered with later time arguments to the left, the latest time being $t$.
+Then, the operator itself appears and to its left, all Hamiltonian inside the anti-chronological time ordering ordered with earlier time arguments to the left, the earliest time being $t_0$.
+Taking the limit $t_0 \rightarrow -\infty$ yields \cref{Intro_QFT_ensemble_avgs_forward_backward_ev}. 
+
+A series expansion of the previous equation, in powers of the Hamiltonian, yields the following generic term,
+
+\[
+    \bar{\mathcal{T}} \bigg\{
+        \prod_{j = 1}^{n} {\bf H}(t_j) 
+    \bigg\} \blanky {\bf O}(t) \blanky 
+    \mathcal{T}
+    \bigg\{
+        \prod_{k=1}^{m} {\bf H}(t'_k) 
+    \bigg\}, \quad \begin{array}{cc}
+         \textnormal{where all $\{t_i\}^{i} \in [t_0, t]$ }  \\
+         \textnormal{and where all $\{t'_i\}^{i} \in [t_0, t]$. }  
+    \end{array}
+\]
+
+\subsubsection{Mapping real-time arguments to contour arguments}
+
+\paragraph{Contour Ordering Operator}
+
+Keldysh's argument allows for a rewriting of the previous integrals as integrals over a single contour as follows: consider the contour defined as $\gamma \equiv \underbrace{(t_0, t)}_{\gamma_{-}} \oplus \underbrace{(t,t_0)}_{\gamma_{+}}$. This $\gamma$-contour consists of two paths,
+
+\begin{itemize}
+    \item a forward branch $\gamma_{-}$,
+    \item and a backward branch $\gamma_{+}$.
+\end{itemize}
+
+Any generic point $z' \in \gamma$ can lie either on $\gamma_-$ or on $\gamma_+$, and once said branch is specified, it can assume any value between $t_0$ and $t$.
+Let $z' = t'_-$ be the point of $\gamma$ lying on the branch $\gamma_0$ with value $t'$, and let $z' = t'_+$ be the point of $\gamma$ lying on the branch $\gamma_+$ with value $t'$.
+Having introduced these paths, it is then natural to define operators with arguments on said contour as follows, 
+
+\begin{equation}
+    {\bf A}(z') \equiv \left\{
+        \begin{array}{cc}
+             {\bf A}_{-}(t') \textnormal{ if} z' = t'_{-} \\
+             {\bf A}_{+}(t') \textnormal{ if} z' = t'_{+}
+        \end{array}
+    \right..
+\end{equation}
+
+In general, the operator ${\bf A}(z')$ on the forward branch, ${\bf A}_{-}(t')$, can be different from the operator on the backward branch, ${\bf A}_{+}(t')$.
+Furthermore, a suitable ordering operator for many-body products is naturally induced on this $\gamma$-contour, 
+
+\begin{equation}
+    \begin{array}{cc}
+         \textnormal{Let $\mathcal{T}$ be the \textswab{contour ordering operator} which } \\
+         \textnormal{ moves operators with "later" arguments to the left, i.e.}
+    \end{array} \begin{array}{cc}
+         \mathcal{T} \bigg\{
+        {\bf A}_m(z_{P(m)}) {\bf A}_{m-1}(z_{P(m-1)}) \cdots {\bf A}_1(z_{P(1)})
+         \bigg\} \\
+         \qquad = {\bf A}_m(z_m) {\bf A}_{m-1}(z_{m-1}) \cdots {\bf A}_1(z_1). 
+    \end{array}
+\end{equation}
+
+A point $z_2$ is later than a point $z_1$ if $z_1$ is closer to the starting point $t$. 
+Furthermore, note that a point on the backward branch is always later than a point on the forward branch.
+Moreover, due to the orientation, if $t_1 > t_2$, then $t_{1-}$ is later that $t_{2-}$ while $t_{1+}$ is earlier that $t_{2+}$.
+Thus, the following can be ascertained
+
+\begin{itemize}
+    \item the $\mathcal{T}$ acts like the chronological time ordering operator for arguments on $\gamma_{-}$,
+    \time while it acts like the anti-chronological time ordering operator for arguments on $\gamma_+$
+\end{itemize}
+
+More generally, the contour ordering operator can take on four different values, depending on the arguments, as follows:
+
+\begin{equation}
+    \mathcal{T} \bigg\{
+        {\bf A}(z_1) {\bf B}(z_2)
+    \bigg\} = \left\{
+        \begin{array}{cc}
+             \mathcal{T} \{ {\bf A}_{-}(t_1) {\bf B}_{-}(t_2) \} & \textnormal{ if $z_1 = t_{1-}$ and $z_2 = t_{2-}$} \\
+             {\bf A}_{+}(t_1) {\bf B}_{-}(t_2) & \textnormal{ if $z_1 = t_{1+}$ and $z_2 = t_{2-}$} \\
+             {\bf B}_{+}(t_2) {\bf A}_{-}(t_1) & \textnormal{ if $z_1 = t_{1-}$ and $z_2 = t_{2+}$} \\
+             \bar{\mathcal{T}} \{ {\bf A}_{+}(t_1) {\bf B}_{+}(t_2) \} & \textnormal{ if $z_1 = t_{1+}$ and $z_2 = t_{2+}$} 
+        \end{array}
+    \right.
+\end{equation}
+
+With such definitions for operators on the contour in mind, it is natural to redefine the Hamiltonian and the observable of interest as operators with arguments on $\gamma$, 
+
+\begin{equation}
+    {\bf H}(z' = t'_{\pm}) \equiv {\bf H}(t'), \quad {\bf O}(z' = t'_{\pm}) = {\bf O}(t').
+\end{equation}
+
+Both the Hamiltonian and the observable are, hence, the same on the forward and backward branches, and they are the corresponding operator with real-time argument. 
+These conclusions, being the same on the two branches $\gamma$ and equalling their corresponding operators with real-time argument, hold for the field operators as well, as these carry no explicit time dependence, and all observable quantities, e.g. density, current, energy, etc. \smallbreak
+
+With this definition in mind, the generic term of the Feynmann-Dyson series expansion can be rewritten as 
+
+\begin{equation}
+    \bar{\mathcal{T}} \bigg\{
+        \prod_{j = 1}^{n} {\bf H}(t_j) 
+    \bigg\} \blanky {\bf O}(t) \blanky 
+    \mathcal{T}
+    \bigg\{
+        \prod_{k=1}^{m} {\bf H}(t'_k) 
+    \bigg\} \mapsto \mathcal{T} \bigg\{ \bigg(\prod_{j = 1}^{n} {\bf H}(t_{j +})\bigg) \blanky {\bf O}(t_{\pm}) \blanky \bigg(\prod_{k=1}^{m} {\bf H}(t'_{k-}) \bigg)
+    \bigg\},
+\end{equation}
+
+where the observable operator's argument can be either $t_{+}$ or $t_{-}$. \smallbreak
+
+\paragraph{Contour Integral}
+
+Next, the notion of contour integral between two points $z_1, z_2 \in \gamma$ must be introduced and defined in terms of the standard real-time integrals. 
+If $z_2$ is later than $z_1$, three possibilities arise concerning the location of these two points: 
+
+\begin{equation}
+    \begin{split}
+        &\begin{array}{cc}
+            \textnormal{First, both $z_1$ and $z_2$ could be located on }  \\
+            \textnormal{the forward branch $\gamma_-$, with $z_2 > z_1$}
+       \end{array} \quad \rightarrow \int_{z_1}^{z_2} d\bar{z} \blanky {\bf A}(\bar{z}) = \int_{t_1}^{t_2} d\bar{t} \blanky {\bf A}_{-}(\bar{t}), \textnormal{ if $z_1 = t_{1-}$ and $z_2 = t_{2-}.$}  \\
+       \\
+       &\begin{array}{cc}
+            \textnormal{Or $z_1$ could be located in the forward}  \\
+            \textnormal{branch $\gamma_-$ with $z_2$ in the backward } \\
+            \textnormal{branch $\gamma_+$, with $t$ between them,}
+       \end{array} \quad \rightarrow \int_{z_1}^{z_2} d\bar{z} \blanky {\bf A}(\bar{z}) = \int_{t_1}^{t} d\bar{t} \blanky {\bf A}_{-}(\bar{t}) + \int_{t}^{t_2} d\bar{t} \blanky {\bf A}_{+}(\bar{t}),
+       \begin{array}{cc}
+            \textnormal{if $z_1 = t_{1-}$, } \\
+            \textnormal{and $z_2 = t_{2+}.$}
+       \end{array}\\
+      \\
+       &\begin{array}{cc}
+         \textnormal{and, lastly, both $z_1$ and $z_2$ could be }  \\
+         \textnormal{located on the backward branch $\gamma_+$, with $z_1 > z_2$} 
+       \end{array} \quad \rightarrow \int_{z_1}^{z_2} d\bar{z} \blanky {\bf A}(\bar{z}) = \int_{t_1}^{t_2} d\bar{t} \blanky {\bf A}_{+}(\bar{t}), \textnormal{ if $z_1 = t_{1+}$ and $z_2 = t_{2+}.$} 
+    \end{split} 
+\end{equation}
+
+If $z_2$ were earlier than $z_1$, then 
+
+\[
+    \int_{z_1}^{z_2} d\bar{z} \blanky {\bf A}(\bar{z}) = - \int_{z_2}^{z_1} d\bar{z} \blanky {\bf A}(\bar{z}).
+\]
+
+In this definition, $\bar{z}$ us the integration variable along the $\gamma$ contour and not the complex conjugate $z^{*}$ of $z$.
+The generic term of the Feynmann-Dyson expansion is obtained by integrating the operator over all $\{t_i\}^i$, between $t_0$ and $t$, and over all $\{t'_i\}^{i}$, between $t_0$ and $t$.
+This establishes the following equivalency between integration on real-time arguments and contour integrals, 
+
+\begin{equation*}
+    \begin{split}
+    \int_{t}^{t_0} dt_1 \cdots dt_n \int_{t_0}^{t} dt'_1 \cdots dt'_m& \blanky \bar{\mathcal{T}} \bigg\{
+        \prod_{j = 1}^{n} {\bf H}(t_j) 
+    \bigg\} \blanky {\bf O}(t) \blanky 
+    \mathcal{T}
+    \bigg\{
+        \prod_{k=1}^{m} {\bf H}(t'_k) 
+    \bigg\} \\
+    &\longmapsto \int_{\gamma_+} dz_1 \cdots dz_n \int_{\gamma_{-}} dz'_1 \cdots dz'_m \blanky \mathcal{T} \bigg\{ \bigg(\prod_{j = 1}^{n} {\bf H}(z_j)\bigg) \blanky {\bf O}(t_{\pm}) \blanky \bigg(\prod_{k=1}^{m} {\bf H}(z'_k) \bigg)
+    \bigg\},
+    \end{split}
+\end{equation*}
+
+where $\int_{\gamma_+}$ signifies that the integral is between $t_{+}$ and $t_{0_{\gamma}}$, while the symbol $\int_{\gamma_-}$ signifies that the integral is between $t_0$ and $t_{-}$. 
+Using these general results on all terms of the expansion, one can rewrite time-dependent quantum average of the observable as 
+
+\begin{equation}\label{NEqQFT_Keldysh_obsavg1}
+    \begin{split}
+        \langle {\bf O}(t) \rangle =& \bra{\Psi_0} 
+        \mathcal{T} \bigg\{
+            e^{-i \int_{\gamma_+} d\bar{z} \blanky {\bf H}(\bar{z})}
+            \blanky {\bf O}(t_{\pm}) \blanky
+            e^{-i \int_{\gamma_-} d\bar{z} \blanky {\bf H}(\bar{z})}
+        \bigg\} 
+    \ket{\Psi_0} \\
+    &= \bra{\Psi_0}
+        \mathcal{T} \bigg\{
+            e^{-i \int_{\gamma} d\bar{z} \blanky {\bf H}(\bar{z})} {\bf O}(t_{\pm}) 
+        \bigg\}
+    \ket{\Psi_0},
+    \end{split}
+\end{equation}
+
+where $\int_{\gamma} = \int_{\gamma_{-}} + \int_{\gamma_{+}}$ is the contour integral between $t_{0_-}$, and where the last equality follows from the fact that the operators inside the contour ordering operator $\mathcal{T}$ can be treated as commuting operators. 
+Note, here, that the ${\bf O}(t)$ observable is not the operator in the Heisenberg picture, ${\bf O}_H (t)$.
+
+The $\gamma$-contour's length depends on $t$. 
+It would be highly desirable if a similar expression for the contour observable average could be obtained, for a fixed-length contour. 
+In order to do that, consider extending $\gamma$ up to infinity, i.e. $t \rightarrow \infty$. 
+With this $\gamma$-extended-contour, then the observable expected averages, evaluated at $t_{\pm}$ are 
+
+\begin{equation}
+    \begin{split}
+        &\mathcal{T} \bigg\{
+            e^{-i \int_{\gamma} d\bar{z} \blanky {\bf H}(\bar{z})} {\bf O}(t_{-}) 
+        \bigg\} = \mathcal{U}(t_0, \infty) \mathcal{U}(\infty, t) {\bf O}(t) \mathcal{U}(t, t_0) 
+        = \mathcal{U}(t_0,t) {\bf O}(t) \mathcal{U}(t, t_0),
+        \\
+        &\mathcal{T} \bigg\{
+            e^{-i \int_{\gamma} d\bar{z} \blanky {\bf H}(\bar{z})} {\bf O}(t_{+}) 
+        \bigg\} = \mathcal{U}(t_0, t) {\bf O}(t) \mathcal{U}(t, \infty) \mathcal{U}(\infty, t_9) = \mathcal{U}(t_0,t) {\bf O}(t) \mathcal{U}(t, t_0).
+    \end{split}
+\end{equation}
+
+Hence, the observable expectation value in the extended contour depends not on which branch is being analyzed. 
+This extended contour idea is referred to as the \textswab{Schwinger-Keldysh contour}. 
+
+\begin{remark}
+\end{remark}
+
+\begin{itemize}
+    \item If one desires to compute time-independent observable averages, it may be ambiguous where to place the ${\bf O}$ operator, when acted upon by ${\mathcal{T}}$. \\
+\end{itemize}
+
+\begin{mdframed}[style=MyFrame]
+    
+ Moreover, since the LHS of \cref{NEqQFT_Keldysh_obsavg1} contains the physical time $t$, with its RHS containing operators with arguments on $\gamma$, the following general expectation value can be written, if one sets ${\bf O}(t_{\pm)} = {\bf O}(t)$, as follows 
+ 
+    \begin{equation} \label{NEqQFT_Keldysh_general_obsavg}
+        {\bf O}(z) =  \bra{\Psi_0}
+        \mathcal{T} \bigg\{
+            e^{-i \int_{\gamma} d\bar{z} \blanky {\bf H}(\bar{z})} {\bf O}(z) 
+        \bigg\}
+    \ket{\Psi_0},
+    \end{equation}
+
+    where the $z$-argument can be either $t_+$ or $t_-$.
+        
+\end{mdframed}
+
+The previous relationships can be rewritten in a way s.t. it is clear how to address the question regarding the time evolution of ensemble averages. 
+For a system in thermodynamic equilibrium with a non-degenerate ground state, the generalization to degenerate ground states is straightforward, a thermal state $\rho = e^{-\beta {\bf H}^M}$ describes the ensemble, with ${\bf H}^M = {\bf H} - \mu {\bf N}$. 
+In this statistical picture, derived from an underlying ergodic hypothesis holding in the state of spaces, all systems in said ensemble are all identical and, hence, are described by the same Hamiltonian, which in the contour formalism is ${\bf H}(z)$.
+Hence, the ensemble average \cref{NEqQFT_Keldysh_general_obsavg} can be rewritten as 
+
+\begin{equation}
+    \begin{split}
+        \langle {\bf O}(z) \rangle &= \sum_{n} w_n \bra{\chi_n(t)} \bm{\mathcal{U}}(t_0, t) {\bf O}(t) \bm{\mathcal{U}}(t, t_0) \ket{\chi_n(t)}, \begin{array}{cc}
+             \textnormal{ie. the ensemble average is the weighted sum of the}  \\
+             \textnormal{time-dependent quantum averages with weights $w_n$}
+        \end{array}\\
+        &= \Tr \bigg[ 
+            \rho \blanky \bm{\mathcal{U}}(t_0, t) {\bf O}(t) \bm{\mathcal{U}}(t, t_0)
+        \bigg] \\
+        &=  \Tr \left[
+            \rho \blanky \mathcal{T} \bigg\{
+            e^{-i \int_{\gamma} d\bar{z} \blanky {\bf H}(\bar{z})} {\bf O}(z) 
+        \bigg\}
+        \right],
+    \end{split}
+\end{equation}
+
+or more explicitly, 
+
+\begin{equation}
+     \langle {\bf O}(z) \rangle = \frac{\Tr \bigg[ e^{-\beta {\bf H}^M} \mathcal{T} \bigg\{
+            e^{-i \int_{\gamma} d\bar{z} \blanky {\bf H}(\bar{z})} {\bf O}(z) 
+        \bigg\}\bigg]}{\Tr e^{-\beta {\bf H}^M} }
+\end{equation}
+
+From this representation, several remarks can be made
+
+\begin{remark}
+\end{remark}
+
+\begin{itemize}
+    \item First, the contour ordered product has the following completeness relations,
+
+    \[
+        \mathcal{T}\bigg\{
+            e^{-i \int_{\gamma} d\bar{z} \blanky {\bf H}(\bar{z})}
+        \bigg\} = \bm{\mathcal{U}}(t_0, \infty) \bm{\mathcal{U}}(\infty, t_0) = \textnormal{id}.
+    \]
+    
+    \item Next, the thermal state can be written as 
+
+    \[
+        e^{-\beta {\bf H}^M} = e^{-i \int_{\gamma^M} d\bar{z} \blanky {\bf H}^M}, \quad \begin{array}{cc}
+             \textnormal{where $\gamma^M$ is any contour in the complex plane with starting point $z_a$} \\
+             \textnormal{and ending point in $z_b$ with the only constraint that $z_b - z_a = -i \beta$. }
+        \end{array}
+    \]
+    
+\end{itemize}
+
+Using both of these observations, the observable average can be written as 
+
+\begin{equation}
+     \langle {\bf O}(z) \rangle = \frac{\Tr \bigg[ e^{-\beta {\bf H}^M} \mathcal{T} \bigg\{
+            e^{-i \int_{\gamma} d\bar{z} \blanky {\bf H}(\bar{z})} {\bf O}(z) 
+        \bigg\}\bigg]}
+        {\Tr \bigg[ e^{-\beta {\bf H}^M} \mathcal{T} \bigg\{
+            e^{-i \int_{\gamma} d\bar{z} \blanky {\bf H}(\bar{z})} 
+        \bigg\}\bigg] } = 
+        \frac{\Tr \bigg[ e^{-i \int_{\gamma^M} d\bar{z} \blanky {\bf H}^M} \mathcal{T} \bigg\{
+            e^{-i \int_{\gamma} d\bar{z} \blanky {\bf H}(\bar{z})} {\bf O}(z) 
+        \bigg\}\bigg]}
+        {\Tr \bigg[ e^{-i \int_{\gamma^M} d\bar{z} \blanky {\bf H}^M} \mathcal{T} \bigg\{
+            e^{-i \int_{\gamma} d\bar{z} \blanky {\bf H}(\bar{z})} 
+        \bigg\}\bigg] }.
+\end{equation}
+
+The previous equation's physical significance becomes manifest, for it establishes and identification of a statistical average as a time propagation, since both operations are described by a \emph{Hamiltonian} operator.
+In particular, this statistical average is equivalent to a time propagation along the complex path $\gamma^M$, which -as previously stated- is any contour in the complex plane with starting point $z_a$ and ending point $z_b$, s.t. $z_b - z_a = - i \beta$. 
+Further simplifications can be made onto this equation, namely by incorporating the complex time evolution inside the contour ordering operator.
+This can be done provided $\gamma^M$ is connected to the original contour $\gamma$ and provided ${\bf H}(z)|_{z \in \gamma^M} \equiv {\bf H}^M$.
+This mathematical device was first proposed by Konstantinov and Perel' and incorporates information on how the system is initially prepared. 
+This, then, allows for the inclusion of the complex time evolution into the contour ordering operator, wherein now $\mathcal{T} \mapsto \mathcal{T}_{\gamma^M \oplus \gamma}$ and where $\int_{\gamma} \mapsto \int_{\gamma^M \oplus \gamma}$, with $\gamma^M \oplus \gamma$ being the \textswab{Konstantinov-Perel' contour} \footnote{
+The details of the Konstantinov-Perel' contour can be found in \textcolor{blue}{Stefanucci-van Leeuwen, Nonequilibrium Many-Body Theory of Quantum Systems}, chapter 4, "Time-dependent ensemble averages".}
+
+\begin{mdframed}[style=MyFrame]
+
+Hence, the observable averages can be succinctly written down as,
+
+\begin{equation} \label{NEqQFT_Keldysh_obsavg_KonstantinovPerel'}
+    \langle {\bf O}(z) \rangle = \frac{\Tr \bigg[ \mathcal{T}_{\gamma^M \oplus \gamma}  \bigg\{
+            e^{-i \int_{\gamma^M \oplus \gamma} d\bar{z} \blanky {\bf H}(\bar{z})} {\bf O}(z) 
+        \bigg\} \bigg]}{\Tr \bigg[ \mathcal{T}_{\gamma^M \oplus \gamma} \bigg\{
+            e^{-i \int_{\gamma^M \oplus \gamma} d\bar{z} \blanky {\bf H}(\bar{z})} 
+        \bigg\}  \bigg]},
+\end{equation}
+
+\end{mdframed}
+
+Several remarks must be made about this representation for the observable averages,
+
+\begin{remark}
+\end{remark}
+
+\begin{enumerate}
+    \item First, if $z \in \gamma_+$ or if $z \in \gamma_-$ (the forward/backward branches), then \cref{NEqQFT_Keldysh_obsavg_KonstantinovPerel'} yields the correct time-dependent ensemble average of the observable ${\bf O}(t)$. But, does \cref{NEqQFT_Keldysh_obsavg_KonstantinovPerel'} make any sense if $z \in \gamma^M$?
+        \begin{itemize}
+            \item In general, no. 
+                    This is the case since the operator ${\bf O}(z)$ has not been defined on $\gamma^M$. 
+                    A natural definition would be ${\bf O}(z)|_{z \in \gamma^M} \equiv {\bf O}^M$, which is the \emph{same} operator for every point $z \in \gamma^M$, and hence is compatible with the previous definition for the Hamiltonian on $\gamma^M$, ${\bf H}(z)|_{z \in \gamma^M} \equiv {\bf H}^M$.
+                    \footnote{The superscript $\blanky^M$, thus, indicates the constant value of the Hamiltonian (or any other observable) along the path $\gamma^M$.}, 
+
+                    \[
+                        {\bf H}^M \equiv {\bf H}(z)|_{z \in \gamma^M}, \quad {\bf h}^M \equiv {\bf h}(z)|_{z \in \gamma^M}, \quad {\bf O}^M \equiv {\bf O}(z)|_{z \in \gamma^M}.
+                    \]
+
+            \item In several instances, it is common to take ${\bf O}^M = {\bf O}(t_0)$ - except for the Hamiltonian, in which case ${\bf H}^M = {\bf H}(t_0) - \mu {\bf N}$ -, but the formalism is not restricted to such situations.
+        \item Moreover, the contour integral formalism is only applicable provided all operators have been ordered along said contour. 
+        Inside the $\mathcal{T}$-product, all operators -including those without any explicit time dependence - must have a contour argument. 
+        In particular, \cref{NEqQFT_Keldysh_obsavg_KonstantinovPerel'} allows for the calculation of the observable average in the $\gamma^M$-contour, as follows 
+
+        \begin{equation}
+            \langle {\bf O}(z) \rangle = \frac{\Tr \bigg[
+                e^{-i \int_{z}^{z_b} d\bar{z} \blanky {\bf H}(\bar{z})} \blanky {\bf O}^M \blanky e^{-i \int_{z_a}^{z} d\bar{z} \blanky {\bf H}(\bar{z})}
+            \bigg]}{\Tr e^{-\beta {\bf H}^M}} = \frac{\Tr \bigg[
+                e^{-\beta {\bf H}^M} {\bf O}^M 
+            \bigg]}{\mathcal{Z}},
+        \end{equation}
+
+        wherein, the r.h.s. is independent of $z$ and for systems in thermodynamic equilibrium coincides with the thermal average of the observable ${\bf O}^M$. 
+        
+        \end{itemize}
+
+        \item A second problem is that 
+        
+        \item Hence, \cref{NEqQFT_Keldysh_obsavg_KonstantinovPerel'} provides distinct information based on the position of $z$ on the contour.
+        
+        \begin{itemize}
+            \item Specifically, if $z = t_{\pm}$ is located on the forward/backward branch, the right-hand side of the equation represents the time-dependent ensemble average of ${\bf O}(t)$. 
+            \item On the other hand, if $z$ is situated on $\gamma^M$, it represents the ensemble average of ${\bf O}^M$.
+        \end{itemize}
+\end{enumerate}
+
+\subsubsection{Adiabatic Switching}
+
+Exact evaluation of \cref{NEqQFT_Keldysh_obsavg_KonstantinovPerel'} is a very difficult task, for it involves a trace over the full Fock space of the product of several operators.
+Progress can be made whenever the Hamiltonian ${\bf H}^z$ can be written as a sum of one-body operators ${\bf H}_0 (z)$, for which its exact solution is known, and an interaction energy operator ${\bf H}_{\textnormal{int}}(z)$, which is -in some sense- small, and can be treated perturbatively. 
+However, in some cases and under special conditions, an alternative approach can be found. 
+That is, there is a way to include ${\bf H}_{\textnormal{int}}(z)$ along the contour without altering the exact result.
+
+
+\clearpage
