@@ -480,9 +480,63 @@ With such a structure for the exterior algebras of the complexified vectorspace 
 \end{remark}
 
 Note here, that the first projection, $\Pi^{k}$, does not depend on the almost-complex structure $J$, contrary to the ${\Pi^{p,q}}$ and ${\bf I}$ operations. 
-Moreover, ${\bf I}$ is the multiplicative extension of the almost complex structure $J$ on ${\bf V}$
+Moreover, ${\bf I}$ is the multiplicative extension of the almost complex structure $J$ on ${\bf V}$, but it is not an almost-complex structure by itself. 
+Given that $J$ is defined on the real-valued vector space $\vectorspace$, ${\bf I}$ is an endomorphism of the real exterior algebra $\bigwedge^{*} \vectorspace$. 
+Note that the corresponding operator on the dual space $\bigwedge \blanky^{*} (\vectorspace^{\C})^{*}$ are also given by $\Pi^k, \Pi^{p,q}, {\bf I}$, respectively. \medbreak
 
+Now, let $(\vectorspace, \langle , \rangle)$ be a finite-dimensional euclidean vector space, with $\vectorspace$ being a real-valued vector space and $\langle, \rangle$ being a positive-definite symmetric bilinear form. 
+When complexifying this space, one must require a degree of compatibility between the induced 
+almost-complex structure $J$ and the inner product, leading to the following definition \smallbreak
 
+\begin{mdframed}[style=MyFrame]
+\begin{df}
+    An almost-complex structure $J: \vectorspace \rightarrow \vectorspace$ is \textswab{compatible} with the scalar product $\langle, \rangle$ if 
+    $$
+        \langle J(v), J(w) \rangle = \langle v, w \rangle, \quad \forall v, w \in \vectorspace
+    $$
+    
+    In other words, one must require that $J \in O(V, \langle, \rangle)$.
+\end{df}    
+\end{mdframed}
+
+In a two-dimensional space, the notions of scalar products and almost-complex structures are intimately related, being almost equivalnent. 
+
+\begin{remark}
+\end{remark}
+
+\begin{itemize}
+    \item Let $\vectorspace$ be a real-valued two-dimensional oriented vector space. If $\langle , \rangle$ is a scalar produt, then there exists a natural almost-complex structure $J$ on $\vectorspace$ associated to it, as follows:
+    For any $v \in \vectorspace-{{\bf 0}}$, the vector $J(v) \in \vectorspace$ is uniquely determined by the following three conditions:
+        \[
+            \langle v , J(v) \rangle = 0, \quad ||J(v)|| = ||v||, \quad \{v, J(v)\} \textnormal{is positively oriented}.
+        \]
+
+    In other words, $J$ is the rotation by $\pi/2$. 
+    Hence, $J^{2} = -\idop$, with $J \in SO(V)$ being the almost-complex structure. Moreover, two scalar products $\langle ,\rangle$ and $\langle ,\rangle'$ are \textswab{conformally equivalent} if there exists a positive scalar $\lambda$, s.t. 
+    $\langle ,\rangle' = \lambda \langle ,\rangle$. 
+    Clearly, two conformally equivalent scalar products define the same almost-complex structure. 
+    Conversely, for any given almost-complex structure $J$ there always exists a scalar product $\langle ,\rangle$ to which it is associated. \bigbreak
+    
+    This, then, induces a bijection between the set of conformal equivalence classes of scalar produts on the two-dimensional vector space and the set of almost-complex structures, inducing the given orientation, i.e.
+
+    $$
+        \{ \langle \blanky, \blanky \rangle \}/\sim_{\textnormal{conf}} \blanky \longleftrightarrow \blanky \{J \in \generallineargroup(\vectorspace)_{+}\blanky | \blankyJ^2 = -\idop\}.
+    $$    
+\end{itemize}
+
+Now, returning to the general case, consider a general euclidean vector space $(\vectorspace, \langle \blanky, \blanky \rangle)$ of arbitrary dimension with compatible almost-complex structure $J$. 
+
+\begin{mdframed}[style=MyFrame]
+
+    \begin{df}
+        The \textswab{Fundamental Form} associated to $(\vectorspace, \langle, \rangle, J)$ is the form 
+
+        \[
+            \omega \equiv -\langle \cdot, J(\cdot) \rangle = \langle J(\cdot), \cdot \rangle
+        \]
+    \end{df}
+    
+\end{mdframed}
 
 \clearpage
 
